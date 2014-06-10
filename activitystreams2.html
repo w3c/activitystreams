@@ -1,0 +1,2605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Activity Streams 2.0</title>
+  <meta charset="UTF-8" />
+  <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
+  <script class="remove">
+  var respecConfig = {
+    specStatus: "Member-SUBM",
+    shortName: "activitystreams-2.0",
+    editors: [
+      {
+        name: "James M Snell",
+        url: "http://chmod777self.com",
+        company: "IBM",
+        companyUrl: "http://ibm.com"
+      }
+    ],
+    additionalCopyrightHolders: ["Activity Streams Working Group", "IBM"],
+    wg: "Social Web Working Group",
+    wgURI: "http://www.w3.org/2013/Social/WG",
+    wgPublicList: "public-socialweb",
+    wgPatentURI: "",
+    localBiblio:  {
+      "AS1": {
+        title: "JSON Activity Streams 1.0",
+        href: "http://activitystrea.ms/specs/json/1.0/",
+        authors:  [
+          "J. Snell", 
+          "M. Atkins",
+          "W. Norris",
+          "C. Messina",
+          "M. Wilkinson",
+          "R. Dolin"
+        ],
+        status:   "unofficial",
+        publisher:  "http://activitystrea.ms"
+    }
+}
+  };
+  </script>
+</head>
+<body>
+
+  <section id="abstract">
+    <p>
+      This specification details a model for representing potential and
+      completed activities using the JSON format.
+    </p>
+    <section id="authorsnote" class="informative">
+      <h2>Author's Note</h2>
+      <p>
+        This draft is heavily influenced by the JSON Activity
+        Streams 1.0 specification originally co-authored by Martin
+        Atkins, Will Norris, Chris Messina, Monica Wilkinson, Rob Dolin and
+        James Snell.  The author is very thankful for their significant
+        contributions and gladly stands on their shoulders.  Some portions of
+        the original text of Activity Streams 1.0 are used in this document.
+      </p>
+    </section>
+  </section>
+
+  <section id="sotd">
+  </section>
+
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>
+      In the most basic sense, an "activity" is a semantic description of
+      a potential or completed action.  In the former case, the activity
+      expresses what can or might be done with a particular object, while 
+      in the latter case, it expresses what has already been done.
+    </p>
+
+    <p>
+      It is the goal of this specification to provide a JSON-based syntax
+      that is sufficient to express metadata about activities in a rich,
+      human-friendly, machine-processable and extensible manner.  This may
+      include constructing natural-language descriptions or visual
+      representations about the activity, associating actionable
+      information with various types of objects, communicating or recording
+      activity logs, or delegation of potential actions to other
+      applications.
+    </p>
+
+    <p>
+      The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in [[!RFC2119]].
+    </p>
+
+    <section id="activitystreams-1.0" class="informative">
+
+      <h2>Relationship to JSON Activity Streams 1.0</h2>
+
+      <p>
+        The JSON Activity Streams 1.0 [[!AS1]] specification was
+        published in May of 2011 and provided a baseline extensible syntax
+        for the expression of completed activities.  This specification
+        builds upon that initial foundation by incorporating lessons learned
+        through extensive implementation, community feedback and related 
+        ongoing work from a variety of other communities.
+      </p>
+
+      <p>
+        While the syntax defined by this specification diverges somewhat from
+        that defined by JSON Activity Streams 1.0, the verbs, objectTypes,
+        extensions and fundamental model defined by that original
+        specification remain intact.
+      </p>
+
+      <p>
+        Please refer to Section 6 for more detail about the differences between 
+        the 1.0 and 2.0 syntax and for a listing of specific backwards
+        compatibility requirements.
+      </p>
+
+      <p>
+        This specification incorporates several existing extensions to the
+        1.0 syntax directly into the 2.0 model.  These include portions of
+        the Activity Streams 1.0 Base Schema, Audience
+        Targeting, Responses, and Priority extensions.
+      </p>
+    </section>
+
+    <section id="syntaxconventions">
+
+      <h2>Syntax Conventions</h2>
+
+      <p>
+        This specification defines a JSON-based [[!RFC4627]] serialization
+        syntax.
+      </p>
+
+      <p>
+        When serialized, absent properties are represented by either (a)
+        setting the property value to null, or (b) by omitting the property
+        declaration altogether at the option of the publisher; these
+        representations are semantically equivalent.  If a property has an
+        array value, the absence of any items in that array MUST be
+        represented by omitting the property entirely or by setting the value
+        to null.
+      </p>
+
+      <p>
+        This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is also
+        an IRI, so a URI may be used wherever an IRI is named.  There are two
+        special considerations: (1) when an IRI that is not also a URI is
+        given for dereferencing, it MUST be mapped to a URI using the steps
+        in Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
+        value, it MUST NOT be so mapped.
+      </p>
+
+      <p>
+        Unless otherwise specified, all properties with date and time values
+        MUST conform to the "date-time" production in [[!RFC3339]], with an
+        uppercase "T" character used to separate date and time, and an
+        uppercase "Z" character in the absence of a numeric time zone offset.
+        All such timestamps SHOULD be represented relative to Coordinated
+        Universal Time (UTC).
+      </p>
+
+    </section>
+
+  </section>
+
+  <section id="examples" class="informative">
+    <h2>Examples</h2>
+
+    <p>
+      Following are three examples of activities with varying degrees of detail.
+    </p>
+
+    <section id="example-1">
+      <h2>Minimal Activity</h2>
+      
+      <figure>
+      <figcaption>
+        Expresses the statement "'urn:example:person:martin' posted
+        'http://example.org/foo.jpg'".  No additional detail is given.
+      </figcaption>
+
+<pre class="example highlight">{
+  "verb": "post",
+  "actor": "urn:example:person:martin",
+  "object": "http://example.org/foo.jpg"
+}</pre>
+      </figure>
+
+    </section>
+
+    <section id="example-2">
+      <h2>Basic activity with some additional detail</h2>
+
+      <figure>
+      <figcaption>
+        Expresses the statement "Martin Smith posted an article to the blog
+        'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
+        details about the article, actor and target blog are given.
+      </figcaption>
+<pre class="example highlight">{
+  "verb": "post",
+  "published": "2011-02-10T15:04:55Z",
+  "language": "en",
+  "actor": {
+   "objectType": "person",
+   "id": "urn:example:person:martin",
+   "displayName": "Martin Smith",
+   "url": "http://example.org/martin",
+   "image": {
+     "url": "http://example.org/martin/image.jpg",
+     "mediaType": "image/jpeg",
+     "width": 250,
+     "height": 250
+   }
+  },
+  "object" : {
+   "objectType": "article",
+   "id": "urn:example:blog:abc123/xyz"
+   "url": "http://example.org/blog/2011/02/entry",
+   "displayName": "Why I love Activity Streams"
+  },
+  "target" : {
+   "objectType": "blog",
+   "id": "urn:example:blog:abc123",
+   "displayName": "Martin's Blog",
+   "url": "http://example.org/blog/"
+  }
+}</pre>
+    </figure>
+
+    </section>
+
+    <section id="example-3">
+
+      <h2>An extended activity</h2>
+
+      <figure>
+      <figcaption>
+        A more extensive, single-entry "Activity Stream" follows.  In
+        addition to containing a number of required and optional core
+        properties, the example contains the additional, undefined extension
+        properties "foo" and "foo2" for illustrative purposes only.
+      </figcaption>
+
+<pre class="example highlight">
+{
+  "totalItems": 1,
+  "items" : [
+    {
+      "verb": "post",
+      "language": "en",
+      "published": "2011-02-10T15:04:55Z",
+      "foo": "some extension property",
+      "generator": "http://example.org/activities-app",
+      "provider": "http://example.org/activity-stream",
+      "displayName": {
+        "en": "Martin posted a new video to his album.",
+        "ga": "Martin phost le fisean nua a albam."
+      },
+      "actor": {
+        "objectType": "person",
+        "id": "urn:example:person:martin",
+        "displayName": "Martin Smith",
+        "url": "http://example.org/martin",
+        "foo2": "some other extension property",
+        "image": {
+          "url": "http://example.org/martin/image",
+          "mediaType": "image/jpeg",
+          "width": 250,
+          "height": 250
+        }
+      },
+      "object" : {
+        "objectType": {
+          "id": "http://example.org/Photo",
+          "displayName": "Photo"
+        },
+        "id": "urn:example:album:abc123/my_fluffy_cat",
+        "url": "http://example.org/album/my_fluffy_cat.jpg",
+        "image": {
+          "url": "http://example.org/album/my_fluffy_cat_thumb.jpg",
+          "mediaType": "image/jpeg",
+          "width": 250,
+          "height": 250
+        }
+      },
+      "target": {
+        "objectType": {
+          "id": "http://example.org/PhotoAlbum",
+          "displayName": "Photo-Album"
+        },
+        "id": "urn:example.org:album:abc123",
+        "url": "http://example.org/album/",
+        "displayName": {
+          "en": "Martin's Photo Album",
+          "ga": "Grianghraif Mairtin"
+        },
+        "image": {
+          "url": "http://example.org/album/thumbnail.jpg",
+          "mediaType": "image/jpeg",
+          "width": 250,
+          "height": 250
+        }
+      }
+    }
+  ]
+}
+</pre></figure>
+    </section>
+  </section>
+
+  <section id="model">
+    <h2>Object Model</h2>
+
+    <section id="objects">
+      <h2><dfn title="Object" id="asobject">Object</dfn></h2>
+      <p>
+        The following "core properties" apply to all JSON objects serialized
+        within an Activity Stream document.
+      </p>
+
+      <table border="1">
+      <tr>
+        <th>Property</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code><dfn title="id" id="id-attribute">id</dfn></code></td>
+        <td>IRI</td>
+        <td>
+          Provides a permanent, universally unique identifier for the object
+          in the form of an absolute IRI [[RFC3987]]. Objects SHOULD contain
+          an <code><a>id</a></code> property. If an object does not contain an <code><a>id</a></code> property,
+          consumers MAY use the value of the <code><a>url</a></code> property as a less-reliable,
+          non-unique identifier.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="objectType" id="objectType-attribute">objectType</dfn></code></td>
+        <td><a>Type Value</a></td>
+        <td>
+          Identifies the type of object. An object MAY contain an <code><a>objectType</a></code>
+          property whose value is a <a>Type Value</a>. If no <code><a>objectType</a></code> property 
+          is specified, the object has no specific type.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="language" id="langauge-attribute">language</dfn></code></td>
+        <td>Language Tag</td>
+        <td>
+          Establishes the default language assumed for human-readable,
+          natural-language metadata values included in the object. An 
+          object MAY contain a <code><a>language</a></code> property whose value MUST be 
+          an [[!RFC5646]] Language-Tag.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="displayName" id="displayName-attribute">displayName</dfn></code></td>
+        <td><a>Natural Language Value</a></td>
+        <td>
+          A simple, human-readable, plain-text name for the object. HTML 
+          markup MUST NOT be included. An object MAY contain a <code><a>displayName</a></code>
+          property. If the object does not specify an <code><a>objectType</a></code> property,
+          the object SHOULD specify a <code><a>displayName</a></code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="url" id="url-attribute">url</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          A Link Value describing a resource providing a representation of
+          the object. An object MAY contain a <code><a>url</a></code> property.
+        </td>
+      </tr>
+      </table>
+
+    </section>
+
+    <section id="naturalLanguageValues">
+
+      <h2>Natural Language Values</h2>
+    
+      <p>
+        A <dfn title="Natural Language Value" id="nlv">Natural Language Value</dfn>
+        is a representation of human-readable character sequences in one or more 
+        languages.  They are expressed as either (1) a single JSON string or (2) 
+        a JSON dictionary mapping [[RFC5646]] Language-Tags to localized, equivalent 
+        translations of the same string value.
+      </p>
+
+      <p>
+        For instance, the <code><a>displayName</a></code> property in all objects is 
+        a Natural Language value.
+      </p>
+
+      <figure>
+        <figcaption>A single String value using the default language:</figcaption>
+<pre class="example highlight">{
+  "language": "en",
+  "displayName": "This is the title"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Multiple, language-specific values:</figcaption>
+<pre class="example highlight">{
+  "displayName": {
+    "en": "This is the title",
+    "fr": "C'est le titre",
+    "sp": "Este es el titulo"
+  }
+}</pre></figure>
+
+      <p>
+        Each key in the JSON dictionary MUST be an [[RFC5646]] Language-Tag.
+        The associated values MUST be Strings.
+      </p>
+
+    </section>
+
+    <section id="typeValues">
+      <h2>Type Values</h2>
+
+      <p>
+        A <dfn title="Type Value" id="typevalue">Type Value</dfn> represents a 
+        reference to, or description of, an abstract type.  They are expressed 
+        as either: (1) a String conforming to either the <code>isegment-nz-nc</code> 
+        or <code>IRI</code> productions in [[RFC3987]] or as (2) an <a>Object</a>.  
+        When represented as a String, the use of relative references other than a 
+        simple name is not allowed.  When represented as an <a>Object</a>, 
+        the <code><a>id</a></code> property MUST be specified.
+      </p>
+
+      <p>
+        Within the Activity Streams 2.0, Type values are used only by the
+        <code><id>objectType</id></code> and <code><id>verb</id></code>
+        properties.
+      </p>
+
+      <figure>
+        <figcaption>Object type as a simple name (isegment-nz-nc):</figcaption>
+<pre class="example highlight">{
+  "objectType": "person",
+  "displayName": "John"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Object type as an absolute IRI:</figcaption>
+<pre class="example highlight">{
+  "objectType": "http://example.org/Person",
+  "displayName": "John"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Object type as an object:</figcaption>
+<pre class="example highlight">{
+  "objectType": {
+    "id": "http://example.org/Person",
+    "displayName": "Person"
+  },
+  "displayName": "John"
+}</pre></figure>
+
+      <p>
+        Because the second and third examples above each specify
+        "<code>http://example.org/Person</code>", the two examples are 
+        considered to specify the same type.
+      </p>
+
+      <figure>
+        <figcaption>Verb as a simple name (isegment-nz-nc):</figcaption>
+<pre class="example highlight">{
+  "verb": "post",
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Verb as an absolute IRI:</figcaption>
+<pre class="example highlight">{
+  "verb": "http://example.com/Upload",
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Verb as an object:</figcaption>
+<pre class="example highlight">{
+  "verb": {
+    "id": "http://example.com/Upload",
+    "displayName": "Upload"
+  },
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
+      <p>
+        Allowing verbs and object types to be represented as objects rather
+        than simple names or IRIs is intended to simplify the use of
+        extensions that an implementation might not have encountered
+        previously.  The object properties provide additional information and
+        metadata about the new verb or object type.
+      </p>
+
+      <p>
+        It is important to note that because the <code><a>id</a></code> property 
+        is strictly limited to absolute IRI values, the object representation cannot 
+        be used to describe types with simple names.
+      </p>
+    </section>
+
+    <section id="linkValues">
+      <h2>Link Values</h2>
+
+      <p>
+        A <dfn title="Link Value" id="linkValue">Link Value</dfn> representa 
+        a references to one or more additional objects and resources.
+        They are expressed as either: (1) a String containing an absolute or
+        relative IRI, (2) an <a>Object</a>, or (3) a JSON Array
+        containing a mixture of IRIs or <a title="Object">Objects</a>.  
+        Link values are closely related to the conceptual model of Links 
+        as established in [[!RFC5988]].
+      </p>
+
+      <p>
+        For example, as defined previously, all <a title="Object">Objects</a> can
+        contain an <code><a>image</a></code> property whose value describes a graphical
+        representation of the containing object.  This property will
+        typically be used to provide the URL to a JPEG, GIF or PNG type
+        resource that can be displayed to the user.  Any given object might
+        have multiple such visual representations -- multiple screenshots,
+        for instance, or the same image at different resolutions.  Using Link
+        values, there are essentially three ways of describing such
+        references.
+      </p>
+
+      <p>
+        To reference a single image without any additional metadata, the link
+        value can be expressed as a simple JSON string containing an absolute
+        or relative IRI:
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "objectType": "application",
+  "id": "http://example.org/application/123",
+  "displayName": "My Application",
+  "image": "http://example.org/application/123.png"
+}</pre></figure>
+
+      <p>
+        Alternatively, if additional metadata is required, the link can be
+        expressed as an object containing the url property.
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "objectType": "application",
+  "id": "http://example.org/application/123",
+  "displayName": "My Application",
+  "image": {
+    "url": "http://example.org/application/123.png",
+    "mediaType": "image/png",
+    "height": 320,
+    "width": 320
+  }
+}</pre></figure>
+
+      <p>
+        If more than one link value is to be expressed, A JSON Array with a
+        mix of string and object elements can be used:
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "objectType": "application",
+  "id": "http://example.org/application/123",
+  "displayName": "My Application",
+  "image": [
+    "http://example.org/application/abc.gif",
+    {
+      "url": "http://example.org/application/123.png",
+      "mediaType": "image/png",
+      "height": 320,
+      "width": 320
+    }
+  ]
+}</pre></figure>
+      
+      <p>
+        Individual items contained in such an array are independent of the
+        others and no significance is given to the ordering of those items.
+      </p>
+
+      <p>
+        RFC 5988 defines that all Links have a "link relation" that describes
+        the contextual purpose of the link.  Within an <a>Object</a>,
+        in the absence of a specific <code><a>rel</a></code> property, the 
+        name of the property whose value is a link serves as the "link relation".  
+        Any valid link relation value, as defined by [[RFC5988]], can be used as 
+        a property with a link value in any Activity Streams object, except where 
+        the link relation might conflict with any other property defined by this 
+        specification.
+      </p>
+
+      <p>
+        In the following example, two separate links are provided.  The link
+        relation of the first is "<code>image</code>", while the link relation of the
+        second is "<code>preview</code>".  Both links, however, can be used as 
+        alternative visual representations of the "<code>application</code>" object.
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "objectType": "application",
+  "image": [
+    "http://example.org/foo.jpg",
+    {
+      "url": "http://example.org/screens/1.jpg",
+      "rel": "preview",
+      "mediaType": "image/jpeg"
+    }
+  ]
+}</pre></figure>
+
+      <p>
+        When an <a>Object</a> is used to represent a <a>Link Value</a>, the
+        following additional properties MAY be used:
+      </p>
+
+      <table border="1">
+      <tr>
+        <th>Property</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code><dfn title="rel" id="rel-attribute">rel</dfn></code></td>
+        <td>[[RFC5988]] Link Relation</td>
+        <td>
+          The RFC 5988 Link Relation associated with this <a>Link Value</a>.
+          If absent, the name of the property is assumed to specify the 
+          link relation.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="mediaType" id="mediaType-attribute">mediaType</dfn></code></td>
+        <td>MIME Media Type</td>
+        <td>The MIME Media Type of the referenced resource.</td>
+      </tr>
+      </table>
+
+    </section>
+
+    <section id="activities">
+      <h2><dfn title="Activity" id="activity">Activity</dfn></h2>
+
+      <p>
+        Activity objects are specializations of the base <a>Object</a>
+        type that provide metadata about potential or completed actions.
+      </p>
+
+      <p>
+        Within an Activity object, the <code><a>verb</a></code> property 
+        is used to identify the type of activity.  All existing verb 
+        definitions used in JSON Activity Streams 1.0 implementations 
+        can continue to be used and retain their existing semantics.  
+        If the <code><a>verb</a></code> is not specified, the
+        <code><a>objectType</a></code> property MAY be used as an alternative 
+        means of determining the activity type.
+      </p>
+
+      <p>
+        Activity objects extend the core <a>Object</a> definition with
+        the following additional, optional properties:
+      </p>
+
+      <table border="1">
+      <tr>
+        <th>Property</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code><dfn title="verb" id="verb-attribute">verb</dfn></code></td>
+        <td><a>Type Value</a></td>
+        <td>
+          Identifies the type of the activity. An activity SHOULD contain a
+          "verb" property whose value is a <a>Type Value</a>. If the <code><a>verb</a></code>
+          property is not specified, the activity MUST contain an <code><a>objectType</a></code>
+          property.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="actor" id="actor-attribute">actor</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          Describes one or more entities that either performed or are expected to
+          perform the activity.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="object" id="object-attribute">object</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          Describes the direct object of the activity. For instance, in the activity
+          "John saved a movie to his wishlist", the object of the activity is the 
+          movie saved. An activity SHOULD contain an <code><a>object</a></code>
+          property. If the <code><a>object</a></code> property is not specified, 
+          however, the primary object MAY be implied by context.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="target" id="target-attribute">target</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          Describes the indirect object, or target, of the activity. The precise 
+          meaning of the target is largely dependent on the <code><a>verb</a></code>
+          but will often be the object of the English preposition "to". For instance,
+          in the activity "John saved a movie to his wishlist", the target of the 
+          activity is John's wishlist.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="result" id="result-attribute">result</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          Describes the result of the activity. For instance, if a particular action
+          results in the creation of a new resource, the <code><a>result</a></code>
+          property can be used to describe that new resource.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="instrument" id="instrument-attribute">instrument</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          An optional <a>Link Value</a> that describes one or more objects used to perform 
+          the activity. For instance, in the activity, "Sally played music with a piano",
+          the instrument of the activity is the piano.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="participant" id="participant-attribute">participant</dfn></code></td>
+        <td><a>Link Value</a></td>
+        <td>
+          An optional <a>Link Value</a> that describes one or more additional actors
+          that have (or will have) participated in the activity. For instance, in the
+          activity, "Sally went to the movies with Joe", Sally is the primary actor, 
+          while Joe is a participant.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="priority" id="priority-attribute">priority</dfn></code></td>
+        <td>Decimal Number between 0.00 and 1.00</td>
+        <td>
+          An optional indicator of the relative priority, or importance, that the creator
+          of the activity considers it to have. Represented as a non-negative, numeric 
+          decimal between 0.00 and 1.00 (inclusive), with two decimal places of precision.
+          If the property is omitted or set to null, the assumption is that a default
+          priority can be assumed by the implementation. The value 0.00 represents the 
+          lowest possible priority while 1.00 represents the highest.
+        </td>
+      </tr>
+      <tr>
+        <td><code><dfn title="status" id="status-attribute">status</dfn></code></td>
+        <td>
+          One of "<code>active</code>", "<code>canceled</code>", "<code>completed</code>",
+          "<code>pending</code>", "<code>tentative</code>", or "<code>voided</code>".
+        </td>
+        <td>
+          An optional, explicit indicator of the current status of the activity.
+          "<code>active</code>" indicates that the activity is ongoing, 
+          "<code>canceled</code>" indicates that the activity has been aborted,
+          "<code>completed</code>" indicates that the activity has concluded,
+          "<code>pending</code>" indicates that the activity is expected to begin,
+          "<code>tentative</code>" indicates that the activity has been proposed,
+          and "<code>voided</code>" indicates that the activity has been retracted
+          or should be considered invalid.
+        </td>
+      </tr>
+      </table>
+
+      <section id="useOfPriority" class="informative">
+        <h2>Considerations on the use of <code><a>priority</a></code></h2>
+
+        <p>
+          The presence of the <code><a>priority</a></code> property does not impose any 
+          specific processing or display requirements on the part of any entity
+          consuming the activity.
+        </p>
+
+        <p>
+          Expressing the value as a range of numeric decimal values is intended
+          to provide the greatest level of flexibility in the expression and
+          consumption of prioritization detail.  It is expected that
+          implementors consuming activity objects containing <code><a>priority</a></code> 
+          will utilize and expose the additional information in a number of
+          different ways depending on the unique requirements of each
+          application use case.
+        </p>
+
+        <p>
+          Many existing systems do not represent priority values as numeric
+          ranges.  Such systems might use fixed, labeled brackets such as
+          "<code>low</code>", "<code>normal</code>" and "<code>high</code>" 
+          or "<code>urgent</code>".  Similar mechanisms can be
+          established, by convention, when using the <code><a>priority</a></code> property.  In
+          typical use, it is RECOMMENDED that implementations wishing to work
+          with such defined categories treat <code><a>priority</a></code> property values in the
+          range <code>0.00</code> to <code>0.25</code> as "<code>low</code>" priority; values 
+          greater than <code>0.25</code> to <code>0.75</code> as "<code>normal</code>" priority; 
+          and values greater than <code>0.75</code> to <code>1.00</code> as
+          "<code>high</code>" priority.  Specific implementations are free to establish
+          alternative conventions for the grouping of priority values with the
+          caveat that such conventions likely will not be understood by all
+          implementations.
+        </p>
+
+      </section>
+
+      <section id="audienceTargeting">
+
+        <h2>Audience Targeting Properties</h2>
+
+        <p>
+          Every Activity has both a Primary and Secondary audience.  The
+          Primary audience consists of those entities either directly involved
+          in the performance of the activity or who "own" the objects involved.
+          The Secondary audience consists of the collection of entities sharing
+          an interest in the activity but who are not directly involved (e.g.
+          "followers").
+        </p>
+
+        <p>
+          For instance, suppose a social network of three individuals: Bob, Joe
+          and Jane.  Bob and Joe are each friends with Jane but not friends
+          with one another.  Bob has chosen to "follow" activities for which
+          Jane is directly involved.  Jane shares a file with Joe.
+        </p>
+
+        <p>
+          In this example, Jane and Joe are each directly involved in the file
+          sharing activity and together make up the Primary Audience for that
+          event.  Bob, having an interest in activities involving Jane, is the
+          Secondary Audience.  Knowing this, a system that produces or consumes
+          the activity can intelligently notify each person of the event.
+        </p>
+
+        <p>
+          While there are means, based on the verb, actor, object and target of
+          the activity, to infer the primary audience for many types of
+          activities, those do not work in every case and do not provide a
+          means of identifying the secondary audience.  The <code><a>to</a></code>, 
+          <code><a>cc</a></code>, <code><a>bto</a></code> and <code><a>bcc</a></code> 
+          properties MAY be used within an Activity to explicitly identify the 
+          Primary and Secondary audiences.
+        </p>
+
+        <table border="1">
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code><dfn title="to" id="to-attribute">to</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            Specifies the public primary audience
+          </td>
+        </tr>
+          <tr>
+          <td><code><dfn title="cc" id="cc-attribute">cc</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            Specifies the public secondary audience
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="bto" id="bto-attribute">bto</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            Specifies the private primary audience
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="bcc" id="bcc-attribute">bcc</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            Specifies the private secondary audience
+          </td>
+        </tr>
+        </table>
+
+        <p>
+          The prototypical use case for an Activity containing these properties
+          is the publication and redistribution of Activities through an
+          intermediary.  That is, an event source generates the activity and
+          publishes it to the intermediary which determines a subset of events
+          to display to specific individual users or groups.  Such a
+          determination can be made, in part, by identifying the Primary and
+          Secondary Audiences for each activity.
+        </p>
+
+        <p>
+          When the event source generates the activity and specifies values for
+          the <code><a>to</a></code> and <code><a>cc</a></code> fields, the 
+          intermediary SHOULD redistribute that event
+          with the values of those fields intact, allowing any processor to see
+          who the activity has been targeted to.  This is precisely the same
+          model used by the <code>to</code> and <code>cc</code> fields in email systems.
+
+        <p>
+          There are situations, however, in which disclosing the identity of
+          specific members of the audience may be inappropriate.  For instance,
+          a user may not wish to let other users know that they are interested
+          in various topics, individuals or types of events.  To support this
+          option, an event source generating an activity MAY use the 
+          <code><a>bto</a></code> and <code><a>bcc</a></code> properties to list 
+          entities to whom the activity should be privately targeted.  When an 
+          intermediary receives an activity containing these properties, it 
+          MUST remove those values prior to redistributing the activity.  The 
+          intent is that systems MUST consider entities listed within the 
+          <code><a>bto</a></code> and <code><a>bcc</a></code> properties as
+          part of the Primary and Secondary audience but MUST NOT disclose that
+          fact to any other party.
+        </p>
+
+        <p>
+          Audience targeting information included within an Activity only
+          describes the intent of the activity creator.  With clear exception
+          given to the appropriate handling of <code><a>bto</a></code> and 
+          <code><a>bcc</a></code>, this specification leaves it up to implementations 
+          to determine how the audience targeting information is used.
+        </p>
+
+      </section>
+
+    </section>
+
+    <section id="obj-ext">
+
+      <h2>Additional Object Properties</h2>
+
+      <p>
+        The following "additional properties" MAY be used with any
+        <a>Object</a>.
+      </p>
+
+      <table border="1">
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code><dfn title="alias" id="alias-attribute">alias</dfn></code></td>
+          <td>IRI</td>
+          <td>
+            Provides a contextually meaningful alternative label for the object
+            in addition to the <code><a>id</a></code>. For instance, within some
+            systems, groups can be identified by both a unique global identifier
+            and a more "human-friendly" label such as "<code>@friends</code>" or 
+            "<code>@network</code>". The value of the <code><a>alias</a></code>
+            property MUST match either the <code>isegment-nz-nc</code> or 
+            <code>IRI</code> productions in [[RFC3987]]. The use of a relative
+            reference other than a simple name is not allowed.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="author" id="author-attribute">author</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more entities credited
+            with creating or authoring the object.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="content" id="content-attribute">content</dfn></code></td>
+          <td><a>Natural Language Value</a></td>
+          <td>
+            A <a>Natural Language Value</a> description of the object content. HTML
+            markup, including visual elements such as images, MAY be included.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="summary" id="summary-attribute">summary</dfn></code></td>
+          <td><a>Natural Language Value</a></td>
+          <td>
+            A <a>Natural Language Value</a> summarization of the object. HTNL markup, 
+            including visual images such as images, MAY be included.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="title" id="title-attribute">title</dfn></code></td>
+          <td><a>Natural Language Value</a></td>
+          <td>
+            A <a>Natural Language Value</a> title of the object. HTML markup, 
+            including visual images such as images, MAY be included. The 
+            <code><a>title</a></code> and <code><a>displayName</a></code>
+            properties are closely related and overlap in function with the 
+            key difference being that <code><a>title</a></code> is permitted
+            to contain HTML markup while <code><a>displayName</a></code> is 
+            not.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="duplicates" id="duplicates-attribute">duplicates</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more objects that are 
+            considered semantically equivalent or duplicates of this object. 
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="icon" id="icon-attribute">icon</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more graphic representations
+            of the object, intended for human consumption. The visual element
+            SHOULD have an aspect ratio of one (horizontal) to one (vertical) 
+            and SHOULD be suitable for presentation at a small size. 
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="image" id="image-attribute">image</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more graphic representations
+            of the object. Unlike the <code><a>icon</a></code> property, there are
+            no aspect ratio or display size limitations assumed.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="location" id="location-attribute">location</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more physical or logical locations
+            associated with the object.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="generator" id="generator-attribute">generator</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the resource (e.g. an application) that 
+            generated the object.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="provider" id="provider-attribute">provider</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the resource (e.g. an application) that 
+            published the object. Note that this is not necessarily the same
+            entity that generated the object. 
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="published" id="published-attribute">published</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time at which the object was published.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="updated" id="updated-attribute">updated</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time at which a previously published object has been modified
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="startTime" id="startTime-attribute">startTime</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time describing the actual or expected starting time of the 
+            object. When used with an <a>Activity</a> object, for instance, the 
+            <code><a>startTime</a></code> property specifies the moment the activity
+            began or is scheduled to begin.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="endTime" id="endTime-attribute">endTime</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time describing the actual or expected ending time of the 
+            object. When used with an <a>Activity</a> object, for instance, the 
+            <code><a>endTime</a></code> property specifies the moment the activity
+            concluded or is expected to conclude.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="validFrom" id="validFrom-attribute">validFrom</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time at or after which (inclusive) the object is considered 
+            to be valid.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="validAfter" id="validAfter-attribute">validAfter</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time after which (exclusive) the object is considered to 
+            be valid.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="validUntil" id="validUntil-attribute">validUntil</dfn></code></td>
+          <td>[[RFC3339]] date-time</td>
+          <td>
+            The date and time at or before which (inclusive) the object is considered to
+            be valid. Once this moment has passed, the object is considered to have 
+            expired.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="validBefore" id="validBefore-attribute">validBefore</dfn></code></td>
+          <td>[[!RFC3339]] date-time</td>
+          <td>
+            The date and time at or after which the object is considered to have 
+            expired.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="duration" id="duration-attribute">duration</dfn></code></td>
+          <td>Integer or [[!RFC3339]] duration</td>
+          <td>
+            When the object describes a time-bound resource, such as an audio or
+            video, a meeting, etc, the <code><a>duration</a></code> property 
+            indicates the object's approximate duration. The value SHOULD
+            be expressed as an [[!RFC3339]] <code>duration</code> (e.g. a
+            period of 5 seconds is represented as "<code>PT5S</code>") but 
+            MAY be specified as a non-negative integer specifying the 
+            duration as a number of non-fractional seconds.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="rating" id="rating-attribute">rating</dfn></code></td>
+          <td>Decimal number between 0.0 and 5.0</td>
+          <td>
+            A quality rating expressed as a non-negative decimal number between 0.0 and 
+            5.0 (inclusive) with one decimal place of precision.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="attachments" id="attachments-attribute">attachments</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more objects associated with 
+            the containing object. These are similar in concept to files 
+            attached to an email.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="height" id="height-attribute">height</dfn></code></td>
+          <td>Integer</td>
+          <td>
+            When the object describes a visual resource, such as an image, video or 
+            embeddedable HTML, the <code><a>height</a></code> property indicates the
+            recommended display height in terms of device-independent pixels.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="width" id="width-attribute">width</dfn></code></td>
+          <td>Integer</td>
+          <td>
+            When the object describes a visual resource, such as an image, video or
+            embeddedable HTML, the <code><a>width</a></code> property indicates the 
+            recommended display width in terms of device-independent pixels.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="tags" id="tags-attribute">tags</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more resources that are loosely
+            associated with the containing object. The <code><a>tags</a></code> and
+            <code><a>attachments</a></code> properties differ from one another in 
+            that the <code><a>tags</a></code> property asserts "association by
+            reference" while <code><a>attachments</a></code> asserts "association by
+            enclosure".
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="inReplyTo" id="inReplyTo-attribute">inReplyTo</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more other objects to which 
+            the containing object can be considered a response.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="scope" id="scope-attribute">scope</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing one or more resources that define
+            the total population of entities for which the object can considered
+            to be relevant.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="actions" id="actions-attribute">actions</dfn></code></td>
+          <td><a>Actions Value</a></td>
+          <td>
+            An optional <a>Actions Value</a> that describe potential actions that
+            can be performed with the object.
+          </td>
+        </tr>
+      </table>
+
+      <section id="actionValues">
+
+        <h2><dfn title="Actions Value" id="actionValue">Actions Value</dfn></h2>
+
+        <p>
+          The <code><a>actions</a></code> property is used to
+          describe the kinds of activities that can be taken with regards to
+          the object.  The value is expressed as a JSON dictionary mapping
+          verbs to <a title="Link Value">Link Values</a> referencing resources 
+          or <a title="Object">Objects</a> that can be used to carry out those 
+          verbs.
+        </p>
+
+        <figure><figcaption>A hypothetical object with "<code>video</code>" as the objectType
+          might have "<code>watch</code>", "<code>share</code>" and "<code>embed</code>" 
+          as potential actions:</figcaption>
+<pre class="example highlight">{
+  "objectType": "video",
+  "id": "http://example.org/cats.mpg",
+  "actions": {
+   "watch": "movie://example.org/cats.mpg",
+   "share": {
+     "objectType": "service",
+     "displayName": "My Sharing Service",
+     "url": "http://example.net/share"
+   },
+   "embed": [
+     "http://example.org/gadgets/video.xml?v=cats.mpg",
+     {
+       "objectType": "inline-html",
+       "content": "&lt;video ... /&gt;"
+     }
+   ]
+  }
+}</pre></figure>
+
+        <p>
+          Each key in the Action value MUST be a valid verb identifier
+          conforming to either the <code>isegment-nz-nc</code> or <code>IRI</code> 
+          productions in [[!RFC3987]] and be suitable for use as a value for an
+          <a>Activity</a> object's <code><a>verb</a></code> property.  The value 
+          of each key MUST be a valid <a>Link Value</a>.
+        </p>
+
+      </section>
+
+    </section>
+
+    <section id="collections">
+      <h2><dfn title="Collection" id="collection">Collection</dfn></h2>
+
+      <p>
+        Collection objects are a specialization of the base <a>Object</a>
+        that contain a listing of other <a title="Object">Objects</a>.
+        The Collection object is used primarily as the root of an 
+        <a>Activity Streams Document</a>, but can also be used as the
+        value of object properties.
+      </p>
+
+      <p>
+        Collections have both a logical model and a physical serialization.
+        While the logical view of a collection might contain a large number
+        of objects, any single serialized representation might include only a
+        subset of those objects, with specific "paging" <a title="Link Value">Link Values</a> 
+        used to reference additional serialized representations that include
+        additional subsets.  Such representations are known as "multi-page
+        collections", with each serialized subset representing a single
+        "page".
+      </p>
+
+      <p>
+        Collection objects extend the core <a>Object</a> definition
+        with the following additional properties:
+      </p>
+
+      <table border="1">
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code><dfn title="items" id="items-attribute">items</dfn></code></td>
+          <td>Array of <a title="Object">Objects</a></td>
+          <td>
+            A JSON Array containing a listing of <a title="Object">Objects</a> of any type.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="totalItems" id="totalItems-attribute">totalItems</dfn></code></td>
+          <td>Integer</td>
+          <td>
+            A non-negative integer specifying the total number of objects
+            contained by the logical view of the collection. This number 
+            might not reflect the actual number of items serialized
+            within the <a>Collection</a> object instance.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="itemsPerPage" id="itemsPerPage-attribute">itemsPerPage</dfn></code></td>
+          <td>Integer</td>
+          <td>
+            A non-negative integer specifying the maximum number of items that 
+            will be included in the value of the <code><a>items</a></code> 
+            array.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="startIndex" id="startIndex-attribute">startIndex</dfn></code></td>
+          <td>Integer</td>
+          <td>
+            A non-negative integer value identifying the relative position
+            within the logical view of the collection of the first object
+            contained in the <code><a>items</a></code> array.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="itemsAfter" id="itemsAfter-attribute">itemsAfter</dfn></code></td>
+          <td>[[!RFC3339]] date-time</td>
+          <td>
+            An RFC 3339 date-time that indicates that the collection
+            contains only items published or updated strictly after the
+            date and time specified.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="itemsBefore" id="itemsBefore-attribute">itemsBefore</dfn></code></td>
+          <td>[[!RFC3339]] date-time</td>
+          <td>
+          An RFC 3339 date-time that indicates that the collection
+          contains only items published or updated strictly before the
+          date and time specified.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="first" id="first-attribute">first</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the furthest preceeding page of a multi-page 
+            collection.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="last" id="last-attribute">last</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the furthest following page of a multi-page
+            collection.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="prev" id="prev-attribute">prev</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the immediately preceding page of the 
+            multi-page collection. Note that the property name <code>previous</code>
+            can be used as an equivalent alternative; however, implementations 
+            SHOULD use <code><a>prev</a></code> and MUST NOT use both <code><a>prev</a></code>
+            and <code>previous</code> within the same object.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="next" id="next-attribute">next</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the immediately following page of the 
+            multi-page collection.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="current" id="current-attribute">current</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing the page containing the items that have been
+            updated or published most recently.
+          </td>
+        </tr>
+        <tr>
+          <td><code><dfn title="self" id="self-attribute">self</dfn></code></td>
+          <td><a>Link Value</a></td>
+          <td>
+            A <a>Link Value</a> referencing this page.
+          </td>
+        </tr>
+      </table>
+
+      <section id="collections-as-summaries">
+
+        <h2>Using collections as summary values</h2>
+
+        <p>
+          It is a common practice to use Collection objects to provide summary
+          information on the number of specific types of events that have
+          occurred with respect to any given object.  For instance, a "<code>note</code>"
+          object may have been "shared" or "liked" a number of times by
+          different individuals.  In such cases, the Collection object is used
+          as a property value with the <code><a>totalItems</a></code> field used 
+          to indicate the total number of occurrences, the <code><a>items</a></code> 
+          property used to provide details for a subset of the most recent 
+          occurrences, and the <code><a>id</a></code> property used to reference 
+          a separate Activity Streams document providing additional information.
+        </p>
+
+        <p>
+          This specification defines the following properties that MAY be used
+          within any <a>Object</a> as "summary values":
+        </p>
+
+        <table border="1">
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code><dfn title="replies" id="replies-attribute">replies</dfn></code></td>
+          <td><a>Collection</a></td>
+          <td>
+            Provides information about the set of objects that can be
+            considered to be replies to the containing object.
+          </td>
+        </tr>
+        </table>
+
+        <p>
+          In the following example, the <code><a>replies</a></code> property 
+          is used to indicate that a note has 10 responses, and provides 
+          information on the most recently received response:
+        </p>
+
+        <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "objectType": "note",
+  "id": "urn:example:note:1",
+  "displayName": "A note about things",
+  "content": "blah blah blah",
+  "replies": {
+   "url": "http://example.org/note/1/comments.json",
+   "mediaType": "application/activity+json",
+   "totalItems": 10,
+   "items": [
+     {
+       "objectType": "note",
+       "id": "urn:example:note:1:A",
+       "content": "That's profound, man."
+     }
+   ]
+  }
+}</pre></figure>
+
+      </section>
+
+    </section>
+
+  </section>
+
+  <section id="document">
+    <h2>Activity Streams Document</h2>
+
+    <p>
+      The above defined JSON serialization can be used to represent
+      activities, objects and media links in any context. An 
+      <dfn title="Activity Streams Document">Activity Streams Document</dfn> 
+      is a JSON document whose root value is a <a>Collection</a> and 
+      whose MIME media type is "<code>application/activity+json</code>".
+    </p>
+
+  </section>
+
+  <section id="reserved">
+    <h2>Reserved Object Types and Verbs</h2>
+
+    <p>
+      The following objectType and verb values are reserved for specific
+      uses by this specification:
+    </p>
+
+    <table border="1">
+      <caption>Object Types:</caption>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>activity</code></td>
+        <td>
+          Objects specifying <code>"<a>objectType</a>": "activity"</code>
+          conform to the <a>Activity</a> construct.
+        </td>
+      </tr>
+      <tr>
+        <td><code>verb</code></td>
+        <td>
+          Objects specifying <code>"<a>objectType</a>": "verb"</code>
+          provide metadata about an extension verb. Such objects
+          MUST include a <code><a>id</a></code> property.
+        </td>
+      </tr>
+      <tr>
+        <td><code>objectType</code></td>
+        <td>
+          Objects specifying <code>"<a>objectType</a>": "objectType"</code>
+          provide metadata about an extension objectType. Such objects
+          MUST include a <code><a>id</a></code> property.
+        </td>
+      </tr>
+      <tr>
+        <td><code>collection</code></td>
+        <td>
+          Objects specifying <code>"<a>objectType</a>": "collection"</code>
+          conform to the <a>Collection</a> construct.
+        </td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <caption>Verbs</caption>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>post</code></td>
+        <td>
+          The <code>post</code> verb describes the act of authoring 
+          an object and then publishing it online. The actor can be
+          any entity; the object can be of any object type; and the
+          target, if specified, can be of any object type. A target,
+          however, is not required.
+        </td>
+      </tr>
+    </table>
+
+  </section>
+
+  <section id="deprecated-syntax">
+    <h2>Deprecated Activity Streams 1.0 Syntax</h2>
+
+    <p>
+      The JSON syntax defined by this specification differs somewhat from
+      that defined in the original JSON Activity Streams 1.0
+      [[!AS1]] specification in ways that are not backwards
+      compatible.  Implementations can choose to continue supporting the
+      JSON Activity Streams 1.0 syntax but SHOULD consider it to be
+      deprecated.  This means that while implementations MAY continue to
+      consume the 1.0 syntax, they SHOULD NOT output the 1.0 syntax unless
+      specifically interacting with older non-2.0 compliant
+      implementations.
+    </p>
+
+    <p>
+      Specifically:
+    </p>
+
+    <ol>
+    <li>
+      Implementations MUST use the "<code>application/stream+json</code>" MIME media
+      type when producing a JSON serialization using the Activity Streams 1.0
+      syntax, and "<code>application/activity+json</code>"
+      when producing a serialization conforming to the 2.0 syntax.
+    </li>
+    <li>
+      Implementations that process serializations identified using either 
+      the "<code>application/stream+json</code>" or the more
+      generic "<code>application/json</code>" MIME media type MUST follow 
+      the syntax and processing rules set by [[!AS1]].  The 2.0
+      syntax and processing rules apply only when handling
+      serializations using the "<code>application/activity+json</code>" media type.
+    </li>
+    <li>
+      This document redefines the <code><a>displayName</a></code>, 
+      <code><a>title</a></code>, <code><a>content</a></code> and
+      <code><a>summary</a></code> properties as <a title="Natural Language Value">Natural Language Values</a>,
+      which means their values can be expressed as either a String or a
+      JSON-LD Language Map. In the 1.0 syntax, these are expressed
+      solely as String values.  Because the 1.0 values are a valid
+      subset allowed by this specification, implementations are not
+      required to take any specific action to continue supporting those
+      values.
+    </li>
+    <li>
+      This document redefines a large number of common properties
+      defined originally as Objects in 1.0 as <a title="Link Value">Link Values</a>.
+      This means the property values can be expressed
+      as either an IRI String, an <a>Object</a>, or an Array of IRI Strings
+      and Objects.  Because the 1.0 values are a valid subset allowed
+      by this specification, implementations are not required to take
+      any specific action to continue supporting those values.
+    </li>
+    <li>
+      This specification replaces the <code>upstreamDuplicates</code> and
+      <code>downstreamDuplicates</code> properties defined in the 1.0 syntax with
+      a singular <code>duplicates</code> property with a <a>Link Value</a>.
+      The <code>upstreamDuplicates</code> and <code>downstreamDuplicates</code> property
+      values in 1.0 are defined as Arrays of strings.  Implementations
+      MUST consider the union of these two values as an alias for the
+      <code>duplicates</code> property. Implementations of the 2.0 syntax
+      SHOULD NOT use the deprecated <code>upstreamDuplicates</code> and 
+      <code>downstreamDuplicates</code> properties.
+    </li>
+    </ol>
+
+    <p>
+      By following these requirements, all JSON Activity Streams 1.0
+      serializations can be processed successfully by 2.0 implementations.
+    </p>
+
+  </section>
+
+  <section id="id-value-comparison">
+
+    <h2>Comparison of Identifier Values</h2>
+
+    <p>
+      The values of <code><a>id</a></code> properties can be compared to determine if the
+      identifiers represent duplicate content.  The values MUST be compared
+      on a character-by-character, case-sensitive basis.  Comparisons MUST
+      be based solely on the character strings themselves and MUST NOT rely
+      on dereferencing the IRIs or URIs mapped from them.
+    </p>
+
+    <p>
+      As a consequence, two IRIs that resolve to the same resource but are
+      not character-for-character identical will be considered different
+      for the purposes of identifier comparison.  In such cases, the
+      <code><a>duplicates</a></code> property can be used to expressly relate such objects to
+      one another.
+    </p>
+
+  </section>
+
+  <section id="extensibility">
+
+    <h2>Extensibility</h2>
+
+    <p>
+      Processors that encounter unfamiliar properties within any
+      <a>Object</a> MUST NOT stop processing or signal an error and MUST
+      continue processing the items as if those properties were not
+      present.
+    </p>
+
+    <section id="extension-types">
+
+      <h2>Extension verbs and objectTypes</h2>
+
+      <p>
+        Verb and objectType identifiers are expressed in one of two ways:
+        either as a simple token value matching the "<code>isegment-nz-nc</code>"
+        production in [[RFC3987]] or as an absolute IRI.  When expressed as an
+        IRI, it is RECOMMENDED that the final component (either the last path
+        segment or fragment identifier) conforms to the "<code>isegment-nz-nc</code>"
+        production as well.  For instance, "<code>http://example.org/verbs/like</code>" or
+        "<code>http://example.org/verbs#like</code>".
+      </p>
+
+      <p>
+        When selecting a verb identifier that is a direct equivalent to a
+        natural language verb or action, it is RECOMMENDED that the final
+        <code>isegment-nz-nc</code> token is expressed as the "infinitive" or 
+        "base" form of the natural language verb, without indication of 
+        linguistic tense, mood or aspect.  For example, the verb identifier 
+        "<code>http://example.org/verbs/share</code>" is preferable to 
+        alternative forms like "<code>http://example.org/verbs/shared</code>" 
+        or "<code>http://example.org/verbs/sharing</code>".
+      </p>
+
+      <p>
+        Verb identifiers may also be idiomatic in nature.  For example, an
+        activity such as "Joe flagged the post as inappropriate", could be
+        expressed using an idiomatic verb "<code>flag-as-inappropriate</code>":
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "flag-as-inappropriate",
+  "object": "http://example.org/posts/1"
+}</pre></figure>
+
+      <p>
+        In such cases, the verb identifier may not necessarily correlate a
+        single discrete linguistic verb infinitive, but SHOULD still be
+        expressed in the infinitive form (e.g. "<code>flag-as-inappropriate</code>" as
+        opposed to "<code>flagged-as-inappropriate</code>").
+      </p>
+
+      <p>
+        When selecting an objectType identifier that is a direct equivalent
+        to a natural language common noun, it is RECOMMENDED that the final
+        <code>isegment-nz-nc</code> token is expressed in terms of a singular instance of
+        the object.  For example, the objectType identifier 
+        "<code>http://example.org/objects#bird</code>" is preferable to 
+        "<code>http://example.org/objects#birds</code>".
+      </p>
+
+      <p>
+        The objectType identifier MUST NOT be used to identify specific
+        individual instances of a class of object -- for instance, it would
+        never be appropriate to have <code>"<a>objectType</a>": "acct:joe@example.org"</code>,
+        even though the value "<code>acct:joe@example.org</code>" is a valid absolute IRI.
+      </p>
+
+      <p>
+        Note, finally, that verb and objectType identifiers are not dependent
+        on language context.  That is, while the natural language verbs
+        "speak" (English) and "hablar" (Spanish) are equivalent natural
+        language translations, they are not considered to be equivalent verb
+        identifiers.  Implementations are free to
+        treat such variations as equivalent but doing so is considered beyond
+        the scope of this specification.
+      </p>
+
+    </section>
+
+    <section id="jsonld">
+
+      <h2>Using JSON-LD to Extend and Process Activity Streams Documents</h2>
+
+      <p>
+        The JSON-based Serialization for Linked Data
+        [[!JSON-LD]] describes a rich syntax for the
+        serialization of semantically-rich metadata using the JSON format.
+        While the updated Activity Streams representation provided by this
+        document is not defined strictly as a "JSON-LD Vocabulary", the
+        syntax is designed to be closely compatible with JSON-LD.
+      </p>
+
+      <p>
+        There are a few differences between JSON-LD and the serialization
+        syntax described here, specifically:
+      </p>
+
+      <ul>
+      <li>
+        JSON-LD uses certain field names with a leading "@" character,
+        such as "<code>@id</code>" and "<code>@language</code>".  In 
+        this specification, the leading "@" is omitted.
+      </li>
+      <li>
+        While JSON-LD allows using relative IRI references in the values
+        of <code><a>id</a></code> properties, this specification limits 
+        identifiers to absolute IRIs.
+      </li>
+      </ul>
+
+      <p>
+        When processing an Activity Streams document as JSON-LD, the
+        following rules apply:
+      </p>
+
+      <ul>
+      <li>
+        The <code><a>objectType</a></code> property MUST be treated as an alias of JSON-LD
+        "<code>@type</code>".  When the objectType property is expressed using an
+        object value, the value object's <code><a>id</a></code> property is used to express
+        the "<code>@type</code>".
+      </li>
+      <li>
+        The <code><a>id</a></code> property MUST be treated as an alias of 
+        JSON-LD "<code>@id</code>".
+      </li>
+      <li>
+        The <code><a>language</a></code> property MUST be treated as an alias of JSON-LD
+        "<code>@language</code>".
+      </li>
+      <li>
+        A JSON array used to convey <a title="Link Value">Link Values</a> MUST be
+        treated as an unordered JSON-LD <code>@set</code> (<code>@container = @set</code>).
+      </li>
+      <li>
+        The JSON array value for the <code><a>items</a></code> property defined in
+        Section 3.7 MUST be treated as an ordered JSON-LD <code>@list</code>
+        (<code>@container = @list</code>).
+      </li>
+      <li>
+        The <code><a>displayName</a></code>, <code><a>title</a></code>, 
+        <code><a>content</a></code> and <code><a>summary</a></code> properties
+        defined in Section 3.1 and Section 3.6 MUST be treated as JSON-LD
+        Language Maps (<code>@container = @language</code>).
+      </li>
+      <li>
+        The base URI for all property names defined within this
+        specification MUST be set to "<code>http://activitystrea.ms/2.0/</code>".  For
+        instance, when processed as JSON-LD, the <code><a>displayName</a></code> property
+        expands to "<code>http://activitystrea.ms/2.0/displayName</code>"; while the
+        <code><a>endTime</a></code> property expands to "<code>http://activitystrea.ms/2.0/endTime</code>".
+      </li>
+      </ul>
+
+      <p>
+        A non-normative JSON-LD <code>@context</code> document covering the Activity
+        Streams 2.0 model is provided in Appendix B.
+      </p>
+
+      <section id="compact-iris">
+        <h2>Handling of JSON-ID Compact IRIs</h2>
+
+        <p>
+          In JSON-LD, a "Compact IRI" is a type of shorthand notation that
+          allows absolute IRI values to be split into an absolute base IRI and
+          a relative token.  For instance, in the following example:
+        </p>
+
+        <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "@context": {
+    "foaf": "http://xmlns.com/foaf/0.1/"
+  },
+  "foaf:givenName": "Sam"
+}</pre></figure>
+
+        <p>
+          The property name <code>foaf:givenName</code> is a Compact IRI that expands to
+          "<code>http://xmlns.com/foaf/0.1/givenName</code>" when proessed by a JSON-LD
+          implementation.
+        </p>
+
+        <p>
+          While there are differences of opinion on how extensively Compact
+          IRIs ought to be used within JSON-LD document instances, JSON-LD
+          implementations are required to support them.  To an Activity Streams
+          2.0 implementation that does not perform JSON-LD processing, Compact
+          IRIs are treated exactly like any other form of extension markup and
+          MAY be ignored.
+        </p>
+
+        <p>
+          Use of Compact IRIs by non-JSON-LD compliant implementations SHOULD
+          be avoided, however, if such implementations do choose to process
+          Compact IRIs, the following prefix mappings SHOULD be applied:
+        </p>
+
+        <table border="1">
+          <tr>
+            <th>Prefix</th>
+            <th>Expaned</th>
+          </tr>
+          <tr>
+            <td><code>dc:</code></td>
+            <td><code>http://purl.org/dc/elements/1.1/</code></td>
+          </tr>
+          <tr>
+            <td><code>dct:</code></td>
+            <td><code>http://purl.org/dc/terms/</code></td>
+          <tr>
+            <td><code>dctypes:</code></td>
+            <td><code>http://purl.org/dc/dcmitype/</code></td>
+          <tr>
+            <td><code>foaf:</code></td>
+            <td><code>http://xmlns.com/foaf/0.1/</code></td>
+          <tr>
+            <td><code>vcard:</code></td>
+            <td><code>http://www.w3.org/2006/vcard/ns#</code></td>
+          <tr>
+            <td><code>org:</code></td>
+            <td><code>http://www.w3.org/ns/org#</code></td>
+          <tr>
+            <td><code>prov:</code></td>
+            <td><code>http://www.w3.org/ns/prov#</code></td>
+          <tr>
+            <td><code>link:</code></td>
+            <td><code>http://www.iana.org/assignments/link-relations/</code></td>
+        </table>
+
+        <p>
+          For instance, the property name <code>foaf:givenName</code> would expand to
+          "<code>http://xmlns.com/foaf/0.1/givenName</code>", while the property
+          <code>prov:actingOnBehalfOf</code> would expand to 
+          "<code>htt://w3.org/ns/prov#actingOnBehalfOf</code>".
+        </p>
+
+      </section>
+
+    </section>
+
+  </section>
+
+  <section id="security-considerations">
+
+  <h2>Security Considerations</h2>
+
+  <p>
+    Publishers or Consumers implementing Activity Streams as a stream of
+    public data may also want to consider the potential for unsolicited
+    commercial or malicious content and should take preventative measures
+    to recognize such content and either identify it or not include it in
+    their implementations.
+  </p>
+
+  <p>
+    Publishers should take reasonable measures to ensure potentially
+    malicious user input such as cross-site scripting attacks are not
+    included in the Activity Streams data they publish.
+  </p>
+
+  <p>
+    Consumers that re-emit ingested content to end-users MUST take
+    reasonable measures if emitting ingested content to make sure
+    potentially malicious ingested input is not re-emitted.
+  </p>
+
+  <p>
+    Consumers that re-emit ingested content for crawling by search
+    engines should take reasonable measures to limit any use of their
+    site as a Search Engine Optimization loophole.  This may include
+    converting un-trusted hyperlinks to text or including a
+    rel="nofollow" attribute.
+  </p>
+
+  <p>
+    Consumers should be aware of the potential for spoofing attacks where
+    the attacker publishes activities or objects with falsified property
+    values with the intent of injecting malicious content, hiding or
+    corrupting legitimate content, or misleading users.
+  </p>
+
+  <p>
+    Activity Streams are JSON Documents and are subject to the same
+    security considerations described in [[!RFC4627]].
+  </p>
+
+  <p>
+    Activity Streams implementations handle URIs.  See Section 7 of
+    [[!RFC3986]].
+  </p>
+
+  <p>
+    Activity Streams implementations handle IRIs.  See Section 8 of
+    [[!RFC3987]].
+  </p>
+
+  </section>
+
+  <section id="iana">
+
+    <h2>IANA Considerations</h2>
+
+    <section id="media-type">
+      <h2>The <code>application/activity+json</code> Media Type</h2>
+
+      <p>
+        This specification registers the <code><dfn title="application/activity+json">application/activity+json</dfn></code> MIME Media
+        Type:
+      </p>
+
+      <table border="1">
+        <tr>
+          <td>Type name: </td>
+          <td>application</td>
+        </tr>
+        <tr>
+          <td>Subtype name: </td>
+          <td>activity+json</td>
+        </tr>
+        <tr>
+          <td>Required parameters: </td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Optional parameters: </td>
+          <td>
+            <code>charset</code> : specifies the character set encoding.
+            If not specified, a default of <code>UTF-8</code> is assumed.
+          </td>
+        </tr>
+        <tr>
+          <td>Encoding considerations: </td>
+          <td>
+            Resources that use the "<code>application/activity+json</code>"
+            Media Type are required to conform to all of the requirements
+            for the "<code>application/json</code>" Media Type and are 
+            therefore subject to the same encoding considerations specified
+            in Section 7 of [[!RFC4627]].
+          </td>
+        </tr>
+        <tr>
+          <td>Security considerations: </td>
+          <td>As defined in this specification.</td>
+        </tr>
+        <tr>
+          <td>Contact: </td>
+          <td>James M Snell &lt;<a href="mailto:jasnell@gmail.com">jasnell@gmail.com</a></td>
+        </tr>
+        </table>
+
+    </section>
+
+  </section>
+
+  <section class="appendix">
+
+    <h2>Acknowledgements</h2>
+
+    <p>
+      The author wishes to thank the Activity Streams community and
+     implementers for their support, encouragement, and enthusiasm
+     including but not limited to: Abdul Qabiz, Adina Levin, Adrian Chan,
+     Adriana Javier, Alan Hoffman, Alex Kessinger, Alexander Ovchinnikov,
+     Alexander Zhuravlev, Alexandre Loureiro Solleiro, Amy Walgenbach,
+     Andres Vidal, Angel Robert Marquez, Ari Steinberg, Arjan
+     Scherpenisse, Arne Roomann-Kurrik, Beau Lebens, Ben Hedrington, Ben
+     Metcalfe, Ben Werdmuller, Benjamin Goering, Bill de hOra, Bo Xing,
+     Bob Aman, Bob Wyman, Brett Slatkin, Brian Walsh, Brynn Evans, Charlie
+     Cauthen, Chris Chabot, Chris Messina, Chris Toomey, Christian
+     Crumlish, Dan Brickley, Dan Scott, Daniel Chapman, Danny Ayers, Dare
+     Obasanjo, Darren Bounds, David Cramer, David Nelson, David Recordon,
+     DeWitt Clinton, Douglas Pearce, Ed Summers, Elias Bizannes, Elisabeth
+     Norris, Eric Marcoullier, Eric Woods, Evan Prodromou, Gee-Hsien
+     Chuang, Greg Biggers, Gregory Foster, Henry Saputra, Hillary Madsen,
+     Howard Liptzin, Hung Tran, Ian Kennedy, Ian Mulvany, Ivan Pulleyn,
+     Jacob Kim, James Falkner, James Pike, James Walker, Jason Kahn, Jason
+     Kantz, Jeff Kunins, Jeff Martin, Jian Lin, Johannes Ernst, John
+     Panzer, Jon Lebkowsky, Jon Paul Davies, Jonathan Coffman, Jonathan
+     Dugan, Joseph Boyle, Joseph Holsten, Joseph Smarr, Josh Brewer, Jud
+     Valeski, Julien Chaumond, Julien Genestoux, Jyri Engestroem, Kaliya
+     Hamlin, Kevin Marks, Laurent Eschenauer, Laurie Voss, Leah Culver,
+     Libby Miller, Manu Mukerji, Mark Weitzel, Marko Degenkolb, Marshall
+     Kirkpatrick, Martin Atkins, Martin Svensson, Marty Alchin, Mary
+     Hoder, Matt Leventi, Matt Wilkinson, Matthias Mueller-Prove, Max
+     Engel, Max Wegmueller, Melvin Carvalho, Michael Buckbee, Michael
+     Chan, Michael Richardson, Michael Sullivan, Mike Macgirvin, Mislav
+     Marohni&#263;, Mo Jangda, Monica Wilkinson, Nate Benes, NeilFred
+     Picciotto, Nick Howard, Nick Lothian, Nissan Dookeran, Nitya
+     Narasimhan, Pablo Martin, Padraic Brady, Pat G.  Cappalaere, Patrick
+     Aljord, Peter Ferne, Peter Reiser, Peter Saint-Andre, Phil Wolff,
+     Philip (flip) Kromer, Richard Cunningham, Richard Zhao, Rick
+     Severson, Robert Hall, Robert Langbert, Robert Dolin, Robin Cover,
+     Ryan Boyd, Sam Sethi, Scott Raymond, Scott Seely, Simon Grant, Simon
+     Wistow, Stephen Garcia, Stephen Sisk, Stephen Paul Weber, Steve Ivy,
+     Steve Midgley, Steven Livingstone-Perez, Sylvain Carle, Sylvain
+     Hellegouarch, Tantek Celik, Tatu Saloranta, Tim Moore, Timothy Young,
+     Todd Barnard, Tosh Meston, Tyler Gillies, Will Norris, Zach Copley,
+     Laurent-Walter Goix, Matthew Marum, Andy Smith, and Zach Shepherd.
+   </p>
+
+  </section>
+
+  <section class="appendix informative" id="json-ld-context">
+
+    <h2>Non-Normative JSON-LD @context</h2>
+
+    <figure><figcaption>The following non-normative JSON-LD @context document MAY be used
+      when processing an Activity Streams 2.0 document using the JSON-LD
+      model.</figcaption>
+<pre class="example highlight">
+{ "@context": [{
+     "dc": "http://purl.org/dc/elements/1.1/",
+     "dct": "http://purl.org/dc/terms/",
+     "dctypes": "http://purl.org/dc/dcmitype/",
+     "foaf": "http://xmlns.com/foaf/0.1/",
+     "vcard": "http://www.w3.org/2006/vcard/ns#",
+     "org": "http://www.w3.org/ns/org#",
+     "prov": "http://www.w3.org/ns/prov#",
+     "link": "http://www.iana.org/assignments/link-relations/"
+   },{
+   "as" : "http://activitystrea.ms/2.0/",
+   "id": "@id",
+   "language": "@language",
+   "objectType": {
+     "@id": "as:objectType"
+   },
+   "displayName": {
+     "@id": "as:displayName",
+     "@container": "@language"
+   },
+   "url": {
+     "@id": "as:url",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "rel": "as:rel",
+   "mediaType": "as:mediaType",
+   "verb": {
+     "@id": "as:verb"
+   },
+   "actor": {
+     "@id": "as:actor",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "object": {
+     "@id": "as:object",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "target": {
+     "@id": "as:target",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "result": {
+     "@id": "as:result",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "instrument": {
+     "@id": "as:instrument",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "participant": {
+     "@id": "as:participant",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "priority": {
+     "@id": "as:priority",
+     "@type": "xsd:float"
+   },
+   "status": {
+     "@id": "as:status",
+     "@type": "@vocab"
+   },
+   "completed": {
+     "@id": "as:CompletedStatus"
+   },
+   "active": {
+     "@id": "as:ActiveStatus"
+   },
+   "canceled": {
+     "@id": "as:CanceledStatus"
+   },
+   "pending": {
+     "@id": "as:PendingStatus"
+   },
+   "tentative": {
+     "@id": "as:TentativeStatus"
+   },
+   "to": {
+     "@id": "as:to",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "bto": {
+     "@id": "as:bto",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "cc": {
+     "@id": "as:cc",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "bcc": {
+     "@id": "as:bcc",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "alias": {
+     "@id": "as:alias",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "author": {
+     "@id": "as:author",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "content": {
+     "@id": "as:content",
+     "@container": "@language"
+   },
+   "duplicates": {
+     "@id": "as:duplicates",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "icon": {
+     "@id": "as:icon",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "image": {
+     "@id": "as:image",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "location": {
+     "@id": "as:location",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "published": {
+     "@id": "as:published",
+     "@type": "xsd:dateTime"
+   },
+   "generator": {
+     "@id": "as:generator",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "provider": {
+     "@id": "as:provider",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "summary": {
+     "@id": "as:summary",
+     "@container": "@language"
+   },
+   "updated": {
+     "@id": "as:updated",
+     "@type": "xsd:dateTime"
+   },
+   "startTime": {
+     "@id": "as:startTime",
+     "@type": "xsd:dateTime"
+   },
+   "endTime": {
+     "@id": "as:endTime",
+     "@type": "xsd:dateTime"
+   },
+   "validFrom": {
+     "@id": "as:validFrom",
+     "@type": "xsd:dateTime"
+   },
+   "validUntil": {
+     "@id": "as:validUntil",
+     "@type": "xsd:dateTime"
+   },
+   "validAfter": {
+     "@id": "as:validAfter",
+     "@type": "xsd:dateTime"
+   },
+   "validBefore": {
+     "@id": "as:validBefore",
+     "@type": "xsd:dateTime"
+   },
+   "rating": {
+     "@id": "as:rating",
+     "@type": "xsd:float"
+   },
+   "tags": {
+     "@id": "as:tags",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "title": {
+     "@id": "as:title",
+     "@container": "@language"
+   },
+   "duration": {
+     "@id": "as:duration"
+   },
+   "height": {
+     "@id": "as:height",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "width": {
+     "@id": "as:width",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "inReplyTo": {
+     "@id": "as:inReplyTo",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "actions": {
+     "@id": "as:actions",
+     "@container": "@index"
+   },
+   "scope": {
+     "@id": "as:scope",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "totalItems": {
+     "@id": "as:totalItems",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "itemsPerPage": {
+     "@id": "as:itemsPerPage",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "startIndex": {
+     "@id": "as:startIndex",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "items": {
+     "@id": "as:items",
+     "@container": "@list"
+   },
+   "itemsAfter": {
+     "@id": "as:itemsAfter",
+     "@type": "xsd:dateTime"
+   },
+   "itemsBefore": {
+     "@id": "as:itemsBefore",
+     "@type": "xsd:dateTime"
+   },
+   "first": {
+     "@id": "as:first",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "last": {
+     "@id": "as:last",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "prev": {
+     "@id": "as:prev",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "previous": {
+     "@id": "as:prev",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "next": {
+     "@id": "as:next",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "current": {
+     "@id": "as:current",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "self": {
+     "@id": "as:self",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "replies": {
+     "@id": "as:replies",
+     "@container": "@index"
+   }
+  }]
+}</pre></figure>
+
+  </section>
+
+
+  <section id="linguistic-forms" class="appendix informative">
+    <h2>Linguistic Forms</h2>
+
+    <p>
+      The Activity Streams format has been intentionally designed to be
+      flexible in how machine-readable statements about past, present or 
+      future actions can be expressed. Implementations will often translate
+      Activity Statements into human-readable sentences such as 
+      "John uploaded a file" or "John will upload a file". To make such
+      transformations possible, it is necessary for implementations to 
+      have some sense of how the machine-readable JSON serialization 
+      maps to common natural-language linguistic forms.
+    </p>
+
+    <section id="intransitive">
+      <h2>Intransitive Activity</h2>
+
+      <p>
+        In many situations, the <code><a>actor</a></code> of an Activity also 
+        serves as the direct object.  For example, if I say, 
+        "The process terminated", then the "process" is both the actor and the 
+        object.  Such statements are formally known as being "intransitive".
+      </p>
+
+      <figure><figcaption>To describe intransitive activities,
+        simply omit the <code><a>object</a></code> property:</figcaption>
+<pre class="example highlight">{
+  "actor": {
+    "objectType": "process",
+    "displayName": "Build Process"
+  },
+  "verb": "terminate"
+}</pre></figure>
+
+    </section>
+
+    <section id="transitive">
+      <h2>Transitive Activity</h2>
+
+      <p>
+        In a "transitive" activity, the actor and direct object are distinct
+        entities.  This is the form most commonly expressed using the
+        Activity Streams format.  For instance, if I say, "Joe posted a blog
+        entry", the actor is "Joe" and the "blog entry" is the direct object.
+      </p>
+
+      <figure><figcaption>Transitive activities contain distinct <code><a>actor</a></code> and 
+      <code><a>object</a></code> properties:</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "post",
+  "object": {
+    "objectType": "article",
+    "title": "A Blog Entry",
+    "content": "..."
+  }
+}</pre></figure>
+
+    </section>
+
+    <section id="ditransitive">
+
+      <h2>Ditransitive Activity</h2>
+
+      <p>
+        In "ditransitive" activities, there exist distinct actor, direct and
+        indirect objects.  The indirect object specifies the target to which
+        the action on the direct object has been directed.  For instance, in
+        "Joe posted a blog entry to his Weblog", the indirect object (or
+        "target") is "Joe's Weblog".
+      </p>
+
+      <figure><figcaption>Ditransitive activities contain <code><a>actor</a></code>, 
+      <code><a>object</a></code>, and <code><a>target</a></code> properties.</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "post",
+  "object": {
+   "objectType": "article",
+   "title": "A Blog Entry",
+   "content": "..."
+  },
+  "target": {
+   "objectType": "blog",
+   "title": "Joe's Weblog"
+  }
+}</pre></figure>
+     </section>
+
+     <section id="tense-and-aspect">
+
+      <h2>Expressing tense and aspect</h2>
+
+      <p>
+        By using the <code><a>startTime</a></code>, <code><a>endTime</a></code>, 
+        <code><a>duration</a></code> and <code><a>status</a></code>
+        properties, Activity statements can be used to express past, present
+        or future actions.  Implementations should never rely on an activity
+        statement's verb identifier to determine the tense or aspect of the
+        action.
+      </p>
+
+      <figure><figcaption>To indicate an activity that has already concluded, the
+        startTime and endTime properties would be used to indicate past
+        points in time</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "post",
+  "object": "http://example.org/blog/entry/1",
+  "startTime": "2012-12-12T12:12:12Z",
+  "endTime": "2012-12-12T12:12:12Z"
+}</pre></figure>
+
+        <figure><figcaption>If specific start and end times for a concluded activity are not
+        available, the <code><a>status</a></code> property can be used to expressly indicate
+        that the action has completed:</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "post",
+  "object": "http://example.org/blog/entry/1",
+  "status": "completed"
+}</pre></figure>
+
+      <figure><figcaption>To indicate an activity that began in the past but is still ongoing,
+        only the <code><a>startTime</a></code> property would be used:</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "watch",
+  "object": "http://movies.example.org/movie/1",
+  "startTime": "2014-03-18T04:32:43Z"
+}</pre></figure>
+        
+      <figure><figcaption>The status property value "<code>active</code>" can also be used to identify
+        ongoing activities:</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "watch",
+  "object": "http://movies.example.org/movie/1",
+  "status": "active"
+}</pre></figure>
+
+      <figure><figcaption>To indicate an activity that is expected to begin in the future, the
+        <code><a>startTime</a></code> property would indicate a future point in time:</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "cook",
+  "object": "http://recipes.example.org/recipe/1",
+  "startTime": "2015-12-23T12:34:21Z"
+}</pre></figure>
+
+      <figure><figcaption>Or, alternatively:</figcaption>
+<pre class="example highlight">{
+  "actor": "acct:joe@example.org",
+  "verb": "cook",
+  "object": "http://recipes.example.org/recipe/1",
+  "status": "pending"
+}</pre></figure>
+
+      <p>
+        The status values "<code>pending</code>" and "<code>tentative</code>" 
+        differ in that the former is used to mark actions that are expected to 
+        happen while the latter is used to mark proposed actions that may 
+        (or may not) happen.
+      </p>
+
+      <p>
+        As an alternative to explicitly stating the <code><a>startTime</a></code> 
+        or <code><a>endTime</a></code> properties, the <code><a>duration</a></code> property 
+        can be used to indicate a specific duration of time relative to either 
+        the <code><a>startTime</a></code> or <code><a>endTime</a></code>.  
+        For instance, specifying an <code><a>endTime</a></code> of
+        "<code>2015-12-23T12:23:23Z</code>" with a <code><a>duration</a></code> of "<code>PT1H</code>", 
+        implies a starting time of exactly "<code>2015-12-23T11:23:23Z</code>" (1 hour before the specified
+        ending time).
+      </p>
+
+      <p>
+        Note that the value of the <code><a>duration</a></code> property can be expressed
+        either as a non-negative integer specifying a number of seconds, or
+        as an [[!RFC3339]] <code>duration</code> string such as "<code>PT1H</code>", "<code>P1DT1H</code>", etc.  For
+        Activity Streams 2.0 implementations for which backwards
+        compatibility with the Activity Streams 1.0 syntax is not critical,
+        the RFC 3339 string format is strongly recommended.
+      </p>
+
+    </section>
+
+    <section id="activity-duration">
+
+      <h2>Activity Duration</h2>
+
+      <p>
+        Actions expressed via the Activity Streams format can either be
+        instantaneous (semelfactive) or durative (having distinct start and
+        end times).  The specific duration of an activity can be optionally
+        expressed using the <code><a>startTime</a></code>, <code><a>endTime</a></code> 
+        and <code><a>duration</a></code> properties.
+      </p>
+
+      <p>
+        By default, all activities are assumed to occur instantaneously, that
+        is, occuring at one point in time without any specific duration.
+        Such events are indicated by omitting the <code><a>startTime</a></code>, 
+        <code><a>endTime</a></code> or <code><a>duration</a></code> properties:
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "actor": "acct:sally@example.org",
+  "verb": "post",
+  "object": "http://example.org/notes/1"
+}</pre></figure>
+
+      <p>
+        An activity that occurs within a specific period of time can be
+        expressed using combinations of either: <code><a>startTime</a></code> 
+        and <code><a>endTime</a></code>, <code><a>startTime</a></code> and 
+        <code><a>duration</a></code>, or <code><a>endTime</a></code> and 
+        <code><a>duration</a></code>.  For example:
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "actor": "acct:sally@example.org",
+  "verb": "watch",
+  "object": "http://movies.example.org/movies/1",
+  "startTime": "2014-05-23T12:23:12Z",
+  "endTime": "2014-05-23T13:25:15Z"
+}</pre></figure>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "actor": "acct:sally@example.org",
+  "verb": "watch",
+  "object": "http://movies.example.org/movies/1",
+  "startTime": "2014-05-23T12:23:12Z",
+  "duration": "PT1H2M3S"
+}</pre></figure>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight">{
+  "actor": "acct:sally@example.org",
+  "verb": "watch",
+  "object": "http://movies.example.org/movies/1",
+  "duration": "PT1H2M3S",
+  "endTime": "2014-05-23T13:25:15Z"
+}</pre></figure>
+
+    </section>
+
+  </section>
+
+  <section id="tof"></section>
+
+</body>
+</html>
