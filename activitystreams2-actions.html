@@ -14,6 +14,14 @@
         url: "http://chmod777self.com",
         company: "IBM",
         companyUrl: "http://ibm.com"
+      }  
+    ],
+    authors: [
+      {
+        name: "James M Snell",
+        url: "http://chmod777self.com",
+        company: "IBM",
+        companyUrl: "http://ibm.com"
       },
       {
         name: "Matthew Marum",
@@ -1525,6 +1533,102 @@ Content-Location: http://example.net/baz
   <section id="securityConsiderations">
     <h2>Security Considerations</h2>
     <p>TBD</p>
+  </section>
+
+  <section id="implementation" class="informative">
+
+    <h2>Implementation</h2>
+
+    <p>
+      Each of the four basic Action Handler types defined herein are, for the most part,
+      designed to map directly to concrete implementation strategies within a user agent.
+      While the action handler descriptions themselves are largely independent of the 
+      user interface and try not to make too many assumptions about how the action will
+      be presented to a user, it is important to understand how each has been originally
+      intended to be implemented.
+    </p>
+
+    <section>
+      <h2>Relationship to the [[!HTML5]] <a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#commands">Commands Model</a></h2>
+
+      <p>
+        The HTML5 specification defines a "Command" as "the abstraction behind menu items, buttons, and links." In other words, a command is the code that is invoked when you click on a link, press a button or select an item from a menu. For every command, there are essentially two elements: the user interface component used to trigger the command, and the code that is invoked once the command is triggered.
+      </p>
+
+      <p>
+        An <a>Action Handler</a> is an abstract description of what ought to happen when a Command is triggered.
+      </p>
+
+      <p>
+        The <a>View Action Handler</a> is, perhaps, the easiest of the four basic Action Handler types to imagine. It is essentially the same as an HTML
+        <code>anchor</code> tag with the notable exception that a View Action Handler can use any HTTP method and can define distinct expected inputs and
+        outputs. The end result, however, is the same: triggering a View Action Handler results in either creating or navigating an HTML
+        <a href="http://www.w3.org/html/wg/drafts/html/master/browsers.html#windows">Browsing Context</a>.
+      </p>
+
+      <p>
+        The <a>HTTP Action Handler</a> is nearly identical to View Action Handler with the exception that the HTTP request is sent and processed independently of any Browsing Context. That is, the HTTP Action Handler is roughly equivalent to using the [[XMLHTTPREQUEST]] to perform an asychronous background HTTP request flow.
+      </p>
+
+      <p>
+        The <a>Embed Action Handler</a>, on the other hand, is more closely aligned with HTML5's 
+        <a href="http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#embedded-content">Embedded Content</a> model. Triggering an Embed Action Handler will mean embedding content within an existing Browsing Context using mechanisms such as HTML's <code>img</code>, <code>object</code> and <code>iframe</code> elements.
+      </p>
+
+      <p>
+        The <a>Intent Action Handler</a> is unique in that is does not directly map to any one particular HTML5 concept. Rather, the Intent Action Handler communicates exactly what it's name says: the <i>intent</i> to carry out an action, without details as to <i>how</i> that is done. It might be the case that the user agent is capable of performing the action itself. More likely, however, the user agent will be required to call out to an external native application. This pattern is common on many mobile platform operating systems in use today.
+      </p>
+
+      <p>
+        As new Action Handler types are created, it will be important for the specifications that define those handlers to also comment on how the handler is expected to be implemented so that developers can ensure a clear, consistent and reliable user experience.
+      </p>
+
+    </section>
+
+    <section>
+      <h2>A Strawman WebIDL Interface for Action Handlers</h2>
+
+      <div class="idl" title="typedef dictionary ActionHandler"></div>
+
+      <div class="idl" title="[TreatNonCallableAsNull] callback InvokeHandler = any (Event event);"></div>
+      <div class="idl" title="[TreatNonCallableAsNull] callback InputHandler = any (ActionHandler);"></div>
+      <div class="idl" title="[TreatNonCallableAsNull] callback AuthHandler = any (ActionHandler);"></div>
+      <div class="idl" title="[TreatNonCallableAsNull] callback ErrorHandler = any (Error error);"></div>
+      <div class="idl" title="[TreatNonCallbaclAsNull] callback CompleteHandler = any (ActionHandler, optional any?);"></div>
+
+      <dl title='dictionary ActionCommandOptions' class='idl'>
+          <dt>InputHandler? onInputRequired</dt><dd>Called when invoking the Action Handler requires input to be provided.</dd>
+          <dt>AuthHandler? onAuthRequired</dt><dd>Called when invoking the Action Handler requires authentication details to be provider.</dd>
+          <dt>ErrorHandler? onError</dt><dd>Called when an error occurs attempting to invoke the Action Handler.</dd>
+          <dt>CompleteHandler? onComplete</dt><dd>Called when invoking the Action Handler is complete and a result may or may not be available.</dd>
+        </dl>
+
+      <dl title="[Constructor(ActionHandler actionHandler, optional ActionCommandOptions? options)] interface ActionCommand" class="idl">
+        <dt>readonly attribute InvokeHandler command</dt><dd>The callback function that implements the action</dd>
+        <dt>readonly HTMLButtonElement asButton(optional dictionary? options)</dt>
+        <dd>Creates a HTML button whose onclick event handler triggers the command.</dd>
+        <dt>readonly HTMLAnchorElement asAnchor(optional dictionary? options)</dt>
+        <dd>Creates a HTML anchor whose onclick event handler triggers the command.</dd>
+        <dt>readonly HTMLMenuItemElement asMenuItem(optional dictionary? options)</dt>
+        <dd>Creates a HTML menuitem whose onclick event handler triggers the command.</dd>
+      </dl>
+
+      <figure><figcaption>For example:</figcaption>
+<pre class="example highlight">var actionHandler = {
+  objectType: 'ViewActionHandler',
+  displayName: 'Open!'
+  url: 'http://example.org/foo'
+};
+var actionCommand = new ActionCommand(actionHandler);
+var btn = actionCommand.asButton();
+document.getElementById('container').appendChild(btn);
+// btn will be an HTMLButtonElement with the text label "Open!"
+// and an onclick event that triggers the actionHandler.command
+// callback.
+</pre>
+ 
+    </section>
+
   </section>
 
 </body>
