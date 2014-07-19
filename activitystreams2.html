@@ -6,7 +6,8 @@
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
-    specStatus: "Member-SUBM",
+    specStatus: "ED",
+    edDraftURI: "http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2.html",
     shortName: "activitystreams-2.0",
     authors: [
       {
@@ -448,13 +449,15 @@
       <h2>Type Values</h2>
 
       <p>
-        A <dfn title="Type Value" id="typevalue">Type Value</dfn> represents a 
-        reference to, or description of, an abstract type.  They are expressed 
-        as either: (1) a String conforming to either the <code>isegment-nz-nc</code> 
-        or <code>IRI</code> productions in [[RFC3987]] or as (2) an <a>Object</a>.  
-        When represented as a String, the use of relative references other than a 
-        simple name is not allowed.  When represented as an <a>Object</a>, 
-        the <code><a>id</a></code> property MUST be specified.
+        A <dfn title="Type Value" id="typevalue">Type value</dfn> represents
+        a reference to, or description of, an abstract type. They are expressed
+        as either: (1) A String or (2) an <a>Object</a>. When represented as 
+        an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
+        When represented as a String, the value MUST conform to either the 
+        <code>IRI</code> or <code>isegment-nz-nc</code> productions in [[RFC3987]].
+        When represented as an <code>isegment-nz-nc</code>, the identifier MAY 
+        contain an additional '/' separated prefix segment whose value MUST be 
+        an [[!RFC5646]] Language-Tag.
       </p>
 
       <p>
@@ -485,6 +488,23 @@
     "displayName": "Person"
   },
   "displayName": "John"
+}</pre></figure>
+        <figure>
+          <figcaption>Object type as a simple name with a prefixed Language Tag:</figcaption>
+<pre class="example highlight json">{
+  "objectType": "ru/человек",
+  "displayName": {
+    "en": "Person",
+    "ru": "человек"
+  }
+}</pre></figure>
+  <figure><figcaption>Object type as an IRI with a prefixed Language Tag:</figcaption>
+<pre class="example highlight json">{
+  "objectType": "http://example.org/ru/человек",
+  "displayName": {
+    "en": "Person",
+    "ru": "человек"
+  }
 }</pre></figure>
 
       <p>
@@ -520,6 +540,22 @@
   "object": "http://example.org/123"
 }</pre></figure>
 
+      <figure>
+        <figcaption>Verb as a simple name with a prefixed Language Tag:</figcaption>
+<pre class="example highlight json">{
+  "verb": "ru/создать",
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Verb as an absolute IRI with prefixed Language Tag</figcaption>
+<pre class="example highlight json">{
+  "verb": "http://example.com/ru/создать",
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
       <p>
         Allowing verbs and object types to be represented as objects rather
         than simple names or IRIs is intended to simplify the use of
@@ -533,6 +569,7 @@
         is strictly limited to absolute IRI values, the object representation cannot 
         be used to describe types with simple names.
       </p>
+
     </section>
 
     <section id="linkValues">
