@@ -449,15 +449,12 @@
       <h2>Type Values</h2>
 
       <p>
-        A <dfn title="Type Value" id="typevalue">Type value</dfn> represents
-        a reference to, or description of, an abstract type. They are expressed
-        as either: (1) A String or (2) an <a>Object</a>. When represented as 
-        an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
-        When represented as a String, the value MUST conform to either the 
-        <code>IRI</code> or <code>isegment-nz-nc</code> productions in [[RFC3987]].
-        When represented as an <code>isegment-nz-nc</code>, the identifier MAY 
-        contain an additional '/' separated prefix segment whose value MUST be 
-        an [[!RFC5646]] Language-Tag.
+        A <dfn title="Type Value">Type value</dfn> represents a reference to, 
+        or descriptions of, an abstract type.  They are expressed as either: (1) a 
+        String conforming to either the <code>isegment-nz-nc</code> or <code>IRI</code> 
+        productions in [[!RFC3987]] or (2) an <a>Object</a>.  When represented as a String, 
+        the use of relative references other than a simple name is not allowed.  When
+        represented as an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
       </p>
 
       <p>
@@ -489,23 +486,6 @@
   },
   "displayName": "John"
 }</pre></figure>
-        <figure>
-          <figcaption>Object type as a simple name with a prefixed Language Tag:</figcaption>
-<pre class="example highlight json">{
-  "objectType": "ru/человек",
-  "displayName": {
-    "en": "Person",
-    "ru": "человек"
-  }
-}</pre></figure>
-  <figure><figcaption>Object type as an IRI with a prefixed Language Tag:</figcaption>
-<pre class="example highlight json">{
-  "objectType": "http://example.org/ru/человек",
-  "displayName": {
-    "en": "Person",
-    "ru": "человек"
-  }
-}</pre></figure>
 
       <p>
         Because the second and third examples above each specify
@@ -536,22 +516,6 @@
     "id": "http://example.com/Upload",
     "displayName": "Upload"
   },
-  "actor": "acct:john.doe@example.org",
-  "object": "http://example.org/123"
-}</pre></figure>
-
-      <figure>
-        <figcaption>Verb as a simple name with a prefixed Language Tag:</figcaption>
-<pre class="example highlight json">{
-  "verb": "ru/создать",
-  "actor": "acct:john.doe@example.org",
-  "object": "http://example.org/123"
-}</pre></figure>
-
-      <figure>
-        <figcaption>Verb as an absolute IRI with prefixed Language Tag</figcaption>
-<pre class="example highlight json">{
-  "verb": "http://example.com/ru/создать",
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
 }</pre></figure>
