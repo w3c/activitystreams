@@ -6,8 +6,17 @@
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
-    specStatus: "Member-SUBM",
+    specStatus: "ED",
+    edDraftURI: "http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2.html",
     shortName: "activitystreams-2.0",
+    authors: [
+      {
+        name: "James M Snell",
+        url: "http://chmod777self.com",
+        company: "IBM",
+        companyUrl: "http://ibm.com"
+      }
+    ],
     editors: [
       {
         name: "James M Snell",
@@ -35,8 +44,25 @@
         ],
         status:   "unofficial",
         publisher:  "http://activitystrea.ms"
-    }
-}
+      }
+    },
+    otherLinks: [{
+      key: 'Repository',
+      data: [
+        {
+          value: 'Github',
+          href: 'https://github.com/jasnell/w3c-socialwg-activitystreams'
+        }, 
+        {
+          value: 'Issues',
+          href: 'https://github.com/jasnell/w3c-socialwg-activitystreams/issues'
+        }, 
+        {
+          value: 'Commits',
+          href: 'https://github.com/jasnell/w3c-socialwg-activitystreams/commits/master'
+        }
+      ]
+    }]
   };
   </script>
 </head>
@@ -180,7 +206,7 @@
         'http://example.org/foo.jpg'".  No additional detail is given.
       </figcaption>
 
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "verb": "post",
   "actor": "urn:example:person:martin",
   "object": "http://example.org/foo.jpg"
@@ -198,7 +224,7 @@
         'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
         details about the article, actor and target blog are given.
       </figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "verb": "post",
   "published": "2011-02-10T15:04:55Z",
   "language": "en",
@@ -243,7 +269,7 @@
         properties "foo" and "foo2" for illustrative purposes only.
       </figcaption>
 
-<pre class="example highlight">
+<pre class="example highlight json">
 {
   "totalItems": 1,
   "items" : [
@@ -397,14 +423,14 @@
 
       <figure>
         <figcaption>A single String value using the default language:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "language": "en",
   "displayName": "This is the title"
 }</pre></figure>
 
       <figure>
         <figcaption>Multiple, language-specific values:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "displayName": {
     "en": "This is the title",
     "fr": "C'est le titre",
@@ -423,13 +449,15 @@
       <h2>Type Values</h2>
 
       <p>
-        A <dfn title="Type Value" id="typevalue">Type Value</dfn> represents a 
-        reference to, or description of, an abstract type.  They are expressed 
-        as either: (1) a String conforming to either the <code>isegment-nz-nc</code> 
-        or <code>IRI</code> productions in [[RFC3987]] or as (2) an <a>Object</a>.  
-        When represented as a String, the use of relative references other than a 
-        simple name is not allowed.  When represented as an <a>Object</a>, 
-        the <code><a>id</a></code> property MUST be specified.
+        A <dfn title="Type Value" id="typevalue">Type value</dfn> represents
+        a reference to, or description of, an abstract type. They are expressed
+        as either: (1) A String or (2) an <a>Object</a>. When represented as 
+        an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
+        When represented as a String, the value MUST conform to either the 
+        <code>IRI</code> or <code>isegment-nz-nc</code> productions in [[RFC3987]].
+        When represented as an <code>isegment-nz-nc</code>, the identifier MAY 
+        contain an additional '/' separated prefix segment whose value MUST be 
+        an [[!RFC5646]] Language-Tag.
       </p>
 
       <p>
@@ -440,26 +468,43 @@
 
       <figure>
         <figcaption>Object type as a simple name (isegment-nz-nc):</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "person",
   "displayName": "John"
 }</pre></figure>
 
       <figure>
         <figcaption>Object type as an absolute IRI:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "http://example.org/Person",
   "displayName": "John"
 }</pre></figure>
 
       <figure>
         <figcaption>Object type as an object:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": {
     "id": "http://example.org/Person",
     "displayName": "Person"
   },
   "displayName": "John"
+}</pre></figure>
+        <figure>
+          <figcaption>Object type as a simple name with a prefixed Language Tag:</figcaption>
+<pre class="example highlight json">{
+  "objectType": "ru/человек",
+  "displayName": {
+    "en": "Person",
+    "ru": "человек"
+  }
+}</pre></figure>
+  <figure><figcaption>Object type as an IRI with a prefixed Language Tag:</figcaption>
+<pre class="example highlight json">{
+  "objectType": "http://example.org/ru/человек",
+  "displayName": {
+    "en": "Person",
+    "ru": "человек"
+  }
 }</pre></figure>
 
       <p>
@@ -470,7 +515,7 @@
 
       <figure>
         <figcaption>Verb as a simple name (isegment-nz-nc):</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "verb": "post",
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
@@ -478,7 +523,7 @@
 
       <figure>
         <figcaption>Verb as an absolute IRI:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "verb": "http://example.com/Upload",
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
@@ -486,11 +531,27 @@
 
       <figure>
         <figcaption>Verb as an object:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "verb": {
     "id": "http://example.com/Upload",
     "displayName": "Upload"
   },
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Verb as a simple name with a prefixed Language Tag:</figcaption>
+<pre class="example highlight json">{
+  "verb": "ru/создать",
+  "actor": "acct:john.doe@example.org",
+  "object": "http://example.org/123"
+}</pre></figure>
+
+      <figure>
+        <figcaption>Verb as an absolute IRI with prefixed Language Tag</figcaption>
+<pre class="example highlight json">{
+  "verb": "http://example.com/ru/создать",
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
 }</pre></figure>
@@ -508,6 +569,7 @@
         is strictly limited to absolute IRI values, the object representation cannot 
         be used to describe types with simple names.
       </p>
+
     </section>
 
     <section id="linkValues">
@@ -542,7 +604,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "application",
   "id": "http://example.org/application/123",
   "displayName": "My Application",
@@ -555,7 +617,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "application",
   "id": "http://example.org/application/123",
   "displayName": "My Application",
@@ -573,7 +635,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "application",
   "id": "http://example.org/application/123",
   "displayName": "My Application",
@@ -612,7 +674,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "application",
   "image": [
     "http://example.org/foo.jpg",
@@ -1227,7 +1289,7 @@
         <figure><figcaption>A hypothetical object with "<code>video</code>" as the objectType
           might have "<code>watch</code>", "<code>share</code>" and "<code>embed</code>" 
           as potential actions:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "video",
   "id": "http://example.org/cats.mpg",
   "actions": {
@@ -1442,7 +1504,7 @@
         </p>
 
         <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "objectType": "note",
   "id": "urn:example:note:1",
   "displayName": "A note about things",
@@ -1685,7 +1747,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "flag-as-inappropriate",
   "object": "http://example.org/posts/1"
@@ -1816,7 +1878,7 @@
         </p>
 
         <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/"
   },
@@ -2056,7 +2118,7 @@
     <figure><figcaption>The following non-normative JSON-LD @context document MAY be used
       when processing an Activity Streams 2.0 document using the JSON-LD
       model.</figcaption>
-<pre class="example highlight">
+<pre class="example highlight json">
 { "@context": [{
      "dc": "http://purl.org/dc/elements/1.1/",
      "dct": "http://purl.org/dc/terms/",
@@ -2373,7 +2435,7 @@
 
       <figure><figcaption>To describe intransitive activities,
         simply omit the <code><a>object</a></code> property:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": {
     "objectType": "process",
     "displayName": "Build Process"
@@ -2395,7 +2457,7 @@
 
       <figure><figcaption>Transitive activities contain distinct <code><a>actor</a></code> and 
       <code><a>object</a></code> properties:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "post",
   "object": {
@@ -2421,7 +2483,7 @@
 
       <figure><figcaption>Ditransitive activities contain <code><a>actor</a></code>, 
       <code><a>object</a></code>, and <code><a>target</a></code> properties.</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "post",
   "object": {
@@ -2452,7 +2514,7 @@
       <figure><figcaption>To indicate an activity that has already concluded, the
         startTime and endTime properties would be used to indicate past
         points in time</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "post",
   "object": "http://example.org/blog/entry/1",
@@ -2463,7 +2525,7 @@
         <figure><figcaption>If specific start and end times for a concluded activity are not
         available, the <code><a>status</a></code> property can be used to expressly indicate
         that the action has completed:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "post",
   "object": "http://example.org/blog/entry/1",
@@ -2472,7 +2534,7 @@
 
       <figure><figcaption>To indicate an activity that began in the past but is still ongoing,
         only the <code><a>startTime</a></code> property would be used:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "watch",
   "object": "http://movies.example.org/movie/1",
@@ -2481,7 +2543,7 @@
         
       <figure><figcaption>The status property value "<code>active</code>" can also be used to identify
         ongoing activities:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "watch",
   "object": "http://movies.example.org/movie/1",
@@ -2490,7 +2552,7 @@
 
       <figure><figcaption>To indicate an activity that is expected to begin in the future, the
         <code><a>startTime</a></code> property would indicate a future point in time:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "cook",
   "object": "http://recipes.example.org/recipe/1",
@@ -2498,7 +2560,7 @@
 }</pre></figure>
 
       <figure><figcaption>Or, alternatively:</figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:joe@example.org",
   "verb": "cook",
   "object": "http://recipes.example.org/recipe/1",
@@ -2554,7 +2616,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:sally@example.org",
   "verb": "post",
   "object": "http://example.org/notes/1"
@@ -2569,7 +2631,7 @@
       </p>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:sally@example.org",
   "verb": "watch",
   "object": "http://movies.example.org/movies/1",
@@ -2578,7 +2640,7 @@
 }</pre></figure>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:sally@example.org",
   "verb": "watch",
   "object": "http://movies.example.org/movies/1",
@@ -2587,7 +2649,7 @@
 }</pre></figure>
 
       <figure><figcaption></figcaption>
-<pre class="example highlight">{
+<pre class="example highlight json">{
   "actor": "acct:sally@example.org",
   "verb": "watch",
   "object": "http://movies.example.org/movies/1",

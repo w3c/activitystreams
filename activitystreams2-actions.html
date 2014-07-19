@@ -6,7 +6,8 @@
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
-    specStatus: "Member-SUBM",
+    specStatus: "ED",
+    edDraftURI: "http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html",
     shortName: "activitystreams-actionhandlers",
     editors: [
       {
@@ -1549,20 +1550,20 @@ Content-Location: http://example.net/baz
     </p>
 
     <section>
-      <h2>Relationship to the [[!HTML5]] <a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#commands">Commands Model</a></h2>
+      <h2>Relationship to the HTML5 Commands Model</h2>
 
       <p>
-        The HTML5 specification defines a "Command" as "the abstraction behind menu items, buttons, and links." In other words, a command is the code that is invoked when you click on a link, press a button or select an item from a menu. For every command, there are essentially two elements: the user interface component used to trigger the command, and the code that is invoked once the command is triggered.
+        The [[!HTML5]] specification defines a <dfn title="Command"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#commands">Command</a></dfn> as "the abstraction behind menu items, buttons, and links." In other words, a command is the code that is invoked when you click on a link, press a button or select an item from a menu. For every command, there are essentially two elements: the user interface component used to trigger the command, and the code that is invoked once the command is triggered.
       </p>
 
       <p>
-        An <a>Action Handler</a> is an abstract description of what ought to happen when a Command is triggered.
+        An <a>Action Handler</a> is a declarative description of what ought to happen when a Command is triggered.
       </p>
 
       <p>
-        The <a>View Action Handler</a> is, perhaps, the easiest of the four basic Action Handler types to imagine. It is essentially the same as an HTML
-        <code>anchor</code> tag with the notable exception that a View Action Handler can use any HTTP method and can define distinct expected inputs and
-        outputs. The end result, however, is the same: triggering a View Action Handler results in either creating or navigating an HTML
+        Implementation of the <a>View Action Handler</a> is, perhaps, the most straightforward of the four basic Action Handler types. It is essentially 
+        the same as an HTML <code>anchor</code> tag with the notable exception that a View Action Handler can use any HTTP method and can define distinct 
+        expected inputs and outputs. The end result, however, is the same: triggering a View Action Handler results in either creating or navigating an HTML
         <a href="http://www.w3.org/html/wg/drafts/html/master/browsers.html#windows">Browsing Context</a>.
       </p>
 
@@ -1588,36 +1589,65 @@ Content-Location: http://example.net/baz
     <section>
       <h2>A Strawman WebIDL Interface for Action Handlers</h2>
 
-      <div class="idl" title="typedef dictionary ActionHandler"></div>
 
-      <div class="idl" title="[TreatNonCallableAsNull] callback InvokeHandler = any (Event event);"></div>
-      <div class="idl" title="[TreatNonCallableAsNull] callback InputHandler = any (ActionHandler);"></div>
-      <div class="idl" title="[TreatNonCallableAsNull] callback AuthHandler = any (ActionHandler);"></div>
-      <div class="idl" title="[TreatNonCallableAsNull] callback ErrorHandler = any (Error error);"></div>
-      <div class="idl" title="[TreatNonCallbaclAsNull] callback CompleteHandler = any (ActionHandler, optional any?);"></div>
+        <div class="idl" title="typedef dictionary ActionHandler"></div>
 
-      <dl title='dictionary ActionCommandOptions' class='idl'>
-          <dt>InputHandler? onInputRequired</dt><dd>Called when invoking the Action Handler requires input to be provided.</dd>
-          <dt>AuthHandler? onAuthRequired</dt><dd>Called when invoking the Action Handler requires authentication details to be provider.</dd>
-          <dt>ErrorHandler? onError</dt><dd>Called when an error occurs attempting to invoke the Action Handler.</dd>
-          <dt>CompleteHandler? onComplete</dt><dd>Called when invoking the Action Handler is complete and a result may or may not be available.</dd>
+        <dl title="[Constructor(ActionHandler actionHandler)] interface ActionCommand : EventTarget" class="idl">
+          <dt>readonly attribute InvokeHandler command</dt>
+          <dd>The callback function that implements the action</dd>
+          <dt>HTMLButtonElement asButton(optional dictionary? options)</dt>
+          <dd>Creates a HTML button whose onclick event handler triggers the command.</dd>
+          <dt>HTMLAnchorElement asAnchor(optional dictionary? options)</dt>
+          <dd>Creates a HTML anchor whose onclick event handler triggers the command.</dd>
+          <dt>HTMLMenuItemElement asMenuItem(optional dictionary? options)</dt>
+          <dd>Creates a HTML menuitem whose onclick event handler triggers the command.</dd>
+          <dt>[TreatNonCallableAsNull] attribute Function? onInputRequired</dt>
+          <dd>Called when invoking the Action Handler requires input to be provided. The invoked function's return value is used as the input.</dd>
+          <dt>[TreatNonCallableAsNull] attribute Function? onAuthRequired</dt>
+          <dd>Called when invoking the Action Handler requires authentication details to be provider. The invoked function's return value is used to provide
+          the authentication detail.</dd>
+          <dt>[TreatNonCallableAsNull] attribute Function? onError</dt>
+          <dd>Called when an error occurs attempting to invoke the Action Handler.</dd>
+          <dt>[TreatNonCallableAsNull] attribute Function? onComplete</dt>
+          <dd>Called when invoking the Action Handler is complete and a result may or may not be available.</dd>
         </dl>
 
-      <dl title="[Constructor(ActionHandler actionHandler, optional ActionCommandOptions? options)] interface ActionCommand" class="idl">
-        <dt>readonly attribute InvokeHandler command</dt><dd>The callback function that implements the action</dd>
-        <dt>readonly HTMLButtonElement asButton(optional dictionary? options)</dt>
-        <dd>Creates a HTML button whose onclick event handler triggers the command.</dd>
-        <dt>readonly HTMLAnchorElement asAnchor(optional dictionary? options)</dt>
-        <dd>Creates a HTML anchor whose onclick event handler triggers the command.</dd>
-        <dt>readonly HTMLMenuItemElement asMenuItem(optional dictionary? options)</dt>
-        <dd>Creates a HTML menuitem whose onclick event handler triggers the command.</dd>
-      </dl>
+        <p>
+          The events supported by the ActionCommand object include:
+        </p>
+
+        <table border="1" class="parameters">
+          <tr>
+            <th>Event</th>
+            <th>Handler</th>
+          </tr>
+          <tr>
+            <td>inputRequired</td>
+            <td><a>onInputRequired</a></td>
+          </tr>
+          <tr>
+            <td>authRequired</td>
+            <td><a>onAuthRequired</a></td>
+          </tr>
+          <tr>
+            <td>complete</td>
+            <td><a>onComplete</a></td>
+          </tr>
+          <tr>
+            <td>error</td>
+            <td><a>onError</a></td>
+          </tr>
+        </table>
+
+      <section>
+        <h2>Example</h2>
 
       <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">var actionHandler = {
+<pre class="example highlight javascript">var actionHandler = {
   objectType: 'ViewActionHandler',
   displayName: 'Open!'
-  url: 'http://example.org/foo'
+  url: 'http://example.org/foo',
+  target: '_new'
 };
 var actionCommand = new ActionCommand(actionHandler);
 var btn = actionCommand.asButton();
@@ -1625,7 +1655,9 @@ document.getElementById('container').appendChild(btn);
 // btn will be an HTMLButtonElement with the text label "Open!"
 // and an onclick event that triggers the actionHandler.command
 // callback.
-</pre>
+</pre></figure>
+
+      </section>
  
     </section>
 
