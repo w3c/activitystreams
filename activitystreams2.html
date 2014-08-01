@@ -449,15 +449,12 @@
       <h2>Type Values</h2>
 
       <p>
-        A <dfn title="Type Value" id="typevalue">Type value</dfn> represents
-        a reference to, or description of, an abstract type. They are expressed
-        as either: (1) A String or (2) an <a>Object</a>. When represented as 
-        an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
-        When represented as a String, the value MUST conform to either the 
-        <code>IRI</code> or <code>isegment-nz-nc</code> productions in [[RFC3987]].
-        When represented as an <code>isegment-nz-nc</code>, the identifier MAY 
-        contain an additional '/' separated prefix segment whose value MUST be 
-        an [[!RFC5646]] Language-Tag.
+        A <dfn title="Type Value">Type value</dfn> represents a reference to, 
+        or descriptions of, an abstract type.  They are expressed as either: (1) a 
+        String conforming to either the <code>isegment-nz-nc</code> or <code>IRI</code> 
+        productions in [[!RFC3987]] or (2) an <a>Object</a>.  When represented as a String, 
+        the use of relative references other than a simple name is not allowed.  When
+        represented as an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
       </p>
 
       <p>
@@ -488,23 +485,6 @@
     "displayName": "Person"
   },
   "displayName": "John"
-}</pre></figure>
-        <figure>
-          <figcaption>Object type as a simple name with a prefixed Language Tag:</figcaption>
-<pre class="example highlight json">{
-  "objectType": "ru/человек",
-  "displayName": {
-    "en": "Person",
-    "ru": "человек"
-  }
-}</pre></figure>
-  <figure><figcaption>Object type as an IRI with a prefixed Language Tag:</figcaption>
-<pre class="example highlight json">{
-  "objectType": "http://example.org/ru/человек",
-  "displayName": {
-    "en": "Person",
-    "ru": "человек"
-  }
 }</pre></figure>
 
       <p>
@@ -540,22 +520,6 @@
   "object": "http://example.org/123"
 }</pre></figure>
 
-      <figure>
-        <figcaption>Verb as a simple name with a prefixed Language Tag:</figcaption>
-<pre class="example highlight json">{
-  "verb": "ru/создать",
-  "actor": "acct:john.doe@example.org",
-  "object": "http://example.org/123"
-}</pre></figure>
-
-      <figure>
-        <figcaption>Verb as an absolute IRI with prefixed Language Tag</figcaption>
-<pre class="example highlight json">{
-  "verb": "http://example.com/ru/создать",
-  "actor": "acct:john.doe@example.org",
-  "object": "http://example.org/123"
-}</pre></figure>
-
       <p>
         Allowing verbs and object types to be represented as objects rather
         than simple names or IRIs is intended to simplify the use of
@@ -576,8 +540,8 @@
       <h2>Link Values</h2>
 
       <p>
-        A <dfn title="Link Value" id="linkValue">Link Value</dfn> representa 
-        a references to one or more additional objects and resources.
+        A <dfn title="Link Value" id="linkValue">Link Value</dfn> represents 
+        a reference to one or more additional objects and resources.
         They are expressed as either: (1) a String containing an absolute or
         relative IRI, (2) an <a>Object</a>, or (3) a JSON Array
         containing a mixture of IRIs or <a title="Object">Objects</a>.  
@@ -1050,7 +1014,7 @@
           <td><code><dfn title="summary" id="summary-attribute">summary</dfn></code></td>
           <td><a>Natural Language Value</a></td>
           <td>
-            A <a>Natural Language Value</a> summarization of the object. HTNL markup, 
+            A <a>Natural Language Value</a> summarization of the object. HTML markup, 
             including visual images such as images, MAY be included.
           </td>
         </tr>
@@ -1221,7 +1185,7 @@
           <td>Integer</td>
           <td>
             When the object describes a visual resource, such as an image, video or 
-            embeddedable HTML, the <code><a>height</a></code> property indicates the
+            embeddable HTML, the <code><a>height</a></code> property indicates the
             recommended display height in terms of device-independent pixels.
           </td>
         </tr>
@@ -1230,7 +1194,7 @@
           <td>Integer</td>
           <td>
             When the object describes a visual resource, such as an image, video or
-            embeddedable HTML, the <code><a>width</a></code> property indicates the 
+            embeddable HTML, the <code><a>width</a></code> property indicates the 
             recommended display width in terms of device-independent pixels.
           </td>
         </tr>
@@ -1411,7 +1375,7 @@
           <td><code><dfn title="first" id="first-attribute">first</dfn></code></td>
           <td><a>Link Value</a></td>
           <td>
-            A <a>Link Value</a> referencing the furthest preceeding page of a multi-page 
+            A <a>Link Value</a> referencing the furthest preceding page of a multi-page 
             collection.
           </td>
         </tr>
@@ -1887,7 +1851,7 @@
 
         <p>
           The property name <code>foaf:givenName</code> is a Compact IRI that expands to
-          "<code>http://xmlns.com/foaf/0.1/givenName</code>" when proessed by a JSON-LD
+          "<code>http://xmlns.com/foaf/0.1/givenName</code>" when processed by a JSON-LD
           implementation.
         </p>
 
@@ -1909,7 +1873,7 @@
         <table border="1">
           <tr>
             <th>Prefix</th>
-            <th>Expaned</th>
+            <th>Expanded</th>
           </tr>
           <tr>
             <td><code>dc:</code></td>
@@ -1942,7 +1906,7 @@
           For instance, the property name <code>foaf:givenName</code> would expand to
           "<code>http://xmlns.com/foaf/0.1/givenName</code>", while the property
           <code>prov:actingOnBehalfOf</code> would expand to 
-          "<code>htt://w3.org/ns/prov#actingOnBehalfOf</code>".
+          "<code>http://w3.org/ns/prov#actingOnBehalfOf</code>".
         </p>
 
       </section>
@@ -1979,7 +1943,7 @@
     Consumers that re-emit ingested content for crawling by search
     engines should take reasonable measures to limit any use of their
     site as a Search Engine Optimization loophole.  This may include
-    converting un-trusted hyperlinks to text or including a
+    converting untrusted hyperlinks to text or including a
     rel="nofollow" attribute.
   </p>
 
