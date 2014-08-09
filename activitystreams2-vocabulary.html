@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Activity Streams 2.0 - Vocabulary</title>
+  <meta charset="UTF-8" />
+  <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
+  <script class="remove">
+  var respecConfig = {
+    specStatus: "ED",
+    edDraftURI: "http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-vocabulary.html",
+    shortName: "activitystreams-2.0-vocabulary",
+    authors: [
+      {
+        name: "James M Snell",
+        url: "http://chmod777self.com",
+        company: "IBM",
+        companyUrl: "http://ibm.com"
+      }
+    ],
+    editors: [
+      {
+        name: "James M Snell",
+        url: "http://chmod777self.com",
+        company: "IBM",
+        companyUrl: "http://ibm.com"
+      }
+    ],
+    additionalCopyrightHolders: ["Activity Streams Working Group", "IBM"],
+    wg: "Social Web Working Group",
+    wgURI: "http://www.w3.org/2013/Social/WG",
+    wgPublicList: "public-socialweb",
+    wgPatentURI: "",
+    localBiblio:  {
+      "AS1": {
+        title: "JSON Activity Streams 1.0",
+        href: "http://activitystrea.ms/specs/json/1.0/",
+        authors:  [
+          "J. Snell", 
+          "M. Atkins",
+          "W. Norris",
+          "C. Messina",
+          "M. Wilkinson",
+          "R. Dolin"
+        ],
+        status:   "unofficial",
+        publisher:  "http://activitystrea.ms"
+      }
+    },
+    otherLinks: [{
+      key: 'Repository',
+      data: [
+        {
+          value: 'Github',
+          href: 'https://github.com/jasnell/w3c-socialwg-activitystreams'
+        }, 
+        {
+          value: 'Issues',
+          href: 'https://github.com/jasnell/w3c-socialwg-activitystreams/issues'
+        }, 
+        {
+          value: 'Commits',
+          href: 'https://github.com/jasnell/w3c-socialwg-activitystreams/commits/master'
+        }
+      ]
+    }]
+  };
+  </script>
+</head>
+<body>
+
+  <section id="abstract">
+    <p>
+      This specification describes the Activity Streams 2.0 vocabulary.
+    </p>
+
+    <section id="authorsnote" class="informative">
+      <h2>Author's Note</h2>
+      <p>
+        This draft is heavily influenced by the JSON Activity
+        Streams 1.0 specification originally co-authored by Martin
+        Atkins, Will Norris, Chris Messina, Monica Wilkinson, Rob Dolin and
+        James Snell.  The author is very thankful for their significant
+        contributions and gladly stands on their shoulders.  Some portions of
+        the original text of Activity Streams 1.0 are used in this document.
+      </p>
+    </section>
+  </section>
+
+  <section id="sotd">
+  </section>
+
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>
+      The Activity Streams 2.0 Core defines the JSON syntax for 
+      Activity Streams. This document defines the vocabulary 
+      terms. 
+    </p>
+
+    <p>
+      The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in [[!RFC2119]].
+    </p>
+
+    <section id="termconventions">
+
+      <h2>Value Conventions</h2>
+
+      <p>
+        This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is also
+        an IRI, so a URI may be used wherever an IRI is named.  There are two
+        special considerations: (1) when an IRI that is not also a URI is
+        given for dereferencing, it MUST be mapped to a URI using the steps
+        in Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
+        value, it MUST NOT be so mapped.
+      </p>
+
+      <p>
+        Unless otherwise specified, all terms defined as <dfn>timestamp</dfn> values
+        MUST conform to the "date-time" production in [[!RFC3339]], with an
+        uppercase "T" character used to separate date and time, and an
+        uppercase "Z" character in the absence of a numeric time zone offset.
+        All such timestamps SHOULD be represented relative to Coordinated
+        Universal Time (UTC).
+      </p>
+
+    </section>
+
+  </section>
+
+  <section id="types">
+    <h2>Types</h2>
+
+    <p>Base URI: <code>http://activitystrea.ms/2.0/types/</code>.</p>
+
+    <table border="1" cellpadding="2">
+      <tr>
+        <th>Term</th>
+        <th colspan="2">Description</th>
+      </tr>
+      <tr>
+        <td rowspan="5" valign="top"><dfn>TypeValue</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/TypeValue</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>TypeValue</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Type Value</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>IRI | <a>Object</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>LinkValue</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/LinkValue</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>LinkValue</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Link Value</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>IRI | <a>Object</a> | Array( IRI | <a>Object</a> )</code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>NaturalLanguageValue</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/NaturalLanguageValue</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>NaturalLanguageValue</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Natural Language Value</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>String | JSON-LD Language Map</code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="6" valign="top"><dfn>Object</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/Object</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>Object</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Object</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Subtype Of:</td>
+        <td><code><a>LinkValue</a></code>, <code><a>TypeValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="6" valign="top"><dfn>Activity</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/Activity</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>Activity</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Activity</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Subtype Of:</td>
+        <td><code><a>Object</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="6" valign="top"><dfn>Collection</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/Collection</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>Collection</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Collection</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Subtype Of:</td>
+        <td><code><a>Object</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>Actions</dfn></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/types/Actions</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>Actions</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>An Activity Streams 2.0 Actions object</td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td></td>
+      </tr>
+
+    </table>
+
+  </section>
+
+  <section id="terms">
+    <h2>Terms</h2>
+
+    <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
+
+    <table border="1">
+
+      <tr>
+        <th>Term</th>
+        <th>Domain</th>
+        <th colspan="2">Description</th>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>id</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/id</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>id</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Provides a permanent, universally unique identifier for the object
+          in the form of an absolute IRI [[RFC3987]]. Objects SHOULD contain
+          an <code><a>id</a></code> property. If an object does not contain an <code><a>id</a></code> property,
+          consumers MAY use the value of the <code><a>url</a></code> property as a less-reliable,
+          non-unique identifier.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>IRI</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>objectType</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/objectType</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>objectType</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Identifies the type of object. An object MAY contain an <code><a>objectType</a></code>
+          property whose value is a <code><a>TypeValue</a></code>. If no <code><a>objectType</a></code> property 
+          is specified, the object has no specific type.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>TypeValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>language</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/language</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>objectType</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Establishes the default language assumed for human-readable,
+          natural-language metadata values included in the object. An 
+          object MAY contain a <code><a>language</a></code> property whose value MUST be 
+          an [[!RFC5646]] Language-Tag.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>[[!RFC5646]] Language-Tag</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>displayName</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/displayName</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>objectType</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A simple, human-readable, plain-text name for the object. HTML 
+          markup MUST NOT be included. An object MAY contain a <code><a>displayName</a></code>
+          property. If the object does not specify an <code><a>objectType</a></code> property,
+          the object SHOULD specify a <code><a>displayName</a></code>.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>NaturalLanguageValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>url</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/url</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>url</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A Link Value describing a resource providing a representation of
+          the object. An object MAY contain a <code><a>url</a></code> property.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>rel</dfn></td>
+        <td rowspan="5" valign="top"><code><a>LinkValue</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/rel</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>rel</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The RFC 5988 Link Relation associated with this <code><a>LinkValue</a></code>.
+          If absent, the name of the property is assumed to specify the 
+          link relation.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>[[!RFC5988]] Link Relation</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>mediaType</dfn></td>
+        <td rowspan="5" valign="top"><code><a>LinkValue</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/mediaType</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>mediaType</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The MIME Media Type of the referenced resource.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>MIME Media Type</td>
+      </tr>
+
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>verb</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/verb</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>verb</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Identifies the type of the activity. An activity SHOULD contain a
+          "verb" property whose value is a <code><a>TypeValue</a></code>. If the <code><a>verb</a></code>
+          property is not specified, the activity MUST contain an <code><a>objectType</a></code>
+          property.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>TypeValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>actor</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/actor</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>actor</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Describes one or more entities that either performed or are expected to
+          perform the activity.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn title="object-term">object</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/object</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>object</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Describes the direct object of the activity. For instance, in the activity
+          "John saved a movie to his wishlist", the object of the activity is the 
+          movie saved. An activity SHOULD contain an <code><a title="object-term">object</a></code>
+          property. If the <code><a title="object-term">object</a></code> property is not specified, 
+          however, the primary object MAY be implied by context.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>target</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/target</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>target</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Describes the indirect object, or target, of the activity. The precise 
+          meaning of the target is largely dependent on the <code><a>verb</a></code>
+          but will often be the object of the English preposition "to". For instance,
+          in the activity "John saved a movie to his wishlist", the target of the 
+          activity is John's wishlist.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>result</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/result</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>result</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Describes the result of the activity. For instance, if a particular action
+          results in the creation of a new resource, the <code><a>result</a></code>
+          property can be used to describe that new resource.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>instrument</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/instrument</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>result</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An optional <code><a>LinkValue</a></code> that describes one or more objects used to perform 
+          the activity. For instance, in the activity, "Sally played music with a piano",
+          the instrument of the activity is the piano.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>participant</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/participant</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>participant</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An optional <code><a>LinkValue</a></code> that describes one or more additional actors
+          that have (or will have) participated in the activity. For instance, in the
+          activity, "Sally went to the movies with Joe", Sally is the primary actor, 
+          while Joe is a participant.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>priority</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/priority</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>priority</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An optional indicator of the relative priority, or importance, that the creator
+          of the activity considers it to have. Represented as a non-negative, numeric 
+          decimal between 0.00 and 1.00 (inclusive), with two decimal places of precision.
+          If the property is omitted or set to null, the assumption is that a default
+          priority can be assumed by the implementation. The value 0.00 represents the 
+          lowest possible priority while 1.00 represents the highest.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td>0.00 &lt;= n &lt;= 1.00</td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>xsd:decimal</code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>status</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/status</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>status</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An optional, explicit indicator of the current status of the activity.
+          "<code>active</code>" indicates that the activity is ongoing, 
+          "<code>canceled</code>" indicates that the activity has been aborted,
+          "<code>completed</code>" indicates that the activity has concluded,
+          "<code>pending</code>" indicates that the activity is expected to begin,
+          "<code>tentative</code>" indicates that the activity has been proposed,
+          and "<code>voided</code>" indicates that the activity has been retracted
+          or should be considered invalid.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>String</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>to</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/to</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>to</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Specifies the public primary audience
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>cc</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/cc</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>cc</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Specifies the public secondary audience
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>bto</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/bto</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>bto</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Specifies the private primary audience
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>bcc</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Activity</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/bcc</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>bcc</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Specifies the private secondary audience
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>alias</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/alias</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>alias</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Provides a contextually meaningful alternative label for the object
+          in addition to the <code><a>id</a></code>. For instance, within some
+          systems, groups can be identified by both a unique global identifier
+          and a more "human-friendly" label such as "<code>@friends</code>" or 
+          "<code>@network</code>". The value of the <code><a>alias</a></code>
+          property MUST match either the <code>isegment-nz-nc</code> or 
+          <code>IRI</code> productions in [[RFC3987]]. The use of a relative
+          reference other than a simple name is not allowed.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>IRI</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>author</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/author</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>author</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more entities credited
+            with creating or authoring the object.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>content</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/content</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>content</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>NaturalLanguageValue</a></code> description of the object content. HTML
+          markup, including visual elements such as images, MAY be included.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>NaturalLanguageValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>summary</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/summary</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>summary</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>NaturalLanguageValue</a></code> summarization of the object. HTML markup, 
+          including visual images such as images, MAY be included.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>NaturalLanguageValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>title</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/title</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>title</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>NaturalLanguageValue</a></code> title of the object. HTML markup, 
+          including visual images such as images, MAY be included. The 
+          <code><a>title</a></code> and <code><a>displayName</a></code>
+          properties are closely related and overlap in function with the 
+          key difference being that <code><a>title</a></code> is permitted
+          to contain HTML markup while <code><a>displayName</a></code> is 
+          not.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>NaturalLanguageValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>duplicates</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/duplicates</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>duplicates</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more objects that are 
+          considered semantically equivalent or duplicates of this object. 
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>icon</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/icon</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>icon</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more graphic representations
+          of the object, intended for human consumption. The visual element
+          SHOULD have an aspect ratio of one (horizontal) to one (vertical) 
+          and SHOULD be suitable for presentation at a small size. 
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>image</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/image</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>image</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more graphic representations
+          of the object. Unlike the <code><a>icon</a></code> property, there are
+          no aspect ratio or display size limitations assumed.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>location</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/location</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>location</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more physical or logical locations
+          associated with the object.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>generator</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/generator</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>generator</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the resource (e.g. an application) that 
+          generated the object.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>provider</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/provider</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>provider</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the resource (e.g. an application) that 
+          published the object. Note that this is not necessarily the same
+          entity that generated the object. 
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>published</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/published</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>published</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time at which the object was published
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>updated</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/updated</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>updated</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time at which the object was updated
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>startTime</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/startTime</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>startTime</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time describing the actual or expected starting time of the 
+          object. When used with an <code><a>Activity</a></code> object, for instance, the 
+          <code><a>startTime</a></code> property specifies the moment the activity
+          began or is scheduled to begin.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>endTime</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/endTime</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>endTime</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time describing the actual or expected ending time of the 
+          object. When used with an <code><a>Activity</a></code> object, for instance, the 
+          <code><a>endTime</a></code> property specifies the moment the activity
+          concluded or is expected to conclude.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>validFrom</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/validFrom</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>validFrom</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time at or after which (inclusive) the object is considered 
+          to be valid.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>validAfter</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/validAfter</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>validAfter</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time after which (exclusive) the object is considered to 
+          be valid.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>validUntil</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/validUntil</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>validUntil</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time at or before which (inclusive) the object is considered to
+          be valid. Once this moment has passed, the object is considered to have 
+          expired.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>validBefore</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/validBefore</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>validBefore</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The date and time at or after which the object is considered to have 
+          expired.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>duration</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/duration</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>duration</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          When the object describes a time-bound resource, such as an audio or
+          video, a meeting, etc, the <code><a>duration</a></code> property 
+          indicates the object's approximate duration. The value SHOULD
+          be expressed as an [[!RFC3339]] <code>duration</code> (e.g. a
+          period of 5 seconds is represented as "<code>PT5S</code>") but 
+          MAY be specified as a non-negative integer specifying the 
+          duration as a number of non-fractional seconds.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>xsd:integer or [[!RFC3339]] duration</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>rating</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/rating</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>rating</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A quality rating expressed as a non-negative decimal number between 0.0 and 
+          5.0 (inclusive) with one decimal place of precision.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td>0.0 &lt;= n &lt;= 5.0</td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>decimal</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>attachments</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/attachments</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>attachments</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+            A <code><a>LinkValue</a></code> referencing one or more objects associated with 
+            the containing object. These are similar in concept to files 
+            attached to an email.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>height</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/height</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>height</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          When the object describes a visual resource, such as an image, video or 
+          embeddable HTML, the <code><a>height</a></code> property indicates the
+          recommended display height in terms of device-independent pixels.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>xsd:nonNegativeInteger</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>width</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/width</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>width</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          When the object describes a visual resource, such as an image, video or
+          embeddable HTML, the <code><a>width</a></code> property indicates the 
+          recommended display width in terms of device-independent pixels.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>xsd:nonNegativeInteger</td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>tags</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/tags</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>tags</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more resources that are loosely
+          associated with the containing object. The <code><a>tags</a></code> and
+          <code><a>attachments</a></code> properties differ from one another in 
+          that the <code><a>tags</a></code> property asserts "association by
+          reference" while <code><a>attachments</a></code> asserts "association by
+          enclosure".
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>inReplyTo</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/inReplyTo</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>inReplyTo</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more other objects to which 
+          the containing object can be considered a response.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>scope</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/scope</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>scope</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing one or more resources that define
+          the total population of entities for which the object can considered
+          to be relevant.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn title="actions-term">actions</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/actions</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>actions</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An optional <code><a>Actions</a></code> value that describe potential actions that
+          can be performed with the object.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>Actions</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>items</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Collection</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/items</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>items</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A JSON Array containing a listing of <a title="Object">Objects</a> of any type.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>Object</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>totalItems</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Collection</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/totalItems</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>totalItems</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A non-negative integer specifying the total number of objects
+          contained by the logical view of the collection. This number 
+          might not reflect the actual number of items serialized
+          within the <code><a>Collection</a></code> object instance.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>xsd:nonNegativeInteger</code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>itemsPerPage</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Collection</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/itemsPerPage</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>itemsPerPage</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A non-negative integer specifying the maximum number of items that 
+          will be included in the value of the <code><a>items</a></code> 
+          array.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>xsd:nonNegativeInteger</code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>startIndex</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Collection</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/startIndex</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>startIndex</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A non-negative integer value identifying the relative position
+          within the logical view of the collection of the first object
+          contained in the <code><a>items</a></code> array.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code>xsd:nonNegativeInteger</code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>itemsAfter</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Collection</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/itemsAfter</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>itemsAfter</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An RFC 3339 date-time that indicates that the collection
+          contains only items published or updated strictly after the
+          date and time specified.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>itemsBefore</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Collection</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/itemsBefore</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>itemsBefore</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          An RFC 3339 date-time that indicates that the collection
+          contains only items published or updated strictly before the
+          date and time specified.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>timestamp</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>first</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://www.iana.org/assignments/link-relations/first</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>first</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the furthest preceding page of a multi-page 
+          collection.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>last</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://www.iana.org/assignments/link-relations/last</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>last</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the furthest following page of a multi-page
+          collection.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>prev</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://www.iana.org/assignments/link-relations/prev</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>prev</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the immediately preceding page of the 
+          multi-page collection. Note that the property name <code>previous</code>
+          can be used as an equivalent alternative; however, implementations 
+          SHOULD use <code><a>prev</a></code> and MUST NOT use both <code><a>prev</a></code>
+          and <code>previous</code> within the same object.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>next</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://www.iana.org/assignments/link-relations/next</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>next</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the immediately following page of the 
+          multi-page collection.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>current</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://www.iana.org/assignments/link-relations/current</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>current</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the page containing the items that have been
+          updated or published most recently.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>self</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://www.iana.org/assignments/link-relations/self</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>self</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A <code><a>LinkValue</a></code> referencing the link context.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="5" valign="top"><dfn>replies</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/replies</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>replies</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          Provides information about the set of objects that can be
+          considered to be replies to the containing object.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>Collection</a></code></td>
+      </tr>
+    </table>
+
+  </section>
+
+</body>
+</html>
