@@ -362,8 +362,12 @@
         <td><code><dfn title="id" id="id-attribute"><a href="activitystreams2-vocabulary.html#dfn-id">id</a></dfn></code></td>
         <td>IRI</td>
         <td>
-          Provides a permanent, universally unique identifier for the object
-          in the form of an absolute IRI [[RFC3987]].
+          <p>Provides a permanent, universally unique identifier for the object
+          in the form of an absolute IRI [[RFC3987]]. Comparison of <code>id</code> 
+          values MUST be on a character-by-character, 
+          case-sensitive basis based solely on the character strings themselves and 
+          MUST NOT rely on dereferencing the IRIs or URIs mapped from them.
+          </p>
         </td>
       </tr>
       <tr>
@@ -1175,28 +1179,6 @@
     <p>
       By following these requirements, all JSON Activity Streams 1.0
       serializations can be processed successfully by 2.0 implementations.
-    </p>
-
-  </section>
-
-  <section id="id-value-comparison">
-
-    <h2>Comparison of Identifier Values</h2>
-
-    <p>
-      The values of <code><a>id</a></code> properties can be compared to determine if the
-      identifiers represent duplicate content.  The values MUST be compared
-      on a character-by-character, case-sensitive basis.  Comparisons MUST
-      be based solely on the character strings themselves and MUST NOT rely
-      on dereferencing the IRIs or URIs mapped from them.
-    </p>
-
-    <p>
-      As a consequence, two IRIs that resolve to the same resource but are
-      not character-for-character identical will be considered different
-      for the purposes of identifier comparison.  In such cases, the
-      <code><a href="activitystreams2-vocabulary.html#dfn-duplicates">duplicates</a></code> 
-      property can be used to relate such objects to one another.
     </p>
 
   </section>
