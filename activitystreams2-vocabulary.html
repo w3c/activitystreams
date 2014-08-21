@@ -435,32 +435,6 @@
       </tr>
 
       <tr>
-        <td rowspan="5" valign="top"><dfn>url</dfn></td>
-        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
-        <td>URI:</td>
-        <td><code>http://activitystrea.ms/2.0/url</code></td>
-      </tr>
-      <tr>
-        <td>Label</td>
-        <td><code>url</code></td>
-      </tr>
-      <tr>
-        <td>Definition:</td>
-        <td>
-          A Link Value describing a resource providing a representation of
-          the object. An object MAY contain a <code><a>url</a></code> property.
-        </td>
-      </tr>
-      <tr>
-        <td>Comment:</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Type:</td>
-        <td><code><a>LinkValue</a></code></td>
-      </tr>
-
-      <tr>
         <td rowspan="5" valign="top"><dfn>rel</dfn></td>
         <td rowspan="5" valign="top"><code><a>LinkValue</a></code></td>
         <td>URI:</td>
@@ -1975,6 +1949,160 @@
     </table>
 
   </section>
+
+  <section id="deprecated">
+    <h2>Deprecated Terms</h2>
+
+    <table border="1" cellpadding="2">
+      <tr>
+        <th>Term</th>
+        <th>Domain</th>
+        <th colspan="2">Description</th>
+      </tr>
+     
+      <tr>
+        <td rowspan="6" valign="top"><dfn>url</dfn></td>
+        <td rowspan="6" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/1.0/url</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>url</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          A Link Value describing a resource providing a representation of
+          the object. An object MAY contain a <code><a>url</a></code> property.
+          In Activity Streams 1.0, the "url" property is typically used to 
+          point to a displayable representation of an object (usually an 
+          HTML page). In Activity Streams 2.0, the "url" property is 
+          deprecated and SHOULD NOT be used.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+      <tr>
+        <td>Alternative:</td>
+        <td><code><a>self</a></code></td>
+      </tr>
+
+     <tr>
+        <td rowspan="6" valign="top"><dfn>downstreamDuplicates</dfn></td>
+        <td rowspan="6" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/1.0/downstreamDuplicates</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>downstreamDuplicates</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          In Activity Streams 1.0, the downstreamDuplicates property is used when 
+          there are known objects, possibly in a different system, that duplicate 
+          the content in this object. This would be used as a hint for consumers 
+          to use when resolving duplicates between objects received from different 
+          sources. In Activity Streams 2.0, the downstreamDuplicates property is
+          deprecated and SHOULD NOT be used (see <a>duplicates</a>).
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+      <tr>
+        <td>Alternative:</td>
+        <td><code><a>duplicates</a></code></td>
+      </tr>
+
+      <tr>
+        <td rowspan="6" valign="top"><dfn>upstreamDuplicates</dfn></td>
+        <td rowspan="6" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/1.0/upstreamDuplicates</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>upstreamDuplicates</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          In Activity Streams 1.0, the upstreamDuplicates property is used when 
+          there are known objects, possibly in a different system, that duplicate 
+          the content in this object. This would be used as a hint for consumers 
+          to use when resolving duplicates between objects received from different 
+          sources. In Activity Streams 2.0, the upstreamDuplicates property is
+          deprecated and SHOULD NOT be used (see <a>duplicates</a>).
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>LinkValue</a></code></td>
+      </tr>
+      <tr>
+        <td>Alternative:</td>
+        <td><code><a>duplicates</a></code></td>
+      </tr>
+
+    </table>
+
+  </section>
+
+    <section id="useOfPriority" class="informative">
+      <h2>Considerations on the use of <code><a>priority</a></code></h2>
+
+      <p>
+        The use of the <code><a>priority</a></code> property within an <a>Activity</a>
+        does not impose any specific processing or display requirements on the part 
+        of any consuming implementation.
+      </p>
+
+      <p>
+        Expressing the value as a range of numeric decimal values is intended
+        to provide the greatest level of flexibility in the expression and
+        consumption of prioritization detail.  It is expected that
+        implementors consuming activity objects containing <code><a>priority</a></code> 
+        will utilize and expose the additional information in a number of
+        different ways depending on the unique requirements of each
+        application use case.
+      </p>
+
+      <p>
+        Many existing systems do not represent priority values as numeric
+        ranges.  Such systems might use fixed, labeled brackets such as
+        "<code>low</code>", "<code>normal</code>" and "<code>high</code>" 
+        or "<code>urgent</code>".  Similar mechanisms can be
+        established, by convention, when using the <code><a>priority</a></code> property.  In
+        typical use, it is RECOMMENDED that implementations wishing to work
+        with such defined categories treat <code><a>priority</a></code> property values in the
+        range <code>0.00</code> to <code>0.25</code> as "<code>low</code>" priority; values 
+        greater than <code>0.25</code> to <code>0.75</code> as "<code>normal</code>" priority; 
+        and values greater than <code>0.75</code> to <code>1.00</code> as
+        "<code>high</code>" priority.  Specific implementations are free to establish
+        alternative conventions for the grouping of priority values with the
+        caveat that such conventions likely will not be understood by all
+        implementations.
+      </p>
+
+    </section>
 
 </body>
 </html>

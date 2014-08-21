@@ -151,7 +151,7 @@
 
     <section id="syntaxconventions">
 
-      <h2>Syntax Conventions</h2>
+      <h2>Serialization Requirements</h2>
 
       <p>
         This specification defines a JSON-based [[!RFC4627]] serialization
@@ -166,6 +166,11 @@
         array value, the absence of any items in that array MUST be
         represented by omitting the property entirely or by setting the value
         to null.
+      </p>
+
+      <p>
+        Activity Streams 2.0 documents MUST be serialized using the UTF-8
+        character encoding.
       </p>
 
       <p>
@@ -232,9 +237,9 @@
    "objectType": "person",
    "id": "urn:example:person:martin",
    "displayName": "Martin Smith",
-   "url": "http://example.org/martin",
+   "self": "http://example.org/martin",
    "image": {
-     "url": "http://example.org/martin/image.jpg",
+     "id": "http://example.org/martin/image.jpg",
      "mediaType": "image/jpeg",
      "width": 250,
      "height": 250
@@ -243,14 +248,13 @@
   "object" : {
    "objectType": "article",
    "id": "urn:example:blog:abc123/xyz"
-   "url": "http://example.org/blog/2011/02/entry",
+   "self": "http://example.org/blog/2011/02/entry",
    "displayName": "Why I love Activity Streams"
   },
   "target" : {
    "objectType": "blog",
-   "id": "urn:example:blog:abc123",
-   "displayName": "Martin's Blog",
-   "url": "http://example.org/blog/"
+   "id": "http://example.org/blog/",
+   "displayName": "Martin's Blog"
   }
 }</pre>
     </figure>
@@ -264,8 +268,9 @@
       <figure>
       <figcaption>
         A more extensive, single-entry "Activity Stream" follows.  In
-        addition to containing a number of required and optional core
-        properties, the example contains the additional, undefined extension
+        addition to containing a number of properties defined by the 
+        <a href="activitystreams2-vocabulary.html">Activity Streams 2.0
+        Vocabulary</a>, the example contains the additional, undefined extension
         properties "foo" and "foo2" for illustrative purposes only.
       </figcaption>
 
@@ -288,10 +293,10 @@
         "objectType": "person",
         "id": "urn:example:person:martin",
         "displayName": "Martin Smith",
-        "url": "http://example.org/martin",
+        "self": "http://example.org/martin",
         "foo2": "some other extension property",
         "image": {
-          "url": "http://example.org/martin/image",
+          "id": "http://example.org/martin/image",
           "mediaType": "image/jpeg",
           "width": 250,
           "height": 250
@@ -302,10 +307,9 @@
           "id": "http://example.org/Photo",
           "displayName": "Photo"
         },
-        "id": "urn:example:album:abc123/my_fluffy_cat",
-        "url": "http://example.org/album/my_fluffy_cat.jpg",
-        "image": {
-          "url": "http://example.org/album/my_fluffy_cat_thumb.jpg",
+        "id": "http://example.org/album/my_fluffy_cat.jpg",
+        "preview": {
+          "id": "http://example.org/album/my_fluffy_cat_thumb.jpg",
           "mediaType": "image/jpeg",
           "width": 250,
           "height": 250
@@ -316,14 +320,13 @@
           "id": "http://example.org/PhotoAlbum",
           "displayName": "Photo-Album"
         },
-        "id": "urn:example.org:album:abc123",
-        "url": "http://example.org/album/",
+        "id": "http://example.org/album/",
         "displayName": {
           "en": "Martin's Photo Album",
           "ga": "Grianghraif Mairtin"
         },
         "image": {
-          "url": "http://example.org/album/thumbnail.jpg",
+          "id": "http://example.org/album/thumbnail.jpg",
           "mediaType": "image/jpeg",
           "width": 250,
           "height": 250
@@ -337,13 +340,16 @@
   </section>
 
   <section id="model">
-    <h2>Object Model</h2>
+    <h2>Model</h2>
 
     <section id="objects">
       <h2><dfn title="Object" id="asobject">Object</dfn></h2>
       <p>
-        The following "core properties" apply to all JSON objects serialized
-        within an Activity Stream document.
+        Unless otherwise stated, the following "core properties" MAY be used in all 
+        JSON objects serialized within an Activity Stream document and MUST 
+        be supported by all implementations. The definition of each property is
+        provided by the <a href="activitystreams2-vocabulary.html">Activity 
+        Streams 2 Vocabulary</a> document.
       </p>
 
       <table border="1">
@@ -353,54 +359,81 @@
         <th>Description</th>
       </tr>
       <tr>
-        <td><code><dfn title="id" id="id-attribute">id</dfn></code></td>
+        <td><code><dfn title="id" id="id-attribute"><a href="activitystreams2-vocabulary.html#dfn-id">id</a></dfn></code></td>
         <td>IRI</td>
         <td>
           Provides a permanent, universally unique identifier for the object
-          in the form of an absolute IRI [[RFC3987]]. Objects SHOULD contain
-          an <code><a>id</a></code> property. If an object does not contain an <code><a>id</a></code> property,
-          consumers MAY use the value of the <code><a>url</a></code> property as a less-reliable,
-          non-unique identifier.
+          in the form of an absolute IRI [[RFC3987]].
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="objectType" id="objectType-attribute">objectType</dfn></code></td>
+        <td><code><dfn title="objectType" id="objectType-attribute"><a href="activitystreams2-vocabulary.html#dfn-objecttype">objectType</a></dfn></code></td>
         <td><a>Type Value</a></td>
         <td>
-          Identifies the type of object. An object MAY contain an <code><a>objectType</a></code>
-          property whose value is a <a>Type Value</a>. If no <code><a>objectType</a></code> property 
+          Identifies the type of object. If no <code><a>objectType</a></code> property 
           is specified, the object has no specific type.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="language" id="langauge-attribute">language</dfn></code></td>
+        <td><code><dfn title="language" id="language-attribute"><a href="activitystreams2-vocabulary.html#dfn-language">language</a></dfn></code></td>
         <td>Language Tag</td>
         <td>
           Establishes the default language assumed for human-readable,
-          natural-language metadata values included in the object. An 
-          object MAY contain a <code><a>language</a></code> property whose value MUST be 
-          an [[!RFC5646]] Language-Tag.
+          natural-language metadata values included in the object. The 
+          value MUST be an [[!RFC5646]] Language-Tag.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="displayName" id="displayName-attribute">displayName</dfn></code></td>
+        <td><code><dfn title="displayName" id="displayName-attribute"><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></dfn></code></td>
         <td><a>Natural Language Value</a></td>
         <td>
           A simple, human-readable, plain-text name for the object. HTML 
-          markup MUST NOT be included. An object MAY contain a <code><a>displayName</a></code>
-          property. If the object does not specify an <code><a>objectType</a></code> property,
-          the object SHOULD specify a <code><a>displayName</a></code>.
+          markup MUST NOT be included. If the object does not specify an 
+          <code><a>objectType</a></code> property, the object SHOULD specify 
+          a <code><a>displayName</a></code>.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="url" id="url-attribute">url</dfn></code></td>
-        <td><a>Link Value</a></td>
+        <td><code><dfn title="actions-attribute" id="actions-attribute"><a href="activitystreams2-vocabulary.html#dfn-actions">actions</a></dfn></code></td>
+        <td><a>Actions</a></td>
         <td>
-          A Link Value describing a resource providing a representation of
-          the object. An object MAY contain a <code><a>url</a></code> property.
+          A description of potential actions associated with the object.
         </td>
       </tr>
       </table>
+
+<figure><figcaption>A minimal example:</figcaption>
+<pre class="example highlight json">
+{
+  "id": "http://example.org/foo",
+  "objectType": "note",
+  "language": "en",
+  "displayName": "This is a note"
+}
+</pre></figure>
+
+      <p>
+        The <a href="activitystreams2-vocabulary.html">Activity Streams 2.0 Vocabulary</a> document details a range 
+        of additional properties that MAY be used in addition to this core set. While implementations are not 
+        required to support these additional properties, if they are used, the definition given in the Vocabulary
+        document MUST be treated as being normative.
+      </p>
+
+<figure><figcaption>An extended example using additional properties from the Activity Streams 2.0 Vocabulary:</figcaption>
+<pre class="example highlight json">
+{
+  "id": "http://example.org/foo",
+  "objectType": "note",
+  "language": "en",
+  "displayName": "This is a note",
+  "author": {
+    "id": "urn:example:person:joe",
+    "objectType": "person",
+    "displayName": "John Doe"
+  },
+  "published": "2014-08-21T12:34:56Z"
+}
+</pre></figure>
 
     </section>
 
@@ -412,7 +445,7 @@
         A <dfn title="Natural Language Value" id="nlv">Natural Language Value</dfn>
         is a representation of human-readable character sequences in one or more 
         languages.  They are expressed as either (1) a single JSON string or (2) 
-        a JSON dictionary mapping [[RFC5646]] Language-Tags to localized, equivalent 
+        a JSON object mapping [[RFC5646]] Language-Tags to localized, equivalent 
         translations of the same string value.
       </p>
 
@@ -425,21 +458,21 @@
         <figcaption>A single String value using the default language:</figcaption>
 <pre class="example highlight json">{
   "language": "en",
-  "displayName": "This is the title"
+  <b>"displayName": "This is the title"</b>
 }</pre></figure>
 
       <figure>
         <figcaption>Multiple, language-specific values:</figcaption>
 <pre class="example highlight json">{
-  "displayName": {
+  <b>"displayName": {
     "en": "This is the title",
     "fr": "C'est le titre",
     "sp": "Este es el titulo"
-  }
+  }</b>
 }</pre></figure>
 
       <p>
-        Each key in the JSON dictionary MUST be an [[RFC5646]] Language-Tag.
+        Every key in the JSON object MUST be an [[RFC5646]] Language-Tag.
         The associated values MUST be Strings.
       </p>
 
@@ -450,40 +483,40 @@
 
       <p>
         A <dfn title="Type Value">Type value</dfn> represents a reference to, 
-        or descriptions of, an abstract type.  They are expressed as either: (1) a 
+        or a description of, an abstract type.  They are expressed as either: (1) a 
         String conforming to either the <code>isegment-nz-nc</code> or <code>IRI</code> 
-        productions in [[!RFC3987]] or (2) an <a>Object</a>.  When represented as a String, 
+        productions in [[!RFC3987]] or (2) an <a>Object</a>. When represented as a String, 
         the use of relative references other than a simple name is not allowed.  When
         represented as an <a>Object</a>, the <code><a>id</a></code> property MUST be specified.
       </p>
 
       <p>
-        Within the Activity Streams 2.0, Type values are used only by the
-        <code><id>objectType</id></code> and <code><id>verb</id></code>
-        properties.
+        Type values are used by both the <code><id>objectType</id></code> and 
+        <code><id>verb</id></code> properties and MAY be used by other properties
+        as well.
       </p>
 
       <figure>
-        <figcaption>Object type as a simple name (isegment-nz-nc):</figcaption>
+        <figcaption>The <code><a>objectType</a></code> as a simple name (isegment-nz-nc):</figcaption>
 <pre class="example highlight json">{
-  "objectType": "person",
+  <b>"objectType": "person",</b>
   "displayName": "John"
 }</pre></figure>
 
       <figure>
-        <figcaption>Object type as an absolute IRI:</figcaption>
+        <figcaption>The <code><a>objectType</a></code> as an absolute IRI:</figcaption>
 <pre class="example highlight json">{
-  "objectType": "http://example.org/Person",
+  <b>"objectType": "http://example.org/Person",</b>
   "displayName": "John"
 }</pre></figure>
 
       <figure>
-        <figcaption>Object type as an object:</figcaption>
+        <figcaption>The <code><a>objectType</a></code> as an object:</figcaption>
 <pre class="example highlight json">{
-  "objectType": {
+  <b>"objectType": {
     "id": "http://example.org/Person",
     "displayName": "Person"
-  },
+  },</b>
   "displayName": "John"
 }</pre></figure>
 
@@ -494,38 +527,38 @@
       </p>
 
       <figure>
-        <figcaption>Verb as a simple name (isegment-nz-nc):</figcaption>
+        <figcaption>The <code><a>verb</a></code> as a simple name (isegment-nz-nc):</figcaption>
 <pre class="example highlight json">{
-  "verb": "post",
+  <b>"verb": "post",</b>
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
 }</pre></figure>
 
       <figure>
-        <figcaption>Verb as an absolute IRI:</figcaption>
+        <figcaption>The <code><a>verb</a></code> as an absolute IRI:</figcaption>
 <pre class="example highlight json">{
-  "verb": "http://example.com/Upload",
+  <b>"verb": "http://example.com/Upload",</b>
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
 }</pre></figure>
 
       <figure>
-        <figcaption>Verb as an object:</figcaption>
+        <figcaption>The <code><a>verb</a></code> as an object:</figcaption>
 <pre class="example highlight json">{
-  "verb": {
+  <b>"verb": {
     "id": "http://example.com/Upload",
     "displayName": "Upload"
-  },
+  },</b>
   "actor": "acct:john.doe@example.org",
   "object": "http://example.org/123"
 }</pre></figure>
 
       <p>
-        Allowing verbs and object types to be represented as objects rather
-        than simple names or IRIs is intended to simplify the use of
-        extensions that an implementation might not have encountered
-        previously.  The object properties provide additional information and
-        metadata about the new verb or object type.
+        Allowing <code><a>verb</a></code> and <code><a>objectType</a></code> to 
+        be represented as objects rather than simple names or IRIs is intended 
+        to simplify the use of extensions that an implementation might not have 
+        encountered previously.  The object properties provide additional information 
+        and metadata about the new verb or object type.
       </p>
 
       <p>
@@ -551,7 +584,8 @@
 
       <p>
         For example, as defined previously, all <a title="Object">Objects</a> can
-        contain an <code><a>image</a></code> property whose value describes a graphical
+        contain an <code><a href="activitystreams2-vocabulary.html#dfn-image">image</a></code> 
+        property whose value describes a graphical
         representation of the containing object.  This property will
         typically be used to provide the URL to a JPEG, GIF or PNG type
         resource that can be displayed to the user.  Any given object might
@@ -561,57 +595,49 @@
         references.
       </p>
 
-      <p>
-        To reference a single image without any additional metadata, the link
+      <figure><figcaption>To reference a single image without any additional metadata, the link
         value can be expressed as a simple JSON string containing an absolute
-        or relative IRI:
-      </p>
-
-      <figure><figcaption></figcaption>
+        or relative IRI:</figcaption>
 <pre class="example highlight json">{
   "objectType": "application",
   "id": "http://example.org/application/123",
   "displayName": "My Application",
-  "image": "http://example.org/application/123.png"
+  <b>"image": "http://example.org/application/123.png"</b>
 }</pre></figure>
 
-      <p>
+      <figure><figcaption>
         Alternatively, if additional metadata is required, the link can be
-        expressed as an object containing the url property.
-      </p>
-
-      <figure><figcaption></figcaption>
+        expressed as an object:.
+      </figcaption>
 <pre class="example highlight json">{
   "objectType": "application",
   "id": "http://example.org/application/123",
   "displayName": "My Application",
-  "image": {
-    "url": "http://example.org/application/123.png",
+  <b>"image": {
+    "id": "http://example.org/application/123.png",
     "mediaType": "image/png",
     "height": 320,
     "width": 320
-  }
+  }</b>
 }</pre></figure>
 
-      <p>
+      <figure><figcaption>
         If more than one link value is to be expressed, A JSON Array with a
         mix of string and object elements can be used:
-      </p>
-
-      <figure><figcaption></figcaption>
+      </figcaption>
 <pre class="example highlight json">{
   "objectType": "application",
   "id": "http://example.org/application/123",
   "displayName": "My Application",
-  "image": [
+  <b>"image": [
     "http://example.org/application/abc.gif",
     {
-      "url": "http://example.org/application/123.png",
+      "id": "http://example.org/application/123.png",
       "mediaType": "image/png",
       "height": 320,
       "width": 320
     }
-  ]
+  ]</b>
 }</pre></figure>
       
       <p>
@@ -622,12 +648,13 @@
       <p>
         RFC 5988 defines that all Links have a "link relation" that describes
         the contextual purpose of the link.  Within an <a>Object</a>,
-        in the absence of a specific <code><a>rel</a></code> property, the 
+        in the absence of a specific <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> property, the 
         name of the property whose value is a link serves as the "link relation".  
         Any valid link relation value, as defined by [[RFC5988]], can be used as 
         a property with a link value in any Activity Streams object, except where 
         the link relation might conflict with any other property defined by this 
-        specification.
+        document or the <a href="activitystreams2-vocabulary.html">Activity Streams 
+        2.0 Vocabulary</a> document.
       </p>
 
       <p>
@@ -640,42 +667,24 @@
       <figure><figcaption></figcaption>
 <pre class="example highlight json">{
   "objectType": "application",
-  "image": [
+  <b>"<i>image</i>": [
     "http://example.org/foo.jpg",
     {
-      "url": "http://example.org/screens/1.jpg",
-      "rel": "preview",
+      "id": "http://example.org/screens/1.jpg",
+      <i>"rel": "preview",</i>
       "mediaType": "image/jpeg"
     }
-  ]
+  ]</b>
 }</pre></figure>
 
       <p>
-        When an <a>Object</a> is used to represent a <a>Link Value</a>, the
-        following additional properties MAY be used:
+        As demonstrated in the examples above, when an <a>Object</a> is used to represent 
+        a <a>Link Value</a>, the <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code>
+        and <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code>
+        properties specified by the <a href="activitystreams2-vocabulary.html">Activity Streams 
+        2.0 Vocabulary</a> document MAY be used (respectively) to express the link relation and 
+        MIME Media Type of the linked resource.
       </p>
-
-      <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="rel" id="rel-attribute">rel</dfn></code></td>
-        <td>[[RFC5988]] Link Relation</td>
-        <td>
-          The RFC 5988 Link Relation associated with this <a>Link Value</a>.
-          If absent, the name of the property is assumed to specify the 
-          link relation.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="mediaType" id="mediaType-attribute">mediaType</dfn></code></td>
-        <td>MIME Media Type</td>
-        <td>The MIME Media Type of the referenced resource.</td>
-      </tr>
-      </table>
 
     </section>
 
@@ -684,7 +693,7 @@
 
       <p>
         Activity objects are specializations of the base <a>Object</a>
-        type that provide metadata about potential or completed actions.
+        type that provide information about potential or completed actions.
       </p>
 
       <p>
@@ -709,47 +718,46 @@
         <th>Description</th>
       </tr>
       <tr>
-        <td><code><dfn title="verb" id="verb-attribute">verb</dfn></code></td>
+        <td><code><dfn title="verb" id="verb-attribute"><a href="activitystreams2-vocabulary.html#dfn-verb">verb</a></dfn></code></td>
         <td><a>Type Value</a></td>
         <td>
-          Identifies the type of the activity. An activity SHOULD contain a
-          "verb" property whose value is a <a>Type Value</a>. If the <code><a>verb</a></code>
-          property is not specified, the activity MUST contain an <code><a>objectType</a></code>
-          property.
+          Identifies the type of the activity. 
+          The value MUST be a <a>Type Value</a>. 
+          If the <code><a>verb</a></code> is not specified, 
+          the activity MUST contain an <code><a>objectType</a></code>.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="actor" id="actor-attribute">actor</dfn></code></td>
+        <td><code><dfn title="actor" id="actor-attribute"><a href="activitystreams2-vocabulary.html#dfn-actor">actor</a></dfn></code></td>
         <td><a>Link Value</a></td>
         <td>
           Describes one or more entities that either performed or are expected to
-          perform the activity.
+          perform the activity. The Value MUST be a <a>Link Value</a>.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="object" id="object-attribute">object</dfn></code></td>
+        <td><code><dfn title="object-attribute" id="object-attribute"><a href="activitystreams2-vocabulary.html#dfn-object-term">object</a></dfn></code></td>
         <td><a>Link Value</a></td>
         <td>
           Describes the direct object of the activity. For instance, in the activity
           "John saved a movie to his wishlist", the object of the activity is the 
           movie saved. An activity SHOULD contain an <code><a>object</a></code>
-          property. If the <code><a>object</a></code> property is not specified, 
-          however, the primary object MAY be implied by context.
+          property. The value MUST be a <a>Link Value</a>.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="target" id="target-attribute">target</dfn></code></td>
+        <td><code><dfn title="target" id="target-attribute"><a href="activitystreams2-vocabulary.html#dfn-target">target</a></dfn></code></td>
         <td><a>Link Value</a></td>
         <td>
           Describes the indirect object, or target, of the activity. The precise 
           meaning of the target is largely dependent on the <code><a>verb</a></code>
           but will often be the object of the English preposition "to". For instance,
           in the activity "John saved a movie to his wishlist", the target of the 
-          activity is John's wishlist.
+          activity is John's wishlist. The value MUST be a <a>Link Value</a>.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="result" id="result-attribute">result</dfn></code></td>
+        <td><code><dfn title="result" id="result-attribute"><a href="activitystreams2-vocabulary.html#dfn-result">result</a></dfn></code></td>
         <td><a>Link Value</a></td>
         <td>
           Describes the result of the activity. For instance, if a particular action
@@ -758,96 +766,37 @@
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="instrument" id="instrument-attribute">instrument</dfn></code></td>
+        <td><code><dfn title="instrument" id="instrument-attribute"><a href="activitystreams2-vocabulary.html#dfn-instrument">instrument</a></dfn></code></td>
         <td><a>Link Value</a></td>
         <td>
-          An optional <a>Link Value</a> that describes one or more objects used to perform 
+          A <a>Link Value</a> that describes one or more objects used to perform 
           the activity. For instance, in the activity, "Sally played music with a piano",
           the instrument of the activity is the piano.
         </td>
       </tr>
       <tr>
-        <td><code><dfn title="participant" id="participant-attribute">participant</dfn></code></td>
+        <td><code><dfn title="participant" id="participant-attribute"><a href="activitystreams2-vocabulary.html#dfn-participant">participant</a></dfn></code></td>
         <td><a>Link Value</a></td>
         <td>
-          An optional <a>Link Value</a> that describes one or more additional actors
+          A <a>Link Value</a> that describes one or more additional actors
           that have (or will have) participated in the activity. For instance, in the
           activity, "Sally went to the movies with Joe", Sally is the primary actor, 
           while Joe is a participant.
         </td>
       </tr>
-      <tr>
-        <td><code><dfn title="priority" id="priority-attribute">priority</dfn></code></td>
-        <td>Decimal Number between 0.00 and 1.00</td>
-        <td>
-          An optional indicator of the relative priority, or importance, that the creator
-          of the activity considers it to have. Represented as a non-negative, numeric 
-          decimal between 0.00 and 1.00 (inclusive), with two decimal places of precision.
-          If the property is omitted or set to null, the assumption is that a default
-          priority can be assumed by the implementation. The value 0.00 represents the 
-          lowest possible priority while 1.00 represents the highest.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="status" id="status-attribute">status</dfn></code></td>
-        <td>
-          One of "<code>active</code>", "<code>canceled</code>", "<code>completed</code>",
-          "<code>pending</code>", "<code>tentative</code>", or "<code>voided</code>".
-        </td>
-        <td>
-          An optional, explicit indicator of the current status of the activity.
-          "<code>active</code>" indicates that the activity is ongoing, 
-          "<code>canceled</code>" indicates that the activity has been aborted,
-          "<code>completed</code>" indicates that the activity has concluded,
-          "<code>pending</code>" indicates that the activity is expected to begin,
-          "<code>tentative</code>" indicates that the activity has been proposed,
-          and "<code>voided</code>" indicates that the activity has been retracted
-          or should be considered invalid.
-        </td>
-      </tr>
       </table>
 
-      <section id="useOfPriority" class="informative">
-        <h2>Considerations on the use of <code><a>priority</a></code></h2>
-
-        <p>
-          The presence of the <code><a>priority</a></code> property does not impose any 
-          specific processing or display requirements on the part of any entity
-          consuming the activity.
-        </p>
-
-        <p>
-          Expressing the value as a range of numeric decimal values is intended
-          to provide the greatest level of flexibility in the expression and
-          consumption of prioritization detail.  It is expected that
-          implementors consuming activity objects containing <code><a>priority</a></code> 
-          will utilize and expose the additional information in a number of
-          different ways depending on the unique requirements of each
-          application use case.
-        </p>
-
-        <p>
-          Many existing systems do not represent priority values as numeric
-          ranges.  Such systems might use fixed, labeled brackets such as
-          "<code>low</code>", "<code>normal</code>" and "<code>high</code>" 
-          or "<code>urgent</code>".  Similar mechanisms can be
-          established, by convention, when using the <code><a>priority</a></code> property.  In
-          typical use, it is RECOMMENDED that implementations wishing to work
-          with such defined categories treat <code><a>priority</a></code> property values in the
-          range <code>0.00</code> to <code>0.25</code> as "<code>low</code>" priority; values 
-          greater than <code>0.25</code> to <code>0.75</code> as "<code>normal</code>" priority; 
-          and values greater than <code>0.75</code> to <code>1.00</code> as
-          "<code>high</code>" priority.  Specific implementations are free to establish
-          alternative conventions for the grouping of priority values with the
-          caveat that such conventions likely will not be understood by all
-          implementations.
-        </p>
-
-      </section>
+      <p>
+        The <a href="activitystreams2-vocabulary.html">Activity Streams 2.0 Vocabulary</a>
+        document details a range of additional properties that may be used within an Activity. 
+        While implementations are not required to support these additional properties, if they 
+        are used, the definition given in the Vocabulary document must be treated as being 
+        normative.
+      </p>
 
       <section id="audienceTargeting">
 
-        <h2>Audience Targeting Properties</h2>
+        <h2>Audience Targeting</h2>
 
         <p>
           Every Activity has both a Primary and Secondary audience.  The
@@ -890,28 +839,28 @@
           <th>Description</th>
         </tr>
         <tr>
-          <td><code><dfn title="to" id="to-attribute">to</dfn></code></td>
+          <td><code><dfn title="to" id="to-attribute"><a href="activitystreams2-vocabulary.html#dfn-to">to</a></dfn></code></td>
           <td><a>Link Value</a></td>
           <td>
             Specifies the public primary audience
           </td>
         </tr>
           <tr>
-          <td><code><dfn title="cc" id="cc-attribute">cc</dfn></code></td>
+          <td><code><dfn title="cc" id="cc-attribute"><a href="activitystreams2-vocabulary.html#dfn-to">cc</a></dfn></code></td>
           <td><a>Link Value</a></td>
           <td>
             Specifies the public secondary audience
           </td>
         </tr>
         <tr>
-          <td><code><dfn title="bto" id="bto-attribute">bto</dfn></code></td>
+          <td><code><dfn title="bto" id="bto-attribute"><a href="activitystreams2-vocabulary.html#dfn-to">bto</a></dfn></code></td>
           <td><a>Link Value</a></td>
           <td>
             Specifies the private primary audience
           </td>
         </tr>
         <tr>
-          <td><code><dfn title="bcc" id="bcc-attribute">bcc</dfn></code></td>
+          <td><code><dfn title="bcc" id="bcc-attribute"><a href="activitystreams2-vocabulary.html#dfn-to">bcc</a></dfn></code></td>
           <td><a>Link Value</a></td>
           <td>
             Specifies the private secondary audience
@@ -965,290 +914,18 @@
 
     </section>
 
-    <section id="obj-ext">
+    <section id="actions">
 
-      <h2>Additional Object Properties</h2>
+      <h2><dfn id="actions-value">Actions</dfn></h2>
 
       <p>
-        The following "additional properties" MAY be used with any
-        <a>Object</a>.
+        The <code><a>actions</a></code> property is used to
+        describe the kinds of activities that can be taken with regards to
+        an object.  The value is expressed as a JSON object mapping
+        verb identifiers to <a title="Link Value">Link Values</a> referencing resources 
+        or <a title="Object">Objects</a> that can be used to carry out those 
+        verbs.
       </p>
-
-      <table border="1">
-        <tr>
-          <th>Property</th>
-          <th>Value</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><code><dfn title="alias" id="alias-attribute">alias</dfn></code></td>
-          <td>IRI</td>
-          <td>
-            Provides a contextually meaningful alternative label for the object
-            in addition to the <code><a>id</a></code>. For instance, within some
-            systems, groups can be identified by both a unique global identifier
-            and a more "human-friendly" label such as "<code>@friends</code>" or 
-            "<code>@network</code>". The value of the <code><a>alias</a></code>
-            property MUST match either the <code>isegment-nz-nc</code> or 
-            <code>IRI</code> productions in [[RFC3987]]. The use of a relative
-            reference other than a simple name is not allowed.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="author" id="author-attribute">author</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more entities credited
-            with creating or authoring the object.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="content" id="content-attribute">content</dfn></code></td>
-          <td><a>Natural Language Value</a></td>
-          <td>
-            A <a>Natural Language Value</a> description of the object content. HTML
-            markup, including visual elements such as images, MAY be included.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="summary" id="summary-attribute">summary</dfn></code></td>
-          <td><a>Natural Language Value</a></td>
-          <td>
-            A <a>Natural Language Value</a> summarization of the object. HTML markup, 
-            including visual images such as images, MAY be included.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="title" id="title-attribute">title</dfn></code></td>
-          <td><a>Natural Language Value</a></td>
-          <td>
-            A <a>Natural Language Value</a> title of the object. HTML markup, 
-            including visual images such as images, MAY be included. The 
-            <code><a>title</a></code> and <code><a>displayName</a></code>
-            properties are closely related and overlap in function with the 
-            key difference being that <code><a>title</a></code> is permitted
-            to contain HTML markup while <code><a>displayName</a></code> is 
-            not.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="duplicates" id="duplicates-attribute">duplicates</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more objects that are 
-            considered semantically equivalent or duplicates of this object. 
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="icon" id="icon-attribute">icon</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more graphic representations
-            of the object, intended for human consumption. The visual element
-            SHOULD have an aspect ratio of one (horizontal) to one (vertical) 
-            and SHOULD be suitable for presentation at a small size. 
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="image" id="image-attribute">image</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more graphic representations
-            of the object. Unlike the <code><a>icon</a></code> property, there are
-            no aspect ratio or display size limitations assumed.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="location" id="location-attribute">location</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more physical or logical locations
-            associated with the object.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="generator" id="generator-attribute">generator</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the resource (e.g. an application) that 
-            generated the object.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="provider" id="provider-attribute">provider</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the resource (e.g. an application) that 
-            published the object. Note that this is not necessarily the same
-            entity that generated the object. 
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="published" id="published-attribute">published</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time at which the object was published.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="updated" id="updated-attribute">updated</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time at which a previously published object has been modified
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="startTime" id="startTime-attribute">startTime</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time describing the actual or expected starting time of the 
-            object. When used with an <a>Activity</a> object, for instance, the 
-            <code><a>startTime</a></code> property specifies the moment the activity
-            began or is scheduled to begin.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="endTime" id="endTime-attribute">endTime</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time describing the actual or expected ending time of the 
-            object. When used with an <a>Activity</a> object, for instance, the 
-            <code><a>endTime</a></code> property specifies the moment the activity
-            concluded or is expected to conclude.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="validFrom" id="validFrom-attribute">validFrom</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time at or after which (inclusive) the object is considered 
-            to be valid.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="validAfter" id="validAfter-attribute">validAfter</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time after which (exclusive) the object is considered to 
-            be valid.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="validUntil" id="validUntil-attribute">validUntil</dfn></code></td>
-          <td>[[RFC3339]] date-time</td>
-          <td>
-            The date and time at or before which (inclusive) the object is considered to
-            be valid. Once this moment has passed, the object is considered to have 
-            expired.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="validBefore" id="validBefore-attribute">validBefore</dfn></code></td>
-          <td>[[!RFC3339]] date-time</td>
-          <td>
-            The date and time at or after which the object is considered to have 
-            expired.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="duration" id="duration-attribute">duration</dfn></code></td>
-          <td>Integer or [[!RFC3339]] duration</td>
-          <td>
-            When the object describes a time-bound resource, such as an audio or
-            video, a meeting, etc, the <code><a>duration</a></code> property 
-            indicates the object's approximate duration. The value SHOULD
-            be expressed as an [[!RFC3339]] <code>duration</code> (e.g. a
-            period of 5 seconds is represented as "<code>PT5S</code>") but 
-            MAY be specified as a non-negative integer specifying the 
-            duration as a number of non-fractional seconds.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="rating" id="rating-attribute">rating</dfn></code></td>
-          <td>Decimal number between 0.0 and 5.0</td>
-          <td>
-            A quality rating expressed as a non-negative decimal number between 0.0 and 
-            5.0 (inclusive) with one decimal place of precision.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="attachments" id="attachments-attribute">attachments</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more objects associated with 
-            the containing object. These are similar in concept to files 
-            attached to an email.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="height" id="height-attribute">height</dfn></code></td>
-          <td>Integer</td>
-          <td>
-            When the object describes a visual resource, such as an image, video or 
-            embeddable HTML, the <code><a>height</a></code> property indicates the
-            recommended display height in terms of device-independent pixels.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="width" id="width-attribute">width</dfn></code></td>
-          <td>Integer</td>
-          <td>
-            When the object describes a visual resource, such as an image, video or
-            embeddable HTML, the <code><a>width</a></code> property indicates the 
-            recommended display width in terms of device-independent pixels.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="tags" id="tags-attribute">tags</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more resources that are loosely
-            associated with the containing object. The <code><a>tags</a></code> and
-            <code><a>attachments</a></code> properties differ from one another in 
-            that the <code><a>tags</a></code> property asserts "association by
-            reference" while <code><a>attachments</a></code> asserts "association by
-            enclosure".
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="inReplyTo" id="inReplyTo-attribute">inReplyTo</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more other objects to which 
-            the containing object can be considered a response.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="scope" id="scope-attribute">scope</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing one or more resources that define
-            the total population of entities for which the object can considered
-            to be relevant.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="actions" id="actions-attribute">actions</dfn></code></td>
-          <td><a>Actions Value</a></td>
-          <td>
-            An optional <a>Actions Value</a> that describe potential actions that
-            can be performed with the object.
-          </td>
-        </tr>
-      </table>
-
-      <section id="actionValues">
-
-        <h2><dfn title="Actions Value" id="actionValue">Actions Value</dfn></h2>
-
-        <p>
-          The <code><a>actions</a></code> property is used to
-          describe the kinds of activities that can be taken with regards to
-          the object.  The value is expressed as a JSON dictionary mapping
-          verbs to <a title="Link Value">Link Values</a> referencing resources 
-          or <a title="Object">Objects</a> that can be used to carry out those 
-          verbs.
-        </p>
 
         <figure><figcaption>A hypothetical object with "<code>video</code>" as the objectType
           might have "<code>watch</code>", "<code>share</code>" and "<code>embed</code>" 
@@ -1259,9 +936,9 @@
   "actions": {
    "watch": "movie://example.org/cats.mpg",
    "share": {
+     "id": "http://example.net/share",
      "objectType": "service",
-     "displayName": "My Sharing Service",
-     "url": "http://example.net/share"
+     "displayName": "My Sharing Service"
    },
    "embed": [
      "http://example.org/gadgets/video.xml?v=cats.mpg",
@@ -1276,14 +953,12 @@
         <p>
           Each key in the Action value MUST be a valid verb identifier
           conforming to either the <code>isegment-nz-nc</code> or <code>IRI</code> 
-          productions in [[!RFC3987]] and be suitable for use as a value for an
+          productions in [[!RFC3987]] and be MUST suitable for use as a value for an
           <a>Activity</a> object's <code><a>verb</a></code> property.  The value 
           of each key MUST be a valid <a>Link Value</a>.
         </p>
 
       </section>
-
-    </section>
 
     <section id="collections">
       <h2><dfn title="Collection" id="collection">Collection</dfn></h2>
@@ -1308,186 +983,34 @@
       </p>
 
       <p>
-        Collection objects extend the core <a>Object</a> definition
-        with the following additional properties:
+        All Collection objects have an <code><a href="activitystreams2-vocabulary#dfn-items">items</a></code>
+        property whose value is a JSON array of <a title="Object">Objects</a> of any type. The <code>items</code>
+        property MUST be supported by all implementations.
+      </p>
+      <p>
+        The <a href="activitystreams2-vocabulary">Activity Streams 2.0 Vocabulary</a> document 
+        details a range of additional properties that MAY be used with Collections. While 
+        implementations are not required to support these additional properties, if they are 
+        used, the definition given in the Vocabulary document must be treated as being normative.
       </p>
 
-      <table border="1">
-        <tr>
-          <th>Property</th>
-          <th>Value</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><code><dfn title="items" id="items-attribute">items</dfn></code></td>
-          <td>Array of <a title="Object">Objects</a></td>
-          <td>
-            A JSON Array containing a listing of <a title="Object">Objects</a> of any type.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="totalItems" id="totalItems-attribute">totalItems</dfn></code></td>
-          <td>Integer</td>
-          <td>
-            A non-negative integer specifying the total number of objects
-            contained by the logical view of the collection. This number 
-            might not reflect the actual number of items serialized
-            within the <a>Collection</a> object instance.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="itemsPerPage" id="itemsPerPage-attribute">itemsPerPage</dfn></code></td>
-          <td>Integer</td>
-          <td>
-            A non-negative integer specifying the maximum number of items that 
-            will be included in the value of the <code><a>items</a></code> 
-            array.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="startIndex" id="startIndex-attribute">startIndex</dfn></code></td>
-          <td>Integer</td>
-          <td>
-            A non-negative integer value identifying the relative position
-            within the logical view of the collection of the first object
-            contained in the <code><a>items</a></code> array.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="itemsAfter" id="itemsAfter-attribute">itemsAfter</dfn></code></td>
-          <td>[[!RFC3339]] date-time</td>
-          <td>
-            An RFC 3339 date-time that indicates that the collection
-            contains only items published or updated strictly after the
-            date and time specified.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="itemsBefore" id="itemsBefore-attribute">itemsBefore</dfn></code></td>
-          <td>[[!RFC3339]] date-time</td>
-          <td>
-          An RFC 3339 date-time that indicates that the collection
-          contains only items published or updated strictly before the
-          date and time specified.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="first" id="first-attribute">first</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the furthest preceding page of a multi-page 
-            collection.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="last" id="last-attribute">last</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the furthest following page of a multi-page
-            collection.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="prev" id="prev-attribute">prev</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the immediately preceding page of the 
-            multi-page collection. Note that the property name <code>previous</code>
-            can be used as an equivalent alternative; however, implementations 
-            SHOULD use <code><a>prev</a></code> and MUST NOT use both <code><a>prev</a></code>
-            and <code>previous</code> within the same object.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="next" id="next-attribute">next</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the immediately following page of the 
-            multi-page collection.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="current" id="current-attribute">current</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing the page containing the items that have been
-            updated or published most recently.
-          </td>
-        </tr>
-        <tr>
-          <td><code><dfn title="self" id="self-attribute">self</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            A <a>Link Value</a> referencing this page.
-          </td>
-        </tr>
-      </table>
-
-      <section id="collections-as-summaries">
-
-        <h2>Using collections as summary values</h2>
-
-        <p>
-          It is a common practice to use Collection objects to provide summary
-          information on the number of specific types of events that have
-          occurred with respect to any given object.  For instance, a "<code>note</code>"
-          object may have been "shared" or "liked" a number of times by
-          different individuals.  In such cases, the Collection object is used
-          as a property value with the <code><a>totalItems</a></code> field used 
-          to indicate the total number of occurrences, the <code><a>items</a></code> 
-          property used to provide details for a subset of the most recent 
-          occurrences, and the <code><a>id</a></code> property used to reference 
-          a separate Activity Streams document providing additional information.
-        </p>
-
-        <p>
-          This specification defines the following properties that MAY be used
-          within any <a>Object</a> as "summary values":
-        </p>
-
-        <table border="1">
-        <tr>
-          <th>Property</th>
-          <th>Value</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><code><dfn title="replies" id="replies-attribute">replies</dfn></code></td>
-          <td><a>Collection</a></td>
-          <td>
-            Provides information about the set of objects that can be
-            considered to be replies to the containing object.
-          </td>
-        </tr>
-        </table>
-
-        <p>
-          In the following example, the <code><a>replies</a></code> property 
-          is used to indicate that a note has 10 responses, and provides 
-          information on the most recently received response:
-        </p>
-
-        <figure><figcaption></figcaption>
-<pre class="example highlight json">{
-  "objectType": "note",
-  "id": "urn:example:note:1",
-  "displayName": "A note about things",
-  "content": "blah blah blah",
-  "replies": {
-   "url": "http://example.org/note/1/comments.json",
-   "mediaType": "application/activity+json",
-   "totalItems": 10,
-   "items": [
-     {
-       "objectType": "note",
-       "id": "urn:example:note:1:A",
-       "content": "That's profound, man."
-     }
-   ]
-  }
-}</pre></figure>
-
-      </section>
+      <figure><figcaption>The following is a simple collection with paging:</figcaption>
+<pre class="example highlight json">
+{
+  "totalItems": 10,
+  "itemsPerPage": 1,
+  "itemsSince": "2012-12-12T12:34:56Z",
+  "next": "http://example.org/foo?page=2",
+  "self": "http://example.org/foo?page=1",
+  "items": [
+    {
+      "actor": "urn:example:person:sally",
+      "verb": "post",
+      "object": "http://example.org/foo"
+    }
+  ]
+}
+</pre></figure>
 
     </section>
 
@@ -1507,11 +1030,11 @@
   </section>
 
   <section id="reserved">
-    <h2>Reserved Object Types and Verbs</h2>
+    <h2>Reserved <code>objectType</code> and <code>verb</code> identifiers</h2>
 
     <p>
-      The following objectType and verb values are reserved for specific
-      uses by this specification:
+      The following objectType and verb identifiers are reserved for specific
+      use by this specification:
     </p>
 
     <table border="1">
@@ -1608,8 +1131,10 @@
     </li>
     <li>
       This document redefines the <code><a>displayName</a></code>, 
-      <code><a>title</a></code>, <code><a>content</a></code> and
-      <code><a>summary</a></code> properties as <a title="Natural Language Value">Natural Language Values</a>,
+      <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code>, 
+      <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code> and
+      <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code> 
+      properties as <a title="Natural Language Value">Natural Language Values</a>,
       which means their values can be expressed as either a String or a
       JSON-LD Language Map. In the 1.0 syntax, these are expressed
       solely as String values.  Because the 1.0 values are a valid
@@ -1637,6 +1162,14 @@
       SHOULD NOT use the deprecated <code>upstreamDuplicates</code> and 
       <code>downstreamDuplicates</code> properties.
     </li>
+    <li>
+      This specification deprecates use of the <code>url</code> property from
+      Activity Streams 1.0. Implementations SHOULD use specific link relation
+      properties such as <code>alternate</code> or <code>self</code> as a 
+      replacement for the functionality provided by <code>url</code>. If the
+      <code>url</code> property is used, it MUST be treated as an alias of 
+      <code><a href="activitystreams2-vocabulary.html#dfn-self">self</a></code>.
+    </li>
     </ol>
 
     <p>
@@ -1662,8 +1195,8 @@
       As a consequence, two IRIs that resolve to the same resource but are
       not character-for-character identical will be considered different
       for the purposes of identifier comparison.  In such cases, the
-      <code><a>duplicates</a></code> property can be used to expressly relate such objects to
-      one another.
+      <code><a href="activitystreams2-vocabulary.html#dfn-duplicates">duplicates</a></code> 
+      property can be used to relate such objects to one another.
     </p>
 
   </section>
@@ -1684,11 +1217,11 @@
       <h2>Extension verbs and objectTypes</h2>
 
       <p>
-        Verb and objectType identifiers are expressed in one of two ways:
-        either as a simple token value matching the "<code>isegment-nz-nc</code>"
-        production in [[RFC3987]] or as an absolute IRI.  When expressed as an
-        IRI, it is RECOMMENDED that the final component (either the last path
-        segment or fragment identifier) conforms to the "<code>isegment-nz-nc</code>"
+        All <code><a>verb</a></code> and <code><a>objectType</a></code> identifiers 
+        are expressed in one of two ways: either as a simple token value matching the 
+        <code>isegment-nz-nc</code> production in [[RFC3987]] or as an absolute IRI.  
+        When expressed as an IRI, it is RECOMMENDED that the final component (either the last path
+        segment or fragment identifier) conforms to the <code>isegment-nz-nc</code>
         production as well.  For instance, "<code>http://example.org/verbs/like</code>" or
         "<code>http://example.org/verbs#like</code>".
       </p>
@@ -1705,7 +1238,7 @@
       </p>
 
       <p>
-        Verb identifiers may also be idiomatic in nature.  For example, an
+        Verb identifiers may also be idiomatic or phrasal in nature.  For example, an
         activity such as "Joe flagged the post as inappropriate", could be
         expressed using an idiomatic verb "<code>flag-as-inappropriate</code>":
       </p>
@@ -1718,7 +1251,7 @@
 }</pre></figure>
 
       <p>
-        In such cases, the verb identifier may not necessarily correlate a
+        In such cases, the verb identifier may not necessarily correlate to a
         single discrete linguistic verb infinitive, but SHOULD still be
         expressed in the infinitive form (e.g. "<code>flag-as-inappropriate</code>" as
         opposed to "<code>flagged-as-inappropriate</code>").
@@ -1741,13 +1274,12 @@
       </p>
 
       <p>
-        Note, finally, that verb and objectType identifiers are not dependent
-        on language context.  That is, while the natural language verbs
-        "speak" (English) and "hablar" (Spanish) are equivalent natural
+        Note, finally, that <code><a>verb</a></code> and <code><a>objectType</a></code> 
+        identifiers are not dependent on language context.  That is, while the natural 
+        language verbs "speak" (English) and "hablar" (Spanish) are equivalent natural
         language translations, they are not considered to be equivalent verb
-        identifiers.  Implementations are free to
-        treat such variations as equivalent but doing so is considered beyond
-        the scope of this specification.
+        identifiers.  Implementations are free to treat such variations as equivalent 
+        but doing so is considered beyond the scope of this specification.
       </p>
 
     </section>
@@ -1808,13 +1340,14 @@
         treated as an unordered JSON-LD <code>@set</code> (<code>@container = @set</code>).
       </li>
       <li>
-        The JSON array value for the <code><a>items</a></code> property defined in
+        The JSON array value for the <code><a href="activitystreams2-vocabulary.html#dfn-items">items</a></code> property defined in
         Section 3.7 MUST be treated as an ordered JSON-LD <code>@list</code>
         (<code>@container = @list</code>).
       </li>
       <li>
-        The <code><a>displayName</a></code>, <code><a>title</a></code>, 
-        <code><a>content</a></code> and <code><a>summary</a></code> properties
+        The <code><a>displayName</a></code>, <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code>, 
+        <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code> 
+        and <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code> properties
         defined in Section 3.1 and Section 3.6 MUST be treated as JSON-LD
         Language Maps (<code>@container = @language</code>).
       </li>
@@ -1823,7 +1356,13 @@
         specification MUST be set to "<code>http://activitystrea.ms/2.0/</code>".  For
         instance, when processed as JSON-LD, the <code><a>displayName</a></code> property
         expands to "<code>http://activitystrea.ms/2.0/displayName</code>"; while the
-        <code><a>endTime</a></code> property expands to "<code>http://activitystrea.ms/2.0/endTime</code>".
+        <code><a href="activitystreams2-vocabulary.html#dfn-endtime">endTime</a></code> property expands to "<code>http://activitystrea.ms/2.0/endTime</code>".
+      </li>
+      <li>
+        The base URI for all deprecated Activity Streams 1.0 property names
+        MUST be set to "<code>http://activitystrea.ms/1.0/</code>". For instance,
+        when processed as JSON-LD, the <code>url</code> property expands to
+        "<code>http://activitystrea.ms/1.0/url</code>".
       </li>
       </ul>
 
@@ -1899,7 +1438,7 @@
             <td><code>http://www.w3.org/ns/prov#</code></td>
           <tr>
             <td><code>link:</code></td>
-            <td><code>http://www.iana.org/assignments/link-relations/</code></td>
+            <td><code>http://www.iana.org/assignments/link-relations#</code></td>
         </table>
 
         <p>
@@ -1998,10 +1537,7 @@
         </tr>
         <tr>
           <td>Optional parameters: </td>
-          <td>
-            <code>charset</code> : specifies the character set encoding.
-            If not specified, a default of <code>UTF-8</code> is assumed.
-          </td>
+          <td>None</td>
         </tr>
         <tr>
           <td>Encoding considerations: </td>
@@ -2092,9 +1628,10 @@
      "org": "http://www.w3.org/ns/org#",
      "prov": "http://www.w3.org/ns/prov#",
      "geo": "http://ld.geojson.org/vocab#",
-     "link": "http://www.iana.org/assignments/link-relations/"
+     "link": "http://www.iana.org/assignments/link-relations#"
    },{
    "as" : "http://activitystrea.ms/2.0/",
+   "deprecated" : "http://activitystrea.ms/1.0/",
    "id": "@id",
    "language": "@language",
    "objectType": {
@@ -2103,11 +1640,6 @@
    "displayName": {
      "@id": "as:displayName",
      "@container": "@language"
-   },
-   "url": {
-     "@id": "as:url",
-     "@type": "@id",
-     "@container": "@set"
    },
    "rel": "as:rel",
    "mediaType": "as:mediaType",
@@ -2367,262 +1899,22 @@
    "replies": {
      "@id": "as:replies",
      "@container": "@index"
+   },
+   "url": {
+     "@id": "deprecated:url",
+     "@type": "@id",
+     "@container": "@set"
+   },
+   "downstreamDuplicates": {
+     "@id": "deprecated:downstreamDuplicates",
+     "@type": "@id"
+   },
+   "upstreamDuplicates": {
+     "@id": "deprecated:upstreamDuplicates",
+     "@type": "@id"
    }
   }]
 }</pre></figure>
-
-  </section>
-
-
-  <section id="linguistic-forms" class="appendix informative">
-    <h2>Linguistic Forms</h2>
-
-    <p>
-      The Activity Streams format has been intentionally designed to be
-      flexible in how machine-readable statements about past, present or 
-      future actions can be expressed. Implementations will often translate
-      Activity Statements into human-readable sentences such as 
-      "John uploaded a file" or "John will upload a file". To make such
-      transformations possible, it is necessary for implementations to 
-      have some sense of how the machine-readable JSON serialization 
-      maps to common natural-language linguistic forms.
-    </p>
-
-    <section id="intransitive">
-      <h2>Intransitive Activity</h2>
-
-      <p>
-        In many situations, the <code><a>actor</a></code> of an Activity also 
-        serves as the direct object.  For example, if I say, 
-        "The process terminated", then the "process" is both the actor and the 
-        object.  Such statements are formally known as being "intransitive".
-      </p>
-
-      <figure><figcaption>To describe intransitive activities,
-        simply omit the <code><a>object</a></code> property:</figcaption>
-<pre class="example highlight json">{
-  "actor": {
-    "objectType": "process",
-    "displayName": "Build Process"
-  },
-  "verb": "terminate"
-}</pre></figure>
-
-    </section>
-
-    <section id="transitive">
-      <h2>Transitive Activity</h2>
-
-      <p>
-        In a "transitive" activity, the actor and direct object are distinct
-        entities.  This is the form most commonly expressed using the
-        Activity Streams format.  For instance, if I say, "Joe posted a blog
-        entry", the actor is "Joe" and the "blog entry" is the direct object.
-      </p>
-
-      <figure><figcaption>Transitive activities contain distinct <code><a>actor</a></code> and 
-      <code><a>object</a></code> properties:</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "post",
-  "object": {
-    "objectType": "article",
-    "title": "A Blog Entry",
-    "content": "..."
-  }
-}</pre></figure>
-
-    </section>
-
-    <section id="ditransitive">
-
-      <h2>Ditransitive Activity</h2>
-
-      <p>
-        In "ditransitive" activities, there exist distinct actor, direct and
-        indirect objects.  The indirect object specifies the target to which
-        the action on the direct object has been directed.  For instance, in
-        "Joe posted a blog entry to his Weblog", the indirect object (or
-        "target") is "Joe's Weblog".
-      </p>
-
-      <figure><figcaption>Ditransitive activities contain <code><a>actor</a></code>, 
-      <code><a>object</a></code>, and <code><a>target</a></code> properties.</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "post",
-  "object": {
-   "objectType": "article",
-   "title": "A Blog Entry",
-   "content": "..."
-  },
-  "target": {
-   "objectType": "blog",
-   "title": "Joe's Weblog"
-  }
-}</pre></figure>
-     </section>
-
-     <section id="tense-and-aspect">
-
-      <h2>Expressing tense and aspect</h2>
-
-      <p>
-        By using the <code><a>startTime</a></code>, <code><a>endTime</a></code>, 
-        <code><a>duration</a></code> and <code><a>status</a></code>
-        properties, Activity statements can be used to express past, present
-        or future actions.  Implementations should never rely on an activity
-        statement's verb identifier to determine the tense or aspect of the
-        action.
-      </p>
-
-      <figure><figcaption>To indicate an activity that has already concluded, the
-        startTime and endTime properties would be used to indicate past
-        points in time</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "post",
-  "object": "http://example.org/blog/entry/1",
-  "startTime": "2012-12-12T12:12:12Z",
-  "endTime": "2012-12-12T12:12:12Z"
-}</pre></figure>
-
-        <figure><figcaption>If specific start and end times for a concluded activity are not
-        available, the <code><a>status</a></code> property can be used to expressly indicate
-        that the action has completed:</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "post",
-  "object": "http://example.org/blog/entry/1",
-  "status": "completed"
-}</pre></figure>
-
-      <figure><figcaption>To indicate an activity that began in the past but is still ongoing,
-        only the <code><a>startTime</a></code> property would be used:</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "watch",
-  "object": "http://movies.example.org/movie/1",
-  "startTime": "2014-03-18T04:32:43Z"
-}</pre></figure>
-        
-      <figure><figcaption>The status property value "<code>active</code>" can also be used to identify
-        ongoing activities:</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "watch",
-  "object": "http://movies.example.org/movie/1",
-  "status": "active"
-}</pre></figure>
-
-      <figure><figcaption>To indicate an activity that is expected to begin in the future, the
-        <code><a>startTime</a></code> property would indicate a future point in time:</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "cook",
-  "object": "http://recipes.example.org/recipe/1",
-  "startTime": "2015-12-23T12:34:21Z"
-}</pre></figure>
-
-      <figure><figcaption>Or, alternatively:</figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:joe@example.org",
-  "verb": "cook",
-  "object": "http://recipes.example.org/recipe/1",
-  "status": "pending"
-}</pre></figure>
-
-      <p>
-        The status values "<code>pending</code>" and "<code>tentative</code>" 
-        differ in that the former is used to mark actions that are expected to 
-        happen while the latter is used to mark proposed actions that may 
-        (or may not) happen.
-      </p>
-
-      <p>
-        As an alternative to explicitly stating the <code><a>startTime</a></code> 
-        or <code><a>endTime</a></code> properties, the <code><a>duration</a></code> property 
-        can be used to indicate a specific duration of time relative to either 
-        the <code><a>startTime</a></code> or <code><a>endTime</a></code>.  
-        For instance, specifying an <code><a>endTime</a></code> of
-        "<code>2015-12-23T12:23:23Z</code>" with a <code><a>duration</a></code> of "<code>PT1H</code>", 
-        implies a starting time of exactly "<code>2015-12-23T11:23:23Z</code>" (1 hour before the specified
-        ending time).
-      </p>
-
-      <p>
-        Note that the value of the <code><a>duration</a></code> property can be expressed
-        either as a non-negative integer specifying a number of seconds, or
-        as an [[!RFC3339]] <code>duration</code> string such as "<code>PT1H</code>", "<code>P1DT1H</code>", etc.  For
-        Activity Streams 2.0 implementations for which backwards
-        compatibility with the Activity Streams 1.0 syntax is not critical,
-        the RFC 3339 string format is strongly recommended.
-      </p>
-
-    </section>
-
-    <section id="activity-duration">
-
-      <h2>Activity Duration</h2>
-
-      <p>
-        Actions expressed via the Activity Streams format can either be
-        instantaneous (semelfactive) or durative (having distinct start and
-        end times).  The specific duration of an activity can be optionally
-        expressed using the <code><a>startTime</a></code>, <code><a>endTime</a></code> 
-        and <code><a>duration</a></code> properties.
-      </p>
-
-      <p>
-        By default, all activities are assumed to occur instantaneously, that
-        is, occuring at one point in time without any specific duration.
-        Such events are indicated by omitting the <code><a>startTime</a></code>, 
-        <code><a>endTime</a></code> or <code><a>duration</a></code> properties:
-      </p>
-
-      <figure><figcaption></figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:sally@example.org",
-  "verb": "post",
-  "object": "http://example.org/notes/1"
-}</pre></figure>
-
-      <p>
-        An activity that occurs within a specific period of time can be
-        expressed using combinations of either: <code><a>startTime</a></code> 
-        and <code><a>endTime</a></code>, <code><a>startTime</a></code> and 
-        <code><a>duration</a></code>, or <code><a>endTime</a></code> and 
-        <code><a>duration</a></code>.  For example:
-      </p>
-
-      <figure><figcaption></figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:sally@example.org",
-  "verb": "watch",
-  "object": "http://movies.example.org/movies/1",
-  "startTime": "2014-05-23T12:23:12Z",
-  "endTime": "2014-05-23T13:25:15Z"
-}</pre></figure>
-
-      <figure><figcaption></figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:sally@example.org",
-  "verb": "watch",
-  "object": "http://movies.example.org/movies/1",
-  "startTime": "2014-05-23T12:23:12Z",
-  "duration": "PT1H2M3S"
-}</pre></figure>
-
-      <figure><figcaption></figcaption>
-<pre class="example highlight json">{
-  "actor": "acct:sally@example.org",
-  "verb": "watch",
-  "object": "http://movies.example.org/movies/1",
-  "duration": "PT1H2M3S",
-  "endTime": "2014-05-23T13:25:15Z"
-}</pre></figure>
-
-    </section>
 
   </section>
 
