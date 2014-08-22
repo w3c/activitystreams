@@ -228,7 +228,9 @@
       <figcaption>
         Expresses the statement "Martin Smith posted an article to the blog
         'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
-        details about the article, actor and target blog are given.
+        details about the article, actor and target blog are given using properties
+        defined by the <a href="activitystreams2-vocabulary.html">Activity Streams 2.0
+        Vocabulary</a>.
       </figcaption>
 <pre class="example highlight json">{
   "verb": "post",
@@ -690,6 +692,23 @@
         2.0 Vocabulary</a> document MAY be used (respectively) to express the link relation and 
         MIME Media Type of the linked resource.
       </p>
+
+      <p>
+        RFC 5988 defines, also, that all Links have a <dfn>context</dfn>. This context 
+        is the entity to which the link belongs. For instance, the note object in the 
+        following example has an image link. The target of that link is "http://example.org/foo.png",
+        the link relation is "image", and the <a>context</a> is the note object itself,
+        identified by the <code>id</code> "urn:example:notes:1".
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre>
+{
+  "objectType": "note",
+  "id": "urn:example:notes:1",
+  "image": "http://example.org/foo.png"
+}
+</pre></figure>
 
     </section>
 
