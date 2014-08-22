@@ -151,7 +151,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Type Value</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#dfn-type-value">Type Value</a></td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -173,7 +173,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Link Value</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#linkValue">Link Value</a></td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -195,7 +195,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Natural Language Value</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#nlv">Natural Language Value</a></td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -217,7 +217,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Object</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#asobject">Object</a></td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -243,7 +243,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Activity</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#activity">Activity</a></td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -269,7 +269,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Collection</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#collection">Collection</a></td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -295,7 +295,7 @@
       </tr>
       <tr>
         <td>Definition:</td>
-        <td>An Activity Streams 2.0 Actions object</td>
+        <td>An Activity Streams 2.0 <a href="activitystreams2.html#actions">Actions</a> object</td>
       </tr>
       <tr>
         <td>Comment:</td>
@@ -2102,6 +2102,93 @@
         caveat that such conventions likely will not be understood by all
         implementations.
       </p>
+
+    </section>
+
+    <section id="index">
+      <h2>Terms-to-Type Index</h2>
+
+<ul>
+<li><a>LinkValue</a>
+<ul>
+<li><a>rel</a></li>
+<li><a>mediaType</a></li>
+</ul></li></ul>
+
+<ul>
+<li><a>Object</a> : <a>LinkValue</a>
+<ul>
+<li><a>id</a></li>
+<li><a>objectType</a></li>
+<li><a>language</a></li>
+<li><a>displayName</a></li>
+<li><a>alias</a></li>
+<li><a>author</a></li>
+<li><a>content</a></li>
+<li><a>summary</a></li>
+<li><a>title</a></li>
+<li><a>duplicates</a></li>
+<li><a>icon</a></li>
+<li><a>image</a></li>
+<li><a>location</a></li>
+<li><a>generator</a></li>
+<li><a>provider</a></li>
+<li><a>published</a></li>
+<li><a>updated</a></li>
+<li><a>startTime</a></li>
+<li><a>endTime</a></li>
+<li><a>validFrom</a></li>
+<li><a>validAfter</a></li>
+<li><a>validUntil</a></li>
+<li><a>validBefore</a></li>
+<li><a>duration</a></li>
+<li><a>rating</a></li>
+<li><a>attachments</a></li>
+<li><a>height</a></li>
+<li><a>width</a></li>
+<li><a>tags</a></li>
+<li><a>inReplyTo</a></li>
+<li><a>scope</a></li>
+<li><a>actions</a></li>
+<li><a>first</a></li>
+<li><a>last</a></li>
+<li><a>prev</a></li>
+<li><a>next</a></li>
+<li><a>current</a></li>
+<li><a>self</a></li>
+<li><a>replies</a></li>
+</ul></li></ul>
+
+<ul>
+<li><a>Activity</a> : <a>Object</a>
+<ul>
+<li><a>verb</a></li>
+<li><a>actor</a></li>
+<li><a>object</a></li>
+<li><a>target</a></li>
+<li><a>result</a></li>
+<li><a>instrument</a></li>
+<li><a>participant</a></li>
+<li><a>priority</a></li>
+<li><a>status</a></li>
+<li><a>to</a></li>
+<li><a>cc</a></li>
+<li><a>bto</a></li>
+<li><a>bcc</a></li>
+</ul></li></ul>
+
+<ul>
+<li><a>Collection</a> : <a>Object</a>
+<ul>
+<li><a>items</a></li>
+<li><a>totalItems</a></li>
+<li><a>itemsPerPage</a></li>
+<li><a>startIndex</a></li>
+<li><a>itemsAfter</a></li>
+<li><a>itemsBefore</a></li>
+</ul></li></ul>
+
+
 
     </section>
 
