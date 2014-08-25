@@ -1134,6 +1134,7 @@
 {
   "id": "urn:example:video:1",
   "objectType": "video",
+  "mediaType": "video/mpeg",
   "url": "http://example.org/video.mpg",
   "alternate": [
     "http://example.org/video.avi",
@@ -1216,20 +1217,20 @@
           <li>
             SHOULD use the <code><a>id</a></code> attribute as an alternative means of identifying
             the default preferred <a title="Representation Links">Representation</a> only if the 
-            <code>url</code> attribute is not specified.
+            <code>url</code> attribute is not specified;
           </li>
           <li>
             SHOULD use the <code><a href="activitystreams2-vocabulary.html#dfn-url">url</a></code> 
-            attribute as a <i>secondary</i> identifier only if the <code>id</code> attribute is not specified.
+            attribute as a <i>secondary</i> identifier only if the <code>id</code> attribute is not specified;
           </li>
           <li>
             SHOULD use the <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code>
             attribute on the object to specify the MIME media type of the resource identified
-            by the <code>url</code>.
+            by the <code>url</code>;
           </li>
           <li>
             SHOULD only use the <code>self</code> link relation to reference JSON documents 
-            that provide additional information about the object. 
+            that provide additional information about the object;
           </li>
           <li>
             SHOULD use the <code>alternate</code> link relation to reference additional
