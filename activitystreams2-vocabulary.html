@@ -338,9 +338,7 @@
         <td>
           Provides a permanent, universally unique identifier for the object
           in the form of an absolute IRI [[RFC3987]]. Objects SHOULD contain
-          an <code><a>id</a></code> property. If an object does not contain an <code><a>id</a></code> property,
-          consumers MAY use the value of the <code><a>url</a></code> property as a less-reliable,
-          non-unique identifier.
+          an <code><a>id</a></code> property.
         </td>
       </tr>
       <tr>
@@ -1947,6 +1945,33 @@
         <td>Type:</td>
         <td><code><a>Collection</a></code></td>
       </tr>
+
+      <tr>
+        <td rowspan="5" valign="top"><dfn>url</dfn></td>
+        <td rowspan="5" valign="top"><code><a>Object</a></code></td>
+        <td>URI:</td>
+        <td><code>http://activitystrea.ms/2.0/url</code></td>
+      </tr>
+      <tr>
+        <td>Label</td>
+        <td><code>url</code></td>
+      </tr>
+      <tr>
+        <td>Definition:</td>
+        <td>
+          The "url" property is typically used to point to a displayable 
+          representation of an object (usually an HTML page). The value 
+          MUST be an absolute IRI.
+        </td>
+      </tr>
+      <tr>
+        <td>Comment:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><code><a>IRI</a></code></td>
+      </tr>
     </table>
 
   </section>
@@ -1961,40 +1986,6 @@
         <th colspan="2">Description</th>
       </tr>
      
-      <tr>
-        <td rowspan="6" valign="top"><dfn>url</dfn></td>
-        <td rowspan="6" valign="top"><code><a>Object</a></code></td>
-        <td>URI:</td>
-        <td><code>http://activitystrea.ms/1.0/url</code></td>
-      </tr>
-      <tr>
-        <td>Label</td>
-        <td><code>url</code></td>
-      </tr>
-      <tr>
-        <td>Definition:</td>
-        <td>
-          A Link Value describing a resource providing a representation of
-          the object. An object MAY contain a <code><a>url</a></code> property.
-          In Activity Streams 1.0, the "url" property is typically used to 
-          point to a displayable representation of an object (usually an 
-          HTML page). In Activity Streams 2.0, the "url" property is 
-          deprecated and SHOULD NOT be used.
-        </td>
-      </tr>
-      <tr>
-        <td>Comment:</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Type:</td>
-        <td><code><a>LinkValue</a></code></td>
-      </tr>
-      <tr>
-        <td>Alternative:</td>
-        <td><code><a>self</a></code></td>
-      </tr>
-
      <tr>
         <td rowspan="6" valign="top"><dfn>downstreamDuplicates</dfn></td>
         <td rowspan="6" valign="top"><code><a>Object</a></code></td>
@@ -2157,6 +2148,7 @@
 <li><a>current</a></li>
 <li><a>self</a></li>
 <li><a>replies</a></li>
+<li><a>url</a></li>
 </ul></li></ul>
 
 <ul>
