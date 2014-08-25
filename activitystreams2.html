@@ -1040,6 +1040,207 @@
 
   </section>
 
+      <section id="object-links">
+
+        <h2>Interpreting and Resolving Object Links</h2>
+
+        <p>
+          Any given <a>Object</a> might contain a number of different links to
+          specific resources. Such links can be classified in one of three ways:
+        </p>
+
+        <ul>
+          <li><a>Identity Links</a></li>
+          <li><a>Representation Links</a></li>
+          <li><a>Embedded Links</a></li>
+        </ul>
+
+        <section id="identity-links">
+          <h3><dfn>Identity Links</dfn></h3>
+
+        <p>
+          Identity links establish and describe the identity of the object.
+          Every object can be viewed as having a single permanent <i>primary</i> 
+          identity and one or more (possibly transient) <i>secondary</i> identities. 
+          The <i>primary</i> identity is expressed using the <code><a>id</a></code> attribute. 
+          <i>Secondary</i> identities are expressed using either the 
+          <code><a href="activitystreams2-vocabulary.html#dfn-duplicates">duplicates</a></code>
+          attribute or the <code>self</code> Link Relation.
+        </p>
+
+        <p>
+          In the following example, for instance, the object's primary identity 
+          is "urn:example:notes:1". Additional secondary identities are given 
+          using the <code>duplicates</code> and <code>self</code> attributes.
+          The key difference between <code>duplicates</code> and <code>self</code>
+          is that the latter SHOULD specify an IRI that can be dereferenced to 
+          retrieve additional information about the resource.
+        </p>
+
+        <figure><figcaption></figcaption>
+<pre>
+{
+  "objectType": "note",
+  "id": "urn:example:notes:1",
+  "self": "http://api.example.org/notes/1",
+  "duplicates": "urn:example:objects:123"
+}
+</pre></figure>
+
+          <p>
+            The appropriate interpretation of the identity links is as follows:
+          </p>
+
+          <ul>
+            <li><i>The object's identity is "urn:example:notes:1".</i></li>
+            <li>
+              <i>The object can also be identified as "http://api.example.org/notes/1" and 
+              "urn:example:objects:123".</i>
+            </li>
+            <li>
+              <i>Additional information about the object can be found by dereferencing
+              "http://api.example.org/notes/1".</i>
+            </li>
+          </ul>
+
+          <p>
+            If there are no Identity links provided, then any provided 
+            <a title="Representation Links">Representation Link</a> can be used as a less reliable means of 
+            establishing a <i>secondary</i> identifier for the object.
+          </p>
+
+        </section>
+
+        <section id="Representation Links">
+          <h3><dfn>Representation Links</dfn></h3>
+
+          <p>
+            Representation links provide references to alternative representations
+            of the object typically intended specifically for display or presentation. 
+            For instance, an object with <code>"objectType": "note"</code> might include 
+            a pointer to an HTML document containing the note while an object with 
+            <code>"objectType": "video"</code> might point to a video
+            file. Representation links are established using either the 
+            <code><a href="activitystreams2-vocabulary.html#def-url">url</a></code>
+            attribute or <code>alternate</code> Link Relation.
+          </p>
+
+          <p>
+            For example,
+          </p>
+
+          <figure><figcaption></figcaption>
+<pre>
+{
+  "id": "urn:example:video:1",
+  "objectType": "video",
+  "url": "http://example.org/video.mpg",
+  "alternate": [
+    "http://example.org/video.avi",
+    "http://example.org/video.mkv"
+  ]
+}
+</pre></figure>
+
+          <p>
+            In this instance, the video object contains three alternative representations
+            using three separate video formats. The <code>url</code> property identifies the
+            "default" or "preferred" representation. 
+          </p>
+
+          <p>
+            Any provided <a title="Identity Links">Identity Link</a> MAY also be used as a Representation Link.
+          </p>
+
+        </section>
+
+        <section id="embed-links">
+          <h3><dfn>Embedded Links</dfn></h3>
+
+          <p>
+            Embed Links provide references to resources that are associated with 
+            the object but are not necessarily complete representations of the 
+            object. Examples include preview images, icons, attachments, etc. 
+            This category generally covers any type of link that does not fall 
+            into either the Identity or Representation categories.
+          </p>
+
+          <p>
+            In the following example, for instance, the "image" attribute specifies
+            three "embedded" links associated with the object.
+          </p>
+
+          <figure><figcaption></figcaption>
+<pre>
+{
+  "id": "urn:example:notes:1",
+  "content": "This is a note",
+  "image": [
+    "http://example.org/imgs/1.png",
+    "http://example.org/imgs/2.png",
+    "http://example.org/imgs/3.png"
+  ]
+}
+</pre></figure>
+
+        </section>
+
+        <section id="link-best-practices">
+
+          <h3>Link Interoperability Considerations</h3>
+
+          <p>
+            The data model defined by this specification provides a rich and flexible
+            approach to establishing links between resources. While this flexibility
+            can be quite useful in a variety of scenarios, there can be a negative 
+            impact on interoperability due to inconsistent application or interpretation
+            of the options. Therefore, to promote interoperability, all implementations:
+          </p>
+
+          <ul>
+          <li>
+            SHOULD use the <code><a>id</a></code> attribute to specify the 
+            permanent primary identity of an object;
+          </li>
+          <li>
+            SHOULD use dereferenceable IRI/URL schemes (e.g. "http" or "https") 
+            for all <a title="Identity Links">Identity</a> and 
+            <a>Representation Links</a> including the <code><a>id</a></code>;
+          </li>
+          <li>
+            SHOULD use the <code><a href="activitystreams2-vocabulary.html#dfn-url">url</a></code> 
+            attribute to specify the default preferred <a title="Representation Links">Representation Link</a> 
+            even if the <code>url</code> and <code>id</code> attributes 
+            specify the same value;
+          </li>
+          <li>
+            SHOULD use the <code><a>id</a></code> attribute as an alternative means of identifying
+            the default preferred <a title="Representation Links">Representation</a> only if the 
+            <code>url</code> attribute is not specified.
+          </li>
+          <li>
+            SHOULD use the <code><a href="activitystreams2-vocabulary.html#dfn-url">url</a></code> 
+            attribute as a <i>secondary</i> identifier only if the <code>id</code> attribute is not specified.
+          </li>
+          <li>
+            SHOULD use the <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code>
+            attribute on the object to specify the MIME media type of the resource identified
+            by the <code>url</code>.
+          </li>
+          <li>
+            SHOULD only use the <code>self</code> link relation to reference JSON documents 
+            that provide additional information about the object. 
+          </li>
+          <li>
+            SHOULD use the <code>alternate</code> link relation to reference additional
+            alternative representations of the object.
+          </li>
+          </ul>
+
+        </section>
+
+      </section>
+
   <section id="document">
     <h2>Activity Streams Document</h2>
 
@@ -1185,14 +1386,6 @@
       <code>duplicates</code> property. Implementations of the 2.0 syntax
       SHOULD NOT use the deprecated <code>upstreamDuplicates</code> and 
       <code>downstreamDuplicates</code> properties.
-    </li>
-    <li>
-      This specification deprecates use of the <code>url</code> property from
-      Activity Streams 1.0. Implementations SHOULD use specific link relation
-      properties such as <code>alternate</code> or <code>self</code> as a 
-      replacement for the functionality provided by <code>url</code>. If the
-      <code>url</code> property is used, it MUST be treated as an alias of 
-      <code><a href="activitystreams2-vocabulary.html#dfn-self">self</a></code>.
     </li>
     </ol>
 
@@ -1363,8 +1556,8 @@
       <li>
         The base URI for all deprecated Activity Streams 1.0 property names
         MUST be set to "<code>http://activitystrea.ms/1.0/</code>". For instance,
-        when processed as JSON-LD, the <code>url</code> property expands to
-        "<code>http://activitystrea.ms/1.0/url</code>".
+        when processed as JSON-LD, the <code>downstreamDuplicates</code> property expands to
+        "<code>http://activitystrea.ms/1.0/downstreamDuplicates</code>".
       </li>
       </ul>
 
@@ -1903,9 +2096,8 @@
      "@container": "@index"
    },
    "url": {
-     "@id": "deprecated:url",
-     "@type": "@id",
-     "@container": "@set"
+     "@id": "as:url",
+     "@type": "@id"
    },
    "downstreamDuplicates": {
      "@id": "deprecated:downstreamDuplicates",
