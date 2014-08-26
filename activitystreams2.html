@@ -350,7 +350,7 @@
       <p>
         Unless otherwise stated, the following "core properties" MAY be used in all 
         JSON objects serialized within an Activity Stream document and MUST 
-        be supported by all implementations. The definition of each property is
+        be supported by all implementations. The normative definition of each property is
         provided by the <a href="activitystreams2-vocabulary.html">Activity 
         Streams 2 Vocabulary</a> document.
       </p>
@@ -1061,7 +1061,7 @@
         <p>
           Identity links establish and describe the identity of the object.
           Every object can be viewed as having a single permanent <i>primary</i> 
-          identity and one or more (possibly transient) <i>secondary</i> identities. 
+          identity and potentially one or more (possibly transient) <i>secondary</i> identities. 
           The <i>primary</i> identity is expressed using the <code><a>id</a></code> attribute. 
           <i>Secondary</i> identities are expressed using either the 
           <code><a href="activitystreams2-vocabulary.html#dfn-duplicates">duplicates</a></code>
@@ -1205,8 +1205,7 @@
           </li>
           <li>
             SHOULD use dereferenceable IRI/URL schemes (e.g. "http" or "https") 
-            for all <a title="Identity Links">Identity</a> and 
-            <a>Representation Links</a> including the <code><a>id</a></code>;
+            for all <a>Representation Links</a>.</code>;
           </li>
           <li>
             SHOULD use the <code><a href="activitystreams2-vocabulary.html#dfn-url">url</a></code> 
