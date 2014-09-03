@@ -656,9 +656,9 @@
         RFC 5988 defines that all Links have a "link relation" that describes
         the contextual purpose of the link.  Within an <a>Object</a>,
         in the absence of a specific <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> property, the 
-        name of the property whose value is a link serves as the "link relation".  
-        Any valid link relation value, as defined by [[RFC5988]], can be used as 
-        a property with a link value in any Activity Streams object, except where 
+        name of the property whose value is a link serves as the "link relation".
+        Any valid link relation value, as defined by the [[RFC5988]] relation-type rule, 
+        can be used as a property with a link value in any Activity Streams object, except where 
         the link relation might conflict with any other property defined by this 
         document or the <a href="activitystreams2-vocabulary.html">Activity Streams 
         2.0 Vocabulary</a> document.
@@ -709,6 +709,16 @@
   "image": "http://example.org/foo.png"
 }
 </pre></figure>
+
+      <p>
+        It ought to be noted that the [[!HTML5]] specification provides it's own alternative
+        definition of a "link relation" that differs slightly from the [[RFC5988]] definition.
+        In the HTML5 definition, any string that does not contain the "space" U+0020, "tab" (U+0009), 
+        "LF" (U+000A), "FF" (U+000C), "CR" (U+000D) or "," (U+002C) characters can be used as a 
+        valid link relation. To promote interoperability, Activity Streams 2.0 implementations 
+        MUST only use link relations that are valid in terms of both the [[RFC5988]] and
+        [[HTML5]] definitions.
+      </p>
 
     </section>
 
