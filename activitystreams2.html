@@ -133,7 +133,8 @@
         While the syntax defined by this specification diverges somewhat from
         that defined by JSON Activity Streams 1.0, the verbs, objectTypes,
         extensions and fundamental model defined by that original
-        specification remain intact.
+        specification remain intact, and every valid Activity Streams 1.0
+        document is a valid Activity Streams 2.0 document.
       </p>
 
       <p>
@@ -377,8 +378,8 @@
         <td><code><dfn title="objectType" id="objectType-attribute"><a href="activitystreams2-vocabulary.html#dfn-objecttype">objectType</a></dfn></code></td>
         <td><a>Type Value</a></td>
         <td>
-          Identifies the type of object. If no <code><a>objectType</a></code> property 
-          is specified, the object has no specific type.
+          Identifies the type of object. If the <code><a>objectType</a></code> property 
+          is not specified, the object has no specific type.
         </td>
       </tr>
       <tr>
