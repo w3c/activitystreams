@@ -1,0 +1,1140 @@
+
+{ "@context": [{
+     "dc": "http://purl.org/dc/elements/1.1/",
+     "dct": "http://purl.org/dc/terms/",
+     "dctypes": "http://purl.org/dc/dcmitype/",
+     "foaf": "http://xmlns.com/foaf/0.1/",
+     "vcard": "http://www.w3.org/2006/vcard/ns#",
+     "org": "http://www.w3.org/ns/org#",
+     "prov": "http://www.w3.org/ns/prov#",
+     "geo": "http://ld.geojson.org/vocab#",
+     "link": "http://www.iana.org/assignments/link-relations#",
+     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+     "owl": "http://www.w3.org/2002/07/owl#"
+   },{
+   "as" : "http://activitystrea.ms/2.0/",
+   "as1" : "http://activitystrea.ms/1.0/",
+   "id": "@id",
+   "objectType": "@type",
+   "language": "@language",
+   "displayName": {
+     "@id": "as:displayName",
+     "@container": "@language"
+   },
+   "rel": "as:rel",
+   "mediaType": "as:mediaType",
+   "verb": {
+     "@id": "as:verb",
+     "@type": "@vocab"
+   },
+   "actor": {
+     "@id": "as:actor",
+     "@type": "@id"
+   },
+   "object": {
+     "@id": "as:object",
+     "@type": "@id"
+   },
+   "target": {
+     "@id": "as:target",
+     "@type": "@id"
+   },
+   "result": {
+     "@id": "as:result",
+     "@type": "@id"
+   },
+   "instrument": {
+     "@id": "as:instrument",
+     "@type": "@id"
+   },
+   "participant": {
+     "@id": "as:participant",
+     "@type": "@id"
+   },
+   "priority": {
+     "@id": "as:priority",
+     "@type": "xsd:float"
+   },
+   "status": {
+     "@id": "as:status",
+     "@type": "@vocab"
+   },
+   "completed": {
+     "@id": "as:status/completed"
+   },
+   "active": {
+     "@id": "as:status/active"
+   },
+   "canceled": {
+     "@id": "as:status/canceled"
+   },
+   "pending": {
+     "@id": "as:status/pending"
+   },
+   "tentative": {
+     "@id": "as:status/tentative"
+   },
+   "to": {
+     "@id": "as:to",
+     "@type": "@id"
+   },
+   "bto": {
+     "@id": "as:bto",
+     "@type": "@id"
+   },
+   "cc": {
+     "@id": "as:cc",
+     "@type": "@id"
+   },
+   "bcc": {
+     "@id": "as:bcc",
+     "@type": "@id"
+   },
+   "alias": {
+     "@id": "as:alias",
+     "@type": "@id"
+   },
+   "author": {
+     "@id": "as:author",
+     "@type": "@id"
+   },
+   "content": {
+     "@id": "as:content",
+     "@container": "@language"
+   },
+   "icon": {
+     "@id": "as:icon",
+     "@type": "@id"
+   },
+   "image": {
+     "@id": "as:image",
+     "@type": "@id"
+   },
+   "location": {
+     "@id": "as:location",
+     "@type": "@id"
+   },
+   "published": {
+     "@id": "as:published",
+     "@type": "xsd:dateTime"
+   },
+   "generator": {
+     "@id": "as:generator",
+     "@type": "@id"
+   },
+   "provider": {
+     "@id": "as:provider",
+     "@type": "@id"
+   },
+   "summary": {
+     "@id": "as:summary",
+     "@container": "@language"
+   },
+   "updated": {
+     "@id": "as:updated",
+     "@type": "xsd:dateTime"
+   },
+   "startTime": {
+     "@id": "as:startTime",
+     "@type": "xsd:dateTime"
+   },
+   "endTime": {
+     "@id": "as:endTime",
+     "@type": "xsd:dateTime"
+   },
+   "validFrom": {
+     "@id": "as:validFrom",
+     "@type": "xsd:dateTime"
+   },
+   "validUntil": {
+     "@id": "as:validUntil",
+     "@type": "xsd:dateTime"
+   },
+   "validAfter": {
+     "@id": "as:validAfter",
+     "@type": "xsd:dateTime"
+   },
+   "validBefore": {
+     "@id": "as:validBefore",
+     "@type": "xsd:dateTime"
+   },
+   "rating": {
+     "@id": "as:rating",
+     "@type": "xsd:float"
+   },
+   "tag": {
+     "@id": "as:tag",
+     "@type": "@id"
+   },
+   "attachment": {
+     "@id": "as:attachment",
+     "@type": "@id"
+   },
+   "title": {
+     "@id": "as:title",
+     "@container": "@language"
+   },
+   "duration": {
+     "@id": "as:duration"
+   },
+   "height": {
+     "@id": "as:height",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "width": {
+     "@id": "as:width",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "inReplyTo": {
+     "@id": "as:inReplyTo",
+     "@type": "@id"
+   },
+   "action": {
+     "@reverse": "as:object",
+     "@type": "@id"
+   },
+   "using": {
+      "@id": "as:using",
+      "@type": "@id"
+   },
+   "scope": {
+     "@id": "as:scope",
+     "@type": "@id"
+   },
+   "totalItems": {
+     "@id": "as:totalItems",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "itemsPerPage": {
+     "@id": "as:itemsPerPage",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "startIndex": {
+     "@id": "as:startIndex",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "items": {
+     "@reverse": "as:memberOf",
+     "@type": "@id"
+   },
+   "itemsAfter": {
+     "@id": "as:itemsAfter",
+     "@type": "xsd:dateTime"
+   },
+   "itemsBefore": {
+     "@id": "as:itemsBefore",
+     "@type": "xsd:dateTime"
+   },
+   "first": {
+     "@id": "as:first",
+     "@type": "@id"
+   },
+   "last": {
+     "@id": "as:last",
+     "@type": "@id"
+   },
+   "prev": {
+     "@id": "as:prev",
+     "@type": "@id"
+   },
+   "previous": {
+     "@id": "as:prev",
+     "@type": "@id"
+   },
+   "next": {
+     "@id": "as:next",
+     "@type": "@id"
+   },
+   "current": {
+     "@id": "as:current",
+     "@type": "@id"
+   },
+   "self": {
+     "@id": "as:self",
+     "@type": "@id"
+   },
+   "replies": {
+     "@id": "as:replies",
+     "@container": "@index"
+   },
+   "url": {
+     "@id": "as:url",
+     "@type": "@id"
+   },
+   "attachments": {
+     "@id": "as1:attachments",
+     "@type": "@id"
+   },
+   "tags": {
+     "@id": "as1:tags",
+     "@type": "@id"
+   },
+   "downstreamDuplicates": {
+     "@id": "as1:downstreamDuplicates",
+     "@type": "@id"
+   },
+   "upstreamDuplicates": {
+     "@id": "as1:upstreamDuplicates",
+     "@type": "@id"
+   },
+   "confirm": {
+     "@id": "as:confirm",
+     "@type": "xsd:boolean"
+   },
+   "requires": {
+     "@id": "as:requires",
+     "@type": "@id"
+   },
+   "prefers": {
+     "@id": "as:prefers",
+     "@type": "@id"
+   },
+   "method": {
+     "@id": "as:method",
+     "@type": "xsd:string"
+   },
+   "expects": {
+     "@id": "as:expects",
+     "@type": "@id"
+   },
+   "browserContext": {
+     "@id": "as:browserContext",
+     "@type": "xsd:string"
+   },
+   "sandbox": {
+     "@id": "as:sandbox",
+     "@type": "xsd:string"
+   },
+   "parameter": {
+     "@id": "as:parameter",
+     "@type": "as:Parameter"
+   },
+   "name": {
+     "@id": "as:name",
+     "@type": "xsd:string"
+   },
+   "required": {
+     "@id": "as:required",
+     "@type": "xsd:boolean"
+   },
+   "repeated": {
+     "@id": "as:repeated",
+     "@type": "xsd:boolean"
+   },
+   "value": {
+     "@id": "as:value",
+     "@type": "xsd:anyType"
+   },
+   "default": {
+     "@id": "as:default",
+     "@type": "xsd:anyType"
+   },
+   "enumeration": {
+     "@id": "as:enumeration",
+     "@type": "xsd:anyType"
+   },
+   "minLength": {
+     "@id": "as:minLength",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "maxLength": {
+     "@id": "as:maxLength",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "maxInclusive": {
+     "@id": "as:maxInclusive",
+     "@type": "xsd:anyType"
+   },
+   "minInclusive": {
+     "@id": "as:minInclusive",
+     "@type": "xsd:anyType"
+   },
+   "maxExclusive" : {
+     "@id": "as:maxExclusive",
+     "@type": "xsd:anyType"
+   },
+   "minExclusive": {
+     "@id": "as:minExclusive",
+     "@type": "xsd:anyType"
+   },
+   "step": {
+     "@id": "as:step",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "totalDigits": {
+     "@id": "as:totalDigits",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "fractionDigits": {
+     "@id": "as:fractionDigits",
+     "@type": "xsd:nonNegativeInteger"
+   },
+   "pattern": {
+     "@id": "as:pattern",
+     "@type": "xsd:string"
+   },
+   "placeholder": {
+     "@id": "as:placeholder",
+     "@type": "xsd:string"
+   },
+   "potentialResult": {
+     "@id": "as:potentialResult",
+     "@type": "@id"
+   },
+   "returns": {
+     "@id": "as:returns",
+     "@type": "@id"
+   },
+   "Header": "as:Header",
+   "Parameter": "as:Parameter",
+   "HtmlForm": "as:HtmlForm",
+   "UrlTemplate": "as:UrlTemplate",
+   "Auth": "as:Auth",
+   "Payload": "as:Payload",
+   "PotentialActionHandlerInput": "as:PotentialActionHandlerInput",
+   "Intent": "as:Intent",
+   "EmbeddedView": "as:EmbeddedView",
+   "BrowserView": "as:BrowserView",
+   "HttpRequest": "as:HttpRequest"
+  },
+ {
+   "asd": "http://activitystrea.ms/2.0/schema/",
+   "asd:defines": {
+     "@reverse": "rdfs:isDefinedBy"
+   },
+   "rdfs:domain": {
+    "@type": "@id"
+   },
+   "rdfs:range": { 
+    "@type": "@id"
+   },
+   "rdfs:subClassOf": {
+     "@type": "@id"
+   },
+   "owl:unionOf": {
+     "@type": "@id"
+   },
+   "owl:oneOf": {
+     "@type": "@id"
+   },
+   "owl:equivalentProperty": {
+     "@type": "@id"
+   }
+ }],
+ "@id": "as:",
+ "@type": "owl:Ontology",
+ "asd:defines": [
+   {
+     "@id": "as:Object",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "owl:Thing"
+   },
+   {
+     "@id": "as:Link",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "owl:Thing"
+   },
+   {
+     "@id": "as:Activity",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Object"
+   },
+   {
+     "@id": "as:Collection",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Object"
+   },
+   {
+     "@id": "as:NaturalLanguageValue",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "xsd:string"
+   },
+   {
+     "@id": "as:PotentialAction",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Object"
+   },
+   {
+     "@id": "as:using",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:PotentialAction",
+     "rdfs:range": ["as:PotentialActionHandler", "as:Object"]
+   },
+   {
+     "@id": "as:PotentialActionHandler",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Object"
+   },
+   {
+     "@id": "as:Verb",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Object"
+   },
+   {
+     "@id": "as:ObjectType",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Object"
+   },
+   {
+     "@id": "as:displayName",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:NaturalLanguageValue"
+   },
+   {
+     "@id": "as:rel",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Link",
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:mediaType",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Link", "as:Payload", "as:EmbeddedView"],
+     "rdfs:range": "xsd:string",
+     "owl:equivalentProperty": "dct:format"
+   },
+   {
+     "@id": "as:verb",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": "as:Verb"
+   },
+   {
+     "@id": "as:actor",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:object",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:target",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:result",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:instrument",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:participant",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:priority",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
+     "rdfs:range": {
+       "@type": "rdfs:Class",
+       "rdfs:subClassOf": [
+         "xsd:decimal",
+         {
+           "@type": "owl:Restriction",
+           "xsd:minInclusive": 0.00,
+           "xsd:maxInclusive": 1.00,
+           "xsd:fractionDigits": 2,
+           "xsd:totalDigits": 3
+         }
+       ]
+     }
+   },
+   {
+     "@id": "as:status",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": {
+       "@type": "owl:Class",
+       "owl:oneOf": [
+         "as:status/active",
+         "as:status/canceled",
+         "as:status/completed",
+         "as:status/pending",
+         "as:status/tentative",
+         "as:status/voided"
+       ]
+     }
+   },
+   {
+     "@id": "as:to",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": "as:Object"
+   },
+   {
+     "@id": "as:cc",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:bto",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:bcc",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:alias",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:anyURI"
+   },
+   {
+     "@id": "as:author",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:equivalentProperty": "dct:contributor"
+   },
+   {
+     "@id": "as:content",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "as:NaturalLanguageValue"
+   },
+   {
+     "@id": "as:summary",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "as:NaturalLanguageValue",
+     "owl:equivalentProperty": ["dct:summary", "dct:description"]
+   },
+   {
+     "@id": "as:title",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:NaturalLanguageValue",
+     "owl:equivalentProperty": "dct:title"
+   },
+   {
+     "@id": "as:icon",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:image",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:location",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Link", "as:Object"]
+   },
+   {
+     "@id": "as:generator",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:provider",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:equivalentProperty": "dct:publisher"
+   },
+   {
+     "@id": "as:published",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime",
+     "owl:equivalentProperty": ["dct:issued", "dct:available", "dct:created"]
+   },
+   {
+     "@id": "as:updated",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime",
+     "owl:equivalentProperty": "dct:modified"
+   },
+   {
+     "@id": "as:startTime",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:endTime",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:validFrom",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:validAfter",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:validUntil",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:validBefore",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:duration",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": {
+       "@type": "owl:Class",
+       "unionOf": [
+         "xsd:nonNegativeInteger",
+         "xsd:duration"
+       ]
+     }
+   },
+   {
+     "@id": "as:rating",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": {
+       "@type": "owl:Class",
+       "rdfs:subClassOf": [
+         "xsd:nonNegativeInteger",
+         {
+           "@type": "owl:Restriction",
+           "xsd:minInclusive": 0.0,
+           "xsd:maxInclusive": 5.0,
+           "xsd:fractionDigits": 1,
+           "xsd:totalDigits": 2
+         }
+       ]
+     }
+   },
+   {
+     "@id": "as:attachment",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["xsd:Object", "as:Link"],
+     "owl:equivalentProperty": ["as1:attachments", "dct:hasPart"]
+   },
+   {
+     "@id": "as:height",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:width",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:tag",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:equivalentProperty": ["as1:tags", "dct:references"]
+   },
+   {
+     "@id": "as:inReplyTo",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"]
+   },
+   {
+     "@id": "as:scope",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:equivalentProperty": "dct:audience"
+   },
+   {
+     "@id": "as:action",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "as:PotentialAction"
+   },
+   {
+     "@id": "as:memberOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "as:Collection"
+   },
+   {
+     "@id": "as:totalItems",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:itemsPerPage",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:startIndex",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:itemsAfter",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:itemsBefore",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "xsd:dateTime"
+   },
+   {
+     "@id": "as:current",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:next",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:prev",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:first",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:last",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:self",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as:replies",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "as:Collection"
+   },
+   {
+     "@id": "as:url",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "as:Link"
+   },
+   {
+     "@id": "as1:tags",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:equivalentProperty": {
+       "@type": "@id",
+       "@id": "as:tag"
+     }
+   },
+   {
+     "@id": "as1:attachments",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:equivalentProperty": {
+       "@type": "@id",
+       "@id": "as:attachment"
+     }
+   },
+   {
+     "@id": "as1:id",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:anyURI",
+     "equivalentProperty": "rdf:ID"
+   },
+   {
+     "@id": "as1:objectType",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:anyURI",
+     "equivalentProperty": "rdf:Type" 
+   },
+   {
+     "@id": "as1:downstreamDuplicates",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:anyURI"
+   },
+   {
+     "@id": "as1:upstreamDuplicates",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Object",
+     "rdfs:range": "xsd:anyURI"
+   },
+   {
+     "@id": "as:HttpRequest",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandler"
+   },
+   {
+     "@id": "as:BrowserView",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:HttpRequest"
+   },
+   {
+     "@id": "as:EmbeddedView",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandler"
+   },
+   {
+     "@id": "as:Intent",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandler"
+   },
+   {
+     "@id": "as:confirm",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:PotentialAction",
+     "rdfs:range": "xsd:boolean"
+   },
+   {
+     "@id": "as:requires",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:PotentialActionHandler",
+     "rdfs:range": "as:Object"
+   },
+   {
+     "@id": "as:prefers",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:PotentialActionHandler",
+     "rdfs:range": "as:Object"
+   },
+   {
+     "@id": "as:method",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:HttpRequest",
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:expects",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:PotentialActionHandler",
+     "rdfs:range": "as:PotentialActionHandlerInput"
+   },
+   {
+     "@id": "as:potentialResult",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:PotentialActionHandler",
+     "rdfs:range": "as:Object"
+   },
+   {
+     "@id": "as:PotentialActionHandlerInput",
+     "@type": "owl:Class"
+   },
+   {
+     "@id": "as:Payload",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
+   },
+   {
+     "@id": "as:Auth",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
+   },
+   {
+     "@id": "as:browserContext",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:BrowserView",
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:sandbox",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:BrowserView", "as:EmbeddedView"],
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:UrlTemplate",
+     "@type": "as:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
+   },
+   {
+     "@id": "as:template",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:UrlTemplate",
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:parameter",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:UrlTemplate", "as:HtmlForm"],
+     "rdge:range": "as:Parameter"
+   },
+   {
+     "@id": "as:HtmlForm",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:Payload"
+   },
+   {
+     "@id": "as:Parameter",
+     "@type": "owl:Class"
+   },
+   {
+     "@id": "as:name",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:required",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:boolean"
+   },
+   {
+     "@id": "as:repeated",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:boolean"
+   },
+   {
+     "@id": "as:value",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:default",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:type",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyURI"
+   },
+   {
+     "@id": "as:enumeration",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:minLength",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:maxLength",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:maxInclusive",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:minInclusive",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:maxExclusive",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:minExclusive",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:step",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:anyType"
+   },
+   {
+     "@id": "as:totalDigits",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:fractionDigits",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:nonNegativeInteger"
+   },
+   {
+     "@id": "as:pattern",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:placeholder",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Parameter", "as:Header"],
+     "rdfs:range": "as:NaturalLanguageValue"
+   },
+   {
+     "@id": "as:Header",
+     "@type": "owl:Class",
+     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
+   }
+ ]
+}
+
