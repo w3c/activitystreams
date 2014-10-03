@@ -242,7 +242,7 @@
       </figcaption>
 <pre class="example highlight json">{
   "@type": "http://activitystrea.ms/2.0/Activity",
-  "@language": "en",
+  "language": "en",
   "verb": "post",
   "published": "2011-02-10T15:04:55Z",
   "actor": {
@@ -289,7 +289,7 @@
   "items" : [
     {
       "@type": "http://activitystrea.ms/2.0/Activity",
-      "@language": "en",
+      "language": "en",
       "verb": "post",
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
@@ -412,14 +412,13 @@
         at least contain a <a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a>.
       </p>
 
-<figure><figcaption>Following is an example Object that uses the JSON-ID <code>@id</code>, <code>@type</code>
-and <code>@language</code> JSON-LD keywords to express the global identifier, object type and default 
-language:</figcaption>
+<figure><figcaption>Following is an example Object that uses the JSON-ID <code>@id</code> and <code>@type</code>
+JSON-LD keywords to express the global identifier and object type:</figcaption>
 <pre class="example highlight json">
 {
-  "@id": "http://example.org/foo",
+  "@id": "http://example.org/foo",f
   "@type": "http://example.org/types/Note",
-  "@language": "en",
+  "language": "en",
   "displayName": "This is a note",
   "author": {
     "@id": "urn:example:person:joe",
@@ -454,7 +453,7 @@ language:</figcaption>
       <figure>
         <figcaption>A single String value using the default language:</figcaption>
 <pre class="example highlight json">{
-  "@language": "en",
+  "language": "en",
   <b>"displayName": "This is the title"</b>
 }</pre></figure>
 

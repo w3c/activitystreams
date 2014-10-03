@@ -17,7 +17,7 @@
    "as1" : "http://activitystrea.ms/1.0/",
    "id": "@id",
    "objectType": "@type",
-   "language": "@language",
+   "language": "as:language",
    "displayName": {
      "@id": "as:displayName",
      "@container": "@language"
