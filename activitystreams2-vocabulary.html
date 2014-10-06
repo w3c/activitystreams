@@ -190,8 +190,7 @@
           <td valign="top"><code>http://activitystrea.ms/2.0/Link</code></td>
           <td rowspan="3" valign="top">
             <p><code><a>rel</a> | <a>mediaType</a> | <a>language</a> | <a>displayName</a> | 
-            <a>title</a> | <a>icon</a> | <a>image</a> |  <a>height</a> | <a>width</a> | 
-            <a>duration</a> | <a>resultOf</a></code></p>
+            <a>title</a> | <a>hreflang</a></code></p>
           </td>
         </tr>
         <tr>
@@ -211,7 +210,7 @@
             <p><code><a title="verb-term">verb</a> | <a>actor</a> | <a title="object-term">object</a> | <a>target</a> | <a>result</a> | 
             <a>instrument</a> | <a>participant</a> | <a>priority</a> | <a>status</a> | <a>to</a> |
             <a>bto</a> | <a>cc</a> | <a>bcc</a></code></p>
-            <p><i>From <a title="Object"><code>Object</code></a></i>:<br/> 
+            <p><i>From <code><a>Object</a></code></i>:<br/> 
             <code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
@@ -241,7 +240,7 @@
             <p><code><a>items</a> | <a>totalItems</a> | <a>itemsPerPage</a> | <a>startIndex</a> | 
             <a>itemsAfter</a> | <a>itemsBefore</a> | <a>current</a> | <a>next</a> | <a>prev</a> | 
             <a>first</a> | <a>last</a> | <a>self</a></code></p>
-            <p><i>From <a title="Object"><code>Object</code></a></i>:<br/> 
+            <p><i>From <code><a>Object</a></code></i>:<br/> 
             <code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
@@ -253,7 +252,7 @@
         <tr>
           <td valign="top">Notes:</td>
           <td itemprop="comment">
-            An unordered collection of <a title="Object"><code>Object</code></a> instances.
+            An unordered collection of <code><a>Object</a></code> instances.
           </td>
         </tr>
         <tr>
@@ -284,7 +283,7 @@
           <td valign="top" width="10%">URI:</td>
           <td valign="top"><code>http://activitystrea.ms/2.0/Verb</code></td>
           <td rowspan="3" valign="top">
-            <p><i>From <a title="Object"><code>Object</code></a></i>:<br/> 
+            <p><i>From <code><a>Object</a></code></i>:<br/> 
             <code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
@@ -311,7 +310,7 @@
           <td valign="top" width="10%">URI:</td>
           <td valign="top"><code>http://activitystrea.ms/2.0/ObjectType</code></td>
           <td rowspan="3" valign="top">
-            <p><i>From <a title="Object"><code>Object</code></a></i>:<br/> 
+            <p><i>From <code><a>Object</a></code></i>:<br/> 
             <code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
@@ -366,7 +365,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td valign="top">Range:</td>
@@ -389,7 +388,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -411,7 +410,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Link">Link</a></code></td>
+          <td valign="top"><code><a>Link</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -441,11 +440,33 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Link">Link</a> | <a href="activitystreams2-actions.html#dfn-payload">Payload</a> | <a href="activitystreams2-actions.html#dfn-embeddedview">EmbeddedView</a></code></td>
+          <td valign="top"><code><a>Link</a></code> | <code><a href="activitystreams2-actions.html#dfn-payload">Payload</a></code> | <code><a href="activitystreams2-actions.html#dfn-embeddedview">EmbeddedView</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
           <td valign="top">MIME Media Type</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn>hreflang</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/hreflang</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Hints as to the language used by the target resource. Value MUST be a [[!RFC5646]] Language-Tag.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Range:</td>
+          <td valign="top">[[!RFC5646]] Language Tag</td>
         </tr>
       </tbody>
 
@@ -490,7 +511,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -514,7 +535,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -540,7 +561,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -564,7 +585,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
           <td valign="top">Reverse Of:</td>
@@ -581,7 +602,7 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An optional <a title="Object"><code>Object</code></a> that describes one or more objects used to perform 
+            An optional <code><a>Object</a></code> that describes one or more objects used to perform 
             the activity. For instance, in the activity, "Sally played music with a piano",
             the instrument of the activity is the piano.
           </td>
@@ -592,7 +613,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -605,7 +626,7 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An optional <a title="Object"><code>Object</code></a> that describes one or more additional actors
+            An optional <code><a>Object</a></code> that describes one or more additional actors
             that have (or will have) participated in the activity. For instance, in the
             activity, "Sally went to the movies with Joe", Sally is the primary actor, 
             while Joe is a participant.
@@ -617,7 +638,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -731,7 +752,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -753,7 +774,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -775,7 +796,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -797,7 +818,7 @@
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -822,7 +843,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -839,17 +860,17 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> referencing one or more entities credited
+            An <code><a>Object</a></code> referencing one or more entities credited
               with creating or authoring the object.
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -868,7 +889,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -891,7 +912,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -919,7 +940,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -944,7 +965,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -968,7 +989,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -985,13 +1006,13 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing one or more 
+            An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one or more 
             physical or logical locations associated with the object.
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1008,17 +1029,17 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing the 
+            An <code><a>Object</a></code> or <code><a>Link</a></code> referencing the 
             resource (e.g. an application) that generated the object.
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -1031,18 +1052,18 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing the resource 
+            An <code><a>Object</a></code> or <code><a>Link</a></code> referencing the resource 
             (e.g. an application) that published the object. Note that this is not necessarily the same
             entity that generated the object. 
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -1060,7 +1081,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1082,7 +1103,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1107,7 +1128,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1132,7 +1153,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1155,7 +1176,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1178,7 +1199,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1202,7 +1223,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1225,7 +1246,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1253,7 +1274,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1276,7 +1297,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1297,18 +1318,18 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-              An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing one 
+              An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
               or more objects associated with the containing object. These are similar in concept to files 
               attached to an email.
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -1328,7 +1349,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1352,7 +1373,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1369,7 +1390,7 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing one 
+            An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
             or more resources that are loosely associated with the containing object. 
             The <code><a>tag</a></code> and <code><a>attachment</a></code> properties differ 
             from one another in that the <code><a>tag</a></code> property asserts "association by
@@ -1379,11 +1400,11 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
@@ -1396,13 +1417,13 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing one 
+            An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
             or more other objects to which the containing object can be considered a response.
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1419,18 +1440,18 @@
         <tr>
           <td valign="top">Notes:</td>
           <td valign="top">
-            An <a title="Object"><code>Object</code></a> or <code><a>Link</a></code> referencing one 
+            An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
             or more resources that define the total population of entities for which the object can 
             considered to be relevant.
           </td>
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
        </tbody>
 
@@ -1448,7 +1469,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1474,7 +1495,7 @@
          </tr>
          <tr>
            <td valign="top">Domain:</td>
-           <td valign="top"><a title="Object"><code>Object</code></a></td>
+           <td valign="top"><code><a>Object</a></code></td>
          </tr>
          <tr>
            <td valign="top">Value:</td>
@@ -1501,7 +1522,7 @@
           </tr>
           <tr>
             <td valign="top">Domain:</td>
-            <td valign="top"><a title="Object"><code>Object</code></a></td>
+            <td valign="top"><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td valign="top">Value:</td>
@@ -1523,7 +1544,7 @@
           </tr>
           <tr>
             <td valign="top">Domain:</td>
-            <td valign="top"><code><a>Object</a> | <a>Link</a></code></td>
+            <td valign="top"><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td valign="top">Value:</td>
@@ -1716,7 +1737,7 @@
           </tr>
           <tr>
             <td valign="top">Domain:</td>
-            <td valign="top"><a title="Object"><code>Object</code></a></td>
+            <td valign="top"><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td valign="top">Value:</td>
@@ -1887,7 +1908,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a>
+          <td valign="top"><code><a>Object</a></code>
         </tr>
         <tr>
           <td valign="top">Equivalent To:</td>
@@ -1911,7 +1932,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Equivalent To:</td>
@@ -1939,7 +1960,7 @@
           </tr>
           <tr>
             <td valign="top">Domain:</td>
-            <td valign="top"><a title="Object"><code>Object</code></a></td>
+            <td valign="top"><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td valign="top">Value:</td>
@@ -1966,7 +1987,7 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
@@ -1990,11 +2011,11 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
           <td valign="top">Equivalent To:</td>
@@ -2018,11 +2039,11 @@
         </tr>
         <tr>
           <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a></td>
+          <td valign="top"><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td valign="top">Value:</td>
-          <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
           <td valign="top">Equivalent To:</td>

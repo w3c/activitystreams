@@ -252,9 +252,8 @@
    "url": "http://example.org/martin",
    "image": {
      "@id": "http://example.org/martin/image.jpg",
-     "mediaType": "image/jpeg",
-     "width": 250,
-     "height": 250
+     "@type": "http://activitystrea.ms/2.0/Link",
+     "mediaType": "image/jpeg"
    }
   },
   "object" : {
@@ -304,10 +303,15 @@
         "displayName": "Martin Smith",
         "url": {
           "@id": "http://example.org/martin",
+          "@type": "http://activitystrea.ms/2.0/Link",
           "displayName": "Martin's Profile"
         },
         "image": {
           "@id": "http://example.org/martin/image",
+          "@type": [
+            "http://activitystrea.ms/2.0/Link",
+            "http://example.org/ImageResource"
+          ],
           "mediaType": "image/jpeg",
           "width": 250,
           "height": 250
@@ -318,9 +322,8 @@
         "@id": "http://example.org/album/my_fluffy_cat.jpg",
         "image": {
           "@id": "http://example.org/album/my_fluffy_cat_thumb.jpg",
+          "@type": "http://activitystrea.ms/2.0/Link",
           "mediaType": "image/jpeg",
-          "width": 250,
-          "height": 250,
           "rel": "preview"
         }
       },
@@ -333,9 +336,8 @@
         },
         "image": {
           "@id": "http://example.org/album/thumbnail.jpg",
-          "mediaType": "image/jpeg",
-          "width": 250,
-          "height": 250
+          "@type": "http://activitystrea.ms/2.0/Link",
+          "mediaType": "image/jpeg"
         }
       }
     }
@@ -482,7 +484,7 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
       <h2><dfn title="Link">Link</dfn></h2>
 
       <p>
-        A <code>Link</code> represents a reference or pointer to another resource.
+        A <code>Link</code> represents a dereferenceable pointer to another resource.
         Within the JSON-LD serialization, they are expressed as either: (1) a String 
         containing an absolute or relative IRI, (2) a JSON object, or (3) an Array
         containing a mixture of IRIs or JSON objects. Links are closely related to 
@@ -490,24 +492,17 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
       </p>
 
       <p>
-        When expressed as a JSON object, the target URI of the Link is the global 
-        identifier expressed in the JSON-LD serialization using the <code>@id</code> 
-        keyword. In addition, all <code>Link</code> instances share the following 
-        common set of properties as defined by the 
+        The target URI of the Link is the global identifier expressed in the JSON-LD 
+        serialization using the <code>@id</code> keyword. In addition, all <code>Link</code> 
+        instances share the following common set of properties as defined by the 
         <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>:
         <code>
           <a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-height">height</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-image">image</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> |
+          <a href="activitystreams2-vocabulary.html#dfn-hreflang">hreflang</a> | 
           <a href="activitystreams2-vocabulary.html#dfn-language">language</a> | 
           <a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a> |
           <a href="activitystreams2-vocabulary.html#dfn-rel">rel</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-resultof">resultOf</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-title">title</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-width">width</a>
+          <a href="activitystreams2-vocabulary.html#dfn-title">title</a>
         </code>
       </p>
 
@@ -543,11 +538,21 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
   "displayName": "My Application",
   <b>"image": {
     "@id": "http://example.org/application/123.png",
-    "mediaType": "image/png",
-    "height": 320,
-    "width": 320
+    "@type": "http://activitystrea.ms/2.0/Link",
+    "mediaType": "image/png"
   }</b>
 }</pre></figure>
+
+      <p>
+        Formally, the former example establishes a unqualified 
+        relationship to the image resource while the latter creates a 
+        qualified relationship that allows additional properties
+        to be specified for the link. Such properties (e.g. <code>mediaType</code>, 
+        <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a> 
+        relationship itself as opposed to describing the referenced resource. For 
+        many practical applications, this distinction will likely be fairly 
+        insignificant but it is still worth keeping in mind.
+      </p>
 
       <figure><figcaption>
         If more than one link value is to be expressed, A JSON Array with a
@@ -561,9 +566,8 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
     "http://example.org/application/abc.gif",
     {
       "@id": "http://example.org/application/123.png",
-      "mediaType": "image/png",
-      "height": 320,
-      "width": 320
+      "@type": "http://activitystrea.ms/2.0/Link",
+      "mediaType": "image/png"
     }
   ]</b>
 }</pre></figure>
@@ -595,6 +599,7 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
     "http://example.org/foo.jpg",
     {
       "@id": "http://example.org/screens/1.jpg",
+      "@type": "http://activitystrea.ms/2.0/Link",
       "rel": "preview",
       "mediaType": "image/jpeg"
     }
@@ -610,6 +615,34 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
         MUST only use link relations that are valid in terms of both the [[RFC5988]] and
         [[HTML5]] definitions.
       </p>
+
+      <p>
+        Also note that it is possible to use <a>Link</a> and <a>Object</a> together to indicate 
+        that a particular JSON object can be interpretted as both. For instance, in the 
+        following example, the value of the <code>image</code> property is marked as being
+        both a <a>Link</a> and a hypothetical <code>urn:example:image</code> object that,
+        for the sake of this example, derives from <code>Object</code>. This allows additional
+        properties describing the <a>Object</a> -- such as <code>height</code> and <code>width</code> -- 
+        to be specified.
+      </p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight json">{
+  "@type": "urn:example:types:application",
+  "image": [
+    "http://example.org/foo.jpg",
+    {
+      "@id": "http://example.org/screens/1.jpg",
+      "@type": [
+        "http://activitystrea.ms/2.0/Link",
+        "urn:example:image"],
+      "rel": "preview",
+      "mediaType": "image/jpeg",
+      "height": 200,
+      "widht": 200
+    }
+  ]
+}</pre></figure>
 
     </section>
 
