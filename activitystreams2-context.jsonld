@@ -8,7 +8,6 @@
      "org": "http://www.w3.org/ns/org#",
      "prov": "http://www.w3.org/ns/prov#",
      "geo": "http://ld.geojson.org/vocab#",
-     "link": "http://www.iana.org/assignments/link-relations#",
      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
      "owl": "http://www.w3.org/2002/07/owl#"
@@ -682,25 +681,25 @@
    {
      "@id": "as:to",
      "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Activity",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
      "rdfs:range": "as:Object"
    },
    {
      "@id": "as:cc",
      "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Activity",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
      "rdfs:range": ["as:Object", "as:Link"]
    },
    {
      "@id": "as:bto",
      "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Activity",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
      "rdfs:range": ["as:Object", "as:Link"]
    },
    {
      "@id": "as:bcc",
      "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Activity",
+     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
      "rdfs:range": ["as:Object", "as:Link"]
    },
    {
