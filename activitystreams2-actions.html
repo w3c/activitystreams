@@ -419,7 +419,7 @@
           <td valign="top"><code>http://activitystrea.ms/2.0/Parameter</code></td>
           <td rowspan="2" valign="top">
             <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
-            <a>type</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
+            <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
             <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
             <a>fractionDigits</a> | <a>pattern</a> | <a>placeholder</a></code></p>
           </td>
@@ -439,7 +439,7 @@
           <td valign="top"><code>http://activitystrea.ms/2.0/Header</code></td>
           <td rowspan="3" valign="top">
             <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
-            <a>type</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
+            <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
             <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
             <a>fractionDigits</a> | <a>pattern</a> | <a>placeholder</a></code></p>
           </td>
@@ -840,14 +840,14 @@
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>type</dfn></td>
+            <td rowspan="4" valign="top"><dfn>valueType</dfn></td>
             <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/type</code></td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/valueType</code></td>
           </tr>
           <tr>
             <td valign="top">Notes:</td>
             <td valign="top">
-              Specifies the expected data type of the parameter. The value SHOULD
+              Specifies the parameter's expected value type. The value SHOULD
               specify a type from the XML Schema Data Types.
             </td>
           </tr>
