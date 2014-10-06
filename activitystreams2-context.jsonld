@@ -25,7 +25,7 @@
    "mediaType": "as:mediaType",
    "verb": {
      "@id": "as:verb",
-     "@type": "@vocab"
+     "@type": "@id"
    },
    "actor": {
      "@id": "as:actor",
