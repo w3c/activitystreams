@@ -143,6 +143,10 @@
      "@id": "as:location",
      "@type": "@id"
    },
+   "locationOf": {
+     "@reverse": "as:location",
+     "@type": "@id"
+   },
    "published": {
      "@id": "as:published",
      "@type": "xsd:dateTime"
@@ -231,8 +235,12 @@
      "@type": "@id"
    },
    "using": {
-      "@id": "as:using",
+      "@reverse": "as:handlerFor",
       "@type": "@id"
+   },
+   "handlerFor": {
+     "@id": "as:handlerFor",
+     "@type": "@id"
    },
    "scope": {
      "@id": "as:scope",
@@ -456,6 +464,9 @@
    },
    "owl:equivalentProperty": {
      "@type": "@id"
+   },
+   "owl:inverseOf": {
+     "@type": "@id"
    }
  }],
  "@id": "as:",
@@ -495,7 +506,15 @@
      "@id": "as:using",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:PotentialAction",
-     "rdfs:range": ["as:PotentialActionHandler", "as:Object"]
+     "rdfs:range": ["as:PotentialActionHandler", "as:Object"],
+     "owl:inverseOf": "as:handlerFor"
+   },
+   {
+     "@id": "as:handlerFor",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:PotentialActionHandler", "as:Object"],
+     "rdfs:range": "as:PotentialAction",
+     "owl:inverseOf": "as:using"
    },
    {
      "@id": "as:PotentialActionHandler",
@@ -541,19 +560,43 @@
      "@id": "as:actor",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:inverseOf": "as:actorOf"
+   },
+   {
+     "@id": "as:actorOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": ["as:Activity", "as:PotentialAction"],
+     "owl:inverseOf": "as:actor"
    },
    {
      "@id": "as:object",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:inverseOf": "as:objectOf"
+   },
+   {
+     "@id": "as:objectOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": ["as:Activity", "as:PotentialAction"],
+     "owl:inverseOf": "as:object"
    },
    {
      "@id": "as:target",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:inverseOf": "as:target"
+   },
+   {
+     "@id": "as:targetOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": ["as:Activity", "as:PotentialAction"],
+     "owl:inverseOf": "as:target"
    },
    {
      "@id": "as:result",
@@ -562,16 +605,39 @@
      "rdfs:range": ["as:Object", "as:Link"]
    },
    {
+     "@id": "as:resultOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Activity",
+     "owl:inverseOf": "as:result"
+   },
+   {
      "@id": "as:instrument",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:inverseOf": "as:instumentFor"
+   },
+   {
+     "@id": "as:instrumentFor",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": ["as:Activity", "as:PotentialAction"],
+     "owl:inverseOf": "as:instrument"
    },
    {
      "@id": "as:participant",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:inverseOf": "as:participantOf"
+   },
+   {
+     "@id": "as:participantOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": ["as:Activity", "as:PotentialAction"],
+     "owl:inverseOf": "as:participant"
    },
    {
      "@id": "as:priority",
@@ -642,7 +708,15 @@
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": "dct:contributor"
+     "owl:equivalentProperty": "dct:contributor",
+     "owl:inverseOf": "as:authorOf"
+   },
+   {
+     "@id": "as:authorOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Object",
+     "owl:inverseOf": "as:author"
    },
    {
      "@id": "as:content",
@@ -680,20 +754,44 @@
      "@id": "as:location",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Link", "as:Object"]
+     "rdfs:range": ["as:Link", "as:Object"],
+     "owl:inverseOf": "as:locationOf"
+   },
+   {
+     "@id": "as:locationOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Object",
+     "owl:inverseOf": "as:location"
    },
    {
      "@id": "as:generator",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"]
+     "rdfs:range": ["as:Object", "as:Link"],
+     "owl:inverseOf": "as:generatorOf"
+   },
+   {
+     "@id": "as:generatorOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Object",
+     "owl:inverseOf": "as:generator"
    },
    {
      "@id": "as:provider",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": "dct:publisher"
+     "owl:equivalentProperty": "dct:publisher",
+     "owl:inverseOf": "as:providerOf"
+   },
+   {
+     "@id": "as:providerOf",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "as:Object",
+     "owl:inverseOf": "as:provider"
    },
    {
      "@id": "as:published",
@@ -824,7 +922,15 @@
      "@id": "as:memberOf",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
-     "rdfs:range": "as:Collection"
+     "rdfs:range": "as:Collection",
+     "owl:inverseOf": "as:items"
+   },
+   {
+     "@id": "as:items",
+     "@type": "owl:ObjectProperty",
+     "rdfs:domain": "as:Collection",
+     "rdfs:range": "as:Object",
+     "owl:inverseOf": "as:memberOf"
    },
    {
      "@id": "as:totalItems",
