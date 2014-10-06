@@ -302,7 +302,10 @@
         "@type": "urn:example:types:person",
         "@id": "urn:example:person:martin",
         "displayName": "Martin Smith",
-        "url": "http://example.org/martin",
+        "url": {
+          "@id": "http://example.org/martin",
+          "displayName": "Martin's Profile"
+        },
         "image": {
           "@id": "http://example.org/martin/image",
           "mediaType": "image/jpeg",
@@ -391,7 +394,8 @@
           <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | 
           <a href="activitystreams2-vocabulary.html#dfn-published">published</a> |
           <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a>
+          <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a> |
+          <a href="activitystreams2-vocabulary.html#dfn-resultof">resultOf</a> |
           <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> |  
           <a href="activitystreams2-vocabulary.html#dfn-starttime">startTime</a> | 
           <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> |
@@ -486,19 +490,22 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
       </p>
 
       <p>
-        The target URI of the Link is the global identifier expressed in the JSON-LD
-        serialization using the <code>@id</code> keyword. In addition, all <code>Link</code>
-        instances share the following common set of properties as defined by the 
+        When expressed as a JSON object, the target URI of the Link is the global 
+        identifier expressed in the JSON-LD serialization using the <code>@id</code> 
+        keyword. In addition, all <code>Link</code> instances share the following 
+        common set of properties as defined by the 
         <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>:
         <code>
           <a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a> |
           <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | 
+          <a href="activitystreams2-vocabulary.html#dfn-height">height</a> |
           <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | 
           <a href="activitystreams2-vocabulary.html#dfn-image">image</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | 
+          <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> |
+          <a href="activitystreams2-vocabulary.html#dfn-language">language</a> | 
           <a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a> |
           <a href="activitystreams2-vocabulary.html#dfn-rel">rel</a> |
+          <a href="activitystreams2-vocabulary.html#dfn-resultof">resultOf</a> |
           <a href="activitystreams2-vocabulary.html#dfn-title">title</a> |
           <a href="activitystreams2-vocabulary.html#dfn-width">width</a>
         </code>
@@ -649,14 +656,8 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
     "@id": "urn:example:verb:like",
     "displayName": "like"
   },
-  "actor": {
-    "@type": "http://activitystrea.ms/2.0/Link",
-    "@id": "http://example.org/profiles/joe"
-  },
-  "object": {
-    "@type": "http://activitystrea.ms/2.0/Link",
-    "@id": "http://example.com/notes/1"
-  },
+  "actor": "http://example.org/profiles/joe",
+  "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
 }
 </code></pre></figure>

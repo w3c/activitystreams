@@ -532,6 +532,12 @@
      "rdfs:subClassOf": "as:Object"
    },
    {
+     "@id": "as:language",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": ["as:Object", "as:Link"],
+     "rdfs:range": "xsd:string"
+   },
+   {
      "@id": "as:displayName",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
