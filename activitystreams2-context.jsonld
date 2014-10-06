@@ -32,12 +32,24 @@
      "@id": "as:actor",
      "@type": "@id"
    },
+   "actorOf": {
+     "@reverse": "as:actor",
+     "@type": "@id"
+   },
    "object": {
      "@id": "as:object",
      "@type": "@id"
    },
+   "objectOf": {
+     "@reverse": "as:object",
+     "@type": "@id"
+   },
    "target": {
      "@id": "as:target",
+     "@type": "@id"
+   },
+   "targetOf": {
+     "@reverse": "as:target",
      "@type": "@id"
    },
    "result": {
@@ -45,14 +57,23 @@
      "@type": "@id"
    },
    "resultOf": {
-     "@reverse": "as:result"
+     "@reverse": "as:result",
+     "@type": "@id"
    },
    "instrument": {
      "@id": "as:instrument",
      "@type": "@id"
    },
+   "instrumentFor": {
+     "@reverse": "as:instrument",
+     "@type": "@id"
+   },
    "participant": {
      "@id": "as:participant",
+     "@type": "@id"
+   },
+   "participantOf": {
+     "@reverse": "as:participant",
      "@type": "@id"
    },
    "priority": {
@@ -102,6 +123,10 @@
      "@id": "as:author",
      "@type": "@id"
    },
+   "authorOf": {
+     "@reverse": "as:author",
+     "@type": "@id"
+   },
    "content": {
      "@id": "as:content",
      "@container": "@language"
@@ -126,8 +151,16 @@
      "@id": "as:generator",
      "@type": "@id"
    },
+   "generatorOf": {
+     "@reverse": "as:generator",
+     "@type": "@id"
+   },
    "provider": {
      "@id": "as:provider",
+     "@type": "@id"
+   },
+   "providerOf": {
+     "@reverse": "as:provider",
      "@type": "@id"
    },
    "summary": {
