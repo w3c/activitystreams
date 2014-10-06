@@ -170,7 +170,7 @@
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
             <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
             <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>replies</a></code></p>
+            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
           </td>
         </tr>
         <tr>
@@ -191,7 +191,7 @@
           <td rowspan="3" valign="top">
             <p><code><a>rel</a> | <a>mediaType</a> | <a>language</a> | <a>displayName</a> | 
             <a>title</a> | <a>icon</a> | <a>image</a> |  <a>height</a> | <a>width</a> | 
-            <a>duration</a></code></p>
+            <a>duration</a> | <a>resultOf</a></code></p>
           </td>
         </tr>
         <tr>
@@ -217,7 +217,7 @@
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
             <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
             <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>replies</a></code></p>
+            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
           </td>
         </tr>
         <tr>
@@ -247,7 +247,7 @@
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
             <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
             <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>replies</a></code></p>
+            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
           </td>
         </tr>
         <tr>
@@ -290,7 +290,7 @@
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
             <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
             <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>replies</a></code></p>
+            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
           </td>
         </tr>
         <tr>
@@ -317,7 +317,7 @@
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
             <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
             <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>replies</a></code></p>
+            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
           </td>
         </tr>
         <tr>
@@ -542,7 +542,7 @@
 
       <tbody>
       <tr>
-          <td rowspan="4" valign="top"><dfn>result</dfn></td>
+          <td rowspan="5" valign="top"><dfn>result</dfn></td>
           <td valign="top" width="10%">URI:</td>
           <td valign="top"><code>http://activitystrea.ms/2.0/result</code></td>
         </tr>
@@ -561,6 +561,10 @@
         <tr>
           <td valign="top">Value:</td>
           <td valign="top"><a title="Object"><code>Object</code></a> | <a title="Link"><code>Link</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Reverse Of:</td>
+          <td valign="top"><code><a>resultOf</a></code></td>
         </tr>
       </tbody>
 
@@ -1498,6 +1502,32 @@
           <tr>
             <td valign="top">Value:</td>
             <td valign="top"><a title="Link"><code>Link</code></a></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="5" valign="top"><dfn>resultOf</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/resultOf</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Identifies the Activity of which this object or link is a result.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a>Object</a> | <a>Link</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><a title="Activity"><code>Activity</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Reverse Of:</td>
+            <td valign="top"><code><a>result</a></code></td>
           </tr>
         </tbody>
 

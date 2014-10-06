@@ -44,6 +44,9 @@
      "@id": "as:result",
      "@type": "@id"
    },
+   "resultOf": {
+     "@reverse": "as:result"
+   },
    "instrument": {
      "@id": "as:instrument",
      "@type": "@id"
