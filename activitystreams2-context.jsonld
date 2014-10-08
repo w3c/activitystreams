@@ -13,6 +13,7 @@
      "owl": "http://www.w3.org/2002/07/owl#",
      "skos": "http://www.w3.org/2004/02/skos/core#"
    },{
+   "@vocab": "_:",
    "as" : "http://activitystrea.ms/2.0/",
    "as1" : "http://activitystrea.ms/1.0/",
    "id": "@id",
@@ -26,7 +27,7 @@
    "mediaType": "as:mediaType",
    "verb": {
      "@id": "as:verb",
-     "@type": "@id"
+     "@type": "@vocab"
    },
    "actor": {
      "@id": "as:actor",
