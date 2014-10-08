@@ -10,7 +10,8 @@
      "geo": "http://ld.geojson.org/vocab#",
      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-     "owl": "http://www.w3.org/2002/07/owl#"
+     "owl": "http://www.w3.org/2002/07/owl#",
+     "skos": "http://www.w3.org/2004/02/skos/core#"
    },{
    "as" : "http://activitystrea.ms/2.0/",
    "as1" : "http://activitystrea.ms/1.0/",
@@ -540,7 +541,8 @@
      "@id": "as:displayName",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:NaturalLanguageValue"
+     "rdfs:range": "as:NaturalLanguageValue",
+     "owl:equivalentPropety": "skos:prefLabel"
    },
    {
      "@id": "as:rel",
@@ -741,7 +743,7 @@
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
      "rdfs:range": "as:NaturalLanguageValue",
-     "owl:equivalentProperty": "dct:title"
+     "owl:equivalentProperty": ["dct:title","rdf:label"]
    },
    {
      "@id": "as:icon",
