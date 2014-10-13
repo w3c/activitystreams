@@ -258,7 +258,7 @@
   },
   "object" : {
    "@type": "urn:example:types:article",
-   "@id": "urn:example:blog:abc123/xyz"
+   "@id": "urn:example:blog:abc123/xyz",
    "url": "http://example.org/blog/2011/02/entry",
    "displayName": "Why I love Activity Streams"
   },
@@ -478,6 +478,78 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
         The associated values MUST be Strings.
       </p>
 
+      <section class="informative">
+        <h2>Implementation Note</h2>
+
+      <p>
+        Implementers ought to note that, in [[JSON-LD]], establishment of a default
+        language requires the use of the <code>@language</code> keyword inside the 
+        JSON-LD <code>@context</code>. For instance:
+      </p>
+
+      <figure>
+        <figcaption>Using the <code>@language</code> keyword:</figcaption>
+<pre class="example highlight json">{
+  "@context": {
+    "@language": "en"
+  },
+  "displayName": "This is the title"
+}</pre></figure>
+
+      <p>Using the <code>@language</code> keyword in this manner establishes the 
+      default language context for all string literal property values contained
+      by the object, including those that may not be intended as natural language 
+      values. This current definition for <code>@language</code> makes it difficult
+      for implementations that choose to ignore JSON-LD semantics when processing 
+      Activity Streams documents or that wish to limit the language context only to
+      properties that are truly intended as natural language values. The <code>language</code>
+      property introduced by the Activity Streams Vocabulary is provided to address 
+      these shortcomings by allowing a default language to be established independently
+      of the JSON-LD <code>@context</code>.</p>
+
+      <figure>
+        <figcaption>Using the <code>language</code> property has the same effect 
+        as using the <code>@language</code> inside the JSON-LD <code>@context</code>:</figcaption>
+<pre class="example highlight json">{
+  "language": "en",
+  "displayName": "This is the title"
+}</pre></figure>
+
+      <p>However, use of <code>language</code> 
+      means that JSON-LD based implementations will need to take an additional 
+      processing step to ensure that properties such as <code>title</code>, <code>displayName</code>,
+      <code>summary</code> and <code>content</code> are handled properly.
+
+      <figure>
+        <figcaption>For instance, the following example JavaScript function extracts 
+        the value of the <code>language</code> property and injects it as an appropriate
+        JSON-LD <code>@language</code> keyword into specific properties that are defined
+        as Natural Language Values to ensure that such properties are properly handled
+        by the standardized JSON-LD algorithms:</figcaption>
+<pre class="example highlight javascript">
+function _fixdefaultlanguage(lang, obj) {
+  var __lang = obj['language'] || lang;
+  for (var n in obj) {
+    if (nlvs.indexOf(n) > -1) {
+      var vals = obj[n];
+      vals.forEach(function(val) {
+        val['@language'] = val['@language'] || __lang;
+      });
+    } else if (typeof obj[n] === 'object') {
+      var next = exp[n];
+      if (!Array.isArray(next)) 
+        next = [next];
+      next.forEach(
+        _fixdefaultlanguage.bind(
+          null,__lang));
+    }
+  }
+}
+</pre>
+      </figure>
+
+      </section>
+
     </section>
 
     <section id="link">
@@ -695,6 +767,27 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
 }
 </code></pre></figure>
 
+      <section class="informative">
+        <h2>Implementation Note</h2>
+
+        <p>
+          Since Activity Streams 1.0, the <code>verb</code> property has 
+          been defined to permit identifiers either in the form of absolute IRI's 
+          or simple <code>isegment-nz-nc</code> tokens. For instance, 
+          "<code>post</code>" is a valid Activity Streams verb.
+        </p>
+
+        <p>
+          However, existing JSON-LD processing algorithms have difficulty 
+          processing such <code>isegment-nz-nc</code> token values properly
+          without additional processing. It is RECOMMENDED that JSON-LD
+          implementations handle simple <code>isegment-nz-nc</code> verbs 
+          as "blank nodes". For instance, the value "<code>post</code>" would
+          map to the blank node identified as <code>_:post</code>.
+        </p>
+
+      </section>
+
       <section id="audienceTargeting">
 
         <h2>Audience Targeting</h2>
@@ -886,6 +979,8 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
     <section id="actions">
 
       <h2><dfn>Potential Actions</dfn></h2>
+
+      <p><mark>Ed.Note: This section is currently provisional and may be moved to a separate document.</mark></p>
 
       <p>
         All <code>Object</code> instances can have an 
@@ -1108,6 +1203,14 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
             <td><code>prov:</code></td>
             <td><code>http://www.w3.org/ns/prov#</code></td>
           </tr>
+          <tr>
+            <td><code>geo:</code></td>
+            <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></td>
+          </tr>
+          <tr>
+            <td><code>geos:</code></td>
+            <td><code>http://www.opengis.net/ont/geosparql#</code></td>
+          </tr>
         </table>
 
         <p>
@@ -1264,7 +1367,7 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
      Chan, Michael Richardson, Michael Sullivan, Mike Macgirvin, Mislav
      Marohni&#263;, Mo Jangda, Monica Wilkinson, Nate Benes, NeilFred
      Picciotto, Nick Howard, Nick Lothian, Nissan Dookeran, Nitya
-     Narasimhan, Pablo Martin, Padraic Brady, Pat G.  Cappalaere, Patrick
+     Narasimhan, Pablo Martin, Padraic Brady, Pat Cappelaere, Patrick
      Aljord, Peter Ferne, Peter Reiser, Peter Saint-Andre, Phil Wolff,
      Philip (flip) Kromer, Richard Cunningham, Richard Zhao, Rick
      Severson, Robert Hall, Robert Langbert, Robert Dolin, Robin Cover,
