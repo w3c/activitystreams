@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Activity Streams 2.0 : Action Handlers</title>
+  <title>Action Vocabulary</title>
   <meta charset="UTF-8" />
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
@@ -53,1613 +53,1112 @@
 
   <section id="abstract">
     <p>
-      This specification defines Action Handlers for use with the Activity
-      Streams 2.0 format.
+      This specification describes the Actions vocabulary.
     </p>
+
+    <section id="authorsnote" class="informative">
+      <h2>Author's Note</h2>
+      <p>
+        This draft is heavily influenced by the JSON Activity
+        Streams 1.0 specification originally co-authored by Martin
+        Atkins, Will Norris, Chris Messina, Monica Wilkinson, Rob Dolin and
+        James Snell.  The author is very thankful for their significant
+        contributions and gladly stands on their shoulders.  Some portions of
+        the original text of Activity Streams 1.0 are used in this document.
+      </p>
+    </section>
   </section>
 
   <section id="sotd">
-    <p>
-      Note that this document is a work-in-progress draft specification
-      that does not yet represent a "standard".  It is the intention of
-      this specification to propose a few new ideas and openly solicit
-      feedback on their definition and use.  While this document might
-      eventually evolve into a recommendation the ideas described herein 
-      have not yet been broadly implemented and have definitions that 
-      will evolve through successive iterations of this draft.
-    </p>
   </section>
 
   <section id="introduction">
     <h2>Introduction</h2>
-    <p>
-      The Activity Streams 2.0 [[!AS2]] specification introduces the notion 
-      of "actions" that can be associated with objects.  Using the <code><a>actions</a></code> 
-      property, the producer of an object can declare a specific set of verbs 
-      appropriate for the object and map each of those to one or more objects 
-      ("action handlers") or resources capable of "carrying out" the verb.  
-      This document expands on that mechanism by defining and describing a 
-      core set of action handler object types.
-    </p>
 
     <p>
-      An <dfn title="Action Handler" id="actionHandler">Action Handler</dfn> is an 
-      Activity Streams 2.0 object whose <code>objectType</code> and other properties 
-      instruct a consuming application how to carry out the verb the action handler 
-      has been associated with.
+      The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in [[!RFC2119]].
     </p>
 
-    <figure><figcaption>For instance, given the following example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "Title of the note",
-  "content": "This is a simple note.",
-  "actions": {
-    "share": {
-      "objectType": "ViewActionHandler",
-      "url": "http://example.org/share",
-      "target": "_blank"
-    },
-    "like": {
-      "objectType": "EmbedActionHandler",
-      "mediaType": "text/plain",
-      "content": "Hello World"
-    }
-  }
-}</pre></figure>
+    <section id="termconventions">
 
-    <p>
-      The "<code>note</code>" object has two declared actions: "<code>share</code>" 
-      and "<code>like</code>".  Each of those is associated with one action handler 
-      object.  The "<code>share</code>" action has a action handler of type 
-      "<code>ViewActionHandler</code>", while the "<code>like</code>" action has an 
-      "<code>EmbedActionHandler</code>".
-    </p>
+      <h2>Value Conventions</h2>
+
+      <p>
+        This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is also
+        an IRI, so a URI may be used wherever an IRI is named.  There are two
+        special considerations: (1) when an IRI that is not also a URI is
+        given for dereferencing, it MUST be mapped to a URI using the steps
+        in Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
+        value, it MUST NOT be so mapped.
+      </p>
+
+    </section>
 
   </section>
 
-  <section id="actionhandlers">
-    <h2>Action Handlers</h2>
+  <section id="types">
+    <h2>Classes</h2>
+
+    <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
 
     <p>
-      As illustrated in the example, action handlers are represented as
-      Activity Streams 2.0 Objects.  All such objects share a common set of
-      base member properties as defined in the following table:
+    Classes: <code>
+      <a>PotentialAction</a> | <a>PotentialActionHandler</a> | <a>HttpRequest</a> |
+      <a>BrowserView</a> | <a>EmbeddedView</a> | <a>Intent</a> | <a>PotentialActionHandlerInput</a> |
+      <a>Payload</a> | <a>Auth</a> | <a>UrlTemplate</a> | <a>HtmlForm</a> |
+      <a>Parameter</a> | <a>Header</a>
+    </code>
     </p>
 
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="confirm" id="confirm-attribute">confirm</dfn></code></td>
-        <td>Boolean</td>
-        <td>
-          True if the consuming application ought to seek confirmation
-          prior to using the action handler to carry out it's associated
-          action. Defaults to <code>false</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="context" id="context-attribute">context</dfn></code></td>
-        <td>JSON object</td>
-        <td>
-          Contextual information associated with the action handler,
-          represented as a JSON object without any particular structure.
-          How the context is used is dependent entirely on the action 
-          handler type and how a consuming application chooses to
-          implement the action handler.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="auth" id="auth-attribute">auth</dfn></code></td>
-        <td><a>Authentication Value</a></td>
-        <td>
-          For Action Handlers with specific authentication requirements, the 
-          <code><a>auth</a></code> property provides information about the 
-          specific authentication mechanisms supported.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="requires" id="requires-attribute">requires</dfn></code></td>
-        <td><a>Link Value</a></td>
-        <td>
-          An optional Link Value whose value(s) describe features or behaviors
-          an implementation MUST support in order to carry out the action. 
-          Requirements are designed to be intentionally open-ended and will
-          vary depending on specific Action Handler type. Any implementation
-          that does not support any specified requirement MUST ignore the 
-          Action Handler.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="prefers" id="prefers-attribute">prefers</dfn></code></td>
-        <td><a>Link Value</a></td>
-        <td>
-          An optional Link Value whose value(s) describe features or behaviors
-          an implementation SHOULD support in order to carry out the action.
-          Requirements are designed to be intentionally open-ended and will
-          vary depending on specific Action Handler type. Any implementation 
-          that does not support any specified preference MAY simply choose to
-          ignore the preference.
-        </td>
-      </tr>
-    </table>
-
-    <p>
-      This specification defines four specific base types of <a>Action Handler</a>:
-    </p>
-
-    <ul>
-      <li>The <a>HTTP Action Handler</a>,</li>
-      <li>The <a>View Action Handler</a>,</li>
-      <li>The <a>Embed Action Handler</a>, and </li>
-      <li>The <a>Intent Action Handler</a>.</li>
-    </ul>
-
-    <p>
-      Implementations are free to use Activity Stream objects of any
-      objectType as an action handler.  Consuming applications MAY ignore
-      any object it encounters that use objectTypes that are not recognized
-      or supported as action handlers.  Alternatively, the consuming
-      application MAY treat such objects as implied 
-      <a title="Intent Action Handler">Intent Action Handlers</a>.
-    </p>
-
-    <p>
-      Multiple independent action handlers can be associated with any
-      single verb using a JSON Array.  The ordering of objects within such
-      an array is not considered to be significant.
-    </p>
-
-    <figure><figcaption>In the following example, the "share" action has 
-    two associated action handlers:</figcaption>
-<pre class="example highlight">{
-  "objectType": "event",
-  "displayName": "Party!",
-  "content": "We're going to party like it's 1999!",
-  "id": "urn:example:events:123",
-  "actions": {
-   "share": [
-     {
-       "objectType": "HttpActionHandler",
-       "method": "POST",
-       "url": "http://example.org/share-this/123",
-       "returns": {
-         "objectType": "TypedPayload",
-         "mediaType": "text/html"
-       }
-     },
-     {
-       "objectType": "EmbedActionHandler",
-       "mediaType": "text/html",
-       "content": "&lt;div>...&lt;/div>"
-     }
-   ]
-  }
-}</pre></figure>
-
-    <section id="protocol-handler-attributes">
-      <h2>Common Attributes for Protocol-based Action Handlers</h2>
-
-      <p>
-        Certain Action Handlers types, such as the <a>View Action Handler</a>
-        and <a>HTTP Action Handler</a>, are considered to be "Protocol-Based" --
-        that is, implementation of the action requires an application to 
-        invoke a request-and-response type transaction. Such Action Handlers
-        MAY contain additional properties that describe the expected inputs,
-        outputs, authentication, and other requirements necessary to complete
-        the action.
-      </p>
-
-      <table border="1">
+    <table border="1" cellpadding="5" width="100%">
+      <thead>
         <tr>
-          <th>Property</th>
-          <th>Value</th>
-          <th>Description</th>
+          <th>Class</th>
+          <th colspan="2" width="40%">Description</th>
+          <th width="40%">Terms</th>
         </tr>
+      </thead>
+
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/PotentialAction">
         <tr>
-          <td><code><dfn title="expects" id="expects-attribute">expects</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            For Action Handlers with a distinct input requirement, the 
-            <code><a>expects</a></code> property provides a description of the expected 
-            input. The value is expressed as a Link Value. When multiple
-            values are provided, they MUST be considered mutually exclusive
-            alternatives.
+          <td rowspan="3" valign="top"><dfn itemprop="label">PotentialAction</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/PotentialAction</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a href="activitystreams2-vocabulary.html#dfn-verb-term">verb</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-actor">actor</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-object-term">object</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-target">target</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-instrument">instrument</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-participant">participant</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-priority">priority</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-to">to</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-bto">bto</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-cc">cc</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a> |
+            <a>confirm</a> | <a>using</a></code></p>
+            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
+            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
           </td>
         </tr>
         <tr>
-          <td><code><dfn title="returns" id="returns-attribute">returns</dfn></code></td>
-          <td><a>Link Value</a></td>
-          <td>
-            For Action Handlers with a distinct output, the <code><a>returns</a></code>
-            property provides a description of the expected output. The value is
-            expressed as a Link Value. When multiple values are provided, they MUST 
-            be considered mutually exclusive alternatives.
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Represents a potential or pending activity (in contrast to an <a href="activitystreams2-vocabulary.html#dfn-activity"><code>Activity</code></a>
+            which represents completed or ongoing activities).
           </td>
         </tr>
-      </table>
-    </section>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
+        </tr>
+      </tbody>
 
-  </section>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/PotentialActionHandler">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">PotentialActionHandler</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/PotentialActionHandler</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
+            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
+            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Represents a method of carrying out a <a title="PotentialAction">PotentialAction</a>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
+        </tr>
+      </tbody>
 
-  <section id="csp">
-    <h2>Content-Security Policy</h2>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/HttpRequest">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">HttpRequest</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/HttpRequest</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a>method</a></code></p>
+            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
+            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
+            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
+            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <a>PotentialActionHandler</a> that describes an HTTP request/response flow used to carry
+            out a <a>PotentialAction</a>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
+        </tr>
+      </tbody>
 
-    <p>
-      Note that all Action Handler types are subject to any relevant active
-      Content Security Policy [[!CSP11]], or CSP, that is in-scope for the 
-      context in which the Action Handler is being invoked.
-    </p>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/BrowserView">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">BrowserView</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/BrowserView</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a>browserContext</a> | <a>sandbox</a></code></p>
+            <p><i>From <a title="HttpRequest"><code>HttpRequest</code></a></i>:<br/><code><a>method</a></code></p>
+            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
+            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
+            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
+            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <a>PotentialActionHandler</a> that describes an HTTP request to load a Web Browser view used to
+            carry out a <a>PotentialAction</a>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-httprequest"><code>HttpRequest</code></a></td>
+        </tr>
+      </tbody>
 
-    <p>
-      The specific CSP directive that applies to a particular action
-      handler type may vary depending on the Action Handler's objectType.
-    </p>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/EmbeddedView">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">EmbeddedView</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/EmbeddedView</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a>sandbox</a></code> | <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
+            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
+            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
+            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
+            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <a>PotentialActionHandler</a> that describes embedded content used to carry out a <a>PotentialAction</a>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
+        </tr>
+      </tbody>
 
-    <p>
-      Because the successful application of the Content Security Policy
-      depends on the ability to determine the Origin [[!RFC6454]] with which
-      content is associated, the following rules for determining the origin
-      for an Action Handler apply:
-    </p>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Intent">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">Intent</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Intent</code></td>
+          <td rowspan="3" valign="top">
+            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
+            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
+            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
+            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
+            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
+            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <a>PotentialActionHandler</a>...
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
+        </tr>
+      </tbody>
 
-    <ul>
-      <li>
-      If the Action Handler contains a <code><a>url</a></code> property, 
-      and that property is being used to invoke the handler, the URL 
-      specified is used to establish the origin as defined in [[!RFC6454]], 
-      Section 4.
-      </li>
-      <li>
-      Otherwise, the Origin is derived from the Base URI of the Action
-      Handler as determined by following the guidelines specified in
-      Section 6.1 of the JSON-LD specification
-      [[!JSON-LD]].
-      </li>
-    </ul>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/PotentialActionHandlerInput">
+        <tr>
+          <td rowspan="2" valign="top"><dfn itemprop="label">PotentialActionHandlerInput</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/PotentialActionHandlerInput</code></td>
+          <td rowspan="2" valign="top">
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            An abstract class that represents the input to a PotentialActionHandler. Implementations are not 
+            expected to use this class type directly.
+          </td>
+        </tr>
+      </tbody>
 
-    <figure><figcaption>
-      The example below illustrates an HTTP response carrying
-      an Activity Streams object with three separate Action Handlers, each
-      with a distinct Origin:
-    </figcaption>
-<pre class="example highlight">HTTP/1.1 200 OK
-Content-Type: application/activity+json
-Content-Location: http://example.net/baz
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Payload">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">Payload</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Payload</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <code><a>PotentialActionHandlerInput</a></code> that describes the input payload. For example, for
+            <code><a>HttpRequest</a></code>, this describes the expected HTTP Request Payload.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
+        </tr>
+      </tbody>
 
-{
-   "objectType": "note",
-   "content": "This is a simple note",
-   "actions": {
-     "view": {
-       {
-         "objectType": "ViewActionHandler",
-         "url": "http://example.org/foo"
-       },
-       {
-         "objectType": "EmbedActionHandler",
-         "content": "&lt;div>This is fun&lt;/div>",
-         "@context": {
-           "@base": "https://example.com:8443/bar"
-         }
-       },
-       {
-         "objectType": "IntentActionHandler",
-         "context": {
-           "a": "b",
-           "b": "c"
-         }
-       }
-     }
-   }
-}</pre></figure>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Auth">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">Auth</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Auth</code></td>
+          <td rowspan="3" valign="top">
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <code><a>PotentialActionHandlerInput</a></code> that describes the input authentication requirements. 
+            For example, for <code><a>HttpRequest</a></code>, this describes the HTTP Authentication mechanism required for
+            the input.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
+        </tr>
+      </tbody>
 
-    <p>
-      The Origin for the "<code>ViewActionHandler</code>" is determined to be 
-      "<code>http://example.org:80</code>"; the Origin for the 
-      "<code>EmbedActionHandler</code>" is "<code>http://example.com:8443</code>"; 
-      and the Origin for the "<code>IntentActionHandler</code>" is 
-      "<code>http://example.net</code>".
-    </p>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/UrlTemplate">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">UrlTemplate</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/UrlTemplate</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a>template</a> | <a title="parameter-term">parameter</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <code><a>PotentialActionHandlerInput</a></code> that describes an [[!RFC6570]] URL Template used to construct
+            the Request URI for <code><a>HttpRequest</a></code> and <code><a>BrowserView</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
+        </tr>
+      </tbody>
 
-  </section>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/HtmlForm">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label">HtmlForm</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/HtmlForm</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a title="parameter-term">parameter</a></code></p>
+            <p><i>From <a title="Payload"><code>Payload</code></a></i>:<br /><code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <code><a>Payload</a></code> that describes an HTML Form used as the input payload of an 
+            <code><a>HttpRequest</a></code> or <code><a>BrowserView</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-payload"><code>Payload</code></a></td>
+        </tr>
+      </tbody>
 
-  <section id="httpActionHandler">
-    <h2>HTTP Action Handler</h2>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Parameter">
+        <tr>
+          <td rowspan="2" valign="top"><dfn itemprop="label">Parameter</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Parameter</code></td>
+          <td rowspan="2" valign="top">
+            <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
+            <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
+            <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
+            <a>fractionDigits</a> | <a>pattern</a> | <a>placeholder</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Used to describe the parameters used in both <code><a>UrlTemplate</a></code> and <code><a>HtmlForm</a></code>.
+          </td>
+        </tr>
+      </tbody>
 
-    <p>
-      An <dfn title="HTTP Action Handler">HTTP Action Handler</dfn> describes 
-      an HTTP request/response flow used to carry out an action.  It is 
-      identified using an objectType value of "<code>HttpActionHandler</code>".
-    </p>
+      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Header">
+        <tr>
+          <td rowspan="4" valign="top"><dfn itemprop="label">Header</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Header</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
+            <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
+            <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
+            <a>fractionDigits</a> | <a>pattern</a> | <a>placeholder</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A type of <code><a>PotentialActionHandlerInput</a></code> used to describe an HTTP Request Header
+            expected for both <code><a>HttpRequest</a></code> and <code><a>BrowserView</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top">
+            <a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a>
+        </tr>
+      </tbody>
 
-    <p>
-      The defining characteristic of the HttpActionHandler is that the
-      HTTP request and response flow occur independently of any browser or
-      navigation context.  In other words, invocation of the handler MUST
-      NOT directly cause the user agent to navigate to or visually display
-      the results of the HTTP request.  This makes the HttpActionHandler
-      suited primarily for RESTful API style operations in much the same
-      way that a web application developer would use the XMLHttpRequest
-      object.
-    </p>
-
-    <p>
-      In addition to the core properties supported by all Action Handlers,
-      and the additional <code><a>expects</a></code> and <code><a>returns</a></code>
-      attributes, HttpActionHandler objects support the following properties: 
-    </p>
-
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="url" id="url-attribute">url</dfn></code></td>
-        <td><a>Link Value</a></td>
-        <td>
-          Specifies the HTTP or HTTPS URL to which the HTTP request 
-          is directed.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="method" id="method-attribute">method</dfn></code></td>
-        <td>
-          HTTP Method String (e.g. <code>GET</code>, <code>POST</code>, <code>PUT</code>, etc)
-        </td>
-        <td>
-          The HTTP method to use. Defaults to <code>GET</code>.
-        </td>
-      </tr>
     </table>
 
-    <figure><figcaption>Example HTTP Action Handler:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-   "share": {
-     "objectType": "HttpActionHandler",
-     "url": "http://example.org/foo",
-     "method": "POST"
-   }
-  }
-}</pre></figure>
-
-    <p>
-      In the Activity Streams 2.0 format, the <code>url</code> property is defined as
-      a <a>Link Value</a>, this means that it is possible for the value of the
-      <code>url</code> property to be an Activity Stream object that a consuming
-      application can use to resolve the actual target URL.  This
-      specification defines a new <code><a title="URL Template">UrlTemplate</a></code> 
-      objectType specifically intended for such use.
-    </p>
-
-    <p>
-      The <code>UrlTemplate</code> object can be used within an HTTP Action Handler, 
-      for instance, whenever carrying out the HTTP request requires the
-      construction of a new URL that includes variable parameters:
-    </p>
-
-    <figure><figcaption></figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "review": {
-      "objectType": "HttpActionHandler",
-      "url": {
-        "objectType": "UrlTemplate",
-        "template": "http://example.org/note/123{?rating}",
-        "parameters": {
-          "rating": {
-            "displayName": "Rating",
-            "maxInclusive": 5,
-            "minInclusive": 1,
-            "type": "unsignedInt"
-          }
-        }
-      },
-      "method": "POST"
-    }
-  }
-}</pre></figure>
-
-    <p>
-      If the HTTP request requires an input payload, the HttpActionHandler
-      object can contain an <code><a>expects</a></code> property.  The value 
-      of <code>expects</code> is a <a>Link Value</a> represented either as a simple
-      JSON string containing a fully qualified IRI, an Object, or an array of 
-      IRI's or Objects.  This specification defines a new <code><a title="HTML Form">HtmlForm</a></code>
-      objectType to be used whenever the input of the HTTP request is an HTML 
-      Form POST.  A new <a title="Typed Payload">TypedPayload</a>
-      objectType is defined for use whenever the input is an
-      arbitrary MIME media type.
-    </p>
-
-    <p>
-      For example, the following describes an HTML Form post with a single
-      "<code>foo</code>" parameter submitted using the 
-      "<code>application/x-www-form-urlencoded</code>" format:
-    </p>
-
-    <figure><figcaption></figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "share": {
-      "objectType": "HttpActionHandler",
-      "method": "POST",
-      "url": "http://example.org/foo",
-      "expects": {
-        "objectType": "HtmlForm",
-        "mediaType": "application/x-www-form-urlencoded",
-        "parameters": {
-          "foo": {
-            "type": "string",
-            "displayName": "Foo Property"
-          }
-        }
-      }
-    }
-  }
-}</pre></figure>
-
-    <p>
-      When a Content Security Policy is in effect, invocation of the HTTP
-      Action Handler is always governed by the "<code>connect-src</code>" directive
-      defined in Section 3.2.5.3 of [[!CSP11]].  Further, when
-      the HTTP Action Hander specifies any method other than "<code>GET</code>", and the
-      input when invoking the action handler is an HTML Form, the handler
-      is additionally governed by the CSP "<code>form-action</code>" directive.
-    </p>
-
   </section>
 
-  <section id="viewActionHandler">
-    <h2>View Action Handler</h2>
+  <section id="action-terms">
+    <h2>Terms</h2>
 
-    <p>
-      The <dfn title="View Action Handler">View Action Handler</dfn> describes 
-      an action that causes either an existing or new browser context to be 
-      navigated to the identified resource.  It is specified using an objectType 
-      value of "<code>ViewActionHandler</code>".
-    </p>
+    <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
 
-    <p>
-      ViewActionHandler is roughly equivalent to the HTML anchor tag in
-      that invocation of the handler causes the user agent to navigate to
-      the identified resource.  Unlike the anchor tag, however, the
-      ViewActionHandler can specify the HTTP method, input payload and
-      expected output.
-    </p>
+    <table border="1" cellpadding="5" width="100%">
 
-    <p>
-      The View Action Handler adopts all of the same properties as the 
-      <a>HTTP Action Handler</a> and adds the following two additional, 
-      optional properties:
-    </p>
+      <thead>
+        <tr>
+          <th width="15%">Term</th>
+          <th colspan="2">Description</th>
+        </tr>
+      </thead>
 
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="target" id="target-attribute">target</dfn></code></td>
-        <td>Browsing Context Name or Keyword</td>
-        <td>
-          Specifies the Browsing Context Name or Keyword as defined
-          by [[HTML5]], that will be used when the action handler is 
-          invoked.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="sandbox" id="sandbox-attribute">sandbox</dfn></code></td>
-        <td>[[HTML5]] "sandbox" restrictions</td>
-        <td>
-          An optional string specifying [[HTML5]] sandbox restrictions
-          that ought to be applied to the content referenced by the 
-          <code><a>url</a></code> property.
-        </td>
-      </tr>
-    </table>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "ViewActionHandler",
-      "url": "http://example.org/foo",
-      "target": "_new"
-    }
-  }
-}</pre></figure>
-
-    <p>
-      As a shortcut, ViewActionHandlers that use the "<code>GET</code>" method can be
-      specified using a JSON string containing the absolute URL.  For
-      instance:
-    </p>
-
-    <figure><figcaption>A simplified ViewActionHandler:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": "http://example.org/foo"
-  }
-}</pre></figure>
-
-    <p>
-      In such cases, the "target" property is assumed to be unspecified.
-    </p>
-
-    <p>
-      If the intended HTTP request uses the <code>GET</code> method, and the target URL
-      is to be constructed by expanding a URL Template, the UrlTemplate
-      object itself can be used directly as the action handler.
-    </p>
-
-    <figure><figcaption>In other words, the following example:</figcaption>
-
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "ViewActionHandler",
-      "method": "GET",
-      "url": {
-        "objectType": "UrlTemplate",
-        "template": "http://example.org/note/{noteid}",
-        "parameters": {
-          "noteid": {
-            "type": "nonNegativeInteger",
-            "totalDigits": 5
-          }
-        }
-      }
-    }
-  }
-}</pre></figure>
-
-      <figure><figcaption>Can, instead, be specified as:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "UrlTemplate",
-      "template": "http://example.org/note/{noteid}",
-      "parameters": {
-        "noteid": {
-          "type": "nonNegativeInteger",
-          "totalDigits": 5
-        }
-      }
-    }
-  }
-}</pre></figure>
-
-    <p>
-      When a Content Security Policy is in effect, View Action Handlers are
-      subject to the same processing requirements as HTML anchor and form
-      elements.  For instance, the "<code>child_src</code>" directive governs whether or
-      not the View Action Handler is permitted to create nested or
-      auxiliary browsing contexts, while the "<code>form_action</code>" directive
-      governs a View Action Handler that uses any method other than <code>GET</code>
-      and whose input is an HTML Form.
-    </p>
-
-  </section>
-
-  <section id="embedActionHandler">
-    <h2>Embed Action Handler</h2>
-
-    <p>
-      An <dfn title="Embed Action Handler">Embed Action Handler</dfn> defines 
-      static or dynamic content to be visually rendered to carry out an action.  
-      Examples of embeds can include static HTML, images, videos, gadgets and 
-      applications.  It is identified using an objectType value of 
-      "<code>EmbedActionHandler</code>".
-    </p>
-
-    <p>
-      The defining characteristic that differentiates an Embed Action
-      Handler from a View Action Handler is that the former always implies
-      the use of the current browsing context and that content is expected
-      to be displayed inline as embedded content (similar to the way HTML5
-      img, audio, video and iframe tags are handled).
-    </p>
-
-    <p>
-      Embed Action Handlers use the <code>url</code>, <code>content</code>
-      and <code>mediaType</code> properties defined by the Activity
-      Streams 2.0 specification. The <code>url</code> property is used
-      to specify the URL from which to retrieve the content to embed.
-      The <code>content</code> property is used to specify the embedded
-      content directly within the Embed Action Handler. The <code>mediaType</code>
-      property specifies the MIME Media Type of the embedded content.
-    </p>
-
-    <p>
-      As with the <a>View Action Handler</a>, an Embed Action Handler 
-      MAY contain a <a>sandbox</a> property whose value is a string
-      specifying [[!HTML5]] sandbox restrictionsthat ought to be applied
-      to the embedded content.
-    </p>
-
-    <p>
-      Additional properties support by the Embed Action Handler include:
-    </p>
-
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="style" id="style-attribute">style</dfn></code></td>
-        <td><a>Styles Value</a></td>
-        <td>
-          CSS styling hints to apply to the element containing the 
-          embedded content.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="preview" id="preview-attribute">preview</dfn></code></td>
-        <td><a>Link Value</a></td>
-        <td>
-          A <a>Link Value</a> referencing a "preview" representation
-          of the embedded content. Typically, this would be a URL to 
-          a thumbnail or screenshot image of the content.
-        </td>
-      </tr>
-    </table>
-    
-    <p>
-      In the following example, the "view" action is associated with an
-      "<code>EmbedActionHandler</code>" containing a static fragment of HTML markup:
-    </p>
-
-    <figure><figcaption>A simple EmbedActionHandler example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "EmbedActionHandler",
-      "content": "<div>This is some bit of embedded HTML</div>",
-      "mediaType": "text/html",
-      "style": {
-        "height": "100px",
-        "width": "100px",
-        "box-shadow": "10px 10px 5px #888888"
-      },
-      "displayName": "Some embedded content",
-      "preview": "http://example.org/preview/123.jpg"
-    }
-  }
-}</pre></figure>
-
-    <p>
-      Alternatively, the embedded content can be referenced by URL:
-    </p>
-
-    <figure><figcaption>Reference by URL:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "EmbedActionHandler",
-      "url": "http://example.org/foo",
-      "mediaType": "text/html"
-    }
-  }
-}</pre></figure>
-
-    <p>
-      The <code><a>mediaType</a></code> parameter specifies the type of 
-      content to be embedded. Consuming applications MAY ignore Embed 
-      Action Handlers that specify unrecognized or unsupported mediaTypes.
-    </p>
-
-    <p>
-      Exactly how the content referenced by the Action Handler is embedded
-      and displayed is dependent on the implementation and may vary by
-      content type.  For instance, an implementation invoking an Embed
-      Action Handler that references an image resource (e.g. "<code>image/png</code>")
-      might use the HTML5 img tag to embed the content.
-    </p>
-
-    <p>
-      When a Content Security Policy is in effect, the specific directives
-      that apply will be entirely dependent on the type of content being
-      embedded and how the implementation chooses to embed it.  For
-      instance, embedded image resources will be governed by the
-      "<code>image_src</code>" directive while embedded video will be governed by the
-      "<code>media_src</code>" directive.  Please refer to the Content Security Policy
-      [[!CSP11]] specification for a detailed explanation of
-      each of the directives that may apply.
-    </p>
-
-  </section>
-
-  <section id="intentActionHandler">
-    <h2>Intent Action Handler</h2>
-
-    <p>
-      An <dfn title="Intent Action Handler">Intent Action Handler</dfn> 
-      provides a generic way for the publisher of
-      an Activity object to tell the consuming application to figure out
-      how to handle the action on it's own.  The consumer can, for
-      instance, pass the object off to some other native platform
-      application.  It is identified using an objectType value of
-      "<code>IntentActionHandler</code>".
-    </p>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "share": {
-      "objectType": "IntentActionHandler",
-      "displayName": "Share This",
-      "context": {
-        "foo": "ABC",
-        "bar": 123
-      }
-    }
-  }
-}</pre></figure>
-
-    <p>
-      Whether and how the Intent Action Handler is invoked is dependent
-      entirely on the implementation.  Regardless of how the handler is
-      invoked, the implementation MUST, at a minimum, pass the value of the
-      <code><a>context</a></code> property along.
-    </p>
-
-    <section id="service-and-application">
-      <h2>Using "service" and "application" objects as action handlers</h2>
-      <p>
-        The "<code>service</code>" and "<code>application</code>" object are 
-        existing objectTypes defined by the Activity Streams 1.0 core schema.  
-        While these objects were not originally designed to be used as action 
-        handlers, they can be adapted to that purpose.  Specifically, the 
-        "<code>service</code>" objectType can be used when the
-        action is to be carried out using some specific third party service
-        interface; the "<code>application</code>" objectType can be used when the action
-        is to be carried out by deferring some some specific native platform
-        application.  When such objectTypes are used as actions handlers,
-        they are to be treated as specializations of <a>Intent Action Handler</a>.
-      </p>
-
-      <figure><figcaption>Using "<code>service</code>" and "<code>application</code>"</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "share": {
-      "objectType": "service",
-      "displayName": "My Sharing Service",
-      "url": "http://share.example.org/api"
-    },
-    "save": {
-      "objectType": "application",
-      "displayName": "Read this later!",
-      "platform": "android",
-      "id": "123",
-      "url": "http://play.google.com/..."
-    }
-  }
-}</pre></figure>
-
-    </section>
-
-  </section>
-
-  <section id="htmlForms">
-    <h2>HTML Form Objects</h2>
-
-    <p>
-      The <dfn title="HTML Form" id="htmlForm">HTML Form</dfn> objectType
-      is used to provide an abstracted description of an HTML form. The 
-      primary motivation for expressing forms using the HTML Form object
-      is to separate the definition of the form from the presentation. 
-      When used within an Action Handler, this objectType allows the 
-      creator of the objectType to express required inputs without 
-      the need to express how that form is to be presented to the end
-      user. HTML Form objects are identified using the objectType 
-      value "<code>HtmlForm</code>".
-    </p>
-
-    <p>
-      In addition to the properties common to all Activity Streams
-      objectTypes, HTML Form objects define the following additional
-      properties:
-    </p>
-
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><def title="htmlform-parameters" id="htmlform-parameters-attribute">parameters</def></code></td>
-        <td><a>Parameters Object</a></td>
-        <td>Defines the HTML form parameters</td>
-      </tr>
-    </table>
-
-    <p>
-      For HTML Form objects, the <code><a>mediaType</a></code> property 
-      is used to identify the MIME media type used to encode the form 
-      data. The default value is assumed to be "<code>application/x-www-form-urlencoded</code>".
-    </p>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "review": {
-      "objectType": "ViewActionHandler",
-      "method": "POST",
-      "target": "_new",
-      "url": "http://example.org/foo",
-      "expects": {
-        "objectType": "HtmlForm",
-        "mediaType": "application/x-www-form-urlencoded",
-        "parameters": {
-          "foo": {
-            "displayName": "Foo",
-            "type": "string",
-            "placeholder": "Foo"
-          },
-          "bar": {
-            "type": "string",
-            "value": "Provided Value"
-          }
-        }
-      }
-    }
-  }
-}</pre></figure>
-
-    <figure><figcaption>Is roughly equivalent to the following HTML form:</figcaption>
-<pre class="example highlight">&lt;form method="post" action="http://example.org/foo" target="_new">
-  &lt;label for="foo">Foo:&lt;/label>
-  &lt;input id="foo" name="foo" type="input" placeholder="Foo" />
-  &lt;input name="bar" type="hidden" value="Provided Value" />
-  &lt;input type="submit" />
-&lt;/form>
-</pre>
-  
-  </section>
-
-  <section id="typedPayloads">
-
-    <h2>Typed Payload Objects</h2>
-
-    <p>
-      The <dfn title="Typed Payload">Typed Payload</dfn> objectType is used
-      to provide an abstract description of an arbitrary data payload of 
-      any Media Type. In an HTTP Action Handler, for instance, the 
-      Typed Payload can be used to describe that a REST API requires a
-      JSON-formatted input. The Typed Payload object is identified using
-      the objectType value "<code>TypedPayload</code>".
-    </p>
-
-    <p>
-      In addition to the properties common to all objectTypes, Typed
-      Payload objects define the following additional properties:
-    </p>
-
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>type</td>
-        <td><a>Type Value</a></td>
-        <td>
-          An optional Type Value that describes the payload's 
-          semantic type. Note that this is distinct from the 
-          MIME Media Type, which is expressed using the 
-          <code>mediaType</code> attribute.
-        </td>
-      </tr>
-      <tr>
-        <td>schema</td>
-        <td><a>Link Value</a></td>
-        <td>
-          An optional <a>Link Value</a> whose value(s)
-          describe the structure of the payload data.
-          If multiple values are provided, they are 
-          to be considered mutually exclusive alternatives.
-        </td>
-      </tr>
-    </table>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "review": {
-      "objectType": "HttpActionHandler",
-      "method": "POST",
-      "url": "http://example.org/foo",
-      "expects": {
-        "objectType": "TypedPayload",
-        "mediaType": "application/ld+json",
-        "type": "http://xmlns.com/foaf/0.1/Person"
-      }
-    }
-  }
-}</pre></figure>
-
-  </section>
-
-  <section title="urlTemplates">
-
-    <h2>URL Template Objects</h2>
-
-    <p>
-      The <dfn title="URL Template" id="urlTemplate">URL Template</dfn>
-      objectType is used to provide a description of an [[!RFC6570]]
-      URL Template. The URL Template is identified using the objectType
-      value "<code>UrlTemplate</code>".
-    </p>
-
-    <p>
-      In addition to the common properties support by all objectTypes,
-      the URL Template object defines the following additional properties:
-    </p>
-
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="template" id="template">template</dfn></code></td>
-        <td>[[!RFC6570]] URL Template</td>
-        <td>
-          The URL Template
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="urltemplate-parameters" id="urltemplate-parameters-attribute">parameters</dfn></code></td>
-        <td><a>Parameters Object</a></td>
-        <td>
-          Defines the URL Template parameters
-        </td>
-      </tr>
-    </table>
- 
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "review": {
-      "objectType": "UrlTemplate",
-      "template": "http://example.org/notes/{noteid}",
-      "parameters": {
-        "noteid": {
-          "type": "nonNegativeInteger",
-          "totalDigits": 5
-        }
-      }
-    }
-  }
-}</pre></figure>
-
-    <p>
-      If the given URL template includes any parameter tokens that do not
-      appear within the <code>parameters</code> property, the parameter value type is
-      assumed to be a UTF-8 encoded xsd:string with no maximum length.
-    </p>
-
-  </section>
-
-  <section id="parametersObject">
-    <h2>Parameters Object</h2>
-
-    <p>
-      A <dfn title="Parameters Object" id="parametersObject">Parameters Object</dfn> 
-      is used to provide descriptions of the variable inputs of objects such as 
-      <a title="HTML Form">HTML Forms</a> and <a title="URL Template">URL Templates</a>.
-      The object is expressed as a JSON dictionary mapping
-      parameter names to parameter descriptions which take the form of
-      either an XML Schema type name [[!XMLSCHEMA-2]], an
-      absolute IRI, a <a>Parameter Object</a>, or in some limited
-      cases, <a>Typed Payload</a> or <a>URL Template</a> objects.
-    </p>
-
-    <p>
-      By default, all parameters are assumed to be required.  When a
-      parameter is described using an object, the object MAY contain a
-      boolean <code>required</code> member.  If <code>required</code> is 
-      <code>false</code>, use of the parameter is assumed to be optional.
-    </p>
-
-    <figure><figcaption>Using the Parameters Object in UrlTemplate objects:</figcaption>
-<pre class="example highlight">{
-  "objectType": "UrlTemplate",
-  "template": "http://example.org{/foo,bar}"
-  "parameters": {
-    "foo": "string",
-    "bar": {
-      "type": "string",
-      "required": false
-    }
-  }
-}</pre></figure>
-
-      <p>
-        In this example, both the "<code>foo</code>" and "<code>bar</code>" 
-        parameters conform to the XML Schema type "<code>xsd:string</code>".  
-        The "<code>foo</code>" parameter is required while the "<code>bar</code>" 
-        parameter is optional.
-      </p>
-
-      <figure><figcaption>Using the Parameters Object in HtmlForm objects:</figcaption>
-<pre class="example highlight">{
-  "objectType": "HtmlForm",
-  "mediaType": "application/x-www-form-urlencoded",
-  "parameters": {
-    "foo": {
-      "displayName": "Foo",
-      "type": "string"
-    },
-    "bar": {
-      "displayName": "Bar",
-      "type": "string",
-      "required": false
-    }
-  }
-}</pre></figure>
-
-  </section>
-
-  <section id="parameterObject">
-    <h2>Parameter Object</h2>
-
-    <p>
-      A <dfn title="Parameter Object" id="parameterObject">Parameter Object</dfn>
-      provides a rich description of a single parameter in a manner that is
-      aligned with the commonly used XML Schema Type System [[!XMLSCHEMA-2]].
-    </p>
-
-    <p>
-      Parameter objects are simple JSON Objects with the following 
-      optional attributes:
-    </p>
-
-    <table border="1">
-      <tr>
-        <th>Property</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-displayName" id="parameter-displayName-attribute">displayName</dfn></code></td>
-        <td><a>Natural Language Value</a></td>
-        <td>
-          A Natural Language Value
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-required" id="parameter-required-attribute">required</dfn></code></td>
-        <td>Boolean</td>
-        <td>
-          <code>true</code> if the parameter is required, <code>false</code> if it is optional.
-          Defaults to <code>true</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-repeated" id="parameter-repeated-attribute">repeated</dfn></code></td>
-        <td>Boolean</td>
-        <td>
-          <code>true</code> if the parameter can be repeated zero or more times. Defaults to <code>false</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-value" id="parameter-value-attribute">value</dfn></code></td>
-        <td>(Any)</td>
-        <td>
-          Provides a fixed value for the parameter. When specified, implementations MUST
-          use the specified value.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-default" id="parameter-default-attribute">default</dfn></code></td>
-        <td>(Any)</td>
-        <td>
-          Provides a default value for the parameter. When specified, implementations MUST
-          use the specified value if no other value is supplied.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-type" id="parameter-type-attribute">type</dfn></code></td>
-        <td>[[!XMLSCHEMA-2]] type name or IRI</td>
-        <td>
-          Identifies the value type using either an XML Schema simple type name 
-          or an absolute IRI. If an implementation encounters a type it does 
-          not recognize, the property type MAY be assumed to be a UTF-8 encoded
-          <code>xsd:string</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-enumeration" id="parameter-enumeration-attribute">enumeration</dfn></code></td>
-        <td>Array of (Any)</td>
-        <td>
-          Provides a fixed array of possible values for the parameter. When specified, the 
-          property value MUST be one of the specified values.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-minLength" id="parameter-minLength-attribute">minLength</dfn></code></td>
-        <td>Non-Negative Integer</td>
-        <td>
-          Specifies the minimum unit of length for the value. The unit of length
-          depends entirely on the value type as defined by the <code><a title="parameter-type">type</a></code>
-          property.  For instance, for <code>string</code>, the length is determined by
-          the number of encoded characters; for <code>hexBinary</code>, the length is 
-          determined by the number of encoded 8-bit octets.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-maxLength" id="parameter-maxLength-attribute">maxLength</dfn></code></td>
-        <td>Non-Negative Integer</td>
-        <td>
-          Specifies the maximum unit of length for the value. The unit of length
-          depends entirely on the value type as defined by the <code><a title="parameter-type">type</a></code>
-          property.  For instance, for <code>string</code>, the length is determined by
-          the number of encoded characters; for <code>hexBinary</code>, the length is 
-          determined by the number of encoded 8-bit octets.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-maxInclusive" id="parameter-maxInclusive-attribute">maxInclusive</dfn></code></td>
-        <td>(Any)</td>
-        <td>
-          A value that is considered to be the inclusive upper bound of a range of 
-          possible values. This would typically be used only with numeric parameters.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-maxExclusive" id="parameter-maxExclusive-attribute">maxExclusive</dfn></code></td>
-        <td>(Any)</td>
-        <td>
-          A value that is considered to be the exclusive upper bound of a range of 
-          possible values. This would typically be used only with numeric parameters.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-minInclusive" id="parameter-minInclusive-attribute">minInclusive</dfn></code></td>
-        <td>(Any)</td>
-        <td>
-          A value that is considered to be the inclusive lower bound of a range of 
-          possible values. This would typically be used only with numeric parameters.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-minExclusive" id="parameter-minExclusive-attribute">minExclusive</dfn></code></td>
-        <td>(Any)</td>
-        <td>
-          A value that is considered to be the exclusive lower bound of a range of 
-          possible values. This would typically be used only with numeric parameters.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-step" id="parameter-step-attribute">step</dfn></code></td>
-        <td>Non-negative Number or [[!RFC3339]] durations</td>
-        <td>
-          Specifies the allowable numeric interval between acceptable values for the parameter.
-          The step value MUST either be a number or a date, time or date-time. If the <code>type</code>
-          is a number the <code>step</code> MUST conform to the specified <code>type</code>.
-          For instance, if type is <code>unsignedInt</code>, then a <code>step</code> value
-          of <code>2</code> would indicate acceptable values of <code>0</code>, <code>2</code>,
-          <code>4</code>, <code>6</code>, and so on. If the <code>type</code> corresponds to a 
-          timestamp of any sort, the <code>step</code> is expressed as an RFC 3339 <code>duration</code>
-          (e.g. a <code>step</code> of "<code>PT1D</code>" indicates that values are expressed in 
-          one day intervals). The step property MAY be ignored if it's value does not correspond to 
-          the expected <code>type</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-totalDigits" id="parameter-totalDigits-attribute">totalDigits</dfn></code></td>
-        <td>Non-negative integer</td>
-        <td>
-          Specifies the maximum number of digits (integer and fractional)
-          that can be included in numeric values. The totalDigits property
-          MUST be ignored if the value <code>type</code> is not numeric.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-fractionDigits" id="parameter-fractionDigits-attribute">fractionDigits</dfn></code></td>
-        <td>Non-negative integer</td>
-        <td>
-          Specifies the maximum number of fractional digits that can be included
-          in numeric values. The fractionDigits property MUST be ignored if the 
-          value <code>type</code> is not a numeric type. If specified, the 
-          <code>fractionDigit</code> MUST be equal to or less than the 
-          <code>totalDigits</code> property.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-pattern" id="parameter-pattern-attribute">pattern</dfn></code></td>
-        <td>String or Array of Strings</td>
-        <td>
-          One or more Regular Expressions that describe the acceptable structure
-          of the value. Typically used when the value <code>type</code> is 
-          <code>string</code>. Multiple patterns are mutually exclusive options. 
-          That is, the value is expected to conform to at least one of the given
-          patterns but is not required to conform to all of the patterns.
-        </td>
-      </tr>
-      <tr>
-        <td><code><dfn title="parameter-placeholder" id="parameter-placeholder-attribute">placeholder</dfn></code></td>
-        <td><a>Natural Language Value</a></td>
-        <td>
-          A Natural Language Value providing a text hint describing the expected
-          value of the parameter.
-        </td>
-      </tr>
-    </table>
-
-    <figure><figcaption>Using the Parameter Object in HTML Form objects:</figcaption>
-<pre class="example highlight">{
-  "objectType": "HtmlForm",
-  "mediaType": "application/x-www-form-urlencoded",
-  "parameters": {
-    "foo": "string",
-    "bar": {
-      "displayName": "Bar",
-      "required": false,
-      "repeated": false,
-      "type": "unsignedInt",
-      "default": 3,
-      "minInclusive": 1,
-      "maxInclusive": 5
-    }
-  }
-}</pre></figure>
-
-    <section id="urltemplate-and-typedpayload-as-parameters">
-
-      <h2>Using UrlTemplate and TypedPayload objects as parameter descriptions</h2>
-
-      <p>
-        In certain cases, when the value of a parameter is expected to be
-        either a URI or IRI, the <a>URL Template</a> object MAY be
-        used as the parameter description.  In such cases, the <code>required</code>,
-        <code>repeated</code>, <code>default</code> and <code>placeholder</code> properties 
-        from the Parameter object can be used as additional properties within
-        the URL Template object.
-      </p>
-
-      <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "HtmlForm",
-  "mediaType": "application/x-www-form-urlencoded",
-  "parameters": {
-    "foo": "http://example.org/FooProperty",
-    "bar": {
-      "objectType": "UrlTemplate",
-      "template": "http://example.org{/baz}",
-      "displayName": "Bar",
-      "required": false,
-      "repeated": false
-    }
-  }
-}</pre></figure>
-
-      <p>
-        Likewise, when the value of a parameter is expected to be an instance
-        of a specific MIME media type, the <a>Typed Payload</a> objectType
-        can be used.
-      </p>
-
-      <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "HtmlForm",
-  "mediaType": "multipart/form-data",
-  "parameters": {
-    "file": {
-      "objectType": "TypedPayload",
-      "mediaType": "image/*",
-      "repeated": true
-    }
-  }
-}</pre></figure>
-
-    </section>
-
-  </section>
-
-  <section id="authObjects">
-
-    <h2>Authentication Object</h2>
-
-    <p>
-      An <dfn title="Authenication Object" id="authobjects">Authentication Object</dfn> is used by 
-      Action Handlers that require specific authentication options to be supported 
-      in order to carry out the action.  The object is expresed as a JSON dictionary 
-      mapping authentication schema labels to JSON dictionaries that provide a
-      specific description of properties and requirements specific to the
-      scheme.
-    </p>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note",
-  "actions": {
-    "view": {
-      "objectType": "ViewActionHandler",
-      "method": "GET",
-      "url": "http://example.org/notes/1",
-      "target": "_new",
-      "auth": {
-        "basic": {
-          "realm": "http://example.org"
-        },
-        "oauth": {
-          "scopes": [
-            "some.oauth.scope",
-            "another.oauth.scope"
-          ]
-        }
-      }
-    }
-  }
-}</pre></figure>
-
-    <p>
-      This specification does not define the authentication schemes or
-      their associated properties.  Unrecognized authentication schemes MAY
-      be ignored.  However, if an implementation fails to recognize any of
-      the authentication schemes specified by an Action Handler, it might
-      not be possible to successfully carry out the action.
-    </p>
-
-  </section>
-
-  <section id="stylesObjects">
-
-    <h2>Styles Object</h2>
-
-    <p>
-      A <dfn title="Styles Object" id="stylesobject">Styles Object</dfn> is 
-      used by the <a>Embed Action Handler</a> to provide CSS style
-      hints for the container within which embedded content is to be
-      displayed.  The object is expressed as either a single JSON
-      dictionary object mapping CSS property names to appropriate CSS
-      values, or an array of JSON dictionary objects.  An optional <code>media</code>
-      member can be included within the dictionary providing a CSS Media
-      Query [[!CSS3-MEDIAQUERIES]].
-    </p>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "EmbedActionHandler",
-      "content": "Some plain text content",
-      "mediaType": "text/plain",
-      "style": {
-        "height": "100px",
-        "width": "100px",
-        "box-shadow": "10px 10px 5px #888888"
-      }
-    }
-  }
-}</pre></figure>
-
-    <p>
-      Multiple style hints can be specified for separate media query targets.
-    </p>
-
-    <figure><figcaption>For example:</figcaption>
-<pre class="example highlight">{
-  "objectType": "note",
-  "displayName": "A simple note object",
-  "content": "This is a simple note.",
-  "actions": {
-    "view": {
-      "objectType": "EmbedActionHandler",
-      "content": "Some plain text content",
-      "mediaType": "text/plain",
-      "style": [
-        {
-          "media": "print",
-          "height": "100px",
-          "width": "100px",
-          "box-shadow": "10px 10px 5px #888888"
-        },
-        {
-          "media": "screen and (orientation: landscape)",
-          "height": "100px",
-          "width": "100px",
-          "box-shadow": "10px 10px 5px #888888"
-        }
-      ]
-    }
-  }
-}</pre></figure>
-
-  </section>
-
-  <section id="securityConsiderations">
-    <h2>Security Considerations</h2>
-    <p>TBD</p>
-  </section>
-
-  <section id="implementation" class="informative">
-
-    <h2>Implementation</h2>
-
-    <p>
-      Each of the four basic Action Handler types defined herein are, for the most part,
-      designed to map directly to concrete implementation strategies within a user agent.
-      While the action handler descriptions themselves are largely independent of the 
-      user interface and try not to make too many assumptions about how the action will
-      be presented to a user, it is important to understand how each has been originally
-      intended to be implemented.
-    </p>
-
-    <section>
-      <h2>Relationship to the HTML5 Commands Model</h2>
-
-      <p>
-        The [[!HTML5]] specification defines a <dfn title="Command"><a href="http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#commands">Command</a></dfn> as "the abstraction behind menu items, buttons, and links." In other words, a command is the code that is invoked when you click on a link, press a button or select an item from a menu. For every command, there are essentially two elements: the user interface component used to trigger the command, and the code that is invoked once the command is triggered.
-      </p>
-
-      <p>
-        An <a>Action Handler</a> is a declarative description of what ought to happen when a Command is triggered.
-      </p>
-
-      <p>
-        Implementation of the <a>View Action Handler</a> is, perhaps, the most straightforward of the four basic Action Handler types. It is essentially 
-        the same as an HTML <code>anchor</code> tag with the notable exception that a View Action Handler can use any HTTP method and can define distinct 
-        expected inputs and outputs. The end result, however, is the same: triggering a View Action Handler results in either creating or navigating an HTML
-        <a href="http://www.w3.org/html/wg/drafts/html/master/browsers.html#windows">Browsing Context</a>.
-      </p>
-
-      <p>
-        The <a>HTTP Action Handler</a> is nearly identical to View Action Handler with the exception that the HTTP request is sent and processed independently of any Browsing Context. That is, the HTTP Action Handler is roughly equivalent to using the [[XMLHTTPREQUEST]] to perform an asychronous background HTTP request flow.
-      </p>
-
-      <p>
-        The <a>Embed Action Handler</a>, on the other hand, is more closely aligned with HTML5's 
-        <a href="http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#embedded-content">Embedded Content</a> model. Triggering an Embed Action Handler will mean embedding content within an existing Browsing Context using mechanisms such as HTML's <code>img</code>, <code>object</code> and <code>iframe</code> elements.
-      </p>
-
-      <p>
-        The <a>Intent Action Handler</a> is unique in that is does not directly map to any one particular HTML5 concept. Rather, the Intent Action Handler communicates exactly what it's name says: the <i>intent</i> to carry out an action, without details as to <i>how</i> that is done. It might be the case that the user agent is capable of performing the action itself. More likely, however, the user agent will be required to call out to an external native application. This pattern is common on many mobile platform operating systems in use today.
-      </p>
-
-      <p>
-        As new Action Handler types are created, it will be important for the specifications that define those handlers to also comment on how the handler is expected to be implemented so that developers can ensure a clear, consistent and reliable user experience.
-      </p>
-
-    </section>
-
-    <section>
-      <h2>A Strawman WebIDL Interface for Action Handlers</h2>
-
-
-        <div class="idl" title="typedef dictionary ActionHandler"></div>
-
-        <dl title="[Constructor(ActionHandler actionHandler)] interface ActionCommand : EventTarget" class="idl">
-          <dt>readonly attribute InvokeHandler command</dt>
-          <dd>The callback function that implements the action</dd>
-          <dt>HTMLButtonElement asButton(optional dictionary? options)</dt>
-          <dd>Creates a HTML button whose onclick event handler triggers the command.</dd>
-          <dt>HTMLAnchorElement asAnchor(optional dictionary? options)</dt>
-          <dd>Creates a HTML anchor whose onclick event handler triggers the command.</dd>
-          <dt>HTMLMenuItemElement asMenuItem(optional dictionary? options)</dt>
-          <dd>Creates a HTML menuitem whose onclick event handler triggers the command.</dd>
-          <dt>[TreatNonCallableAsNull] attribute Function? onInputRequired</dt>
-          <dd>Called when invoking the Action Handler requires input to be provided. The invoked function's return value is used as the input.</dd>
-          <dt>[TreatNonCallableAsNull] attribute Function? onAuthRequired</dt>
-          <dd>Called when invoking the Action Handler requires authentication details to be provider. The invoked function's return value is used to provide
-          the authentication detail.</dd>
-          <dt>[TreatNonCallableAsNull] attribute Function? onError</dt>
-          <dd>Called when an error occurs attempting to invoke the Action Handler.</dd>
-          <dt>[TreatNonCallableAsNull] attribute Function? onComplete</dt>
-          <dd>Called when invoking the Action Handler is complete and a result may or may not be available.</dd>
-        </dl>
-
-        <p>
-          The events supported by the ActionCommand object include:
-        </p>
-
-        <table border="1" class="parameters">
+        <tbody>
           <tr>
-            <th>Event</th>
-            <th>Handler</th>
+            <td rowspan="5" valign="top"><dfn>using</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/using</code></td>
           </tr>
           <tr>
-            <td>inputRequired</td>
-            <td><a>onInputRequired</a></td>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Describes one or more <code><a>PotentialActionHandler</a></code> instances that can be used to 
+              carry out a particular <code><a>PotentialAction</a></code>.
+            </td>
           </tr>
           <tr>
-            <td>authRequired</td>
-            <td><a>onAuthRequired</a></td>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="PotentialAction"><code>PotentialAction</code></a></td>
           </tr>
           <tr>
-            <td>complete</td>
-            <td><a>onComplete</a></td>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td>error</td>
-            <td><a>onError</a></td>
+            <td valign="top">Reverse Of:</td>
+            <td valign="top"><code><a>handlerFor</a></code></td>
           </tr>
-        </table>
+        </tbody>
 
-      <section>
-        <h2>Example</h2>
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>handlerFor</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/handlerFor</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Identifies the <code><a>PotentialAction</a></code> for which this <code><a>PotentialActionHandler</a></code>
+              is associated.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a>PotentialActionHandler</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a>PotentialAction</a></code></td>
+          </tr>
+        </tbody>  
 
-      <figure><figcaption>For example:</figcaption>
-<pre class="example highlight javascript">var actionHandler = {
-  objectType: 'ViewActionHandler',
-  displayName: 'Open!'
-  url: 'http://example.org/foo',
-  target: '_new'
-};
-var actionCommand = new ActionCommand(actionHandler);
-var btn = actionCommand.asButton();
-document.getElementById('container').appendChild(btn);
-// btn will be an HTMLButtonElement with the text label "Open!"
-// and an onclick event that triggers the actionHandler.command
-// callback.
-</pre></figure>
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>confirm</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/confirm</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              A boolean that indicates whether an application MUST first request user
+              confirmation before carrying out a <code><a>PotentialAction</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="PotentialAction">PotentialAction</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:boolean</code></td>
+          </tr>
+        </tbody>
 
-      </section>
- 
-    </section>
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>requires</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/requires</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              An <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> or <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code> describing a required condition
+              that MUST be satisfied before an application can carry out a <code><a>PotentialAction</a></code>
+              using a specific <code><a>PotentialActionHandler</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>prefers</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/prefers</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              An <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> or <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code> describing an optional condition
+              that SHOULD be satisfied before an application can carry out a <code><a>PotentialAction</a></code>
+              using a specific <code><a>PotentialActionHandler</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>method</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/method</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Identifies the HTTP Method used for a <code><a>HttpRequest</a></code> or <code><a>BrowserView</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a href="activitystreams2-vocabulary.html#dfn-object">HttpRequest</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:string</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>expects</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/expects</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Describes zero or more required inputs for a <code><a>PotentialActionHandler</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="PotentialActionHandlerInput">PotentialActionHandlerInput</a></code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>potentialResult</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/potentialResult</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Describes one or more potential results from using a <code><a>PotentialActionHandler</a></code>
+              to carry out a <code><a>PotentialAction</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a> | <a title="Payload"><code>Payload</code></a></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>browserContext</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/browserContext</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Identifies the target Web Browser Context name for a <code><a>BrowserView</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="BrowserView">BrowserView</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:string</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>sandbox</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/sandbox</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Describes the HTML sandbox policy for the <code><a>BrowserView</a></code> or <code><a>EmbeddedView</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="BrowserView">BrowserView</a> | <a title="EmbeddedView">EmbeddedView</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:boolean</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>template</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/template</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the [[!RFC6570]] URL Template used for <code><a>UrlTemplate</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="UrlTemplate">UrlTemplate</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:string</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn title="parameter-term">parameter</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/parameter</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Describes one or more <code><a>Parameter</a></code> objects used for <code><a>UrlTemplate</a></code>
+              or <code><a>HtmlForm</a></code> objects.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="UrlTemplate">UrlTemplate</a> | <a title="HtmlForm">HtmlForm</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Parameter">Parameter</a></code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>name</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/name</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the name of the parameter. The name MUST be a simple token
+              conforming to the <code>varname</code> rule in [[!RFC6570]].
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:string</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>required</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/required</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Indicates whether a given parameter is required or not. Defaults to <code>true</code> when unspecified. 
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:boolean</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>repeated</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/repeated</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Indicates whether a given parameter can be repeated or not. Defaults to <code>false</code> when unspecified;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:boolean</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>value</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/value</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies a static value for the parameter. When specified, implementations MUST 
+              use the given value for the parameter, regardless of any user input.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>default</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/default</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the default value for the parameter.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>valueType</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/valueType</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the parameter's expected value type. The value SHOULD
+              specify a type from the XML Schema Data Types.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyURI</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>enumeration</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/enumeration</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies one or more possible values for the parameter. When used, 
+              implementations MUST use one of the given values.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>minLength</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/minLength</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the minimum length, in characters, for the value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>maxLength</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/maxLength</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the maximum length, in characters, for the value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>maxExclusive</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/maxExclusive</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the exclusive upper boundary for values.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>maxInclusive</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/maxInclusive</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the inclusive upper boundary for values.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>minExclusive</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/minExclusive</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the exclusive lower boundary for values.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>minInclusive</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/minInclusive</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the inclusive lower boundary for values.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>step</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/step</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the step increment for values.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyType</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>totalDigits</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/totalDigits</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the total number of numeric digits allowed to appear in the value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>fractionDigits</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/fractionDigits</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies the total number of fractional digits allowed to appear in the value.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>pattern</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/pattern</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies a regular expression to which the parameter value MUST conform.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:string</code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn>placeholder</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/placeholder</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Specifies a human-readable, plain-text prompt for the parameter.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a href="activitystreams2-vocabulary.html#dfn-naturallanguagevalue">NaturalLanguageValue</a></code></td>
+          </tr>
+        </tbody>
+
+    </table>
 
   </section>
 
