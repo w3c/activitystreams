@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="en">
+<head>
+  <title>Activity Streams 2.0</title>
+  <meta charset="UTF-8">
+  
+  
+<style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 { 
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;   
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;    
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* HIGHLIGHTS */
+code.prettyprint {
+    color:  inherit;
+}
+
+/* this from google-code-prettify */
+.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
+<body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p>
+      
+        
+            <a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a>
+        
+      
+  </p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Activity Streams 2.0</h1>
+  
+  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2014-10-22T01:49:00.000Z" id="w3c-first-public-working-draft-22-october-2014"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time class="dt-published" datetime="2014-10-22">22 October 2014</time></h2>
+  <dl>
+    
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2014/WD-as-core-20141022/">http://www.w3.org/TR/2014/WD-as-core-20141022/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="http://www.w3.org/TR/as-core/">http://www.w3.org/TR/as-core/</a></dd>
+    
+    
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2.html">http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2.html</a></dd>
+    
+    
+    
+    
+    
+    
+    
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard" rel="bibo:editor" inlist=""><span typeof="foaf:Person"><a class="u-url url p-name fn" rel="foaf:homepage" property="foaf:name" content="James M Snell" href="http://chmod777self.com">James M Snell</a>, IBM</span>
+</dd>
+
+    
+    
+      
+        
+          <dt>Repository:</dt>
+          
+             
+                
+                  <dd>
+                    <a href="https://github.com/jasnell/w3c-socialwg-activitystreams">
+                      Github
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/issues">
+                      Issues
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/commits/master">
+                      Commits
+                    </a>
+                  </dd>
+                
+             
+          
+        
+      
+    
+  </dl>
+  
+  
+  
+  
+    
+      <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2014
+         Activity Streams Working Group,IBM &amp;
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), 
+        
+        All Rights Reserved.
+        
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        
+          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
+        
+        rules apply.
+      </p>
+    
+  
+  <hr>
+</div>
+
+  <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#abstract" rel="bibo:Chapter"><h2 role="heading" id="h2_abstract">Abstract</h2>
+    <p>
+      This specification details a model for representing potential and
+      completed activities using the JSON format.
+    </p>
+    <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_authorsnote">Author's Note</h3><p><em>This section is non-normative.</em></p>
+      <p>
+        This draft is heavily influenced by the JSON Activity
+        Streams 1.0 specification originally co-authored by Martin
+        Atkins, Will Norris, Chris Messina, Monica Wilkinson, Rob Dolin and
+        James Snell.  The author is very thankful for their significant
+        contributions and gladly stands on their shoulders.  Some portions of
+        the original text of Activity Streams 1.0 are used in this document.
+      </p>
+    </section>
+  </section><section id="sotd" class="introductory" typeof="bibo:Chapter" resource="#sotd" rel="bibo:Chapter"><h2 role="heading" id="h2_sotd">Status of This Document</h2>
+  
+    
+      
+        <p>
+          <em>This section describes the status of this document at the time of its publication.
+          Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the
+          latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+          http://www.w3.org/TR/.</em>
+        </p>
+        
+  
+        <p>
+          This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a First Public Working Draft.
+          
+            This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+          
+          
+            If you wish to make comments regarding this document, please send them to 
+            <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> 
+            (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
+            <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
+          
+          
+          
+          
+            All comments are welcome.
+          
+        </p>
+        
+        
+          <p>
+            Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+            Membership. This is a draft document and may be updated, replaced or obsoleted by other
+            documents at any time. It is inappropriate to cite this document as other than work in
+            progress.
+          </p>
+        
+        
+        
+        <p>
+          
+            This document was produced by a group operating under the 
+            <a id="sotd_patent" about="" rel="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>.
+          
+          
+          
+            
+              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="" rel="disclosure">public list of any patent
+              disclosures</a> 
+            
+            made in connection with the deliverables of the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual knowledge of a patent
+            which the individual believes contains
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+          
+        </p>
+        
+          <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2014/Process-20140801/">1 August 2014 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+          </p>
+        
+        
+      
+    
+  
+</section><section id="toc"><h2 class="introductory" role="heading" id="h2_toc">Table of Contents</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#activitystreams-1.0" class="tocxref"><span class="secno">1.1 </span>Relationship to JSON Activity Streams 1.0</a></li><li class="tocline"><a href="#syntaxconventions" class="tocxref"><span class="secno">1.2 </span>Serialization Notes</a></li></ul></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">2. </span>Examples</a><ul class="toc"><li class="tocline"><a href="#example-1" class="tocxref"><span class="secno">2.1 </span>Minimal Activity</a></li><li class="tocline"><a href="#example-2" class="tocxref"><span class="secno">2.2 </span>Basic activity with some additional detail</a></li><li class="tocline"><a href="#example-3" class="tocxref"><span class="secno">2.3 </span>An extended activity</a></li></ul></li><li class="tocline"><a href="#model" class="tocxref"><span class="secno">3. </span>Model</a><ul class="toc"><li class="tocline"><a href="#object" class="tocxref"><span class="secno">3.1 </span><span title="Object">Object</span></a></li><li class="tocline"><a href="#naturalLanguageValues" class="tocxref"><span class="secno">3.2 </span><span title="NaturalLanguageValue">Natural Language Values</span></a><ul class="toc"></ul></li><li class="tocline"><a href="#link" class="tocxref"><span class="secno">3.3 </span><span title="Link">Link</span></a></li><li class="tocline"><a href="#activities" class="tocxref"><span class="secno">3.4 </span><span title="Activity">Activity</span></a><ul class="toc"></ul></li><li class="tocline"><a href="#collections" class="tocxref"><span class="secno">3.5 </span><span title="Collection">Collection</span></a></li><li class="tocline"><a href="#verb-objecttype" class="tocxref"><span class="secno">3.6 </span>Verbs and Object Types</a></li><li class="tocline"><a href="#actions" class="tocxref"><span class="secno">3.7 </span><span>Potential Actions</span></a></li></ul></li><li class="tocline"><a href="#document" class="tocxref"><span class="secno">4. </span>Activity Streams Document</a></li><li class="tocline"><a href="#deprecated-syntax" class="tocxref"><span class="secno">5. </span>Deprecated Activity Streams 1.0 Syntax</a></li><li class="tocline"><a href="#extensibility" class="tocxref"><span class="secno">6. </span>Extensibility</a><ul class="toc"><li class="tocline"><a href="#compact-iris" class="tocxref"><span class="secno">6.1 </span>Handling of JSON-ID Compact IRIs</a></li></ul></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">7. </span>Security Considerations</a></li><li class="tocline"><a href="#iana" class="tocxref"><span class="secno">8. </span>IANA Considerations</a><ul class="toc"><li class="tocline"><a href="#media-type" class="tocxref"><span class="secno">8.1 </span>The <code>application/activity+json</code> Media Type</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li><li class="tocline"><a href="#summary-of-changes" class="tocxref"><span class="secno">B. </span>Summary of Changes</a></li><li class="tocline"><a href="#tof" class="tocxref"><span class="secno">C. </span>Table of Figures</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">D. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">D.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">D.2 </span>Informative references</a></li></ul></li></ul></section>
+
+  
+
+  <section id="introduction" typeof="bibo:Chapter" resource="#introduction" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_introduction"><span class="secno">1. </span>Introduction</h2>
+    <p>
+      In the most basic sense, an "activity" is a semantic description of
+      a potential or completed action.  In the former case, the activity
+      expresses what can or might be done with a particular object, while 
+      in the latter case, it expresses what has already been done.
+    </p>
+
+    <p>
+      It is the goal of this specification to provide a JSON-based syntax
+      that is sufficient to express metadata about activities in a rich,
+      human-friendly, machine-processable and extensible manner.  This may
+      include constructing natural-language descriptions or visual
+      representations about the activity, associating actionable
+      information with various types of objects, communicating or recording
+      activity logs, or delegation of potential actions to other
+      applications.
+    </p>
+
+    <p>
+      The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>",
+      "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this
+      document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+    </p>
+
+    <section id="activitystreams-1.0" class="informative" typeof="bibo:Chapter" resource="#activitystreams-1.0" rel="bibo:Chapter">
+
+      <h3 role="heading" id="h3_activitystreams-1.0"><span class="secno">1.1 </span>Relationship to JSON Activity Streams 1.0</h3><p><em>This section is non-normative.</em></p>
+
+      <p>
+        The JSON Activity Streams 1.0 [<cite><a class="bibref" href="#bib-AS1">AS1</a></cite>] specification was
+        published in May of 2011 and provided a baseline extensible syntax
+        for the expression of completed activities.  This specification
+        builds upon that initial foundation by incorporating lessons learned
+        through extensive implementation, community feedback and related 
+        ongoing work from a variety of other communities.
+      </p>
+
+      <p>
+        While the syntax defined by this specification diverges somewhat from
+        that defined by JSON Activity Streams 1.0, the verbs, objectTypes,
+        extensions and fundamental model defined by that original
+        specification remain intact, and every valid Activity Streams 1.0
+        document is a valid Activity Streams 2.0 document.
+      </p>
+
+      <p>
+        Please refer to Section 6 for more detail about the differences between 
+        the 1.0 and 2.0 syntax and for a listing of specific backwards
+        compatibility requirements.
+      </p>
+
+      <p>
+        This specification incorporates several existing extensions to the
+        1.0 syntax directly into the 2.0 model.  These include portions of
+        the Activity Streams 1.0 Base Schema, Audience
+        Targeting, Responses, and Priority extensions.
+      </p>
+    </section>
+
+    <section id="syntaxconventions" typeof="bibo:Chapter" resource="#syntaxconventions" rel="bibo:Chapter">
+
+      <h3 role="heading" id="h3_syntaxconventions"><span class="secno">1.2 </span>Serialization Notes</h3>
+
+      <p>
+        This specification describes a JSON-based [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>] serialization
+        syntax for the <a href="../as-vocab/Overview.html">Activity 
+        Vocabulary</a> that follows the conventions defined by the 
+        [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>] specification. While serialization forms other than 
+        JSON-LD are possible, alternatives are not discussed by this 
+        document.
+      </p>
+
+      <p>
+        When serialized, absent properties are represented by either (a)
+        setting the property value to null, or (b) by omitting the property
+        declaration altogether at the option of the publisher; these
+        representations are semantically equivalent.  If a property has an
+        array value, the absence of any items in that array <em class="rfc2119" title="MUST">MUST</em> be
+        represented by omitting the property entirely or by setting the value
+        to null. The appropriate interpretation of an omitted or explicitly 
+        null value is that no value has been assigned as opposed to the view 
+        that the given value is empty or nil. 
+      </p>
+
+      <p>
+        This specification uses IRIs [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>].  Every URI [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>] is 
+        also an IRI, so a URI may be used wherever an IRI is named.  There are 
+        two special considerations: (1) when an IRI that is not also a URI is 
+        given for dereferencing, it <em class="rfc2119" title="MUST">MUST</em> be mapped to a URI using the steps in 
+        Section 3.1 of [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>] and (2) when an IRI is serving as an "id" 
+        value, it <em class="rfc2119" title="MUST NOT">MUST NOT</em> be so mapped.
+      </p>
+
+      <p>
+        Unless otherwise specified, all properties with date and time values
+        <em class="rfc2119" title="MUST">MUST</em> conform to the "date-time" production in [<cite><a class="bibref" href="#bib-RFC3339">RFC3339</a></cite>], with an
+        uppercase "T" character used to separate date and time, and an
+        uppercase "Z" character in the absence of a numeric time zone offset.
+        All such timestamps <em class="rfc2119" title="SHOULD">SHOULD</em> be represented relative to Coordinated
+        Universal Time (UTC).
+      </p>
+
+      <p>
+        Activity Streams 2.0 documents <em class="rfc2119" title="MUST">MUST</em> be serialized using the UTF-8
+        character encoding.
+      </p>
+
+    </section>
+
+  </section>
+
+  <section id="examples" class="informative" typeof="bibo:Chapter" resource="#examples" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_examples"><span class="secno">2. </span>Examples</h2><p><em>This section is non-normative.</em></p>
+
+    <p>
+      Following are three examples of activities with varying degrees of detail. Each of the examples uses an implied JSON-LD @context equal to that provided <a href="activitystreams2-context.jsonld">here</a>.
+    </p>
+
+    <section id="example-1" typeof="bibo:Chapter" resource="#example-1" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_example-1"><span class="secno">2.1 </span>Minimal Activity</h3>
+      
+      <figure id="fig-expresses-the-statement-urn-example-person-martin-posted-http-example.org-foo.jpg-.-no-additional-detail-is-given.x">
+      <figcaption>Fig. <span class="figno">1</span> <span class="fig-title">
+        Expresses the statement "'urn:example:person:martin' posted
+        'http://example.org/foo.jpg'".  No additional detail is given.
+      </span></figcaption>
+
+<div class="example"><div class="example-title"><span>Example 1</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Activity"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"verb"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"post"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"actor"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:person:martin"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"object"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/foo.jpg"</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+      </figure>
+
+    </section>
+
+    <section id="example-2" typeof="bibo:Chapter" resource="#example-2" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_example-2"><span class="secno">2.2 </span>Basic activity with some additional detail</h3>
+
+      <figure id="fig-expresses-the-statement-martin-smith-posted-an-article-to-the-blog-martin-s-blog-at-3-04-pm-gmt-on-february-2-2011.-some-additional-details-about-the-article-actor-and-target-blog-are-given-using-properties-defined-by-the-activity-streams-2.0-vocabulary.x">
+      <figcaption>Fig. <span class="figno">2</span> <span class="fig-title">
+        Expresses the statement "Martin Smith posted an article to the blog
+        'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
+        details about the article, actor and target blog are given using properties
+        defined by the <a href="../as-vocab/Overview.html">Activity Streams 2.0
+        Vocabulary</a>.
+      </span></figcaption>
+<div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Activity"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"language"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"en"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"verb"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"post"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"published"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2011-02-10T15:04:55Z"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"actor"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:person"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:person:martin"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin Smith"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"url"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/martin"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+     </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/martin/image.jpg"</span><span class="pun">,</span><span class="pln">
+     </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+     </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/jpeg"</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"object"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:article"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:blog:abc123/xyz"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"url"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/blog/2011/02/entry"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Why I love Activity Streams"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"target"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:blog"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/blog/"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin's Blog"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+    </figure>
+
+    </section>
+
+    <section id="example-3" typeof="bibo:Chapter" resource="#example-3" rel="bibo:Chapter">
+
+      <h3 role="heading" id="h3_example-3"><span class="secno">2.3 </span>An extended activity</h3>
+
+      <figure id="fig-a-more-extensive-single-entry-activity-stream-follows.x">
+      <figcaption>Fig. <span class="figno">3</span> <span class="fig-title">
+        A more extensive, single-entry "Activity Stream" follows.
+      </span></figcaption>
+
+<div class="example"><div class="example-title"><span>Example 3</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Collection"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"totalItems"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"items"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Activity"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"language"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"en"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"verb"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"post"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"published"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2011-02-10T15:04:55Z"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"generator"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/activities-app"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"provider"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/activity-stream"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"en"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin posted a new video to his album."</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"ga"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin phost le fisean nua a albam."</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+      </span><span class="str">"actor"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:person"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:person:martin"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin Smith"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"url"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/martin"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin's Profile"</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/martin/image"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+            </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+            </span><span class="str">"http://example.org/ImageResource"</span><span class="pln">
+          </span><span class="pun">],</span><span class="pln">
+          </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/jpeg"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"width"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">250</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"height"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">250</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+      </span><span class="str">"object"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/Photo"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/album/my_fluffy_cat.jpg"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/album/my_fluffy_cat_thumb.jpg"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/jpeg"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"rel"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"preview"</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+      </span><span class="str">"target"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/PhotoAlbum"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/album/"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="str">"en"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Martin's Photo Album"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"ga"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Grianghraif Mairtin"</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/album/thumbnail.jpg"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/jpeg"</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+    </section>
+  </section>
+
+  <section id="model" typeof="bibo:Chapter" resource="#model" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_model"><span class="secno">3. </span>Model</h2>
+
+    <p>
+      The <a href="../as-vocab/Overview.html">Activity Vocabulary</a>
+      defines the abstract model for Activity Streams 2.0. The vocabulary 
+      document defines seven distinct abstract classes: <a href="#asobject" class="internalDFN">Object</a>, 
+      <a href="#dfn-link" class="internalDFN">Link</a>, <a href="#collection" class="internalDFN">Collection</a>, <a href="#activity" class="internalDFN">Activity</a>, <a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a>, 
+      <a href="#dfn-verb" class="internalDFN">Verb</a>, and <a href="#dfn-objecttype" class="internalDFN">ObjectType</a>. Each of these classes is described and 
+      illustrated below.
+    </p>
+
+    <section id="object" typeof="bibo:Chapter" resource="#object" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_object"><span class="secno">3.1 </span><dfn title="Object" id="asobject">Object</dfn></h3>
+
+      <p>
+        The <code><a href="../as-vocab/Overview.html#dfn-object">Object</a></code> 
+        class is the primary base class for the Activity Streams vocabulary. An 
+        implementations would typically create it's own set of subclasses that 
+        derive from the <code>http://activitystrea.ms/2.0/Object</code> class as 
+        opposed to using <code>Object</code> directly.
+      </p>
+
+      <p>
+        In addition to having a global identifier in the form of an absolute IRI 
+        and an "object type" (expressed in JSON-LD using the <code>@type</code> keyword),
+        all instances of the <code>Object</code> class share a common set of properties 
+        as defined by the <a href="../as-vocab/Overview.html">Activity Vocabulary</a>. 
+        These include:
+        <code>
+          <a href="../as-vocab/Overview.html#dfn-action">action</a> |
+          <a href="../as-vocab/Overview.html#dfn-alias">alias</a> | 
+          <a href="../as-vocab/Overview.html#dfn-attachment">attachment</a> | 
+          <a href="../as-vocab/Overview.html#dfn-author">author</a> | 
+          <a href="../as-vocab/Overview.html#dfn-content">content</a> |
+          <a href="../as-vocab/Overview.html#dfn-displayname">displayName</a> |
+          <a href="../as-vocab/Overview.html#dfn-duration">duration</a> | 
+          <a href="../as-vocab/Overview.html#dfn-endtime">endTime</a> | 
+          <a href="../as-vocab/Overview.html#dfn-generator">generator</a> |
+          <a href="../as-vocab/Overview.html#dfn-height">height</a> | 
+          <a href="../as-vocab/Overview.html#dfn-icon">icon</a> | 
+          <a href="../as-vocab/Overview.html#dfn-image">image</a> |
+          <a href="../as-vocab/Overview.html#dfn-inreplyto">inReplyTo</a> | 
+          <a href="../as-vocab/Overview.html#dfn-language">language</a> |
+          <a href="../as-vocab/Overview.html#dfn-location">location</a> |
+          <a href="../as-vocab/Overview.html#dfn-memberof">memberOf</a> |    
+          <a href="../as-vocab/Overview.html#dfn-provider">provider</a> | 
+          <a href="../as-vocab/Overview.html#dfn-published">published</a> |
+          <a href="../as-vocab/Overview.html#dfn-rating">rating</a> |
+          <a href="../as-vocab/Overview.html#dfn-replies">replies</a> |
+          <a href="../as-vocab/Overview.html#dfn-resultof">resultOf</a> |
+          <a href="../as-vocab/Overview.html#dfn-scope">scope</a> |  
+          <a href="../as-vocab/Overview.html#dfn-starttime">startTime</a> | 
+          <a href="../as-vocab/Overview.html#dfn-summary">summary</a> |
+          <a href="../as-vocab/Overview.html#dfn-tag">tag</a> | 
+          <a href="../as-vocab/Overview.html#dfn-title">title</a> |
+          <a href="../as-vocab/Overview.html#dfn-updated">updated</a> | 
+          <a href="../as-vocab/Overview.html#dfn-validafter">validAfter</a> | 
+          <a href="../as-vocab/Overview.html#dfn-validbefore">validBefore</a> |
+          <a href="../as-vocab/Overview.html#dfn-validfrom">validFrom</a> | 
+          <a href="../as-vocab/Overview.html#dfn-validuntil">validUntil</a> | 
+          <a href="../as-vocab/Overview.html#dfn-width">width</a> |  
+          <a href="../as-vocab/Overview.html#dfn-url">url</a>
+        </code>
+      </p>
+
+      <p>
+        While all properties are optional, all <code>Object</code> instances <em class="rfc2119" title="SHOULD">SHOULD</em>
+        at least contain a <a href="../as-vocab/Overview.html#dfn-displayname">displayName</a>.
+      </p>
+
+<figure id="fig-following-is-an-example-object-that-uses-the-json-id-id-and-type-json-ld-keywords-to-express-the-global-identifier-and-object-type"><figcaption>Fig. <span class="figno">4</span> <span class="fig-title">Following is an example Object that uses the JSON-ID <code>@id</code> and <code>@type</code>
+JSON-LD keywords to express the global identifier and object type:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 4</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/foo"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/types/Note"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"language"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"en"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"This is a note"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"author"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:person:joe"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/types/Person"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Joe Smith"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"published"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2014-08-21T12:34:56Z"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+   </section>
+
+    <section id="naturalLanguageValues" typeof="bibo:Chapter" resource="#naturalLanguageValues" rel="bibo:Chapter">
+
+      <h3 role="heading" id="h3_naturalLanguageValues"><span class="secno">3.2 </span><dfn title="NaturalLanguageValue" id="dfn-naturallanguagevalue">Natural Language Values</dfn></h3>
+    
+      <p>
+        Several properties defined by the <a href="../as-vocab/Overview.html">Vocabulary</a>
+        are defined as being a <a href="../as-vocab/Overview.html">Natural Language Value</a>.
+        These are a representations of human-readable character sequences using one or more 
+        languages. Within the JSON-LD serialization, they are expressed as either (1) a single JSON 
+        string or (2) a JSON object mapping [<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language-Tags to localized, equivalent 
+        translations of the same string value. In [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>], such constructs are referred to
+        as "Language Maps".
+      </p>
+
+      <p>
+        For instance, the <code><a href="../as-vocab/Overview.html#dfn-displayName">displayName</a></code> 
+        property is a Natural Language value.
+      </p>
+
+      <figure id="fig-a-single-string-value-using-the-default-language">
+        <figcaption>Fig. <span class="figno">5</span> <span class="fig-title">A single String value using the default language:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 5</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"language"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"en"</span><span class="pun">,</span><span class="pln">
+  </span><b><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"This is the title"</span></b><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <figure id="fig-multiple-language-specific-values">
+        <figcaption>Fig. <span class="figno">6</span> <span class="fig-title">Multiple, language-specific values:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 6</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><b><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"en"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"This is the title"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"fr"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"C'est le titre"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"sp"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Este es el titulo"</span><span class="pln">
+  </span><span class="pun">}</span></b><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <p>
+        Every key in the JSON object <em class="rfc2119" title="MUST">MUST</em> be an [<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language-Tag.
+        The associated values <em class="rfc2119" title="MUST">MUST</em> be Strings.
+      </p>
+
+      <section class="informative" id="implementation-note">
+        <h4 role="heading" id="h4_implementation-note"><span class="secno">3.2.1 </span>Implementation Note</h4><p><em>This section is non-normative.</em></p>
+
+      <p>
+        Implementers ought to note that, in [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>], establishment of a default
+        language requires the use of the <code>@language</code> keyword inside the 
+        JSON-LD <code>@context</code>. For instance:
+      </p>
+
+      <figure id="fig-using-the-language-keyword">
+        <figcaption>Fig. <span class="figno">7</span> <span class="fig-title">Using the <code>@language</code> keyword:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 7</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@context"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"@language"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"en"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"This is the title"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <p>Using the <code>@language</code> keyword in this manner establishes the 
+      default language context for all string literal property values contained
+      by the object, including those that may not be intended as natural language 
+      values. This current definition for <code>@language</code> makes it difficult
+      for implementations that choose to ignore JSON-LD semantics when processing 
+      Activity Streams documents or that wish to limit the language context only to
+      properties that are truly intended as natural language values. The <code>language</code>
+      property introduced by the Activity Streams Vocabulary is provided to address 
+      these shortcomings by allowing a default language to be established independently
+      of the JSON-LD <code>@context</code>.</p>
+
+      <figure id="fig-using-the-language-property-has-the-same-effect-as-using-the-language-inside-the-json-ld-context">
+        <figcaption>Fig. <span class="figno">8</span> <span class="fig-title">Using the <code>language</code> property has the same effect 
+        as using the <code>@language</code> inside the JSON-LD <code>@context</code>:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 8</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"language"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"en"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"This is the title"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <p>However, use of <code>language</code> 
+      means that JSON-LD based implementations will need to take an additional 
+      processing step to ensure that properties such as <code>title</code>, <code>displayName</code>,
+      <code>summary</code> and <code>content</code> are handled properly.
+
+      </p><figure id="fig-for-instance-the-following-example-javascript-function-extracts-the-value-of-the-language-property-and-injects-it-as-an-appropriate-json-ld-language-keyword-into-specific-properties-that-are-defined-as-natural-language-values-to-ensure-that-such-properties-are-properly-handled-by-the-standardized-json-ld-algorithms">
+        <figcaption>Fig. <span class="figno">9</span> <span class="fig-title">For instance, the following example JavaScript function extracts 
+        the value of the <code>language</code> property and injects it as an appropriate
+        JSON-LD <code>@language</code> keyword into specific properties that are defined
+        as Natural Language Values to ensure that such properties are properly handled
+        by the standardized JSON-LD algorithms:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 9</span></div><pre class="example highlight javascript prettyprint prettyprinted"><span class="kwd">function</span><span class="pln"> _fixdefaultlanguage</span><span class="pun">(</span><span class="pln">lang</span><span class="pun">,</span><span class="pln"> obj</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> __lang </span><span class="pun">=</span><span class="pln"> obj</span><span class="pun">[</span><span class="str">'language'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">||</span><span class="pln"> lang</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> n </span><span class="kwd">in</span><span class="pln"> obj</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">nlvs</span><span class="pun">.</span><span class="pln">indexOf</span><span class="pun">(</span><span class="pln">n</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">var</span><span class="pln"> vals </span><span class="pun">=</span><span class="pln"> obj</span><span class="pun">[</span><span class="pln">n</span><span class="pun">];</span><span class="pln">
+      vals</span><span class="pun">.</span><span class="pln">forEach</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">val</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        val</span><span class="pun">[</span><span class="str">'@language'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> val</span><span class="pun">[</span><span class="str">'@language'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">||</span><span class="pln"> __lang</span><span class="pun">;</span><span class="pln">
+      </span><span class="pun">});</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">typeof</span><span class="pln"> obj</span><span class="pun">[</span><span class="pln">n</span><span class="pun">]</span><span class="pln"> </span><span class="pun">===</span><span class="pln"> </span><span class="str">'object'</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">var</span><span class="pln"> </span><span class="kwd">next</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> exp</span><span class="pun">[</span><span class="pln">n</span><span class="pun">];</span><span class="pln">
+      </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(!</span><span class="typ">Array</span><span class="pun">.</span><span class="pln">isArray</span><span class="pun">(</span><span class="kwd">next</span><span class="pun">))</span><span class="pln"> 
+        </span><span class="kwd">next</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="kwd">next</span><span class="pun">];</span><span class="pln">
+      </span><span class="kwd">next</span><span class="pun">.</span><span class="pln">forEach</span><span class="pun">(</span><span class="pln">
+        _fixdefaultlanguage</span><span class="pun">.</span><span class="pln">bind</span><span class="pun">(</span><span class="pln">
+          </span><span class="kwd">null</span><span class="pun">,</span><span class="pln">__lang</span><span class="pun">));</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre></div>
+      </figure>
+
+      </section>
+
+    </section>
+
+    <section id="link" typeof="bibo:Chapter" resource="#link" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_link"><span class="secno">3.3 </span><dfn title="Link" id="dfn-link">Link</dfn></h3>
+
+      <p>
+        A <code>Link</code> represents a dereferenceable pointer to another resource.
+        Within the JSON-LD serialization, they are expressed as either: (1) a String 
+        containing an absolute or relative IRI, (2) a JSON object, or (3) an Array
+        containing a mixture of IRIs or JSON objects. Links are closely related to 
+        the conceptual model of Links as established in [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>].
+      </p>
+
+      <p>
+        The target URI of the Link is the global identifier expressed in the JSON-LD 
+        serialization using the <code>@id</code> keyword. In addition, all <code>Link</code> 
+        instances share the following common set of properties as defined by the 
+        <a href="../as-vocab/Overview.html">Activity Vocabulary</a>:
+        <code>
+          <a href="../as-vocab/Overview.html#dfn-displayname">displayName</a> |
+          <a href="../as-vocab/Overview.html#dfn-hreflang">hreflang</a> | 
+          <a href="../as-vocab/Overview.html#dfn-language">language</a> | 
+          <a href="../as-vocab/Overview.html#dfn-mediatype">mediaType</a> |
+          <a href="../as-vocab/Overview.html#dfn-rel">rel</a> |
+          <a href="../as-vocab/Overview.html#dfn-title">title</a>
+        </code>
+      </p>
+
+      <p>
+        For example, all <a title="Object" href="#asobject" class="internalDFN">Objects</a> can contain an 
+        <code><a href="../as-vocab/Overview.html#dfn-image">image</a></code> 
+        property whose value describes a graphical
+        representation of the containing object.  This property will
+        typically be used to provide the URL to a JPEG, GIF or PNG type
+        resource that can be displayed to the user.  Any given object might
+        have multiple such visual representations -- multiple screenshots,
+        for instance, or the same image at different resolutions.  Using Links, 
+        there are essentially three ways of describing such references.
+      </p>
+
+      <figure id="fig-to-reference-a-single-image-without-any-additional-metadata-the-link-value-can-be-expressed-as-a-simple-json-string-containing-an-absolute-or-relative-iri"><figcaption>Fig. <span class="figno">10</span> <span class="fig-title">To reference a single image without any additional metadata, the link
+        value can be expressed as a simple JSON string containing an absolute
+        or relative IRI:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 10</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/types/application"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/application/123"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"My Application"</span><span class="pun">,</span><span class="pln">
+  </span><b><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/application/123.png"</span></b><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <figure id="fig-alternatively-if-additional-metadata-is-required-the-link-can-be-expressed-as-a-json-object-.x"><figcaption>Fig. <span class="figno">11</span> <span class="fig-title">
+        Alternatively, if additional metadata is required, the link can be
+        expressed as a JSON object:.
+      </span></figcaption>
+<div class="example"><div class="example-title"><span>Example 11</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/types/application"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/application/123"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"My Application"</span><span class="pun">,</span><span class="pln">
+  </span><b><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/application/123.png"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/png"</span><span class="pln">
+  </span><span class="pun">}</span></b><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <p>
+        Formally, the former example establishes a unqualified 
+        relationship to the image resource while the latter creates a 
+        qualified relationship that allows additional properties
+        to be specified for the link. Such properties (e.g. <code>mediaType</code>, 
+        <code>hreflang</code>, <code>rel</code>, etc) describe the <a href="#dfn-link" class="internalDFN">Link</a> 
+        relationship itself as opposed to describing the referenced resource. For 
+        many practical applications, this distinction will likely be fairly 
+        insignificant but it is still worth keeping in mind.
+      </p>
+
+      <figure id="fig-if-more-than-one-link-value-is-to-be-expressed-a-json-array-with-a-mix-of-string-and-object-elements-can-be-used"><figcaption>Fig. <span class="figno">12</span> <span class="fig-title">
+        If more than one link value is to be expressed, A JSON Array with a
+        mix of string and object elements can be used:
+      </span></figcaption>
+<div class="example"><div class="example-title"><span>Example 12</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/types/application"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/application/123"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"My Application"</span><span class="pun">,</span><span class="pln">
+  </span><b><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="str">"http://example.org/application/abc.gif"</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/application/123.png"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/png"</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span></b><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+      
+      <p>
+        Individual items contained in such an array are independent of the
+        others and no significance is given to the ordering of those items.
+      </p>
+
+      <p>
+        RFC 5988 defines that all Links have a "link relation" that describes
+        the contextual purpose of the link.  Within a <a href="#dfn-link" class="internalDFN">Link</a>,
+        the <code><a href="../as-vocab/Overview.html#dfn-rel">rel</a></code> property 
+        provides the link relation value. If no <code>rel</code> property is
+        specified, the Link is not considered to have a specified link relation.
+      </p>
+
+      <p>
+        In the following example, two separate links are provided.  The link
+        relation of the first is unspecified, while the link relation of the
+        second is "<code>preview</code>".  Either link, however, can be used as 
+        alternative visual representations of the object.
+      </p>
+
+      <figure id="fig-example-13-type-urn-example-types-application-image-http-example.org-foo.jpg-id-http-example.org-screens-1.jpg-type-http-activitystrea.ms-2.0-link-rel-preview-mediatype-image-jpeg"><figcaption>Fig. <span class="figno">13</span> <span class="fig-title"></span></figcaption>
+<div class="example"><div class="example-title"><span>Example 13</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:application"</span><span class="pun">,</span><span class="pln">
+  </span><b><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="str">"http://example.org/foo.jpg"</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/screens/1.jpg"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"rel"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"preview"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/jpeg"</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span></b><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <p>
+        It ought to be noted that the [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] specification provides it's own alternative
+        definition of a "link relation" that differs slightly from the [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] definition.
+        In the HTML5 definition, any string that does not contain the "space" U+0020, "tab" (U+0009), 
+        "LF" (U+000A), "FF" (U+000C), "CR" (U+000D) or "," (U+002C) characters can be used as a 
+        valid link relation. To promote interoperability, Activity Streams 2.0 implementations 
+        <em class="rfc2119" title="MUST">MUST</em> only use link relations that are valid in terms of both the [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] and
+        [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] definitions.
+      </p>
+
+      <p>
+        Also note that it is possible to use <a href="#dfn-link" class="internalDFN">Link</a> and <a href="#asobject" class="internalDFN">Object</a> together to indicate 
+        that a particular JSON object can be interpretted as both. For instance, in the 
+        following example, the value of the <code>image</code> property is marked as being
+        both a <a href="#dfn-link" class="internalDFN">Link</a> and a hypothetical <code>urn:example:image</code> object that,
+        for the sake of this example, derives from <code>Object</code>. This allows additional
+        properties describing the <a href="#asobject" class="internalDFN">Object</a> -- such as <code>height</code> and <code>width</code> -- 
+        to be specified.
+      </p>
+
+      <figure id="fig-example-14-type-urn-example-types-application-image-http-example.org-foo.jpg-id-http-example.org-screens-1.jpg-type-http-activitystrea.ms-2.0-link-urn-example-image-rel-preview-mediatype-image-jpeg-height-200-width-200"><figcaption>Fig. <span class="figno">14</span> <span class="fig-title"></span></figcaption>
+<div class="example"><div class="example-title"><span>Example 14</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:application"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"image"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="str">"http://example.org/foo.jpg"</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/screens/1.jpg"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+        </span><span class="str">"http://activitystrea.ms/2.0/Link"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"urn:example:image"</span><span class="pun">],</span><span class="pln">
+      </span><span class="str">"rel"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"preview"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"image/jpeg"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"height"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">200</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"width"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">200</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+    </section>
+
+    <section id="activities" typeof="bibo:Chapter" resource="#activities" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_activities"><span class="secno">3.4 </span><dfn title="Activity" id="activity">Activity</dfn></h3>
+
+      <p>
+        Activity objects are specializations of the base <a href="#asobject" class="internalDFN">Object</a>
+        type that provide information about ongoing or completed actions.
+      </p>
+
+      <p>
+        In additional to common properties supported by all <a href="#asobject" class="internalDFN">Object</a>
+        instances, <code>Activity</code> objects support the following additional
+        properties defined by the <a href="../as-vocab/Overview.html">Vocabulary</a>:
+        <code>
+          <a href="../as-vocab/Overview.html#dfn-verb-term">verb</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">actor</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">object</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">target</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">result</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">instrument</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">participant</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">priority</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">status</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">to</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">bto</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">cc</a> | 
+          <a href="../as-vocab/Overview.html#dfn-verb-term">bcc</a>
+        </code>
+      </p>
+
+      <p>
+        The <code>verb</code> property is used to identify the type of activity.
+        If the <code>verb</code> is not specified, the <code>@type</code> keyword
+        <em class="rfc2119" title="MAY">MAY</em> be used as an alternative means of determining the activity type.
+      </p>
+
+      <figure id="fig-the-following-example-illustrates-a-simple-activity"><figcaption>Fig. <span class="figno">15</span> <span class="fig-title">The following example illustrates a simple Activity:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 15</span></div>
+<pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Activity"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:activity:1"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"verb"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:verb:like"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"like"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"actor"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/profiles/joe"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"object"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.com/notes/1"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"published"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2014-09-30T12:34:56Z"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <section class="informative" id="implementation-note-1">
+        <h4 role="heading" id="h4_implementation-note-1"><span class="secno">3.4.1 </span>Implementation Note</h4><p><em>This section is non-normative.</em></p>
+
+        <p>
+          Since Activity Streams 1.0, the <code>verb</code> property has 
+          been defined to permit identifiers either in the form of absolute IRI's 
+          or simple <code>isegment-nz-nc</code> tokens. For instance, 
+          "<code>post</code>" is a valid Activity Streams verb.
+        </p>
+
+        <p>
+          However, existing JSON-LD processing algorithms have difficulty 
+          processing such <code>isegment-nz-nc</code> token values properly
+          without additional processing. It is <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> that JSON-LD
+          implementations handle simple <code>isegment-nz-nc</code> verbs 
+          as "blank nodes". For instance, the value "<code>post</code>" would
+          map to the blank node identified as <code>_:post</code>.
+        </p>
+
+      </section>
+
+      <section id="audienceTargeting" typeof="bibo:Chapter" resource="#audienceTargeting" rel="bibo:Chapter">
+
+        <h4 role="heading" id="h4_audienceTargeting"><span class="secno">3.4.2 </span>Audience Targeting</h4>
+
+        <p>
+          Every Activity has both a Primary and Secondary audience. The
+          Primary audience consists of those entities either directly involved
+          in the performance of the activity or who "own" the objects involved.
+          The Secondary audience consists of the collection of entities sharing
+          an interest in the activity but who are not directly involved (e.g.
+          "followers").
+        </p>
+
+        <p>
+          For instance, suppose a social network of three individuals: Bob, Joe
+          and Jane.  Bob and Joe are each friends with Jane but not friends
+          with one another.  Bob has chosen to "follow" activities for which
+          Jane is directly involved.  Jane shares a file with Joe.
+        </p>
+
+        <p>
+          In this example, Jane and Joe are each directly involved in the file
+          sharing activity and together make up the Primary Audience for that
+          event.  Bob, having an interest in activities involving Jane, is the
+          Secondary Audience.  Knowing this, a system that produces or consumes
+          the activity can intelligently notify each person of the event.
+        </p>
+
+        <p>
+          While there are means, based on the verb, actor, object and target of
+          the activity, to infer the primary audience for many types of
+          activities, those do not work in every case and do not provide a
+          means of identifying the secondary audience.  The 
+          <code><a href="../as-vocab/Overview.html#dfn-to">to</a></code>, 
+          <code><a href="../as-vocab/Overview.html#dfn-cc">cc</a></code>, 
+          <code><a href="../as-vocab/Overview.html#dfn-bto">bto</a></code> and 
+          <code><a href="../as-vocab/Overview.html#dfn-bcc">bcc</a></code> 
+          properties <em class="rfc2119" title="MAY">MAY</em> be used within an Activity to explicitly identify the 
+          Primary and Secondary audiences.
+        </p>
+
+        <p>
+          The prototypical use case for an Activity containing these properties
+          is the publication and redistribution of Activities through an
+          intermediary.  That is, an event source generates the activity and
+          publishes it to the intermediary which determines a subset of events
+          to display to specific individual users or groups.  Such a
+          determination can be made, in part, by identifying the Primary and
+          Secondary Audiences for each activity.
+        </p>
+
+        <p>
+          When the event source generates the activity and specifies values for
+          the <code>to</code> and <code>cc</code> fields, the 
+          intermediary <em class="rfc2119" title="SHOULD">SHOULD</em> redistribute that event
+          with the values of those fields intact, allowing any processor to see
+          who the activity has been targeted to.  This is precisely the same
+          model used by the <code>to</code> and <code>cc</code> fields in email systems.
+
+        </p><p>
+          There are situations, however, in which disclosing the identity of
+          specific members of the audience may be inappropriate.  For instance,
+          a user may not wish to let other users know that they are interested
+          in various topics, individuals or types of events.  To support this
+          option, an event source generating an activity <em class="rfc2119" title="MAY">MAY</em> use the 
+          <code>bto</code> and <code>bcc</code> properties to list 
+          entities to whom the activity should be privately targeted.  When an 
+          intermediary receives an activity containing these properties, it 
+          <em class="rfc2119" title="MUST">MUST</em> remove those values prior to redistributing the activity.  The 
+          intent is that systems <em class="rfc2119" title="MUST">MUST</em> consider entities listed within the 
+          <code>bto</code> and <code>bcc&lt;</code> properties as
+          part of the Primary and Secondary audience but <em class="rfc2119" title="MUST NOT">MUST NOT</em> disclose that
+          fact to any other party.
+        </p>
+
+        <p>
+          Audience targeting information included within an Activity only
+          describes the intent of the activity creator.  With clear exception
+          given to the appropriate handling of <code>bto</code> and 
+          <code>bcc</code>, this specification leaves it up to implementations 
+          to determine how the audience targeting information is used.
+        </p>
+
+      </section>
+
+    </section>
+
+    <section id="collections" typeof="bibo:Chapter" resource="#collections" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_collections"><span class="secno">3.5 </span><dfn title="Collection" id="collection">Collection</dfn></h3>
+
+      <p>
+        Collection objects are a specialization of the base <a href="#asobject" class="internalDFN">Object</a>
+        that contain a listing of other <a title="Object" href="#asobject" class="internalDFN">Objects</a>.
+        The Collection object is used primarily as the root of an 
+        <a href="#dfn-activity-streams-document" class="internalDFN">Activity Streams Document</a>, but can also be used as the
+        value of object properties.
+      </p>
+
+      <p>
+        Collections have both a logical model and a physical serialization.
+        While the logical view of a collection might contain a large number
+        of objects, any single serialized representation might include only a
+        subset of those objects, with specific "paging" <a title="Link" href="#dfn-link" class="internalDFN">Links</a> 
+        used to reference additional serialized representations that include
+        additional subsets.  Such representations are known as "multi-page
+        collections", with each serialized subset representing a single
+        "page".
+      </p>
+
+      <p>
+        All Collection objects have an <code><a href="activitystreams2-vocabulary#dfn-items">items</a></code>
+        property whose value is a JSON array of <a title="Object" href="#asobject" class="internalDFN">Objects</a> of any type. The <code>items</code>
+        property <em class="rfc2119" title="MUST">MUST</em> be supported by all implementations.
+      </p>
+      <p>
+        In addition to the common properties shared by all <a href="#asobject" class="internalDFN">Object</a> instances, 
+        <code>Collection</code> objects set of properties defined by the 
+        <a href="activitystreams2-vocabulary">Vocabulary</a>. These include:
+        <code>
+          <a href="../as-vocab/Overview.html#dfn-items">items</a> |
+          <a href="../as-vocab/Overview.html#dfn-totalItems">totalItems</a> |
+          <a href="../as-vocab/Overview.html#dfn-itemsPerPage">itemsPerPage</a> |
+          <a href="../as-vocab/Overview.html#dfn-startIndex">startIndex</a> |
+          <a href="../as-vocab/Overview.html#dfn-itemsAfter">itemsAfter</a> |
+          <a href="../as-vocab/Overview.html#dfn-itemsBefore">itemsBefore</a> |
+          <a href="../as-vocab/Overview.html#dfn-current">current</a> |
+          <a href="../as-vocab/Overview.html#dfn-next">next</a> |
+          <a href="../as-vocab/Overview.html#dfn-prev">prev</a> |
+          <a href="../as-vocab/Overview.html#dfn-first">first</a> |
+          <a href="../as-vocab/Overview.html#dfn-last">last</a> |
+          <a href="../as-vocab/Overview.html#dfn-self">self</a>
+        </code>
+      </p>
+
+      <figure id="fig-the-following-is-a-simple-collection-with-paging"><figcaption>Fig. <span class="figno">16</span> <span class="fig-title">The following is a simple collection with paging:</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 15</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Collection"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"totalItems"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"itemsPerPage"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"itemsSince"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2012-12-12T12:34:56Z"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"next"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/foo?page=2"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"self"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/foo?page=1"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"items"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"actor"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:person:sally"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"verb"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"post"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"object"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/foo"</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+    </section>
+
+    <section id="verb-objecttype" typeof="bibo:Chapter" resource="#verb-objecttype" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_verb-objecttype"><span class="secno">3.6 </span>Verbs and Object Types</h3>
+
+      <p>
+        A <code><dfn id="dfn-verb">Verb</dfn></code> is a subclass of <a href="#asobject" class="internalDFN">Object</a> used to 
+        specifically describe metadata associated with an <a href="#activity" class="internalDFN">Activity</a> <code>verb</code>
+        identifier.
+      </p>
+
+      <figure id="fig-for-instance-the-following-describes-the-urn-example-verbs-upload-verb-identifier"><figcaption>Fig. <span class="figno">17</span> <span class="fig-title">For instance, the following describes the "<code>urn:example:verbs:upload</code>"
+      verb identifier:</span></figcaption>
+<div class="example"><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/Verb"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:verbs:upload"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Upload"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"alias"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"upload"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+      <p>
+        Likewise, a <code><dfn id="dfn-objecttype">ObjectType</dfn></code> is a subclass of <a href="#asobject" class="internalDFN">Object</a> used
+        to describe metadata associated with an <a href="#asobject" class="internalDFN">Object</a> <code>@type</code> identifier.
+      </p>
+
+      <figure id="fig-for-instance-the-following-describes-the-urn-example-types-note-object-type"><figcaption>Fig. <span class="figno">18</span> <span class="fig-title">For instance, the following describes the "<code>urn:example:types:note</code>"
+      object type:</span></figcaption>
+<div class="example"><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/ObjectType"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types/note"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"displayName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Note"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+    </section>
+
+    <section id="actions" typeof="bibo:Chapter" resource="#actions" rel="bibo:Chapter">
+
+      <h3 role="heading" id="h3_actions"><span class="secno">3.7 </span><dfn id="dfn-potential-actions">Potential Actions</dfn></h3>
+
+      <p><mark>Ed.Note: This section is currently provisional and may be moved to a separate document.</mark></p>
+
+      <p>
+        All <code>Object</code> instances can have an 
+        <code><a href="../as-vocab/Overview.html#dfn-action">action</a></code> property 
+        used to describe the kinds of potential activities that can be taken with 
+        regards to the object. The value is expressed as a JSON object conforming 
+        to the <code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code>
+        class defined by the <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html">Actions Vocabulary</a>.
+      </p>
+
+        <figure id="fig-for-instance-the-following-illustrates-hypothetical-object-with-urn-example-types-note-as-the-objecttype-and-potential-actions-urn-example-actions-shareaction-and-urn-example-actions-saveaction"><figcaption>Fig. <span class="figno">19</span> <span class="fig-title">For instance, the following illustrates hypothetical object 
+        with "<code>urn:example:types:note</code>" as the objectType, and
+        potential actions "<code>urn:example:actions:ShareAction</code>" and 
+        "<code>urn:example:actions:SaveAction</code>":</span></figcaption>
+<div class="example"><div class="example-title"><span>Example 16</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:types:note"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"@id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:notes:1"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"action"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:actions:ShareAction"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"using"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/HttpRequest"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"method"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"POST"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"url"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://example.org/share?id=1"</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"urn:example:actions:SaveAction"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"using"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://activitystrea.ms/2.0/EmbeddedView"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"content"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"&lt;p&gt;...&lt;/p&gt;"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"mediaType"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"text/html"</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+        <p>
+          Please refer to the <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html">Actions
+          Vocabulary</a> for more detail on the Potential Actions model.
+        </p>
+
+      </section>
+
+  </section>
+
+  <section id="document" typeof="bibo:Chapter" resource="#document" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_document"><span class="secno">4. </span>Activity Streams Document</h2>
+
+    <p>
+      An <dfn title="Activity Streams Document" id="dfn-activity-streams-document">Activity Streams Document</dfn> 
+      is a JSON-LD document whose root value is a <a href="#collection" class="internalDFN">Collection</a> and 
+      whose MIME media type is "<code>application/activity+json</code>".
+    </p>
+
+  </section>
+
+  <section id="deprecated-syntax" typeof="bibo:Chapter" resource="#deprecated-syntax" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_deprecated-syntax"><span class="secno">5. </span>Deprecated Activity Streams 1.0 Syntax</h2>
+
+    <p>
+      The JSON syntax defined by this specification differs somewhat from
+      that defined in the original JSON Activity Streams 1.0
+      [<cite><a class="bibref" href="#bib-AS1">AS1</a></cite>] specification in ways that are not backwards
+      compatible.  Implementations can choose to continue supporting the
+      JSON Activity Streams 1.0 syntax but <em class="rfc2119" title="SHOULD">SHOULD</em> consider it to be
+      deprecated.  This means that while implementations <em class="rfc2119" title="MAY">MAY</em> continue to
+      consume the 1.0 syntax, they <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em> output the 1.0 syntax unless
+      specifically interacting with older non-2.0 compliant
+      implementations.
+    </p>
+
+    <p>
+      Specifically:
+    </p>
+
+    <ol>
+    <li>
+      Implementations <em class="rfc2119" title="MUST">MUST</em> use the "<code>application/stream+json</code>" MIME media
+      type when producing a JSON serialization using the Activity Streams 1.0
+      syntax, and "<code>application/activity+json</code>"
+      when producing a serialization conforming to the 2.0 syntax.
+    </li>
+    <li>
+      Implementations that process serializations identified using either 
+      the "<code>application/stream+json</code>" or the more
+      generic "<code>application/json</code>" MIME media type <em class="rfc2119" title="MUST">MUST</em> follow 
+      the syntax and processing rules set by [<cite><a class="bibref" href="#bib-AS1">AS1</a></cite>].  The 2.0
+      syntax and processing rules apply only when handling
+      serializations using the "<code>application/activity+json</code>" media type.
+    </li>
+    <li>
+      Implementations <em class="rfc2119" title="MUST">MUST</em> treat the <code>id</code> and <code>objectType</code>
+      properties defined by Activity Streams 1.0 as aliases for the 
+      JSON-LD keywords <code>@id</code> and <code>@type</code>, respectively.
+    </li>
+    <li>
+      This document redefines the <code><a href="../as-vocab/Overview.html#dfn-displayname">displayName</a></code>, 
+      <code><a href="../as-vocab/Overview.html#dfn-title">title</a></code>, 
+      <code><a href="../as-vocab/Overview.html#dfn-content">content</a></code> and
+      <code><a href="../as-vocab/Overview.html#dfn-summary">summary</a></code> 
+      properties as <a title="NaturalLanguageValue" href="#dfn-naturallanguagevalue" class="internalDFN">Natural Language Values</a>,
+      which means their values can be expressed as either a String or a
+      JSON-LD Language Map. In the 1.0 syntax, these are expressed
+      solely as String values.  Because the 1.0 values are a valid
+      subset allowed by this specification, implementations are not
+      required to take any specific action to continue supporting those
+      values.
+    </li>
+    <li>
+      This document redefines a large number of common properties
+      defined originally as Objects in 1.0 as either <a title="Object" href="#asobject" class="internalDFN">Objects</a> or 
+      <a title="Link" href="#dfn-link" class="internalDFN">Links</a>. The JSON-LD serialization allows such property values 
+      to be expressed as either an IRI String, an JSON object, or an Array of IRI Strings
+      and JSON objects.  Because the 1.0 values are a valid subset allowed
+      by this specification, existing implementations are not required to take
+      any specific action to continue supporting those values.
+    </li>
+    <li>
+      This specification deprecates the <code>upstreamDuplicates</code> and
+      <code>downstreamDuplicates</code> properties defined by Activity Streams 1.0 
+      and does not provide a replacement. This is due largely to lack of any 
+      reasonable implementation evidence. While the <code>upstreamDuplicates</code>
+      and <code>downstreamDuplicates</code> properties <em class="rfc2119" title="MAY">MAY</em> continue to be used, 
+      implementations <em class="rfc2119" title="SHOULD">SHOULD</em> avoid them.
+    </li>
+    </ol>
+
+    <p>
+      By following these requirements, all JSON Activity Streams 1.0
+      serializations can be processed successfully by 2.0 implementations.
+    </p>
+
+  </section>
+
+  <section id="extensibility" typeof="bibo:Chapter" resource="#extensibility" rel="bibo:Chapter">
+
+    <!--OddPage--><h2 role="heading" id="h2_extensibility"><span class="secno">6. </span>Extensibility</h2>
+
+    <p>
+      Processors that encounter unfamiliar property names or values 
+      <em class="rfc2119" title="MUST NOT">MUST NOT</em> stop processing or signal an error and <em class="rfc2119" title="MUST">MUST</em>
+      continue processing the items as if those properties were not
+      present.
+    </p>
+
+    <section id="compact-iris" typeof="bibo:Chapter" resource="#compact-iris" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_compact-iris"><span class="secno">6.1 </span>Handling of JSON-ID Compact IRIs</h3>
+
+        <p>
+          In JSON-LD, a "Compact IRI" is a type of shorthand notation that
+          allows absolute IRI values to be split into an absolute base IRI and
+          a relative token.  For instance, in the following example:
+        </p>
+
+        <figure id="fig-example-17-context-foaf-http-xmlns.com-foaf-0.1-foaf-givenname-sam"><figcaption>Fig. <span class="figno">20</span> <span class="fig-title"></span></figcaption>
+<div class="example"><div class="example-title"><span>Example 17</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
+  </span><span class="str">"@context"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"foaf"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://xmlns.com/foaf/0.1/"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"foaf:givenName"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Sam"</span><span class="pln">
+</span><span class="pun">}</span></pre></div></figure>
+
+        <p>
+          The property name <code>foaf:givenName</code> is a Compact IRI that expands to
+          "<code>http://xmlns.com/foaf/0.1/givenName</code>" when processed by a JSON-LD
+          implementation.
+        </p>
+
+        <p>
+          While there are differences of opinion on how extensively Compact
+          IRIs ought to be used within JSON-LD document instances, JSON-LD
+          implementations are required to support them.
+        </p>
+
+        <p>
+          In order to simplify implementation and encourage interoperable reuse, 
+          the following predefined prefixes are defined for Activity Streams 2.0
+          as an "Initial Context":
+        </p>
+
+        <table border="1">
+          <tbody><tr>
+            <th>Prefix</th>
+            <th>Expanded</th>
+          </tr>
+          <tr>
+            <td><code>as:</code></td>
+            <td><code>http://activitystrea.ms/2.0/</code></td>
+          </tr>
+          <tr>
+            <td><code>as1:</code></td>
+            <td><code>http://activitystrea.ms/1.0/</code></td>
+          </tr>
+          <tr>
+            <td><code>dc:</code></td>
+            <td><code>http://purl.org/dc/elements/1.1/</code></td>
+          </tr>
+          <tr>
+            <td><code>dct:</code></td>
+            <td><code>http://purl.org/dc/terms/</code></td>
+          </tr>
+          <tr>
+            <td><code>dctypes:</code></td>
+            <td><code>http://purl.org/dc/dcmitype/</code></td>
+          </tr>
+          <tr>
+            <td><code>foaf:</code></td>
+            <td><code>http://xmlns.com/foaf/0.1/</code></td>
+          </tr>
+          <tr>
+            <td><code>vcard:</code></td>
+            <td><code>http://www.w3.org/2006/vcard/ns#</code></td>
+          </tr>
+          <tr>
+            <td><code>org:</code></td>
+            <td><code>http://www.w3.org/ns/org#</code></td>
+          </tr>
+          <tr>
+            <td><code>prov:</code></td>
+            <td><code>http://www.w3.org/ns/prov#</code></td>
+          </tr>
+          <tr>
+            <td><code>geo:</code></td>
+            <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></td>
+          </tr>
+          <tr>
+            <td><code>geos:</code></td>
+            <td><code>http://www.opengis.net/ont/geosparql#</code></td>
+          </tr>
+        </tbody></table>
+
+        <p>
+          For instance, the property name <code>foaf:givenName</code> would expand to
+          "<code>http://xmlns.com/foaf/0.1/givenName</code>", while the property
+          <code>prov:actingOnBehalfOf</code> would expand to 
+          "<code>http://w3.org/ns/prov#actingOnBehalfOf</code>".
+        </p>
+
+      </section>
+
+  </section>
+
+  <section id="security-considerations" typeof="bibo:Chapter" resource="#security-considerations" rel="bibo:Chapter">
+
+  <!--OddPage--><h2 role="heading" id="h2_security-considerations"><span class="secno">7. </span>Security Considerations</h2>
+
+  <p>
+    Publishers or Consumers implementing Activity Streams as a stream of
+    public data may also want to consider the potential for unsolicited
+    commercial or malicious content and should take preventative measures
+    to recognize such content and either identify it or not include it in
+    their implementations.
+  </p>
+
+  <p>
+    Publishers should take reasonable measures to ensure potentially
+    malicious user input such as cross-site scripting attacks are not
+    included in the Activity Streams data they publish.
+  </p>
+
+  <p>
+    Consumers that re-emit ingested content to end-users <em class="rfc2119" title="MUST">MUST</em> take
+    reasonable measures if emitting ingested content to make sure
+    potentially malicious ingested input is not re-emitted.
+  </p>
+
+  <p>
+    Consumers that re-emit ingested content for crawling by search
+    engines should take reasonable measures to limit any use of their
+    site as a Search Engine Optimization loophole.  This may include
+    converting untrusted hyperlinks to text or including a
+    rel="nofollow" attribute.
+  </p>
+
+  <p>
+    Consumers should be aware of the potential for spoofing attacks where
+    the attacker publishes activities or objects with falsified property
+    values with the intent of injecting malicious content, hiding or
+    corrupting legitimate content, or misleading users.
+  </p>
+
+  <p>
+    Activity Streams are JSON Documents and are subject to the same
+    security considerations described in [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>].
+  </p>
+
+  <p>
+    Activity Streams implementations handle URIs.  See Section 7 of
+    [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>].
+  </p>
+
+  <p>
+    Activity Streams implementations handle IRIs.  See Section 8 of
+    [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>].
+  </p>
+
+  </section>
+
+  <section id="iana" typeof="bibo:Chapter" resource="#iana" rel="bibo:Chapter">
+
+    <!--OddPage--><h2 role="heading" id="h2_iana"><span class="secno">8. </span>IANA Considerations</h2>
+
+    <section id="media-type" typeof="bibo:Chapter" resource="#media-type" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_media-type"><span class="secno">8.1 </span>The <code>application/activity+json</code> Media Type</h3>
+
+      <p>
+        This specification registers the <code><dfn title="application/activity+json" id="dfn-application-activity-json">application/activity+json</dfn></code> MIME Media
+        Type:
+      </p>
+
+      <table border="1">
+        <tbody><tr>
+          <td>Type name: </td>
+          <td>application</td>
+        </tr>
+        <tr>
+          <td>Subtype name: </td>
+          <td>activity+json</td>
+        </tr>
+        <tr>
+          <td>Required parameters: </td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Optional parameters: </td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Encoding considerations: </td>
+          <td>
+            Resources that use the "<code>application/activity+json</code>"
+            Media Type are required to conform to all of the requirements
+            for the "<code>application/json</code>" Media Type and are 
+            therefore subject to the same encoding considerations specified
+            in Section 11 of [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>].
+          </td>
+        </tr>
+        <tr>
+          <td>Security considerations: </td>
+          <td>As defined in this specification.</td>
+        </tr>
+        <tr>
+          <td>Contact: </td>
+          <td>James M Snell &lt;<a href="mailto:jasnell@gmail.com">jasnell@gmail.com</a>&gt;</td>
+        </tr>
+        </tbody></table>
+
+    </section>
+
+  </section>
+
+  <section class="appendix" id="acknowledgements">
+
+    <!--OddPage--><h2 role="heading" id="h2_acknowledgements"><span class="secno">A. </span>Acknowledgements</h2>
+
+    <p>
+      The author wishes to thank the Activity Streams community and
+     implementers for their support, encouragement, and enthusiasm
+     including but not limited to: Abdul Qabiz, Adina Levin, Adrian Chan,
+     Adriana Javier, Alan Hoffman, Alex Kessinger, Alexander Ovchinnikov,
+     Alexander Zhuravlev, Alexandre Loureiro Solleiro, Amy Walgenbach,
+     Andres Vidal, Angel Robert Marquez, Ari Steinberg, Arjan
+     Scherpenisse, Arne Roomann-Kurrik, Beau Lebens, Ben Hedrington, Ben
+     Metcalfe, Ben Werdmuller, Benjamin Goering, Bill de hOra, Bo Xing,
+     Bob Aman, Bob Wyman, Brett Slatkin, Brian Walsh, Brynn Evans, Charlie
+     Cauthen, Chris Chabot, Chris Messina, Chris Toomey, Christian
+     Crumlish, Dan Brickley, Dan Scott, Daniel Chapman, Danny Ayers, Dare
+     Obasanjo, Darren Bounds, David Cramer, David Nelson, David Recordon,
+     DeWitt Clinton, Douglas Pearce, Ed Summers, Elias Bizannes, Elisabeth
+     Norris, Eric Marcoullier, Eric Woods, Evan Prodromou, Gee-Hsien
+     Chuang, Greg Biggers, Gregory Foster, Henry Saputra, Hillary Madsen,
+     Howard Liptzin, Hung Tran, Ian Kennedy, Ian Mulvany, Ivan Pulleyn,
+     Jacob Kim, James Falkner, James Pike, James Walker, Jason Kahn, Jason
+     Kantz, Jeff Kunins, Jeff Martin, Jian Lin, Johannes Ernst, John
+     Panzer, Jon Lebkowsky, Jon Paul Davies, Jonathan Coffman, Jonathan
+     Dugan, Joseph Boyle, Joseph Holsten, Joseph Smarr, Josh Brewer, Jud
+     Valeski, Julien Chaumond, Julien Genestoux, Jyri Engestroem, Kaliya
+     Hamlin, Kevin Marks, Laurent Eschenauer, Laurie Voss, Leah Culver,
+     Libby Miller, Manu Mukerji, Mark Weitzel, Marko Degenkolb, Marshall
+     Kirkpatrick, Martin Atkins, Martin Svensson, Marty Alchin, Mary
+     Hoder, Matt Leventi, Matt Wilkinson, Matthias Mueller-Prove, Max
+     Engel, Max Wegmueller, Melvin Carvalho, Michael Buckbee, Michael
+     Chan, Michael Richardson, Michael Sullivan, Mike Macgirvin, Mislav
+     Marohnić, Mo Jangda, Monica Wilkinson, Nate Benes, NeilFred
+     Picciotto, Nick Howard, Nick Lothian, Nissan Dookeran, Nitya
+     Narasimhan, Pablo Martin, Padraic Brady, Pat Cappelaere, Patrick
+     Aljord, Peter Ferne, Peter Reiser, Peter Saint-Andre, Phil Wolff,
+     Philip (flip) Kromer, Richard Cunningham, Richard Zhao, Rick
+     Severson, Robert Hall, Robert Langbert, Robert Dolin, Robin Cover,
+     Ryan Boyd, Sam Sethi, Scott Raymond, Scott Seely, Simon Grant, Simon
+     Wistow, Stephen Garcia, Stephen Sisk, Stephen Paul Weber, Steve Ivy,
+     Steve Midgley, Steven Livingstone-Perez, Sylvain Carle, Sylvain
+     Hellegouarch, Tantek Çelik, Tatu Saloranta, Tim Moore, Timothy Young,
+     Todd Barnard, Tosh Meston, Tyler Gillies, Will Norris, Zach Copley,
+     Laurent-Walter Goix, Matthew Marum, Andy Smith, and Zach Shepherd.
+   </p>
+
+  </section>
+
+  <section id="summary-of-changes">
+    <!--OddPage--><h2 role="heading" id="h2_summary-of-changes"><span class="secno">B. </span>Summary of Changes</h2>
+    <h2 id="x2014-09-30">2014-09-30</h2>
+    <ul>
+      <li>Rework serialization model to be based on JSON-LD.</li>
+      <li>Updated <a href="../as-vocab/Overview.html">vocabulary model</a>.</li>
+      <li>Remove notion of "Type Values".</li>
+      <li>Redefine "Link Values" as "Link".</li>
+      <li>Removed the "duplicates" property introduced in earlier AS2 drafts due to lack of any implementation evidence.</li>
+      <li>Vocabulary: rename "attachments" to "attachment" and "tags" to "tag", deprecate the old names.</li>
+      <li>Vocabulary: define "url", "image" and "icon" as having <a href="#dfn-link" class="internalDFN">Link</a> values. The clean up here ought to resolve the confusion over the relationship between <code>@id</code>, <code>url</code>, <code>self</code>, etc.</li>
+      <li>Vocabulary: The <code>mediaType</code> and <code>rel</code> properties are defined on <a href="#dfn-link" class="internalDFN">Link</a> and not <a href="#asobject" class="internalDFN">Object</a>.</li>
+    </ul>
+  </section>
+
+  <section id="tof" typeof="bibo:Chapter" resource="#tof" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_tof"><span class="secno">C. </span>Table of Figures</h2><ul class="tof"><li class="tofline"><a class="tocxref" href="#fig-expresses-the-statement-urn-example-person-martin-posted-http-example.org-foo.jpg-.-no-additional-detail-is-given.x">Fig. <span class="figno">1</span> <span class="fig-title">
+        Expresses the statement "'urn:example:person:martin' posted
+        'http://example.org/foo.jpg'".  No additional detail is given.
+      </span></a></li><li class="tofline"><a class="tocxref" href="#fig-expresses-the-statement-martin-smith-posted-an-article-to-the-blog-martin-s-blog-at-3-04-pm-gmt-on-february-2-2011.-some-additional-details-about-the-article-actor-and-target-blog-are-given-using-properties-defined-by-the-activity-streams-2.0-vocabulary.x">Fig. <span class="figno">2</span> <span class="fig-title">
+        Expresses the statement "Martin Smith posted an article to the blog
+        'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
+        details about the article, actor and target blog are given using properties
+        defined by the <span>Activity Streams 2.0
+        Vocabulary</span>.
+      </span></a></li><li class="tofline"><a class="tocxref" href="#fig-a-more-extensive-single-entry-activity-stream-follows.x">Fig. <span class="figno">3</span> <span class="fig-title">
+        A more extensive, single-entry "Activity Stream" follows.
+      </span></a></li><li class="tofline"><a class="tocxref" href="#fig-following-is-an-example-object-that-uses-the-json-id-id-and-type-json-ld-keywords-to-express-the-global-identifier-and-object-type">Fig. <span class="figno">4</span> <span class="fig-title">Following is an example Object that uses the JSON-ID <code>@id</code> and <code>@type</code>
+JSON-LD keywords to express the global identifier and object type:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-a-single-string-value-using-the-default-language">Fig. <span class="figno">5</span> <span class="fig-title">A single String value using the default language:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-multiple-language-specific-values">Fig. <span class="figno">6</span> <span class="fig-title">Multiple, language-specific values:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-using-the-language-keyword">Fig. <span class="figno">7</span> <span class="fig-title">Using the <code>@language</code> keyword:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-using-the-language-property-has-the-same-effect-as-using-the-language-inside-the-json-ld-context">Fig. <span class="figno">8</span> <span class="fig-title">Using the <code>language</code> property has the same effect 
+        as using the <code>@language</code> inside the JSON-LD <code>@context</code>:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-for-instance-the-following-example-javascript-function-extracts-the-value-of-the-language-property-and-injects-it-as-an-appropriate-json-ld-language-keyword-into-specific-properties-that-are-defined-as-natural-language-values-to-ensure-that-such-properties-are-properly-handled-by-the-standardized-json-ld-algorithms">Fig. <span class="figno">9</span> <span class="fig-title">For instance, the following example JavaScript function extracts 
+        the value of the <code>language</code> property and injects it as an appropriate
+        JSON-LD <code>@language</code> keyword into specific properties that are defined
+        as Natural Language Values to ensure that such properties are properly handled
+        by the standardized JSON-LD algorithms:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-to-reference-a-single-image-without-any-additional-metadata-the-link-value-can-be-expressed-as-a-simple-json-string-containing-an-absolute-or-relative-iri">Fig. <span class="figno">10</span> <span class="fig-title">To reference a single image without any additional metadata, the link
+        value can be expressed as a simple JSON string containing an absolute
+        or relative IRI:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-alternatively-if-additional-metadata-is-required-the-link-can-be-expressed-as-a-json-object-.x">Fig. <span class="figno">11</span> <span class="fig-title">
+        Alternatively, if additional metadata is required, the link can be
+        expressed as a JSON object:.
+      </span></a></li><li class="tofline"><a class="tocxref" href="#fig-if-more-than-one-link-value-is-to-be-expressed-a-json-array-with-a-mix-of-string-and-object-elements-can-be-used">Fig. <span class="figno">12</span> <span class="fig-title">
+        If more than one link value is to be expressed, A JSON Array with a
+        mix of string and object elements can be used:
+      </span></a></li><li class="tofline"><a class="tocxref" href="#fig-example-13-type-urn-example-types-application-image-http-example.org-foo.jpg-id-http-example.org-screens-1.jpg-type-http-activitystrea.ms-2.0-link-rel-preview-mediatype-image-jpeg">Fig. <span class="figno">13</span> <span class="fig-title"></span></a></li><li class="tofline"><a class="tocxref" href="#fig-example-14-type-urn-example-types-application-image-http-example.org-foo.jpg-id-http-example.org-screens-1.jpg-type-http-activitystrea.ms-2.0-link-urn-example-image-rel-preview-mediatype-image-jpeg-height-200-width-200">Fig. <span class="figno">14</span> <span class="fig-title"></span></a></li><li class="tofline"><a class="tocxref" href="#fig-the-following-example-illustrates-a-simple-activity">Fig. <span class="figno">15</span> <span class="fig-title">The following example illustrates a simple Activity:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-the-following-is-a-simple-collection-with-paging">Fig. <span class="figno">16</span> <span class="fig-title">The following is a simple collection with paging:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-for-instance-the-following-describes-the-urn-example-verbs-upload-verb-identifier">Fig. <span class="figno">17</span> <span class="fig-title">For instance, the following describes the "<code>urn:example:verbs:upload</code>"
+      verb identifier:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-for-instance-the-following-describes-the-urn-example-types-note-object-type">Fig. <span class="figno">18</span> <span class="fig-title">For instance, the following describes the "<code>urn:example:types:note</code>"
+      object type:</span></a></li><li class="tofline"><a class="tocxref" href="#fig-for-instance-the-following-illustrates-hypothetical-object-with-urn-example-types-note-as-the-objecttype-and-potential-actions-urn-example-actions-shareaction-and-urn-example-actions-saveaction">Fig. <span class="figno">19</span> <span class="fig-title">For instance, the following illustrates hypothetical object 
+        with "<code>urn:example:types:note</code>" as the objectType, and
+        potential actions "<code>urn:example:actions:ShareAction</code>" and 
+        "<code>urn:example:actions:SaveAction</code>":</span></a></li><li class="tofline"><a class="tocxref" href="#fig-example-17-context-foaf-http-xmlns.com-foaf-0.1-foaf-givenname-sam">Fig. <span class="figno">20</span> <span class="fig-title"></span></a></li></ul></section>
+
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_references"><span class="secno">D. </span>References</h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_normative-references"><span class="secno">D.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-AS1">[AS1]</dt><dd rel="dcterms:requires">J. Snell; M. Atkins; W. Norris; C. Messina; M. Wilkinson; R. Dolin. <a href="http://activitystrea.ms/specs/json/1.0/"><cite>JSON Activity Streams 1.0</cite></a>. unofficial. URL: <a href="http://activitystrea.ms/specs/json/1.0/">http://activitystrea.ms/specs/json/1.0/</a>
+</dd><dt id="bib-HTML5">[HTML5]</dt><dd rel="dcterms:requires">Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 16 September 2014. W3C Proposed Recommendation. URL: <a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>
+</dd><dt id="bib-JSON-LD">[JSON-LD]</dt><dd rel="dcterms:requires">Manu Sporny; Gregg Kellogg; Markus Lanthaler. <a href="http://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/json-ld/">http://www.w3.org/TR/json-ld/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd rel="dcterms:requires">S. Bradner. <a href="http://www.ietf.org/rfc/rfc2119.txt"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
+</dd><dt id="bib-RFC3339">[RFC3339]</dt><dd rel="dcterms:requires">G. Klyne; C. Newman. <a href="http://www.ietf.org/rfc/rfc3339.txt"><cite>Date and Time on the Internet: Timestamps</cite></a>. July 2002. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc3339.txt">http://www.ietf.org/rfc/rfc3339.txt</a>
+</dd><dt id="bib-RFC3986">[RFC3986]</dt><dd rel="dcterms:requires">T. Berners-Lee; R. Fielding; L. Masinter. <a href="http://www.ietf.org/rfc/rfc3986.txt"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="http://www.ietf.org/rfc/rfc3986.txt">http://www.ietf.org/rfc/rfc3986.txt</a>
+</dd><dt id="bib-RFC3987">[RFC3987]</dt><dd rel="dcterms:requires">M. Duerst; M. Suignard. <a href="http://www.ietf.org/rfc/rfc3987.txt"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. January 2005. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc3987.txt">http://www.ietf.org/rfc/rfc3987.txt</a>
+</dd><dt id="bib-RFC5988">[RFC5988]</dt><dd rel="dcterms:requires">M. Nottingham. <a href="http://www.ietf.org/rfc/rfc5988.txt"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc5988.txt">http://www.ietf.org/rfc/rfc5988.txt</a>
+</dd><dt id="bib-RFC7159">[RFC7159]</dt><dd rel="dcterms:requires">T. Bray, Ed.. <a href="http://www.ietf.org/rfc/rfc7159.txt"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. March 2014. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc7159.txt">http://www.ietf.org/rfc/rfc7159.txt</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_informative-references"><span class="secno">D.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RFC5646">[RFC5646]</dt><dd rel="dcterms:references">A. Phillips, Ed.; M. Davis, Ed.. <a href="http://www.ietf.org/rfc/rfc5646.txt"><cite>Tags for Identifying Languages</cite></a>. September 2009. Best Current Practice. URL: <a href="http://www.ietf.org/rfc/rfc5646.txt">http://www.ietf.org/rfc/rfc5646.txt</a>
+</dd></dl></section></section></body></html>

@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="en">
+<head>
+  <title>Activity Vocabulary</title>
+  <meta charset="UTF-8">
+  
+  
+  <style>
+    thead {
+      background: #005A9C;
+      color: white;
+    }
+    thead th {
+      font-weight: normal;
+    }
+  </style>
+<style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 { 
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
+<body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p>
+      
+        
+            <a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a>
+        
+      
+  </p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Activity Vocabulary</h1>
+  
+  <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2014-10-22T01:52:36.000Z" id="w3c-first-public-working-draft-22-october-2014"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time class="dt-published" datetime="2014-10-22">22 October 2014</time></h2>
+  <dl>
+    
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2014/WD-as-vocab-20141022/">http://www.w3.org/TR/2014/WD-as-vocab-20141022/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="http://www.w3.org/TR/as-vocab/">http://www.w3.org/TR/as-vocab/</a></dd>
+    
+    
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-vocabulary.html">http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-vocabulary.html</a></dd>
+    
+    
+    
+    
+    
+    
+    
+    <dt>Editor:</dt>
+    <dd class="p-author h-card vcard" rel="bibo:editor" inlist=""><span typeof="foaf:Person"><a class="u-url url p-name fn" rel="foaf:homepage" property="foaf:name" content="James M Snell" href="http://chmod777self.com">James M Snell</a>, IBM</span>
+</dd>
+
+    
+    
+      
+        
+          <dt>Repository:</dt>
+          
+             
+                
+                  <dd>
+                    <a href="https://github.com/jasnell/w3c-socialwg-activitystreams">
+                      Github
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/issues">
+                      Issues
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/commits/master">
+                      Commits
+                    </a>
+                  </dd>
+                
+             
+          
+        
+      
+    
+  </dl>
+  
+  
+  
+  
+    
+      <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2014
+         Activity Streams Working Group,IBM &amp;
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), 
+        
+        All Rights Reserved.
+        
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        
+          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
+        
+        rules apply.
+      </p>
+    
+  
+  <hr>
+</div>
+
+  <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#abstract" rel="bibo:Chapter"><h2 role="heading" id="h2_abstract">Abstract</h2>
+    <p>
+      This specification describes the Activity vocabulary.
+    </p>
+
+    <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" rel="bibo:Chapter">
+      <h3 role="heading" id="h3_authorsnote">Author's Note</h3><p><em>This section is non-normative.</em></p>
+      <p>
+        This draft is heavily influenced by the JSON Activity
+        Streams 1.0 specification originally co-authored by Martin
+        Atkins, Will Norris, Chris Messina, Monica Wilkinson, Rob Dolin and
+        James Snell.  The author is very thankful for their significant
+        contributions and gladly stands on their shoulders.  Some portions of
+        the original text of Activity Streams 1.0 are used in this document.
+      </p>
+    </section>
+  </section><section id="sotd" class="introductory" typeof="bibo:Chapter" resource="#sotd" rel="bibo:Chapter"><h2 role="heading" id="h2_sotd">Status of This Document</h2>
+  
+    
+      
+        <p>
+          <em>This section describes the status of this document at the time of its publication.
+          Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the
+          latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+          http://www.w3.org/TR/.</em>
+        </p>
+        
+  
+        <p>
+          This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a First Public Working Draft.
+          
+            This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+          
+          
+            If you wish to make comments regarding this document, please send them to 
+            <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> 
+            (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
+            <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
+          
+          
+          
+          
+            All comments are welcome.
+          
+        </p>
+        
+        
+          <p>
+            Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+            Membership. This is a draft document and may be updated, replaced or obsoleted by other
+            documents at any time. It is inappropriate to cite this document as other than work in
+            progress.
+          </p>
+        
+        
+        
+        <p>
+          
+            This document was produced by a group operating under the 
+            <a id="sotd_patent" about="" rel="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>.
+          
+          
+          
+            
+              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="" rel="disclosure">public list of any patent
+              disclosures</a> 
+            
+            made in connection with the deliverables of the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual knowledge of a patent
+            which the individual believes contains
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+          
+        </p>
+        
+          <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2014/Process-20140801/">1 August 2014 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+          </p>
+        
+        
+      
+    
+  
+</section><section id="toc"><h2 class="introductory" role="heading" id="h2_toc">Table of Contents</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#termconventions" class="tocxref"><span class="secno">1.1 </span>Value Conventions</a></li></ul></li><li class="tocline"><a href="#types" class="tocxref"><span class="secno">2. </span>Classes</a></li><li class="tocline"><a href="#terms" class="tocxref"><span class="secno">3. </span>Terms</a></li><li class="tocline"><a href="#collection-terms" class="tocxref"><span class="secno">4. </span>Collection Terms</a></li><li class="tocline"><a href="#as1terms" class="tocxref"><span class="secno">5. </span>Activity Streams 1.0 Terms</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li></ul></li></ul></section>
+
+  
+
+  <section id="introduction" typeof="bibo:Chapter" resource="#introduction" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_introduction"><span class="secno">1. </span>Introduction</h2>
+    <p>
+      The Activity Streams 2.0 Core defines the JSON syntax for 
+      Activity Streams. This document defines the vocabulary 
+      terms. 
+    </p>
+
+    <p>
+      The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>",
+      "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this
+      document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+    </p>
+
+    <section id="termconventions" typeof="bibo:Chapter" resource="#termconventions" rel="bibo:Chapter">
+
+      <h3 role="heading" id="h3_termconventions"><span class="secno">1.1 </span>Value Conventions</h3>
+
+      <p>
+        This specification uses IRIs [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>].  Every URI [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>] is also
+        an IRI, so a URI may be used wherever an IRI is named.  There are two
+        special considerations: (1) when an IRI that is not also a URI is
+        given for dereferencing, it <em class="rfc2119" title="MUST">MUST</em> be mapped to a URI using the steps
+        in Section 3.1 of [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>] and (2) when an IRI is serving as an "id"
+        value, it <em class="rfc2119" title="MUST NOT">MUST NOT</em> be so mapped.
+      </p>
+
+      <p>
+        Unless otherwise specified, all terms defined as <dfn id="dfn-timestamp">timestamp</dfn> values
+        <em class="rfc2119" title="MUST">MUST</em> conform to the "date-time" production in [<cite><a class="bibref" href="#bib-RFC3339">RFC3339</a></cite>], with an
+        uppercase "T" character used to separate date and time, and an
+        uppercase "Z" character in the absence of a numeric time zone offset.
+        All such timestamps <em class="rfc2119" title="SHOULD">SHOULD</em> be represented relative to Coordinated
+        Universal Time (UTC).
+      </p>
+
+    </section>
+
+  </section>
+
+  <section id="types" typeof="bibo:Chapter" resource="#types" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_types"><span class="secno">2. </span>Classes</h2>
+
+    <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
+
+    <p>
+    Classes: <code>
+      <a href="#dfn-object" class="internalDFN">Object</a> | <a href="#dfn-link" class="internalDFN">Link</a> | <a href="#dfn-activity" class="internalDFN">Activity</a> | <a href="#dfn-collection" class="internalDFN">Collection</a> | <a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a> | 
+      <a href="#dfn-verb" class="internalDFN">Verb</a> | <a href="#dfn-objecttype" class="internalDFN">ObjectType</a>
+    </code>
+    </p>
+
+    <table border="1" cellpadding="5" width="100%">
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th colspan="2" width="40%">Description</th>
+          <th width="40%">Terms</th>
+        </tr>
+      </thead>
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Object">
+        <tr>
+          <td rowspan="2" valign="top"><dfn itemprop="label" id="dfn-object">Object</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Object</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a href="#dfn-language" class="internalDFN">language</a> | <a href="#dfn-displayname" class="internalDFN">displayName</a> | <a href="#dfn-alias" class="internalDFN">alias</a> | <a href="#dfn-author" class="internalDFN">author</a> | <a href="#dfn-content" class="internalDFN">content</a> |
+            <a href="#dfn-summary" class="internalDFN">summary</a> | <a href="#dfn-title" class="internalDFN">title</a> | <a href="#dfn-icon" class="internalDFN">icon</a> | <a href="#dfn-image" class="internalDFN">image</a> | <a href="#dfn-location" class="internalDFN">location</a> | 
+            <a href="#dfn-generator" class="internalDFN">generator</a> | <a href="#dfn-provider" class="internalDFN">provider</a> | <a href="#dfn-published" class="internalDFN">published</a> | <a href="#dfn-updated" class="internalDFN">updated</a> | <a href="#dfn-starttime" class="internalDFN">startTime</a> |
+            <a href="#dfn-endtime" class="internalDFN">endTime</a> | <a href="#dfn-validfrom" class="internalDFN">validFrom</a> | <a href="#dfn-validafter" class="internalDFN">validAfter</a> | <a href="#dfn-validuntil" class="internalDFN">validUntil</a> | <a href="#dfn-validbefore" class="internalDFN">validBefore</a> |
+            <a href="#dfn-duration" class="internalDFN">duration</a> | <a href="#dfn-rating" class="internalDFN">rating</a> | <a href="#dfn-attachment" class="internalDFN">attachment</a> | <a href="#dfn-height" class="internalDFN">height</a> | <a href="#dfn-width" class="internalDFN">width</a> | <a href="#dfn-tag" class="internalDFN">tag</a> |
+            <a href="#dfn-inreplyto" class="internalDFN">inReplyTo</a> | <a href="#dfn-scope" class="internalDFN">scope</a> | <a href="#dfn-action" class="internalDFN">action</a> | <a href="#dfn-memberof" class="internalDFN">memberOf</a> | <a href="#dfn-url" class="internalDFN">url</a> | <a href="#dfn-resultof" class="internalDFN">resultOf</a> | <a href="#dfn-replies" class="internalDFN">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Describes an object of some kind. The Object class serves as a base class
+            for many of the other kinds of objects defined in the Activity and Actions
+            Vocabulary.
+          </td>
+        </tr>
+</tbody>
+
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Link">
+        <tr>
+          <td rowspan="2" valign="top"><dfn itemprop="label" id="dfn-link">Link</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Link</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a href="#dfn-rel" class="internalDFN">rel</a> | <a href="#dfn-mediatype" class="internalDFN">mediaType</a> | <a href="#dfn-language" class="internalDFN">language</a> | <a href="#dfn-displayname" class="internalDFN">displayName</a> | 
+            <a href="#dfn-title" class="internalDFN">title</a> | <a href="#dfn-hreflang" class="internalDFN">hreflang</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Describes a link to a separate resource.
+          </td>
+        </tr>
+</tbody>
+
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Activity">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label" id="dfn-activity">Activity</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Activity</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a title="verb-term" href="#dfn-verb-term" class="internalDFN">verb</a> | <a href="#dfn-actor" class="internalDFN">actor</a> | <a title="object-term" href="#dfn-object-term" class="internalDFN">object</a> | <a href="#dfn-target" class="internalDFN">target</a> | <a href="#dfn-result" class="internalDFN">result</a> | 
+            <a href="#dfn-instrument" class="internalDFN">instrument</a> | <a href="#dfn-participant" class="internalDFN">participant</a> | <a href="#dfn-priority" class="internalDFN">priority</a> | <a href="#dfn-status" class="internalDFN">status</a> | <a href="#dfn-to" class="internalDFN">to</a> |
+            <a href="#dfn-bto" class="internalDFN">bto</a> | <a href="#dfn-cc" class="internalDFN">cc</a> | <a href="#dfn-bcc" class="internalDFN">bcc</a></code></p>
+            <p><i>From <code><a href="#dfn-object" class="internalDFN">Object</a></code></i>:<br> 
+            <code><a href="#dfn-language" class="internalDFN">language</a> | <a href="#dfn-displayname" class="internalDFN">displayName</a> | <a href="#dfn-alias" class="internalDFN">alias</a> | <a href="#dfn-author" class="internalDFN">author</a> | <a href="#dfn-content" class="internalDFN">content</a> |
+            <a href="#dfn-summary" class="internalDFN">summary</a> | <a href="#dfn-title" class="internalDFN">title</a> | <a href="#dfn-icon" class="internalDFN">icon</a> | <a href="#dfn-image" class="internalDFN">image</a> | <a href="#dfn-location" class="internalDFN">location</a> | 
+            <a href="#dfn-generator" class="internalDFN">generator</a> | <a href="#dfn-provider" class="internalDFN">provider</a> | <a href="#dfn-published" class="internalDFN">published</a> | <a href="#dfn-updated" class="internalDFN">updated</a> | <a href="#dfn-starttime" class="internalDFN">startTime</a> |
+            <a href="#dfn-endtime" class="internalDFN">endTime</a> | <a href="#dfn-validfrom" class="internalDFN">validFrom</a> | <a href="#dfn-validafter" class="internalDFN">validAfter</a> | <a href="#dfn-validuntil" class="internalDFN">validUntil</a> | <a href="#dfn-validbefore" class="internalDFN">validBefore</a> |
+            <a href="#dfn-duration" class="internalDFN">duration</a> | <a href="#dfn-rating" class="internalDFN">rating</a> | <a href="#dfn-attachment" class="internalDFN">attachment</a> | <a href="#dfn-height" class="internalDFN">height</a> | <a href="#dfn-width" class="internalDFN">width</a> | <a href="#dfn-tag" class="internalDFN">tag</a> |
+            <a href="#dfn-inreplyto" class="internalDFN">inReplyTo</a> | <a href="#dfn-scope" class="internalDFN">scope</a> | <a href="#dfn-action" class="internalDFN">action</a> | <a href="#dfn-memberof" class="internalDFN">memberOf</a> | <a href="#dfn-url" class="internalDFN">url</a> | <a href="#dfn-resultof" class="internalDFN">resultOf</a> | <a href="#dfn-replies" class="internalDFN">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Describes some form of action that is currently happening or that has already happened.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+        </tr>
+</tbody>
+
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Collection">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label" id="dfn-collection">Collection</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Collection</code></td>
+          <td rowspan="3" valign="top">
+            <p><code><a href="#dfn-items" class="internalDFN">items</a> | <a href="#dfn-totalitems" class="internalDFN">totalItems</a> | <a href="#dfn-itemsperpage" class="internalDFN">itemsPerPage</a> | <a href="#dfn-startindex" class="internalDFN">startIndex</a> | 
+            <a href="#dfn-itemsafter" class="internalDFN">itemsAfter</a> | <a href="#dfn-itemsbefore" class="internalDFN">itemsBefore</a> | <a href="#dfn-current" class="internalDFN">current</a> | <a href="#dfn-next" class="internalDFN">next</a> | <a href="#dfn-prev" class="internalDFN">prev</a> | 
+            <a href="#dfn-first" class="internalDFN">first</a> | <a href="#dfn-last" class="internalDFN">last</a> | <a href="#dfn-self" class="internalDFN">self</a></code></p>
+            <p><i>From <code><a href="#dfn-object" class="internalDFN">Object</a></code></i>:<br> 
+            <code><a href="#dfn-language" class="internalDFN">language</a> | <a href="#dfn-displayname" class="internalDFN">displayName</a> | <a href="#dfn-alias" class="internalDFN">alias</a> | <a href="#dfn-author" class="internalDFN">author</a> | <a href="#dfn-content" class="internalDFN">content</a> |
+            <a href="#dfn-summary" class="internalDFN">summary</a> | <a href="#dfn-title" class="internalDFN">title</a> | <a href="#dfn-icon" class="internalDFN">icon</a> | <a href="#dfn-image" class="internalDFN">image</a> | <a href="#dfn-location" class="internalDFN">location</a> | 
+            <a href="#dfn-generator" class="internalDFN">generator</a> | <a href="#dfn-provider" class="internalDFN">provider</a> | <a href="#dfn-published" class="internalDFN">published</a> | <a href="#dfn-updated" class="internalDFN">updated</a> | <a href="#dfn-starttime" class="internalDFN">startTime</a> |
+            <a href="#dfn-endtime" class="internalDFN">endTime</a> | <a href="#dfn-validfrom" class="internalDFN">validFrom</a> | <a href="#dfn-validafter" class="internalDFN">validAfter</a> | <a href="#dfn-validuntil" class="internalDFN">validUntil</a> | <a href="#dfn-validbefore" class="internalDFN">validBefore</a> |
+            <a href="#dfn-duration" class="internalDFN">duration</a> | <a href="#dfn-rating" class="internalDFN">rating</a> | <a href="#dfn-attachment" class="internalDFN">attachment</a> | <a href="#dfn-height" class="internalDFN">height</a> | <a href="#dfn-width" class="internalDFN">width</a> | <a href="#dfn-tag" class="internalDFN">tag</a> |
+            <a href="#dfn-inreplyto" class="internalDFN">inReplyTo</a> | <a href="#dfn-scope" class="internalDFN">scope</a> | <a href="#dfn-action" class="internalDFN">action</a> | <a href="#dfn-memberof" class="internalDFN">memberOf</a> | <a href="#dfn-url" class="internalDFN">url</a> | <a href="#dfn-resultof" class="internalDFN">resultOf</a> | <a href="#dfn-replies" class="internalDFN">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            An unordered collection of <code><a href="#dfn-object" class="internalDFN">Object</a></code> instances.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/NaturalLanguageValue">
+        <tr>
+          <td rowspan="2" valign="top"><dfn itemprop="label" id="dfn-naturallanguagevalue">NaturalLanguageValue</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/NaturalLanguageValue</code></td>
+          <td rowspan="3" valign="top"></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            A Natural Language Value is a representation of human-readable character sequences in 
+            one or more languages.
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Verb">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label" id="dfn-verb">Verb</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/Verb</code></td>
+          <td rowspan="3" valign="top">
+            <p><i>From <code><a href="#dfn-object" class="internalDFN">Object</a></code></i>:<br> 
+            <code><a href="#dfn-language" class="internalDFN">language</a> | <a href="#dfn-displayname" class="internalDFN">displayName</a> | <a href="#dfn-alias" class="internalDFN">alias</a> | <a href="#dfn-author" class="internalDFN">author</a> | <a href="#dfn-content" class="internalDFN">content</a> |
+            <a href="#dfn-summary" class="internalDFN">summary</a> | <a href="#dfn-title" class="internalDFN">title</a> | <a href="#dfn-icon" class="internalDFN">icon</a> | <a href="#dfn-image" class="internalDFN">image</a> | <a href="#dfn-location" class="internalDFN">location</a> | 
+            <a href="#dfn-generator" class="internalDFN">generator</a> | <a href="#dfn-provider" class="internalDFN">provider</a> | <a href="#dfn-published" class="internalDFN">published</a> | <a href="#dfn-updated" class="internalDFN">updated</a> | <a href="#dfn-starttime" class="internalDFN">startTime</a> |
+            <a href="#dfn-endtime" class="internalDFN">endTime</a> | <a href="#dfn-validfrom" class="internalDFN">validFrom</a> | <a href="#dfn-validafter" class="internalDFN">validAfter</a> | <a href="#dfn-validuntil" class="internalDFN">validUntil</a> | <a href="#dfn-validbefore" class="internalDFN">validBefore</a> |
+            <a href="#dfn-duration" class="internalDFN">duration</a> | <a href="#dfn-rating" class="internalDFN">rating</a> | <a href="#dfn-attachment" class="internalDFN">attachment</a> | <a href="#dfn-height" class="internalDFN">height</a> | <a href="#dfn-width" class="internalDFN">width</a> | <a href="#dfn-tag" class="internalDFN">tag</a> |
+            <a href="#dfn-inreplyto" class="internalDFN">inReplyTo</a> | <a href="#dfn-scope" class="internalDFN">scope</a> | <a href="#dfn-action" class="internalDFN">action</a> | <a href="#dfn-memberof" class="internalDFN">memberOf</a> | <a href="#dfn-url" class="internalDFN">url</a> | <a href="#dfn-resultof" class="internalDFN">resultOf</a> | <a href="#dfn-replies" class="internalDFN">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Describes a Verb.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+        </tr>
+</tbody>
+
+      <tbody itemscope="" itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/ObjectType">
+        <tr>
+          <td rowspan="3" valign="top"><dfn itemprop="label" id="dfn-objecttype">ObjectType</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/ObjectType</code></td>
+          <td rowspan="3" valign="top">
+            <p><i>From <code><a href="#dfn-object" class="internalDFN">Object</a></code></i>:<br> 
+            <code><a href="#dfn-language" class="internalDFN">language</a> | <a href="#dfn-displayname" class="internalDFN">displayName</a> | <a href="#dfn-alias" class="internalDFN">alias</a> | <a href="#dfn-author" class="internalDFN">author</a> | <a href="#dfn-content" class="internalDFN">content</a> |
+            <a href="#dfn-summary" class="internalDFN">summary</a> | <a href="#dfn-title" class="internalDFN">title</a> | <a href="#dfn-icon" class="internalDFN">icon</a> | <a href="#dfn-image" class="internalDFN">image</a> | <a href="#dfn-location" class="internalDFN">location</a> | 
+            <a href="#dfn-generator" class="internalDFN">generator</a> | <a href="#dfn-provider" class="internalDFN">provider</a> | <a href="#dfn-published" class="internalDFN">published</a> | <a href="#dfn-updated" class="internalDFN">updated</a> | <a href="#dfn-starttime" class="internalDFN">startTime</a> |
+            <a href="#dfn-endtime" class="internalDFN">endTime</a> | <a href="#dfn-validfrom" class="internalDFN">validFrom</a> | <a href="#dfn-validafter" class="internalDFN">validAfter</a> | <a href="#dfn-validuntil" class="internalDFN">validUntil</a> | <a href="#dfn-validbefore" class="internalDFN">validBefore</a> |
+            <a href="#dfn-duration" class="internalDFN">duration</a> | <a href="#dfn-rating" class="internalDFN">rating</a> | <a href="#dfn-attachment" class="internalDFN">attachment</a> | <a href="#dfn-height" class="internalDFN">height</a> | <a href="#dfn-width" class="internalDFN">width</a> | <a href="#dfn-tag" class="internalDFN">tag</a> |
+            <a href="#dfn-inreplyto" class="internalDFN">inReplyTo</a> | <a href="#dfn-scope" class="internalDFN">scope</a> | <a href="#dfn-action" class="internalDFN">action</a> | <a href="#dfn-memberof" class="internalDFN">memberOf</a> | <a href="#dfn-url" class="internalDFN">url</a> | <a href="#dfn-resultof" class="internalDFN">resultOf</a> | <a href="#dfn-replies" class="internalDFN">replies</a></code></p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td itemprop="comment">
+            Describes an Object Type.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Type Of:</td>
+          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+        </tr>
+</tbody>
+
+    </table>
+
+  </section>
+
+  <section id="terms" typeof="bibo:Chapter" resource="#terms" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_terms"><span class="secno">3. </span>Terms</h2>
+
+    <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
+
+    <table border="1" cellpadding="5" width="100%">
+
+      <thead>
+        <tr>
+          <th width="15%">Term</th>
+          <th colspan="2">Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-language">language</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/language</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Establishes the default language assumed for human-readable,
+            natural-language metadata values included in the object. The 
+            value <em class="rfc2119" title="MUST">MUST</em> be an [<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language-Tag.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Range:</td>
+          <td valign="top">[<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language Tag</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-displayname">displayName</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/displayName</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A simple, human-readable, plain-text name for the object. HTML 
+            markup <em class="rfc2119" title="MUST NOT">MUST NOT</em> be included..
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-rel">rel</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/rel</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The RFC 5988 Link Relation associated with a <code><a href="#dfn-link" class="internalDFN">Link</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top">[<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] or <a class="bibref" href="http://www.w3.org/TR/html5/document-metadata.html#attr-link-rel">[HTML5]</a> Link Relation</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-mediatype">mediaType</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/mediaType</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            <p>When used on a <a href="#dfn-link" class="internalDFN">Link</a>, identifies the MIME media type of the 
+            referenced resource.</p>
+
+            <p>When used on a <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-payload">Payload</a>, identifies the MIME media type of the
+            payload described. For instance, a <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-payload">Payload</a> object with a <code>mediaType</code>
+            of "<code>application/json</code>" would describe a JSON resource.</p>
+
+            <p>When used on a <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#embeddedview">EmbeddedView</a>, identifies the MIME media type of 
+            value contained in the <a href="#dfn-content" class="internalDFN">content</a> property, if any.</p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code> | <code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-payload">Payload</a></code> | <code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-embeddedview">EmbeddedView</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top">MIME Media Type</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-hreflang">hreflang</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/hreflang</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Hints as to the language used by the target resource. Value <em class="rfc2119" title="MUST">MUST</em> be a [<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language-Tag.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Range:</td>
+          <td valign="top">[<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language Tag</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn title="verb-term" id="dfn-verb-term">verb</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/verb</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Identifies the type of action represented in the Activity
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a></code> | <code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><a title="Verb" href="#dfn-verb" class="internalDFN"><code>Verb</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-actor">actor</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/actor</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Describes one or more entities that either performed or are expected to
+            perform the activity.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a> | <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn title="object-term" id="dfn-object-term">object</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/object</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Describes the direct object of the activity. For instance, in the activity
+            "John saved a movie to his wishlist", the object of the activity is the 
+            movie saved.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a> | <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-target">target</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/target</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Describes the indirect object, or target, of the activity. The precise 
+            meaning of the target is largely dependent on the <code><a title="verb-term" href="#dfn-verb-term" class="internalDFN">verb</a></code>
+            but will often be the object of the English preposition "to". For instance,
+            in the activity "John saved a movie to his wishlist", the target of the 
+            activity is John's wishlist.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a> | <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+      <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-result">result</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/result</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Describes the result of the activity. For instance, if a particular action
+            results in the creation of a new resource, the <code><a href="#dfn-result" class="internalDFN">result</a></code>
+            property can be used to describe that new resource.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><a title="Object" href="#dfn-object" class="internalDFN"><code>Activity</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Reverse Of:</td>
+          <td valign="top"><code><a href="#dfn-resultof" class="internalDFN">resultOf</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-instrument">instrument</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/instrument</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An optional <code><a href="#dfn-object" class="internalDFN">Object</a></code> that describes one or more objects used to perform 
+            the activity. For instance, in the activity, "Sally played music with a piano",
+            the instrument of the activity is the piano.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a> | <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-participant">participant</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/participant</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An optional <code><a href="#dfn-object" class="internalDFN">Object</a></code> that describes one or more additional actors
+            that have (or will have) participated in the activity. For instance, in the
+            activity, "Sally went to the movies with Joe", Sally is the primary actor, 
+            while Joe is a participant.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a> | <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-priority">priority</dfn></td>
+          <td valig="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/priority</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            <p>An optional indicator of the relative priority, or importance, that the creator
+            of the activity considers it to have. Represented as a non-negative, numeric 
+            decimal between 0.00 and 1.00 (inclusive), with two decimal places of precision.
+            If the property is omitted or set to null, the assumption is that a default
+            priority can be assumed by the implementation. The value 0.00 represents the 
+            lowest possible priority while 1.00 represents the highest.</p>
+
+            <p>
+              The use of the <code><a href="#dfn-priority" class="internalDFN">priority</a></code> property does not impose any specific 
+              processing or display requirements on the part of any consuming implementation.
+            </p>
+
+            <p>
+              Expressing the value as a range of numeric decimal values is intended
+              to provide the greatest level of flexibility in the expression and
+              consumption of prioritization detail.  It is expected that
+              implementors consuming activity objects containing <code><a href="#dfn-priority" class="internalDFN">priority</a></code> 
+              will utilize and expose the additional information in a number of
+              different ways depending on the unique requirements of each
+              application use case.
+            </p>
+
+            <p>
+              Many existing systems do not represent priority values as numeric
+              ranges.  Such systems might use fixed, labeled brackets such as
+              "<code>low</code>", "<code>normal</code>" and "<code>high</code>" 
+              or "<code>urgent</code>".  Similar mechanisms can be
+              established, by convention, when using the <code><a href="#dfn-priority" class="internalDFN">priority</a></code> property.  In
+              typical use, it is <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> that implementations wishing to work
+              with such defined categories treat <code><a href="#dfn-priority" class="internalDFN">priority</a></code> property values in the
+              range <code>0.00</code> to <code>0.25</code> as "<code>low</code>" priority; values 
+              greater than <code>0.25</code> to <code>0.75</code> as "<code>normal</code>" priority; 
+              and values greater than <code>0.75</code> to <code>1.00</code> as
+              "<code>high</code>" priority.  Specific implementations are free to establish
+              alternative conventions for the grouping of priority values with the
+              caveat that such conventions likely will not be understood by all
+              implementations.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a> | <a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:decimal</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top">0.00 &lt;= priority &lt;= 1.00</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-status">status</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/status</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An optional, explicit indicator of the current status of the activity.
+            "<code>http://activitystrea.ms/2.0/status/active</code>" indicates that the activity is ongoing, 
+            "<code>http://activitystrea.ms/2.0/status/canceled</code>" indicates that the activity has been aborted,
+            "<code>http://activitystrea.ms/2.0/status/completed</code>" indicates that the activity has concluded,
+            "<code>http://activitystrea.ms/2.0/status/pending</code>" indicates that the activity is expected to begin,
+            "<code>http://activitystrea.ms/2.0/status/tentative</code>" indicates that the activity has been proposed,
+            and "<code>http://activitystrea.ms/2.0/status/voided</code>" indicates that the activity has been retracted
+            or should be considered invalid.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:anyURI</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-to">to</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/to</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Specifies the public primary audience
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-cc">cc</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/cc</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Specifies the public secondary audience
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-bto">bto</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/bto</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Specifies the private primary audience
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-bcc">bcc</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/bcc</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Specifies the private secondary audience
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Activity" href="#dfn-activity" class="internalDFN">Activity</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-alias">alias</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/alias</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Provides a contextually meaningful alternative label for the object
+            in addition to the <code><a href="#dfn-id" class="internalDFN">id</a></code>. For instance, within some
+            systems, groups can be identified by both a unique global identifier
+            and a more "human-friendly" label such as "<code>@friends</code>" or 
+            "<code>@network</code>". The value of the <code><a href="#dfn-alias" class="internalDFN">alias</a></code>
+            property <em class="rfc2119" title="MUST">MUST</em> match either the <code>isegment-nz-nc</code> or 
+            <code>IRI</code> productions in [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>]. The use of a relative
+            reference other than a simple name is not allowed.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:anyURI</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-author">author</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/author</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> referencing one or more entities credited
+              with creating or authoring the object.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-content">content</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/content</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A <code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code> description of the object content. HTML
+            markup, including visual elements such as images, <em class="rfc2119" title="MAY">MAY</em> be included.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code></td>
+        </tr>
+      </tbody>
+
+        <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-summary">summary</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/summary</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A <code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code> summarization of the object. HTML markup, 
+            including visual images such as images, <em class="rfc2119" title="MAY">MAY</em> be included.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-title">title</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/title</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A <code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code> title of the object. HTML markup, 
+            including visual images such as images, <em class="rfc2119" title="MAY">MAY</em> be included. The 
+            <code><a href="#dfn-title" class="internalDFN">title</a></code> and <code><a href="#dfn-displayname" class="internalDFN">displayName</a></code>
+            properties are closely related and overlap in function with the 
+            key difference being that <code><a href="#dfn-title" class="internalDFN">title</a></code> is permitted
+            to contain HTML markup while <code><a href="#dfn-displayname" class="internalDFN">displayName</a></code> is 
+            not.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-icon">icon</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/icon</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A <code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code> referencing one or more graphic 
+            representations of the object. The visual element <em class="rfc2119" title="SHOULD">SHOULD</em> have an aspect 
+            ratio of one (horizontal) to one (vertical) and <em class="rfc2119" title="SHOULD">SHOULD</em> be suitable for 
+            presentation at a small size. 
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-image">image</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/image</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A <code><a href="#dfn-link" class="internalDFN">Link</a> referencing one or more graphic representations
+            of the object. Unlike the <code><a href="#dfn-icon" class="internalDFN">icon</a></code> property, there are
+            no aspect ratio or display size limitations assumed.
+          </code></td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-location">location</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/location</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing one or more 
+            physical or logical locations associated with the object.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a title="Object" href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-generator">generator</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/generator</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing the 
+            resource (e.g. an application) that generated the object.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-provider">provider</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/provider</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing the resource 
+            (e.g. an application) that published the object. Note that this is not necessarily the same
+            entity that generated the object. 
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-published">published</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/published</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time at which the object was published
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-updated">updated</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/updated</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time at which the object was updated
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-starttime">startTime</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/startTime</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time describing the actual or expected starting time of the 
+            object. When used with an <code><a href="#dfn-activity" class="internalDFN">Activity</a></code> object, for instance, the 
+            <code><a href="#dfn-starttime" class="internalDFN">startTime</a></code> property specifies the moment the activity
+            began or is scheduled to begin.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-endtime">endTime</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/endTime</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time describing the actual or expected ending time of the 
+            object. When used with an <code><a href="#dfn-activity" class="internalDFN">Activity</a></code> object, for instance, the 
+            <code><a href="#dfn-endtime" class="internalDFN">endTime</a></code> property specifies the moment the activity
+            concluded or is expected to conclude.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-validfrom">validFrom</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/validFrom</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time at or after which (inclusive) the object is considered 
+            to be valid.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-validafter">validAfter</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/validAfter</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time after which (exclusive) the object is considered to 
+            be valid.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-validuntil">validUntil</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/validUntil</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time at or before which (inclusive) the object is considered to
+            be valid. Once this moment has passed, the object is considered to have 
+            expired.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-validbefore">validBefore</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/validBefore</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The date and time at or after which the object is considered to have 
+            expired.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-duration">duration</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/duration</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            When the object describes a time-bound resource, such as an audio or
+            video, a meeting, etc, the <code><a href="#dfn-duration" class="internalDFN">duration</a></code> property 
+            indicates the object's approximate duration. The value <em class="rfc2119" title="SHOULD">SHOULD</em>
+            be expressed as an [<cite><a class="bibref" href="#bib-RFC3339">RFC3339</a></cite>] <code>duration</code> (e.g. a
+            period of 5 seconds is represented as "<code>PT5S</code>") but 
+            <em class="rfc2119" title="MAY">MAY</em> be specified as a non-negative integer specifying the 
+            duration as a number of non-fractional seconds.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:integer</code> | <code>xsd:duration</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-rating">rating</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/rating</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A quality rating expressed as a non-negative decimal number between 0.0 and 
+            5.0 (inclusive) with one decimal place of precision.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:decimal</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Comment:</td>
+          <td valign="top">0.0 &lt;= rating &lt;= 5.0</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-attachment">attachment</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/attachments</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+              An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing one 
+              or more objects associated with the containing object. These are similar in concept to files 
+              attached to an email.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-height">height</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/height</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            When the object describes a visual resource, such as an image, video or 
+            embeddable HTML, the <code><a href="#dfn-height" class="internalDFN">height</a></code> property indicates the
+            recommended display height in terms of device-independent pixels.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-width">width</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/width</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            When the object describes a visual resource, such as an image, video or
+            embeddable HTML, the <code><a href="#dfn-width" class="internalDFN">width</a></code> property indicates the 
+            recommended display width in terms of device-independent pixels.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-tag">tag</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/tags</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing one 
+            or more resources that are loosely associated with the containing object. 
+            The <code><a href="#dfn-tag" class="internalDFN">tag</a></code> and <code><a href="#dfn-attachment" class="internalDFN">attachment</a></code> properties differ 
+            from one another in that the <code><a href="#dfn-tag" class="internalDFN">tag</a></code> property asserts "association by
+            reference" while <code><a href="#dfn-attachment" class="internalDFN">attachment</a></code> asserts "association by
+            enclosure".
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-inreplyto">inReplyTo</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/inReplyTo</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing one 
+            or more other objects to which the containing object can be considered a response.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a title="Object" href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-scope">scope</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/scope</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An <code><a href="#dfn-object" class="internalDFN">Object</a></code> or <code><a href="#dfn-link" class="internalDFN">Link</a></code> referencing one 
+            or more resources that define the total population of entities for which the object can 
+            considered to be relevant.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+       </tbody>
+
+       <tbody>
+        <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-action">action</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/action</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A <code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code> that can be performed with the object
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Reverse Of:</td>
+          <td valign="top"><code><a title="object-term" href="#dfn-object-term" class="internalDFN">object</a></code></td>
+        </tr>
+       </tbody>
+
+       <tbody>
+         <tr>
+           <td rowspan="5" valign="top"><dfn id="dfn-memberof">memberOf</dfn></td>
+           <td valign="top" width="10%">URI:</td>
+           <td valign="top"><code>http://activitystrea.ms/2.0/memberOf</code></td>
+         </tr>
+         <tr>
+           <td valign="top">Notes:</td>
+           <td valign="top">
+             Identifies a <a href="#dfn-collection" class="internalDFN">Collection</a> to which this Object belongs
+           </td>
+         </tr>
+         <tr>
+           <td valign="top">Domain:</td>
+           <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+         </tr>
+         <tr>
+           <td valign="top">Value:</td>
+           <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+         </tr>
+         <tr>
+           <td valign="top">Reverse Of:</td>
+           <td valign="top"><a title="items" href="#dfn-items" class="internalDFN">items</a></td>
+         </tr>
+       </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-url">url</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/url</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              The <code>url</code> property is typically used to point to a displayable 
+              representation of an object (usually an HTML page).
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="5" valign="top"><dfn id="dfn-resultof">resultOf</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/resultOf</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Identifies the Activity of which this object or link is a result.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><a title="Activity" href="#dfn-activity" class="internalDFN"><code>Activity</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Reverse Of:</td>
+            <td valign="top"><code><a href="#dfn-result" class="internalDFN">result</a></code></td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </section>
+
+  <section id="collection-terms" typeof="bibo:Chapter" resource="#collection-terms" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_collection-terms"><span class="secno">4. </span>Collection Terms</h2>
+
+    <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
+
+    <table border="1" cellpadding="5" width="100%">
+
+      <thead>
+        <tr>
+          <th width="15%">Term</th>
+          <th colspan="2">Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+       <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-items">items</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/items</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An unordered set of <a title="Object" href="#dfn-object" class="internalDFN">Objects</a> contained by the 
+            collection.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a title="Object" href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Reverse Of:</td>
+          <td valign="top"><code><a title="memberOf" href="#dfn-memberof" class="internalDFN">memberOf</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+       <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-totalitems">totalItems</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/totalItems</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A non-negative integer specifying the total number of objects
+            contained by the logical view of the collection. This number 
+            might not reflect the actual number of items serialized
+            within the <code><a href="#dfn-collection" class="internalDFN">Collection</a></code> object instance.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+       <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-itemsperpage">itemsPerPage</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/itemsPerPage</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            A non-negative integer specifying the maximum number of items that 
+            will be included in the value of the <code><a href="#dfn-items" class="internalDFN">items</a></code> 
+            array.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-startindex">startIndex</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/startIndex</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              A non-negative integer value identifying the relative position
+              within the logical view of the collection of the first object
+              contained in the <code><a href="#dfn-items" class="internalDFN">items</a></code> array.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          </tr>
+      </tbody>
+
+      <tbody>
+       <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-itemsafter">itemsAfter</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/itemsAfter</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An RFC 3339 date-time that indicates that the collection
+            contains only items published or updated strictly after the
+            date and time specified.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+       <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-itemsbefore">itemsBefore</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/2.0/itemsBefore</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            An RFC 3339 date-time that indicates that the collection
+            contains only items published or updated strictly before the
+            date and time specified.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-timestamp" class="internalDFN">timestamp</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-replies">replies</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/replies</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides information about the set of objects that can be
+              considered to be replies to the containing object.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Collection" href="#dfn-collection" class="internalDFN">Collection</a></code></td>
+          </tr>
+        </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-current">current</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/current</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides a link to the collection page containing the most recently
+              published or updated items.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Collection" href="#dfn-collection" class="internalDFN"><code>Collection</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+          </tr>
+        </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-next">next</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/next</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides a link to the next page of items in the collection
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Collection" href="#dfn-collection" class="internalDFN"><code>Collection</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+          </tr>
+        </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-prev">prev</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/prev</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides a link to the previous page of item in the collection
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Collection" href="#dfn-collection" class="internalDFN"><code>Collection</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+          </tr>
+        </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-first">first</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/first</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides a link to the further preceeding page in the collection
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Collection" href="#dfn-collection" class="internalDFN"><code>Collection</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+          </tr>
+        </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-last">last</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/last</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides a link to furthest page in the collection
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Collection" href="#dfn-collection" class="internalDFN"><code>Collection</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+          </tr>
+        </tbody>
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-self">self</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/2.0/self</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              Provides a link to this page of the collection
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><a title="Collection" href="#dfn-collection" class="internalDFN"><code>Collection</code></a></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code><a title="Link" href="#dfn-link" class="internalDFN">Link</a></code></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </section>
+
+
+  <section id="as1terms" typeof="bibo:Chapter" resource="#as1terms" rel="bibo:Chapter">
+    <!--OddPage--><h2 role="heading" id="h2_as1terms"><span class="secno">5. </span>Activity Streams 1.0 Terms</h2>
+
+    <table border="1" cellpadding="2">
+      <thead>
+        <tr>
+          <th width="15%">Term</th>
+          <th colspan="2">Description</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-id">id</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/1.0/id</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Provides a permanent, universally unique identifier for the object
+            in the form of an absolute IRI [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>].
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code>
+        </td></tr>
+        <tr>
+          <td valign="top">Equivalent To:</td>
+          <td valign="top">[<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>] "@id"</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn title="objectType-term" id="dfn-objecttype-term">objectType</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/1.0/objectType</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            Identifies the type of object. If an object does not either the 
+            <code><a href="#dfn-objecttype" class="internalDFN">objectType</a></code> or <code>@type</code> properties,
+            the object has no specific type.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Equivalent To:</td>
+          <td valign="top">[<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>] <code>@type</code></td>
+        </tr>
+      </tbody>
+
+
+      <tbody>
+         <tr>
+            <td rowspan="4" valign="top"><dfn id="dfn-downstreamduplicates">downstreamDuplicates</dfn></td>
+            <td valign="top" width="10%">URI:</td>
+            <td valign="top"><code>http://activitystrea.ms/1.0/downstreamDuplicates</code></td>
+          </tr>
+          <tr>
+            <td valign="top">Notes:</td>
+            <td valign="top">
+              The downstreamDuplicates property is used when 
+              there are known objects, possibly in a different system, that duplicate 
+              the content in this object. This would be used as a hint for consumers 
+              to use when resolving duplicates between objects received from different 
+              sources. In Activity Streams 2.0, the downstreamDuplicates property is
+              deprecated and <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em> be used.
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">Domain:</td>
+            <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+          </tr>
+          <tr>
+            <td valign="top">Value:</td>
+            <td valign="top"><code>xsd:anyURI</code></td>
+          </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" valign="top"><dfn id="dfn-upstreamduplicates">upstreamDuplicates</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/1.0/upstreamDuplicates</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            The upstreamDuplicates property is used when 
+            there are known objects, possibly in a different system, that duplicate 
+            the content in this object. This would be used as a hint for consumers 
+            to use when resolving duplicates between objects received from different 
+            sources. In Activity Streams 2.0, the upstreamDuplicates property is
+            deprecated and <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em> be used.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code>xsd:anyURI</code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-tags">tags</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/1.0/tags</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            In the Activity Streams 2.0 vocabulary, <code>tags</code>
+            is renamed to the singular form <code>tag</code> for 
+            consistency.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Equivalent To:</td>
+          <td valign="top"><code><a title="tag" href="#dfn-tag" class="internalDFN">tag</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" valign="top"><dfn id="dfn-attachments">attachments</dfn></td>
+          <td valign="top" width="10%">URI:</td>
+          <td valign="top"><code>http://activitystrea.ms/1.0/attachments</code></td>
+        </tr>
+        <tr>
+          <td valign="top">Notes:</td>
+          <td valign="top">
+            In the Activity Streams 2.0 vocabulary, <code>attachments</code>
+            is renamed to the singular form <code>attachment</code> for 
+            consistency.
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Domain:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code></td>
+        </tr>
+        <tr>
+          <td valign="top">Value:</td>
+          <td valign="top"><code><a href="#dfn-object" class="internalDFN">Object</a></code> | <a title="Link" href="#dfn-link" class="internalDFN"><code>Link</code></a></td>
+        </tr>
+        <tr>
+          <td valign="top">Equivalent To:</td>
+          <td valign="top"><code><a title="attachment" href="#dfn-attachment" class="internalDFN">attachment</a></code></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </section>
+
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" rel="bibo:Chapter"><!--OddPage--><h2 role="heading" id="h2_references"><span class="secno">A. </span>References</h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" rel="bibo:Chapter"><h3 role="heading" id="h3_normative-references"><span class="secno">A.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-JSON-LD">[JSON-LD]</dt><dd rel="dcterms:requires">Manu Sporny; Gregg Kellogg; Markus Lanthaler. <a href="http://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/json-ld/">http://www.w3.org/TR/json-ld/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd rel="dcterms:requires">S. Bradner. <a href="http://www.ietf.org/rfc/rfc2119.txt"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
+</dd><dt id="bib-RFC3339">[RFC3339]</dt><dd rel="dcterms:requires">G. Klyne; C. Newman. <a href="http://www.ietf.org/rfc/rfc3339.txt"><cite>Date and Time on the Internet: Timestamps</cite></a>. July 2002. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc3339.txt">http://www.ietf.org/rfc/rfc3339.txt</a>
+</dd><dt id="bib-RFC3986">[RFC3986]</dt><dd rel="dcterms:requires">T. Berners-Lee; R. Fielding; L. Masinter. <a href="http://www.ietf.org/rfc/rfc3986.txt"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="http://www.ietf.org/rfc/rfc3986.txt">http://www.ietf.org/rfc/rfc3986.txt</a>
+</dd><dt id="bib-RFC3987">[RFC3987]</dt><dd rel="dcterms:requires">M. Duerst; M. Suignard. <a href="http://www.ietf.org/rfc/rfc3987.txt"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. January 2005. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc3987.txt">http://www.ietf.org/rfc/rfc3987.txt</a>
+</dd><dt id="bib-RFC5646">[RFC5646]</dt><dd rel="dcterms:requires">A. Phillips, Ed.; M. Davis, Ed.. <a href="http://www.ietf.org/rfc/rfc5646.txt"><cite>Tags for Identifying Languages</cite></a>. September 2009. Best Current Practice. URL: <a href="http://www.ietf.org/rfc/rfc5646.txt">http://www.ietf.org/rfc/rfc5646.txt</a>
+</dd><dt id="bib-RFC5988">[RFC5988]</dt><dd rel="dcterms:requires">M. Nottingham. <a href="http://www.ietf.org/rfc/rfc5988.txt"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="http://www.ietf.org/rfc/rfc5988.txt">http://www.ietf.org/rfc/rfc5988.txt</a>
+</dd></dl></section></section></body></html>
