@@ -1,0 +1,24 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+_:b0 a as:Activity;
+     as:language "en";
+     as:verb _:b1;
+     as:actor <urn:example:person:martin>;
+     as:object <urn:example:blog:abc123/xyz>;
+     as:target <http://example.org/blog/> .
+     as:published "2011-02-10T15:04:55Z"^^<xsd:dateTime>;
+
+<urn:example:person:martin> a <urn:example:types:person>;
+                            as:displayName "Martin Smith";
+                            as:image <http://example.org/martin/image.jpg>;
+                            as:url <http://example.org/martin> .
+
+<http://example.org/blog/> a <urn:example:types:blog>;
+                           as:displayName "Martin's Blog" .
+
+<http://example.org/martin/image.jpg> a as:Link;
+                                      as:mediaType "image/jpeg" .
+
+<urn:example:blog:abc123/xyz> a <urn:example:types:article>;
+                              as:displayName "Why I love Activity Streams";
+                              as:url <http://example.org/blog/2011/02/entry> .
