@@ -174,9 +174,9 @@ code.prettyprint {
   <dl>
     
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2014/WD-as-core-20141022/">http://www.w3.org/TR/2014/WD-as-core-20141022/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2014/WD-activitystreams-core-20141022/">http://www.w3.org/TR/2014/WD-activitystreams-core-20141022/</a></dd>
       <dt>Latest published version:</dt>
-      <dd><a href="http://www.w3.org/TR/as-core/">http://www.w3.org/TR/as-core/</a></dd>
+      <dd><a href="http://www.w3.org/TR/activitystreams-core/">http://www.w3.org/TR/activitystreams-core/</a></dd>
     
     
       <dt>Latest editor's draft:</dt>
@@ -321,7 +321,7 @@ code.prettyprint {
           
           
             
-              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="" rel="disclosure">public list of any patent
+              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent
               disclosures</a> 
             
             made in connection with the deliverables of the group; that page also includes
@@ -413,7 +413,7 @@ code.prettyprint {
 
       <p>
         This specification describes a JSON-based [<cite><a class="bibref" href="#bib-RFC7159">RFC7159</a></cite>] serialization
-        syntax for the <a href="../as-vocab/Overview.html">Activity 
+        syntax for the <a href="../activitystreams-vocabulary/Overview.html">Activity 
         Vocabulary</a> that follows the conventions defined by the 
         [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>] specification. While serialization forms other than 
         JSON-LD are possible, alternatives are not discussed by this 
@@ -493,7 +493,7 @@ code.prettyprint {
         Expresses the statement "Martin Smith posted an article to the blog
         'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
         details about the article, actor and target blog are given using properties
-        defined by the <a href="../as-vocab/Overview.html">Activity Streams 2.0
+        defined by the <a href="../activitystreams-vocabulary/Overview.html">Activity Streams 2.0
         Vocabulary</a>.
       </span></figcaption>
 <div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
@@ -605,7 +605,7 @@ code.prettyprint {
     <!--OddPage--><h2 role="heading" id="h2_model"><span class="secno">3. </span>Model</h2>
 
     <p>
-      The <a href="../as-vocab/Overview.html">Activity Vocabulary</a>
+      The <a href="../activitystreams-vocabulary/Overview.html">Activity Vocabulary</a>
       defines the abstract model for Activity Streams 2.0. The vocabulary 
       document defines seven distinct abstract classes: <a href="#asobject" class="internalDFN">Object</a>, 
       <a href="#dfn-link" class="internalDFN">Link</a>, <a href="#collection" class="internalDFN">Collection</a>, <a href="#activity" class="internalDFN">Activity</a>, <a href="#dfn-naturallanguagevalue" class="internalDFN">NaturalLanguageValue</a>, 
@@ -617,7 +617,7 @@ code.prettyprint {
       <h3 role="heading" id="h3_object"><span class="secno">3.1 </span><dfn title="Object" id="asobject">Object</dfn></h3>
 
       <p>
-        The <code><a href="../as-vocab/Overview.html#dfn-object">Object</a></code> 
+        The <code><a href="../activitystreams-vocabulary/Overview.html#dfn-object">Object</a></code> 
         class is the primary base class for the Activity Streams vocabulary. An 
         implementations would typically create it's own set of subclasses that 
         derive from the <code>http://activitystrea.ms/2.0/Object</code> class as 
@@ -628,48 +628,48 @@ code.prettyprint {
         In addition to having a global identifier in the form of an absolute IRI 
         and an "object type" (expressed in JSON-LD using the <code>@type</code> keyword),
         all instances of the <code>Object</code> class share a common set of properties 
-        as defined by the <a href="../as-vocab/Overview.html">Activity Vocabulary</a>. 
+        as defined by the <a href="../activitystreams-vocabulary/Overview.html">Activity Vocabulary</a>. 
         These include:
         <code>
-          <a href="../as-vocab/Overview.html#dfn-action">action</a> |
-          <a href="../as-vocab/Overview.html#dfn-alias">alias</a> | 
-          <a href="../as-vocab/Overview.html#dfn-attachment">attachment</a> | 
-          <a href="../as-vocab/Overview.html#dfn-author">author</a> | 
-          <a href="../as-vocab/Overview.html#dfn-content">content</a> |
-          <a href="../as-vocab/Overview.html#dfn-displayname">displayName</a> |
-          <a href="../as-vocab/Overview.html#dfn-duration">duration</a> | 
-          <a href="../as-vocab/Overview.html#dfn-endtime">endTime</a> | 
-          <a href="../as-vocab/Overview.html#dfn-generator">generator</a> |
-          <a href="../as-vocab/Overview.html#dfn-height">height</a> | 
-          <a href="../as-vocab/Overview.html#dfn-icon">icon</a> | 
-          <a href="../as-vocab/Overview.html#dfn-image">image</a> |
-          <a href="../as-vocab/Overview.html#dfn-inreplyto">inReplyTo</a> | 
-          <a href="../as-vocab/Overview.html#dfn-language">language</a> |
-          <a href="../as-vocab/Overview.html#dfn-location">location</a> |
-          <a href="../as-vocab/Overview.html#dfn-memberof">memberOf</a> |    
-          <a href="../as-vocab/Overview.html#dfn-provider">provider</a> | 
-          <a href="../as-vocab/Overview.html#dfn-published">published</a> |
-          <a href="../as-vocab/Overview.html#dfn-rating">rating</a> |
-          <a href="../as-vocab/Overview.html#dfn-replies">replies</a> |
-          <a href="../as-vocab/Overview.html#dfn-resultof">resultOf</a> |
-          <a href="../as-vocab/Overview.html#dfn-scope">scope</a> |  
-          <a href="../as-vocab/Overview.html#dfn-starttime">startTime</a> | 
-          <a href="../as-vocab/Overview.html#dfn-summary">summary</a> |
-          <a href="../as-vocab/Overview.html#dfn-tag">tag</a> | 
-          <a href="../as-vocab/Overview.html#dfn-title">title</a> |
-          <a href="../as-vocab/Overview.html#dfn-updated">updated</a> | 
-          <a href="../as-vocab/Overview.html#dfn-validafter">validAfter</a> | 
-          <a href="../as-vocab/Overview.html#dfn-validbefore">validBefore</a> |
-          <a href="../as-vocab/Overview.html#dfn-validfrom">validFrom</a> | 
-          <a href="../as-vocab/Overview.html#dfn-validuntil">validUntil</a> | 
-          <a href="../as-vocab/Overview.html#dfn-width">width</a> |  
-          <a href="../as-vocab/Overview.html#dfn-url">url</a>
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-action">action</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-alias">alias</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-attachment">attachment</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-author">author</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-content">content</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-displayname">displayName</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-duration">duration</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-endtime">endTime</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-generator">generator</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-height">height</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-icon">icon</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-image">image</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-inreplyto">inReplyTo</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-language">language</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-location">location</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-memberof">memberOf</a> |    
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-provider">provider</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-published">published</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-rating">rating</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-replies">replies</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-resultof">resultOf</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-scope">scope</a> |  
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-starttime">startTime</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-summary">summary</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-tag">tag</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-title">title</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-updated">updated</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-validafter">validAfter</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-validbefore">validBefore</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-validfrom">validFrom</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-validuntil">validUntil</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-width">width</a> |  
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-url">url</a>
         </code>
       </p>
 
       <p>
         While all properties are optional, all <code>Object</code> instances <em class="rfc2119" title="SHOULD">SHOULD</em>
-        at least contain a <a href="../as-vocab/Overview.html#dfn-displayname">displayName</a>.
+        at least contain a <a href="../activitystreams-vocabulary/Overview.html#dfn-displayname">displayName</a>.
       </p>
 
 <figure id="fig-following-is-an-example-object-that-uses-the-json-id-id-and-type-json-ld-keywords-to-express-the-global-identifier-and-object-type"><figcaption>Fig. <span class="figno">4</span> <span class="fig-title">Following is an example Object that uses the JSON-ID <code>@id</code> and <code>@type</code>
@@ -694,8 +694,8 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
       <h3 role="heading" id="h3_naturalLanguageValues"><span class="secno">3.2 </span><dfn title="NaturalLanguageValue" id="dfn-naturallanguagevalue">Natural Language Values</dfn></h3>
     
       <p>
-        Several properties defined by the <a href="../as-vocab/Overview.html">Vocabulary</a>
-        are defined as being a <a href="../as-vocab/Overview.html">Natural Language Value</a>.
+        Several properties defined by the <a href="../activitystreams-vocabulary/Overview.html">Vocabulary</a>
+        are defined as being a <a href="../activitystreams-vocabulary/Overview.html">Natural Language Value</a>.
         These are a representations of human-readable character sequences using one or more 
         languages. Within the JSON-LD serialization, they are expressed as either (1) a single JSON 
         string or (2) a JSON object mapping [<cite><a class="bibref" href="#bib-RFC5646">RFC5646</a></cite>] Language-Tags to localized, equivalent 
@@ -704,7 +704,7 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
       </p>
 
       <p>
-        For instance, the <code><a href="../as-vocab/Overview.html#dfn-displayName">displayName</a></code> 
+        For instance, the <code><a href="../activitystreams-vocabulary/Overview.html#dfn-displayName">displayName</a></code> 
         property is a Natural Language value.
       </p>
 
@@ -817,20 +817,20 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
         The target URI of the Link is the global identifier expressed in the JSON-LD 
         serialization using the <code>@id</code> keyword. In addition, all <code>Link</code> 
         instances share the following common set of properties as defined by the 
-        <a href="../as-vocab/Overview.html">Activity Vocabulary</a>:
+        <a href="../activitystreams-vocabulary/Overview.html">Activity Vocabulary</a>:
         <code>
-          <a href="../as-vocab/Overview.html#dfn-displayname">displayName</a> |
-          <a href="../as-vocab/Overview.html#dfn-hreflang">hreflang</a> | 
-          <a href="../as-vocab/Overview.html#dfn-language">language</a> | 
-          <a href="../as-vocab/Overview.html#dfn-mediatype">mediaType</a> |
-          <a href="../as-vocab/Overview.html#dfn-rel">rel</a> |
-          <a href="../as-vocab/Overview.html#dfn-title">title</a>
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-displayname">displayName</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-hreflang">hreflang</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-language">language</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-mediatype">mediaType</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-rel">rel</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-title">title</a>
         </code>
       </p>
 
       <p>
         For example, all <a title="Object" href="#asobject" class="internalDFN">Objects</a> can contain an 
-        <code><a href="../as-vocab/Overview.html#dfn-image">image</a></code> 
+        <code><a href="../activitystreams-vocabulary/Overview.html#dfn-image">image</a></code> 
         property whose value describes a graphical
         representation of the containing object.  This property will
         typically be used to provide the URL to a JPEG, GIF or PNG type
@@ -902,7 +902,7 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
       <p>
         RFC 5988 defines that all Links have a "link relation" that describes
         the contextual purpose of the link.  Within a <a href="#dfn-link" class="internalDFN">Link</a>,
-        the <code><a href="../as-vocab/Overview.html#dfn-rel">rel</a></code> property 
+        the <code><a href="../activitystreams-vocabulary/Overview.html#dfn-rel">rel</a></code> property 
         provides the link relation value. If no <code>rel</code> property is
         specified, the Link is not considered to have a specified link relation.
       </p>
@@ -979,21 +979,21 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
       <p>
         In additional to common properties supported by all <a href="#asobject" class="internalDFN">Object</a>
         instances, <code>Activity</code> objects support the following additional
-        properties defined by the <a href="../as-vocab/Overview.html">Vocabulary</a>:
+        properties defined by the <a href="../activitystreams-vocabulary/Overview.html">Vocabulary</a>:
         <code>
-          <a href="../as-vocab/Overview.html#dfn-verb-term">verb</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">actor</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">object</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">target</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">result</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">instrument</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">participant</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">priority</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">status</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">to</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">bto</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">cc</a> | 
-          <a href="../as-vocab/Overview.html#dfn-verb-term">bcc</a>
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">verb</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">actor</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">object</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">target</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">result</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">instrument</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">participant</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">priority</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">status</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">to</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">bto</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">cc</a> | 
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-verb-term">bcc</a>
         </code>
       </p>
 
@@ -1071,10 +1071,10 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
           the activity, to infer the primary audience for many types of
           activities, those do not work in every case and do not provide a
           means of identifying the secondary audience.  The 
-          <code><a href="../as-vocab/Overview.html#dfn-to">to</a></code>, 
-          <code><a href="../as-vocab/Overview.html#dfn-cc">cc</a></code>, 
-          <code><a href="../as-vocab/Overview.html#dfn-bto">bto</a></code> and 
-          <code><a href="../as-vocab/Overview.html#dfn-bcc">bcc</a></code> 
+          <code><a href="../activitystreams-vocabulary/Overview.html#dfn-to">to</a></code>, 
+          <code><a href="../activitystreams-vocabulary/Overview.html#dfn-cc">cc</a></code>, 
+          <code><a href="../activitystreams-vocabulary/Overview.html#dfn-bto">bto</a></code> and 
+          <code><a href="../activitystreams-vocabulary/Overview.html#dfn-bcc">bcc</a></code> 
           properties <em class="rfc2119" title="MAY">MAY</em> be used within an Activity to explicitly identify the 
           Primary and Secondary audiences.
         </p>
@@ -1157,18 +1157,18 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
         <code>Collection</code> objects set of properties defined by the 
         <a href="activitystreams2-vocabulary">Vocabulary</a>. These include:
         <code>
-          <a href="../as-vocab/Overview.html#dfn-items">items</a> |
-          <a href="../as-vocab/Overview.html#dfn-totalItems">totalItems</a> |
-          <a href="../as-vocab/Overview.html#dfn-itemsPerPage">itemsPerPage</a> |
-          <a href="../as-vocab/Overview.html#dfn-startIndex">startIndex</a> |
-          <a href="../as-vocab/Overview.html#dfn-itemsAfter">itemsAfter</a> |
-          <a href="../as-vocab/Overview.html#dfn-itemsBefore">itemsBefore</a> |
-          <a href="../as-vocab/Overview.html#dfn-current">current</a> |
-          <a href="../as-vocab/Overview.html#dfn-next">next</a> |
-          <a href="../as-vocab/Overview.html#dfn-prev">prev</a> |
-          <a href="../as-vocab/Overview.html#dfn-first">first</a> |
-          <a href="../as-vocab/Overview.html#dfn-last">last</a> |
-          <a href="../as-vocab/Overview.html#dfn-self">self</a>
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-items">items</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-totalItems">totalItems</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-itemsPerPage">itemsPerPage</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-startIndex">startIndex</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-itemsAfter">itemsAfter</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-itemsBefore">itemsBefore</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-current">current</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-next">next</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-prev">prev</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-first">first</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-last">last</a> |
+          <a href="../activitystreams-vocabulary/Overview.html#dfn-self">self</a>
         </code>
       </p>
 
@@ -1232,7 +1232,7 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
 
       <p>
         All <code>Object</code> instances can have an 
-        <code><a href="../as-vocab/Overview.html#dfn-action">action</a></code> property 
+        <code><a href="../activitystreams-vocabulary/Overview.html#dfn-action">action</a></code> property 
         used to describe the kinds of potential activities that can be taken with 
         regards to the object. The value is expressed as a JSON object conforming 
         to the <code><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code>
@@ -1326,10 +1326,10 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
       JSON-LD keywords <code>@id</code> and <code>@type</code>, respectively.
     </li>
     <li>
-      This document redefines the <code><a href="../as-vocab/Overview.html#dfn-displayname">displayName</a></code>, 
-      <code><a href="../as-vocab/Overview.html#dfn-title">title</a></code>, 
-      <code><a href="../as-vocab/Overview.html#dfn-content">content</a></code> and
-      <code><a href="../as-vocab/Overview.html#dfn-summary">summary</a></code> 
+      This document redefines the <code><a href="../activitystreams-vocabulary/Overview.html#dfn-displayname">displayName</a></code>, 
+      <code><a href="../activitystreams-vocabulary/Overview.html#dfn-title">title</a></code>, 
+      <code><a href="../activitystreams-vocabulary/Overview.html#dfn-content">content</a></code> and
+      <code><a href="../activitystreams-vocabulary/Overview.html#dfn-summary">summary</a></code> 
       properties as <a title="NaturalLanguageValue" href="#dfn-naturallanguagevalue" class="internalDFN">Natural Language Values</a>,
       which means their values can be expressed as either a String or a
       JSON-LD Language Map. In the 1.0 syntax, these are expressed
@@ -1634,7 +1634,7 @@ JSON-LD keywords to express the global identifier and object type:</span></figca
     <h2 id="x2014-09-30">2014-09-30</h2>
     <ul>
       <li>Rework serialization model to be based on JSON-LD.</li>
-      <li>Updated <a href="../as-vocab/Overview.html">vocabulary model</a>.</li>
+      <li>Updated <a href="../activitystreams-vocabulary/Overview.html">vocabulary model</a>.</li>
       <li>Remove notion of "Type Values".</li>
       <li>Redefine "Link Values" as "Link".</li>
       <li>Removed the "duplicates" property introduced in earlier AS2 drafts due to lack of any implementation evidence.</li>
