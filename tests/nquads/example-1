@@ -1,3 +1,4 @@
 _:b0 <http://activitystrea.ms/2.0/actor> <urn:example:person:martin> .
 _:b0 <http://activitystrea.ms/2.0/object> <http://example.org/foo.jpg> .
 _:b0 <http://activitystrea.ms/2.0/verb> _:b1 .
+_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://activitystrea.ms/2.0/Activity> .

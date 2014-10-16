@@ -1,18 +1,18 @@
 <http://example.org/blog/> <http://activitystrea.ms/2.0/displayName> "Martin's Blog" .
-<http://example.org/blog/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b3 .
-<http://example.org/martin/image.jpg> <http://activitystrea.ms/2.0/height> "250"^^<xsd:nonNegativeInteger> .
+<http://example.org/blog/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <urn:example:types:blog> .
 <http://example.org/martin/image.jpg> <http://activitystrea.ms/2.0/mediaType> "image/jpeg" .
-<http://example.org/martin/image.jpg> <http://activitystrea.ms/2.0/width> "250"^^<xsd:nonNegativeInteger> .
+<http://example.org/martin/image.jpg> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://activitystrea.ms/2.0/Link> .
 <urn:example:blog:abc123/xyz> <http://activitystrea.ms/2.0/displayName> "Why I love Activity Streams" .
-<urn:example:blog:abc123/xyz> <http://activitystrea.ms/2.0/self> <http://example.org/blog/2011/02/entry> .
-<urn:example:blog:abc123/xyz> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b2 .
+<urn:example:blog:abc123/xyz> <http://activitystrea.ms/2.0/url> <http://example.org/blog/2011/02/entry> .
+<urn:example:blog:abc123/xyz> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <urn:example:types:article> .
 <urn:example:person:martin> <http://activitystrea.ms/2.0/displayName> "Martin Smith" .
 <urn:example:person:martin> <http://activitystrea.ms/2.0/image> <http://example.org/martin/image.jpg> .
-<urn:example:person:martin> <http://activitystrea.ms/2.0/self> <http://example.org/martin> .
-<urn:example:person:martin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b1 .
+<urn:example:person:martin> <http://activitystrea.ms/2.0/url> <http://example.org/martin> .
+<urn:example:person:martin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <urn:example:types:person> .
 _:b0 <http://activitystrea.ms/2.0/actor> <urn:example:person:martin> .
 _:b0 <http://activitystrea.ms/2.0/language> "en" .
 _:b0 <http://activitystrea.ms/2.0/object> <urn:example:blog:abc123/xyz> .
 _:b0 <http://activitystrea.ms/2.0/published> "2011-02-10T15:04:55Z"^^<xsd:dateTime> .
 _:b0 <http://activitystrea.ms/2.0/target> <http://example.org/blog/> .
-_:b0 <http://activitystrea.ms/2.0/verb> _:b4 .
+_:b0 <http://activitystrea.ms/2.0/verb> _:b1 .
+_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://activitystrea.ms/2.0/Activity> .
