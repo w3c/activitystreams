@@ -11,7 +11,7 @@ var doc = $.load(fs.readFileSync('./activitystreams2.html').toString());
 
 var getContext = function(){
   if(!context){
-    context = JSON.parse(fs.readFileSync('./activitystreams2-context.jsonld').toString())["@context"];
+    context = JSON.parse(fs.readFileSync('./activitystreams2-context.jsonld').toString());
   }
   return context;
 };
