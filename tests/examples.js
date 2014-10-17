@@ -8,7 +8,7 @@ describe('Minimal Activity', function(){
     var example = helper.getExample('example-1');
     var expected = helper.getFixture('example-1');
 
-    promises.toRDF(example, {format: 'application/nquads'})
+    promises.toRDF(example, {format: 'application/nquads', expandContext: helper.getContext() })
       .then(function(nquads){
         expect(nquads).to.equal(expected);
         done();
@@ -25,7 +25,7 @@ describe('Basic Activity', function(){
     var example = helper.getExample('example-2');
     var expected = helper.getFixture('example-2');
 
-    promises.toRDF(example, {format: 'application/nquads'})
+    promises.toRDF(example, {format: 'application/nquads', expandContext: helper.getContext() })
       .then(function(nquads){
         expect(nquads).to.equal(expected);
         done();
@@ -42,7 +42,7 @@ describe('Extended Activity', function(){
     var example = helper.getExample('example-3');
     var expected = helper.getFixture('example-3');
 
-    promises.toRDF(example, {format: 'application/nquads'})
+    promises.toRDF(example, {format: 'application/nquads', expandContext: helper.getContext() })
       .then(function(nquads){
         expect(nquads).to.equal(expected);
         done();
