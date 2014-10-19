@@ -1,0 +1,13 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+_:b0 a as:Collection;
+     as:itemsPerPage "1"^^<xsd:nonNegativeInteger>;
+     as:next <http://example.org/foo?page=2>;
+     as:self <http://example.org/foo?page=1>;
+     as:totalItems "10"^^<xsd:nonNegativeInteger> .
+
+_:b1 as:actor <urn:example:person:sally>;
+     as:memberOf _:b0;
+     as:object <http://example.org/foo>;
+     as:verb _:b2 .
+

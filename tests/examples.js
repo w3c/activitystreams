@@ -32,3 +32,27 @@ describe('Extended Activity', function(){
     basicCompare('example-3', done);
   });
 });
+
+describe('Object', function(){
+  it('should match expected RDF', function(done){
+    basicCompare('object', done);
+  });
+});
+
+describe('Activity', function(){
+  it('should match expected RDF', function(done){
+    basicCompare('activities', done);
+  });
+});
+
+describe('Collection', function(){
+  it('should match expected RDF', function(done){
+    basicCompare('collections', done);
+  });
+});
+
+describe('Potential Action', function(){
+  it('should match expected RDF', function(done){
+    basicCompare('actions', done);
+  });
+});
