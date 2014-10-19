@@ -4,41 +4,31 @@ var rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
 var utils = require('rdf-test-utils')(rdf);
 
-describe('Minimal Activity', function(){
-  it('should match expected RDF', function(done){
-    new rdf.TurtleParser().parse(helper.getFixture('example-1'), function(expected){
-      new rdf.JsonLdParser().parse(helper.getExample('example-1'), function(example){
-        utils.compareGraph(expected, example, function(comparison, a, b){
-          expect(comparison).to.be.true;
-          done();
-        });
+function basicCompare(name, done){
+  new rdf.TurtleParser().parse(helper.getFixture(name), function(expected){
+    new rdf.JsonLdParser().parse(helper.getExample(name), function(example){
+      utils.compareGraph(expected, example, function(comparison, a, b){
+        expect(comparison).to.be.true;
+        done();
       });
     });
+  });
+}
+
+describe('Minimal Activity', function(){
+  it('should match expected RDF', function(done){
+    basicCompare('example-1', done);
   });
 });
 
 describe('Basic Activity', function(){
   it('should match expected RDF', function(done){
-    new rdf.TurtleParser().parse(helper.getFixture('example-2'), function(expected){
-      new rdf.JsonLdParser().parse(helper.getExample('example-2'), function(example){
-        utils.compareGraph(expected, example, function(comparison, a, b){
-          expect(comparison).to.be.true;
-          done();
-        });
-      });
-    });
+    basicCompare('example-2', done);
   });
 });
 
 describe('Extended Activity', function(){
   it('should match expected RDF', function(done){
-    new rdf.TurtleParser().parse(helper.getFixture('example-3'), function(expected){
-      new rdf.JsonLdParser().parse(helper.getExample('example-3'), function(example){
-        utils.compareGraph(expected, example, function(comparison, a, b){
-          expect(comparison).to.be.true;
-          done();
-        });
-      });
-    });
+    basicCompare('example-3', done);
   });
 });
