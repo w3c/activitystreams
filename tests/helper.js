@@ -19,6 +19,8 @@ var getContext = function(){
 var getExample = function(name) {
   if (!examples[name]) {
     examples[name] = JSON.parse(doc('#' + name + ' pre.example').text());
+    // set context
+    examples[name]['@context'] = getContext()['@context'];
   }
   return examples[name];
 };
