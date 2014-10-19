@@ -27,7 +27,7 @@ var getExample = function(name) {
 
 var getFixture = function(name) {
   if (!fixtures[name]) {
-    fixtures[name] = fs.readFileSync('./tests/nquads/' + name).toString();
+    fixtures[name] = fs.readFileSync('./tests/turtle/' + name).toString();
   }
   return fixtures[name];
 };

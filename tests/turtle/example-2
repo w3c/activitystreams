@@ -5,8 +5,8 @@ _:b0 a as:Activity;
      as:verb _:b1;
      as:actor <urn:example:person:martin>;
      as:object <urn:example:blog:abc123/xyz>;
-     as:target <http://example.org/blog/> .
-     as:published "2011-02-10T15:04:55Z"^^<xsd:dateTime>;
+     as:target <http://example.org/blog/>;
+     as:published "2011-02-10T15:04:55Z"^^<xsd:dateTime> .
 
 <urn:example:person:martin> a <urn:example:types:person>;
                             as:displayName "Martin Smith";

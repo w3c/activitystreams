@@ -1,7 +1,7 @@
 @prefix as: <http://activitystrea.ms/2.0/> .
 
 _:b0 a as:Collection;
-     as:totalItems> "1"^^<xsd:nonNegativeInteger> .
+     as:totalItems "1"^^<xsd:nonNegativeInteger> .
 
 _:b1 a as:Activity;
      as:memberOf _:b0;
@@ -18,7 +18,7 @@ _:b1 a as:Activity;
 
 <urn:example:person:martin> a <urn:example:types:person>;
                             as:displayName "Martin Smith";
-                            as:image <http://example.org/martin/image.jpg>;
+                            as:image <http://example.org/martin/image>;
                             as:url <http://example.org/martin> .
 
 <http://example.org/martin> a as:Link;
@@ -41,5 +41,5 @@ _:b1 a as:Activity;
                             as:displayName "Martin's Photo Album"@en;
                             as:image <http://example.org/album/thumbnail.jpg> .
 
-<http://example.org/album/thumbnail.jpg> a asLink;
+<http://example.org/album/thumbnail.jpg> a as:Link;
                                          as:mediaType "image/jpeg" .
