@@ -21,7 +21,7 @@
     "mocha": "~1.21.5",
     "chai": "~1.9.2",
     "rdf-interfaces": "~0.1.0",
-    "rdf-ext": "~0.1.4",
+    "rdf-ext": "~0.1.5",
     "rdf-test-utils": "~0.1.0"
   }
 }
