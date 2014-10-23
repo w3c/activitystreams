@@ -19,6 +19,8 @@
     ],
     additionalCopyrightHolders: ["Activity Streams Working Group", "IBM"],
     maxTocLevel: 2,
+    previousMaturity: "FPWD",
+    previousPublishDate:  "2014-10-23",
     wg: "Social Web Working Group",
     wgURI: "http://www.w3.org/Social/WG",
     wgPublicList: "public-socialweb",
@@ -65,6 +67,12 @@
     }
     thead th {
       font-weight: normal;
+    }
+    table, td, th { border: 1px solid gray }
+    table { width: 100% ;}
+    td { 
+      vertical-align: top;
+      padding: 5px; 
     }
   </style>
 </head>
@@ -143,20 +151,20 @@
     </code>
     </p>
 
-    <table border="1" cellpadding="5" width="100%">
+    <table>
       <thead>
         <tr>
           <th>Class</th>
-          <th colspan="2" width="40%">Description</th>
-          <th width="40%">Terms</th>
+          <th colspan="2" style="width: 40%">Description</th>
+          <th style="width: 40%">Terms</th>
         </tr>
       </thead>
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Object">
         <tr>
-          <td rowspan="2" valign="top"><dfn itemprop="label">Object</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Object</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="2" ><dfn itemprop="label">Object</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Object</code></td>
+          <td rowspan="3" >
             <p><code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
             <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
@@ -166,7 +174,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Describes an object of some kind. The Object class serves as a base class
             for many of the other kinds of objects defined in the Activity and Actions
@@ -177,16 +185,16 @@
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Link">
         <tr>
-          <td rowspan="2" valign="top"><dfn itemprop="label">Link</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Link</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="2" ><dfn itemprop="label">Link</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Link</code></td>
+          <td rowspan="3" >
             <p><code><a>rel</a> | <a>mediaType</a> | <a>language</a> | <a>displayName</a> | 
             <a>title</a> | <a>hreflang</a></code></p>
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Describes a link to a separate resource.
           </td>
@@ -195,10 +203,10 @@
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Activity">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">Activity</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Activity</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">Activity</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Activity</code></td>
+          <td rowspan="3" >
             <p><code><a title="verb-term">verb</a> | <a>actor</a> | <a title="object-term">object</a> | <a>target</a> | <a>result</a> | 
             <a>instrument</a> | <a>participant</a> | <a>priority</a> | <a>status</a> | <a>to</a> |
             <a>bto</a> | <a>cc</a> | <a>bcc</a></code></p>
@@ -212,23 +220,23 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Describes some form of action that is currently happening or that has already happened.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
         </tr>
 </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Collection">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">Collection</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Collection</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">Collection</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Collection</code></td>
+          <td rowspan="3" >
             <p><code><a>items</a> | <a>totalItems</a> | <a>itemsPerPage</a> | <a>startIndex</a> | 
             <a>itemsAfter</a> | <a>itemsBefore</a> | <a>current</a> | <a>next</a> | <a>prev</a> | 
             <a>first</a> | <a>last</a> | <a>self</a></code></p>
@@ -242,26 +250,26 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             An unordered collection of <code><a>Object</a></code> instances.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/NaturalLanguageValue">
         <tr>
-          <td rowspan="2" valign="top"><dfn itemprop="label">NaturalLanguageValue</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/NaturalLanguageValue</code></td>
-          <td rowspan="3" valign="top"></td>
+          <td rowspan="2" ><dfn itemprop="label">NaturalLanguageValue</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/NaturalLanguageValue</code></td>
+          <td rowspan="3" ></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A Natural Language Value is a representation of human-readable character sequences in 
             one or more languages.
@@ -271,10 +279,10 @@
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Verb">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">Verb</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Verb</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">Verb</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Verb</code></td>
+          <td rowspan="3" >
             <p><i>From <code><a>Object</a></code></i>:<br/> 
             <code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
@@ -285,23 +293,23 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Describes a Verb.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
         </tr>
 </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/ObjectType">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">ObjectType</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/ObjectType</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">ObjectType</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/ObjectType</code></td>
+          <td rowspan="3" >
             <p><i>From <code><a>Object</a></code></i>:<br/> 
             <code><a>language</a> | <a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
             <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
@@ -312,14 +320,14 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Describes an Object Type.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
         </tr>
 </tbody>
 
@@ -332,93 +340,93 @@
 
     <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
 
-    <table border="1" cellpadding="5" width="100%">
+    <table>
 
       <thead>
         <tr>
-          <th width="15%">Term</th>
+          <th style="width: 15%">Term</th>
           <th colspan="2">Description</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>language</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/language</code></td>
+          <td rowspan="4" ><dfn>language</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/language</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Establishes the default language assumed for human-readable,
             natural-language metadata values included in the object. The 
             value MUST be an [[!RFC5646]] Language-Tag.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code> | <code><a>Link</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Range:</td>
-          <td valign="top">[[!RFC5646]] Language Tag</td>
+          <td >Range:</td>
+          <td >[[!RFC5646]] Language Tag</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>displayName</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/displayName</code></td>
+          <td rowspan="4" ><dfn>displayName</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/displayName</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A simple, human-readable, plain-text name for the object. HTML 
             markup MUST NOT be included..
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>NaturalLanguageValue</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>NaturalLanguageValue</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>rel</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/rel</code></td>
+          <td rowspan="4" ><dfn>rel</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/rel</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The RFC 5988 Link Relation associated with a <code><a>Link</a></code>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Link</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Link</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top">[[!RFC5988]] or <a class="bibref" href="http://www.w3.org/TR/html5/document-metadata.html#attr-link-rel">[HTML5]</a> Link Relation</td>
+          <td >Value:</td>
+          <td >[[!RFC5988]] or <a class="bibref" href="http://www.w3.org/TR/html5/document-metadata.html#attr-link-rel">[HTML5]</a> Link Relation</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>mediaType</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/mediaType</code></td>
+          <td rowspan="4" ><dfn>mediaType</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/mediaType</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             <p>When used on a <a>Link</a>, identifies the MIME media type of the 
             referenced resource.</p>
 
@@ -431,115 +439,115 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Link</a></code> | <code><a href="activitystreams2-actions.html#dfn-payload">Payload</a></code> | <code><a href="activitystreams2-actions.html#dfn-embeddedview">EmbeddedView</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Link</a></code> | <code><a href="activitystreams2-actions.html#dfn-payload">Payload</a></code> | <code><a href="activitystreams2-actions.html#dfn-embeddedview">EmbeddedView</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top">MIME Media Type</td>
+          <td >Value:</td>
+          <td >MIME Media Type</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>hreflang</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/hreflang</code></td>
+          <td rowspan="4" ><dfn>hreflang</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/hreflang</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Hints as to the language used by the target resource. Value MUST be a [[!RFC5646]] Language-Tag.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Link</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Link</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Range:</td>
-          <td valign="top">[[!RFC5646]] Language Tag</td>
+          <td >Range:</td>
+          <td >[[!RFC5646]] Language Tag</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn title="verb-term">verb</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/verb</code></td>
+          <td rowspan="4" ><dfn title="verb-term">verb</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/verb</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Identifies the type of action represented in the Activity
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a></code> | <code><a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a></code> | <code><a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><a title="Verb"><code>Verb</code></a></td>
+          <td >Value:</td>
+          <td ><a title="Verb"><code>Verb</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>actor</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/actor</code></td>
+          <td rowspan="4" ><dfn>actor</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/actor</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Describes one or more entities that either performed or are expected to
             perform the activity.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn title="object-term">object</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/object</code></td>
+          <td rowspan="4" ><dfn title="object-term">object</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/object</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Describes the direct object of the activity. For instance, in the activity
             "John saved a movie to his wishlist", the object of the activity is the 
             movie saved.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>target</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/target</code></td>
+          <td rowspan="4" ><dfn>target</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/target</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Describes the indirect object, or target, of the activity. The precise 
             meaning of the target is largely dependent on the <code><a title="verb-term">verb</a></code>
             but will often be the object of the English preposition "to". For instance,
@@ -548,76 +556,76 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
       <tr>
-          <td rowspan="5" valign="top"><dfn>result</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/result</code></td>
+          <td rowspan="5" ><dfn>result</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/result</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Describes the result of the activity. For instance, if a particular action
             results in the creation of a new resource, the <code><a>result</a></code>
             property can be used to describe that new resource.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><a title="Object"><code>Activity</code></a></td>
+          <td >Domain:</td>
+          <td ><a title="Object"><code>Activity</code></a></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
-          <td valign="top">Reverse Of:</td>
-          <td valign="top"><code><a>resultOf</a></code></td>
+          <td >Reverse Of:</td>
+          <td ><code><a>resultOf</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>instrument</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/instrument</code></td>
+          <td rowspan="4" ><dfn>instrument</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/instrument</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An optional <code><a>Object</a></code> that describes one or more objects used to perform 
             the activity. For instance, in the activity, "Sally played music with a piano",
             the instrument of the activity is the piano.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>participant</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/participant</code></td>
+          <td rowspan="4" ><dfn>participant</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/participant</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An optional <code><a>Object</a></code> that describes one or more additional actors
             that have (or will have) participated in the activity. For instance, in the
             activity, "Sally went to the movies with Joe", Sally is the primary actor, 
@@ -625,24 +633,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" valign="top"><dfn>priority</dfn></td>
-          <td valig="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/priority</code></td>
+          <td rowspan="5" ><dfn>priority</dfn></td>
+          <td style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/priority</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             <p>An optional indicator of the relative priority, or importance, that the creator
             of the activity considers it to have. Represented as a non-negative, numeric 
             decimal between 0.00 and 1.00 (inclusive), with two decimal places of precision.
@@ -684,28 +692,28 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a> | <a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:decimal</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:decimal</code></td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top">0.00 &lt;= priority &lt;= 1.00</td>
+          <td >Domain:</td>
+          <td >0.00 &lt;= priority &lt;= 1.00</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>status</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/status</code></td>
+          <td rowspan="4" ><dfn>status</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/status</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An optional, explicit indicator of the current status of the activity.
             "<code>http://activitystrea.ms/2.0/status/active</code>" indicates that the activity is ongoing, 
             "<code>http://activitystrea.ms/2.0/status/canceled</code>" indicates that the activity has been aborted,
@@ -717,112 +725,112 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:anyURI</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:anyURI</code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>to</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/to</code></td>
+          <td rowspan="4" ><dfn>to</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/to</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Specifies the public primary audience
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Link</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>cc</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/cc</code></td>
+          <td rowspan="4" ><dfn>cc</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/cc</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Specifies the public secondary audience
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Link</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>bto</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/bto</code></td>
+          <td rowspan="4" ><dfn>bto</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/bto</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Specifies the private primary audience
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Link</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>bcc</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/bcc</code></td>
+          <td rowspan="4" ><dfn>bcc</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/bcc</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Specifies the private secondary audience
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Activity">Activity</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Activity">Activity</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Link</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>Link</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>alias</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/alias</code></td>
+          <td rowspan="4" ><dfn>alias</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/alias</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Provides a contextually meaningful alternative label for the object
             in addition to the <code><a>id</a></code>. For instance, within some
             systems, groups can be identified by both a unique global identifier
@@ -834,93 +842,93 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:anyURI</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:anyURI</code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>author</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/author</code></td>
+          <td rowspan="4" ><dfn>author</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/author</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> referencing one or more entities credited
               with creating or authoring the object.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>content</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/content</code></td>
+          <td rowspan="4" ><dfn>content</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/content</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A <code><a>NaturalLanguageValue</a></code> description of the object content. HTML
             markup, including visual elements such as images, MAY be included.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>NaturalLanguageValue</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>NaturalLanguageValue</a></code></td>
         </tr>
       </tbody>
 
         <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>summary</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/summary</code></td>
+          <td rowspan="4" ><dfn>summary</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/summary</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A <code><a>NaturalLanguageValue</a></code> summarization of the object. HTML markup, 
             including visual images such as images, MAY be included.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>NaturalLanguageValue</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>NaturalLanguageValue</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>title</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/title</code></td>
+          <td rowspan="4" ><dfn>title</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/title</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A <code><a>NaturalLanguageValue</a></code> title of the object. HTML markup, 
             including visual images such as images, MAY be included. The 
             <code><a>title</a></code> and <code><a>displayName</a></code>
@@ -931,24 +939,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>NaturalLanguageValue</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>NaturalLanguageValue</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>icon</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/icon</code></td>
+          <td rowspan="4" ><dfn>icon</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/icon</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A <code><a title="Link">Link</a></code> referencing one or more graphic 
             representations of the object. The visual element SHOULD have an aspect 
             ratio of one (horizontal) to one (vertical) and SHOULD be suitable for 
@@ -956,162 +964,162 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a title="Link">Link</a></code></td>
+          <td >Value:</td>
+          <td ><code><a title="Link">Link</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>image</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/image</code></td>
+          <td rowspan="4" ><dfn>image</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/image</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A <code><a>Link</a> referencing one or more graphic representations
             of the object. Unlike the <code><a>icon</a></code> property, there are
             no aspect ratio or display size limitations assumed.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a title="Link">Link</a></code></td>
+          <td >Value:</td>
+          <td ><code><a title="Link">Link</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>location</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/location</code></td>
+          <td rowspan="4" ><dfn>location</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/location</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one or more 
             physical or logical locations associated with the object.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a title="Object">Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a title="Object">Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>generator</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/generator</code></td>
+          <td rowspan="4" ><dfn>generator</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/generator</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> or <code><a>Link</a></code> referencing the 
             resource (e.g. an application) that generated the object.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>provider</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/provider</code></td>
+          <td rowspan="4" ><dfn>provider</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/provider</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> or <code><a>Link</a></code> referencing the resource 
             (e.g. an application) that published the object. Note that this is not necessarily the same
             entity that generated the object. 
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>published</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/published</code></td>
+          <td rowspan="4" ><dfn>published</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/published</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time at which the object was published
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>updated</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/updated</code></td>
+          <td rowspan="4" ><dfn>updated</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/updated</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time at which the object was updated
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>startTime</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/startTime</code></td>
+          <td rowspan="4" ><dfn>startTime</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/startTime</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time describing the actual or expected starting time of the 
             object. When used with an <code><a>Activity</a></code> object, for instance, the 
             <code><a>startTime</a></code> property specifies the moment the activity
@@ -1119,24 +1127,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>endTime</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/endTime</code></td>
+          <td rowspan="4" ><dfn>endTime</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/endTime</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time describing the actual or expected ending time of the 
             object. When used with an <code><a>Activity</a></code> object, for instance, the 
             <code><a>endTime</a></code> property specifies the moment the activity
@@ -1144,117 +1152,117 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>validFrom</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/validFrom</code></td>
+          <td rowspan="4" ><dfn>validFrom</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/validFrom</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time at or after which (inclusive) the object is considered 
             to be valid.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>validAfter</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/validAfter</code></td>
+          <td rowspan="4" ><dfn>validAfter</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/validAfter</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time after which (exclusive) the object is considered to 
             be valid.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>validUntil</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/validUntil</code></td>
+          <td rowspan="4" ><dfn>validUntil</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/validUntil</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time at or before which (inclusive) the object is considered to
             be valid. Once this moment has passed, the object is considered to have 
             expired.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>validBefore</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/validBefore</code></td>
+          <td rowspan="4" ><dfn>validBefore</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/validBefore</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The date and time at or after which the object is considered to have 
             expired.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>duration</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/duration</code></td>
+          <td rowspan="4" ><dfn>duration</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/duration</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             When the object describes a time-bound resource, such as an audio or
             video, a meeting, etc, the <code><a>duration</a></code> property 
             indicates the object's approximate duration. The value SHOULD
@@ -1265,123 +1273,123 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:integer</code> | <code>xsd:duration</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:integer</code> | <code>xsd:duration</code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" valign="top"><dfn>rating</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/rating</code></td>
+          <td rowspan="5" ><dfn>rating</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/rating</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A quality rating expressed as a non-negative decimal number between 0.0 and 
             5.0 (inclusive) with one decimal place of precision.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:decimal</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:decimal</code></td>
         </tr>
         <tr>
-          <td valign="top">Comment:</td>
-          <td valign="top">0.0 &lt;= rating &lt;= 5.0</td>
+          <td >Comment:</td>
+          <td >0.0 &lt;= rating &lt;= 5.0</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>attachment</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/attachments</code></td>
+          <td rowspan="4" ><dfn>attachment</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/attachments</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
               An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
               or more objects associated with the containing object. These are similar in concept to files 
               attached to an email.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>height</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/height</code></td>
+          <td rowspan="4" ><dfn>height</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/height</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             When the object describes a visual resource, such as an image, video or 
             embeddable HTML, the <code><a>height</a></code> property indicates the
             recommended display height in terms of device-independent pixels.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:nonNegativeInteger</code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>width</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/width</code></td>
+          <td rowspan="4" ><dfn>width</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/width</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             When the object describes a visual resource, such as an image, video or
             embeddable HTML, the <code><a>width</a></code> property indicates the 
             recommended display width in terms of device-independent pixels.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:nonNegativeInteger</code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>tag</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/tags</code></td>
+          <td rowspan="4" ><dfn>tag</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/tags</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
             or more resources that are loosely associated with the containing object. 
             The <code><a>tag</a></code> and <code><a>attachment</a></code> properties differ 
@@ -1391,160 +1399,160 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>inReplyTo</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/inReplyTo</code></td>
+          <td rowspan="4" ><dfn>inReplyTo</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/inReplyTo</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
             or more other objects to which the containing object can be considered a response.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a title="Object">Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a title="Object">Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>scope</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/scope</code></td>
+          <td rowspan="4" ><dfn>scope</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/scope</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An <code><a>Object</a></code> or <code><a>Link</a></code> referencing one 
             or more resources that define the total population of entities for which the object can 
             considered to be relevant.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
        </tbody>
 
        <tbody>
         <tr>
-          <td rowspan="5" valign="top"><dfn>action</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/action</code></td>
+          <td rowspan="5" ><dfn>action</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/action</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A <code><a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code> that can be performed with the object
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
+          <td >Value:</td>
+          <td ><code><a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Reverse Of:</td>
-          <td valign="top"><code><a title="object-term">object</a></code></td>
+          <td >Reverse Of:</td>
+          <td ><code><a title="object-term">object</a></code></td>
         </tr>
        </tbody>
 
        <tbody>
          <tr>
-           <td rowspan="5" valign="top"><dfn>memberOf</dfn></td>
-           <td valign="top" width="10%">URI:</td>
-           <td valign="top"><code>http://activitystrea.ms/2.0/memberOf</code></td>
+           <td rowspan="5" ><dfn>memberOf</dfn></td>
+           <td  style="width: 10%">URI:</td>
+           <td ><code>http://activitystrea.ms/2.0/memberOf</code></td>
          </tr>
          <tr>
-           <td valign="top">Notes:</td>
-           <td valign="top">
+           <td >Notes:</td>
+           <td >
              Identifies a <a>Collection</a> to which this Object belongs
            </td>
          </tr>
          <tr>
-           <td valign="top">Domain:</td>
-           <td valign="top"><code><a>Object</a></code></td>
+           <td >Domain:</td>
+           <td ><code><a>Object</a></code></td>
          </tr>
          <tr>
-           <td valign="top">Value:</td>
-           <td valign="top"><code><a title="Collection">Collection</a></code></td>
+           <td >Value:</td>
+           <td ><code><a title="Collection">Collection</a></code></td>
          </tr>
          <tr>
-           <td valign="top">Reverse Of:</td>
-           <td valign="top"><a title="items">items</a></td>
+           <td >Reverse Of:</td>
+           <td ><a title="items">items</a></td>
          </tr>
        </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>url</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/url</code></td>
+            <td rowspan="4" ><dfn>url</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/url</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               The <code>url</code> property is typically used to point to a displayable 
               representation of an object (usually an HTML page).
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a>Object</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a>Object</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><a title="Link"><code>Link</code></a></td>
+            <td >Value:</td>
+            <td ><a title="Link"><code>Link</code></a></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="5" valign="top"><dfn>resultOf</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/resultOf</code></td>
+            <td rowspan="5" ><dfn>resultOf</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/resultOf</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Identifies the Activity of which this object or link is a result.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a>Object</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a>Object</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><a title="Activity"><code>Activity</code></a></td>
+            <td >Value:</td>
+            <td ><a title="Activity"><code>Activity</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Reverse Of:</td>
-            <td valign="top"><code><a>result</a></code></td>
+            <td >Reverse Of:</td>
+            <td ><code><a>result</a></code></td>
           </tr>
         </tbody>
 
@@ -1557,51 +1565,51 @@
 
     <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
 
-    <table border="1" cellpadding="5" width="100%">
+    <table>
 
       <thead>
         <tr>
-          <th width="15%">Term</th>
+          <th style="width: 15%">Term</th>
           <th colspan="2">Description</th>
         </tr>
       </thead>
 
       <tbody>
        <tr>
-          <td rowspan="5" valign="top"><dfn>items</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/items</code></td>
+          <td rowspan="5" ><dfn>items</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/items</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An unordered set of <a title="Object">Objects</a> contained by the 
             collection.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Collection">Collection</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Collection">Collection</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a title="Object">Object</a></code></td>
+          <td >Value:</td>
+          <td ><code><a title="Object">Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Reverse Of:</td>
-          <td valign="top"><code><a title="memberOf">memberOf</a></code></td>
+          <td >Reverse Of:</td>
+          <td ><code><a title="memberOf">memberOf</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
        <tr>
-          <td rowspan="4" valign="top"><dfn>totalItems</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/totalItems</code></td>
+          <td rowspan="4" ><dfn>totalItems</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/totalItems</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A non-negative integer specifying the total number of objects
             contained by the logical view of the collection. This number 
             might not reflect the actual number of items serialized
@@ -1609,264 +1617,264 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Collection">Collection</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Collection">Collection</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:nonNegativeInteger</code></td>
         </tr>
       </tbody>
 
       <tbody>
        <tr>
-          <td rowspan="4" valign="top"><dfn>itemsPerPage</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/itemsPerPage</code></td>
+          <td rowspan="4" ><dfn>itemsPerPage</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/itemsPerPage</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             A non-negative integer specifying the maximum number of items that 
             will be included in the value of the <code><a>items</a></code> 
             array.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Collection">Collection</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Collection">Collection</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:nonNegativeInteger</code></td>
         </tr>
       </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>startIndex</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/startIndex</code></td>
+            <td rowspan="4" ><dfn>startIndex</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/startIndex</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               A non-negative integer value identifying the relative position
               within the logical view of the collection of the first object
               contained in the <code><a>items</a></code> array.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="Collection">Collection</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="Collection">Collection</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:nonNegativeInteger</code></td>
           </tr>
       </tbody>
 
       <tbody>
        <tr>
-          <td rowspan="4" valign="top"><dfn>itemsAfter</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/itemsAfter</code></td>
+          <td rowspan="4" ><dfn>itemsAfter</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/itemsAfter</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An RFC 3339 date-time that indicates that the collection
             contains only items published or updated strictly after the
             date and time specified.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Collection">Collection</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Collection">Collection</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
        <tr>
-          <td rowspan="4" valign="top"><dfn>itemsBefore</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/itemsBefore</code></td>
+          <td rowspan="4" ><dfn>itemsBefore</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/itemsBefore</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             An RFC 3339 date-time that indicates that the collection
             contains only items published or updated strictly before the
             date and time specified.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a title="Collection">Collection</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a title="Collection">Collection</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>timestamp</a></code></td>
+          <td >Value:</td>
+          <td ><code><a>timestamp</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>replies</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/replies</code></td>
+            <td rowspan="4" ><dfn>replies</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/replies</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides information about the set of objects that can be
               considered to be replies to the containing object.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a>Object</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a>Object</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Collection">Collection</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Collection">Collection</a></code></td>
           </tr>
         </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>current</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/current</code></td>
+            <td rowspan="4" ><dfn>current</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/current</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides a link to the collection page containing the most recently
               published or updated items.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Collection"><code>Collection</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Collection"><code>Collection</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Link">Link</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Link">Link</a></code></td>
           </tr>
         </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>next</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/next</code></td>
+            <td rowspan="4" ><dfn>next</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/next</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides a link to the next page of items in the collection
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Collection"><code>Collection</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Collection"><code>Collection</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Link">Link</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Link">Link</a></code></td>
           </tr>
         </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>prev</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/prev</code></td>
+            <td rowspan="4" ><dfn>prev</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/prev</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides a link to the previous page of item in the collection
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Collection"><code>Collection</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Collection"><code>Collection</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Link">Link</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Link">Link</a></code></td>
           </tr>
         </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>first</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/first</code></td>
+            <td rowspan="4" ><dfn>first</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/first</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides a link to the further preceeding page in the collection
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Collection"><code>Collection</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Collection"><code>Collection</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Link">Link</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Link">Link</a></code></td>
           </tr>
         </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>last</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/last</code></td>
+            <td rowspan="4" ><dfn>last</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/last</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides a link to furthest page in the collection
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Collection"><code>Collection</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Collection"><code>Collection</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Link">Link</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Link">Link</a></code></td>
           </tr>
         </tbody>
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>self</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/self</code></td>
+            <td rowspan="4" ><dfn>self</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/self</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Provides a link to this page of the collection
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Collection"><code>Collection</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Collection"><code>Collection</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Link">Link</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Link">Link</a></code></td>
           </tr>
         </tbody>
 
@@ -1877,71 +1885,71 @@
   <section id="as1terms">
     <h2>Activity Streams 1.0 Terms</h2>
 
-    <table border="1" cellpadding="2">
+    <table>
       <thead>
         <tr>
-          <th width="15%">Term</th>
+          <th style="width: 15%">Term</th>
           <th colspan="2">Description</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>id</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/1.0/id</code></td>
+          <td rowspan="4" ><dfn>id</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/1.0/id</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Provides a permanent, universally unique identifier for the object
             in the form of an absolute IRI [[RFC3987]].
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code>
         </tr>
         <tr>
-          <td valign="top">Equivalent To:</td>
-          <td valign="top">[[!JSON-LD]] "@id"</td>
+          <td >Equivalent To:</td>
+          <td >[[!JSON-LD]] "@id"</td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn title="objectType-term">objectType</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/1.0/objectType</code></td>
+          <td rowspan="4" ><dfn title="objectType-term">objectType</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/1.0/objectType</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             Identifies the type of object. If an object does not either the 
             <code><a>objectType</a></code> or <code>@type</code> properties,
             the object has no specific type.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Equivalent To:</td>
-          <td valign="top">[[!JSON-LD]] <code>@type</code></td>
+          <td >Equivalent To:</td>
+          <td >[[!JSON-LD]] <code>@type</code></td>
         </tr>
       </tbody>
 
 
       <tbody>
          <tr>
-            <td rowspan="4" valign="top"><dfn>downstreamDuplicates</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/1.0/downstreamDuplicates</code></td>
+            <td rowspan="4" ><dfn>downstreamDuplicates</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/1.0/downstreamDuplicates</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               The downstreamDuplicates property is used when 
               there are known objects, possibly in a different system, that duplicate 
               the content in this object. This would be used as a hint for consumers 
@@ -1951,24 +1959,24 @@
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a>Object</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a>Object</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyURI</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyURI</code></td>
           </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="4" valign="top"><dfn>upstreamDuplicates</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/1.0/upstreamDuplicates</code></td>
+          <td rowspan="4" ><dfn>upstreamDuplicates</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/1.0/upstreamDuplicates</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             The upstreamDuplicates property is used when 
             there are known objects, possibly in a different system, that duplicate 
             the content in this object. This would be used as a hint for consumers 
@@ -1978,68 +1986,68 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code>xsd:anyURI</code></td>
+          <td >Value:</td>
+          <td ><code>xsd:anyURI</code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" valign="top"><dfn>tags</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/1.0/tags</code></td>
+          <td rowspan="5" ><dfn>tags</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/1.0/tags</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             In the Activity Streams 2.0 vocabulary, <code>tags</code>
             is renamed to the singular form <code>tag</code> for 
             consistency.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
-          <td valign="top">Equivalent To:</td>
-          <td valign="top"><code><a title="tag">tag</a></code></td>
+          <td >Equivalent To:</td>
+          <td ><code><a title="tag">tag</a></code></td>
         </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" valign="top"><dfn>attachments</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/1.0/attachments</code></td>
+          <td rowspan="5" ><dfn>attachments</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/1.0/attachments</code></td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
-          <td valign="top">
+          <td >Notes:</td>
+          <td >
             In the Activity Streams 2.0 vocabulary, <code>attachments</code>
             is renamed to the singular form <code>attachment</code> for 
             consistency.
           </td>
         </tr>
         <tr>
-          <td valign="top">Domain:</td>
-          <td valign="top"><code><a>Object</a></code></td>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
-          <td valign="top">Value:</td>
-          <td valign="top"><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
+          <td >Value:</td>
+          <td ><code><a>Object</a></code> | <a title="Link"><code>Link</code></a></td>
         </tr>
         <tr>
-          <td valign="top">Equivalent To:</td>
-          <td valign="top"><code><a title="attachment">attachment</a></code></td>
+          <td >Equivalent To:</td>
+          <td ><code><a title="attachment">attachment</a></code></td>
         </tr>
       </tbody>
 
