@@ -48,6 +48,21 @@
 }
   };
   </script>
+  <style>
+    thead {
+      background: #005A9C;
+      color: white;
+    }
+    thead th {
+      font-weight: normal;
+    }
+    table, td, th { border: 1px solid gray }
+    table { width: 100% ;}
+    td { 
+      vertical-align: top;
+      padding: 5px; 
+    }
+  </style>
 </head>
 <body>
 
@@ -112,21 +127,21 @@
     </code>
     </p>
 
-    <table border="1" cellpadding="5" width="100%">
+    <table>
       <thead>
         <tr>
           <th>Class</th>
-          <th colspan="2" width="40%">Description</th>
-          <th width="40%">Terms</th>
+          <th colspan="2" style="width: 40%">Description</th>
+          <th style="width: 40%">Terms</th>
         </tr>
       </thead>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/PotentialAction">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">PotentialAction</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/PotentialAction</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">PotentialAction</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/PotentialAction</code></td>
+          <td rowspan="3" >
             <p><code><a href="activitystreams2-vocabulary.html#dfn-verb-term">verb</a> | 
             <a href="activitystreams2-vocabulary.html#dfn-actor">actor</a> | 
             <a href="activitystreams2-vocabulary.html#dfn-object-term">object</a> | 
@@ -149,24 +164,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Represents a potential or pending activity (in contrast to an <a href="activitystreams2-vocabulary.html#dfn-activity"><code>Activity</code></a>
             which represents completed or ongoing activities).
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/PotentialActionHandler">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">PotentialActionHandler</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/PotentialActionHandler</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">PotentialActionHandler</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/PotentialActionHandler</code></td>
+          <td rowspan="3" >
             <p><code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
             <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
             <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
@@ -178,23 +193,23 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Represents a method of carrying out a <a title="PotentialAction">PotentialAction</a>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/HttpRequest">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">HttpRequest</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/HttpRequest</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">HttpRequest</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/HttpRequest</code></td>
+          <td rowspan="3" >
             <p><code><a>method</a></code></p>
             <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
             <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
@@ -208,24 +223,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <a>PotentialActionHandler</a> that describes an HTTP request/response flow used to carry
             out a <a>PotentialAction</a>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/BrowserView">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">BrowserView</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/BrowserView</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">BrowserView</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/BrowserView</code></td>
+          <td rowspan="3" >
             <p><code><a>browserContext</a> | <a>sandbox</a></code></p>
             <p><i>From <a title="HttpRequest"><code>HttpRequest</code></a></i>:<br/><code><a>method</a></code></p>
             <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
@@ -240,24 +255,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <a>PotentialActionHandler</a> that describes an HTTP request to load a Web Browser view used to
             carry out a <a>PotentialAction</a>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-httprequest"><code>HttpRequest</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-httprequest"><code>HttpRequest</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/EmbeddedView">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">EmbeddedView</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/EmbeddedView</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">EmbeddedView</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/EmbeddedView</code></td>
+          <td rowspan="3" >
             <p><code><a>sandbox</a></code> | <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
             <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
             <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
@@ -271,23 +286,23 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <a>PotentialActionHandler</a> that describes embedded content used to carry out a <a>PotentialAction</a>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Intent">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">Intent</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Intent</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">Intent</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Intent</code></td>
+          <td rowspan="3" >
             <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
             <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
             <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
@@ -300,27 +315,27 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <a>PotentialActionHandler</a>...
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/PotentialActionHandlerInput">
         <tr>
-          <td rowspan="2" valign="top"><dfn itemprop="label">PotentialActionHandlerInput</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/PotentialActionHandlerInput</code></td>
-          <td rowspan="2" valign="top">
+          <td rowspan="2" ><dfn itemprop="label">PotentialActionHandlerInput</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/PotentialActionHandlerInput</code></td>
+          <td rowspan="2" >
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             An abstract class that represents the input to a PotentialActionHandler. Implementations are not 
             expected to use this class type directly.
@@ -330,36 +345,36 @@
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Payload">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">Payload</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Payload</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">Payload</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Payload</code></td>
+          <td rowspan="3" >
             <p><code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <code><a>PotentialActionHandlerInput</a></code> that describes the input payload. For example, for
             <code><a>HttpRequest</a></code>, this describes the expected HTTP Request Payload.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Auth">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">Auth</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Auth</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">Auth</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Auth</code></td>
+          <td rowspan="3" >
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <code><a>PotentialActionHandlerInput</a></code> that describes the input authentication requirements. 
             For example, for <code><a>HttpRequest</a></code>, this describes the HTTP Authentication mechanism required for
@@ -367,62 +382,62 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/UrlTemplate">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">UrlTemplate</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/UrlTemplate</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">UrlTemplate</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/UrlTemplate</code></td>
+          <td rowspan="3" >
             <p><code><a>template</a> | <a title="parameter-term">parameter</a></code></p>
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <code><a>PotentialActionHandlerInput</a></code> that describes an [[!RFC6570]] URL Template used to construct
             the Request URI for <code><a>HttpRequest</a></code> and <code><a>BrowserView</a></code>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/HtmlForm">
         <tr>
-          <td rowspan="3" valign="top"><dfn itemprop="label">HtmlForm</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/HtmlForm</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="3" ><dfn itemprop="label">HtmlForm</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/HtmlForm</code></td>
+          <td rowspan="3" >
             <p><code><a title="parameter-term">parameter</a></code></p>
             <p><i>From <a title="Payload"><code>Payload</code></a></i>:<br /><code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <code><a>Payload</a></code> that describes an HTML Form used as the input payload of an 
             <code><a>HttpRequest</a></code> or <code><a>BrowserView</a></code>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top"><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-payload"><code>Payload</code></a></td>
+          <td >Type Of:</td>
+          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-payload"><code>Payload</code></a></td>
         </tr>
       </tbody>
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Parameter">
         <tr>
-          <td rowspan="2" valign="top"><dfn itemprop="label">Parameter</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Parameter</code></td>
-          <td rowspan="2" valign="top">
+          <td rowspan="2" ><dfn itemprop="label">Parameter</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Parameter</code></td>
+          <td rowspan="2" >
             <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
             <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
             <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
@@ -430,7 +445,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             Used to describe the parameters used in both <code><a>UrlTemplate</a></code> and <code><a>HtmlForm</a></code>.
           </td>
@@ -439,10 +454,10 @@
 
       <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://activitystrea.ms/2.0/Header">
         <tr>
-          <td rowspan="4" valign="top"><dfn itemprop="label">Header</dfn></td>
-          <td valign="top" width="10%">URI:</td>
-          <td valign="top"><code>http://activitystrea.ms/2.0/Header</code></td>
-          <td rowspan="3" valign="top">
+          <td rowspan="4" ><dfn itemprop="label">Header</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://activitystrea.ms/2.0/Header</code></td>
+          <td rowspan="3" >
             <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
             <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
             <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
@@ -450,15 +465,15 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Notes:</td>
+          <td >Notes:</td>
           <td itemprop="comment">
             A type of <code><a>PotentialActionHandlerInput</a></code> used to describe an HTTP Request Header
             expected for both <code><a>HttpRequest</a></code> and <code><a>BrowserView</a></code>.
           </td>
         </tr>
         <tr>
-          <td valign="top">Type Of:</td>
-          <td valign="top">
+          <td >Type Of:</td>
+          <td >
             <a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a>
         </tr>
       </tbody>
@@ -472,689 +487,689 @@
 
     <p>Base URI: <code>http://activitystrea.ms/2.0/</code>.</p>
 
-    <table border="1" cellpadding="5" width="100%">
+    <table>
 
       <thead>
         <tr>
-          <th width="15%">Term</th>
+          <th style="width: 15%">Term</th>
           <th colspan="2">Description</th>
         </tr>
       </thead>
 
         <tbody>
           <tr>
-            <td rowspan="5" valign="top"><dfn>using</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/using</code></td>
+            <td rowspan="5" ><dfn>using</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/using</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Describes one or more <code><a>PotentialActionHandler</a></code> instances that can be used to 
               carry out a particular <code><a>PotentialAction</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="PotentialAction"><code>PotentialAction</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="PotentialAction"><code>PotentialAction</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Reverse Of:</td>
-            <td valign="top"><code><a>handlerFor</a></code></td>
+            <td >Reverse Of:</td>
+            <td ><code><a>handlerFor</a></code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>handlerFor</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/handlerFor</code></td>
+            <td rowspan="4" ><dfn>handlerFor</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/handlerFor</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Identifies the <code><a>PotentialAction</a></code> for which this <code><a>PotentialActionHandler</a></code>
               is associated.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a>PotentialActionHandler</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a>PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a>PotentialAction</a></code></td>
+            <td >Value:</td>
+            <td ><code><a>PotentialAction</a></code></td>
           </tr>
         </tbody>  
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>confirm</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/confirm</code></td>
+            <td rowspan="4" ><dfn>confirm</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/confirm</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               A boolean that indicates whether an application MUST first request user
               confirmation before carrying out a <code><a>PotentialAction</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="PotentialAction">PotentialAction</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="PotentialAction">PotentialAction</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:boolean</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:boolean</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>requires</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/requires</code></td>
+            <td rowspan="4" ><dfn>requires</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/requires</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               An <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> or <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code> describing a required condition
               that MUST be satisfied before an application can carry out a <code><a>PotentialAction</a></code>
               using a specific <code><a>PotentialActionHandler</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
+            <td >Value:</td>
+            <td ><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>prefers</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/prefers</code></td>
+            <td rowspan="4" ><dfn>prefers</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/prefers</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               An <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> or <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code> describing an optional condition
               that SHOULD be satisfied before an application can carry out a <code><a>PotentialAction</a></code>
               using a specific <code><a>PotentialActionHandler</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
+            <td >Value:</td>
+            <td ><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>method</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/method</code></td>
+            <td rowspan="4" ><dfn>method</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/method</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Identifies the HTTP Method used for a <code><a>HttpRequest</a></code> or <code><a>BrowserView</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a href="activitystreams2-vocabulary.html#dfn-object">HttpRequest</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a href="activitystreams2-vocabulary.html#dfn-object">HttpRequest</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:string</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:string</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>expects</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/expects</code></td>
+            <td rowspan="4" ><dfn>expects</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/expects</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Describes zero or more required inputs for a <code><a>PotentialActionHandler</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="PotentialActionHandlerInput">PotentialActionHandlerInput</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="PotentialActionHandlerInput">PotentialActionHandlerInput</a></code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>potentialResult</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/potentialResult</code></td>
+            <td rowspan="4" ><dfn>potentialResult</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/potentialResult</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Describes one or more potential results from using a <code><a>PotentialActionHandler</a></code>
               to carry out a <code><a>PotentialAction</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a> | <a title="Payload"><code>Payload</code></a></td>
+            <td >Value:</td>
+            <td ><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a> | <a title="Payload"><code>Payload</code></a></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>browserContext</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/browserContext</code></td>
+            <td rowspan="4" ><dfn>browserContext</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/browserContext</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Identifies the target Web Browser Context name for a <code><a>BrowserView</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="BrowserView">BrowserView</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="BrowserView">BrowserView</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:string</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:string</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>sandbox</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/sandbox</code></td>
+            <td rowspan="4" ><dfn>sandbox</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/sandbox</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Describes the HTML sandbox policy for the <code><a>BrowserView</a></code> or <code><a>EmbeddedView</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="BrowserView">BrowserView</a> | <a title="EmbeddedView">EmbeddedView</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="BrowserView">BrowserView</a> | <a title="EmbeddedView">EmbeddedView</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:boolean</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:boolean</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>template</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/template</code></td>
+            <td rowspan="4" ><dfn>template</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/template</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the [[!RFC6570]] URL Template used for <code><a>UrlTemplate</a></code>.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="UrlTemplate">UrlTemplate</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="UrlTemplate">UrlTemplate</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:string</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:string</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn title="parameter-term">parameter</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/parameter</code></td>
+            <td rowspan="4" ><dfn title="parameter-term">parameter</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/parameter</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Describes one or more <code><a>Parameter</a></code> objects used for <code><a>UrlTemplate</a></code>
               or <code><a>HtmlForm</a></code> objects.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><code><a title="UrlTemplate">UrlTemplate</a> | <a title="HtmlForm">HtmlForm</a></code></td>
+            <td >Domain:</td>
+            <td ><code><a title="UrlTemplate">UrlTemplate</a> | <a title="HtmlForm">HtmlForm</a></code></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a title="Parameter">Parameter</a></code></td>
+            <td >Value:</td>
+            <td ><code><a title="Parameter">Parameter</a></code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>name</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/name</code></td>
+            <td rowspan="4" ><dfn>name</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/name</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the name of the parameter. The name MUST be a simple token
               conforming to the <code>varname</code> rule in [[!RFC6570]].
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:string</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:string</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>required</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/required</code></td>
+            <td rowspan="4" ><dfn>required</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/required</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Indicates whether a given parameter is required or not. Defaults to <code>true</code> when unspecified. 
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:boolean</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:boolean</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>repeated</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/repeated</code></td>
+            <td rowspan="4" ><dfn>repeated</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/repeated</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Indicates whether a given parameter can be repeated or not. Defaults to <code>false</code> when unspecified;
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:boolean</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:boolean</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>value</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/value</code></td>
+            <td rowspan="4" ><dfn>value</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/value</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies a static value for the parameter. When specified, implementations MUST 
               use the given value for the parameter, regardless of any user input.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>default</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/default</code></td>
+            <td rowspan="4" ><dfn>default</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/default</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the default value for the parameter.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>valueType</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/valueType</code></td>
+            <td rowspan="4" ><dfn>valueType</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/valueType</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the parameter's expected value type. The value SHOULD
               specify a type from the XML Schema Data Types.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyURI</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyURI</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>enumeration</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/enumeration</code></td>
+            <td rowspan="4" ><dfn>enumeration</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/enumeration</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies one or more possible values for the parameter. When used, 
               implementations MUST use one of the given values.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>minLength</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/minLength</code></td>
+            <td rowspan="4" ><dfn>minLength</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/minLength</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the minimum length, in characters, for the value.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:nonNegativeInteger</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>maxLength</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/maxLength</code></td>
+            <td rowspan="4" ><dfn>maxLength</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/maxLength</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the maximum length, in characters, for the value.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:nonNegativeInteger</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>maxExclusive</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/maxExclusive</code></td>
+            <td rowspan="4" ><dfn>maxExclusive</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/maxExclusive</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the exclusive upper boundary for values.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>maxInclusive</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/maxInclusive</code></td>
+            <td rowspan="4" ><dfn>maxInclusive</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/maxInclusive</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the inclusive upper boundary for values.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>minExclusive</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/minExclusive</code></td>
+            <td rowspan="4" ><dfn>minExclusive</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/minExclusive</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the exclusive lower boundary for values.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>minInclusive</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/minInclusive</code></td>
+            <td rowspan="4" ><dfn>minInclusive</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/minInclusive</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the inclusive lower boundary for values.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>step</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/step</code></td>
+            <td rowspan="4" ><dfn>step</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/step</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the step increment for values.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:anyType</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:anyType</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>totalDigits</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/totalDigits</code></td>
+            <td rowspan="4" ><dfn>totalDigits</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/totalDigits</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the total number of numeric digits allowed to appear in the value.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:nonNegativeInteger</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>fractionDigits</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/fractionDigits</code></td>
+            <td rowspan="4" ><dfn>fractionDigits</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/fractionDigits</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies the total number of fractional digits allowed to appear in the value.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:nonNegativeInteger</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:nonNegativeInteger</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>pattern</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/pattern</code></td>
+            <td rowspan="4" ><dfn>pattern</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/pattern</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies a regular expression to which the parameter value MUST conform.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code>xsd:string</code></td>
+            <td >Value:</td>
+            <td ><code>xsd:string</code></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" valign="top"><dfn>placeholder</dfn></td>
-            <td valign="top" width="10%">URI:</td>
-            <td valign="top"><code>http://activitystrea.ms/2.0/placeholder</code></td>
+            <td rowspan="4" ><dfn>placeholder</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://activitystrea.ms/2.0/placeholder</code></td>
           </tr>
           <tr>
-            <td valign="top">Notes:</td>
-            <td valign="top">
+            <td >Notes:</td>
+            <td >
               Specifies a human-readable, plain-text prompt for the parameter.
             </td>
           </tr>
           <tr>
-            <td valign="top">Domain:</td>
-            <td valign="top"><a title="Parameter"><code>Parameter</code></a></td>
+            <td >Domain:</td>
+            <td ><a title="Parameter"><code>Parameter</code></a></td>
           </tr>
           <tr>
-            <td valign="top">Value:</td>
-            <td valign="top"><code><a href="activitystreams2-vocabulary.html#dfn-naturallanguagevalue">NaturalLanguageValue</a></code></td>
+            <td >Value:</td>
+            <td ><code><a href="activitystreams2-vocabulary.html#dfn-naturallanguagevalue">NaturalLanguageValue</a></code></td>
           </tr>
         </tbody>
 
