@@ -16,8 +16,8 @@
      "skos": "http://www.w3.org/2004/02/skos/core#"
    },{
    "@vocab": "_:",
-   "as" : "http://activitystrea.ms/2.0/",
-   "as1" : "http://activitystrea.ms/1.0/",
+   "as" : "http://www.w3.org/2014/activitystreams#",
+   "as1" : "http://www.w3.org/2011/activitystreams#",
    "id": "@id",
    "objectType": "@type",
    "language": "as:language",
@@ -446,7 +446,7 @@
    "HttpRequest": "as:HttpRequest"
   },
  {
-   "asd": "http://activitystrea.ms/2.0/schema/",
+   "asd": "http://www.w3.org/2014/activitystreams#schema/",
    "asd:defines": {
      "@reverse": "rdfs:isDefinedBy"
    },
