@@ -87,19 +87,22 @@
      "@type": "@vocab"
    },
    "completed": {
-     "@id": "as:status/completed"
+     "@id": "as:status-completed"
    },
    "active": {
-     "@id": "as:status/active"
+     "@id": "as:status-active"
    },
    "canceled": {
-     "@id": "as:status/canceled"
+     "@id": "as:status-canceled"
    },
    "pending": {
-     "@id": "as:status/pending"
+     "@id": "as:status-pending"
    },
    "tentative": {
-     "@id": "as:status/tentative"
+     "@id": "as:status-tentative"
+   },
+   "voided": {
+     "@id": "as:status-voided"
    },
    "to": {
      "@id": "as:to",
@@ -673,12 +676,12 @@
      "rdfs:range": {
        "@type": "owl:Class",
        "owl:oneOf": [
-         "as:status/active",
-         "as:status/canceled",
-         "as:status/completed",
-         "as:status/pending",
-         "as:status/tentative",
-         "as:status/voided"
+         "as:status-active",
+         "as:status-canceled",
+         "as:status-completed",
+         "as:status-pending",
+         "as:status-tentative",
+         "as:status-voided"
        ]
      }
    },
