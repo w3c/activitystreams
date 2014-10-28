@@ -16,8 +16,7 @@
      "skos": "http://www.w3.org/2004/02/skos/core#"
    },{
    "@vocab": "_:",
-   "as" : "http://www.w3.org/2014/activitystreams#",
-   "as1" : "http://www.w3.org/2011/activitystreams#",
+   "as" : "http://www.w3.org/ns/activitystreams#",
    "id": "@id",
    "objectType": "@type",
    "language": "as:language",
@@ -310,19 +309,19 @@
      "@type": "@id"
    },
    "attachments": {
-     "@id": "as1:attachments",
+     "@id": "as:attachments",
      "@type": "@id"
    },
    "tags": {
-     "@id": "as1:tags",
+     "@id": "as:tags",
      "@type": "@id"
    },
    "downstreamDuplicates": {
-     "@id": "as1:downstreamDuplicates",
+     "@id": "as:downstreamDuplicates",
      "@type": "@id"
    },
    "upstreamDuplicates": {
-     "@id": "as1:upstreamDuplicates",
+     "@id": "as:upstreamDuplicates",
      "@type": "@id"
    },
    "confirm": {
@@ -446,7 +445,7 @@
    "HttpRequest": "as:HttpRequest"
   },
  {
-   "asd": "http://www.w3.org/2014/activitystreams#schema/",
+   "asd": "http://www.w3.org/ns/activitystreams#schema/",
    "asd:defines": {
      "@reverse": "rdfs:isDefinedBy"
    },
@@ -888,7 +887,7 @@
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["xsd:Object", "as:Link"],
-     "owl:equivalentProperty": ["as1:attachments", "dct:hasPart"]
+     "owl:equivalentProperty": ["as:attachments", "dct:hasPart"]
    },
    {
      "@id": "as:height",
@@ -907,7 +906,7 @@
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": ["as1:tags", "dct:references"]
+     "owl:equivalentProperty": ["as:tags", "dct:references"]
    },
    {
      "@id": "as:inReplyTo",
@@ -1021,7 +1020,7 @@
      "rdfs:range": "as:Link"
    },
    {
-     "@id": "as1:tags",
+     "@id": "as:tags",
      "@type": "owl:DeprecatedProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["as:Object", "as:Link"],
@@ -1031,7 +1030,7 @@
      }
    },
    {
-     "@id": "as1:attachments",
+     "@id": "as:attachments",
      "@type": "owl:DeprecatedProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["as:Object", "as:Link"],
@@ -1041,27 +1040,27 @@
      }
    },
    {
-     "@id": "as1:id",
+     "@id": "as:id",
      "@type": "owl:DeprecatedProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": "xsd:anyURI",
      "equivalentProperty": "rdf:ID"
    },
    {
-     "@id": "as1:objectType",
+     "@id": "as:objectType",
      "@type": "owl:DeprecatedProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": "xsd:anyURI",
      "equivalentProperty": "rdf:Type" 
    },
    {
-     "@id": "as1:downstreamDuplicates",
+     "@id": "as:downstreamDuplicates",
      "@type": "owl:DeprecatedProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": "xsd:anyURI"
    },
    {
-     "@id": "as1:upstreamDuplicates",
+     "@id": "as:upstreamDuplicates",
      "@type": "owl:DeprecatedProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": "xsd:anyURI"

@@ -230,7 +230,7 @@
 
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#Activity",
+  "@type": "http://www.w3.org/ns/activitystreams#Activity",
   "verb": "post",
   "actor": "urn:example:person:martin",
   "object": "http://example.org/foo.jpg"
@@ -252,7 +252,7 @@
       </figcaption>
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#Activity",
+  "@type": "http://www.w3.org/ns/activitystreams#Activity",
   "language": "en",
   "verb": "post",
   "published": "2011-02-10T15:04:55Z",
@@ -263,7 +263,7 @@
    "url": "http://example.org/martin",
    "image": {
      "@id": "http://example.org/martin/image.jpg",
-     "@type": "http://www.w3.org/2014/activitystreams#Link",
+     "@type": "http://www.w3.org/ns/activitystreams#Link",
      "mediaType": "image/jpeg"
    }
   },
@@ -295,11 +295,11 @@
 <pre class="example highlight json">
 {
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#Collection",
+  "@type": "http://www.w3.org/ns/activitystreams#Collection",
   "totalItems": 1,
   "items" : [
     {
-      "@type": "http://www.w3.org/2014/activitystreams#Activity",
+      "@type": "http://www.w3.org/ns/activitystreams#Activity",
       "language": "en",
       "verb": "post",
       "published": "2011-02-10T15:04:55Z",
@@ -315,13 +315,13 @@
         "displayName": "Martin Smith",
         "url": {
           "@id": "http://example.org/martin",
-          "@type": "http://www.w3.org/2014/activitystreams#Link",
+          "@type": "http://www.w3.org/ns/activitystreams#Link",
           "displayName": "Martin's Profile"
         },
         "image": {
           "@id": "http://example.org/martin/image",
           "@type": [
-            "http://www.w3.org/2014/activitystreams#Link",
+            "http://www.w3.org/ns/activitystreams#Link",
             "http://example.org/ImageResource"
           ],
           "mediaType": "image/jpeg",
@@ -334,7 +334,7 @@
         "@id": "http://example.org/album/my_fluffy_cat.jpg",
         "image": {
           "@id": "http://example.org/album/my_fluffy_cat_thumb.jpg",
-          "@type": "http://www.w3.org/2014/activitystreams#Link",
+          "@type": "http://www.w3.org/ns/activitystreams#Link",
           "mediaType": "image/jpeg",
           "rel": "preview"
         }
@@ -348,7 +348,7 @@
         },
         "image": {
           "@id": "http://example.org/album/thumbnail.jpg",
-          "@type": "http://www.w3.org/2014/activitystreams#Link",
+          "@type": "http://www.w3.org/ns/activitystreams#Link",
           "mediaType": "image/jpeg"
         }
       }
@@ -378,7 +378,7 @@
         The <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> 
         class is the primary base class for the Activity Streams vocabulary. An 
         implementations would typically create it's own set of subclasses that 
-        derive from the <code>http://www.w3.org/2014/activitystreams#Object</code> class as 
+        derive from the <code>http://www.w3.org/ns/activitystreams#Object</code> class as 
         opposed to using <code>Object</code> directly.
       </p>
 
@@ -625,7 +625,7 @@ function _fixdefaultlanguage(lang, obj) {
   "displayName": "My Application",
   <b>"image": {
     "@id": "http://example.org/application/123.png",
-    "@type": "http://www.w3.org/2014/activitystreams#Link",
+    "@type": "http://www.w3.org/ns/activitystreams#Link",
     "mediaType": "image/png"
   }</b>
 }</pre></figure>
@@ -654,7 +654,7 @@ function _fixdefaultlanguage(lang, obj) {
     "http://example.org/application/abc.gif",
     {
       "@id": "http://example.org/application/123.png",
-      "@type": "http://www.w3.org/2014/activitystreams#Link",
+      "@type": "http://www.w3.org/ns/activitystreams#Link",
       "mediaType": "image/png"
     }
   ]</b>
@@ -688,7 +688,7 @@ function _fixdefaultlanguage(lang, obj) {
     "http://example.org/foo.jpg",
     {
       "@id": "http://example.org/screens/1.jpg",
-      "@type": "http://www.w3.org/2014/activitystreams#Link",
+      "@type": "http://www.w3.org/ns/activitystreams#Link",
       "rel": "preview",
       "mediaType": "image/jpeg"
     }
@@ -724,7 +724,7 @@ function _fixdefaultlanguage(lang, obj) {
     {
       "@id": "http://example.org/screens/1.jpg",
       "@type": [
-        "http://www.w3.org/2014/activitystreams#Link",
+        "http://www.w3.org/ns/activitystreams#Link",
         "urn:example:image"],
       "rel": "preview",
       "mediaType": "image/jpeg",
@@ -774,7 +774,7 @@ function _fixdefaultlanguage(lang, obj) {
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#Activity",
+  "@type": "http://www.w3.org/ns/activitystreams#Activity",
   "@id": "urn:example:activity:1",
   "verb": {
     "@id": "urn:example:verb:like",
@@ -945,7 +945,7 @@ function _fixdefaultlanguage(lang, obj) {
 <pre class="example highlight json">
 {
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#Collection",
+  "@type": "http://www.w3.org/ns/activitystreams#Collection",
   "totalItems": 10,
   "itemsPerPage": 1,
   "itemsSince": "2012-12-12T12:34:56Z",
@@ -976,7 +976,7 @@ function _fixdefaultlanguage(lang, obj) {
       verb identifier:</figcaption>
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#Verb",
+  "@type": "http://www.w3.org/ns/activitystreams#Verb",
   "@id": "urn:example:verbs:upload",
   "displayName": "Upload",
   "alias": "upload"
@@ -991,7 +991,7 @@ function _fixdefaultlanguage(lang, obj) {
       object type:</figcaption>
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/2014/activitystreams",
-  "@type": "http://www.w3.org/2014/activitystreams#ObjectType",
+  "@type": "http://www.w3.org/ns/activitystreams#ObjectType",
   "@id": "urn:example:types/note",
   "displayName": "Note"
 }</code></pre></figure>
@@ -1025,7 +1025,7 @@ function _fixdefaultlanguage(lang, obj) {
     {
       "@type": "urn:example:actions:ShareAction",
       "using": {
-        "@type": "http://www.w3.org/2014/activitystreams#HttpRequest",
+        "@type": "http://www.w3.org/ns/activitystreams#HttpRequest",
         "method": "POST",
         "url": "http://example.org/share?id=1"
       }
@@ -1033,7 +1033,7 @@ function _fixdefaultlanguage(lang, obj) {
     {
       "@type": "urn:example:actions:SaveAction",
       "using": {
-        "@type": "http://www.w3.org/2014/activitystreams#EmbeddedView",
+        "@type": "http://www.w3.org/ns/activitystreams#EmbeddedView",
         "content": "&lt;p>...&lt;/p>",
         "mediaType": "text/html"
       }
@@ -1192,11 +1192,7 @@ function _fixdefaultlanguage(lang, obj) {
           </tr>
           <tr>
             <td><code>as:</code></td>
-            <td><code>http://www.w3.org/2014/activitystreams#</code></td>
-          </tr>
-          <tr>
-            <td><code>as1:</code></td>
-            <td><code>http://www.w3.org/2011/activitystreams#</code></td>
+            <td><code>http://www.w3.org/ns/activitystreams#</code></td>
           </tr>
           <tr>
             <td><code>dc:</code></td>
