@@ -237,6 +237,21 @@
 }</pre>
       </figure>
 
+      <p><mark>Ed. Note: The example above uses the Activity Streams 1.0
+      form of an Activity "statement" consisting, essentially, of an 
+      Actor+Verb+Object combination. It has been proposed that the "<code>verb</code>" 
+      may be unnecessary in most cases. The proposal on the table is to 
+      deprecate use of "<code>verb</code>" and use a "<code>@type</code>"
+      centric model instead, as illustrated in the following example:</mark></p>
+
+<figure><figcaption>Expresses the same statement as above, using @type instead of verb</figcaption>
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "urn:example:Post",
+  "actor": "urn:example:person:martin",
+  "object": "http://example.org/foo.jpg"
+}</pre></figure>
+
     </section>
 
     <section id="example-2">
@@ -785,6 +800,19 @@ function _fixdefaultlanguage(lang, obj) {
   "published": "2014-09-30T12:34:56Z"
 }
 </code></pre></figure>
+
+      <p><mark>Ed. Note: Following the proposal to deprecate "<code>verb</code>" in 
+      favor of a "<code>@type</code>" centric approach, this example becomes:</mark></p>
+
+      <figure><figcaption></figcaption>
+<pre class="example highlight json"><code>{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "urn:example:Like",
+  "@id": "urn:example:activity:1",
+  "actor": "http://example.org/profiles/joe",
+  "object": "http://example.com/notes/1",
+  "published": "2014-09-30T12:34:56Z"
+}</code></pre></figure>
 
       <section class="informative">
         <h2>Implementation Note</h2>
