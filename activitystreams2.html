@@ -229,7 +229,7 @@
       </figcaption>
 
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#Activity",
   "verb": "post",
   "actor": "urn:example:person:martin",
@@ -251,7 +251,7 @@
         Vocabulary</a>.
       </figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#Activity",
   "language": "en",
   "verb": "post",
@@ -294,7 +294,7 @@
 
 <pre class="example highlight json">
 {
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#Collection",
   "totalItems": 1,
   "items" : [
@@ -434,7 +434,7 @@
 JSON-LD keywords to express the global identifier and object type:</figcaption>
 <pre class="example highlight json">
 {
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@id": "http://example.org/foo",
   "@type": "http://example.org/types/Note",
   "language": "en",
@@ -607,7 +607,7 @@ function _fixdefaultlanguage(lang, obj) {
         value can be expressed as a simple JSON string containing an absolute
         or relative IRI:</figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://example.org/types/application",
   "@id": "http://example.org/application/123",
   "displayName": "My Application",
@@ -619,7 +619,7 @@ function _fixdefaultlanguage(lang, obj) {
         expressed as a JSON object:.
       </figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://example.org/types/application",
   "@id": "http://example.org/application/123",
   "displayName": "My Application",
@@ -646,7 +646,7 @@ function _fixdefaultlanguage(lang, obj) {
         mix of string and object elements can be used:
       </figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://example.org/types/application",
   "@id": "http://example.org/application/123",
   "displayName": "My Application",
@@ -682,7 +682,7 @@ function _fixdefaultlanguage(lang, obj) {
 
       <figure><figcaption></figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "urn:example:types:application",
   <b>"image": [
     "http://example.org/foo.jpg",
@@ -717,7 +717,7 @@ function _fixdefaultlanguage(lang, obj) {
 
       <figure><figcaption></figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "urn:example:types:application",
   "image": [
     "http://example.org/foo.jpg",
@@ -773,7 +773,7 @@ function _fixdefaultlanguage(lang, obj) {
 
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
 <pre class="example highlight json"><code>{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#Activity",
   "@id": "urn:example:activity:1",
   "verb": {
@@ -944,7 +944,7 @@ function _fixdefaultlanguage(lang, obj) {
       <figure><figcaption>The following is a simple collection with paging:</figcaption>
 <pre class="example highlight json">
 {
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#Collection",
   "totalItems": 10,
   "itemsPerPage": 1,
@@ -975,7 +975,7 @@ function _fixdefaultlanguage(lang, obj) {
       <figure><figcaption>For instance, the following describes the "<code>urn:example:verbs:upload</code>"
       verb identifier:</figcaption>
 <pre class="example highlight json"><code>{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#Verb",
   "@id": "urn:example:verbs:upload",
   "displayName": "Upload",
@@ -990,7 +990,7 @@ function _fixdefaultlanguage(lang, obj) {
       <figure><figcaption>For instance, the following describes the "<code>urn:example:types:note</code>"
       object type:</figcaption>
 <pre class="example highlight json"><code>{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "http://www.w3.org/ns/activitystreams#ObjectType",
   "@id": "urn:example:types/note",
   "displayName": "Note"
@@ -1018,7 +1018,7 @@ function _fixdefaultlanguage(lang, obj) {
         potential actions "<code>urn:example:actions:ShareAction</code>" and 
         "<code>urn:example:actions:SaveAction</code>":</figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/2014/activitystreams",
+  "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "urn:example:types:note",
   "@id": "urn:example:notes:1",
   "action": [
