@@ -102,20 +102,14 @@
   <section id="introduction">
     <h2>Introduction</h2>
     <p>
-      In the most basic sense, an "activity" is a semantic description of
-      a potential or completed action.  In the former case, the activity
-      expresses what can or might be done with a particular object, while 
-      in the latter case, it expresses what has already been done.
-    </p>
-
-    <p>
-      It is the goal of this specification to provide a JSON-based syntax
-      that is sufficient to express metadata about activities in a rich,
-      human-friendly, machine-processable and extensible manner.  This may
-      include constructing natural-language descriptions or visual
-      representations about the activity, associating actionable
-      information with various types of objects, communicating or recording
-      activity logs, or delegation of potential actions to other
+      In the most basic sense, an "Activity" is a semantic description of
+      a completed or ongoing action. It is the goal of this specification 
+      to provide a JSON-based syntax that is sufficient to express metadata 
+      about activities in a rich, human-friendly but machine-processable and 
+      extensible manner.  This can include constructing natural-language 
+      descriptions or visual representations about the activity, associating 
+      actionable information with various types of objects, communicating or 
+      recording activity logs, or delegation of potential actions to other
       applications.
     </p>
 
@@ -224,8 +218,8 @@
       
       <figure>
       <figcaption>
-        Expresses the statement "'urn:example:person:martin' posted
-        'http://example.org/foo.jpg'".  No additional detail is given.
+        Expresses the statement <code>'urn:example:person:martin' posted
+        'http://example.org/foo.jpg'</code>.  No additional detail is given.
       </figcaption>
 
 <pre class="example highlight json">{
@@ -391,10 +385,12 @@
 
       <p>
         The <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> 
-        class is the primary base class for the Activity Streams vocabulary. An 
-        implementations would typically create it's own set of subclasses that 
-        derive from the <code>http://www.w3.org/ns/activitystreams#Object</code> class as 
-        opposed to using <code>Object</code> directly.
+        class is the primary base class for the Activity Streams vocabulary. Other 
+        classes such as <a href="activitystreams2-vocabulary.html#def-activity">Activity</a>,
+        <a href="activitystreams2-vocabulary.html#def-collection">Collection</a>, 
+        <a href="activitystreams2-vocabulary.html#def-verb">Verb</a>, and 
+        <a href="activitystreams2-vocabulary.html#def-objecttype">ObjectType</a> derive
+        from and inherit the properties of <code>Object</code>.
       </p>
 
       <p>
@@ -462,6 +458,30 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
   "published": "2014-08-21T12:34:56Z"
 }
 </pre></figure>
+
+      <p>
+        Implementations MUST treat all object types in an Activity Streams document as 
+        subclasses of <a>Object</a> unless the object is a <a>Link</a> and no additional 
+        <code>@type</code> values are specified.
+      </p>
+
+<figure><figcaption>For instance, in the following example, the value of <code>actor</code> is
+considered to be an instance of <a>Object</a> while the value of <code>object</code> is not:</figcaption>
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@id": "http://example.org/foo",
+  "@type": "urn:example:actions:Share",
+  "displayName": "A Test",
+  "actor": {
+    "@type": ["urn:example:types:Person", "as:Link"],
+    "@id": "http://example.org/~sally",
+    "displayName": "Sally"
+  },
+  "object": {
+    "@type": "as:Link",
+    "@id": "http://example.org/posts/1"
+  }
+}</pre></figure>
 
    </section>
 
@@ -536,7 +556,7 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
       of the JSON-LD <code>@context</code>.</p>
 
       <figure>
-        <figcaption>Using the <code>language</code> property has the same effect 
+        <figcaption>Using the <code>language</code> property has the same basic effect 
         as using the <code>@language</code> inside the JSON-LD <code>@context</code>:</figcaption>
 <pre class="example highlight json">{
   "language": "en",
