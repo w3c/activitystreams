@@ -17,8 +17,6 @@
    },{
    "@vocab": "_:",
    "as" : "http://www.w3.org/ns/activitystreams#",
-   "id": "@id",
-   "objectType": "@type",
    "language": "as:language",
    "displayName": "as:displayName",
    "displayNameMap": {
@@ -34,6 +32,14 @@
    "verb": {
      "@id": "as:verb",
      "@type": "@vocab"
+   },
+   "objectType": {
+     "@id": "as:objectType",
+     "@type": "@vocab"
+   },
+   "id": {
+     "@id": "as:id",
+     "@type": "@id"
    },
    "actor": {
      "@id": "as:actor",
@@ -435,7 +441,7 @@
    "placeholderMap": {
      "@id": "as:placeholder",
      "@container": "@language"
-   }
+   },
    "potentialResult": {
      "@id": "as:potentialResult",
      "@type": "@id"
