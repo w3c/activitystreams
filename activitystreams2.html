@@ -1460,6 +1460,43 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
   <section>
     <h2>Summary of Changes</h2>
+    <h3>2014-11-06</h3>
+      <ul>
+      <li>Refactor's Natural Language Context to address JSON-LD
+      compatibility and serialization concerns. For instance, rather than
+      "displayName" having a value that is *either* a string or a Language
+      Map, this creates a separate "displayNameMap" for the Language Map
+      case and keeps "displayName" as a String only. The JSON-LD processing
+      algorithms handle this just fine and non-JSON-LD implementations end
+      up with a more predictable, consistent target.</li>
+      <li>Remove the "language" property</li>
+      <li>Refactor as:Link, add as:href to indicate the target of the Link,
+      move away from overloading @id. This ought to resolve the modeling
+      issues that have been discussed.</li>
+      <li>Deprecate the "verb" property in AS 2.0, use @type instead to
+      represent the Activity Type. Provide clear guidelines for handling the
+      "verb" property when moving from AS 1.0 to AS 2.0.</li>
+      <li>Require JSON-LD compacted form using a normative JSON-LD @context
+      definition. Forbid implementations from altering the normative JSON-LD
+      @context. This will ensure that the serialized JSON will remain
+      consistent for the key properties, making it easier for
+      implementations that choose not to use the JSON-LD standard
+      algorithms.</li>
+      <li>Strengthen the MUST IGNORE requirement for extensions. Make it
+      clear that implementations SHOULD define extension properties using an
+      @context and spell out the consequences if they do not. Make it clear
+      that there are some valid JSON constructs (arrays of arrays) that are
+      not supported in JSON-LD and show an example using the one significant
+      case we are currently aware of (GeoJSON).</li>
+      <li>Provide a AS1-to-AS2 specific @context definition that is
+      specifically for processing AS1 documents using AS2 semantics.</li>
+      <li>Remove the Verb and ObjectType abstract classes. Verb is no longer
+      needed with the move to @type. Verbs just become subclasses of
+      as:Activity. The ObjectType definition can be handled better using
+      other constructs. Overall, this simplifies our vocabulary, which is
+      good.</li>
+      </ul>
+
     <h3>2014-09-30</h3>
     <ul>
       <li>Rework serialization model to be based on JSON-LD.</li>
