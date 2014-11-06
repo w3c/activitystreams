@@ -20,11 +20,16 @@
    "id": "@id",
    "objectType": "@type",
    "language": "as:language",
-   "displayName": {
+   "displayName": "as:displayName",
+   "displayNameMap": {
      "@id": "as:displayName",
      "@container": "@language"
    },
    "rel": "as:rel",
+   "href": {
+     "@id": "as:href",
+     "@type": "xsd:anyURI"
+   },
    "mediaType": "as:mediaType",
    "verb": {
      "@id": "as:verb",
@@ -132,7 +137,8 @@
      "@reverse": "as:author",
      "@type": "@id"
    },
-   "content": {
+   "content": "as:content",
+   "contentMap": {
      "@id": "as:content",
      "@container": "@language"
    },
@@ -172,7 +178,8 @@
      "@reverse": "as:provider",
      "@type": "@id"
    },
-   "summary": {
+   "summary": "as:summary",
+   "summaryMap": {
      "@id": "as:summary",
      "@container": "@language"
    },
@@ -216,7 +223,8 @@
      "@id": "as:attachment",
      "@type": "@id"
    },
-   "title": {
+   "title": "as:title",
+   "titleMap": {
      "@id": "as:title",
      "@container": "@language"
    },
@@ -423,10 +431,11 @@
      "@id": "as:pattern",
      "@type": "xsd:string"
    },
-   "placeholder": {
+   "placeholder": "as:placeholder",
+   "placeholderMap": {
      "@id": "as:placeholder",
-     "@type": "xsd:string"
-   },
+     "@container": "@language"
+   }
    "potentialResult": {
      "@id": "as:potentialResult",
      "@type": "@id"
@@ -498,11 +507,6 @@
      "rdfs:subClassOf": "as:Object"
    },
    {
-     "@id": "as:NaturalLanguageValue",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "xsd:string"
-   },
-   {
      "@id": "as:PotentialAction",
      "@type": "owl:Class",
      "rdfs:subClassOf": "as:Object"
@@ -546,7 +550,7 @@
      "@id": "as:displayName",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:NaturalLanguageValue",
+     "rdfs:range": ["xsd:string", "rdf:langString"],
      "owl:equivalentPropety": "skos:prefLabel"
    },
    {
@@ -554,6 +558,12 @@
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Link",
      "rdfs:range": "xsd:string"
+   },
+   {
+     "@id": "as:href",
+     "@type": "owl:FunctionalProperty",
+     "rdfs:domain": "as:Link",
+     "rdfs:range": "xsd:anyURI"
    },
    {
      "@id": "as:mediaType",
@@ -689,7 +699,7 @@
      "@id": "as:to",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": "as:Object"
+     "rdfs:range": ["as:Object", "as:Link"]
    },
    {
      "@id": "as:cc",
@@ -734,33 +744,33 @@
      "@id": "as:content",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
-     "rdfs:range": "as:NaturalLanguageValue"
+     "rdfs:range": ["xsd:string", "rdf:langString"]
    },
    {
      "@id": "as:summary",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
-     "rdfs:range": "as:NaturalLanguageValue",
+     "rdfs:range": ["xsd:string", "rdf:langString"],
      "owl:equivalentProperty": ["dct:summary", "dct:description"]
    },
    {
      "@id": "as:title",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:NaturalLanguageValue",
+     "rdfs:range": ["xsd:string", "rdf:langString"],
      "owl:equivalentProperty": ["dct:title","rdf:label"]
    },
    {
      "@id": "as:icon",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Link"
+     "rdfs:range": ["as:Object", "as:Link"]
    },
    {
      "@id": "as:image",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Link"
+     "rdfs:range": ["as:Object", "as:Link"]
    },
    {
      "@id": "as:location",
@@ -1020,7 +1030,7 @@
      "@id": "as:url",
      "@type": "owl:FunctionalProperty",
      "rdfs:domain": "as:Object",
-     "rdfs:range": "as:Link"
+     "rdfs:range": ["xsd:anyURI", "as:Link"]
    },
    {
      "@id": "as:tags",
@@ -1282,7 +1292,7 @@
      "@id": "as:placeholder",
      "@type": "owl:FunctionalProperty",
      "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "as:NaturalLanguageValue"
+     "rdfs:range": ["xsd:string", "rdf:langString"]
    },
    {
      "@id": "as:Header",
