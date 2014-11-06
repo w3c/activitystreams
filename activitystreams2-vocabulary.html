@@ -146,8 +146,7 @@
 
     <p>
     Classes: <code>
-      <a>Object</a> | <a>Link</a> | <a>Activity</a> | <a>Collection</a>| 
-      <a>Verb</a> | <a>ObjectType</a>
+      <a>Object</a> | <a>Link</a> | <a>Activity</a> | <a>Collection</a>
     </code>
     </p>
 
@@ -267,61 +266,6 @@
           <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
         </tr>
       </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#Verb">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">Verb</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Verb</code></td>
-          <td rowspan="3" >
-            <p><i>From <code><a>Object</a></code></i>:<br/> 
-            <code><a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
-            <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
-            <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
-            <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
-            <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            Describes a Verb.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
-        </tr>
-</tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#ObjectType">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">ObjectType</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#ObjectType</code></td>
-          <td rowspan="3" >
-            <p><i>From <code><a>Object</a></code></i>:<br/> 
-            <code><a>displayName</a> | <a>alias</a> | <a>author</a> | <a>content</a> |
-            <a>summary</a> | <a>title</a> | <a>icon</a> | <a>image</a> | <a>location</a> | 
-            <a>generator</a> | <a>provider</a> | <a>published</a> | <a>updated</a> | <a>startTime</a> |
-            <a>endTime</a> | <a>validFrom</a> | <a>validAfter</a> | <a>validUntil</a> | <a>validBefore</a> |
-            <a>duration</a> | <a>rating</a> | <a>attachment</a> | <a>height</a> | <a>width</a> | <a>tag</a> |
-            <a>inReplyTo</a> | <a>scope</a> | <a>action</a> | <a>memberOf</a> | <a>url</a> | <a>resultOf</a> | <a>replies</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            Describes an Object Type.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-object"><code>Object</code></a></td>
-        </tr>
-</tbody>
-
     </table>
 
   </section>
@@ -1909,7 +1853,7 @@
         </tr>
         <tr>
           <td >Value:</td>
-          <td ><code><a>Verb</a></code></td>
+          <td ><code>xsd:anyURI</code></td>
         </tr>
       </tbody>
 
@@ -1928,7 +1872,7 @@
         </tr>
         <tr>
           <td >Domain:</td>
-          <td ><code><a>Object</a></code></td>
+          <td ><code>xsd:anyURI</code></td>
         </tr>
         <tr>
           <td >Equivalent To:</td>
