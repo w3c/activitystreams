@@ -547,12 +547,6 @@
      "rdfs:subClassOf": "as:Object"
    },
    {
-     "@id": "as:language",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "xsd:string"
-   },
-   {
      "@id": "as:displayName",
      "@type": "owl:ObjectProperty",
      "rdfs:domain": ["as:Object", "as:Link"],
@@ -577,12 +571,6 @@
      "rdfs:domain": ["as:Link", "as:Payload", "as:EmbeddedView"],
      "rdfs:range": "xsd:string",
      "owl:equivalentProperty": "dct:format"
-   },
-   {
-     "@id": "as:verb",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": "as:Verb"
    },
    {
      "@id": "as:actor",
@@ -1034,7 +1022,7 @@
    },
    {
      "@id": "as:url",
-     "@type": "owl:FunctionalProperty",
+     "@type": "owl:ObjectProperty",
      "rdfs:domain": "as:Object",
      "rdfs:range": ["xsd:anyURI", "as:Link"]
    },
@@ -1071,6 +1059,13 @@
      "rdfs:domain": "as:Object",
      "rdfs:range": "xsd:anyURI",
      "equivalentProperty": "rdf:Type" 
+   },
+   {
+     "@id": "as:verb",
+     "@type": "owl:DeprecatedProperty",
+     "rdfs:domain": "as:Activity",
+     "rdfs:range": "xsd:anyURI",
+     "equivalentProperty": "rdf:Type"
    },
    {
      "@id": "as:downstreamDuplicates",
