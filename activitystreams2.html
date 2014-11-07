@@ -323,7 +323,7 @@
         "@type": "urn:example:types:person",
         "@id": "urn:example:person:martin",
         "displayName": "Martin Smith",
-        "url": "http://example.org/martin"
+        "url": "http://example.org/martin",
         "image": {
           "@type": "as:Link",
           "href": "http://example.org/martin/image",
@@ -334,13 +334,25 @@
       },
       "object" : {
         "@type": "http://example.org/Photo",
-        "@id": "http://example.org/album/my_fluffy_cat.jpg",
+        "@id": "http://example.org/album/my_fluffy_cat",
         "image": {
           "@type": "as:Link",
           "href": "http://example.org/album/my_fluffy_cat_thumb.jpg",
           "mediaType": "image/jpeg",
           "rel": "preview"
-        }
+        },
+        "url": [
+          {
+            "@type": "as:Link",
+            "href": "http://example.org/album/my_fluffy_cat.jpg",
+            "mediaType": "image/jpeg"
+          },
+          {
+            "@type": "as:Link",
+            "href": "http://example.org/album/my_fluffy_cat.png",
+            "mediaType": "image/png"
+          }
+        ]
       },
       "target": {
         "@type": "http://example.org/PhotoAlbum",
@@ -459,8 +471,7 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
 
       <p>
         Implementations MUST treat all object types in an Activity Streams document as 
-        subclasses of <a>Object</a> unless the object is a <a>Link</a> and no additional 
-        <code>@type</code> values are specified.
+        subclasses of <a>Object</a> unless the object is a <a>Link</a>.
       </p>
 
 <figure><figcaption>For instance, in the following example, the value of <code>actor</code> is
@@ -589,8 +600,8 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       <h2><dfn title="Link">Link</dfn></h2>
 
       <p>
-        A <code>Link</code> describes a qualified reference to another resource.
-        Links are closely related to the conceptual model of Links as established 
+        A <code>Link</code> describes a qualified reference to another resource and
+        is closely related to the conceptual model of Links as established 
         in [[!RFC5988]].
       </p>
 
@@ -626,7 +637,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       </p>
 
       <figure><figcaption>To reference a single image without any additional metadata, 
-      a direct reference can be expressed as a JSON string containing an absolute
+      a direct association can be expressed as a JSON string containing an absolute
       or relative IRI.</figcaption>
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
@@ -638,7 +649,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
       <figure><figcaption>
         Alternatively, if additional metadata is required (such as the MIME 
-        content type of the referenced resources) a <a>Link</a> can be used:
+        content type of the referenced resource) a <a>Link</a> can be used:
       </figcaption>
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
@@ -654,13 +665,13 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
       <p>
         Formally, the former example establishes an unqualified 
-        relationship directly with the image resource while the 
-        latter creates a qualified relationship that allows additional properties
-        to be specified. Such properties (e.g. <code>mediaType</code>, 
-        <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a> 
-        itself as opposed to describing the referenced resource. For 
-        many practical applications, this distinction will likely be fairly 
-        insignificant but it is still worth keeping in mind.
+        direct relationship with the image resource while the 
+        latter creates a qualified, indirect relationship that allows 
+        additional properties about the relationship to be specified. Such properties 
+        (e.g. <code>mediaType</code>, <code>hreflang</code>, <code>rel</code>, 
+        etc) describe the <a>Link</a> itself as opposed to describing the 
+        referenced resource. For many practical applications, this distinction 
+        will likely be fairly insignificant but it is still worth keeping in mind.
       </p>
 
       <figure><figcaption>
