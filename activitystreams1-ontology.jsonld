@@ -1,0 +1,355 @@
+{
+"@context": [
+    "http://asjsonld.mybluemix.net",
+    {
+      "as1": "http://www.w3.org/ns/activitystreams-1#",
+      "create": "as1:CreateAction",
+      "follow": "as1:FollowAction",
+      "stop-following": "as1:StopFollowingAction",
+      "favorite": "as1:FavoriteAction",
+      "like": "as1:LikeAction",
+      "unfavorite": "as1:UnfavoriteAction",
+      "unlike": "as1:UnlikeAction",
+      "delete": "as1:DeleteAction",
+      "update": "as1:UpdateAction",
+      "add": "as1:AddAction",
+      "remove": "as1:RemoveAction",
+      "share": "as1:ShareAction",
+      "unshare": "as1:UnshareAction",
+      "join": "as1:JoinAction",
+      "leave": "as1:LeaveAction",
+      "undo": "as1:UndoAction",
+      "alert": "as1:Alert",
+      "application": "as1:Application",
+      "article": "as1:Article",
+      "audio": "as1:Audio",
+      "badge": "as1:Badge",
+      "bookmark": "as1:Bookmark",
+      "comment": "as1:Comment",
+      "device": "as1:Device",
+      "event": "as1:Event",
+      "file": "as1:File",
+      "game": "as1:Game",
+      "image": "as1:Image",
+      "issue": "as1:Issue",
+      "note": "as1:Note",
+      "offer": "as1:Offer",
+      "organization": "as1:Organization",
+      "page": "as1:Page",
+      "person": "as1:Person",
+      "place": "as1:Place",
+      "process": "as1:Process",
+      "product": "as1:Product",
+      "question": "as1:Question",
+      "review": "as1:Review",
+      "role": "as1:Role",
+      "service": "as1:Service",
+      "todo": "as1:Todo",
+      "team": "as1:Team",
+      "video": "as1:Video"
+    },
+    {
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "defines": {
+        "@reverse": "rdfs:isDefinedBy"
+      },
+      "rdfs:domain": {
+        "@type": "@id"
+      },
+      "rdfs:range": { 
+        "@type": "@id"
+      },
+      "rdfs:subClassOf": {
+        "@type": "@id"
+      },
+      "owl:unionOf": {
+        "@type": "@id"
+      },
+      "owl:oneOf": {
+        "@type": "@id"
+      },
+      "owl:equivalentProperty": {
+        "@type": "@id"
+      },
+      "owl:inverseOf": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "@id": "as1:",
+  "@type": "owl:Ontology",
+  "defines": [
+    {
+      "@id": "as1:CreateAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "create",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:FollowAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "follow",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:StopFollowingAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "stop-following",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:FavoriteAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "favorite",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:LikeAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "like",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:UnfavoriteAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "unfavorite",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:UnlikeAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "unlike",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:DeleteAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "delete",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:UpdateAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "update",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:AddAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "add",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:RemoveAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "remove",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:ShareAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "share",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:UnshareAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "unshare",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:JoinAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "join",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:LeaveAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "leave",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:UndoAction",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "undo",
+      "rdfs:subClassOf": "as:Activity"
+    },
+    {
+      "@id": "as1:Alert",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "alert",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Application",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "application",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Article",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "article",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Audio",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "audio",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Badge",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "badge",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Bookmark",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "bookmark",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Comment",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "comment",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Device",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "device",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Event",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "event",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:File",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "file",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Game",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "game",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Group",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "group",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Image",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "image",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Issue",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "issue",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Note",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "note",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Offer",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "offer",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Organization",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "organization",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Page",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "page",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Person",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "person",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Place",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "place",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Process",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "process",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Product",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "product",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Question",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "question",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Review",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "review",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Role",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "role",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Service",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "service",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Todo",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "todo",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Team",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "team",
+      "rdfs:subClassOf": "as:Object"
+    },
+    {
+      "@id": "as1:Video",
+      "@type": ["owl:Class", "skos:Concept", "as:Object"],
+      "rdfs:label": "video",
+      "rdfs:subClassOf": "as:Object"
+    }
+  ]
+}
