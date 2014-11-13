@@ -497,6 +497,10 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
     <section id="naturalLanguageValues">
 
       <h2>Natural Language Values</h2>
+
+      <p><mark>Ed. Note: This section has been refactored per 
+      <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/issues/46">Github Issue #46</a>.
+      The NaturalLanguageValue class is removed in favor of using JSON-LD mechanisms.</mark></p>
     
       <p>
         Several properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a>
@@ -598,6 +602,13 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
     <section id="link">
       <h2><dfn title="Link">Link</dfn></h2>
+
+      <p><mark>Ed. Note: This section has been refactored per the ongoing discussion
+      around how to model links. This revised approach allows both unqualified direct
+      links and qualified indirect links to be used, with as:Link becoming the mechanism
+      for describing qualified indirect links. It is a fairly controversial change because
+      there are some on the WG who believe that qualified indirect links are necessary, 
+      while there are some who believe they are useful.</mark></p>
 
       <p>
         A <code>Link</code> describes a qualified reference to another resource and
@@ -747,6 +758,12 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
     <section id="activities">
       <h2><dfn title="Activity" id="activity">Activity</dfn></h2>
+
+      <p><mark>Ed. Note: This section has been refactored to use <code>@type</code>
+      instead of <code>verb</code> to identify the type of action that has occurred.
+      The <code>verb</code> property is deprecated and SHOULD NOT be used in AS2. 
+      When converting from AS1 to AS2, <code>verb</code> MUST be treated as an alias
+      of the JSON-LD <code>@type</code> keyword.</mark></p>
 
       <p>
         Activity objects are specializations of the base <a>Object</a>
@@ -1100,6 +1117,11 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
   <section id="extensibility">
 
     <h2>Extensibility</h2>
+
+      <p><mark>Ed. Note: This section has been refactored to clarify handling of
+      extensions that are not declared in a JSON-LD @context as well as those that
+      use mechanisms that are not compatible with JSON-LD. There should not be 
+      anything too controversial here.</mark></p>
 
       <p>
         In Activity Streams 2.0, an "extension" is any property not defined
@@ -1491,7 +1513,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       <li>Deprecate the "verb" property in AS 2.0, use @type instead to
       represent the Activity Type. Provide clear guidelines for handling the
       "verb" property when moving from AS 1.0 to AS 2.0.</li>
-      <li>Require JSON-LD compacted form using a normative JSON-LD @context
+      <li>Require JSON-LD compacted form using a <i>normative</i> JSON-LD @context
       definition. Forbid implementations from altering the normative JSON-LD
       @context. This will ensure that the serialized JSON will remain
       consistent for the key properties, making it easier for
@@ -1510,6 +1532,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       as:Activity. The ObjectType definition can be handled better using
       other constructs. Overall, this simplifies our vocabulary, which is
       good.</li>
+      <li>Add iCal to the JSON-LD initial context</li>
       </ul>
 
     <h3>2014-09-30</h3>
