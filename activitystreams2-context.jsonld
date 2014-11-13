@@ -1,5 +1,3 @@
-
-
 { "@context": [{
      "dc": "http://purl.org/dc/elements/1.1/",
      "dct": "http://purl.org/dc/terms/",
@@ -10,25 +8,41 @@
      "prov": "http://www.w3.org/ns/prov#",
      "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
      "geos": "http://www.opengis.net/ont/geosparql#",
-     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-     "owl": "http://www.w3.org/2002/07/owl#",
-     "skos": "http://www.w3.org/2004/02/skos/core#"
+     "ical": "http://www.w3.org/2002/12/cal/ical#",
+     "xsd": "http://www.w3.org/2001/XMLSchema#"
    },{
    "@vocab": "_:",
    "as" : "http://www.w3.org/ns/activitystreams#",
-   "id": "@id",
-   "objectType": "@type",
    "language": "as:language",
-   "displayName": {
+   "displayName": "as:displayName",
+   "displayNameMap": {
      "@id": "as:displayName",
      "@container": "@language"
    },
-   "rel": "as:rel",
+   "rel": {
+     "@id": "as:rel",
+     "@type": "xsd:string"
+   },
+   "href": {
+     "@id": "as:href",
+     "@type": "@id"
+   },
+   "hreflang": {
+     "@id": "as:hreflang",
+     "@type": "xsd:string"
+   },
    "mediaType": "as:mediaType",
    "verb": {
      "@id": "as:verb",
      "@type": "@vocab"
+   },
+   "objectType": {
+     "@id": "as:objectType",
+     "@type": "@vocab"
+   },
+   "id": {
+     "@id": "as:id",
+     "@type": "@id"
    },
    "actor": {
      "@id": "as:actor",
@@ -132,7 +146,8 @@
      "@reverse": "as:author",
      "@type": "@id"
    },
-   "content": {
+   "content": "as:content",
+   "contentMap": {
      "@id": "as:content",
      "@container": "@language"
    },
@@ -172,7 +187,8 @@
      "@reverse": "as:provider",
      "@type": "@id"
    },
-   "summary": {
+   "summary": "as:summary",
+   "summaryMap": {
      "@id": "as:summary",
      "@container": "@language"
    },
@@ -216,7 +232,8 @@
      "@id": "as:attachment",
      "@type": "@id"
    },
-   "title": {
+   "title": "as:title",
+   "titleMap": {
      "@id": "as:title",
      "@container": "@language"
    },
@@ -236,11 +253,11 @@
      "@type": "@id"
    },
    "action": {
-     "@reverse": "as:object",
+     "@id": "as:action",
      "@type": "@id"
    },
    "using": {
-      "@reverse": "as:handlerFor",
+      "@id": "as:using",
       "@type": "@id"
    },
    "handlerFor": {
@@ -264,7 +281,7 @@
      "@type": "xsd:nonNegativeInteger"
    },
    "items": {
-     "@reverse": "as:memberOf",
+     "@id": "as:items",
      "@type": "@id"
    },
    "itemsAfter": {
@@ -423,9 +440,10 @@
      "@id": "as:pattern",
      "@type": "xsd:string"
    },
-   "placeholder": {
+   "placeholder": "as:placeholder",
+   "placeholderMap": {
      "@id": "as:placeholder",
-     "@type": "xsd:string"
+     "@container": "@language"
    },
    "potentialResult": {
      "@id": "as:potentialResult",
@@ -447,848 +465,285 @@
    "BrowserView": "as:BrowserView",
    "HttpRequest": "as:HttpRequest"
   },
- {
-   "asd": "http://www.w3.org/ns/activitystreams#schema/",
-   "asd:defines": {
-     "@reverse": "rdfs:isDefinedBy"
-   },
-   "rdfs:domain": {
-    "@type": "@id"
-   },
-   "rdfs:range": { 
-    "@type": "@id"
-   },
-   "rdfs:subClassOf": {
-     "@type": "@id"
-   },
-   "owl:unionOf": {
-     "@type": "@id"
-   },
-   "owl:oneOf": {
-     "@type": "@id"
-   },
-   "owl:equivalentProperty": {
-     "@type": "@id"
-   },
-   "owl:inverseOf": {
-     "@type": "@id"
-   }
- }],
- "@id": "as:",
- "@type": "owl:Ontology",
- "asd:defines": [
-   {
-     "@id": "as:Object",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "owl:Thing"
-   },
-   {
-     "@id": "as:Link",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "owl:Thing"
-   },
-   {
-     "@id": "as:Activity",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Object"
-   },
-   {
-     "@id": "as:Collection",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Object"
-   },
-   {
-     "@id": "as:NaturalLanguageValue",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "xsd:string"
-   },
-   {
-     "@id": "as:PotentialAction",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Object"
-   },
-   {
-     "@id": "as:using",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:PotentialAction",
-     "rdfs:range": ["as:PotentialActionHandler", "as:Object"],
-     "owl:inverseOf": "as:handlerFor"
-   },
-   {
-     "@id": "as:handlerFor",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:PotentialActionHandler", "as:Object"],
-     "rdfs:range": "as:PotentialAction",
-     "owl:inverseOf": "as:using"
-   },
-   {
-     "@id": "as:PotentialActionHandler",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Object"
-   },
-   {
-     "@id": "as:Verb",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Object"
-   },
-   {
-     "@id": "as:ObjectType",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Object"
-   },
-   {
-     "@id": "as:language",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:displayName",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:NaturalLanguageValue",
-     "owl:equivalentPropety": "skos:prefLabel"
-   },
-   {
-     "@id": "as:rel",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Link",
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:mediaType",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Link", "as:Payload", "as:EmbeddedView"],
-     "rdfs:range": "xsd:string",
-     "owl:equivalentProperty": "dct:format"
-   },
-   {
-     "@id": "as:verb",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": "as:Verb"
-   },
-   {
-     "@id": "as:actor",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:inverseOf": "as:actorOf"
-   },
-   {
-     "@id": "as:actorOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": ["as:Activity", "as:PotentialAction"],
-     "owl:inverseOf": "as:actor"
-   },
-   {
-     "@id": "as:object",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:inverseOf": "as:objectOf"
-   },
-   {
-     "@id": "as:objectOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": ["as:Activity", "as:PotentialAction"],
-     "owl:inverseOf": "as:object"
-   },
-   {
-     "@id": "as:target",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:inverseOf": "as:target"
-   },
-   {
-     "@id": "as:targetOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": ["as:Activity", "as:PotentialAction"],
-     "owl:inverseOf": "as:target"
-   },
-   {
-     "@id": "as:result",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Activity",
-     "rdfs:range": ["as:Object", "as:Link"]
-   },
-   {
-     "@id": "as:resultOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Activity",
-     "owl:inverseOf": "as:result"
-   },
-   {
-     "@id": "as:instrument",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:inverseOf": "as:instumentFor"
-   },
-   {
-     "@id": "as:instrumentFor",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": ["as:Activity", "as:PotentialAction"],
-     "owl:inverseOf": "as:instrument"
-   },
-   {
-     "@id": "as:participant",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:inverseOf": "as:participantOf"
-   },
-   {
-     "@id": "as:participantOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": ["as:Activity", "as:PotentialAction"],
-     "owl:inverseOf": "as:participant"
-   },
-   {
-     "@id": "as:priority",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": {
-       "@type": "rdfs:Class",
-       "rdfs:subClassOf": [
-         "xsd:decimal",
-         {
-           "@type": "owl:Restriction",
-           "xsd:minInclusive": 0.00,
-           "xsd:maxInclusive": 1.00,
-           "xsd:fractionDigits": 2,
-           "xsd:totalDigits": 3
-         }
-       ]
-     }
-   },
-   {
-     "@id": "as:status",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Activity",
-     "rdfs:range": {
-       "@type": "owl:Class",
-       "owl:oneOf": [
-         "as:status-active",
-         "as:status-canceled",
-         "as:status-completed",
-         "as:status-pending",
-         "as:status-tentative",
-         "as:status-voided"
-       ]
-     }
-   },
-   {
-     "@id": "as:to",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": "as:Object"
-   },
-   {
-     "@id": "as:cc",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
-   },
-   {
-     "@id": "as:bto",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
-   },
-   {
-     "@id": "as:bcc",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Activity", "as:PotentialAction"],
-     "rdfs:range": ["as:Object", "as:Link"]
-   },
-   {
-     "@id": "as:alias",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:anyURI"
-   },
-   {
-     "@id": "as:author",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": "dct:contributor",
-     "owl:inverseOf": "as:authorOf"
-   },
-   {
-     "@id": "as:authorOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Object",
-     "owl:inverseOf": "as:author"
-   },
-   {
-     "@id": "as:content",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "as:NaturalLanguageValue"
-   },
-   {
-     "@id": "as:summary",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "as:NaturalLanguageValue",
-     "owl:equivalentProperty": ["dct:summary", "dct:description"]
-   },
-   {
-     "@id": "as:title",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:NaturalLanguageValue",
-     "owl:equivalentProperty": ["dct:title","rdf:label"]
-   },
-   {
-     "@id": "as:icon",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:image",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:location",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Link", "as:Object"],
-     "owl:inverseOf": "as:locationOf"
-   },
-   {
-     "@id": "as:locationOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Object",
-     "owl:inverseOf": "as:location"
-   },
-   {
-     "@id": "as:generator",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:inverseOf": "as:generatorOf"
-   },
-   {
-     "@id": "as:generatorOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Object",
-     "owl:inverseOf": "as:generator"
-   },
-   {
-     "@id": "as:provider",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": "dct:publisher",
-     "owl:inverseOf": "as:providerOf"
-   },
-   {
-     "@id": "as:providerOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "as:Object",
-     "owl:inverseOf": "as:provider"
-   },
-   {
-     "@id": "as:published",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime",
-     "owl:equivalentProperty": ["dct:issued", "dct:available", "dct:created"]
-   },
-   {
-     "@id": "as:updated",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime",
-     "owl:equivalentProperty": "dct:modified"
-   },
-   {
-     "@id": "as:startTime",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:endTime",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:validFrom",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:validAfter",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:validUntil",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:validBefore",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:duration",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": {
-       "@type": "owl:Class",
-       "unionOf": [
-         "xsd:nonNegativeInteger",
-         "xsd:duration"
-       ]
-     }
-   },
-   {
-     "@id": "as:rating",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": {
-       "@type": "owl:Class",
-       "rdfs:subClassOf": [
-         "xsd:nonNegativeInteger",
-         {
-           "@type": "owl:Restriction",
-           "xsd:minInclusive": 0.0,
-           "xsd:maxInclusive": 5.0,
-           "xsd:fractionDigits": 1,
-           "xsd:totalDigits": 2
-         }
-       ]
-     }
-   },
-   {
-     "@id": "as:attachment",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["xsd:Object", "as:Link"],
-     "owl:equivalentProperty": ["as:attachments", "dct:hasPart"]
-   },
-   {
-     "@id": "as:height",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:width",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Object", "as:Link"],
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:tag",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": ["as:tags", "dct:references"]
-   },
-   {
-     "@id": "as:inReplyTo",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"]
-   },
-   {
-     "@id": "as:scope",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": "dct:audience"
-   },
-   {
-     "@id": "as:action",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "as:PotentialAction"
-   },
-   {
-     "@id": "as:memberOf",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "as:Collection",
-     "owl:inverseOf": "as:items"
-   },
-   {
-     "@id": "as:items",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Object",
-     "owl:inverseOf": "as:memberOf"
-   },
-   {
-     "@id": "as:totalItems",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:itemsPerPage",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:startIndex",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:itemsAfter",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:itemsBefore",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "xsd:dateTime"
-   },
-   {
-     "@id": "as:current",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:next",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:prev",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:first",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:last",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:self",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Collection",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:replies",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "as:Collection"
-   },
-   {
-     "@id": "as:url",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "as:Link"
-   },
-   {
-     "@id": "as:tags",
-     "@type": "owl:DeprecatedProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": {
-       "@type": "@id",
-       "@id": "as:tag"
-     }
-   },
-   {
-     "@id": "as:attachments",
-     "@type": "owl:DeprecatedProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": ["as:Object", "as:Link"],
-     "owl:equivalentProperty": {
-       "@type": "@id",
-       "@id": "as:attachment"
-     }
-   },
-   {
-     "@id": "as:id",
-     "@type": "owl:DeprecatedProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:anyURI",
-     "equivalentProperty": "rdf:ID"
-   },
-   {
-     "@id": "as:objectType",
-     "@type": "owl:DeprecatedProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:anyURI",
-     "equivalentProperty": "rdf:Type" 
-   },
-   {
-     "@id": "as:downstreamDuplicates",
-     "@type": "owl:DeprecatedProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:anyURI"
-   },
-   {
-     "@id": "as:upstreamDuplicates",
-     "@type": "owl:DeprecatedProperty",
-     "rdfs:domain": "as:Object",
-     "rdfs:range": "xsd:anyURI"
-   },
-   {
-     "@id": "as:HttpRequest",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandler"
-   },
-   {
-     "@id": "as:BrowserView",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:HttpRequest"
-   },
-   {
-     "@id": "as:EmbeddedView",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandler"
-   },
-   {
-     "@id": "as:Intent",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandler"
-   },
-   {
-     "@id": "as:confirm",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:PotentialAction",
-     "rdfs:range": "xsd:boolean"
-   },
-   {
-     "@id": "as:requires",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:PotentialActionHandler",
-     "rdfs:range": "as:Object"
-   },
-   {
-     "@id": "as:prefers",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:PotentialActionHandler",
-     "rdfs:range": "as:Object"
-   },
-   {
-     "@id": "as:method",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:HttpRequest",
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:expects",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:PotentialActionHandler",
-     "rdfs:range": "as:PotentialActionHandlerInput"
-   },
-   {
-     "@id": "as:potentialResult",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": "as:PotentialActionHandler",
-     "rdfs:range": "as:Object"
-   },
-   {
-     "@id": "as:PotentialActionHandlerInput",
-     "@type": "owl:Class"
-   },
-   {
-     "@id": "as:Payload",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
-   },
-   {
-     "@id": "as:Auth",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
-   },
-   {
-     "@id": "as:browserContext",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:BrowserView",
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:sandbox",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:BrowserView", "as:EmbeddedView"],
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:UrlTemplate",
-     "@type": "as:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
-   },
-   {
-     "@id": "as:template",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": "as:UrlTemplate",
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:parameter",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:UrlTemplate", "as:HtmlForm"],
-     "rdge:range": "as:Parameter"
-   },
-   {
-     "@id": "as:HtmlForm",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:Payload"
-   },
-   {
-     "@id": "as:Parameter",
-     "@type": "owl:Class"
-   },
-   {
-     "@id": "as:name",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:required",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:boolean"
-   },
-   {
-     "@id": "as:repeated",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:boolean"
-   },
-   {
-     "@id": "as:value",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:default",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:type",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyURI"
-   },
-   {
-     "@id": "as:enumeration",
-     "@type": "owl:ObjectProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:minLength",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:maxLength",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:maxInclusive",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:minInclusive",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:maxExclusive",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:minExclusive",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:step",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:anyType"
-   },
-   {
-     "@id": "as:totalDigits",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:fractionDigits",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:nonNegativeInteger"
-   },
-   {
-     "@id": "as:pattern",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "xsd:string"
-   },
-   {
-     "@id": "as:placeholder",
-     "@type": "owl:FunctionalProperty",
-     "rdfs:domain": ["as:Parameter", "as:Header"],
-     "rdfs:range": "as:NaturalLanguageValue"
-   },
-   {
-     "@id": "as:Header",
-     "@type": "owl:Class",
-     "rdfs:subClassOf": "as:PotentialActionHandlerInput"
-   }
+  {
+    "geos:asWKT": { "@type": "geos:wktLiteral" },
+    "geo:alt": {"@type": "xsd:float"},
+    "geo:lat": {"@type": "xsd:float"},
+    "geo:long": {"@type": "xsd:float"},
+    "vcard:adr": { "@type": "@id" },
+    "vcard:agent": { "@type": "@id" },
+    "vcard:email": { "@type": "@id" },
+    "vcard:geo": { "@type": "@id" },
+    "vcard:hasAdditionalName": { "@type": "@id" },
+    "vcard:hasAddress": { "@type": "@id" },
+    "vcard:hasCalendarBusy": { "@type": "@id" },
+    "vcard:hasCalendarLink": { "@type": "@id" },
+    "vcard:hasCalendarRequest": { "@type": "@id" },
+    "vcard:hasCategory": { "@type": "@id" },
+    "vcard:hasCountryName": { "@type": "@id" },
+    "vcard:hasEmail": { "@type": "@id" },
+    "vcard:hasFN": { "@type": "@id" },
+    "vcard:hasFamilyName": { "@type": "@id" },
+    "vcard:hasGender": { "@type": "@id" },
+    "vcard:hasGeo": { "@type": "@id" },
+    "vcard:hasGivenName": { "@type": "@id" },
+    "vcard:hasHonorificPrefix": { "@type": "@id" },
+    "vcard:hasHonorificSuffix": { "@type": "@id" },
+    "vcard:hasInstantMessage": { "@type": "@id" },
+    "vcard:hasKey": { "@type": "@id" },
+    "vcard:hasLanguage": { "@type": "@id" },
+    "vcard:hasLocality": { "@type": "@id" },
+    "vcard:hasLogo": { "@type": "@id" },
+    "vcard:hasMember": { "@type": "@id" },
+    "vcard:hasName": { "@type": "@id" },
+    "vcard:hasNickname": { "@type": "@id" },
+    "vcard:hasNote": { "@type": "@id" },
+    "vcard:hasOrganizationName": { "@type": "@id" },
+    "vcard:hasOrganizationUnit": { "@type": "@id" },
+    "vcard:hasPhoto": { "@type": "@id" },
+    "vcard:hasPostalCode": { "@type": "@id" },
+    "vcard:hasRegion": { "@type": "@id" },
+    "vcard:hasRelated": { "@type": "@id" },
+    "vcard:hasRole": { "@type": "@id" },
+    "vcard:hasSound": { "@type": "@id" },
+    "vcard:hasSource": { "@type": "@id" },
+    "vcard:hasStreetAddress": { "@type": "@id" },
+    "vcard:hasTelephone": { "@type": "@id" },
+    "vcard:hasTitle": { "@type": "@id" },
+    "vcard:hasUID": { "@type": "@id" },
+    "vcard:hasURL": { "@type": "@id" },
+    "vcard:hasValue": { "@type": "@id" },
+    "vcard:key": { "@type": "@id" },
+    "vcard:logo": { "@type": "@id" },
+    "vcard:n": { "@type": "@id" },
+    "vcard:org": { "@type": "@id" },
+    "vcard:photo": { "@type": "@id" },
+    "vcard:rev": { "@type": "xsd:dateTime" },
+    "vcard:sound": { "@type": "@id" },
+    "vcard:tel": { "@type": "@id" },
+    "vcard:url": { "@type": "@id" },
+    "foaf:homepage": { "@type": "@id"},
+    "foaf:isPrimaryTopicOf": { "@type": "@id"},
+    "foaf:knows": { "@type": "@id"},
+    "foaf:made": { "@type": "@id"},
+    "foaf:maker": { "@type": "@id"},
+    "foaf:mbox": { "@type": "@id"},
+    "foaf:member": { "@type": "@id"},
+    "foaf:page": { "@type": "@id"},
+    "foaf:primaryTopic": { "@type": "@id"},
+    "foaf:weblog": { "@type": "@id"},
+    "foaf:account": { "@type": "@id"},
+    "foaf:accountServiceHomepage": { "@type": "@id"},
+    "foaf:basedNear": { "@type": "@id"},
+    "foaf:currentProject": { "@type": "@id"},
+    "foaf:depiction": { "@type": "@id"},
+    "foaf:depicts": { "@type": "@id"},
+    "foaf:focus": { "@type": "@id"},
+    "foaf:img": { "@type": "@id"},
+    "foaf:interest": { "@type": "@id"},
+    "foaf:logo": { "@type": "@id"},
+    "foaf:openid": { "@type": "@id"},
+    "foaf:pastProject": { "@type": "@id"},
+    "foaf:publications": { "@type": "@id"},
+    "foaf:schoolHomepage": { "@type": "@id"},
+    "foaf:thumbnail": { "@type": "@id"},
+    "foaf:tipjar": { "@type": "@id"},
+    "foaf:topic": { "@type": "@id"},
+    "foaf:topic_interest": { "@type": "@id"},
+    "foaf:workInfoHomepage": { "@type": "@id"},
+    "foaf:workplaceHomepage": { "@type": "@id"},
+    "foaf:fundedBy": { "@type": "@id"},
+    "foaf:holdsAccount": { "@type": "@id"},
+    "foaf:theme": { "@type": "@id"},
+    "foaf:birthday": { "@type": "xsd:gMonthDay" },
+    "foaf:age": { "@type": "xsd:integer" },
+    "dct:accessRights": { "@type": "@id" },
+    "dct:accrualMethod": { "@type": "@id" },
+    "dct:accrualPeriodicity": { "@type": "@id" },
+    "dct:accrualPolicy": { "@type": "@id" },
+    "dct:audience": { "@type": "@id" },
+    "dct:conformsTo": { "@type": "@id" },
+    "dct:contributor": { "@type": "@id" },
+    "dct:coverage": { "@type": "@id" },
+    "dct:creator": { "@type": "@id" },
+    "dct:educationLevel": { "@type": "@id" },
+    "dct:extent": { "@type": "@id" },
+    "dct:format": { "@type": "@id" },
+    "dct:hasFormat": { "@type": "@id" },
+    "dct:hasPart": { "@type": "@id" },
+    "dct:hasVersion": { "@type": "@id" },
+    "dct:instructionalMethod": { "@type": "@id" },
+    "dct:isFormatOf": { "@type": "@id" },
+    "dct:isPartOf": { "@type": "@id" },
+    "dct:isReferencedBy": { "@type": "@id" },
+    "dct:isReplacedBy": { "@type": "@id" },
+    "dct:isRequiredBy": { "@type": "@id" },
+    "dct:isVersionOf": { "@type": "@id" },
+    "dct:license": { "@type": "@id" },
+    "dct:mediator": { "@type": "@id" },
+    "dct:medium": { "@type": "@id" },
+    "dct:prevenance": { "@type": "@id" },
+    "dct:publisher": { "@type": "@id" },
+    "dct:references": { "@type": "@id" },
+    "dct:relation": { "@type": "@id" },
+    "dct:replaces": { "@type": "@id" },
+    "dct:requires": { "@type": "@id" },
+    "dct:rights": { "@type": "@id" },
+    "dct:rightsHolder": { "@type": "@id" },
+    "dct:source": { "@type": "@id" },
+    "dct:spatial": { "@type": "@id" },
+    "dct:subject": { "@type": "@id" },
+    "dct:tableOfContents": { "@type": "@id" },
+    "dct:temporal": { "@type": "@id" },
+    "dct:type": { "@type": "@id" },
+    "dc:contributor": { "@type": "@id" },
+    "dc:coverage": { "@type": "@id" },
+    "dc:creator": { "@type": "@id" },
+    "dc:format": { "@type": "@id" },
+    "dc:publisher": { "@type": "@id" },
+    "dc:relation": { "@type": "@id" },
+    "dc:rights": { "@type": "@id" },
+    "dc:source": { "@type": "@id" },
+    "dc:subject": { "@type": "@id" },
+    "dc:type": { "@type": "@id" },
+    "dct:available": { "@type": "xsd:dateTime"} ,
+    "dct:created": { "@type": "xsd:dateTime"} ,
+    "dct:date": { "@type": "xsd:dateTime"} ,
+    "dct:dateAccepted": { "@type": "xsd:dateTime"} ,
+    "dct:dateCopyrighted": { "@type": "xsd:dateTime"} ,
+    "dct:dateSubmitted": { "@type": "xsd:dateTime"} ,
+    "dct:issued": { "@type": "xsd:dateTime"} ,
+    "dct:modified": { "@type": "xsd:dateTime"} ,
+    "dc:date": { "@type": "xsd:dateTime"},
+    "org:basedAt": { "@type": "@id" },
+    "org:changedBy": { "@type": "@id" },
+    "org:classification": { "@type": "@id" },
+    "org:hasMember": { "@type": "@id" },
+    "org:hasMembership": { "@type": "@id" },
+    "org:hasPost": { "@type": "@id" },
+    "org:hasPrimarySite": { "@type": "@id" },
+    "org:hasRegisteredSite": { "@type": "@id" },
+    "org:hasSite": { "@type": "@id" },
+    "org:hasSubOrganization": { "@type": "@id" },
+    "org:hasUnit": { "@type": "@id" },
+    "org:headOf": { "@type": "@id" },
+    "org:heldBy": { "@type": "@id" },
+    "org:holds": { "@type": "@id" },
+    "org:linkedTo": { "@type": "@id" },
+    "org:location": { "@type": "@id" },
+    "org:memberOf": { "@type": "@id" },
+    "org:member": { "@type": "@id" },
+    "org:organization": { "@type": "@id" },
+    "org:originalOrganization": { "@type": "@id" },
+    "org:postIn": { "@type": "@id" },
+    "org:reportsTo": { "@type": "@id" },
+    "org:resultedFrom": { "@type": "@id" },
+    "org:resultingOrganization": { "@type": "@id" },
+    "org:role": { "@type": "@id" },
+    "org:roleProperty": { "@type": "@id" },
+    "org:siteOf": { "@type": "@id" },
+    "org:subOrganizationOf": { "@type": "@id" },
+    "org:transitiveSubOrganizationOf": { "@type": "@id" },
+    "org:unitOf": { "@type": "@id" },
+    "prov:wasGeneratedBy": { "@type": "@id" },
+    "prov:wasDerivedFrom": { "@type": "@id" },
+    "prov:wasAttributedTo": { "@type": "@id" },
+    "prov:used": { "@type": "@id" },
+    "prov:wasInformedBy": { "@type": "@id" },
+    "prov:wasAssociatedWith": { "@type": "@id" },
+    "prov:actedOnBehalfOf": { "@type": "@id" },
+    "prov:alternateOf": { "@type": "@id" },
+    "prov:specializationOf": { "@type": "@id" },
+    "prov:hadPrimarySource": { "@type": "@id" },
+    "prov:wasQuotedFrom": { "@type": "@id" },
+    "prov:wasRevisionOf": { "@type": "@id" },
+    "prov:wasInvalidatedBy": { "@type": "@id" },
+    "prov:hadMember": { "@type": "@id" },
+    "prov:wasStartedBy": { "@type": "@id" },
+    "prov:wasEndedBy": { "@type": "@id" },
+    "prov:invalidated": { "@type": "@id" },
+    "prov:influenced": { "@type": "@id" },
+    "prov:atLocation": { "@type": "@id" },
+    "prov:generated": { "@type": "@id" },
+    "prov:wasInfluencedBy": { "@type": "@id" },
+    "prov:qualifiedInfluence": { "@type": "@id" },
+    "prov:qualifiedGeneration": { "@type": "@id" },
+    "prov:qualifiedDerivation": { "@type": "@id" },
+    "prov:qualifiedPrimarySource": { "@type": "@id" },
+    "prov:qualifiedQuotation": { "@type": "@id" },
+    "prov:qualifiedRevision": { "@type": "@id" },
+    "prov:qualifiedAttribution": { "@type": "@id" },
+    "prov:qualifiedInvalidation": { "@type": "@id" },
+    "prov:qualifiedStart": { "@type": "@id" },
+    "prov:qualifiedUsage": { "@type": "@id" },
+    "prov:qualifiedCommunication": { "@type": "@id" },
+    "prov:qualifiedAssociation": { "@type": "@id" },
+    "prov:qualifiedEnd": { "@type": "@id" },
+    "prov:qualifiedDelegation": { "@type": "@id" },
+    "prov:influencer": { "@type": "@id" },
+    "prov:entity": { "@type": "@id" },
+    "prov:hadUsage": { "@type": "@id" },
+    "prov:hadGeneration": { "@type": "@id" },
+    "prov:activity": { "@type": "@id" },
+    "prov:agent": { "@type": "@id" },
+    "prov:hadPlan": { "@type": "@id" },
+    "prov:hadActivity": { "@type": "@id" },
+    "prov:hadRole": { "@type": "@id" },
+    "prov:atTime": { "@type": "xsd:dateTime"},
+    "prov:invalidatedAtTime": { "@type": "xsd:dateTime"},
+    "prov:generatedAtTime": { "@type": "xsd:dateTime"},
+    "prov:endedAtTime": { "@type": "xsd:dateTime"},
+    "prov:startedAtTime": { "@type": "xsd:dateTime"},
+    "geo:long": {"@type": "xsd:float"},
+    "geo:lat": {"@type": "xsd:float"},
+    "geo:alt": {"@type": "xsd:float"},
+    "geos:asWKT": {"@type": "geos:wktLiteral"},
+    "ical:calscale": { "@type": "xsd:string" },
+    "ical:method": { "@type": "xsd:string" },
+    "ical:prodid": { "@type": "xsd:string" },
+    "ical:version": { "@type": "xsd:string" },
+    "ical:location": { "@type": "xsd:string" },
+    "ical:resources": { "@type": "xsd:string" },
+    "ical:status": { "@type": "xsd:string" },
+    "ical:transp": { "@type": "xsd:string" },
+    "ical:tzid": { "@type": "xsd:string" },
+    "ical:tzname": { "@type": "xsd:string" },
+    "ical:tzoffsetfrom": { "@type": "xsd:string" },
+    "ical:tzoffsetto": { "@type": "xsd:string" },
+    "ical:contact": { "@type": "xsd:string" },
+    "ical:relatedTo": { "@type": "xsd:string" },
+    "ical:uid": { "@type": "xsd:string" },
+    "ical:action": { "@type": "xsd:string" },
+    "ical:requestStatus": { "@type": "xsd:string" },
+    "ical:exrule": { "@type": "xsd:string" },
+    "ical:rrule": { "@type": "xsd:string" },
+    "ical:freebusy": { "@type": "xsd:string" },
+    "ical:categories": { "@type": "xsd:string" },
+    "ical:lastModified": { "@type": "xsd:dateTime" },
+    "ical:dtstamp": { "@type": "xsd:dateTime" },
+    "ical:created": { "@type": "xsd:dateTime" },
+    "ical:exdate": { "@type": "xsd:dateTime" },
+    "ical:completed": { "@type": "xsd:dateTime" },
+    "ical:dtend": { "@type": "xsd:dateTime" },
+    "ical:due": { "@type": "xsd:dateTime" },
+    "ical:dtstart": { "@type": "xsd:dateTime" },
+    "ical:recurrenceId": { "@type": "xsd:dateTime" },
+    "ical:sequence": { "@type": "xsd:integer" },
+    "ical:repeat": { "@type": "xsd:integer" },
+    "ical:percentComplete": { "@type": "xsd:integer" },
+    "ical:priority": { "@type": "xsd:integer" },
+    "ical:triggerDate": { "@id": "ical:trigger", "@type": "xsd:dateTime" },
+    "ical:triggerDuration": { "@id": "ical:trigger", "@type": "xsd:duration" },
+    "ical:duration": { "@type": "xsd:duration" },
+    "ical:rdate": { "@id": "ical:rdate", "@type": "xsd:dateTime" },
+    "ical:rdatePeriod": { "@id": "ical:rdate", "@type": "xsd:string" },
+    "ical:url": { "@type": "@id" },
+    "ical:organizer": { "@type": "@id" },
+    "ical:attendee": { "@type": "@id" },
+    "ical:tzurl": { "@type": "@id" },
+    "ical:attach": { "@type": "@id" },
+    "ical:class": { "@type": "@id" },
+    "ical:geo": { "@container": "@list", "@type": "xsd:float"}
+  }
  ]
 }
-
