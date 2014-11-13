@@ -9,7 +9,8 @@
      "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
      "geos": "http://www.opengis.net/ont/geosparql#",
      "ical": "http://www.w3.org/2002/12/cal/ical#",
-     "xsd": "http://www.w3.org/2001/XMLSchema#"
+     "xsd": "http://www.w3.org/2001/XMLSchema#",
+     "as1": "http://www.w3.org/ns/activitystreams-1#"
    },{
    "@vocab": "_:",
    "as" : "http://www.w3.org/ns/activitystreams#",
