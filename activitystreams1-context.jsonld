@@ -7,6 +7,84 @@
        "id": "@id",
        "objectType": "@type",
        "verb": "@type"
+    },
+    {
+      "as1": "http://www.w3.org/ns/activitystreams-1#",
+      "embedCode": "as1:embedCode",
+      "stream": {
+        "@id": "as1:stream",
+        "@type": "as1:MediaType"
+      },
+      "attendedBy": {
+        "@id": "as1:attendedBy",
+        "@type": "as:Collection"
+      },
+      "attending": {
+        "@id": "as1:attending",
+        "@type": "as:Collection"
+      },
+      "invited": {
+        "@id": "as1:invited",
+        "@type": "as:Collection"
+      },
+      "maybeAttending": {
+        "@id": "as1:maybeAttending",
+        "@type": "as:Collection"
+      },
+      "notAttendedBy": {
+        "@id": "as1:notAttendedBy",
+        "@type": "as:Collection"
+      },
+      "notAttending": {
+        "@id": "as1:notAttending",
+        "@type": "as:Collection"
+      },
+      "types": {
+        "@id": "as1:types",
+        "@type": "@id"
+      },
+      "actions": {
+        "@id": "as1:actions",
+        "@type": "xsd:string"
+      },
+      "position": {
+        "@id": "as1:position",
+        "@type": "@id"
+      },
+      "address": {
+        "@id": "as1:address",
+        "@type": "@id"
+      },
+      "altitude": {
+        "@id": "geo:alt",
+        "@type": "xsd:float"
+      },
+      "latitude": {
+        "@id": "geo:lat",
+        "@type": "xsd:float"
+      },
+      "longitude": {
+        "@id": "geo:long",
+        "@type": "xsd:float"
+      },
+      "formatted": "as1:formatted",
+      "streetAddress": "as1:streetAddress",
+      "locality": "as1:locality",
+      "region": "as1:region",
+      "postalCode": "as1:postalCode",
+      "country": "as1:country",
+      "members": {
+        "@id": "as1:members",
+        "@type": "@id"
+      },
+      "context": {
+        "@id": "as1:context",
+        "@type": "@id"
+      },
+      "mood": {
+        "@id": "as1:mood",
+        "@type": "as1:Mood"
+      }
     }
   ]
 }
