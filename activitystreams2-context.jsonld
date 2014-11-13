@@ -8,7 +8,8 @@
      "prov": "http://www.w3.org/ns/prov#",
      "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
      "geos": "http://www.opengis.net/ont/geosparql#",
-     "ical": "http://www.w3.org/2002/12/cal/ical#"
+     "ical": "http://www.w3.org/2002/12/cal/ical#",
+     "xsd": "http://www.w3.org/2001/XMLSchema#"
    },{
    "@vocab": "_:",
    "as" : "http://www.w3.org/ns/activitystreams#",
@@ -18,10 +19,17 @@
      "@id": "as:displayName",
      "@container": "@language"
    },
-   "rel": "as:rel",
+   "rel": {
+     "@id": "as:rel",
+     "@type": "xsd:string"
+   },
    "href": {
      "@id": "as:href",
-     "@type": "xsd:anyURI"
+     "@type": "@id"
+   },
+   "hreflang": {
+     "@id": "as:hreflang",
+     "@type": "xsd:string"
    },
    "mediaType": "as:mediaType",
    "verb": {
@@ -245,11 +253,11 @@
      "@type": "@id"
    },
    "action": {
-     "@reverse": "as:object",
+     "@id": "as:action",
      "@type": "@id"
    },
    "using": {
-      "@reverse": "as:handlerFor",
+      "@id": "as:using",
       "@type": "@id"
    },
    "handlerFor": {
@@ -273,7 +281,7 @@
      "@type": "xsd:nonNegativeInteger"
    },
    "items": {
-     "@reverse": "as:memberOf",
+     "@id": "as:items",
      "@type": "@id"
    },
    "itemsAfter": {
@@ -458,6 +466,10 @@
    "HttpRequest": "as:HttpRequest"
   },
   {
+    "geos:asWKT": { "@type": "geos:wktLiteral" },
+    "geo:alt": {"@type": "xsd:float"},
+    "geo:lat": {"@type": "xsd:float"},
+    "geo:long": {"@type": "xsd:float"},
     "vcard:adr": { "@type": "@id" },
     "vcard:agent": { "@type": "@id" },
     "vcard:email": { "@type": "@id" },
@@ -594,8 +606,6 @@
     "dc:source": { "@type": "@id" },
     "dc:subject": { "@type": "@id" },
     "dc:type": { "@type": "@id" },
-    "dc:identifier": "@id",
-    "dct:identifier": "@id",
     "dct:available": { "@type": "xsd:dateTime"} ,
     "dct:created": { "@type": "xsd:dateTime"} ,
     "dct:date": { "@type": "xsd:dateTime"} ,
@@ -737,4 +747,3 @@
   }
  ]
 }
-
