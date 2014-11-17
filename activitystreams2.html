@@ -1074,7 +1074,21 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       When processing Activity Streams 1.0 documents and converting those to 2.0, 
       implementations MUST treat <code>id</code> as an alias for the JSON-LD 
       <code>@id</code> key word; and the <code>objectType</code> and <code>verb</code> 
-      properties as aliases for the JSON-LD <code>@type</code> keyword.
+      properties as aliases for the JSON-LD <code>@type</code> keyword with one caveat
+      as described below.
+    </li>
+    <li>
+      The Activity Streams 1.0 specification allowed verbs and object types to be 
+      expressed as simple non-URI tokens such as "<code>article</code>", "<code>like</code>", 
+      etc. These are difficult to automatically map into the JSON-LD based Activity 
+      Streams 2.0 model because they are not bound to any particular namespace URI and
+      can conflict with Activity Streams 2.0 terms. When processing an Activity Streams 
+      1.0 document and converting those to 2.0, implementations MUST treat such simple token 
+      values as belonging to the "<code>http://www.w3.org/ns/activitystreams-1#</code>" 
+      namespace URI. Unfortunately, such mapping cannot be performed reliably using a JSON-LD
+      @context definition, therefore implementations are required to perform this mapping
+      before and independently of any JSON-LD based processing. <mark>Ed. Note: Picked this 
+      namespace URI for convenience. Need to decide what this really ought to be.</mark>
     </li>
     <li>
       This document redefines the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>, 
