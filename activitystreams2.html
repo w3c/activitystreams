@@ -838,7 +838,7 @@ _:c14n0 a as:Collection ;
           <code><a href="activitystreams2-vocabulary#dfn-locationof">locationOf</a></code> |
           <code><a href="activitystreams2-vocabulary#dfn-objectof">objectOf</a></code> |
           <code><a href="activitystreams2-vocabulary#dfn-preview">preview</a></code> |
-          <code><a href="activitystreams2-vocabulary#dfn-previewof">previewOf</a></code> |f
+          <code><a href="activitystreams2-vocabulary#dfn-previewof">previewOf</a></code> |
           <code><a href="activitystreams2-vocabulary#dfn-provider">provider</a></code> |
           <code><a href="activitystreams2-vocabulary#dfn-providerof">providerOf</a></code> |
           <code><a href="activitystreams2-vocabulary#dfn-published">published</a></code> |
@@ -1415,13 +1415,6 @@ _:c14n0 a as:Object ;
 
     <section id="link">
       <h2><dfn title="Link">Link</dfn></h2>
-
-      <p><mark>Ed. Note: This section has been refactored per the ongoing discussion
-      around how to model links. This revised approach allows both unqualified direct
-      links and qualified indirect links to be used, with as:Link becoming the mechanism
-      for describing qualified indirect links. It is a fairly controversial change because
-      there are some on the WG who believe that qualified indirect links are necessary, 
-      while there are some who believe they are useful.</mark></p>
 
       <p>
         A <code>Link</code> describes a qualified reference to another resource and
@@ -2731,11 +2724,6 @@ _:c14n0 a as:OrderedCollection ;
   <section id="extensibility">
 
     <h2>Extensibility</h2>
-
-      <p><mark>Ed. Note: This section has been refactored to clarify handling of
-      extensions that are not declared in a JSON-LD @context as well as those that
-      use mechanisms that are not compatible with JSON-LD. There should not be 
-      anything too controversial here.</mark></p>
 
       <p>
         In Activity Streams 2.0, an "extension" is any property not defined
