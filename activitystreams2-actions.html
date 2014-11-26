@@ -62,6 +62,13 @@
       vertical-align: top;
       padding: 5px; 
     }
+
+
+.nanotabs > ul li { float:left; list-style:none; }
+.nanotabs > ul li a { display:block; padding:4px 6px; margin-right: 3px; border-left: 1px solid #b9ab2d; border-right: 1px solid #b9ab2d; border-top: 1px solid #b9ab2d; border-collapse: collapse; background:#fcfaee; color:#b9ab2d; font-family: sans-serif;
+ text-decoration:none; }
+.nanotabs > ul li a:hover { background:#FFFCE5; color:#550; }
+.nanotabs > ul li a.selected { background:#555; color:#FFF; }
   </style>
 </head>
 <body>
@@ -119,12 +126,16 @@
     <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
 
     <p>
-    Classes: <code>
-      <a>PotentialAction</a> | <a>PotentialActionHandler</a> | <a>HttpRequest</a> |
-      <a>BrowserView</a> | <a>EmbeddedView</a> | <a>Intent</a> | <a>PotentialActionHandlerInput</a> |
-      <a>Payload</a> | <a>Auth</a> | <a>UrlTemplate</a> | <a>HtmlForm</a> |
-      <a>Parameter</a> | <a>Header</a>
-    </code>
+    Classes: 
+      <code><a>ActivityHandler</a></code> |
+      <code><a>BrowserView</a></code> |
+      <code><a>EmbeddedView</a></code> |
+      <code><a>HtmlForm</a></code> |
+      <code><a>HttpHeader</a></code> |
+      <code><a>HttpRequest</a></code> |
+      <code><a>Parameter</a></code> |
+      <code><a>Payload</a></code> |
+      <code><a>UrlTemplate</a></code>
     </p>
 
     <table>
@@ -132,349 +143,738 @@
         <tr>
           <th>Class</th>
           <th colspan="2" style="width: 40%">Description</th>
-          <th style="width: 40%">Terms</th>
+          <th style="width: 40%">Example</th>
         </tr>
       </thead>
 
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#PotentialAction">
+      <tbody>
         <tr>
-          <td rowspan="3" ><dfn itemprop="label">PotentialAction</dfn></td>
+          <td rowspan="3" ><dfn>ActivityHandler</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#PotentialAction</code></td>
           <td rowspan="3" >
-            <p><code><a href="activitystreams2-vocabulary.html#dfn-verb-term">verb</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-actor">actor</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-object-term">object</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-target">target</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-instrument">instrument</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-participant">participant</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-priority">priority</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-to">to</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-bto">bto</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-cc">cc</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a> |
-            <a>confirm</a> | <a>using</a></code></p>
-            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
-            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex1-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex1-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex1-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": <b>{
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST"
+    }</b>
+  }
+}</pre>
+  </div>
+  <div id="ex1-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
           </td>
         </tr>
         <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            Represents a potential or pending activity (in contrast to an <a href="activitystreams2-vocabulary.html#dfn-activity"><code>Activity</code></a>
-            which represents completed or ongoing activities).
+          <td>Notes:</td>
+          <td>
+            Describes a way of carrying out an Activity. The <code>ActivityHandler</code>
+            class is the base class for all types of Activity Handlers, including
+            <code><a>BrowserView</a></code>, <code><a>HttpRequest</a></code>, and 
+            <code><a>EmbeddedView</a></code>.
           </td>
         </tr>
         <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
+          <td >Properties:</td>
+          <td>
+            <p>
+              <code><a>confirm</a></code> |
+              <code><a>handlerFor</a></code> |
+              <code><a>hasExpectedInput</a></code> |
+              <code><a>hasPotentialResult</a></code> |
+              <code><a>hasPreference</a></code> |
+              <code><a>hasRequirement</a></code> |
+            </p>
+          </td>
         </tr>
       </tbody>
 
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#PotentialActionHandler">
+      <tbody>
         <tr>
-          <td rowspan="3" ><dfn itemprop="label">PotentialActionHandler</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#PotentialActionHandler</code></td>
-          <td rowspan="3" >
-            <p><code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
-            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
-            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            Represents a method of carrying out a <a title="PotentialAction">PotentialAction</a>.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#HttpRequest">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">HttpRequest</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#HttpRequest</code></td>
-          <td rowspan="3" >
-            <p><code><a>method</a></code></p>
-            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
-            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
-            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
-            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <a>PotentialActionHandler</a> that describes an HTTP request/response flow used to carry
-            out a <a>PotentialAction</a>.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#BrowserView">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">BrowserView</dfn></td>
+          <td rowspan="4" ><dfn>BrowserView</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#BrowserView</code></td>
-          <td rowspan="3" >
-            <p><code><a>browserContext</a> | <a>sandbox</a></code></p>
-            <p><i>From <a title="HttpRequest"><code>HttpRequest</code></a></i>:<br/><code><a>method</a></code></p>
-            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
-            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
-            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
-            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <a>PotentialActionHandler</a> that describes an HTTP request to load a Web Browser view used to
-            carry out a <a>PotentialAction</a>.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-httprequest"><code>HttpRequest</code></a></td>
-        </tr>
-      </tbody>
+          <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex2-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex2-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex2-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": <b>{
+      "@type": "BrowserView",
+      "href": "http://api.example.org/like?id=123",
+      "browserContext": "_new"
+    }</b>
+  }
+}</pre>
+  </div>
+  <div id="ex2-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#EmbeddedView">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">EmbeddedView</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#EmbeddedView</code></td>
-          <td rowspan="3" >
-            <p><code><a>sandbox</a></code> | <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
-            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
-            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
-            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
-            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <a>PotentialActionHandler</a> that describes embedded content used to carry out a <a>PotentialAction</a>.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
-        </tr>
-      </tbody>
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:BrowserView ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:browserContext "_new" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
 
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#Intent">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">Intent</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Intent</code></td>
-          <td rowspan="3" >
-            <p><i>From <a title="PotentialActionHandler"><code>PotentialActionHandler</code></a></i>:<br/>
-            <code><a>requires</a> | <a>prefers</a> | <a>expects</a> | <a>potentialResult</a> | <a>handlerFor</a></code></p>
-            <p><i>From <a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a></i>:<br/> 
-            <code><a href="activitystreams2-vocabulary.html#dfn-language">language</a> | <a href="activitystreams2-vocabulary.html#dfn-displayName">displayName</a> | <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> | <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | <a href="activitystreams2-vocabulary.html#dfn-image">image</a> | <a href="activitystreams2-vocabulary.html#dfn-location">location</a> | 
-            <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> | <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | <a href="activitystreams2-vocabulary.html#dfn-published">published</a> | <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | <a href="activitystreams2-vocabulary.html#dfn-startTime">startTime</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-endTime">endTime</a> | <a href="activitystreams2-vocabulary.html#dfn-validFrom">validFrom</a> | <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> | <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | <a href="activitystreams2-vocabulary.html#dfn-width">width</a> | <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> |
-            <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> | <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> | <a href="activitystreams2-vocabulary.html#dfn-action">action</a> | <a href="activitystreams2-vocabulary.html#dfn-memberOf">memberOf</a> | <a href="activitystreams2-vocabulary.html#dfn-url">url</a> | <a href="activitystreams2-vocabulary.html#dfn-resultof">resultof</a> | <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code></p>
           </td>
         </tr>
         <tr>
           <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <a>PotentialActionHandler</a>...
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandler"><code>PotentialActionHandler</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#PotentialActionHandlerInput">
-        <tr>
-          <td rowspan="2" ><dfn itemprop="label">PotentialActionHandlerInput</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#PotentialActionHandlerInput</code></td>
-          <td rowspan="2" >
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            An abstract class that represents the input to a PotentialActionHandler. Implementations are not 
-            expected to use this class type directly.
-          </td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#Payload">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">Payload</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Payload</code></td>
-          <td rowspan="3" >
-            <p><code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <code><a>PotentialActionHandlerInput</a></code> that describes the input payload. For example, for
-            <code><a>HttpRequest</a></code>, this describes the expected HTTP Request Payload.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#Auth">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">Auth</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Auth</code></td>
-          <td rowspan="3" >
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <code><a>PotentialActionHandlerInput</a></code> that describes the input authentication requirements. 
-            For example, for <code><a>HttpRequest</a></code>, this describes the HTTP Authentication mechanism required for
-            the input.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#UrlTemplate">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">UrlTemplate</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#UrlTemplate</code></td>
-          <td rowspan="3" >
-            <p><code><a>template</a> | <a title="parameter-term">parameter</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <code><a>PotentialActionHandlerInput</a></code> that describes an [[!RFC6570]] URL Template used to construct
-            the Request URI for <code><a>HttpRequest</a></code> and <code><a>BrowserView</a></code>.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#HtmlForm">
-        <tr>
-          <td rowspan="3" ><dfn itemprop="label">HtmlForm</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#HtmlForm</code></td>
-          <td rowspan="3" >
-            <p><code><a title="parameter-term">parameter</a></code></p>
-            <p><i>From <a title="Payload"><code>Payload</code></a></i>:<br /><code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <code><a>Payload</a></code> that describes an HTML Form used as the input payload of an 
-            <code><a>HttpRequest</a></code> or <code><a>BrowserView</a></code>.
-          </td>
-        </tr>
-        <tr>
-          <td >Type Of:</td>
-          <td ><a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-payload"><code>Payload</code></a></td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#Parameter">
-        <tr>
-          <td rowspan="2" ><dfn itemprop="label">Parameter</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Parameter</code></td>
-          <td rowspan="2" >
-            <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
-            <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
-            <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
-            <a>fractionDigits</a> | <a>pattern</a> | <a>placeholder</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            Used to describe the parameters used in both <code><a>UrlTemplate</a></code> and <code><a>HtmlForm</a></code>.
-          </td>
-        </tr>
-      </tbody>
-
-      <tbody itemscope itemtype="http://www.w3.org/2002/07/owl#Class" itemid="http://www.w3.org/ns/activitystreams#Header">
-        <tr>
-          <td rowspan="4" ><dfn itemprop="label">Header</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Header</code></td>
-          <td rowspan="3" >
-            <p><code><a>name</a> | <a>required</a> | <a>repeated</a> | <a>value</a> | <a>default</a> | 
-            <a>valueType</a> | <a>enumeration</a> | <a>minLength</a> | <a>maxLength</a> | <a>maxExclusive</a> | 
-            <a>maxInclusive</a> | <a>minExclusive</a> | <a>minInclusive</a> | <a>step</a> | <a>totalDigits</a> | 
-            <a>fractionDigits</a> | <a>pattern</a> | <a>placeholder</a></code></p>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td itemprop="comment">
-            A type of <code><a>PotentialActionHandlerInput</a></code> used to describe an HTTP Request Header
-            expected for both <code><a>HttpRequest</a></code> and <code><a>BrowserView</a></code>.
+          <td>
+            A type of <a>ActivityHandler</a> that describes an HTTP request to load 
+            a Web Browser view used to carry out an Activity.
           </td>
         </tr>
         <tr>
           <td >Type Of:</td>
           <td >
-            <a itemprop="http://www.w3.org/2000/01/rdf-schema#subClassOf" href="#dfn-potentialactionhandlerinput"><code>PotentialActionHandlerInput</code></a>
+            <code><a>ActivityHandler</a></code> AND 
+            <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>
+          </td>
+        </tr>
+        <tr>
+          <td>Properties:</td>
+          <td>
+            <p>
+              <code><a>browserContext</a></code> |
+              <code><a>hreftemplate</a></code> | 
+              <code><a>method</a></code> |
+              <code><a>sandbox</a></code>
+            </p>
+
+            <p>Inherits all properties from <code><a>ActivityHandler</a></code> and 
+            <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>.</p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" ><dfn>EmbeddedView</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#EmbeddedView</code></td>
+          <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex3-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex3-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex3-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": <b>{
+      "@type": "EmbeddedView",
+      "mediaType": "text/html",
+      "content": "&lt;div>...&lt;/div>"
+    }</b>
+  }
+}</pre>
+  </div>
+  <div id="ex3-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:EmbeddedView ;
+          as:mediaType "text/html" ;
+          as:content "&lt;div>...&lt;/div>" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            A type of <code><a>ActivityHandler</a></code> that describes embedded 
+            content used to carry out an Activity.
+          </td>
+        </tr>
+        <tr>
+          <td >Type Of:</td>
+          <td ><code><a>ActivityHandler</a></code> AND 
+            <code><a href="activitystreams2-vocabulary.html#dfn-content">Content</a></code>
+          </td>
+        </tr>
+        <tr>
+          <td>Properties:</td>
+          <td>
+            <p>
+              <code><a>sandbox</a></code> | 
+              <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code>
+            </p>
+
+            <p>
+              Inherits all properties from <code><a>ActivityHandler</a></code> and 
+              <code><a href="activitystreams2-vocabulary.html#dfn-content">Content</a></code>.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="3" ><dfn>HtmlForm</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#HtmlForm</code></td>
+          <td rowspan="3" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex4-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex4-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex4-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      "hasExpectedInput": {
+        "@type": "Payload",
+        "mediaType": "application/x-www-form-urlencoded",
+        "shape": <b>{
+          "@type": "HtmlForm",
+          "parameter": [
+            {
+              "@type": "Parameter",
+              "name": "comment",
+              "optional": true,
+              "shape": "xsd:string"
+            }
+          ]
+        }</b>
+      }
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex4-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:Payload ;
+              as:mediaType "application/x-www-form-urlencoded" ;
+              as:shape [
+                a as:HtmlForm ;
+                  as:parameter [
+                    a as:Parameter;
+                      as:name "comment" ;
+                      as:optional "true"^^xsd:boolean ;
+                      as:shape &lt;xsd:string&gt; .
+                  ] .
+              ] .
+          ] .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            Provides a declarative description of an HTML Form.
+          </td>
+        </tr>
+        <tr>
+          <td>Properties:</td>
+          <td>
+            <p>
+              <code><a title="parameter-term">parameter</a></code>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="3" ><dfn>HttpHeader</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#HttpHeader</code></td>
+          <td rowspan="3" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex5-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex5-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex5-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      "hasExpectedInput": <b>{
+        "@type": "HttpHeader",
+        "name": "x-request-num",
+        "shape": "xsd:nonNegativeInteger"
+      }</b>
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex5-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:HttpHeader ;
+              as:name "x-request-num" ;
+              as:shape &lt;xsd:nonNegativeInteger&gt; .
+          ] . 
+      ] .
+  ] . </pre>
+  </div>
+</div>
+
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            Describes an HTTP Header
+          </td>
+        </tr>
+        <tr>
+          <td >Properties:</td>
+          <td >
+            <p>
+              <code><a>name</a></code> |
+              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code>
+            </p>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" ><dfn>HttpRequest</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#HttpRequest</code></td>
+          <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex6-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex6-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex6-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": <b>{
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST"
+    }</b>
+  }
+}</pre>
+  </div>
+  <div id="ex6-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            A type of <a>ActivityHandler</a> that describes an HTTP request/response 
+            flow used to carry out an Activity.
+          </td>
+        </tr>
+        <tr>
+          <td >Type Of:</td>
+          <td >
+            <code><a>ActivityHandler</a></code> AND 
+            <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Properties:</td>
+          <td>
+            <p>
+              <code><a>hreftemplate</a></code> |
+              <code><a>method</a></code>
+            </p>
+
+            <p>
+              Inherits all properties from <code><a>ActivityHandler</a></code> and
+              <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="3" ><dfn>Parameter</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#Parameter</code></td>
+          <td rowspan="3" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex7-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "hreftemplate": {
+        "@type": "UrlTemplate",
+        "template": "http://api.example.org/like{?id}",
+        "parameter": [
+          <b>{
+            "@type": "Parameter",
+            "name": "id",
+            "shape": "xsd:nonNegativeInteger"
+          }</b>
+        ]
+      },
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex7-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:hreftemplate [
+            a as:UrlTemplate;
+              as:template "http://api.example.org/like{?id}" ;
+              as:parameter [
+                a as:Parameter ;
+                  as:name "id" ;
+                  as:shape &lt;xsd:nonNegativeInteger&gt; .
+              ] .
+          ] ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            Used to describe the parameters used in both <code><a>UrlTemplate</a></code> 
+            and <code><a>HtmlForm</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td>Properties:</td>
+          <td>
+            <p>
+              <code><a>name</a></code> |
+              <code><a>optional</a></code> |
+              <code><a>role</a></code> |
+              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code> 
+            </p>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="3" ><dfn>Payload</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#Payload</code></td>
+          <td rowspan="3">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex8-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      "hasExpectedInput": <b>{
+        "@type": "Payload",
+        "mediaType": "application/x-www-form-urlencoded",
+        "shape": {
+          "@type": "HtmlForm",
+          "parameter": [
+            {
+              "@type": "Parameter",
+              "name": "comment",
+              "optional": true,
+              "shape": "xsd:string"
+            }
+          ]
+        }
+      }</b>
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex8-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:Payload ;
+              as:mediaType "application/x-www-form-urlencoded" ;
+              as:shape [
+                a as:HtmlForm ;
+                  as:parameter [
+                    a as:Parameter;
+                      as:name "comment" ;
+                      as:optional "true"^^xsd:boolean ;
+                      as:shape &lt;xsd:string&gt; .
+                  ] .
+              ] .
+          ] .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            Provides an abstract description of an HTTP request or response payload.
+          </td>
+        </tr>
+        <tr>
+          <td >Properties:</td>
+          <td >
+            <p>
+              <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code> |
+              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code> 
+            </p>   
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="3" ><dfn>UrlTemplate</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#UrlTemplate</code></td>
+          <td rowspan="3" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex9-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "hreftemplate": <b>{
+        "@type": "UrlTemplate",
+        "template": "http://api.example.org/like{?id}",
+        "parameter": [
+          {
+            "@type": "Parameter",
+            "name": "id",
+            "shape": "xsd:nonNegativeInteger"
+          }
+        ]
+      }</b>,
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex9-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:hreftemplate [
+            a as:UrlTemplate;
+              as:template "http://api.example.org/like{?id}" ;
+              as:parameter [
+                a as:Parameter ;
+                  as:name "id" ;
+                  as:shape &lt;xsd:nonNegativeInteger&gt; .
+              ] .
+          ] ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            Describes an [[!RFC6570]] URL Template used to construct
+            the Request URI for a <code><a>HttpRequest</a></code> and 
+            <code><a>BrowserView</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td >Properties:</td>
+          <td >
+            <p>
+              <code><a>parameter</a></code> |
+              <code><a>template</a></code>
+            </p>
+          </td>
         </tr>
       </tbody>
 
@@ -487,266 +887,602 @@
 
     <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
 
+    <p>Properties: 
+      <code><a>action</a></code> |
+      <code><a>handlerFor</a></code> |
+      <code><a>hasExpectedInput</a></code> |
+      <code><a>hasPotentialResult</a></code> |
+      <code><a>hasPreference</a></code> |
+      <code><a>hasRequirement</a></code> |
+      <code><a>hreftemplate</a></code> |
+      <code><a title="parameter-term">parameter</a></code> |
+      <code><a>using</a></code> |
+      <code><a>browserContext</a></code> |
+      <code><a>confirm</a></code> |
+      <code><a>method</a></code> |
+      <code><a>name</a></code> |
+      <code><a>optional</a></code> |
+      <code><a>role</a></code> |
+      <code><a>sandbox</a></code> | 
+      <code><a>template</a></code>
+    </p>
+
     <table>
 
       <thead>
         <tr>
           <th style="width: 15%">Term</th>
           <th colspan="2">Description</th>
+          <th>Example</th>
         </tr>
       </thead>
 
         <tbody>
           <tr>
-            <td rowspan="5" ><dfn>using</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#using</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Describes one or more <code><a>PotentialActionHandler</a></code> instances that can be used to 
-              carry out a particular <code><a>PotentialAction</a></code>.
+            <td rowspan="4"><dfn>action</dfn></td>
+            <td style="width: 10%">URI:</td>
+            <td><code>http://www.w3.org/ns/activitystreams#action</code></td>
+            <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex10-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  <b>"action"</b>: {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex10-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex10b-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex10b-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex10b-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  <b>"action"</b>: ["Like", "Share", "Save"]
+}</pre>
+  </div>
+  <div id="ex10b-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    as:Like
+    as:Share
+    as:Save
+  ] . </pre>
+  </div>
+</div>
             </td>
           </tr>
           <tr>
-            <td >Domain:</td>
-            <td ><a title="PotentialAction"><code>PotentialAction</code></a></td>
+            <td>Notes:</td>
+            <td>
+              Describes one or more Activities that can be carried out with the
+              containing object.
+            </td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td>Domain:</td>
+            <td>
+              <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code>
+            </td>
           </tr>
           <tr>
-            <td >Reverse Of:</td>
-            <td ><code><a>handlerFor</a></code></td>
+            <td>Range:</td>
+            <td>
+              <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code>
+            </td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>handlerFor</dfn></td>
+            <td rowspan="5" ><dfn>handlerFor</dfn></td>
             <td  style="width: 10%">URI:</td>
             <td ><code>http://www.w3.org/ns/activitystreams#handlerFor</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex11-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "HttpRequest",
+  "href": "http://api.example.org/like?id=123",
+  "method": "POST",
+  "handlerFor": "Like"
+}</pre>
+  </div>
+  <div id="ex11-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:HttpRequest ;
+  as:href &lt;http://api.example.org/like?id=123&gt; ;
+  as:method "POST" ;
+  as:handlerFor as:Like . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Identifies the <code><a>PotentialAction</a></code> for which this <code><a>PotentialActionHandler</a></code>
-              is associated.
+              Identifies the <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code> 
+              this <code><a>ActivityHandler</a></code> can be used to carry out.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><code><a>PotentialActionHandler</a></code></td>
+            <td ><code><a>ActivityHandler</a></code></td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><code><a>PotentialAction</a></code></td>
+            <td >Range:</td>
+            <td >
+              <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code>
+            </td>
           </tr>
-        </tbody>  
+          <tr>
+            <td >Inverse Of:</td>
+            <td ><code><a>using</a></code></td>
+          </tr>
+        </tbody> 
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>confirm</dfn></td>
+            <td rowspan="4" ><dfn>hasExpectedInput</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#confirm</code></td>
+            <td ><code>http://www.w3.org/ns/activitystreams#hasExpectedInput</code></td>
+            <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex12-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex12-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      <b>"hasExpectedInput"</b>: {
+        "@type": "Payload",
+        "mediaType": "application/x-www-form-urlencoded",
+        "shape": {
+          "@type": "HtmlForm",
+          "parameter": [
+            {
+              "@type": "Parameter",
+              "name": "comment",
+              "optional": true,
+              "shape": "xsd:string"
+            }
+          ]
+        }
+      }
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex12-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:Payload ;
+              as:mediaType "application/x-www-form-urlencoded" ;
+              as:shape [
+                a as:HtmlForm ;
+                  as:parameter [
+                    a as:Parameter;
+                      as:name "comment" ;
+                      as:optional "true"^^xsd:boolean ;
+                      as:shape &lt;xsd:string&gt; .
+                  ] .
+              ] .
+          ] .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              A boolean that indicates whether an application MUST first request user
-              confirmation before carrying out a <code><a>PotentialAction</a></code>.
+              Describes an input expected by an <code><a>ActivityHandler</a></code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><code><a title="PotentialAction">PotentialAction</a></code></td>
+            <td ><code><a>ActivityHandler</a></code></td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><code>xsd:boolean</code></td>
+            <td >Range:</td>
+            <td >
+              <code>any</code>
+            </td>
+          </tr>
+        </tbody> 
+
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>hasPotentialResult</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#hasPotentialResult</code></td>
+            <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex13-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex13-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex13-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      <b>"hasPotentialResult"</b>: [
+        {
+          "@type": "Payload",
+          "mediaType": "text/plain",
+          "shape": "xsd:string"
+        },
+        {
+          "@type": "HttpHeader",
+          "name": "x-request-num",
+          "shape": "xsd:nonNegativeInteger"
+        }
+      ]
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex13-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasPotentialResult (
+            [
+              a as:Payload ;
+                as:mediatype "text/plain" ;
+                as:shape &lt;xsd:string&gt; .
+            ]
+            [
+              a as:HttpHeader ;
+                as:name "x-request-num" ;
+                as:shape &lt;xsd:nonNegativeInteger&gt; .
+            ]
+          ) .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td >
+              Describes a possible result of an <code><a>ActivityHandler</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Domain:</td>
+            <td ><code><a>ActivityHandler</a></code></td>
+          </tr>
+          <tr>
+            <td >Range:</td>
+            <td >
+              <code>any</code>
+            </td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>requires</dfn></td>
+            <td rowspan="4" ><dfn>hasPreference</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#requires</code></td>
+            <td ><code>http://www.w3.org/ns/activitystreams#hasPreference</code></td>
+            <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex14-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex14-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      <b>"hasPreference"</b>: 
+        ["urn:example:preferences:minimal-response"]
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex14-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasPreference (
+            &lt;urn:example:preferences:minimal-response&gt;
+          ) . 
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              An <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> or <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code> describing a required condition
-              that MUST be satisfied before an application can carry out a <code><a>PotentialAction</a></code>
-              using a specific <code><a>PotentialActionHandler</a></code>.
+              Describes a preference of an <code><a>ActivityHandler</a></code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td ><code><a>ActivityHandler</a></code></td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
+            <td >Range:</td>
+            <td >
+              <code>any</code>
+            </td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>prefers</dfn></td>
+            <td rowspan="4" ><dfn>hasRequirement</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#prefers</code></td>
+            <td ><code>http://www.w3.org/ns/activitystreams#hasRequirement</code></td>
+            <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex15-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex15-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex15-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      <b>"hasRequirement"</b>: 
+        ["urn:example:requirement"]
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex15-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasRequirement (
+            &lt;urn:example:requirement&gt;
+          ) . 
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              An <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> or <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code> describing an optional condition
-              that SHOULD be satisfied before an application can carry out a <code><a>PotentialAction</a></code>
-              using a specific <code><a>PotentialActionHandler</a></code>.
+              Describes a requirement of an <code><a>ActivityHandler</a></code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
+            <td ><code><a>ActivityHandler</a></code></td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a></td>
+            <td >Range:</td>
+            <td >
+              <code>any</code>
+            </td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>method</dfn></td>
+            <td rowspan="6" ><dfn>hreftemplate</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#method</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Identifies the HTTP Method used for a <code><a>HttpRequest</a></code> or <code><a>BrowserView</a></code>.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><code><a href="activitystreams2-vocabulary.html#dfn-object">HttpRequest</a></code></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:string</code></td>
-          </tr>
-        </tbody>
+            <td ><code>http://www.w3.org/ns/activitystreams#hreftemplate</code></td>
+            <td rowspan="6">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex16-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex16-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex16-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      <b>"hreftemplate"</b>: {
+        "@type": "UrlTemplate",
+        "template": "http://api.example.org/like{?id}",
+        "parameter": [
+          {
+            "@type": "Parameter",
+            "name": "id",
+            "shape": "xsd:nonNegativeInteger"
+          }
+        ]
+      },
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex16-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>expects</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#expects</code></td>
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:hreftemplate [
+            a as:UrlTemplate;
+              as:template "http://api.example.org/like{?id}" ;
+              as:parameter [
+                a as:Parameter ;
+                  as:name "id" ;
+                  as:shape &lt;xsd:nonNegativeInteger&gt; .
+              ] .
+          ] ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Describes zero or more required inputs for a <code><a>PotentialActionHandler</a></code>.
+              Specifies a <code><a>UrlTemplate</a></code> associated with a 
+              <code><a>BrowserView</a></code> or <code><a>HttpRequest</a></code>.
+              This is intended as an alternative to using 
+              <code><a href="activitystreams2-vocabulary.html#dfn-href">href</a></code>
+              property as is typical for <code>Link</code> objects. If <code>hreftemplate</code>
+              is used, <code>href</code> MUST NOT be used.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code><a title="PotentialActionHandlerInput">PotentialActionHandlerInput</a></code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>potentialResult</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#potentialResult</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
             <td >
-              Describes one or more potential results from using a <code><a>PotentialActionHandler</a></code>
-              to carry out a <code><a>PotentialAction</a></code>.
+              <code><a>BrowserView</a></code> | 
+              <code><a>HttpRequest</a></code>
             </td>
           </tr>
           <tr>
-            <td >Domain:</td>
-            <td ><code><a title="PotentialActionHandler">PotentialActionHandler</a></code></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><a href="activitystreams2-vocabulary.html#dfn-object"><code>Object</code></a> | <a href="activitystreams2-vocabulary.html#dfn-link"><code>Link</code></a> | <a title="Payload"><code>Payload</code></a></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>browserContext</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#browserContext</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
+            <td >Range:</td>
             <td >
-              Identifies the target Web Browser Context name for a <code><a>BrowserView</a></code>.
+              <code><a>UrlTemplate</a></code>
             </td>
           </tr>
           <tr>
-            <td >Domain:</td>
-            <td ><code><a title="BrowserView">BrowserView</a></code></td>
+            <td>Disjoint With:</td>
+            <td><code><a href="activitystreams2-vocabulary.html#dfn-href">href</a></code></td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><code>xsd:string</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>sandbox</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#sandbox</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Describes the HTML sandbox policy for the <code><a>BrowserView</a></code> or <code><a>EmbeddedView</a></code>.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><code><a title="BrowserView">BrowserView</a> | <a title="EmbeddedView">EmbeddedView</a></code></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:boolean</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>template</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#template</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the [[!RFC6570]] URL Template used for <code><a>UrlTemplate</a></code>.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><code><a title="UrlTemplate">UrlTemplate</a></code></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:string</code></td>
+            <td>Functional:</td>
+            <td>True</td>
           </tr>
         </tbody>
 
@@ -755,427 +1491,841 @@
             <td rowspan="4" ><dfn title="parameter-term">parameter</dfn></td>
             <td  style="width: 10%">URI:</td>
             <td ><code>http://www.w3.org/ns/activitystreams#parameter</code></td>
+            <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex17-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex17-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex17-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "hreftemplate": {
+        "@type": "UrlTemplate",
+        "template": "http://api.example.org/like{?id}",
+        <b>"parameter"</b>: [
+          {
+            "@type": "Parameter",
+            "name": "id",
+            "shape": "xsd:nonNegativeInteger"
+          }
+        ]
+      },
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex17-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:hreftemplate [
+            a as:UrlTemplate;
+              as:template "http://api.example.org/like{?id}" ;
+              as:parameter [
+                a as:Parameter ;
+                  as:name "id" ;
+                  as:shape &lt;xsd:nonNegativeInteger&gt; .
+              ] .
+          ] ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Describes one or more <code><a>Parameter</a></code> objects used for <code><a>UrlTemplate</a></code>
-              or <code><a>HtmlForm</a></code> objects.
+              Describes one or more parameters for a <code><a>HtmlForm</a></code>
+              or <code><a>UrlTemplate</a></code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><code><a title="UrlTemplate">UrlTemplate</a> | <a title="HtmlForm">HtmlForm</a></code></td>
+            <td >
+              <code><a>HtmlForm</a></code> | 
+              <code><a>UrlTemplate</a></code></td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><code><a title="Parameter">Parameter</a></code></td>
+            <td >Range:</td>
+            <td >
+              <code><a>Parameter</a></code>
+            </td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>name</dfn></td>
+            <td rowspan="5" ><dfn>using</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#using</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex18-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex18-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    <b>"using"</b>: {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex18-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td >
+              Associates one or more <code><a>ActivityHandler</a></code>'s with an
+              <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Domain:</td>
+            <td >
+              <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code>
+            </td>
+          </tr>
+          <tr>
+            <td >Range:</td>
+            <td >
+              <code><a>ActivityHandler</a></code>
+            </td>
+          </tr>
+          <tr>
+            <td >Inverse Of:</td>
+            <td ><code><a>handlerFor</a></code></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="5" ><dfn>browserContext</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#browserContext</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex19-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex19-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex19-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "BrowserView",
+      "href": "http://api.example.org/like?id=123",
+      <b>"browserContext"</b>: "_new"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex19-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:BrowserView ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:browserContext "_new" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td >
+              Identifies the browser context name for a <code><a>BrowserView</a></code>
+              as defined by [[!HTML5]].
+            </td>
+          </tr>
+          <tr>
+            <td >Domain:</td>
+            <td ><code><a>BrowserView</a></code></td>
+          </tr>
+          <tr>
+            <td >Range:</td>
+            <td >
+              <p>
+              "<code>_blank</code>" |
+              "<code>_parent</code>" |
+              "<code>_self</code>" |
+              "<code>_top</code>" |
+              <code>xsd:string [pattern "[^_|.].*"]</code>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>Functional:</td>
+            <td>True</td>
+          </tr>
+        </tbody> 
+
+        <tbody>
+          <tr>
+            <td rowspan="5" ><dfn>confirm</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#confirm</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex20-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex20-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    <b>"confirm"</b>: true,
+    "using": {
+      "@type": "BrowserView",
+      "href": "http://api.example.org/like?id=123",
+      "browserContext": "_new"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex20-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:BrowserView ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:browserContext "_new" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td >
+              A boolean that indicates whether an application MUST first request user
+              confirmation before carrying out a <code><a>ActivityHandler</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Domain:</td>
+            <td ><code><a>ActivityHandler</a></code></td>
+          </tr>
+          <tr>
+            <td >Range:</td>
+            <td ><code>xsd:boolean</code></td>
+          </tr>
+          <tr>
+            <td>Functional:</td>
+            <td>True</td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="5" ><dfn>method</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#method</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex21-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex21-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      <b>"method"</b>: "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex21-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td >
+              Identifies the HTTP method to use for a <code><a>BrowserView</a></code> or
+              <code><a>HttpRequest</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Domain:</td>
+            <td >
+              <code><a>BrowserView</a></code> |
+              <code><a>HttpRequest</a></code>
+            </td>
+          </tr>
+          <tr>
+            <td >Range:</td>
+            <td ><code>xsd:string</code></td>
+          </tr>
+          <tr>
+            <td>Functional:</td>
+            <td>True</td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="5" ><dfn>name</dfn></td>
             <td  style="width: 10%">URI:</td>
             <td ><code>http://www.w3.org/ns/activitystreams#name</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex22-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      "hasExpectedInput": {
+        "@type": "Payload",
+        "mediaType": "application/x-www-form-urlencoded",
+        "shape": {
+          "@type": "HtmlForm",
+          "parameter": [
+            {
+              "@type": "Parameter",
+              <b>"name"</b>: "comment",
+              "optional": true,
+              "shape": "xsd:string"
+            }
+          ]
+        }
+      }
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex22-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:Payload ;
+              as:mediaType "application/x-www-form-urlencoded" ;
+              as:shape [
+                a as:HtmlForm ;
+                  as:parameter [
+                    a as:Parameter;
+                      as:name "comment" ;
+                      as:optional "true"^^xsd:boolean ;
+                      as:shape &lt;xsd:string&gt; .
+                  ] .
+              ] .
+          ] .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Specifies the name of the parameter. The name MUST be a simple token
-              conforming to the <code>varname</code> rule in [[!RFC6570]].
+              Specifies the name of a <code><a>Parameter</a></code> or 
+              <code><a>HttpHeader</a></code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
+            <td >
+              <code><a>HttpHeader</a></code> |
+              <code><a>Parameter</a></code>
+            </td>
           </tr>
           <tr>
-            <td >Value:</td>
+            <td >Range:</td>
             <td ><code>xsd:string</code></td>
           </tr>
+          <tr>
+            <td>Functional:</td>
+            <td>True</td>
+          </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>required</dfn></td>
+            <td rowspan="5" ><dfn>optional</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#required</code></td>
+            <td ><code>http://www.w3.org/ns/activitystreams#optional</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex23-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex23-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      "hasExpectedInput": {
+        "@type": "Payload",
+        "mediaType": "application/x-www-form-urlencoded",
+        "shape": {
+          "@type": "HtmlForm",
+          "parameter": [
+            {
+              "@type": "Parameter",
+              "name": "comment",
+              <b>"optional"</b>: true,
+              "shape": "xsd:string"
+            }
+          ]
+        }
+      }
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex23-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:Payload ;
+              as:mediaType "application/x-www-form-urlencoded" ;
+              as:shape [
+                a as:HtmlForm ;
+                  as:parameter [
+                    a as:Parameter;
+                      as:name "comment" ;
+                      as:optional "true"^^xsd:boolean ;
+                      as:shape &lt;xsd:string&gt; .
+                  ] .
+              ] .
+          ] .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Indicates whether a given parameter is required or not. Defaults to <code>true</code> when unspecified. 
+              Specifies whether a <code><a>Parameter</a></code> is optional.
+              By default, all parameters are required unless <code>optional</code>
+              is <code>True</code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
+            <td >
+              <code><a>Parameter</a></code>
+            </td>
           </tr>
           <tr>
-            <td >Value:</td>
+            <td >Range:</td>
             <td ><code>xsd:boolean</code></td>
           </tr>
-        </tbody>
-
-        <tbody>
           <tr>
-            <td rowspan="4" ><dfn>repeated</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#repeated</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Indicates whether a given parameter can be repeated or not. Defaults to <code>false</code> when unspecified;
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:boolean</code></td>
+            <td>Functional:</td>
+            <td>True</td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>value</dfn></td>
+            <td rowspan="5" ><dfn>role</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#value</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies a static value for the parameter. When specified, implementations MUST 
-              use the given value for the parameter, regardless of any user input.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
+            <td ><code>http://www.w3.org/ns/activitystreams#role</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex24-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex24-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "href": "http://api.example.org/like?id=123",
+      "method": "POST",
+      "hasExpectedInput": {
+        "@type": "Payload",
+        "mediaType": "application/x-www-form-urlencoded",
+        "shape": {
+          "@type": "HtmlForm",
+          "parameter": [
+            {
+              "@type": "Parameter",
+              "name": "comment",
+              "optional": true,
+              "shape": "xsd:string",
+              <b>"role"</b>: "urn:example:roles:comment"
+            }
+          ]
+        }
+      }
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex24-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>default</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#default</code></td>
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:href &lt;http://api.example.org/like?id=123&gt; ;
+          as:method "POST" ;
+          as:hasExpectedInput [
+            a as:Payload ;
+              as:mediaType "application/x-www-form-urlencoded" ;
+              as:shape [
+                a as:HtmlForm ;
+                  as:parameter [
+                    a as:Parameter;
+                      as:name "comment" ;
+                      as:optional "true"^^xsd:boolean ;
+                      as:shape &lt;xsd:string&gt; ;
+                      as:role &lt;urn:example:roles:comment&gt; .
+                  ] .
+              ] .
+          ] .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Specifies the default value for the parameter.
+              Identifies the semantic role of a <code><a>Parameter</a></code>.
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>valueType</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#valueType</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
             <td >
-              Specifies the parameter's expected value type. The value SHOULD
-              specify a type from the XML Schema Data Types.
+              <code><a>Parameter</a></code>
             </td>
           </tr>
           <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
+            <td >Range:</td>
             <td ><code>xsd:anyURI</code></td>
           </tr>
-        </tbody>
-
-        <tbody>
           <tr>
-            <td rowspan="4" ><dfn>enumeration</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#enumeration</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies one or more possible values for the parameter. When used, 
-              implementations MUST use one of the given values.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
+            <td>Functional:</td>
+            <td>True</td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>minLength</dfn></td>
+            <td rowspan="5" ><dfn>sandbox</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#minLength</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the minimum length, in characters, for the value.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:nonNegativeInteger</code></td>
-          </tr>
-        </tbody>
+            <td ><code>http://www.w3.org/ns/activitystreams#sandbox</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex25-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex25-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex25-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "EmbeddedView",
+      "mediaType": "text/html",
+      "content": "&lt;div>...&lt;/div>",
+      <b>"sandbox"</b>: "allow-same-origin"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex25-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>maxLength</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#maxLength</code></td>
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:EmbeddedView ;
+          as:mediaType "text/html" ;
+          as:content "&lt;div>...&lt;/div>" ;
+          as:sandbox "allow-same-origin" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Specifies the maximum length, in characters, for the value.
+              Specifies the [[!HTML5]] sandbox policy for <code><a>BrowserView</a></code>
+              or <code><a>EmbeddedView</a></code>
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:nonNegativeInteger</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>maxExclusive</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#maxExclusive</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
             <td >
-              Specifies the exclusive upper boundary for values.
+              <code><a>BrowserView</a></code> |
+              <code><a>EmbeddedView</a></code>
             </td>
           </tr>
           <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>maxInclusive</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#maxInclusive</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the inclusive upper boundary for values.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>minExclusive</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#minExclusive</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the exclusive lower boundary for values.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>minInclusive</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#minInclusive</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the inclusive lower boundary for values.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>step</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#step</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the step increment for values.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:anyType</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>totalDigits</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#totalDigits</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the total number of numeric digits allowed to appear in the value.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:nonNegativeInteger</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>fractionDigits</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#fractionDigits</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies the total number of fractional digits allowed to appear in the value.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
-            <td ><code>xsd:nonNegativeInteger</code></td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>pattern</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#pattern</code></td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td >
-              Specifies a regular expression to which the parameter value MUST conform.
-            </td>
-          </tr>
-          <tr>
-            <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
-          </tr>
-          <tr>
-            <td >Value:</td>
+            <td >Range:</td>
             <td ><code>xsd:string</code></td>
           </tr>
+          <tr>
+            <td>Functional:</td>
+            <td>True</td>
+          </tr>
         </tbody>
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>placeholder</dfn></td>
+            <td rowspan="5" ><dfn>template</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#placeholder</code></td>
+            <td ><code>http://www.w3.org/ns/activitystreams#template</code></td>
+            <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex26-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex26-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex26-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "action": {
+    "@type": "Like",
+    "displayName": "Like This Note!",
+    "confirm": true,
+    "using": {
+      "@type": "HttpRequest",
+      "hreftemplate": {
+        "@type": "UrlTemplate",
+        <b>"template"</b>: "http://api.example.org/like{?id}",
+        "parameter": [
+          {
+            "@type": "Parameter",
+            "name": "id",
+            "shape": "xsd:nonNegativeInteger"
+          }
+        ]
+      },
+      "method": "POST"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex26-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Note ;
+  as:action [
+    a as:Like ;
+      as:displayName "Like This Note!" ;
+      as:confirm "true"^^xsd:boolean ;
+      as:using [
+        a as:HttpRequest ;
+          as:hreftemplate [
+            a as:UrlTemplate;
+              as:template "http://api.example.org/like{?id}" ;
+              as:parameter [
+                a as:Parameter ;
+                  as:name "id" ;
+                  as:shape &lt;xsd:nonNegativeInteger&gt; .
+              ] .
+          ] ;
+          as:method "POST" .
+      ] .
+  ] . </pre>
+  </div>
+</div>
+            </td>
           </tr>
           <tr>
             <td >Notes:</td>
             <td >
-              Specifies a human-readable, plain-text prompt for the parameter.
+              A [[!RFC6570]] URL Template
             </td>
           </tr>
           <tr>
             <td >Domain:</td>
-            <td ><a title="Parameter"><code>Parameter</code></a></td>
+            <td >
+              <code><a>UrlTemplate</a></code>
+            </td>
           </tr>
           <tr>
-            <td >Value:</td>
-            <td ><code><a href="activitystreams2-vocabulary.html#dfn-naturallanguagevalue">NaturalLanguageValue</a></code></td>
+            <td >Range:</td>
+            <td ><code>URL Template</code></td>
+          </tr>
+          <tr>
+            <td>Functional:</td>
+            <td>True</td>
           </tr>
         </tbody>
 
     </table>
 
   </section>
+
+
+<script type="text/javascript" src="nanotabs.js"></script>
+<script type="text/javascript">
+  nanotabs({c:"cell",e:"click",d:-1,f:function(){ return false; }});
+  nanotabs({c:"cell",e:"mouseover",s:"active"});
+</script>
 
 </body>
 </html>
