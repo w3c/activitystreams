@@ -373,7 +373,9 @@ _:c14n0 a as:Link ;
         <tr>
           <td>Notes:</td>
           <td>
-            Describes an indirect qualified link to another resource.
+            Describes an indirect qualified link to another resource. 
+            The <code><a>href</a></code> property identifies the resource 
+            being referenced.
           </td>
         </tr>
         <tr>
@@ -511,7 +513,7 @@ _:c14n0 a as:Activity ;
           <td >Notes:</td>
           <td>
             An Activity describes some form of action that may happen, is currently happening, 
-            or that has already happened. The <code>Activity</code> serves as an abstract base
+            or that has already happened. <code>Activity</code> serves as an abstract base
             class for all types of activities. It is important to note that the <code>Activity</code>
             class itself does not carry any specific semantics about the kind of action being 
             taken.
@@ -1109,11 +1111,10 @@ _c:14n0 a as:Accept ;
             <td >Notes:</td>
             <td>
               Indicates that the "actor" accepts the "object". The "target"
-              typically will not be used with this Activity but MAY be 
-              used in certain circumstances to indicate the context into 
+              MAY be used in certain circumstances to indicate the context into 
               which the "object" has been accepted. For instance, when
               expressing the activity, "Sally accepted Joe into the Club",
-              the "target" would be the "Club".
+              the "target" would identify the "Club".
             </td>
           </tr>
           <tr>
@@ -1532,8 +1533,8 @@ _c:14n0 a as:Add ;
           <tr>
             <td >Notes:</td>
             <td>
-              Indicates that the "object" has arrived at the "object". The
-              "target" has no defined meaning. 
+              Indicates that the "object" has arrived at the "object". 
+              The "target" has no defined meaning. 
             </td>
           </tr>
           <tr>
