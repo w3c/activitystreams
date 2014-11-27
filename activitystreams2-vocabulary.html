@@ -280,6 +280,7 @@
               <code><a>location</a></code> |
               <code><a>locationOf</a></code> |
               <code><a>objectOf</a></code> |
+              <code><a>originOf</a></code> |
               <code><a>preview</a></code> |
               <code><a>previewOf</a></code> |
               <code><a>provider</a></code> |
@@ -410,6 +411,7 @@ _:c14n0 a as:Link ;
               <code><a>memberOf</a></code> |
               <code><a>objectOf</a></code> |
               <code><a>optionOf</a></code> |
+              <code><a>originOf</a></code> |
               <code><a>participantOf</a></code> |
               <code><a>previewOf</a></code> |
               <code><a>providerOf</a></code> |
@@ -531,7 +533,8 @@ _:c14n0 a as:Activity ;
               <code><a title="object-term">object</a></code> | 
               <code><a>target</a></code> | 
               <code><a>result</a></code> | 
-              <code><a>instrument</a></code> | 
+              <code><a>instrument</a></code> |
+              <code><a>origin</a></code> | 
               <code><a>participant</a></code> | 
               <code><a>priority</a></code> | 
               <code><a>status</a></code> | 
@@ -982,7 +985,9 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Watch</a></code> |
         <code><a>Listen</a></code> |
         <code><a>Read</a></code> |
-        <code><a>Respond</a></code>
+        <code><a>Respond</a></code> |
+        <code><a>Move</a></code> |
+        <code><a>Travel</a></code> 
       </p>
 
       <table>
@@ -4764,6 +4769,263 @@ _c:14n0 a as:Respond ;
           </tr>
         </tbody>
 
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Move</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Move</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex168-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex168-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex168-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex168-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex168-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex168-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Move",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": "http://example.org/posts/1",
+  "target": {
+    "@type": "Collection",
+    "displayName": "List B"
+  },
+  "origin": {
+    "@type": "Collection",
+    "displayName": "List A"
+  }
+}</pre>
+</div>
+<div id="ex168-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Move">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  moved to
+  &lt;a itemprop="object" 
+    href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+  from
+  &lt;span itemprop="origin" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Collection">
+    &lt;span itemprop="displayName">List A&lt;/span>
+  &lt;/span>
+  to
+  &lt;span itemprop="target" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Collection">
+    &lt;span itemprop="displayName">List B&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex168-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Move">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  moved
+  &lt;a property="object" 
+    href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+    from
+  &lt;span property="origin" typeof="Collection">
+    &lt;span property="displayName">List A&lt;/span>
+  &lt;/span>
+  to
+  &lt;span property="origin" typeof="Collection">
+    &lt;span property="displayName">List B&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex168-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  moved
+  &lt;a class="u-in-reply-to h-item" href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+  from
+  &lt;span class="p-origin h-item">
+    &lt;span class="p-name">List A&lt;/span>
+  &lt;/span>
+  to
+  &lt;span class="p-target h-item">
+    &lt;span class="p-name">List B&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex168-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Move ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object &lt;http://example.org/posts/1&gt; ;
+  as:target [
+    a as:Collection ;
+      as:displayName "List B" .
+  ] ;
+  as:origin [
+    a as:Collection ;
+      as:displayName "List A" .
+  ].</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has moved "object" from "origin" to "target".
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Travel</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Travel</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex169-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex169-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex169-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex169-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex169-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex169-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Travel",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "target": {
+    "@type": "Place",
+    "displayName": "Home"
+  },
+  "origin": {
+    "@type": "Place",
+    "displayName": "Work"
+  }
+}</pre>
+</div>
+<div id="ex169-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Travel">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  is traveling to
+  &lt;span itemprop="target" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Place">
+    &lt;span itemprop="displayName">Home&lt;/span>
+  &lt;/span>
+  from
+  &lt;span itemprop="origin" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Place">
+    &lt;span itemprop="displayName">Work&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex169-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Travel">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  is traveling to
+  &lt;span property="target" typeof="Place">
+    &lt;span property="displayName">Home&lt;/span>
+  &lt;/span>
+  from
+  &lt;span property="origin" typeof="Place">
+    &lt;span property="displayName">Work&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex169-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  is traveling to
+  &lt;span class="p-target h-item">
+    &lt;span class="p-name">Home&lt;/span>
+  &lt;/span>
+  from
+  &lt;span class="p-origin h-item">
+    &lt;span class="p-name">Work&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex169-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Travel ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:target [
+    a as:Place ;
+      as:displayName "Home" .
+  ] ;
+  as:origin [
+    a as:Place ;
+      as:displayName "Work" .
+  ].</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" is traveling to "target" from "origin".
+              The <code>Travel</code> activity has no <code>object</code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
       </table>
 
     </section>
@@ -7215,6 +7477,8 @@ _c:14n0 a as:Place ;
       <code><a>items</a></code> |
       <code><a>option</a></code> |
       <code><a>optionOf</a></code> |
+      <code><a>origin</a></code> |
+      <code><a>originOf</a></code> |
       <code><a>memberOf</a></code> |
       <code><a>next</a></code> |
       <code><a>object</a></code> |
@@ -11392,6 +11656,287 @@ _c:14n0 a as:PossibleAnswer ;
           <td><code><a>option</a></code></td>
         </tr>
       </tbody>
+
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>origin</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#origin</code></td>
+          <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex166-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex166-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex166-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex166-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex166-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex166-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Move",
+  "actor": "acct:sally@example.org",
+  "object": "http://example.org/posts/1",
+  "target": {
+    "@type": "Collection",
+    "displayName": "List B"
+  },
+  "origin": {
+    "@type": "Collection",
+    "displayName": "List A"
+  }
+}</pre> 
+  </div>
+  <div id="ex166-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Move">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">
+    Sally
+  &lt;/link>
+  moved
+  &lt;a itemprop="object"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+  to
+  &lt;span itemprop="target" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Collection">
+    &lt;span itemprop="displayName">List B&lt;/span>
+  &lt;/span>
+  from 
+  &lt;span itemprop="origin" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Collection">
+    &lt;span itemprop="p-name">List A&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex166-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Move">
+  &lt;link property="actor"
+    href="acct:sally@example.org">
+    Sally
+  &lt;/link>
+  moved
+  &lt;a property="object"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+  to
+  &lt;span property="target" typeof="Collection">
+    &lt;span property="displayName">List B&lt;/span>
+  &lt;/span>
+  from 
+  &lt;span property="origin" typeof="Collection">
+    &lt;span property="displayName">List A&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex166-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="h-card u-url"
+    href="acct:sally@example.org">
+      Sally
+  &lt;link> 
+  moved
+  &lt;a class="h-item u-url"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+  to
+  &lt;span class="p-target h-item">
+    &lt;span class="p-name">List B&lt;/span>
+  &lt;/span>
+  from 
+  &lt;span class="p-origin h-item">
+    &lt;span class="p-name">List A&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex166-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Move ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object &lt;http://example.org/posts/1&gt; ;
+  as:target [
+    a as:Collection ;
+      as:displayName "List B" .
+  ] ;
+  as:origin [
+    a as:Collection ;
+      as:displayName "List A" .
+  ].
+</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Describes an indirect object of the activity <em>from</em> which the activity is directed. The precise meaning of the origin is the object of the English preposition "from". For instance, in the activity "John moved an item to List A from List B", the origin of the activity is "List B".
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>originOf</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>originOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#originOf</code></td>
+          <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex167-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex167-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex167-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex167-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex167-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex167-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Collection",
+  "displayName": "List A",
+  "originOf": {
+    "@type": "Move",
+    "actor": "acct:sally@example.org",
+    "object": "http://example.org/posts/1",
+    "target": {
+      "@type": "Collection",
+      "displayName": "List B"
+    }
+  }
+}</pre> 
+  </div>
+  <div id="ex167-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Collection">
+  &lt;span itemprop="originOf" itemscope 
+      itemtype="http://www.w3.org/ns/activitystreams#Move">
+    &lt;link itemprop="actor"
+      href="acct:sally@example.org">
+      Sally
+    &lt;/link>
+    moved
+    &lt;a itemprop="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    to
+    &lt;span itemprop="target" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Collection">
+      &lt;span itemprop="displayName">List B&lt;/span>
+    &lt;/span>
+  &lt;/span>
+  from &lt;span itemprop="p-name">List A&lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex167-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Collection">
+  &lt;span itemprop="originOf" itemscope
+    itemtype="Move">
+    &lt;link property="actor"
+      href="acct:sally@example.org">
+      Sally
+    &lt;/link>
+    moved
+    &lt;a property="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    to
+    &lt;span property="target" typeof="Collection">
+      &lt;span property="displayName">List B&lt;/span>
+    &lt;/span>
+  &lt;/span>
+  from &lt;span property="displayName">List A&lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex167-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="h-card u-url"
+    href="acct:sally@example.org">
+      Sally
+  &lt;link> 
+  moved
+  &lt;a class="h-item u-url"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+  to
+  &lt;span class="p-target h-item">
+    &lt;span class="p-name">List B&lt;/span>
+  &lt;/span>
+  from 
+  &lt;span class="p-origin h-item">
+    &lt;span class="p-name">List A&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex167-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Collection ;
+  as:displayName "List A" ;
+  as:originOf [
+    a as:Move ;
+      as:actor &lt;acct:sally@example.org&gt; ;
+      as:object &lt;http://example.org/posts/1&gt; ;
+      as:target [
+        a as:Collection ;
+          as:displayName "List B" .
+      ] .
+  ] .</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Specifies that the object is the <code><a>origin</a></code> of the reference Activity
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>origin</a></code></td>
+        </tr>
+      </tbody>
+
+
       <tbody>
         <tr>
           <td rowspan="5" ><dfn>memberOf</dfn></td>
@@ -19216,6 +19761,24 @@ as:targetOf a owl:ObjectProperty ;
   rdfs:range as:Activity ;
   owl:inverseOf as:target .
 
+as:origin a owl:ObjectProperty ;
+  rdfs:label "origin"@en ;
+  rdfs:comment "For certain activities, specifies the entity from which the action is directed."@en ;
+  rdfs:domain as:Activity ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Object as:LinkNotHandler ) .
+  ] .
+
+as:originOf a owl:ObjectProperty ;
+  rdfs:label "originOf"@en ;
+  rdfs:domain [
+    a owl:Class ;
+    owl:unionOf ( as:Object as:LinkNotHandler ) .
+  ] ;
+  rdfs:range as:Activity ;
+  owl:inverseOf as:origin .
+
 as:to a owl:ObjectProperty ;  
   rdfs:label "to"@en ;    
   rdfs:domain as:Activity ;
@@ -19864,6 +20427,16 @@ as:Respond a owl:Class ;
   rdfs:label "Respond"@en ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "The actor responded to the object"@en .
+
+as:Move a owl:Class ;
+  rdfs:label "Move"@en ;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from." .
+
+as:Travel a owl:Class ;
+  rdfs:label "Travel"@en ;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor is traveling to the target. The origin specifies where the actor is traveling from." .
 
 as:Link a owl:Class ;
   rdfs:label "Link"@en ;
