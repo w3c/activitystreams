@@ -2320,6 +2320,95 @@ _:c14n0 a as:Note ;
 
   </section>
 
+  <section>
+    <h2>Using External Vocabularies as Activity Handlers</h2>
+
+<figure><figcaption>Using a schema.org 
+<code><a href="http://schema.org/WatchAction">WatchAction</a></code> as a potential Activity</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex27-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex27-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex27-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://asjsonld.mybluemix.net",
+  "@type": "Video",
+  "displayName": "Footloose",
+  "action" : {
+    "@context": [
+      "http://schema.org",
+      {"s":"http://schema.org/"}],
+    "@type": ["s:WatchAction", "Watch"],
+    "s:target" : "http://example.com/player?id=123"
+  }
+}</pre>
+  </div>
+  <div id="ex27-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix s: &lt;http://schema.org&gt; .
+
+_:c14n0 a as:Video ;
+  as:displayName "Footloose" ;
+  as:action [
+    a s:WatchAction, as:Watch ;
+      s:target &lt;http://example.org/player?id=123&gt;
+  ] .</pre>
+  </div>
+</div>
+</figure>
+
+<figure><figcaption>Using a <a href="http://www.w3.org/ns/hydra/spec/latest/core/">Hydra Operation</a> as an Activity Handler:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex28-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex28-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex28-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://asjsonld.mybluemix.net",
+  "@type": "Video",
+  "displayName": "Footloose",
+  "action" : {
+    "@type": "Respond",
+    "using": {
+      "@context": [
+        "http://www.w3.org/ns/hydra/context.jsonld",
+        {"h": "http://www.w3.org/ns/hydra/core#"}
+      ],
+      "@type": "CreateResourceOperation",
+      "h:title": "Creates a new comment",
+      "h:method": "POST",
+      "h:expects": "http://api.example.com/doc/#Comment",
+      "h:returns": "http://api.example.com/doc/#Comment"
+    }
+  }
+}</pre>
+  </div>
+  <div id="ex28-turtle" style="display: none;">
+  <pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix h: &lt;http://www.w3.org/ns/hydra/core#&gt; .
+
+_:c14n0 a as:Video ;
+  as:displayName "Footloose" ;
+  as:action [
+    a as:Respond ;
+      as:using [
+        a h:CreateResourceOperation ;
+          h:title "Creates a new comment" ;
+          h:method "POST" ;
+          h:expects "http://api.example.com/doc/#Comment",
+          h:returns "http://api.example.com/doc/#Comment" .
+      ] .
+  ] .</pre>
+  </div>
+</div>
+</figure>
+
+  </section>
+
 
 <script type="text/javascript" src="nanotabs.js"></script>
 <script type="text/javascript">

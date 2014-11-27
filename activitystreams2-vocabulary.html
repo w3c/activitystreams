@@ -976,7 +976,13 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Save</a></code> |
         <code><a>Share</a></code> |
         <code><a>Undo</a></code> |
-        <code><a>Update</a></code>
+        <code><a>Update</a></code> |
+        <code><a>Experience</a></code> |
+        <code><a>View</a></code> |
+        <code><a>Watch</a></code> |
+        <code><a>Listen</a></code> |
+        <code><a>Read</a></code> |
+        <code><a>Respond</a></code>
       </p>
 
       <table>
@@ -1119,11 +1125,11 @@ _c:14n0 a as:Accept ;
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>Respond</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -2037,11 +2043,11 @@ _c:14n0 a as:Ignore ;
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>Respond</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -3193,11 +3199,11 @@ _c:14n0 a as:Reject ;
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>Respond</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -3665,11 +3671,11 @@ _c:14n0 a as:Review ;
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>Respond</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
 
@@ -4139,6 +4145,625 @@ _c:14n0 a as:Update ;
             <td>Inherits all properties from <code><a>Activity</a></code>.</td>
           </tr>
         </tbody>
+
+
+       <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Experience</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Experience</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex160-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex160-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex160-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex160-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex160-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex160-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Experience",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": {
+    "@type": "Article",
+    "displayName": "An article about Activity Streams"
+  }
+}</pre>
+</div>
+<div id="ex160-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Experience">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  experienced
+  &lt;span itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Article">
+    "&lt;span itemprop="displayName">
+      An article about Activity Streams
+    &lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex160-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Update">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  experienced
+  &lt;span property="object" typeof="Article">
+    "&lt;span property="displayName">
+      An article about Activity Streams
+    &lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex160-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  experienced
+  &lt;span class="p-object h-entry">
+    "&lt;span class="p-name">
+      An article about Activity Streams
+    &lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex160-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Experience ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object [
+    a as:Article ;
+      as:displayName "An article about Activity Streams" .
+  ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has experienced the object. The type 
+              of experience is not specified.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
+       <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>View</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#View</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex161-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex161-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex161-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex161-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex161-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex161-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "View",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": {
+    "@type": "Article",
+    "displayName": "An article about Activity Streams"
+  }
+}</pre>
+</div>
+<div id="ex161-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#View">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  viewed
+  &lt;span itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Article">
+    "&lt;span itemprop="displayName">
+      An article about Activity Streams
+    &lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex161-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="View">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  viewed
+  &lt;span property="object" typeof="Article">
+    "&lt;span property="displayName">
+      An article about Activity Streams
+    &lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex161-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  viewed
+  &lt;span class="p-object h-entry">
+    "&lt;span class="p-name">
+      An article about Activity Streams
+    &lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex161-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:View ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object [
+    a as:Article ;
+      as:displayName "An article about Activity Streams" .
+  ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has viewed the object. Viewing is a
+              specialization of <code><a>Experience</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Experience</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Experience</a></code>.</td>
+          </tr>
+        </tbody>
+
+       <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Watch</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Watch</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex162-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex162-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex162-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex162-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex162-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex162-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Watch",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": "http://example.org/dog.mkv"
+}</pre>
+</div>
+<div id="ex162-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Watch">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  watched
+  &lt;a itemprop="object" 
+    href="http://example.org/dog.mkv">
+    "http://example.org/dog.mkv"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex162-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Watch">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  watched
+  &lt;a property="object" 
+    href="http://example.org/dog.mkv">
+    "http://example.org/dog.mkv"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex162-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  watched
+  &lt;a class="p-object h-item" href="http://example.org/dog.mkv">
+    "http://example.org/dog.mkv"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="ex162-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Watch ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object &lt;http://example.org/dog.mkv&gt; .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has watched the object. Watching is a
+              specialization of <code><a>View</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>View</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>View</a></code>.</td>
+          </tr>
+        </tbody>
+
+       <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Listen</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Listen</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex163-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex163-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex163-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex163-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex163-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex163-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Listen",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": "http://example.org/music.mp3"
+}</pre>
+</div>
+<div id="ex163-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Listen">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  listened to
+  &lt;a itemprop="object" 
+    href="http://example.org/music.mp3">
+    "http://example.org/music.mp3"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex163-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Listen">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  listened to
+  &lt;a property="object" 
+    href="http://example.org/music.mp3">
+    "http://example.org/music.mp3"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex163-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  listened to
+  &lt;a class="p-object h-item" href="http://example.org/music.mp3">
+    "http://example.org/music.mp3"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="ex163-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Listen ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object &lt;http://example.org/music.mp3&gt; .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has listened to the object.  Viewing is a
+              specialization of <code><a>Experience</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Experience</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Experience</a></code>.</td>
+          </tr>
+        </tbody>
+
+       <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Read</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Read</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex164-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex164-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex164-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex164-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex164-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex164-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Read",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": "http://example.org/posts/1"
+}</pre>
+</div>
+<div id="ex164-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Read">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  read
+  &lt;a itemprop="object" 
+    href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex164-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Listen">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  read
+  &lt;a property="object" 
+    href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex164-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  read
+  &lt;a class="p-object h-item" href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="ex164-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Read ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object &lt;http://example.org/posts/1&gt; .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has read the object. Reading is a
+              specialization of <code><a>View</a></code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>View</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>View</a></code>.</td>
+          </tr>
+        </tbody>
+
+       <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Respond</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Respond</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex165-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex165-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex165-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex165-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex165-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex165-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Respond",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": "http://example.org/posts/1",
+  "result": {
+    "@type": "Note",
+    "content": "This is a good article",
+    "inReplyTo": "http://example.org/posts/1"
+  }
+}</pre>
+</div>
+<div id="ex165-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Respond">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  responded to
+  &lt;a itemprop="object" 
+    href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+  with
+  &lt;span itemprop="result" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    &lt;link itemprop="inReplyTo" href="http://example.org/posts/1" />
+    "&lt;span itemprop="content">This is a good article&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex165-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Respond">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  responded to
+  &lt;a property="object" 
+    href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+  with
+  &lt;span property="result" typeof="Note">
+    &lt;link property="inReplyTo" href="http://example.org/posts/1" />
+    "&lt;span property="content">This is a good article&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex165-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  responded to
+  &lt;a class="u-in-reply-to h-item" href="http://example.org/posts/1">
+    "http://example.org/posts/1"
+  &lt;/a>
+  with
+  &lt;span class="p-result h-entry">
+    &lt;link class="u-in-reply-to" href="http://example.org/posts/1" />
+    "&lt;span class="e-summary">This is a good article&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex165-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Respond ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:object &lt;http://example.org/posts/1&gt; ;
+  as:result [
+    a as:Note ;
+      as:content "This is a good article" ;
+      as:inReplyTo &lt;http://example.org/posts/1&gt; .
+  ].</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the "actor" has reponded to the object.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
       </table>
 
     </section>
@@ -19020,7 +19645,7 @@ as:width a owl:DatatypeProperty ,
 
 as:Accept a owl:Class ;  
   rdfs:label "Accept"@en ;  
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Respond ;
   owl:equivalentClass prov:Accept ;
   rdfs:comment "Actor accepts the Object"@en .
 
@@ -19182,7 +19807,7 @@ as:HttpRequest a owl:Class ;
 
 as:Ignore a owl:Class ;
   rdfs:label "Ignore"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Respond ;
   rdfs:comment "Actor is ignoring the Object"@en .
 
 as:Image a owl:Class ;
@@ -19209,6 +19834,36 @@ as:Like a owl:Class ;
   rdfs:label "Like"@en ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Like/Favorite Something"@en .
+
+as:Experience a owl:Class;
+  rdfs:label "Experience"@en ;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor experienced the object"@en .
+
+as:View a owl:Class ;
+  rdfs:label "View"@en ;
+  rdfs:subClassOf as:Experience ;
+  rdfs:comment "The actor viewed the object"@en .
+
+as:Watch a owl:Class ;
+  rdfs:label "Watch"@en ;
+  rdfs:subClassOf as:View ;
+  rdfs:comment "The actor watched the object"@en .
+
+as:Listen a owl:Class ;
+  rdfs:label "Listen"@en ;
+  rdfs:subClassOf as:Experience ;
+  rdfs:comment "The actor listened to the object"@en .
+
+as:Read a owl:Class ;
+  rdfs:label "Read"@en ;
+  rdfs:subClassOf as:View ;
+  rdfs:comment "The actor read the object"@en .
+
+as:Respond a owl:Class ;
+  rdfs:label "Respond"@en ;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor responded to the object"@en .
 
 as:Link a owl:Class ;
   rdfs:label "Link"@en ;
@@ -19345,7 +20000,7 @@ as:Question a owl:Class ;
 
 as:Reject a owl:Class ;
   rdfs:label "Reject"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Respond ;
   rdfs:comment "Actor rejects the Object"@en .
 
 as:Remove a owl:Class ;
@@ -19355,7 +20010,7 @@ as:Remove a owl:Class ;
 
 as:Review a owl:Class ;  
   rdfs:label "Review"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Respond ;
   rdfs:comment "To Review/Rate Something"@en .
 
 as:Role a owl:Class ;
