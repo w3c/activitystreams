@@ -1096,7 +1096,8 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Read</a></code> |
         <code><a>Respond</a></code> |
         <code><a>Move</a></code> |
-        <code><a>Travel</a></code> 
+        <code><a>Travel</a></code> |
+        <code><a>Announce</a></code>
       </p>
 
       <table>
@@ -5165,6 +5166,127 @@ _c:14n0 a as:Travel ;
               from <code>origin</code>. The <code>Travel</code> activity has no <code>object</code>.
               If the <code>target</code> or <code>origin</code> is not specified, either can be
               determined by context.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Announce</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Announce</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex170-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex170-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex170-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex170-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex170-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex170-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Announce",
+  "actor": {
+    "@type": "Person",
+    "@id": "acct:sally@example.org",
+    "displayName": "Sally"
+  },
+  "object": {
+    "@type": "Arrive",
+    "actor": "acct:sally@example.org",
+    "target": {
+      "@type": "Place",
+      "displayName": "Work"
+    }
+  }
+}</pre>
+</div>
+<div id="ex170-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Announce">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person"
+    itemid="acct:sally@example.org">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  announced
+  &lt;span itemprop="object" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Arrive">
+    &lt;span itemprop="actor" itemscope="Person"
+      itemid="acct:sally@example.org">her&lt;/span>
+    &lt;span itemprop="target" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Place">
+      at &lt;span itemprop="displayName">Work&lt;/span>
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex170-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Announce">
+  &lt;span property="actor" typeof="Person"
+    resource="acct:sally@example.org">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  announced
+  &lt;span property="object" typeof="Arrive">
+    &lt;span property="actor" typeof="Person"
+      resource="acct:sally@example.org">her&lt;/span>
+    &lt;span property="target" typeof="Place">
+      at &lt;span property="displayName">Work&lt;/span>
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex170-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  announced
+  &lt;span class="h-entry"> 
+    her arrival at 
+    &lt;span class="p-target h-item p-name">work&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex170-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;acct:sally@example.org&gt; a as:Person ;
+  as:displayName "Sally" .
+
+_c:14n0 a as:Announce ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Arrive ;
+      as:actor &lt;acct:sally@example.org&gt; ;
+      as:target [
+        a as:Place ;
+          as:displayName "Work" .
+      ] .
+  ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the <code>actor</code> is announcing the <code>object</code> to 
+              <code>target</code>. The <code>origin</code> typically has no defined meaning.
             </td>
           </tr>
           <tr>
@@ -20400,6 +20522,11 @@ as:Album a owl:Class ;
   rdfs:label "Album"@en ;
   rdfs:subClassOf as:Collection ;
   rdfs:comment "An Album.. typically a collection of photos"@en .
+
+as:Announce a owl:Class ;
+  rdfs:label "Announce"@en;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "Actor announces the object to the target"@en .
 
 as:Answer a owl:Class ;
   rdfs:label "Answer"@en;
