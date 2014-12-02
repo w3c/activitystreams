@@ -22,6 +22,7 @@
     "Actor": "as:Actor",
     "Add": "as:Add",
     "Album": "as:Album",
+    "Announce": "as:Announce",
     "Answer": "as:Answer",
     "Application": "as:Application",
     "Arrive": "as:Arrive",
@@ -81,6 +82,14 @@
     "Update": "as:Update",
     "UrlTemplate": "as:UrlTemplate",
     "Video": "as:Video",
+    "Experience": "as:Experience",
+    "View": "as:View",
+    "Watch": "as:Watch",
+    "Listen": "as:Listen",
+    "Read": "as:Read",
+    "Respond": "as:Respond",
+    "Move": "as:Move",
+    "Travel": "as:Travel",
     "action": {
       "@id": "as:action",
       "@type": "@id"
@@ -244,6 +253,14 @@
     },
     "optionOf": {
       "@id": "as:optionOf",
+      "@type": "@id"
+    },
+    "origin": {
+      "@id": "as:origin",
+      "@type": "@id"
+    },
+    "originOf": {
+      "@id": "as:originOf",
       "@type": "@id"
     },
     "parameter": {
