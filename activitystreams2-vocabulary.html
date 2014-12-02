@@ -1594,7 +1594,7 @@ _c:14n0 a as:Add ;
     "@type": "Person",
     "displayName": "Sally"
   },
-  "target": {
+  "location": {
     "@type": "Place",
     "displayName": "Work"
   },
@@ -1613,7 +1613,7 @@ _c:14n0 a as:Add ;
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
   arrived at
-  &lt;span itemprop="target" itemscope
+  &lt;span itemprop="location" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
     &lt;span itemprop="displayName">Work&lt;/span>
   &lt;/span>
@@ -1632,7 +1632,7 @@ _c:14n0 a as:Add ;
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
   arrived at
-  &lt;span property="target" typeof="Place">
+  &lt;span property="location" typeof="Place">
     &lt;span property="displayName">Work&lt;/span>
   &lt;/span>
   from
@@ -1660,7 +1660,7 @@ _c:14n0 a as:Arrive ;
     a as:Person ;
       as:displayName "Sally" .
   ] ;
-  as:target [
+  as:location [
     a as:Place ;
       as:displayName "Work" .
   ] ;
@@ -1676,9 +1676,10 @@ _c:14n0 a as:Arrive ;
             <td >Notes:</td>
             <td>
               An <code><a>IntransitiveActivity</a></code> that indicates that the 
-              <code>actor</code> has arrived at the <code>target</code>. The 
+              <code>actor</code> has arrived at the <code>location</code>. The 
               <code>origin</code> can be used to identify the context from which 
-              the <code>actor</code> originated.
+              the <code>actor</code> originated. The <code>target</code> typically
+              has no defined meaning.
             </td>
           </tr>
           <tr>
@@ -1992,11 +1993,11 @@ _c:14n0 a as:Favorite ;
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>Respond</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -2552,11 +2553,11 @@ _c:14n0 a as:Like ;
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>Respond</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5204,7 +5205,7 @@ _c:14n0 a as:Travel ;
   "object": {
     "@type": "Arrive",
     "actor": "acct:sally@example.org",
-    "target": {
+    "location": {
       "@type": "Place",
       "displayName": "Work"
     }
@@ -5225,7 +5226,7 @@ _c:14n0 a as:Travel ;
     itemtype="http://www.w3.org/ns/activitystreams#Arrive">
     &lt;span itemprop="actor" itemscope="Person"
       itemid="acct:sally@example.org">her&lt;/span>
-    &lt;span itemprop="target" itemscope
+    &lt;span itemprop="location" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Place">
       at &lt;span itemprop="displayName">Work&lt;/span>
     &lt;/span>
@@ -5244,7 +5245,7 @@ _c:14n0 a as:Travel ;
   &lt;span property="object" typeof="Arrive">
     &lt;span property="actor" typeof="Person"
       resource="acct:sally@example.org">her&lt;/span>
-    &lt;span property="target" typeof="Place">
+    &lt;span property="location" typeof="Place">
       at &lt;span property="displayName">Work&lt;/span>
     &lt;/span>
   &lt;/span>
@@ -5273,7 +5274,7 @@ _c:14n0 a as:Announce ;
   as:object [
     a as:Arrive ;
       as:actor &lt;acct:sally@example.org&gt; ;
-      as:target [
+      as:location [
         a as:Place ;
           as:displayName "Work" .
       ] .
@@ -20614,7 +20615,7 @@ as:Event a owl:Class ;
 as:Favorite a owl:Class ;    
   rdfs:label "Favorite"@en ;
   owl:equivalentClass as:Like ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Respond ;
   rdfs:comment "To Favorite/Like Something"@en .
 
 as:Folder a owl:Class ;
@@ -20683,7 +20684,7 @@ as:Leave a owl:Class ;
 
 as:Like a owl:Class ;
   rdfs:label "Like"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Respond ;
   rdfs:comment "To Like/Favorite Something"@en .
 
 as:Experience a owl:Class;
