@@ -1107,7 +1107,8 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Dislike</a></code> |
         <code><a>Confirm</a></code> |
         <code><a>Reservation</a></code> |
-        <code><a>Assign</a></code>
+        <code><a>Assign</a></code> |
+        <code><a>Complete</a></code> 
       </p>
 
       <table>
@@ -5710,7 +5711,7 @@ _c:14n0 a as:Confirm ;
 <div id="ex178-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Confirm">
+  itemtype="http://www.w3.org/ns/activitystreams#Assign">
   &lt;link itemprop="actor"
     href="acct:sally@example.org">Sally&lt;/link>
   assigned the role of
@@ -5772,6 +5773,93 @@ _c:14n0 a as:Assign ;
             <td>
               Indicates that the <code>actor</code> is assigning the <code>object</code>
               to the <code>target</code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Complete</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Complete</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex179-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex179-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex179-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex179-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex179-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex179-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Complete",
+  "actor": "acct:sally@example.org",
+  "object": "http://example.org/tasks/1"
+}</pre>
+</div>
+<div id="ex179-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Complete">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  has completed
+  &lt;a itemprop="target"
+    href="http://example.org/tasks/1">
+      http://example.org/tasks/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex179-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Complete">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  has completed
+  &lt;a property="object"
+    href="http://example.org/tasks/1">
+      http://example.org/tasks/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex179-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="p-actor h-card u-url"
+    href="acct:sally@example.org">Sally&lt;/link>
+  has completed
+  &lt;a class="p-object h-item u-url"
+    href="http://example.org/tasks/1">
+      http://example.org/tasks/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="ex179-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Complete ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object &lt;http://example.org/tasks/1&gt;.</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the <code>actor</code> has completed the <code>object</code>.
             </td>
           </tr>
           <tr>
@@ -21517,6 +21605,11 @@ as:Collection a owl:Class ;
   rdfs:subClassOf prov:Collection ;
   owl:equivalentClass prov:Collection ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
+
+as:Complete a owl:Class ;
+  rdfs:label "Complete"@en;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor has completed the object"@en .
 
 as:Confirm a owl:Class ;
   rdfs:label "Confirm"@en ;
