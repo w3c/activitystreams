@@ -1084,6 +1084,7 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Give</a></code> |
         <code><a>Invite</a></code> |
         <code><a>Post</a></code> |
+        <code><a>Question</a></code> |
         <code><a>Reject</a></code> |
         <code><a>TentativeReject</a></code> |
         <code><a>Remove</a></code> |
@@ -1102,7 +1103,11 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Travel</a></code> |
         <code><a>Announce</a></code> |
         <code><a>Block</a></code> |
-        <code><a>Flag</a></code>
+        <code><a>Flag</a></code> |
+        <code><a>Dislike</a></code> |
+        <code><a>Confirm</a></code> |
+        <code><a>Reservation</a></code> |
+        <code><a>Assign</a></code>
       </p>
 
       <table>
@@ -5487,6 +5492,298 @@ _c:14n0 a as:Flag ;
           </tr>
         </tbody>
 
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Dislike</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Dislike</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex175-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex175-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex175-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex175-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex175-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex175-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Dislike",
+  "actor": "acct:sally@example.org",
+  "object": "http://example.org/posts/1"
+}</pre>
+</div>
+<div id="ex175-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Flag">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  dislikes
+  &lt;a itemprop="object" href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex175-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Flag">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  dislikes
+  &lt;a property="object" href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex175-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="p-actor h-card u-url"
+    href="acct:sally@example.org">Sally&lt;/link>
+  dislikes
+  &lt;a class="h-item u-url" href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="ex175-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Dislike ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object &lt;http://example.org/posts/1&gt; .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the <code>actor</code> dislikes the <code>object</code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Respond</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
+          </tr>
+        </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Confirm</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Confirm</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex176-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex176-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex176-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex176-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex176-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex176-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Confirm",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "@type": "Reservation",
+    "actor": "acct:sally@example.org",
+    "object": "http://example.org/events/1"
+  }
+}</pre>
+</div>
+<div id="ex176-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Confirm">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  confirmed
+  &lt;span itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Reservation">
+    &lt;link itemprop="actor"
+      href="acct:sally@example.org">her&lt;/link>
+    reservation for
+    &lt;a itemprop="object"
+      href="http://example.org/events/1">
+      "http://example.org/events/1"
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex176-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Confirm">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  confirmed
+  &lt;span property="object" typeof="Reservation">
+    &lt;link property="actor"
+      href="acct:sally@example.org">her&lt;/link>
+    reservation for
+    &lt;a property="object" 
+      href="http://example.org/events/1">
+      "http://example.org/events/1"
+    &lt;/a>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex176-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="p-actor h-card u-url"
+    href="acct:sally@example.org">Sally&lt;/link>
+  confirmed her reservation for
+  &lt;a class="p-object h-item u-url" href="http://example.org/posts/1">
+    http://example.org/events/1
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="ex176-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Confirm ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Reservation ;
+      as:actor &lt;acct:sally@example.org&gt; ;
+      as:object &lt;http://example.org/events/1&gt; .
+  ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the <code>actor</code> is confirming the <code>object</code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Respond</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
+          </tr>
+        </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Assign</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Assign</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex178-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex178-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex178-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex178-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex178-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex178-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Assign",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "@type": "Role",
+    "displayName": "Moderator"
+  },
+  "target": "acct:joe@example.org"
+}</pre>
+</div>
+<div id="ex178-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Confirm">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  assigned the role of
+  &lt;span itemprop="object" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Role">
+    &lt;span itemprop="displayName">Moderator&gt;/span>
+  &lt;/span>
+  to
+  &lt;link itemprop="target"
+    href="acct:joe@example.org">Joe&lt;/link>
+&lt;/div></pre>
+  </div>
+  <div id="ex178-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Assign">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  assigned the role of
+  &lt;span property="object" typeof="Role">
+    &lt;span property="displayName">Moderator&gt;/span>
+  &lt;/span>
+  to
+  &lt;link property="target"
+    href="acct:joe@example.org">Joe&lt;/link>
+&lt;/div></pre>
+  </div>
+  <div id="ex178-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="p-actor h-card u-url"
+    href="acct:sally@example.org">Sally&lt;/link>
+  assigned the role of
+  &lt;span class="p-object h-item p-name">
+    Moderator
+  &lt;/span>
+  to
+  &lt;link class="p-target h-card u-url"
+    href="acct:joe@example.org">Joe&lt;/link>
+&lt;/div></pre>
+  </div>
+<div id="ex178-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Assign ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Role ;
+      as:displayName "Moderator" .
+  ] ;
+  as:target &lt;acct:joe@example.org&gt;.</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the <code>actor</code> is assigning the <code>object</code>
+              to the <code>target</code>.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
       </table>
 
     </section>
@@ -5526,7 +5823,8 @@ _c:14n0 a as:Flag ;
         <code><a>PossibleAnswer</a></code> |
         <code><a>Question</a></code> |
         <code><a>Event</a></code> |
-        <code><a>Place</a></code>
+        <code><a>Place</a></code> |
+        <code><a>Reservation</a></code>
       </p>
 
       <table>
@@ -7900,6 +8198,115 @@ _c:14n0 a as:Place ;
               </p>
 
               Inherits all properties from <code><a>Object</a></code>.
+            </td>
+          </tr>
+        </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Reservation</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Reservation</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex177-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex177-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex177-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex177-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex177-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex177-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Reservation",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "@type": "Event",
+    "location": {
+      "@type": "Place",
+      "displayName": "Conference Room A"
+    }
+  }
+}</pre>
+</div>
+<div id="ex177-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope 
+  itemtype="http://www.w3.org/ns/activitystreams#Reservation">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  created a reservation for
+  &lt;span itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Event">
+    an event in
+    &lt;span itemprop="displayName">
+      Conference Room A
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex177-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" 
+  typeof="Reservation">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  created a reservation for
+  &lt;span property="object" typeof="Event">
+    an event in
+    &lt;span property="displayName">
+      Conference Room A
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex177-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;link class="p-actor h-card u-url"
+    href="acct:sally@example.org">Sally&lt;/link>
+  created a reservation for
+  &lt;span class="h-item">
+    an event in
+    &lt;span class="p-location h-item p-name">
+      Conference Room A
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+</div>
+<div id="ex177-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Reservation ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Event ;
+      as:location [
+        a as:Place ;
+          as:displayName "Conference Room A" .
+      ] .
+  ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Represents a reservation created on an object. A reservation is a special 
+              type of object that is also an Activity.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>
+              Inherits all properties from <code><a>Activity</a></code>.
             </td>
           </tr>
         </tbody>
@@ -21088,6 +21495,11 @@ as:Article a owl:Class ;
   rdfs:subClassOf as:Content ;
   rdfs:comment "A written work. Typically several paragraphs long. For example, a blog post or a news article."@en .
 
+as:Assign a owl:Class ;
+  rdfs:label "Assign"@en ;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor is assigning the object to the target"@en .
+
 as:Audio a owl:Class ;
   rdfs:label "Audio"@en ;
   rdfs:subClassOf as:Document ;
@@ -21105,6 +21517,11 @@ as:Collection a owl:Class ;
   rdfs:subClassOf prov:Collection ;
   owl:equivalentClass prov:Collection ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
+
+as:Confirm a owl:Class ;
+  rdfs:label "Confirm"@en ;
+  rdfs:subClassOf as:Respond ;
+  rdfs:comment "The actor is confirming the object"@en .
 
 as:Connect a owl:Class ;     
   rdfs:label "Connect"@en ;
@@ -21132,6 +21549,11 @@ as:Device a owl:Class ;
   rdfs:label "Device"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:comment "Represents a physical hardware devices of any sort"@en .
+
+as:Dislike a owl:Class ;
+  rdfs:label "Dislike"@en;
+  rdfs:subClassOf as:Respond ;
+  rdfs:comment "The actor dislikes the object"@en .
 
 as:Document a owl:Class ;
   rdfs:label "Document"@en ;
@@ -21253,6 +21675,11 @@ as:Read a owl:Class ;
   rdfs:label "Read"@en ;
   rdfs:subClassOf as:View ;
   rdfs:comment "The actor read the object"@en .
+
+as:Reservation a owl:Class ;
+  rdfs:label "Reservation"@en ;
+  rdfs:subClassOf as:Activity ;
+  rdfs:comment "The actor is creating a reservation for the object"@en ;
 
 as:Respond a owl:Class ;
   rdfs:label "Respond"@en ;
