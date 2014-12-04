@@ -20,6 +20,7 @@
     "Activity": "as:Activity",
     "ActivityHandler": "as:ActivityHandler",
     "Actor": "as:Actor",
+    "Achieve": "as:Achieve",
     "Add": "as:Add",
     "Album": "as:Album",
     "Announce": "as:Announce",
@@ -59,6 +60,7 @@
     "Leave": "as:Leave",
     "Like": "as:Like",
     "Link": "as:Link",
+    "Mention": "as:Mention",
     "Note": "as:Note",
     "Object": "as:Object",
     "Offer": "as:Offer",
@@ -82,6 +84,7 @@
     "Service": "as:Service",
     "Share": "as:Share",
     "Story": "as:Story",
+    "Tag": "as:Tag",
     "TentativeAccept": "as:TentativeAccept",
     "TentativeReject": "as:TentativeReject",
     "Undo": "as:Undo",
@@ -261,12 +264,12 @@
       "@id": "as:objectOf",
       "@type": "@id"
     },
-    "option": {
-      "@id": "as:option",
+    "oneOf": {
+      "@id": "as:oneOf",
       "@type": "@id"
     },
-    "optionOf": {
-      "@id": "as:optionOf",
+    "anyOf": {
+      "@id": "as:anyOf",
       "@type": "@id"
     },
     "origin": {
