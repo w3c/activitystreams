@@ -6007,7 +6007,6 @@ _c:14n0 a as:Achieve ;
         <code><a>Role</a></code> |
         <code><a>Service</a></code> |
         <code><a>Story</a></code> |
-        <code><a>Tag</a></code> |
         <code><a>Video</a></code>
       </p>
 
@@ -8553,79 +8552,6 @@ _c:14n0 a as:Mention ;
             <td >Notes:</td>
             <td>
               A specialized <code><a>Link</a></code> that represents an @mention.
-            </td>
-          </tr>
-          <tr>
-            <td >Extends:</td>
-            <td ><code><a>Link</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>
-              Inherits all properties from <code><a>Link</a></code>.
-            </td>
-          </tr>
-        </tbody>
-
-<tbody>
-          <tr>
-            <td rowspan="4" ><dfn>Tag</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#Tag</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex182-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex182-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex182-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex182-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex182-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex182-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Tag",
-  "href": "http://example.org/tags/example",
-  "displayName": "example"
-}</pre>
-</div>
-<div id="ex182-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;span itemscope 
-  itemtype="http://www.w3.org/ns/activitystreams#Tag">
-  &lt;a itemprop="href" href="http://example.org/tags/example">
-    #&lt;span itemprop="displayName">example&lt;/span>
-  &lt;/a>
-&lt;/span></pre>
-  </div>
-  <div id="ex182-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;span vocab="http://www.w3.org/ns/activitystreams#" 
-  typeof="Tag">
-  &lt;a property="href" href="http://example.org/tags/example">
-    #&lt;span property="displayName">example&lt;/span>
-  &lt;/a>
-&lt;/span></pre>
-  </div>
-  <div id="ex182-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;a rel="tag" href="http://example.org/tags/example">#example&lt;/a></pre>
-</div>
-<div id="ex182-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Tag ;
-  as:href &lt;http://example.org/tags/example&gt; ;
-  as:displayName "example" .</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td>
-              A specialized <code><a>Link</a></code> that represents a hashtag.
             </td>
           </tr>
           <tr>
@@ -22070,11 +21996,6 @@ as:Mention a owl:Class ;
   rdfs:label "Mention"@en ;
   rdfs:subClassOf as:Link ;
   rdfs:comment "A specialized Link that represents an @mention"@en .
-
-as:Tag a owl:Class ;
-  rdfs:label "Tag"@en ;
-  rdfs:subClassOf as:Link ;
-  rdfs:comment "A specialized Link tha represents a hashtag"@en .
 
 as:LinkNotHandler a owl:Class ;
   rdfs:label "Links that are Not Handlers"@en ;
