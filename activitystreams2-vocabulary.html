@@ -232,10 +232,12 @@
   </div>
   <div id="ex1-microformats" style="display: none;">
     <pre class="example highlight html"
->&lt;link href="urn:example:object:1" 
-  class="h-entry p-name" &gt;
-    A Simple, non-specific object
-&lt;/link&gt;</pre>
+>&lt;div class="h-entry">
+  &lt;link class="p-name u-url" 
+    href="urn:example:object:1">
+      A Simple, non-specific object
+  &lt;/link>
+&lt;/div></pre>
   </div>
   <div id="ex1-turtle" style="display: none;">
     <pre class="example highlight turtle"
@@ -351,14 +353,12 @@
   </div>
   <div id="ex2-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-item"
+>&lt;a class="h-entry u-url p-name"
     href="http://example.org/abc"
     hreflang="en"
     type="text/html">
-      &lt;span class="p-name">
-        An example link
-      &lt;/span>
-    &lt;/a></pre>
+    An example link
+&lt;/a></pre>
   </div>
   <div id="ex2-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -459,40 +459,40 @@ _:c14n0 a as:Link ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Activity">
-  &lt;meta itemscope
+  &lt;span itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemprop="actor">
-    &lt;meta itemprop="displayName">Sally&lt;/meta>
-  &lt;/meta> 
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span> 
   did something to
-  &lt;meta itemscope
+  &lt;span itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Note"
     itemprop="object">
-    &lt;meta itemprop="displayName">A Note&lt;/meta>
-  &lt;/meta>
+    &lt;span itemprop="displayName">A Note&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div> 
   <div id="ex3-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Activity">
-  &lt;meta typeof="Person" property="actor">
-    &lt;meta property="displayName">Sally&lt;/meta>
-  &lt;/meta> 
+  &lt;span typeof="Person" property="actor">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span> 
   did something to
-  &lt;meta typeof="Note" property="object">
-    &lt;meta property="displayName">A Note&lt;/meta>
-  &lt;/meta>
+  &lt;span typeof="Note" property="object">
+    &lt;span property="displayName">A Note&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div> 
   <div id="ex3-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-activity">
-  &lt;meta class="p-author h-card">
-    &lt;meta class="p-name">Sally&lt;/meta>
-  &lt;/meta> 
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span> 
   did something to
-  &lt;span class="h-item">
+  &lt;span class="p-item h-entry">
     &lt;span class="p-name">A Note&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -562,13 +562,13 @@ _:c14n0 a as:Activity ;
           <td rowspan="4" >
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex3-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex3-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex3-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex3-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex3-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex182-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex182-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex182-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex182-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex182-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex3-jsonld" style="display: block;">
+  <div id="ex182-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Travel",
@@ -582,10 +582,10 @@ _:c14n0 a as:Activity ;
   }
 }</pre>
   </div>  
-  <div id="ex3-microdata" style="display: none;">
+  <div id="ex182-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Activity">
+  itemtype="http://www.w3.org/ns/activitystreams#Travel">
   &lt;meta itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemprop="actor">
@@ -599,7 +599,7 @@ _:c14n0 a as:Activity ;
   &lt;/meta>
 &lt;/div></pre>
   </div> 
-  <div id="ex3-rdfa" style="display: none;">
+  <div id="ex182-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Travel">
@@ -612,19 +612,19 @@ _:c14n0 a as:Activity ;
   &lt;/meta>
 &lt;/div></pre>
   </div> 
-  <div id="ex3-microformats" style="display: none;">
+  <div id="ex182-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-activity">
+>&lt;div class="h-travel">
   &lt;meta class="p-author h-card">
     &lt;meta class="p-name">Sally&lt;/meta>
   &lt;/meta> 
   is traveling to
-  &lt;span class="h-item">
+  &lt;span class="p-as-target h-geo">
     &lt;span class="p-name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div> 
-  <div id="ex3-turtle" style="display: none;">
+  <div id="ex182-turtle" style="display: none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
@@ -814,20 +814,14 @@ _:c14n0 a as:Actor ;
   </div>
   <div id="ex5-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;ul>
-    &lt;li class="p-items h-entry">
-      &lt;span class="p-name">
-        A Simple Note
-      &lt;/span>
-    &lt;/li>
-    &lt;li class="p-items h-entry">
-      &lt;span class="p-name">
-        Another Simple Note
-      &lt;/span>
-    &lt;/li>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;ul class="p-as-items">
+    &lt;li class="h-entry p-name">A Simple Note&lt;/li>
+    &lt;li class="h-entry p-name">Another Simple Note&lt;/li>
   &lt;/ul>
 &lt;/div></pre>
   </div>
@@ -964,21 +958,16 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex6-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;meta class="p-startIndex" content="0" /&gt;
-  &lt;ol>
-    &lt;li class="p-items h-entry">
-      &lt;span class="p-name">
-        A Simple Note
-      &lt;/span>
-    &lt;/li>
-    &lt;li class="p-items h-entry">
-      &lt;span class="p-name">
-        Another Simple Note
-      &lt;/span>
-    &lt;/li>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;meta class="p-as-start-index" name="startIndex" 
+    content="0" /&gt;
+  &lt;ol class="p-as-items">
+    &lt;li class="h-entry p-name">A Simple Note&lt;/li>
+    &lt;li class="h-entry p-name">Another Simple Note&lt;/li>
   &lt;/ol>
 &lt;/div></pre>
   </div>
@@ -1200,16 +1189,16 @@ _c:14n0 a as:OrderedCollection ;
   </div>
   <div id="ex7-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
+>&lt;div class="h-as-accept">
   &lt;span class="p-author h-card" >
     &lt;span class="p-name">Sally&lt;/span>
   &lt;span> 
   accepted 
-  &lt;span class="p-object h-invite">
-    &lt;link class="p-author u-url" 
+  &lt;span class="p-item h-as-invite">
+    &lt;link class="u-author" 
       href="acct:john@example.org">John's&lt;/link> 
       invitation to 
-    &lt;span class="h-event">
+    &lt;span class="p-item h-event">
       &lt;span class="p-name">
         A Party!
       &lt;/span>
@@ -1339,17 +1328,17 @@ _c:14n0 a as:Accept ;
   </div>
   <div id="ex8-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
+>&lt;div class="h-as-tentativeaccept">
   &lt;span class="p-author h-card" >
     &lt;span class="p-name">Sally&lt;/span>
   &lt;span> 
   tentatively accepted 
-  &lt;span class="p-object h-entry">
-    &lt;link class="p-author u-url" 
+  &lt;span class="p-item h-as-invite">
+    &lt;link class="u-author" 
       href="acct:john@example.org">John's&lt;/link> 
       invitation to 
-    &lt;span class="h-event p-name">
-      A Party!
+    &lt;span class="p-item h-event">
+      &lt;span class="p-name">A Party!&lt;/span>
     &lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -1445,14 +1434,16 @@ _c:14n0 a as:TentativeAccept ;
   </div>
   <div id="ex9-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card>
+>&lt;div class="h-as-add">
+  &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   added
-  &lt;a class="h-item u-url" 
-    href="http://example.org/abc">
-    "http://example.org/abc"&lt;/a>
+  &lt;span class="p-item h-entry">
+    &lt;a class="u-url" 
+      href="http://example.org/abc">
+      "http://example.org/abc"&lt;/a>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex9-turtle" style="display: none;">
@@ -1534,14 +1525,17 @@ _c:14n0 a as:Add ;
   </div>
   <div id="ex10-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-add">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   added
-  &lt;a class="h-item u-url" 
-    href="http://example.org/abc">
-    "http://example.org/abc"&lt;/a>
+  &lt;span class="p-item h-entry">
+    &lt;a class="u-url"  href="http://example.org/abc">
+      "http://example.org/abc"&lt;/a>
+  &lt;/span>
   to
-  &lt;span class="p-target h-item">
+  &lt;span class="p-as-target h-entry">
     "&lt;span class="p-name">My Cat Pictures&lt;/span>"
   &lt;/span>
 &lt;/div></pre>
@@ -1654,12 +1648,18 @@ _c:14n0 a as:Add ;
   </div>
   <div id="ex11-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-arrive">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;;
   arrived at
-  &lt;span class="h-item p-name">Work&lt;/span>
+  &lt;span class="p-as-target h-geo">
+    &lt;span class="p-name">Work&lt;/span>
+  &lt;/span>
   from
-  &lt;span class="h-item p-name">Home&lt;/span>
+  &lt;span class="p-as-origin h-geo">
+    &lt;span class="p-name">Home&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex11-turtle" style="display: none;">
@@ -1767,14 +1767,16 @@ _c:14n0 a as:Arrive ;
   </div>
   <div id="ex12-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-create">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   created
-  &lt;span class="h-item">
+  &lt;span class="p-item h-entry">
     a note titled 
     "&lt;span class="p-name">A Simple Note&lt;/span>"
     with content
-    "&lt;span class="e-description">This is a simple note&lt;/span>""
+    "&lt;span class="e-content">This is a simple note&lt;/span>""
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -1872,13 +1874,17 @@ _c:14n0 a as:Create ;
   </div>
   <div id="ex13-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-delete">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   deleted
-  &lt;a class="h-item u-url" 
-    href="http://example.org/notes/1">
-    http://example.org/notes/1
-  &lt;/a>
+  &lt;span class="p-item h-entry">
+    &lt;a class="u-url" 
+      href="http://example.org/notes/1">
+      http://example.org/notes/1
+    &lt;/a>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex13-turtle" style="display: none;">
@@ -1968,10 +1974,12 @@ _c:14n0 a as:Delete ;
   </div>
   <div id="ex14-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-favorite">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   favorited
-  &lt;a class="h-item u-url" 
+  &lt;a class="u-favorite-of" 
     href="http://example.org/notes/1">
     http://example.org/notes/1
   &lt;/a>
@@ -2069,10 +2077,14 @@ _c:14n0 a as:Favorite ;
   </div>
   <div id="ex15-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-follow">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   followed
-  &lt;span class="h-card p-name">John&lt;/span>
+  &lt;span class="p-item h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex15-turtle" style="display: none;">
@@ -2167,10 +2179,12 @@ _c:14n0 a as:Follow ;
   </div>
   <div id="ex16-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
-    is ignoring
-  &lt;a class="h-item" href="http://example.org/notes/1">
+>&lt;div class="h-as-ignore">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
+  is ignoring
+  &lt;a class="p-item" href="http://example.org/notes/1">
     http://example.org/notes/1
   &lt;/a>
 &lt;/div></pre>
@@ -2264,9 +2278,13 @@ _c:14n0 a as:Ignore ;
   <div id="ex17-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   joined
-  &lt;span class="h-item p-name">A Simple Group&lt;/span>
+  &lt;span class="p-item h-as-group">
+    &lt;span class="p-name">A Simple Group&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex17-turtle" style="display: none;">
@@ -2360,10 +2378,14 @@ _c:14n0 a as:Join ;
   </div>
   <div id="ex18-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-leave">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   left
-  &lt;span class="h-item p-name">Work&lt;/span>
+  &lt;span class="p-item h-geo">
+    &lt;span class="p-name">Work&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex18-turtle" style="display: none;">
@@ -2434,10 +2456,14 @@ _c:14n0 a as:Leave ;
   </div>
   <div id="ex19-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-leave">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   left
-  &lt;span class="h-item p-name">A Simple Group&lt;/span>
+  &lt;span class="p-item h-as-group">
+    &lt;span class="p-name">A Simple Group&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex19-turtle" style="display: none;">
@@ -2529,10 +2555,12 @@ _c:14n0 a as:Leave ;
   </div>
   <div id="ex20-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-like">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   liked
-  &lt;a class="h-item"
+  &lt;a class="u-like-of"
     href="http://example.org/notes/1">
     http://example.org/notes/1
   &lt;/a>
@@ -2634,10 +2662,14 @@ _c:14n0 a as:Like ;
   </div>
   <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-offer">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   is offering
-  &lt;span class="h-item p-name">50% Off!&lt;/span>
+  &lt;span class="p-item h-entry">
+    &lt;span class="p-name">50% Off!&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex21-turtle" style="display: none;">
@@ -2732,10 +2764,14 @@ _c:14n0 a as:Offer ;
   </div>
   <div id="ex22-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-connect">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   wants to create a connection with
-  &lt;span class="h-card p-name">John&lt;/span>
+  &lt;span class="p-item h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex22-turtle" style="display: none;">
@@ -2830,9 +2866,13 @@ _c:14n0 a as:Connect ;
   <div id="ex22-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   wants to be friends with
-  &lt;span class="h-card p-name">John&lt;/span>
+  &lt;span class="p-item h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex22-turtle" style="display: none;">
@@ -2940,12 +2980,18 @@ _c:14n0 a as:FriendRequest ;
   </div>
   <div id="ex23-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-give">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   gave
-  &lt;span class="h-item p-name">A Present&lt;/span>
+  &lt;span class="p-item h-entry">
+    &lt;span class="p-name">A Present&lt;/span>
+  &lt;/span>
   to
-  &lt;span class="h-item p-name">John&lt;/span>
+  &lt;span class="p-as-target h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex23-turtle" style="display: none;">
@@ -3066,14 +3112,22 @@ _c:14n0 a as:Give ;
   </div>
   <div id="ex24-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-invite">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   invited
-  &lt;span class="h-card p-name">John&lt;/span>
+  &lt;span class="p-as-target h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
   and
-  &lt;span class="h-card p-name">Lisa&lt;/span>
+  &lt;span class="p-as-target h-card">
+    &lt;span class="p-name">Lisa&lt;/span>
+  &lt;/span>
   to
-  &lt;span class="h-event p-name">A Party&lt;/span>
+  &lt;span class="p-item h-event">
+    &lt;span class="p-name">A Party&lt;/span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex24-turtle" style="display: none;">
@@ -3184,14 +3238,16 @@ _c:14n0 a as:Invite ;
   </div>
   <div id="ex25-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-post">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   published
-  &lt;span class="h-item">
+  &lt;span class="p-item h-entry">
     a note titled 
     "&lt;span class="p-name">A Simple Note&lt;/span>"
     with content
-    "&lt;span class="e-description">This is a simple note&lt;/span>""
+    "&lt;span class="e-content">This is a simple note&lt;/span>""
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -3315,17 +3371,19 @@ _c:14n0 a as:Post ;
   </div>
   <div id="ex26-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;span class="p-author h-card" >
+>&lt;div class="h-as-reject">
+  &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
-  &lt;span> 
+  &lt;/span>
   rejected 
-  &lt;span class="p-object h-invite">
-    &lt;link class="p-author u-url" 
-      href="acct:john@example.org">John's&lt;/link> 
-      invitation to 
-    &lt;span class="h-event p-name">
-      A Party!
+  &lt;span class="p-item h-as-invite">
+    &lt;span class="p-author h-card">
+      &lt;link class="u-url" 
+        href="acct:john@example.org">John's&lt;/link> 
+    &lt;/span>
+    invitation to 
+    &lt;span class="p-item h-event">
+      &lt;span class="p-name">A Party!&lt;/span>
     &lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -3449,17 +3507,19 @@ _c:14n0 a as:Reject ;
   </div>
   <div id="ex27-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
+>&lt;div class="h-as-tentativereject">
   &lt;span class="p-author h-card" >
     &lt;span class="p-name">Sally&lt;/span>
   &lt;span> 
   tentatively rejected 
-  &lt;span class="p-object h-invite">
-    &lt;link class="p-author u-url" 
-      href="acct:john@example.org">John's&lt;/link> 
-      invitation to 
-    &lt;span class="h-event p-name">
-      A Party!
+  &lt;span class="p-item h-as-invite">
+    &lt;span class="p-author h-card">
+      &lt;link class="u-url" 
+        href="acct:john@example.org">John's&lt;/link> 
+    &lt;/span>
+    invitation to 
+    &lt;span class="p-item h-event">
+      &lt;span class="p-name">A Party!&lt;/span>
     &lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -3579,17 +3639,19 @@ _c:14n0 a as:TentativeReject ;
   </div>
   <div id="ex28-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
+>&lt;div class="h-as-remove">
   &lt;span class="p-author h-card" >
     &lt;span class="p-name">Sally&lt;/span>
   &lt;span> 
   removed
-  &lt;a class="h-item"
+  &lt;a class="u-item"
     href="http://example.org/notes/1">
     http://example.org/notes/1
   &lt;/a>
   from 
-  &lt;span class="h-item p-name">Notes Folder&lt;span>
+  &lt;span class="p-as-origin h-entry">
+    &lt;span>Notes Folder&lt;span>
+  &lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex28-turtle" style="display: none;">
@@ -3687,17 +3749,19 @@ _c:14n0 a as:Remove ;
   </div>
   <div id="ex29-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
+>&lt;div class="h-as-remove">
   &lt;span class="p-author h-card" >
     &lt;span class="p-name">The Moderator&lt;/span>
   &lt;span> 
   removed
-  &lt;span class="p-author h-card" >
+  &lt;span class="p-item h-card" >
     &lt;span class="p-name">Sally&lt;/span>
   &lt;span> 
   from 
-  &lt;span class="h-item p-name">
-    A Simple Group
+  &lt;span class="p-as-origin h-as-group">
+    &lt;span class="p-name">
+      A Simple Group
+    &lt;/span>
   &lt;span>
 &lt;/div></pre>
   </div>
@@ -3798,13 +3862,14 @@ _c:14n0 a as:Remove ;
   </div>
   <div id="ex160-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-review">
+  &lt;span class="p-author h-card" >
+    &lt;link class="u-url" href="acct:sally@example.org">
+      The Moderator
+    &lt;/link>
+  &lt;span> 
   reviewed
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
@@ -3918,16 +3983,18 @@ _c:14n0 a as:Review ;
   </div>
   <div id="ex30-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;span class="h-card p-name">Sally&lt;span> 
+>&lt;div class="h-as-save">
+  &tl;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;span> 
+  &lt;/span>
   saved
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   to 
-  &lt;span class="h-item p-name">
-    Sally's Reading List
+  &lt;span class="p-as-target h-as-collection">
+    &lt;span class="p-name">Sally's Reading List&lt;span>
   &lt;span>
 &lt;/div></pre>
   </div>
@@ -4033,21 +4100,17 @@ _c:14n0 a as:Save ;
   </div>
   <div id="ex31-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-as-share">
+  &lt;link class="p-author" 
+    href="acct:sally@example.org">Sally&lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      John
-  &lt;link> 
+  &lt;link class="u-as-target"
+    href="acct:sally@example.org">John&lt;link> 
 &lt;/div></pre>
   </div>
   <div id="ex31-turtle" style="display: none;">
@@ -4161,20 +4224,19 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex32-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
+>&lt;div class="h-as-undo">
+  &lt;link class="u-author"href="acct:sally@example.org">
     Sally
   &lt;/link>
   stopped
-  &lt;span class="h-entry">
+  &lt;span class="h-as-share">
     sharing
-    &lt;a class="h-item u-url"
+    &lt;a class="u-item"
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     with
-    &lt;link class="h-card u-url"
+    &lt;link class="u-as-target"
       href="acct:john@example.org">
       John
     &lt;/link>
@@ -4270,10 +4332,12 @@ _c:14n0 a as:Undo ;
   </div>
   <div id="ex33-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-update">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   updated
-  &lt;a class="h-item u-url" 
+  &lt;a class="u-item" 
     href="http://example.org/notes/1">
     http://example.org/notes/1
   &lt;/a>
@@ -4373,10 +4437,12 @@ _c:14n0 a as:Update ;
   </div>
   <div id="ex160-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-experience">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   experienced
-  &lt;span class="p-object h-entry">
+  &lt;span class="p-item h-entry">
     "&lt;span class="p-name">
       An article about Activity Streams
     &lt;span>"
@@ -4479,10 +4545,12 @@ _c:14n0 a as:Experience ;
   </div>
   <div id="ex161-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-view">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   viewed
-  &lt;span class="p-object h-entry">
+  &lt;span class="p-item h-entry">
     "&lt;span class="p-name">
       An article about Activity Streams
     &lt;span>"
@@ -4579,10 +4647,12 @@ _c:14n0 a as:View ;
   </div>
   <div id="ex162-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-watch">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   watched
-  &lt;a class="p-object h-item" href="http://example.org/dog.mkv">
+  &lt;a class="u-item" href="http://example.org/dog.mkv">
     "http://example.org/dog.mkv"
   &lt;/a>
 &lt;/div></pre>
@@ -4674,10 +4744,12 @@ _c:14n0 a as:Watch ;
   </div>
   <div id="ex163-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-listen">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   listened to
-  &lt;a class="p-object h-item" href="http://example.org/music.mp3">
+  &lt;a class="u-item" href="http://example.org/music.mp3">
     "http://example.org/music.mp3"
   &lt;/a>
 &lt;/div></pre>
@@ -4756,7 +4828,7 @@ _c:14n0 a as:Listen ;
   <div id="ex164-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Listen">
+  typeof="Read">
   &lt;span property="actor" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
@@ -4769,10 +4841,12 @@ _c:14n0 a as:Listen ;
   </div>
   <div id="ex164-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-read">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   read
-  &lt;a class="p-object h-item" href="http://example.org/posts/1">
+  &lt;a class="u-item" href="http://example.org/posts/1">
     "http://example.org/posts/1"
   &lt;/a>
 &lt;/div></pre>
@@ -4880,16 +4954,18 @@ _c:14n0 a as:Read ;
   </div>
   <div id="ex165-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-respond">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   responded to
-  &lt;a class="u-in-reply-to h-item" href="http://example.org/posts/1">
+  &lt;a class="u-in-reply-to" href="http://example.org/posts/1">
     "http://example.org/posts/1"
   &lt;/a>
   with
-  &lt;span class="p-result h-entry">
+  &lt;span class="p-as-result h-entry">
     &lt;link class="u-in-reply-to" href="http://example.org/posts/1" />
-    "&lt;span class="e-summary">This is a good article&lt;/span>"
+    "&lt;span class="e-content">This is a good article&lt;/span>"
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -5010,18 +5086,20 @@ _c:14n0 a as:Respond ;
   </div>
   <div id="ex168-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-move">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   moved
-  &lt;a class="u-in-reply-to h-item" href="http://example.org/posts/1">
+  &lt;a class="u-item" href="http://example.org/posts/1">
     "http://example.org/posts/1"
   &lt;/a>
   from
-  &lt;span class="p-origin h-item">
+  &lt;span class="p-as-origin h-entry">
     &lt;span class="p-name">List A&lt;/span>
   &lt;/span>
   to
-  &lt;span class="p-target h-item">
+  &lt;span class="p-as-target h-entry">
     &lt;span class="p-name">List B&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -5138,14 +5216,16 @@ _c:14n0 a as:Move ;
   </div>
   <div id="ex169-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-travel">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   is traveling to
-  &lt;span class="p-target h-item">
+  &lt;span class="p-as-target h-geo">
     &lt;span class="p-name">Home&lt;/span>
   &lt;/span>
   from
-  &lt;span class="p-origin h-item">
+  &lt;span class="p-as-origin h-geo">
     &lt;span class="p-name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -5264,12 +5344,14 @@ _c:14n0 a as:Travel ;
   </div>
   <div id="ex170-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-name">Sally&lt;/span>
+>&lt;div class="h-as-announce">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   announced
-  &lt;span class="h-entry"> 
+  &lt;span class="p-item h-as-arrive"> 
     her arrival at 
-    &lt;span class="p-target h-item p-name">work&lt;/span>
+    &lt;span class="p-location h-geo">work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -5357,11 +5439,11 @@ _c:14n0 a as:Announce ;
   </div>
   <div id="ex173-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-block">
+  &lt;link class="u-actor"
     href="acct:sally@example.org">Sally&lt;/link>
   blocked
-  &lt;link class="p-object h-card u-url"
+  &lt;link class="u-item"
     href="acct:joe@example.org">Joe&lt;/link>
 &lt;/div></pre>
   </div>
@@ -5452,13 +5534,13 @@ _c:14n0 a as:Block ;
   </div>
   <div id="ex174-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-flag">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   flagged
-  "&lt;span class="p-object h-item e-content">
-    An inappropriate note
-  &lt;/span>"
+  &lt;span class="p-item h-entry">
+    "&lt;span class="e-content">An inappropriate note&lt;/span>"
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex174-turtle" style="display: none;">
@@ -5518,7 +5600,7 @@ _c:14n0 a as:Flag ;
 <div id="ex175-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Flag">
+  itemtype="http://www.w3.org/ns/activitystreams#Dislike">
   &lt;link itemprop="actor"
     href="acct:sally@example.org">Sally&lt;/link>
   dislikes
@@ -5530,7 +5612,7 @@ _c:14n0 a as:Flag ;
   <div id="ex175-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Flag">
+  typeof="Dislike">
   &lt;link property="actor"
     href="acct:sally@example.org">Sally&lt;/link>
   dislikes
@@ -5541,11 +5623,11 @@ _c:14n0 a as:Flag ;
   </div>
   <div id="ex175-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-dislike">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   dislikes
-  &lt;a class="h-item u-url" href="http://example.org/posts/1">
+  &lt;a class="u-dislike-of" href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
 &lt;/div></pre>
@@ -5642,11 +5724,11 @@ _c:14n0 a as:Dislike ;
   </div>
   <div id="ex176-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-confirm">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   confirmed her reservation for
-  &lt;a class="p-object h-item u-url" href="http://example.org/posts/1">
+  &lt;a class="u-item" href="http://example.org/posts/1">
     http://example.org/events/1
   &lt;/a>
 &lt;/div></pre>
@@ -5741,15 +5823,15 @@ _c:14n0 a as:Confirm ;
   </div>
   <div id="ex178-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-assign">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   assigned the role of
-  &lt;span class="p-object h-item p-name">
-    Moderator
+  &lt;span class="p-item h-entry">
+    &lt;span class="p-name">Moderator&lt;/span>
   &lt;/span>
   to
-  &lt;link class="p-target h-card u-url"
+  &lt;link class="u-target"
     href="acct:joe@example.org">Joe&lt;/link>
 &lt;/div></pre>
   </div>
@@ -5835,11 +5917,11 @@ _c:14n0 a as:Assign ;
   </div>
   <div id="ex179-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-complete">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   has completed
-  &lt;a class="p-object h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/tasks/1">
       http://example.org/tasks/1
   &lt;/a>
@@ -5926,12 +6008,12 @@ _c:14n0 a as:Complete ;
   </div>
   <div id="ex180-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-achieve">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   has achieved 
-  &lt;span class="p-object h-item p-name">
-    Top Contributor
+  &lt;span class="p-item h-entry">
+    &lt;span class="p-name">Top Contributor&lt;/span>
   &lt;/span> 
   status
 &lt;/div></pre>
@@ -6055,7 +6137,7 @@ _c:14n0 a as:Achieve ;
   </div>
   <div id="ex34-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">My Software Application&lt;/div></pre>
+>&lt;div class="h-as-application p-name">My Software Application&lt;/div></pre>
   </div>
 <div id="ex34-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6133,7 +6215,7 @@ _c:14n0 a as:Application ;
   </div>
   <div id="ex35-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item" style="width:100px; height:100px">
+>&lt;div class="h-entry" style="width:100px; height:100px">
   &lt;div property="p-name">Some generic content&lt;/div>
   &lt;div property="e-content">
     &lt;p>This can be any kind of content&lt;/p>
@@ -6219,7 +6301,7 @@ _c:14n0 a as:Content ;
   </div>
   <div id="ex36-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">My Android Phone&lt;/div></pre>
+>&lt;div class="h-as-device p-name">My Android Phone&lt;/div></pre>
   </div>
 <div id="ex36-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6284,7 +6366,7 @@ _c:14n0 a as:Device ;
   </div>
   <div id="ex37-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">A Simple Group&lt;/div></pre>
+>&lt;div class="h-as-group p-name">A Simple Group&lt;/div></pre>
   </div>
 <div id="ex37-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6348,7 +6430,7 @@ _c:14n0 a as:Group ;
   </div>
   <div id="ex38-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">Acme, Inc.&lt;/div></pre>
+>&lt;div class="h-org p-name">Acme, Inc.&lt;/div></pre>
   </div>
 <div id="ex38-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6476,7 +6558,7 @@ _c:14n0 a as:Person ;
   </div>
   <div id="ex40-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">A Long Running Process&lt;/div></pre>
+>&lt;div class="h-as-process p-name">A Long Running Process&lt;/div></pre>
   </div>
 <div id="ex40-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6541,7 +6623,7 @@ _c:14n0 a as:Process ;
   </div>
   <div id="ex41-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-card p-name">The Moderator&lt;/div></pre>
+>&lt;div class="h-card p-role">The Moderator&lt;/div></pre>
   </div>
 <div id="ex41-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6605,7 +6687,7 @@ _c:14n0 a as:Role ;
   </div>
   <div id="ex42-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">Acme Web Service&lt;/div></pre>
+>&lt;div class="h-as-service p-name">Acme Web Service&lt;/div></pre>
   </div>
 <div id="ex42-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -6683,8 +6765,10 @@ _c:14n0 a as:Service ;
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;h2 class="p-name">A Blog Post&lt;/h2>
-  &lt;div>By &lt;a class="p-author h-card u-url" 
-    href="acct:sally@example.org">Sally&lt;/a>&lt;/div>
+  &lt;div class="p-author h-card">
+    By &lt;a class="p-name u-url" 
+    href="acct:sally@example.org">Sally&lt;/a>
+  &lt;/div>
   &lt;section class="e-content"
     &lt;div>... a long blog post&lt;/div>
   &lt;/section>
@@ -6809,21 +6893,21 @@ _c:14n0 a as:Article ;
   </div>
   <div id="ex44-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-album">
   &lt;h2 class="p-name">A Photo Album&lt;/h2>
-  &lt;figure class="h-item">
+  &lt;figure class="p-as-items h-entry">
     &lt;figcaption class="p-name">
       My Dog
     &lt;/figcaption>
-    &lt;img class="p-photo"
+    &lt;img class="u-photo"
       src="http://example.org/dog.jpeg"
       type="image/jpeg" />
   &lt;/figure>
-  &lt;figure class="h-item">
+  &lt;figure class="p-as-items h-entry">
     &lt;figcaption class="p-name">
       My Cat
     &lt;/figcaption>
-    &lt;img class="p-photo"
+    &lt;img class="u-photo"
       src="http://example.org/cat.jpeg"
       type="image/jpeg" />
   &lt;/figure>
@@ -6941,16 +7025,16 @@ _c:14n0 a as:Album ;
   </div>
   <div id="ex45-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-album">
   &lt;h2 class="p-name">A Music Playlist&lt;/h2>
-  &lt;ol&gt;
-    &lt;li class="h-item">
+  &lt;ol class="p-as-items"&gt;
+    &lt;li class="h-entry">
       &lt;span class="p-name">Song 1&lt;/span> -
       &lt;a class="u-url"
         href="http://example.org/song1.mp3"
         type="audio/mp3">Listen&lt;/a>
     &lt;/li>
-    &lt;li class="h-item">
+    &lt;li class="h-entry">
       &lt;span class="p-name">Song 2&lt;/span> -
       &lt;a class="u-url"
         href="http://example.org/song2.mp3"
@@ -7069,13 +7153,14 @@ _c:14n0 a as:Album ;
   </div>
   <div id="ex46-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-folder">
   &lt;h2 class="p-name">Some Documents&lt;/h2>
-  &lt;ul&gt;
-    &lt;li class="h-item">
-      &lt;span class="p-name">4Q Sales Forecast&lt;/span> -
-      &lt;a class="u-url"
-        href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
+  &lt;ul class="p-as-items"&gt;
+    &lt;li class="h-entry">
+      &lt;a class="u-url p-name"
+        href="http://example.org/4q-sales-forecast.pdf">
+        4Q Sales Forecast
+        &lt;/a>
     &lt;/li>
   &lt;/ul&gt;
 &lt;/div></pre>
@@ -7224,20 +7309,20 @@ _c:14n0 a as:Folder ;
   </div>
   <div id="ex47-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-story">
   &lt;h2 class="p-name">My Vacation&lt;/h2>
-  &lt;figure class="h-item">
+  &lt;figure class="p-as-items h-entry">
     &lt;figcaption class="p-name"&gt;
       Visiting the Vatican
     &lt;/figcaption&gt;
-    &lt;img class="p-photo" 
+    &lt;img class="u-photo" 
       href="http://example.org/photo5.jpeg" />
   &lt;/figure>
-  &lt;figure class="h-item">
+  &lt;figure class="p-as-items h-entry">
     &lt;figcaption class="p-name"&gt;
       Visiting the Eiffel Tower
     &lt;/figcaption&gt;
-    &lt;img class="p-photo"
+    &lt;img class="u-photo"
       href="http://example.org/photo6.jpeg" />
   &lt;/figure>
 &lt;/div></pre>
@@ -7335,7 +7420,7 @@ _c:14n0 a as:Story ;
   </div>
   <div id="ex48-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-document">
 &lt;span class="p-name">4Q Sales Forecast&lt;/span> -
   &lt;a class="u-url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
@@ -7417,7 +7502,7 @@ _c:14n0 a as:Document ;
   </div>
   <div id="ex49-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-audio">
 &lt;span class="p-name">A Simple Podcast&lt;/span> -
   &lt;a class="u-url"
     href="http://example.org/podcast.mp3"
@@ -7518,7 +7603,7 @@ _c:14n0 a as:Audio ;
   </div>
   <div id="ex50-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-image">
 &lt;span class="p-name">A Simple Image&lt;/span> -
   &lt;a class="u-url"
     href="http://example.org/image.jpeg"
@@ -7611,9 +7696,10 @@ _c:14n0 a as:Image ;
   </div>
   <div id="ex51-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-video">
 &lt;span class="p-name">A Simple Video&lt;/span>
-  &lt;meta class="p-duration" content="PT2H">(2 hours)&lt;meta> -
+  &lt;meta class="p-as-duration" name="duration"
+    content="PT2H">(2 hours)&lt;meta> -
   &lt;a class="u-url"
     href="http://example.org/video.mkv">Watch&lt;a>
 &lt;/div></pre>
@@ -7691,7 +7777,7 @@ _c:14n0 a as:Video ;
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;h2 class="p-name">A Short Note&lt;/h2>
-  &lt;section class="e-summary">
+  &lt;section class="e-content">
     This is a short note
   &lt;/section>
 &lt;/div></pre>
@@ -7766,7 +7852,7 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex53-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;a class="u-url p-name" 
     href="http://example.org/page.html">A Webpage&lt;/a>
 &lt;/div></pre>
@@ -7886,16 +7972,16 @@ _c:14n0 a as:Page ;
   </div>
   <div id="ex54-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-question">
   &lt;h2 class="p-name">
     What is the answer?
   &lt;/h2>
-  &lt;ul&gt;
-    &lt;li class="h-item"&gt;
+  &lt;ul class="p-as-one-of"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option A&lt;/span&gt;
       &lt;meta name="shape" content="A" />
     &lt;/li&gt;
-    &lt;li class="h-item"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option B&lt;/span&gt;
       &lt;meta name="shape" content="B" />
     &lt;/li&gt;
@@ -8034,16 +8120,16 @@ _c:14n0 a as:Question ;
   </div>
   <div id="ex55-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-question">
   &lt;h2 class="p-name">
     What is the answer?
   &lt;/h2>
-  &lt;ul&gt;
-    &lt;li class="h-item"&gt;
+  &lt;ul class="p-as-one-of"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option A&lt;/span&gt;
       &lt;meta name="shape" content="A" />
     &lt;/li&gt;
-    &lt;li class="h-item"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option B&lt;/span&gt;
       &lt;meta name="shape" content="B" />
     &lt;/li&gt;
@@ -8234,7 +8320,7 @@ _c:14n0 a as:Event ;
   </div>
   <div id="ex57-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item p-name">Work&lt;/div></pre>
+>&lt;div class="h-geo p-name">Work&lt;/div></pre>
   </div>
 <div id="ex57-turtle" style="display: none;">
 <pre class="example highlight turtle">
@@ -8318,7 +8404,7 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex58-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Fresno Area&lt;/td>
@@ -8333,11 +8419,11 @@ _c:14n0 a as:Place ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Radius&lt;/td>
-    &lt;td class="p-radius">15&lt;/td>
+    &lt;td class="p-as-radius">15&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Units&lt;/td>
-    &lt;td class="p-units">miles&lt;/td>
+    &lt;td class="p-as-units">miles&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -8445,14 +8531,14 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex177-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-reservation">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   created a reservation for
-  &lt;span class="h-item">
+  &lt;span class="p-item h-entry">
     an event in
-    &lt;span class="p-location h-item p-name">
-      Conference Room A
+    &lt;span class="p-location h-geo">
+      &lt;span class="p-name">Conference Room A&lt;/span>
     &lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -8732,11 +8818,11 @@ _c:14n0 a as:Mention ;
   </div>
   <div id="ex59-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;link class="p-author h-card p-name" 
+>&lt;div class="h-as-share">
+  &lt;link class="u-author 
     href="acct:sally@example.org">Sally&lt;/link>
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/foo">
     http://example.org/foo
   &lt;/a>
@@ -8806,11 +8892,12 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex60-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;link class="p-author h-card" 
-    href="acct:sally@example.org">Sally&lt;/link>
+>&lt;div class="h-as-share">
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/foo">
     http://example.org/foo
   &lt;/a>
@@ -8891,14 +8978,16 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex61-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;link class="p-author h-card" 
+>&lt;div class="h-as-share">
+  &lt;link class="u-author" 
     href="acct:joe@example.org">Joe&lt;/link> 
   and 
-  &lt;link class="p-author h-card" 
-    href="acct:sally@example.org">Sally&lt;/link> 
+  &lt;span class="p-author h-card">
+    &lt;link class="u-url p-name" 
+      href="acct:sally@example.org">Sally&lt;/link> 
+  &lt;/span>
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/foo">
     http://example.org/foo
   &lt;/a>
@@ -9013,13 +9102,15 @@ _c:14n0 a as:Share ;
 >&lt;div class="h-card">
   &lt;span class="p-name">Sally&lt;/span>
   shared
-  &lt;link class="h-item u-url"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/link>
-  with
-  &lt;link class="h-card u-url"
-    href="acct:joe@example.org">Joe&lt;/link>
+  &lt;span class="p-as-author-of h-as-share">
+    &lt;link class="u-share-of"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/link>
+    with
+    &lt;link class="u-as-target"
+      href="acct:joe@example.org">Joe&lt;/link>
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex62-turtle" style="display: none;">
@@ -9117,10 +9208,10 @@ _c:14n0 a as:Person ;
   </div>
   <div id="ex63-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-card">
+>&lt;div class="h-entry">
   &lt;span class="p-name">A Simple Image&lt;/span>
   &lt;img class="u-url" src="http://example.org/cat.jpeg"/>
-  &lt;div class="h-item">
+  &lt;div class="p-as-attached-to h-entry">
     attached to 
     "&lt;span class="e-content">A Simple Note&lt;/span>"
   &lt;/div>
@@ -9233,8 +9324,8 @@ _c:14n0 a as:Image ;
 >&lt;div class="h-entry">
   &lt;span class="p-name">A Simple Note&lt;/span>
   Attachments:
-  &lt;ul>
-  &lt;li class="h-item">
+  &lt;ul class="p-as-attachment">
+  &lt;li class="h-entry">
     &lt;figure>
       &lt;figcaption class="p-name">
         A Simple Image
@@ -9336,7 +9427,7 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex65-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;span class="p-name">A Simple Image&lt;/span>
   &lt;img class="u-url" src="http://example.org/cat.jpeg"/>
   &lt;div class="p-author h-card">
@@ -9413,13 +9504,15 @@ _c:14n0 a as:Image ;
   </div>
   <div id="ex66-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;span class="p-name">A Simple Image&lt;/span>
   &lt;img class="u-url" src="http://example.org/cat.jpeg"/>
   Attributed To: 
-  &lt;span class="p-author h-card p-name">Sally&lt;/span>
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   and
-  &lt;link class="p-author h-card u-url"
+  &lt;link class="u-author"
     href="acct:joe@example.org">Joe&lt;/link>
 &lt;/div></pre>
   </div>
@@ -9503,7 +9596,7 @@ _c:14n0 a as:Image ;
   <div id="ex67-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
+  typeof="Person">
   &lt;span property="displayName">Sally&lt;/span>
   wrote 
   &lt;span property="attributedWith" typeof="Note">
@@ -9516,7 +9609,9 @@ _c:14n0 a as:Image ;
 >&lt;div class="h-card">
   &lt;span class="p-name">Sally&lt;/span>
   wrote 
-  "&lt;span class="h-item e-summary">A Simple Note&lt;/span>"
+  &lt;span class="p-as-attributed-with h-entry">
+    "&lt;span class="e-content">A Simple Note&lt;/span>"
+  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex67-turtle" style="display: none;">
@@ -9627,22 +9722,20 @@ _c:14n0 a as:Person ;
   </div>
   <div id="ex68-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
+    href="acct:sally@example.org">Sally&lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link>  
-  (bcc: &lt;link class="p-bcc h-card u-url"
+  (bcc: &lt;link class="u-as-bcc"
     href="acct:joe@example.org">
     John
   &lt;/link>)
@@ -9753,22 +9846,22 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex69-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
     href="acct:sally@example.org">
       Sally
   &lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link>  
-  (bto: &lt;link class="p-bto h-card u-url"
+  (bto: &lt;link class="u-as-bto"
     href="acct:joe@example.org">
     John
   &lt;/link>)
@@ -9879,22 +9972,22 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex70-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="h-card u-url"
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
     href="acct:sally@example.org">
       Sally
   &lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link>  
-  (cc: &lt;link class="p-cc h-card u-url"
+  (cc: &lt;link class="u-as-cc"
     href="acct:joe@example.org">
     John
   &lt;/link>)
@@ -10047,37 +10140,37 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex171-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div>
-  &lt;ul>
-    &lt;li class="h-entry">
-      &lt;link class="p-actor h-card u-url"
+>&lt;div class="h-as-collection">
+  &lt;ul class="p-as-items">
+    &lt;li class="h-as-share">
+      &lt;link class="u-author"
         href="acct:sally@example.org">
           Sally
       &lt;link> 
       shared
-      &lt;a class="p-object h-item u-url"
+      &lt;a class="u-share-of"
         href="http://example.org/posts/1">
         http://example.org/posts/1
       &lt;/a>
       with
-      &lt;link class="p-target h-card u-url"
+      &lt;link class="u-as-target"
         href="acct:john@example.org">
           John
       &lt;link>
-      &lt;link class="p-context h-item u-url" 
+      &lt;link class="u-as-context" 
         href="http://example.org/contexts/1" />
     &lt;/li>
-    &lt;li class="p-actor h-entry">
-      &lt;link class="h-card u-url"
+    &lt;li class="h-as-like">
+      &lt;link class="u-author"
         href="acct:joe@example.org">
           Joe
       &lt;link> 
       liked
-      &lt;a class="p-object h-item u-url"
+      &lt;a class="u-like-of"
         href="http://example.org/posts/1">
         http://example.org/posts/2
       &lt;/a>
-      &lt;link class="p-context h-item u-url" 
+      &lt;link class="u-as-context" 
         href="http://example.org/contexts/1" />
     &lt;/li>
   &lt;/ul> 
@@ -10177,7 +10270,7 @@ _c:14n2 a as:Like ;
   <div id="ex172-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" 
-  resource="http://example.org/contexsts/1">
+  resource="http://example.org/contexts/1">
   &lt;span property="contextOf" typeof="Share">
     &lt;link property="actor"
       href="acct:sally@example.org">
@@ -10198,22 +10291,18 @@ _c:14n2 a as:Like ;
   </div>
   <div id="ex172-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;link class="h-item" href="http://example.org/contexsts/1">
-  &lt;span class="p-contextOf h-entry">
-    &lt;link class="p-actor h-card u-url"
-      href="acct:sally@example.org">
-        Sally
-    &lt;link> 
+>&lt;link class="h-entry" href="http://example.org/contexts/1">
+  &lt;span class="p-as-context-of h-entry">
+    &lt;link class="u-author"
+      href="acct:sally@example.org">Sally&lt;link> 
     shared
-    &lt;a class="p-object h-item u-url"
+    &lt;a class="u-share-of"
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     with
-    &lt;link class="p-target h-item u-url"
-      href="acct:john@example.org">
-        John
-    &lt;link>
+    &lt;link class="u-as-target"
+      href="acct:john@example.org">John&lt;link>
   &lt;/span>
 &lt;/link></pre>
   </div>
@@ -10341,27 +10430,29 @@ _c:14n2 a as:Like ;
   </div>
   <div id="ex71-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-current"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="h-as-items-page-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="current"
     href="http://example.org/collection">
     Most Recent Items&lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -10482,28 +10573,30 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex72-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-current h-item u-url"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="current" class="h-entry"
     href="http://example.org/collection">
     &lt;span class="p-name">Most Recent Items&lt;/span>
   &lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -10647,27 +10740,29 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex73-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-first"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="first"
     href="http://example.org/collection">
     First Page&lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -10788,28 +10883,30 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex74-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-first h-item u-url"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="first" class="h-entry"
     href="http://example.org/collection">
     &lt;span class="p-name">First Page&lt;/span>
   &lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -10914,10 +11011,10 @@ _c:14n0 a as:Collection ;
   <div id="ex75-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span property="content">
+  &lt;span class="e-content">
     A Simple Note
   &lt;/span>
-  (&lt;span class="p-generator h-item" >
+  (&lt;span class="p-as-generator h-as-application" >
      &lt;span class="p-name">My Note Application&lt;/span>
    &lt;/span>)
 &lt;/div></pre>
@@ -11011,12 +11108,12 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex76-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-application">
   &lt;span property="p-name">
     My Note Application
   &lt;/span>
   generated
-  &lt;span class="p-generatorOf h-entry" >
+  &lt;span class="p-as-generator-of h-entry" >
      "&lt;span class="e-content">A Simple Note&lt;/span>""
    &lt;/span>
 &lt;/div></pre>
@@ -11109,8 +11206,8 @@ _c:14n0 a as:Application ;
   </div>
   <div id="ex77-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;img class="p-photo"
+>&lt;div class="h-entry">
+  &lt;img class="u-photo"
     src="http://www.example.org/note.png"
     alt="Note"
     width="16px" height="16px" />
@@ -11193,8 +11290,8 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex78-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;img class="p-photo"
+>&lt;div class="h-entry">
+  &lt;img class="u-photo"
     src="http://www.example.org/note1.png"
     srcset="http://www.example.org/note2.png 2x"
     alt="Note"
@@ -11309,12 +11406,12 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex79-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;img class="p-photo"
+>&lt;div class="h-entry">
+  &lt;img class="u-photo"
     src="http://www.example.org/note.png"
     alt="Note (16x16)"
     width="16px" height="16px" />
-  &lt;span class="p-iconFor h-entry">
+  &lt;span class="p-as-icon-for h-entry">
     &lt;span class="e-content">A Simple Note&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -11412,9 +11509,9 @@ _c:14n0 a as:Image ;
   </div>
   <div id="ex80-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;span class="e-content">A Simple Note&lt;/span>
-  &lt;figure class="p-photo h-item" >
+  &lt;figure class="p-photo h-entry" >
     &lt;figcaption class="p-name">A Cat&lt;figcaption>
     &lt;img class="u-url"
       src="http://www.example.org/cat.png" />
@@ -11502,14 +11599,14 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex81-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;span class="e-content">A Simple Note&lt;/span>
-  &lt;figure class="p-photo h-item">
+  &lt;figure class="p-photo h-entry">
     &lt;figcaption class="p-name">Cat 1&lt;figcaption>
     &lt;img class="u-url"
       src="http://www.example.org/cat1.png" />
   &lt;/figure>
-  &lt;figure class="p-photo h-item">
+  &lt;figure class="p-photo h-entry">
     &lt;figcaption class="p-name">Cat 2&lt;figcaption>
     &lt;img class="u-url"
       src="http://www.example.org/cat2.png" />
@@ -11615,11 +11712,11 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex82-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;img class="p-photo"
+>&lt;div class="h-entry">
+  &lt;img class="u-photo"
     src="http://www.example.org/eiffel.png"
     alt="Picture of the Eiffel Tower"/>
-  &lt;span class="p-imageOf h-item">
+  &lt;span class="p-as-image-of h-geo">
     &lt;span class="p-name">The Eiffel Tower&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -11710,10 +11807,10 @@ _c:14n0 a as:Image ;
   </div>
   <div id="ex83-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   "&lt;span class="e-content">A simple note&lt;/span>
   in reply to
-  "&lt;span class="p-in-reply-to h-item">
+  "&lt;span class="p-in-reply-to h-entry">
     "&lt;span class="e-content">Another note&lt;/span>"
   &lt;/span>"
 &lt;/div></pre>
@@ -11774,7 +11871,7 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex84-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   "&lt;span class="e-content">A simple note&lt;/span>
   in reply to
   &lt;a class="u-in-reply-to" 
@@ -11884,15 +11981,15 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex85-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card"
+>&lt;div class="h-as-create">
+  &lt;link class="u-author"
     href="acct:sally@example.org">Sally&lt;/link>
   created
-  &lt;span class="p-object h-item">
+  &lt;span class="p-item h-entry">
     &lt;span class="p-name">A Paper Airplane&lt;/span>
   &lt;/span>
   using
-  &lt;span class="p-instrument h-item">
+  &lt;span class="p-as-instrument h-entry">
     &lt;span class="p-name">Paper&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -12005,14 +12102,14 @@ _c:14n0 a as:Create ;
   </div>
   <div id="ex86-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;span class="p-name">Paper&lt;/span>
   was used
-  &lt;span class="p-instrumentOf h-entry" >
-    by &lt;link class="p-actor h-card u-url" 
+  &lt;span class="p-as-instrument-of h-as-create" >
+    by &lt;link class="u-author" 
       href="acct:sally@example.org">Sally&lt;/link>
     to create
-    &lt;span class="p-object h-item">
+    &lt;span class="p-item h-entry">
       &lt;span class="p-name">A Paper Airplane&lt;/span>
     &lt;/span>
   &lt;/span>
@@ -12149,27 +12246,29 @@ _c:14n0 a as:Object ;
   </div>
   <div id="ex87-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-last"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="last"
     href="http://example.org/collection">
     Last Page&lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -12290,28 +12389,30 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex88-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-last h-item u-url"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="last" class="h-entry"
     href="http://example.org/collection">
     &lt;span class="p-name">Last Page&lt;/span>
   &lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -12431,14 +12532,14 @@ _c:14n0 a as:Collection ;
 >&lt;div class="h-card">
   &lt;span class="p-name">Sally&lt;/span>
   is at 
-  &lt;span class="p-location h-item">
+  &lt;span class="p-location h-geo">
     Latitude 
     &lt;span class="p-latitude">56.78&lt;/span>,
     Longitude 
     &lt;span class="p-longitude">12.34&lt;/span>,
     at an altitude of 
     &lt;span class="p-altitude">90&lt;/span>
-    &lt;meta class="p-units" content="m">meters&lt;/meta>
+    &lt;meta class="p-as-units" content="m">meters&lt;/meta>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12546,8 +12647,8 @@ _c:14n0 a as:Person ;
   </div>
   <div id="ex90-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;span class="p-locationOf h-card">
+>&lt;div class="h-geo">
+  &lt;span class="p-as-location-of h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   is at 
@@ -12557,7 +12658,7 @@ _c:14n0 a as:Person ;
   &lt;span class="p-longitude">12.34&lt;/span>,
   at an altitude of 
   &lt;span class="p-altitude">90&lt;/span>
-  &lt;meta class="p-units" content="m">meters&lt;/meta>
+  &lt;meta class="p-as-units" content="m">meters&lt;/meta>
 &lt;/div></pre>
   </div>
   <div id="ex90-turtle" style="display: none;">
@@ -12675,10 +12776,12 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex91-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div>
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;ul>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;ul class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
     &lt;/li>
@@ -12783,11 +12886,14 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex92-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div>
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;meta class="p-startIndex" content="0" /&gt;
-  &lt;ol>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;meta class="p-as-start-index" name="startIndex" 
+    content="0" /&gt;
+  &lt;ol class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
     &lt;/li>
@@ -12935,16 +13041,16 @@ _c:14n0 a as:OrderedCollection ;
   </div>
   <div id="ex93-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-question">
   &lt;h2 class="p-name">
     What is the answer?
   &lt;/h2>
-  &lt;ul&gt;
-    &lt;li class="h-item"&gt;
+  &lt;ul class="p-as-one-of"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option A&lt;/span&gt;
       &lt;meta name="shape" content="A" />
     &lt;/li&gt;
-    &lt;li class="h-item"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option B&lt;/span&gt;
       &lt;meta name="shape" content="B" />
     &lt;/li&gt;
@@ -13080,16 +13186,16 @@ _c:14n0 a as:Question ;
   </div>
   <div id="ex94-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-question">
   &lt;h2 class="p-name">
     What is the answer?
   &lt;/h2>
-  &lt;ul&gt;
-    &lt;li class="h-item"&gt;
+  &lt;ul class="p-as-any-of"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option A&lt;/span&gt;
       &lt;meta name="shape" content="A" />
     &lt;/li&gt;
-    &lt;li class="h-item"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option B&lt;/span&gt;
       &lt;meta name="shape" content="B" />
     &lt;/li&gt;
@@ -13216,22 +13322,20 @@ _c:14n0 a as:Question ;
   </div>
   <div id="ex166-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-as-move">
+  &lt;link class="u-author"
+    href="acct:sally@example.org">Sally&lt;link> 
   moved
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   to
-  &lt;span class="p-target h-item">
+  &lt;span class="p-as-target h-as-collection">
     &lt;span class="p-name">List B&lt;/span>
   &lt;/span>
   from 
-  &lt;span class="p-origin h-item">
+  &lt;span class="p-as-origin h-as-collection">
     &lt;span class="p-name">List A&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -13355,24 +13459,21 @@ _c:14n0 a as:Move ;
   </div>
   <div id="ex167-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
-  moved
-  &lt;a class="h-item u-url"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
-  to
-  &lt;span class="p-target h-item">
-    &lt;span class="p-name">List B&lt;/span>
+>&lt;div class="h-as-collection">
+  &lt;span class="p-as-origin-of h-as-move">
+    &lt;link class="u-author"
+      href="acct:sally@example.org">Sally&lt;link> 
+    moved
+    &lt;a class="u-item"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    to
+    &lt;span class="p-as-target h-as-collection">
+      &lt;span class="p-name">List B&lt;/span>
+    &lt;/span>
   &lt;/span>
-  from 
-  &lt;span class="p-origin h-item">
-    &lt;span class="p-name">List A&lt;/span>
-  &lt;/span>
+  from &lt;span class="p-name">List A&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex167-turtle" style="display: none;">
@@ -13471,11 +13572,11 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex95-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   The note 
   "&lt;span class="e-content">A simple note&lt;span>"
   is in
-  &lt;span class="p-memberOf h-item">
+  &lt;span class="p-as-member-of h-as-folder">
     "&lt;span class="p-name">My Notes Folder&lt;/span>"
   &lt;/span>
 &lt;/div></pre>
@@ -13606,27 +13707,29 @@ _c:14n0 a as:Note
   </div>
   <div id="ex96-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-next"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="next"
     href="http://example.org/collection">
     Next Page&lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -13747,28 +13850,30 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex97-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-next h-item u-url"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="next"
     href="http://example.org/collection">
     &lt;span class="p-name">Next Page&lt;/span>
   &lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -13870,11 +13975,11 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex98-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card" 
+>&lt;div class="h-as-like">
+  &lt;link class="u-author" 
     href="acct:sally@example.org">Sally&lt;/link>
   liked
-  &lt;a class="p-object h-item" 
+  &lt;a class="u-like-of" 
     href="http://example.org/posts/1">
     "http://example.org/posts/1"
   &lt;/a>
@@ -13940,11 +14045,11 @@ _c:14n0 a as:Like
   </div>
   <div id="ex99-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card" 
+>&lt;div class="h-as-like">
+  &lt;link class="u-author" 
     href="acct:sally@example.org">Sally&lt;/link>
   liked
-  &lt;span class="p-object h-item">
+  &lt;span class="p-like-of h-entry">
     "&lt;span class="e-content">
       A simple note
     &lt;/span>"
@@ -14025,15 +14130,15 @@ _c:14n0 a as:Like
   </div>
   <div id="ex100-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card" 
+>&lt;div class="h-as-like">
+  &lt;link class="u-author" 
     href="acct:sally@example.org">Sally&lt;/link>
   liked
-  &lt;link class="p-object h-item" 
+  &lt;link class="u-like-of" 
     href="http://example.org/posts/1">
     "http://example.org/posts/1"
   &lt;/link> and 
-  &lt;span class="p-object h-item">
+  &lt;span class="p-like-of h-entry">
     "&lt;span class="e-content">
       A simple note
     &lt;/span>"
@@ -14130,8 +14235,8 @@ _c:14n0 a as:Like
   <div id="ex101-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span class="p-objectOf h-entry">
-    &lt;link class="p-actor" 
+  &lt;span class="p-as-object-of h-as-like">
+    &lt;link class="u-author" 
       href="acct:sally@example.org">Sally&lt;/link>
     liked
   &lt;/span>
@@ -14189,7 +14294,7 @@ _c:14n0 a as:Note ;
   <div id="ex102-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": ["Activity", "urn:example:verbs:Watch"], 
+  "@type": "Watch", 
   "actor": "acct:sally@example.org",
   "object": "http://example.org/movie.mkv",
   "participant": [
@@ -14202,8 +14307,7 @@ _c:14n0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="
-    http://www.w3.org/ns/activitystreams#Activity 
-    urn:example:verbs:Watch">
+    http://www.w3.org/ns/activitystreams#Watch">
   &lt;link itemprop="actor" 
     href="acct:sally@example.org">Sally&lt;/link>
   watched
@@ -14222,7 +14326,7 @@ _c:14n0 a as:Note ;
   <div id="ex102-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Activity urn:example:verbs:Watch">
+  typeof="Watch">
   &lt;link property="actor" 
     href="acct:sally@example.org">Sally&lt;/link>
   watched
@@ -14240,19 +14344,19 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex102-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card" 
+>&lt;div class="h-as-watch">
+  &lt;link class="u-author" 
     href="acct:sally@example.org">Sally&lt;/link>
   watched
-  &lt;link class="p-object h-item"
+  &lt;link class="u-item"
     href="http://example.org/movie.mkv">
     "http://example.org/movie.mkv"
   &lt;/link>
   with
-  &lt;link class="p-participant h-card" 
+  &lt;link class="u-participant" 
     href="acct:joe@example.org">Joe&lt;/link> 
   and
-  &lt;link class="participant h-card" 
+  &lt;link class="u-participant" 
     href="acct:john@example.org">John&lt;/link>
 &lt;/div></pre>
   </div>
@@ -14260,8 +14364,7 @@ _c:14n0 a as:Note ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Activity, 
-  &lt;urn:example:verbs:Watch&gt; ;
+_c:14n0 a as:Watch ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/movie.mkv&gt; ;
   as:participant (
@@ -14312,7 +14415,7 @@ _c:14n0 a as:Activity,
   "@type": "Person",
   "@id": "acct:joe@example.org",
   "participantOf": {
-    "@type": ["Activity", "urn:example:verbs:Watch"], 
+    "@type": "Watch", 
     "actor": "acct:sally@example.org",
     "object": "http://example.org/movie.mkv"
   }
@@ -14325,8 +14428,7 @@ _c:14n0 a as:Activity,
   itemid="acct:joe@example.org">
   &lt;span itemprop="participantOf" itemscope
     itemtype="
-      http://www.w3.org/ns/activitystreams#Activity 
-      urn:example:verbs:Watch">
+      http://www.w3.org/ns/activitystreams#Watch">
     &lt;link itemprop="actor" 
       href="acct:sally@example.org">Sally&lt;/link>
     watched
@@ -14343,9 +14445,7 @@ _c:14n0 a as:Activity,
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Person" resource="acct:joe@example.org">
   &lt;span property="participantOf"
-    typeof="
-      http://www.w3.org/ns/activitystreams#Activity 
-      urn:example:verbs:Watch">
+    typeof="Watch">
     &lt;link property="actor" 
       href="acct:sally@example.org">Sally&lt;/link>
     watched
@@ -14359,13 +14459,13 @@ _c:14n0 a as:Activity,
   </div>
   <div id="ex103-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;link class="h-item"
+>&lt;link class="h-card"
   href="acct:joe@example.org">
-  &lt;span class="p-participantOf h-entry">
-    &lt;link class="p-actor h-card" 
+  &lt;span class="p-as-participant-of h-as-watch">
+    &lt;link class="u-author" 
       href="acct:sally@example.org">Sally&lt;/link>
     watched
-    &lt;link class="p-object h-item"
+    &lt;link class="u-item"
       href="http://example.org/movie.mkv">
       "http://example.org/movie.mkv"
     &lt;/link>
@@ -14501,27 +14601,29 @@ _c:14n0 a as:Activity,
   </div>
   <div id="ex104-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-prev"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="prev"
     href="http://example.org/collection">
     Previous Page&lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -14642,28 +14744,30 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex105-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-prev h-item u-url"
+>&lt;div class="h-entry">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="prev"
     href="http://example.org/collection">
     &lt;span class="p-name">Previous Page&lt;/span>
   &lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -14781,16 +14885,18 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex106-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
   &lt;span class="p-name">Cool New Movie&lt;/span>
-  &lt;meta name="duration" content="PT2H30M">(2H 30M)&lt;/meta>
-  - &lt;span class="p-preview h-item">
-    &lt;span class="p-name">Trailer&lt;span>
-    &lt;meta name="duration" content="PT1M">(1M)&lt;/meta>
-    &lt;a class="u-url" 
-      href="http://example.org/trailer.mkv"
-      type="video/mkv">Watch&lt;/a>
-  &lt;/span>
+  &lt;meta class="p-as-duration" name="duration" 
+    content="PT2H30M">(2H 30M)&lt;/meta>
+  - &lt;span class="p-preview h-entry">
+      &lt;span class="p-name">Trailer&lt;span>
+      &lt;meta class="p-as-duration" name="duration" 
+        content="PT1M">(1M)&lt;/meta>
+      &lt;a class="u-url" 
+        href="http://example.org/trailer.mkv"
+        type="video/mkv">Watch&lt;/a>
+    &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex106-turtle" style="display: none;">
@@ -14898,13 +15004,15 @@ _:c14n0 a as:Movie ;
   </div>
   <div id="ex107-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;span class="p-previewOf h-item">
+>&lt;div class="h-entry">
+  &lt;span class="p-as-preview-of h-entry">
     &lt;span class="p-name">Cool New Movie&lt;/span>
-    &lt;meta name="duration" content="PT2H30M">(2H 30M)&lt;/meta>
+    &lt;meta class="p-as-duration" name="duration" 
+      content="PT2H30M">(2H 30M)&lt;/meta>
   &lt;/span>
   - &lt;span class="p-name">Trailer&lt;span>
-  &lt;meta name="duration" content="PT1M">(1M)&lt;/meta>
+  &lt;meta class="p-as-duration" name="duration" 
+    content="PT1M">(1M)&lt;/meta>
   &lt;a class="u-url" 
     href="http://example.org/trailer.mkv"
     type="video/mkv">Watch&lt;/a>
@@ -15011,13 +15119,13 @@ _:c14n0 a as:Link ;
   </div>
   <div id="ex108-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;link class="p-actor h-card" 
+>&lt;div class="h-as-activity h-x-check">
+  &lt;link class="u-author" 
     href="acct:sally@example.org">Sally's&lt;/link>
-  &lt;link class="p-object h-item"
+  &lt;link class="u-item"
     href="http://example.org/flights/1">flight&lt;/link>
   is
-  &lt;span class="p-result h-item">
+  &lt;span class="p-as-result h-entry">
     &lt;span class="p-name">On Time&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -15125,10 +15233,10 @@ _:c14n0 a as:Activity,
   <div id="ex109-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span class="p-resultOf h-item">
-    &lt;link class="p-actor h-card" 
+  &lt;span class="p-as-result-of h-as-activity h-x-check">
+    &lt;link class="u-author" 
       href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link class="p-object h-item"
+    &lt;link class="u-item"
       href="http://example.org/flights/1">flight&lt;/link>
   &lt;/span>
   is
@@ -15228,10 +15336,8 @@ _:c14n0 a &lt;urn:example:types:flightstatus&gt; ;
   <div id="ex110-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span property="content">
-    A Simple Note
-  &lt;/span>
-  (&lt;span class="p-provider h-item" >
+  &lt;span class="e-content">A Simple Note&lt;/span>
+  (&lt;span class="p-as-provider h-as-service" >
      &lt;span class="p-name">My Note Service&lt;/span>
    &lt;/span>)
 &lt;/div></pre>
@@ -15325,12 +15431,10 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex111-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;span property="p-name">
-    My Note Service
-  &lt;/span>
+>&lt;div class="h-as-service">
+  &lt;span class="p-name">My Note Service&lt;/span>
   generated
-  &lt;span class="p-providerOf h-entry" >
+  &lt;span class="p-as-provider-of h-entry" >
      "&lt;span class="e-content">A Simple Note&lt;/span>""
    &lt;/span>
 &lt;/div></pre>
@@ -15453,19 +15557,19 @@ _c:14n0 a as:Service ;
   </div>
   <div id="ex112-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;div class="e-content">
-    A simple note
-  &lt;/div>
-  &lt;div class="p-replies">
-    &lt;meta name="totalItems" content="1" /&gt;
-    &lt;meta name="itemsPerPage" content="1" /&gt;
-    &lt;ul>
-      &lt;li class="p-items h-entry">
+>&lt;div class="h-entry">
+  &lt;div class="e-content">A simple note&lt;/div>
+  &lt;div class="p-as-replies h-as-collection">
+    &lt;meta class="p-as-total-items" name="totalItems" 
+      content="1" /&gt;
+    &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+      content="1" /&gt;
+    &lt;ul class="p-as-items">
+      &lt;li class="h-entry">
         &lt;span class="e-content">
           A response to the note
         &lt;/span>
-        &lt;link class="u-in-reply-to" 
+        &lt;link rel="u-in-reply-to" 
           href="urn:example:notes:1" /&gt;
       &lt;/li>
     &lt;/ul>
@@ -15571,11 +15675,9 @@ _:c14n0 a as:Collection ;
   </div>
   <div id="ex113-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;div class="e-content">
-    A simple note
-  &lt;/div>
-  &lt;div class="p-scope h-item">
+>&lt;div class="h-entry">
+  &lt;div class="e-content">A simple note&lt;/div>
+  &lt;div class="p-as-scope h-entru">
     &lt;span class="p-name">
       My Organization
     &lt;/span>
@@ -15673,11 +15775,11 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex114-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-org">
   &lt;div class="p-name">
     My Organization
   &lt;/div>
-  &lt;div class="p-scopeOf h-entry">
+  &lt;div class="p-as-scope-of h-entry">
     &lt;div class="e-content">
       A simple note
     &lt;/div>
@@ -15810,27 +15912,29 @@ _c:14n0 a as:Organization;
   </div>
   <div id="ex115-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-self"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="self"
     href="http://example.org/collection">
     This Page&lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -15951,28 +16055,30 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex116-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
-  &lt;meta name="totalItems" content="5" />
-  &lt;meta name="itemsPerPage" content="3" />
-  &lt;a class="p-self h-item u-url"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="5" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="3" />
+  &lt;a rel="self" class="h-entry"
     href="http://example.org/collection">
     &lt;span class="p-name">This Page&lt;/span>
   &lt;/a>
-  &lt;ul>
+  &lt;ul class="p-as-items">
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/2">
       http://example.org/posts/2
     &lt;/a>
     &lt;/li&gt;
     &lt;li&gt;
-    &lt;a class="p-items h-item u-url" 
+    &lt;a class="h-entry u-url" 
       href="http://example.org/posts/3">
       http://example.org/posts/3
     &lt;/a>
@@ -16112,16 +16218,16 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex117-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-as-question">
   &lt;h2 class="p-name">
     What is the answer?
   &lt;/h2>
-  &lt;ul&gt;
-    &lt;li class="h-item"&gt;
+  &lt;ul class="p-as-one-of"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option A&lt;/span&gt;
       &lt;meta name="shape" content="A" />
     &lt;/li&gt;
-    &lt;li class="h-item"&gt;
+    &lt;li class="h-entry"&gt;
       &lt;span class-"p-name">Option B&lt;/span&gt;
       &lt;meta name="shape" content="B" />
     &lt;/li&gt;
@@ -16229,10 +16335,10 @@ _c:14n0 a as:Question ;
   </div>
   <div id="ex118-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;figure class="h-item">
+>&lt;figure class="h-entry">
   &lt;figcaption class="p-name">
     Picture of 
-    &lt;span class="p-tag h-card">
+    &lt;span class="p-as-tag h-card">
       &lt;span class="p-name">Sally&lt;/span>
     &lt;/span>
   &lt;/figcaption>
@@ -16343,7 +16449,7 @@ _c:14n0 a as:Image ;
 >&lt;div class="h-card">
   &lt;div class="p-name">Sally&lt;/div>
   is tagged in
-  &tl;figure class="p-tagOf h-item">
+  &tl;figure class="p-as-tag-of h-entry">
     &lt;figcaption class="p-name">
       Picture of Sally
     &lt;/figcaption>
@@ -16452,18 +16558,18 @@ _c:14n0 a as:Person ;
   </div>
   <div id="ex120-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
     href="acct:sally@example.org">
       Sally
   &lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link> 
@@ -16543,18 +16649,18 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex121-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
     href="acct:sally@example.org">
       Sally
   &lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;span class="p-target h-card">
+  &lt;span class="p-as-target">
     &lt;span class="p-name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -16658,13 +16764,13 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex122-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;link class="h-item"
+>&lt;link class="h-card"
   href="acct:joe@example.org">
-  &lt;span class="p-targetOf h-entry">
-    &lt;link class="p-actor h-card" 
+  &lt;span class="p-as-target-of h-as-share">
+    &lt;link class="u-author" 
       href="acct:sally@example.org">Sally&lt;/link>
     shared
-    &lt;link class="p-object h-item"
+    &lt;link class="u-share-of"
       href="http://example.org/movie.mkv">
       "http://example.org/movie.mkv"
     &lt;/link>
@@ -16780,22 +16886,20 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex123-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-as-share">
+  &lt;link class="u-author
+    href="acct:sally@example.org">Sally&lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link>  
-  (to: &lt;link class="p-to h-card u-url"
+  (to: &lt;link class="u-as-to"
     href="acct:joe@example.org">
     John
   &lt;/link>)
@@ -16874,7 +16978,7 @@ _c:14n0 a as:Share ;
   </div>
   <div id="ex124-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
 &lt;span class="p-name">4Q Sales Forecast&lt;/span> -
   &lt;a class="u-url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
@@ -16931,7 +17035,7 @@ _c:14n0 a as:Document ;
   </div>
   <div id="ex125-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
 &lt;span class="p-name">4Q Sales Forecast&lt;/span> -
   &lt;a class="u-url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
@@ -17007,7 +17111,7 @@ _c:14n0 a as:Document ;
   </div>
   <div id="ex126-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
 &lt;span class="p-name">4Q Sales Forecast&lt;/span> -
   &lt;a class="u-url"
     href="http://example.org/4q-sales-forecast.pdf"
@@ -17060,7 +17164,7 @@ _c:14n0 a as:Document ;
         <tr>
           <td rowspan="5" ><dfn>accuracy</dfn></td>
           <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#accuract</code></td>
+          <td ><code>http://www.w3.org/ns/activitystreams#accuracy</code></td>
           <td rowspan="5">
 <div class="nanotabs">
   <ul>
@@ -17117,7 +17221,7 @@ _c:14n0 a as:Document ;
   </div>
   <div id="ex127-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Latitude&lt;/td>
     &lt;td class="p-latitude">36.75&lt;/td>
@@ -17128,7 +17232,7 @@ _c:14n0 a as:Document ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Accuracy&lt;/td>
-    &lt;td class="p-accuracy">94.5&lt;/td>
+    &lt;td class="p-as-accuracy">94.5&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -17218,14 +17322,14 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex128-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-entry">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Home&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Alias&lt;/td>
-    &lt;td class="p-alias">@home&lt;/td>
+    &lt;td class="p-as-alias">@home&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -17346,7 +17450,7 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex129-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Fresno Area&lt;/td>
@@ -17365,7 +17469,7 @@ _c:14n0 a as:Place ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Units&lt;/td>
-    &lt;td class="p-units">miles&lt;/td>
+    &lt;td class="p-as-units">miles&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -17732,9 +17836,10 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex134-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
 &lt;span class="p-name">A Simple Video&lt;/span>
-  &lt;meta class="p-duration" content="PT2H">(2 hours)&lt;meta> -
+  &lt;meta class="p-as-duration" name="duration" 
+    content="PT2H">(2 hours)&lt;meta> -
   &lt;a class="u-url"
     href="http://example.org/video.mkv">Watch&lt;a>
 &lt;/div></pre>
@@ -17790,9 +17895,10 @@ _c:14n0 a as:Video ;
   </div>
   <div id="ex135-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item">
+>&lt;div class="h-entry">
 &lt;span class="p-name">A Simple Video&lt;/span>
-  &lt;meta class="p-duration" content="3600">(2 hours)&lt;meta> -
+  &lt;meta class="p-as-duration" name="duration"
+    content="3600">(2 hours)&lt;meta> -
   &lt;a class="u-url"
     href="http://example.org/video.mkv">Watch&lt;a>
 &lt;/div></pre>
@@ -17887,7 +17993,7 @@ _c:14n0 a as:Video ;
   </div>
   <div id="ex136-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item" style="width:100px; height:100px">
+>&lt;div class="h-entry" style="width:100px; height:100px">
   &lt;div property="p-name">Some generic content&lt;/div>
   &lt;div property="e-content">
     &lt;p>This can be any kind of content&lt;/p>
@@ -17974,7 +18080,7 @@ _c:14n0 a as:Content ;
   </div>
   <div id="ex137-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-item p-name"
+>&lt;a class="h-entry p-name"
     href="http://example.org/abc"
     hreflang="en"
     type="text/html">An example link&lt;/a></pre>
@@ -18057,7 +18163,7 @@ _:c14n0 a as:Link ;
   </div>
   <div id="ex138-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-item p-name"
+>&lt;a class="h-entry p-name"
     href="http://example.org/abc"
     hreflang="en"
     type="text/html">An example link&lt;/a></pre>
@@ -18172,10 +18278,12 @@ _:c14n0 a as:Link ;
   </div>
   <div id="ex139-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div>
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;ul>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;ul class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
     &lt;/li>
@@ -18309,7 +18417,7 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex140-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Fresno Area&lt;/td>
@@ -18324,11 +18432,11 @@ _c:14n0 a as:Collection ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Radius&lt;/td>
-    &lt;td class="p-radius">15&lt;/td>
+    &lt;td class="p-as-radius">15&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Units&lt;/td>
-    &lt;td class="p-units">miles&lt;/td>
+    &lt;td class="p-as-units">miles&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -18446,7 +18554,7 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex141-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Fresno Area&lt;/td>
@@ -18461,11 +18569,11 @@ _c:14n0 a as:Place ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Radius&lt;/td>
-    &lt;td class="p-radius">15&lt;/td>
+    &lt;td class="p-as-radius">15&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Units&lt;/td>
-    &lt;td class="p-units">miles&lt;/td>
+    &lt;td class="p-as-units">miles&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -18548,7 +18656,7 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex142-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-item p-name"
+>&lt;a class="h-entry p-name"
     href="http://example.org/abc"
     hreflang="en"
     type="text/html">An example link&lt;/a></pre>
@@ -18656,22 +18764,20 @@ _:c14n0 a as:Link ;
   </div>
   <div id="ex143-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
+    href="acct:sally@example.org">Sally&lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link> 
-  &lt;meta name="priority" content="0.80" />
+  &lt;meta name="p-as-priority" content="0.80" />
 &lt;/div></pre>
   </div>
   <div id="ex143-turtle" style="display: none;">
@@ -18907,7 +19013,7 @@ _c:14n0 a as:Event ;
   &lt;div class="e-content">
     A simple note
   &lt;/div>
-  &lt;meta name="published" 
+  &lt;meta class="dt-published" name="published" 
     content="2014-12-12T12:12:12Z" />
 &lt;/div></pre>
   </div>
@@ -19133,7 +19239,7 @@ _c:14n0 a as:Event ;
   </div>
   <div id="ex147-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Fresno Area&lt;/td>
@@ -19148,11 +19254,11 @@ _c:14n0 a as:Event ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Radius&lt;/td>
-    &lt;td class="p-radius">15&lt;/td>
+    &lt;td class="p-as-radius">15&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Units&lt;/td>
-    &lt;td class="p-units">miles&lt;/td>
+    &lt;td class="p-as-units">miles&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -19251,17 +19357,15 @@ _c:14n0 a as:Place ;
   </div>
   <div id="ex148-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
-    href="acct:sally@example.org">
-      Sally
-  &lt;link> 
+>&lt;div class="h-review">
+  &lt;link class="u-author"
+    href="acct:sally@example.org">Sally&lt;link> 
   reviewed
-  &lt;a class="h-item u-url"
+  &lt;a class="u-item"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
-  &lt;meta name="rating" content="3.5" />
+  &lt;meta class="p-as-rating" name="rating" content="3.5" />
 &lt;/div></pre>
   </div>
   <div id="ex148-turtle" style="display: none;">
@@ -19347,7 +19451,7 @@ _c:14n0 a as:Review ;
   </div>
   <div id="ex149-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-item p-name"
+>&lt;a class="h-entry p-name"
     href="http://example.org/abc"
     hreflang="en"
     rel="canonical preview"
@@ -19463,11 +19567,14 @@ _:c14n0 a as:Link ;
   </div>
   <div id="ex150-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div>
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;meta class="p-startIndex" content="0" /&gt;
-  &lt;ol>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;meta class="p-as-start-index" name="startIndex"
+    content="0" /&gt;
+  &lt;ol class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
     &lt;/li>
@@ -19594,22 +19701,23 @@ _c:14n0 a as:OrderedCollection ;
   </div>
   <div id="ex151-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-accept">
-  &lt;link class="h-card u-url"
+>&lt;div class="h-as-share">
+  &lt;link class="u-author"
     href="acct:sally@example.org">
       Sally
   &lt;link> 
   shared
-  &lt;a class="h-item u-url"
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="h-card u-url"
+  &lt;link class="u-as-target"
     href="acct:sally@example.org">
       John
   &lt;link> 
-  &lt;meta name="status" content="pending" />
+  &lt;meta class="p-as-status" name="status" 
+    content="pending" />
 &lt;/div></pre>
   </div>
   <div id="ex151-turtle" style="display: none;">
@@ -20013,10 +20121,12 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex156-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div>
-  &lt;meta class="p-totalItems" content="2" /&lt;
-  &lt;meta class="p-itemsPerPage" content="2" /&gt;
-  &lt;ul>
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" 
+    content="2" /&lt;
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" 
+    content="2" /&gt;
+  &lt;ul class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
     &lt;/li>
@@ -20151,7 +20261,7 @@ _c:14n0 a as:Collection ;
   </div>
   <div id="ex157-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;table class="h-item">
+>&lt;table class="h-geo">
   &lt;tr>
     &lt;td>Name&lt;/td>
     &lt;td class="p-name">Fresno Area&lt;/td>
@@ -20166,11 +20276,11 @@ _c:14n0 a as:Collection ;
   &lt;/tr>
   &lt;tr>
     &lt;td>Radius&lt;/td>
-    &lt;td class="p-radius">15&lt;/td>
+    &lt;td class="p-as-radius">15&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Units&lt;/td>
-    &lt;td class="p-units">miles&lt;/td>
+    &lt;td class="p-as-units">miles&lt;/td>
   &lt;/tr>
 &lt;/table></pre>
   </div>
@@ -20271,7 +20381,7 @@ _c:14n0 a as:Place ;
   &lt;div class="e-content">
     A simple note
   &lt;/div>
-  &lt;meta name="updated" 
+  &lt;meta class="dt-updated" name="updated" 
     content="2014-12-12T12:12:12Z" />
 &lt;/div></pre>
   </div>
@@ -20358,7 +20468,7 @@ _c:14n0 a as:Note ;
   </div>
   <div id="ex159-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-item" style="width:100px; height:100px">
+>&lt;div class="h-entry" style="width:100px; height:100px">
   &lt;div property="p-name">Some generic content&lt;/div>
   &lt;div property="e-content">
     &lt;p>This can be any kind of content&lt;/p>
