@@ -84,7 +84,6 @@
     "Service": "as:Service",
     "Share": "as:Share",
     "Story": "as:Story",
-    "Tag": "as:Tag",
     "TentativeAccept": "as:TentativeAccept",
     "TentativeReject": "as:TentativeReject",
     "Undo": "as:Undo",
