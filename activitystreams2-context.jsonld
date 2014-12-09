@@ -408,7 +408,7 @@
       "@type": "xsd:dateTime"
     },
     "height": {
-      "@id": "as:itemsPerPage",
+      "@id": "as:height",
       "@type": "xsd:nonNegativeInteger"
     },
     "href": {
