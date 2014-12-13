@@ -167,6 +167,11 @@
   <section id="types">
     <h2>Core Classes</h2>
 
+    <p>
+      The Activity Vocabulary Core Classes provide the basis for the rest of the 
+      vocabulary.
+    </p>
+
     <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
 
     <p>The Activity Streams 2.0 Core Classes include: 
@@ -254,7 +259,10 @@
           <td >Notes:</td>
           <td>
             Describes an object of any kind. The Object class serves as the base class
-            for many of the other kinds of objects defined in the Activity Vocabulary.
+            for most of the other kinds of objects defined in the Activity Vocabulary,
+            include other Core classes such as <code><a>Activity</a></code>, 
+            <code><a>IntransitiveActivity</a></code>, <code><a>Actor</a></code>, 
+            <code><a>Collection</a></code> and <code><a>OrderedCollection</a></code>.
           </td>
         </tr>
         <tr>
@@ -377,9 +385,15 @@ _:c14n0 a as:Link ;
         <tr>
           <td>Notes:</td>
           <td>
-            Describes an indirect qualified link to another resource. 
-            The <code><a>href</a></code> property identifies the resource 
-            being referenced.
+            A Link is an indirect, qualified reference to a resource identified 
+            by a URL. The fundamental model for links is established by 
+            [[!RFC5988]]. Many of the properties defined by the Activity
+            Vocabulary allow values that are either instances of 
+            <code><a>Object</a></code> or <code><a>Link</a></code>. When
+            a <code><a>Link</a></code> is used, it establishes a 
+            <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified relation</a>
+            connecting the subject (the containing object) to the resource
+            identified by the <code><a>href</a></code>.
           </td>
         </tr>
         <tr>
@@ -517,9 +531,10 @@ _:c14n0 a as:Activity ;
         <tr>
           <td >Notes:</td>
           <td>
-            An Activity describes some form of action that may happen, is currently happening, 
-            or that has already happened. <code>Activity</code> serves as an abstract base
-            class for all types of activities. It is important to note that the <code>Activity</code>
+            An Activity is a subclass of <code><a>Object</a></code> that describes some 
+            form of action that may happen, is currently happening, or that has already happened. 
+            The <code>Activity</code> class itself serves as an abstract base class for all types 
+            of activities. It is important to note that the <code>Activity</code>
             class itself does not carry any specific semantics about the kind of action being 
             taken.
           </td>
@@ -644,8 +659,10 @@ _:c14n0 a as:Travel ;
         <tr>
           <td >Notes:</td>
           <td>
-            Instances of <code>IntransitiveActivity</code> are sub-types of <code>Activity</code>
-            that have no direct <code>object</code>.
+            Instances of <code>IntransitiveActivity</code> are a subclass of 
+            <code>Activity</code> whose <code><a>actor</a></code> property
+            identifies the direct object of the action as opposed to using 
+            the <code><a>object</a></code> property.
           </td>
         </tr>
         <tr>
@@ -714,9 +731,10 @@ _:c14n0 a as:Actor ;
         <tr>
           <td >Notes:</td>
           <td>
-            An Actor is an entity capable of being either the primary 
-            actor of, or participant in, an Activity. The <code>Actor</code>
-            class serves as an abstract base class for all types of actors.
+            An Actor is any entity that is capable of being either the primary 
+            actor for, or participant in, an Activity. <code>Actor</code>
+            is a subclass of <code><a>Object</a></code> that serves as an 
+            base class for all types of actors.
           </td>
         </tr>
         <tr>
@@ -851,7 +869,45 @@ _c:14n0 a as:Collection ;
         <tr>
           <td >Notes:</td>
           <td>
-            Ordered or Unordered collections of <code><a>Object</a>/<a>Link</a></code> instances.
+            <p>
+              A <code>Collection</code> is a subclass of <code><a>Object</a></code> that 
+              represents ordered or unordered sets of <code><a>Object</a> or <a>Link</a></code> 
+              instances. The model for collections within the Activity Vocabulary is designed 
+              largely around the abstract model of "logical feeds" and "pages" discussed 
+              in [[RFC5005]], Section 1.2.
+            </p> 
+            <p>
+              Specifically, a "logical collection" is a complete set of <code>Object</code> 
+              or <code>Link</code> instances while an individual <code>Collection</code> object 
+              may contain only a specific subset of those members. Paging properties such as 
+              <code><a>next</a></code>, <code><a>prev</a></code>, <code><a>first</a></code>, 
+              and <code><a>last</a></code> are used to connect multiple <code><a>Collection</a></code> 
+              objects containing different subsets of member items of a single logical collection 
+              together.
+            </p>
+            <p> 
+              When multiple, separate <code><a>Collection</a></code> instances share the same 
+              identity (represented in the <a href="activitystreams2.html">JSON-LD serialization</a> 
+              using the <code>@id</code> property) and each specifies distinct, non-overlapping subsets 
+              of member items (using the <code><a>items</a></code> property), the membership 
+              of the logical collection is the intersection of each of the subsets. However,
+              when there is overlap in the items contained by multiple <code>Collection</code>
+              instances (e.g. when <code>Object</code> or <code>Link</code> intances with the 
+              same identity appear in more than one <code>Collection</code>), member instances 
+              with the most recently updated timestamps -- as determined by examining first the 
+              <code><a>updated</a></code> and then <code><a>published</a></code> properties --
+              MUST be considered to be the most current representations. If those members do 
+              not have either an <code>updated</code> or <code>published</code> property
+              specified, then the containing <code>Collection</code> object's <code>updated</code>
+              and <code>published</code> properties are used. If no timestamps are available 
+              to use for comparison, implementations MAY use other means to determine the 
+              precedence of member instance representations.
+            </p>
+            <p>
+              When the members of a <code>Collection</code> are ordered, the ordering
+              imposed applies only to the subset of members contained within that one specific 
+              <code>Collection</code> instance.
+            </p>
           </td>
         </tr>
         <tr>
@@ -1002,8 +1058,22 @@ _c:14n0 a as:OrderedCollection ;
           <tr>
             <td >Notes:</td>
             <td>
-              A specialization of <code><a>Collection</a></code> in which members
-              are strictly ordered.
+              <p>
+                A subclass of <code><a>Collection</a></code> in which members of the 
+                logical collection are assumed to always be strictly ordered.
+              </p>
+              <p> 
+                Using paging with an <code>OrderedCollection</code> can be tricky because 
+                there is no guarantee that implementations will process the distinct pages 
+                in any predictable order. Therefore, it is strongly recommended that 
+                <code>OrderedCollection</code> instances always include the <code><a>first</a></code>,
+                <code><a>next</a></code>, <code><a>prev</a></code> and <code><a>last</a></code>
+                paging properties. Implementations that wish to reconstruct the appropriate
+                complete ordering of member instances in the logical collection would navigate 
+                to the <code>OrderedCollection</code> instance identified by the <code>first</code> 
+                (or <code>last</code>) link, then recursively follow the <code>next</code> 
+                (or <code>prev</code>) link until all pages have been processed.
+              </p>
             </td>
           </tr>
           <tr>
@@ -1031,13 +1101,23 @@ _c:14n0 a as:OrderedCollection ;
 
     <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
 
-    <p>The Activity Streams 2.0 Extended Properties include Activity and Object 
-    subtypes that are common to many "Social" Web applications. They are 
-    divided into two sets:
+    <p>
+      The Activity Streams 2.0 Extended Classes include Activity and Object 
+      subclasses that are common to many "Social" Web applications. They are 
+      divided into two sets:
       <ul> 
         <li><a href="#activity-types">Activity Types</a></li>
         <li><a href="#object-types">Object Types</a></li>
       </ul>
+    </p>
+
+    <p>
+      Support for specific extended vocabulary classes is expected to vary, 
+      with implementations only selecting the extended classes and properties that 
+      make sense within the specific context and requirements of those applications. 
+      However, to avoid possible interoperability issues, implementations MUST 
+      avoid using extension classes or properties that unduly overlap with or 
+      duplicate the extended vocabulary defined here.
     </p>
 
     <section id="activity-types">
@@ -1804,7 +1884,7 @@ _c:14n0 a as:Create ;
               <p>Indicates that the <code>actor</code> has created the <code>object</code>.</p>
 
               <p>Create is generally equivalent to <code><a>Post</a></code> 
-              with the exception that, the <code><a>Post</a></code> Activity
+              with the exception that the <code><a>Post</a></code> Activity
               has a defined meaning for "target" while <code>Create</code> 
               does not.</p>
             </td>
