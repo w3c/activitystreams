@@ -1066,13 +1066,13 @@ _c:14n0 a as:OrderedCollection ;
                 Using paging with an <code>OrderedCollection</code> can be tricky because 
                 there is no guarantee that implementations will process the distinct pages 
                 in any predictable order. Therefore, it is strongly recommended that 
-                <code>OrderedCollection</code> instances always include the <code><a>first</a></code>,
-                <code><a>next</a></code>, <code><a>prev</a></code> and <code><a>last</a></code>
-                paging properties. Implementations that wish to reconstruct the appropriate
-                complete ordering of member instances in the logical collection would navigate 
-                to the <code>OrderedCollection</code> instance identified by the <code>first</code> 
-                (or <code>last</code>) link, then recursively follow the <code>next</code> 
-                (or <code>prev</code>) link until all pages have been processed.
+                <code>OrderedCollection</code> instances that require paging always include 
+                the <code><a>first</a></code>, <code><a>next</a></code>, <code><a>prev</a></code> 
+                and <code><a>last</a></code> paging properties. Implementations that wish to 
+                reconstruct the appropriate complete ordering of member instances in the logical 
+                collection would navigate to the <code>OrderedCollection</code> instance identified 
+                by the <code>first</code> (or <code>last</code>) link, then recursively follow the 
+                <code>next</code> (or <code>prev</code>) link until all pages have been processed.
               </p>
             </td>
           </tr>
@@ -1883,7 +1883,7 @@ _c:14n0 a as:Create ;
             <td>
               <p>Indicates that the <code>actor</code> has created the <code>object</code>.</p>
 
-              <p>Create is generally equivalent to <code><a>Post</a></code> 
+              <p><code>Create</code> is generally equivalent to <code><a>Post</a></code> 
               with the exception that the <code><a>Post</a></code> Activity
               has a defined meaning for "target" while <code>Create</code> 
               does not.</p>
@@ -5335,18 +5335,18 @@ _c:14n0 a as:Travel ;
             <td >Notes:</td>
             <td>
               Indicates that the <code>actor</code> is traveling to <code>target</code> 
-              from <code>origin</code>. The <code>Travel</code> activity has no <code>object</code>.
-              If the <code>target</code> or <code>origin</code> is not specified, either can be
-              determined by context.
+              from <code>origin</code>. <code>Travel</code> is an <code>IntransitiveObject</code> whose 
+              <code>actor</code> specifies the direct object. If the <code>target</code> or <code>origin</code> 
+              are not specified, either can be determined by context.
             </td>
           </tr>
           <tr>
             <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
+            <td ><code><a>IntransitiveActivity</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+            <td>Inherits all properties from <code><a>IntransitiveActivity</a></code>.</td>
           </tr>
         </tbody>
 
@@ -6320,7 +6320,7 @@ _c:14n0 a as:Content ;
           <td >Notes:</td>
           <td>
             Describes an entity representing any form of content. Examples
-            include documents, images, collections, etc. Content objects 
+            include documents, images, etc. Content objects 
             typically are not able to perform activities on their own, yet
             rather are usually the object or target of activities.
           </td>

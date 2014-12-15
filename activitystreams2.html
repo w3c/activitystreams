@@ -867,8 +867,8 @@ _:c14n0 a as:Collection ;
 
       <p>
         Previous versions of the Activity Streams format used the <code>objectType</code> 
-        property to identify the action type. The <code>objectType</code> MUST NOT be used 
-        within an Activity Streams 2.0 document to represent object type.
+        property to identify the action type. The <code>objectType</code> property MUST NOT 
+        be used within an Activity Streams 2.0 document to represent object type.
       </p>
 
       <p>
@@ -1148,9 +1148,7 @@ _:c14n0 a as:Place, gr:Location ;
       <h2>Natural Language Values</h2>
 
       <p>
-        Several properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a>
-        are defined as having natural language values. These are a representations of human-readable character sequences using one or more languages. Within the JSON-LD serialization, they are expressed as either (1) a single JSON string or (2) a JSON object mapping [[RFC5646]] Language-Tags to localized, equivalent translations of the same string value. In [[JSON-LD]], such constructs are referred to as "Language Maps". In the serialized JSON-LD, these two forms 
-        are differentiated using a simple property naming convention, for instance: "<code>displayName</code>" identifies the JSON string form for the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> property while "<code>displayNameMap</code>" represents the Language Map form.
+        Several properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a> are defined as having natural language values. These are representations of human-readable character sequences using one or more languages. Within the JSON-LD serialization, they are expressed as either (1) a single JSON string or (2) a JSON object mapping [[RFC5646]] Language-Tags to localized, equivalent translations of the same string value. In [[JSON-LD]], such constructs are referred to as "Language Maps". In the serialized JSON-LD, these two forms are differentiated using a simple property naming convention, for instance: "<code>displayName</code>" identifies the JSON string form for the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>property while "<code>displayNameMap</code>" represents the Language Map form.
       </p>
 
       <figure>
@@ -1422,9 +1420,8 @@ _:c14n0 a as:Object ;
       <h2><dfn title="Link">Link</dfn></h2>
 
       <p>
-        A <code>Link</code> describes a qualified reference to another resource and
-        is closely related to the conceptual model of Links as established 
-        in [[!RFC5988]].
+        A <code>Link</code> describes a qualified, indirect reference to another resource that
+        is closely related to the conceptual model of Links as established in [[!RFC5988]].
       </p>
 
       <p>
@@ -1599,12 +1596,13 @@ _:c14n0 a as:Object ;
       <p>
         Formally, the former example establishes an unqualified 
         direct relationship with the image resource while the 
-        latter creates a qualified, indirect relationship that allows 
-        additional properties about the relationship to be specified. Such properties 
-        (e.g. <code>mediaType</code>, <code>hreflang</code>, <code>rel</code>, 
-        etc) describe the <a>Link</a> itself as opposed to describing the 
-        referenced resource. For many practical applications, this distinction 
-        will likely be fairly insignificant but it is still worth keeping in mind.
+        latter creates a <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified, 
+        indirect relationship</a> that allows additional properties about the 
+        relationship to be specified. Such properties (e.g. <code>mediaType</code>, 
+        <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a> 
+        itself as opposed to describing the referenced resource. For many practical 
+        applications, this distinction will likely be fairly insignificant but it 
+        is still worth keeping in mind.
       </p>
 
       <figure><figcaption>
@@ -2108,7 +2106,7 @@ _:c14n0 a as:Share ;
 
       <p>
         Activity objects are specializations of the base <a>Object</a>
-        type that provide information about ongoing or completed actions.
+        type that provide information about pending, ongoing or completed actions.
       </p>
 
       <p>
@@ -2378,20 +2376,22 @@ _:c14n0 a as:Like, &lt;http://schema.org/LikeAction&gt;;
       <h2><dfn title="Collection" id="collection">Collection</dfn></h2>
 
       <p>
-        Collection objects are a specialization of the base <a>Object</a>
-        that contain a listing of other <a title="Object">Objects</a>.
+        Collection objects are a specialization of the base <code><a>Object</a></code>
+        that contain a listing of other <a title="Object">Objects</a> or <a title="Link">Links</a>.
         The Collection object is used primarily as the root of an 
         <a>Activity Streams Document</a>, but can also be used as the
         value of object properties.
       </p>
 
       <p>
-        Collections have both a logical model and a physical serialization.
-        While the logical view of a collection might contain a large number
-        of objects, any single serialized representation might include only a
-        subset of those objects, with specific "paging" <a title="Link">Links</a> 
+        The model for collections within the Activity Vocabulary is designed 
+        largely around the abstract model of "logical feeds" and "pages" discussed 
+        in [[RFC5005]], Section 1.2. Specifically, collections have both a logical model 
+        and a physical serialization. While the logical model of a collection might 
+        contain a large number of member objects, any single serialized representation 
+        might include only a subset of those objects, with "paging" <a title="Link">Links</a> 
         used to reference additional serialized representations that include
-        additional subsets.  Such representations are known as "multi-page
+        other subsets.  Such representations are known as "multi-page
         collections", with each serialized subset representing a single
         "page".
       </p>
@@ -2428,7 +2428,7 @@ _:c14n0 a as:Like, &lt;http://schema.org/LikeAction&gt;;
       <p>
         Implementations MAY used the abstract 
         <a href="activitystreams2-vocabulary.html#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a> 
-        class to explicitly identify strictly ordered collections.
+        class to identify strictly ordered collections.
       </p>
 
       <figure><figcaption>The following is a simple unordered collection with paging:</figcaption>
@@ -2625,6 +2625,19 @@ _:c14n0 a as:OrderedCollection ;
         property is used to indicate the relative index position of the first item contained in
         the <code>orderedItems</code> list in the logical set of items.
         A <code>startIndex</code> of <code>0</code> indicates the first item in the collection.
+      </p>
+
+      <p> 
+        Using paging with an <code>OrderedCollection</code> can be tricky because 
+        there is no guarantee that implementations will process the distinct pages 
+        in any predictable order. Therefore, it is strongly recommended that 
+        <code>OrderedCollection</code> instances that require paging always include the <code><a>first</a></code>,
+        <code><a>next</a></code>, <code><a>prev</a></code> and <code><a>last</a></code>
+        paging properties. Implementations that wish to reconstruct the appropriate
+        complete ordering of member instances in the logical collection would navigate 
+        to the <code>OrderedCollection</code> instance identified by the <code>first</code> 
+        (or <code>last</code>) link, then recursively follow the <code>next</code> 
+        (or <code>prev</code>) link until all pages have been processed.
       </p>
 
     </section>
@@ -2922,50 +2935,67 @@ _:c14n0 a geos:Geometry ;
           <tr>
             <th>Prefix</th>
             <th>Expanded</th>
+            <th>Name</th>
           </tr>
           <tr>
             <td><code>as:</code></td>
             <td><code>http://www.w3.org/ns/activitystreams#</code></td>
+            <td>Activity Streams Vocabulary</td>
           </tr>
           <tr>
             <td><code>dc:</code></td>
             <td><code>http://purl.org/dc/elements/1.1/</code></td>
+            <td>Dublin Core</td>
           </tr>
           <tr>
             <td><code>dct:</code></td>
             <td><code>http://purl.org/dc/terms/</code></td>
+            <td>Dublin Core Terms</td>
           </tr>
           <tr>
             <td><code>dctypes:</code></td>
             <td><code>http://purl.org/dc/dcmitype/</code></td>
+            <td>Dublin Core Types</td>
           </tr>
           <tr>
             <td><code>foaf:</code></td>
             <td><code>http://xmlns.com/foaf/0.1/</code></td>
+            <td>Friend of a Friend</td>
           </tr>
           <tr>
             <td><code>vcard:</code></td>
             <td><code>http://www.w3.org/2006/vcard/ns#</code></td>
+            <td>VCard</td>
           </tr>
           <tr>
             <td><code>org:</code></td>
             <td><code>http://www.w3.org/ns/org#</code></td>
+            <td>W3C Org Ontology</td>
           </tr>
           <tr>
             <td><code>prov:</code></td>
             <td><code>http://www.w3.org/ns/prov#</code></td>
+            <td>W3C Provenance Ontology</td>
           </tr>
           <tr>
             <td><code>geo:</code></td>
             <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></td>
+            <td>W3C Basic Geo Ontology</td>
           </tr>
           <tr>
             <td><code>geos:</code></td>
             <td><code>http://www.opengis.net/ont/geosparql#</code></td>
+            <td>Geo-Sparql</td>
           </tr>
           <tr>
             <td><code>ical:</code></td>
             <td><code>http://www.w3.org/2002/12/cal/ical#</code></td>
+            <td>iCalendar Ontology</td>
+          </tr>
+          <tr>
+            <td><code>oa:</code></td>
+            <td><code>http://www.w3.org/ns/oa#</code></td>
+            <td>Web Annotation Data Model</td>
           </tr>
         </table>
 
