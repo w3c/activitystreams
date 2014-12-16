@@ -74,6 +74,12 @@
       vertical-align: top;
       padding: 5px; 
     }
+
+.nanotabs > ul li { float:left; list-style:none; }
+.nanotabs > ul li a { display:block; padding:4px 6px; margin-right: 3px; border-left: 1px solid #b9ab2d; border-right: 1px solid #b9ab2d; border-top: 1px solid #b9ab2d; border-collapse: collapse; background:#fcfaee; color:#b9ab2d; font-family: sans-serif;
+ text-decoration:none; }
+.nanotabs > ul li a:hover { background:#FFFCE5; color:#550; }
+.nanotabs > ul li a.selected { background:#555; color:#FFF; }
   </style>
 </head>
 <body>
@@ -83,6 +89,16 @@
       This specification details a model for representing potential and
       completed activities using the JSON format.
     </p>
+
+<section id="ednote" class="informative">
+    <h2>Editor's Note</h2>
+    <p><mark>This is an Editor's Draft. There are a significant
+    number of changes that have been made to this vocabulary 
+    since the publication of the First Public Working Draft.
+    All changes should be considered provisional pending 
+    working group discussion and acceptance.</mark></p>
+    </section>
+    
     <section id="authorsnote" class="informative">
       <h2>Author's Note</h2>
       <p>
@@ -236,21 +252,69 @@
 
     <section id="example-1">
       <h2>Minimal Activity</h2>
-      
-      <figure>
-      <figcaption>
-        Expresses the statement <code>'urn:example:person:martin' posted
-        'http://example.org/foo.jpg'</code>.  No additional detail is given.
-      </figcaption>
 
+  <figure>
+  <figcaption>
+    Expresses the statement <code>'urn:example:person:martin' posted
+    'http://example.org/foo.jpg'</code>.  No additional detail is given.
+  </figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex1-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex1-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex1-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex1-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex1-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex1-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:verbs:Post",
+  "@type": "Post",
   "actor": "urn:example:person:martin",
   "object": "http://example.org/foo.jpg"
 }</pre>
-      </figure>
+  </div>
+  <div id="ex1-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Post">
+  &lt;link itemprop="actor" href="urn:example:person:martin">Martin&lt;/link>
+  posted
+  &lt;a itemprop="object" href="http://example.org/foo.jpg">
+    "http://example.org/foo.jpg"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex1-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Post">
+  &lt;link property="actor" href="urn:example:person:martin">Martin&lt;/link>
+  posted
+  &lt;a property="object" href="http://example.org/foo.jpg">
+    "http://example.org/foo.jpg"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex1-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-post">
+  &lt;link class="u-author" href="urn:example:person:martin">Martin&lt;/link>
+  posted
+  &lt;a class="u-item" href="http://example.org/foo.jpg">
+    "http://example.org/foo.jpg"
+  &lt;/a>
+&lt;/div></pre>
+  </div>
+  <div id="ex1-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams&gt; .
 
+_:c14n0 a as:Post ;
+  as:actor &lt;urn:example:person:martin&gt; ;
+  as:object &lt;http://example.org/foo&gt; .</pre>
+  </div>
+</div>
+</figure>
     </section>
 
     <section id="example-2">
@@ -259,29 +323,38 @@
       <figure>
       <figcaption>
         Expresses the statement "Martin Smith posted an article to the blog
-        'Martin's Blog' at 3:04 PM GMT on February 2, 2011."  Some additional
+        'Martin's Blog' at 3:04 PM UTC on February 2, 2015."  Some additional
         details about the article, actor and target blog are given using properties
         defined by the <a href="activitystreams2-vocabulary.html">Activity Streams 2.0
         Vocabulary</a>.
       </figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex2-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex2-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex2-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex2-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex2-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex2-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:verbs:Post",
-  "published": "2011-02-10T15:04:55Z",
+  "@type": "Post",
+  "published": "2015-02-10T15:04:55Z",
   "actor": {
-   "@type": "urn:example:types:person",
+   "@type": "Person",
    "@id": "urn:example:person:martin",
    "displayName": "Martin Smith",
    "url": "http://example.org/martin",
    "image": {
-     "@type": "http://www.w3.org/ns/activitystreams#Link",
+     "@type": "Link",
      "href": "http://example.org/martin/image.jpg",
      "mediaType": "image/jpeg"
    }
   },
   "object" : {
    "@id": "urn:example:blog:abc123/xyz",
-   "@type": "urn:example:types:article",
+   "@type": "Article",
    "url": "http://example.org/blog/2011/02/entry",
    "displayName": "Why I love Activity Streams"
   },
@@ -291,6 +364,131 @@
    "displayName": "Martin's Blog"
   }
 }</pre>
+  </div>
+  <div id="ex2-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Post">
+  &lt;div itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person"
+    itemid="urn:example:person:martin">
+    &lt;a itemprop="url" href="http://example.org/martin">
+      &lt;span itemprop="displayName">Martin Smith&lt;/span>
+    &lt;/a>
+    &lt;img itemprop="image" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Image"
+      src="http://example.org/martin/image.jpg"
+      type="image/jpeg" />
+  &lt;/div>
+  Posted
+  &lt;div itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Article"
+    itemid="urn:example:blog:abc123/xyz">
+    &lt;a itemprop="url" href="http://example.org/blog/2011/02/entry">
+      "&lt;span itemprop="displayName">Why I love Activity Streams&lt;/span>"
+    &lt;/a>
+  &lt;/div>
+  To
+  &lt;div itemprop="target" itemscope
+    itemtype="urn:example:types:blog"
+    itemid="http://example.org/blog">
+    "&lt;span itemprop="displayName">Martin's Blog&lt;/span>"
+  &lt;/div>
+  On 
+  &lt;meta itemprop="published"  content="2015-02-10T15:04:55Z">
+    February 10, 2015 at 03:04:55 UTC
+  &lt;/meta>
+&lt;/div></pre>
+  </div>
+  <div id="ex2-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Post">
+  &lt;div property="actor" typeof="Person"
+    resource="urn:example:person:martin">
+    &lt;a property="url" href="http://example.org/martin">
+      &lt;span property="displayName">Martin Smith&lt;/span>
+    &lt;/a>
+    &lt;img property="image" typeof="Image"
+      src="http://example.org/martin/image.jpg"
+      type="image/jpeg" />
+  &lt;/div>
+  Posted
+  &lt;div property="object" typeof="Article"
+    resource="urn:example:blog:abc123/xyz">
+    &lt;a property="url" href="http://example.org/blog/2011/02/entry">
+      "&lt;span property="displayName">Why I love Activity Streams&lt;/span>"
+    &lt;/a>
+  &lt;/div>
+  To
+  &lt;div property="target" typeof="urn:example:types:blog"
+    resource="http://example.org/blog">
+    "&lt;span property="displayName">Martin's Blog&lt;/span>"
+  &lt;/div>
+  On 
+  &lt;meta property="published"  content="2015-02-10T15:04:55Z">
+    February 10, 2015 at 03:04:55 UTC
+  &lt;/meta>
+&lt;/div></pre>
+  </div>
+  <div id="ex2-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-author h-card">
+    &lt;meta class="p-as-id" name="id" 
+      content="urn:example:person:martin" />
+    &lt;a class="u-url p-name" href="http://example.org/martin">
+      Martin Smith
+    &lt;/a>
+    &lt;img class="u-photo"
+      src="http://example.org/martin/image.jpg"
+      type="image/jpeg" />
+  &lt;/div>
+  Posted
+  &lt;div class="p-item h-entry">
+    &lt;meta class="p-as-id" name="id" 
+      content="urn:example:blog:abc123/xyz" />
+    &lt;a class="u-url p-name" href="http://example.org/blog/2011/02/entry">
+      "Why I love Activity Streams"
+    &lt;/a>
+  &lt;/div>
+  To
+  &lt;div class="p-as-target h-entry">
+    &lt;meta class="p-as-id" name="id" content="http://example.org/blog" />
+    "&lt;span class="p-name">Martin's Blog&lt;/span>"
+  &lt;/div>
+  On 
+  &lt;meta class="dt-published" name="published" content="2015-02-10T15:04:55Z">
+    February 10, 2015 at 03:04:55 UTC
+  &lt;/meta>
+&lt;/div></pre>
+  </div>
+  <div id="ex2-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;urn:example:person:martin&gt; a as:Person ;
+  as:displayName "Martin Smith" ;
+  as:url &lt;http://example.org/martin&gt; ;
+  as:image [
+    a as:Link ;
+      as:href &lt;http://example.org/martin/image.jpg&gt; ;
+      as:mediaType "image/jpeg" .
+  ] .
+
+&lt;http://example.org/blog/&gt; a &lt;"urn:example:types:blog"&gt; ;
+  as:displayName "Martin's Blog" .
+
+&lt;urn:example:blog:abc123/xyz&gt; a as:Article ;
+  as:displayName "Why I love Activity Streams" ;
+  as:url &lt;http://example.org/blog/2011/02/entry&gt; .
+
+_:c14n0 as as:Post ;
+  as:published "2015-02-10T15:04:55Z"^^xsd:dateTime ;
+  as:actor &lt;urn:example:person:martin&gt; ;
+  as:object &lt;urn:example:blog:abc123/xyz&gt; ;
+  as:target &lt;http://example.org/blog/&gt; .</pre>
+  </div>
+</div>
     </figure>
 
     </section>
@@ -304,14 +502,22 @@
         A more extensive, single-entry "Activity Stream" follows.
       </figcaption>
 
-<pre class="example highlight json">
-{
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex3-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex3-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex3-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex3-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex3-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex3-jsonld" style="display: block;">
+<pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "as:Collection",
+  "@type": "Collection",
   "totalItems": 1,
   "items" : [
     {
-      "@type": "urn:example:verbs:Post",
+      "@type": "Post",
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
       "provider": "http://example.org/activity-stream",
@@ -320,12 +526,12 @@
         "ga": "Martin phost le fisean nua a albam."
       },
       "actor": {
-        "@type": "urn:example:types:person",
+        "@type": "Person",
         "@id": "urn:example:person:martin",
         "displayName": "Martin Smith",
         "url": "http://example.org/martin",
         "image": {
-          "@type": "as:Link",
+          "@type": "Link",
           "href": "http://example.org/martin/image",
           "mediaType": "image/jpeg",
           "width": 250,
@@ -333,44 +539,264 @@
         }
       },
       "object" : {
-        "@type": "http://example.org/Photo",
+        "@type": "Image",
         "@id": "http://example.org/album/my_fluffy_cat",
-        "image": {
-          "@type": "as:Link",
+        "preview": {
+          "@type": "Link",
           "href": "http://example.org/album/my_fluffy_cat_thumb.jpg",
-          "mediaType": "image/jpeg",
-          "rel": "preview"
+          "mediaType": "image/jpeg"
         },
         "url": [
           {
-            "@type": "as:Link",
+            "@type": "Link",
             "href": "http://example.org/album/my_fluffy_cat.jpg",
             "mediaType": "image/jpeg"
           },
           {
-            "@type": "as:Link",
+            "@type": "Link",
             "href": "http://example.org/album/my_fluffy_cat.png",
             "mediaType": "image/png"
           }
         ]
       },
       "target": {
-        "@type": "http://example.org/PhotoAlbum",
+        "@type": "Album",
         "@id": "http://example.org/album/",
         "displayNameMap": {
           "en": "Martin's Photo Album",
           "ga": "Grianghraif Mairtin"
         },
         "image": {
-          "@type": "as:Link",
+          "@type": "Link",
           "href": "http://example.org/album/thumbnail.jpg",
           "mediaType": "image/jpeg"
         }
       }
     }
   ]
-}
-</pre></figure>
+}</pre>
+  </div>
+  <div id="ex3-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Collection">
+  &lt;meta itemprop="totalItems" content="1" />
+  &lt;div itemprop="items" itemscope itemtype="http://www.w3.org/ns/activitystreams#Post">
+    &lt;meta itemprop="published" content="2011-02-10T15:04:55Z" />
+    &lt;link itemprop="generator" href="http://example.org/activities-app" />
+    &lt;link itemprop="provider"  href="http://example.org/activity-stream" />
+    &lt;div itemprop="displayName" lang="en">
+      Martin posted a new video to his album.
+    &lt;/div>
+    &lt;div itemprop="displayName" lang="ga">
+      Martin posted a new video to his album.
+    &lt;/div>
+    &lt;div itemprop="actor" itemscope 
+      itemtype="http://www.w3.org/ns/activitystreams#Person"
+      itemid="urn:example:person:martin">
+      &lt;div itemprop="displayName">
+        &lt;a itemprop="url" href="http://example.org/martin">Martin Smith&lt;/a>
+      &lt;/div>
+      &lt;img itemprop="image" itemscope itemtype="http://www.w3.org/ns/activitystreams#Link"
+        src="http://example.org/martin/image"
+        type="image/jpeg"
+        height="250" width="250" />
+    &lt;/div>
+    &lt;div itemprop="object" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Image"
+      itemid="http://example.org/album/my_fluffy_cat">
+      &lt;img itemprop="preview" itemscope
+        itemtype="http://www.w3.org/ns/activitystreams#Link"
+        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
+        type="image/jpeg" />
+      &lt;a itemprop="url" itemscope 
+        itemtype="http://www.w3.org/ns/activitystreams#Link"
+        href="http://example.org/album/my_fluffy_cat.jpg"
+        type="image/jpeg">JPG&lt;/a> |
+      &lt;a itemprop="url" itemscope
+        itemtype="http://www.w3.org/ns/activitystreams#Link"
+        href="http://example.org/album/my_fluffy_cat.png"
+        type="image/png">PNG&lt;/a>
+    &lt;/div>
+    &lt;div itemprop="target" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Album"
+      itemid="http://example.org/album/">
+      &lt;div itemprop="displayName" lang="en">
+        Martin's Photo Album
+      &lt;/div>
+      &lt;div itemprop="displayName" lang="ga">
+        Grianghraif Mairtin
+      &lt;/div>
+      &lt;img itemprop="image" itemscope
+        itemtype="http://www.w3.org/ns/activitystreams#Link"
+        href="http://example.org/album/thumbnail.jpg"
+        type="image/jpeg" />
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+  <div id="ex3-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
+  &lt;meta property="totalItems" content="1" />
+  &lt;div property="items"  typeof="Post">
+    &lt;meta property="published" content="2011-02-10T15:04:55Z" />
+    &lt;link property="generator" href="http://example.org/activities-app" />
+    &lt;link property="provider"  href="http://example.org/activity-stream" />
+    &lt;div property="displayName" lang="en">
+      Martin posted a new video to his album.
+    &lt;/div>
+    &lt;div property="displayName" lang="ga">
+      Martin posted a new video to his album.
+    &lt;/div>
+    &lt;div property="actor" typeof="Person"
+      resource="urn:example:person:martin">
+      &lt;div property="displayName">
+        &lt;a property="url" href="http://example.org/martin">Martin Smith&lt;/a>
+      &lt;/div>
+      &lt;img property="image" typeof="Link"
+        src="http://example.org/martin/image"
+        type="image/jpeg"
+        height="250" width="250" />
+    &lt;/div>
+    &lt;div property="object" typeof="Image"
+      resource="http://example.org/album/my_fluffy_cat">
+      &lt;img property="preview" 
+        typeof="Link"
+        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
+        type="image/jpeg" />
+      &lt;a property="url" typeof="Link"
+        href="http://example.org/album/my_fluffy_cat.jpg"
+        type="image/jpeg">JPG&lt;/a> |
+      &lt;a property="url" typeof="Link"
+        href="http://example.org/album/my_fluffy_cat.png"
+        type="image/png">PNG&lt;/a>
+    &lt;/div>
+    &lt;div property="target" typeof="Album"
+      resource="http://example.org/album/">
+      &lt;div property="displayName" lang="en">
+        Martin's Photo Album
+      &lt;/div>
+      &lt;div property="displayName" lang="ga">
+        Grianghraif Mairtin
+      &lt;/div>
+      &lt;img property="image" typeof="Link"
+        href="http://example.org/album/thumbnail.jpg"
+        type="image/jpeg" />
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+  <div id="ex3-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" content="1" />
+  &lt;div class="p-as-items h-as-post">
+    &lt;meta class="dt-published" name="published" content="2011-02-10T15:04:55Z" />
+    &lt;link class="u-as-generator" href="http://example.org/activities-app" />
+    &lt;link class="u-as-provider"  href="http://example.org/activity-stream" />
+    &lt;div class="p-name" lang="en">
+      Martin posted a new video to his album.
+    &lt;/div>
+    &lt;div class="p-name" lang="ga">
+      Martin posted a new video to his album.
+    &lt;/div>
+    &lt;div class="p-author h-card">
+      &lt;meta class="p-as-id" name="id" content="urn:example:person:martin" />
+      &lt;div class="p-name">
+        &lt;a class="u-url" href="http://example.org/martin">Martin Smith&lt;/a>
+      &lt;/div>
+      &lt;img class="u-photo"
+        src="http://example.org/martin/image"
+        type="image/jpeg"
+        height="250" width="250" />
+    &lt;/div>
+    &lt;div class="p-item h-entry">
+      &lt;meta class="p-as-id" name="id" content="http://example.org/album/my_fluffy_cat" />
+      &lt;img class="u-preview" 
+        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
+        type="image/jpeg" />
+      &lt;a class="u-url"
+        href="http://example.org/album/my_fluffy_cat.jpg"
+        type="image/jpeg">JPG&lt;/a> |
+      &lt;a class="u-url" typeof="Link"
+        href="http://example.org/album/my_fluffy_cat.png"
+        type="image/png">PNG&lt;/a>
+    &lt;/div>
+    &lt;div class="p-as-target h-entry"
+      &lt;meta class="p-as-id" name="id" content="http://example.org/album/" />
+      &lt;div class="p-name" lang="en">
+        Martin's Photo Album
+      &lt;/div>
+      &lt;div class="p-name" lang="ga">
+        Grianghraif Mairtin
+      &lt;/div>
+      &lt;img class="u-photo"
+        href="http://example.org/album/thumbnail.jpg"
+        type="image/jpeg" />
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+  <div id="ex3-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;urn:example:person:martin&gt; a as:Person ;
+  as:displayName "Martin Smith" ;
+  as:url &lt;http://example.org/martin&gt; ;
+  as:image [
+    a as:Link ;
+      as:href &lt;http://example.org/martin/image&gt; ;
+      as:mediaType "image/jpeg" ;
+      as:width "250"^^xsd:nonNegativeInteger ;
+      as:height "250"^^xsd:nonNegativeInteger .
+  ] .
+
+&lt;http://example.org/album/my_fluffy_cat&gt; a as:Image ;
+  as:preview [
+    a as:Link ;
+      as:href &lt;http://example.org/album/my_fluffy_cat_thumb.jpg&gt; ;
+      as:mediaType "image/jpeg" .
+  ] ;
+  as:url (
+    [
+      a as:Link ;
+        as:href &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ;
+        as:mediaType "image/jpeg" .
+    ]
+    [
+      a as:Link ;
+        as:href &lt;http://example.org/album/my_fluffy_cat.png&gt; ;
+        as:mediaType "image/png" .
+    ]
+  ) .
+
+&lt;http://example.org/album/&gt; a as:Album ;
+  as:displayName "Martin's Photo Album"@en ;
+  as:displayName "Grianghraif Mairtin"@ga ;
+  as:image [
+    a as:Link ;
+      as:href &lt;http://example.org/album/thumbnail.jpg&gt; ;
+      as:mediaType "image/jpeg" .
+  ] .
+
+_:c14n0 a as:Collection ;
+  as:totalItems "1"^^xsd:nonNegativeInteger ;
+  as:items [
+    a as:Post ;
+      as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
+      as:generator &lt;http://example.org/activities-app&gt; ;
+      as:provider &lt;http://example.org/activity-stream&gt; ;
+      as:displayName "Martin posted a new video to his album"@en ;
+      as:displayName "Martin phost le fisean nua a albam."@ga ;
+      as:actor &lt;urn:example:person:martin&gt; ;
+      as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
+      as:target &lt;http://example.org/album/&gt;
+  ] .</pre>
+  </div>
+</div>
+</figure>
     </section>
   </section>
 
@@ -380,9 +806,12 @@
     <p>
       The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
       defines the abstract model for Activity Streams 2.0. The vocabulary 
-      document defines four distinct abstract classes: <a>Object</a>, 
-      <a>Link</a>, <a>Collection</a>, <a>Activity</a>. Each of these classes 
-      is described and illustrated below.
+      is segmented into a one set of six core class and an extended set of 
+      Activity and Object types common to most "Social" Web applications. The
+      core classes include: <a>Object</a>, <a>Link</a>, <a>Actor</a>, <a>Activity</a>,
+      <a>Collection</a> and <a>OrderedCollection</a>. Each of these classes 
+      is described and illustrated below. The extended Activity and Object 
+      types are defined normatively in the Activity Vocabulary specification.
     </p>
 
     <section id="object">
@@ -390,61 +819,66 @@
 
       <p>
         The <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code> 
-        class is the primary base class for the Activity Streams vocabulary. Both the <a href="activitystreams2-vocabulary.html#def-activity">Activity</a> and 
-        <a href="activitystreams2-vocabulary.html#def-collection">Collection</a> classes derive
-        from and inherit the properties of <code>Object</code>.
+        class is the primary base class for the Activity Streams vocabulary.
       </p>
 
       <p>
         In addition to having a global identifier in the form of an absolute IRI 
-        and an "object type" (expressed in JSON-LD using the <code>@type</code> keyword),
-        all instances of the <code>Object</code> class share a common set of properties 
-        as defined by the <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>. 
-        These include:
+        using the JSON-LD <code>@id</code> keyword, and an "object type" (expressed 
+        using the JSON-LD <code>@type</code> keyword), all instances of the <code>Object</code> 
+        class share a common set of properties as defined by the 
+        <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>. These include:
         <code>
-          <a href="activitystreams2-vocabulary.html#dfn-action">action</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-alias">alias</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-author">author</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-content">content</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-content">contentMap</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-endtime">endTime</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-generator">generator</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-height">height</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-icon">icon</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-image">image</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-location">location</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-memberof">memberOf</a> |    
-          <a href="activitystreams2-vocabulary.html#dfn-provider">provider</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-published">published</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-rating">rating</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-replies">replies</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-resultof">resultOf</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-scope">scope</a> |  
-          <a href="activitystreams2-vocabulary.html#dfn-starttime">startTime</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-summary">summary</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-summary">summaryMap</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-tag">tag</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-title">title</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-updated">updated</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-validafter">validAfter</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-validbefore">validBefore</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-validfrom">validFrom</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-validuntil">validUntil</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-width">width</a> |  
-          <a href="activitystreams2-vocabulary.html#dfn-url">url</a>
+          <code><a href="activitystreams2-vocabulary.html#dfn-alias">alias</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-attachedto">attachedTo</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-attributedto">attributedTo</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-attributedwith">attributedWith</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-content-term">content</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-context">context</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-contextof">contextOf</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-content">contentMap</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-endtime">endTime</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-generator">generator</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-generatorof">generatorOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-icon">icon</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-image-term">image</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-instrumentof">instrumentOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-memberof">memberOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-location">location</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-locationof">locationOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-originof">originOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-objectof">objectOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-preview">preview</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-previewof">previewOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-provider">provider</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-providerof">providerOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-published">published</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-rating">rating</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-resultof">resultOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-scope">scope</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-scopeof">scopeOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-starttime">startTime</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-summary">summaryMap</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-tag">tag</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-tagof">tagOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-targetof">targetOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-updated">updated</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-url">url</a></code>
         </code>
       </p>
 
       <p>
         Previous versions of the Activity Streams format used the <code>objectType</code> 
-        property to identify the action type. The <code>objectType</code> MUST NOT be used 
-        within an Activity Streams 2.0 document to represent object type.
+        property to identify the action type. The <code>objectType</code> property MUST NOT 
+        be used within an Activity Streams 2.0 document to represent object type.
       </p>
 
       <p>
@@ -454,20 +888,77 @@
 
 <figure><figcaption>Following is an example Object that uses the JSON-ID <code>@id</code> and <code>@type</code>
 JSON-LD keywords to express the global identifier and object type:</figcaption>
-<pre class="example highlight json">
-{
+
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex4-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex4-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex4-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex4-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex4-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex4-jsonld" style="display: block;">
+<pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@id": "http://example.org/foo",
-  "@type": "http://example.org/types/Note",
+  "@type": "Note",
   "displayName": "This is a note",
-  "author": {
+  "attributedTo": {
     "@id": "urn:example:person:joe",
-    "@type": "http://example.org/types/Person",
+    "@type": "Person",
     "displayName": "Joe Smith"
   },
   "published": "2014-08-21T12:34:56Z"
-}
-</pre></figure>
+}</pre>
+  </div>
+  <div id="ex4-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Note"
+  itemid="http://example.org/foo">
+  &lt;div itemprop="displayName">This is a note&lt;/div>
+  &lt;div itemprop="attributedTo" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person"
+    itemid="urn:example:person:joe">
+    &lt;span itemprop="displayName">Joe Smith&lt;/span>
+  &lt;/div>
+  &lt;div itemprop="published">2014-08-21T12:34:56Z&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex4-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note"
+  resource="http://example.org/foo">
+  &lt;div property="displayName">This is a note&lt;/div>
+  &lt;div property="attributedTo" typeof="Person"
+    resource="urn:example:person:joe">
+    &lt;span property="displayName">Joe Smith&lt;/span>
+  &lt;/div>
+  &lt;div property="published">2014-08-21T12:34:56Z&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex4-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;meta class="p-as-id" name="id" content="http://example.org/foo" /> 
+  &lt;div class="p-name">This is a note&lt;/div>
+  &lt;div class="p-author h-card">
+    &lt;meta class="p-as-id" name="id" content="urn:example:person:joe" />
+    &lt;span class="p-name">Joe Smith&lt;/span>
+  &lt;/div>
+  &lt;div class="dt-published">2014-08-21T12:34:56Z&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex4-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;urn:example:person:joe&gt; a as:Person ;
+  as:displayName "Joe Smith" .
+
+&lt;http://example.org/foo&gt; a as:Note ;
+  as:displayName "This is a note" ;
+  as:attributedTo &lt;urn:example:person:joe&gt; ;
+  as:published "2014-08-21T12:34:56Z"^^xsd:dateTime .</pre></div>
+</div>
+</figure>
 
       <p>
         Implementations MUST treat all object types in an Activity Streams document as 
@@ -476,21 +967,189 @@ JSON-LD keywords to express the global identifier and object type:</figcaption>
 
 <figure><figcaption>For instance, in the following example, the value of <code>actor</code> is
 considered to be an instance of <a>Object</a> while the value of <code>object</code> is not:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex5-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex5-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex5-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex5-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex5-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex5-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@id": "http://example.org/foo",
-  "@type": "urn:example:actions:Share",
+  "@type": "Share",
   "displayName": "A Test",
   "actor": {
-    "@type": "urn:example:person",
+    "@type": "Person",
     "@id": "http://example.org/~sally",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "as:Link",
+    "@type": "Link",
     "href": "http://example.org/posts/1"
   }
-}</pre></figure>
+}</pre>
+  </div>
+  <div id="ex5-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Share"
+  itemid="http://example.org/foo">
+  &lt;div itemprop="displayName">A Test&lt;/div>
+  &lt;div itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person"
+    itemid="http://example.org/~sally">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/div>
+  &lt;a itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Link"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre></div>
+  <div id="ex5-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Share"
+  resource="http://example.org/foo">
+  &lt;div property="displayName">A Test&lt;/div>
+  &lt;div property="actor" itemscope typeof="Person"
+    resource="http://example.org/~sally">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/div>
+  &lt;a property="object" itemscope typeof="Link"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre></div>
+  <div id="ex5-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;meta class="p-as-id" name="id" content="http://example.org/foo" />
+  &lt;div class="p-name">A Test&lt;/div>
+  &lt;div class="p-author h-card"
+    &lt;meta class="p-as-id" name="id" content="http://example.org/~sally" />
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/div>
+  &lt;a class="u-share-of"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre></div>
+  <div id="ex5-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://example.org/~sally&gt; a as:Person ;
+  as:displayName "Sally" .
+
+&lt;http://example.org/foo&gt; a as:Share ;
+  as:displayName "A Test" ;
+  as:actor &lt;http://example.org/~sally&gt; ;
+  as:object [
+    a as:Link ;
+      as:href &lt;http://example.org/posts/1&gt; .
+  ] .</pre></div>
+</div>
+</figure>
+
+     <p>
+       The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a> defines a broad
+       range of <code>Object</code> types that are common to many "Social" Web applications. 
+       This specification stops short of defining semantically specific properties for most
+       of these objects. External vocabularies can be used to express additional detail not 
+       covered by the Activity Vocabulary.
+     </p>
+
+     <p>
+      Furthermore, while implementations are free to introduce new types of Objects beyond those 
+      defined by the Activity Vocabulary, interoperability issues can arise when applications 
+      rely too much on extension types that are not recognized by other implementations. Care 
+      should be taken to not unduly overlap with or duplicate the existing Object types. For 
+      instance, some vocabularies (e.g. The Good Relations Vocabulary) define their own classes 
+      for describing locations. An implementation that wishes, for example, to use a 
+      <code><a href="http://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code> as an Object SHOULD identify that 
+      Object as being both a <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code> and an 
+      <code>http://purl.org/goodrelations/v1#Location</code>, as 
+      illustrated in the following:
+     </p>
+
+     <figure><figcaption>An Object that is both a <code>Place</code> and a <code>gr:Location</code>:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex6-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex6-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex6-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex6-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex6-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex6-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {
+      "gr": "http://purl.org/goodrelations/v1#"
+    }
+  ],
+  "@type": ["Place", "gr:Location"],
+  "displayName": "Sally's Restaurant",
+  "longitude": 12.34,
+  "latitude": 56.78,
+  "gr:category": "restaurants/french_restaurants"
+}</pre>
+  </div>
+  <div id="ex6-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope 
+  itemtype="http://www.w3.org/ns/activitystreams#Place 
+            http://purl.org/goodrelations/v1#Location">
+  &lt;div itemprop="displayName">Sally's Restaurant&lt;/div>
+  At
+  Longitude: &lt;span itemprop="longitude">12.34&lt;/span>,
+  Latitude: &lt;span itemprop="latitude">56.78&lt;/span>.
+  &lt;meta itemprop="http://purl.org/goodrelations/v1#category"
+    content="restaurants/french_restaurants" />
+&lt;/div></pre></div>
+  <div id="ex6-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" 
+  typeof="Place http://purl.org/goodrelations/v1#Location">
+  &lt;div property="displayName">Sally's Restaurant&lt;/div>
+  At
+  Longitude: &lt;span property="longitude">12.34&lt;/span>,
+  Latitude: &lt;span property="latitude">56.78&lt;/span>.
+  &lt;meta property="http://purl.org/goodrelations/v1#category"
+    content="restaurants/french_restaurants" />
+&lt;/div></pre></div>
+  <div id="ex6-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-geo">
+  &lt;div class="p-name">Sally's Restaurant&lt;/div>
+  At
+  Longitude: &lt;span class="p-longitude">12.34&lt;/span>,
+  Latitude: &lt;span class="p-latitude">56.78&lt;/span>.
+  &lt;meta name="category" content="restaurants/french_restaurants" />
+&lt;/div></pre></div>
+  <div id="ex6-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix gr: &lt;http://purl.org/goodrelations/v1#&gt; .
+
+_:c14n0 a as:Place, gr:Location ;
+  as:displayName "Sally's Restaurant" ;
+  as:longitude "12.34"^^xsd:float ;
+  as:latitude "56.78"^^xsd:float ;
+  gr:category "restaurants/french_restaurants" .</pre></div>
+</div>
+</figure>
+  
+     <p>
+       Certain properties defined by some External Vocabularies can overlap or duplicate those
+       defined by the Activity Vocabulary. Where such overlap exists, for the sake of consistent 
+       interoperability, implementers MUST use the properties defined by the Activity Vocabulary.
+     </p>
 
    </section>
 
@@ -498,31 +1157,99 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
       <h2>Natural Language Values</h2>
 
-      <p><mark>Ed. Note: This section has been refactored per 
-      <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/issues/46">Github Issue #46</a>.
-      The NaturalLanguageValue class is removed in favor of using JSON-LD mechanisms.</mark></p>
-    
       <p>
-        Several properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a>
-        are defined as having natural language values. These are a representations of human-readable character sequences using one or more languages. Within the JSON-LD serialization, they are expressed as either (1) a single JSON string or (2) a JSON object mapping [[RFC5646]] Language-Tags to localized, equivalent translations of the same string value. In [[JSON-LD]], such constructs are referred to as "Language Maps". In the serialized JSON-LD, these two forms 
-        are differentiated using a simple property naming convention, for instance: "<code>displayName</code>" identifies the JSON string form for the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> property while "<code>displayNameMap</code>" represents the Language Map form.
+        Several properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a> are defined as having natural language values. These are representations of human-readable character sequences using one or more languages. Within the JSON-LD serialization, they are expressed as either (1) a single JSON string or (2) a JSON object mapping [[RFC5646]] Language-Tags to localized, equivalent translations of the same string value. In [[JSON-LD]], such constructs are referred to as "Language Maps". In the serialized JSON-LD, these two forms are differentiated using a simple property naming convention, for instance: "<code>displayName</code>" identifies the JSON string form for the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>property while "<code>displayNameMap</code>" represents the Language Map form.
       </p>
 
       <figure>
         <figcaption>A single displayName String value without language information:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex7-jsonld" style="display: block;">
 <pre class="example highlight json">{
   <b>"displayName": "This is the title"</b>
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex7-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
+  &lt;div itemprop="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex7-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
+  &lt;div property="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex7-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex7-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:Object ;
+  as:displayName "This is the title" .</pre></div>
+</div>
+</figure>
 
       <figure>
         <figcaption>Multiple, language-specific values:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex8-jsonld" style="display: block;">
 <pre class="example highlight json">{
   <b>"displayNameMap": {
     "en": "This is the title",
     "fr": "C'est le titre",
     "sp": "Este es el titulo"
   }</b>
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex8-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
+  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
+  &lt;div itemprop="displayName" lang="fr">C'est le titre&lt;/div>
+  &lt;div itemprop="displayName" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
+  &lt;div property="displayName" lang="en">This is the title&lt;/div>
+  &lt;div property="displayName" lang="fr">C'est le titre&lt;/div>
+  &lt;div property="displayName" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name" lang="en">This is the title&lt;/div>
+  &lt;div class="p-name" lang="fr">C'est le titre&lt;/div>
+  &lt;div class="p-name" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:Object ;
+  as:displayName "This is the title"@en ;
+  as:displayName "C'est le titre"@fr ;
+  as:displayName "Este el el titulo"@sp .</pre></div>
+</div>
+</figure>
 
       <p>
         Every key in the Language Map form MUST be a valid [[RFC5646]] Language-Tag.
@@ -552,13 +1279,46 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
       <figure>
         <figcaption>Establishing a default language context:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex9-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
     {"@language": "en"}
   ],
   "displayName": "This is the title"
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex9-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
+  &lt;div itemprop="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
+  &lt;div property="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry" lang="en">
+  &lt;div class="p-name">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:Object ;
+  as:displayName "This is the title"@en .</pre></div>
+</div>
+</figure>
 
       <p>
         The JSON-LD format generally supports one additional way of associating 
@@ -568,13 +1328,46 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
 <figure>
         <figcaption>Specifying language in a JSON-LD value object:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex10-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex10-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex10-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex10-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "displayName": {
     "@value": "This is the title",
     "@language": "en"
   }
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex10-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
+  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex10-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
+  &lt;div property="displayName" lang="en">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex10-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name" lang="en">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex10-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:Object ;
+  as:displayName "This is the title"@en .</pre></div>
+</div>
+</figure>
 
       <p>
         While Activity Streams 2.0 implementations MAY use JSON-LD value 
@@ -587,6 +1380,15 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
 <figure>
         <figcaption>Excluding a natural language property from the language context:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex11-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex11-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex11-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex11-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
@@ -596,24 +1398,40 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
     "@value": "This is the title",
     "@language": null
   }
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex11-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
+  &lt;div itemprop="displayName" lang="">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex11-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
+  &lt;div property="displayName" lang="">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex11-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry" lang="en">
+  &lt;div class="p-name" lang="">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex11-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:c14n0 a as:Object ;
+  as:displayName "This is the title" .</pre></div>
+</div>
+</figure>
 
     </section>
 
     <section id="link">
       <h2><dfn title="Link">Link</dfn></h2>
 
-      <p><mark>Ed. Note: This section has been refactored per the ongoing discussion
-      around how to model links. This revised approach allows both unqualified direct
-      links and qualified indirect links to be used, with as:Link becoming the mechanism
-      for describing qualified indirect links. It is a fairly controversial change because
-      there are some on the WG who believe that qualified indirect links are necessary, 
-      while there are some who believe they are useful.</mark></p>
-
       <p>
-        A <code>Link</code> describes a qualified reference to another resource and
-        is closely related to the conceptual model of Links as established 
-        in [[!RFC5988]].
+        A <code>Link</code> describes a qualified, indirect reference to another resource that
+        is closely related to the conceptual model of Links as established in [[!RFC5988]].
       </p>
 
       <p>
@@ -622,23 +1440,41 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
         In addition, all <code>Link</code> instances share the following common set of 
         optional properties as defined by the 
         <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>:
-        <code>
-          <a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-hreflang">hreflang</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-rel">rel</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-title">title</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-height">height</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-width">width</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-duration">duration</a>
-        </code>
+          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-hreflang">hreflang</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-height">height</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-width">width</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-duration">duration</a></code> |
+
+          <code><a href="activitystreams2-vocabulary.html#dfn-actorof">actorOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-attachedto">attachedTo</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-attributedwith">attributedWith</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-contextof">contextOf</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-generatorof">generatorOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-iconfor">iconFor</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-imageof">imageOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-instrumentof">instrumentOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-locationof">locationOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-memberof">memberOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-objectof">objectOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-originof">originOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-participantof">participantOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-previewof">previewOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-providerof">providerOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-resultof">resultOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-scopeof">scopeOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-tagof">tagOf</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-targetof">targetOf</a></code>
       </p>
 
       <p>
         For example, all <a title="Object">Objects</a> can contain an 
-        <code><a href="activitystreams2-vocabulary.html#dfn-image">image</a></code> 
+        <code><a href="activitystreams2-vocabulary.html#dfn-image-term">image</a></code> 
         property whose value describes a graphical representation of the containing 
         object.  This property will typically be used to provide the URL to an image 
         (e.g. JPEG, GIF or PNG) resource that can be displayed to the user.  Any given 
@@ -650,59 +1486,212 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       <figure><figcaption>To reference a single image without any additional metadata, 
       a direct association can be expressed as a JSON string containing an absolute
       or relative IRI.</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex12-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex12-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex12-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex12-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex12-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "http://example.org/types/application",
+  "@type": "Application",
   "@id": "http://example.org/application/123",
   "displayName": "My Application",
   <b>"image": "http://example.org/application/123.png"</b>
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex12-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
+  itemid="http://example.org/application/123">
+  &lt;div itemprop="displayName">My Application&lt;/div>
+  &lt;img itemprop="image" 
+       src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex12-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
+  resource="http://example.org/application/123">
+  &lt;div property="displayName">My Application&lt;/div>
+  &lt;img property="image" 
+       src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex12-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo" 
+       src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex12-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://example.org/application/123&gt; a as:Application ;
+  as:displayName "My Application" ;
+  as:image &lt;http://example.org/application/123.png&gt; .</pre></div>
+</div>
+</figure>
 
       <figure><figcaption>
         Alternatively, if additional metadata is required (such as the MIME 
         content type of the referenced resource) a <a>Link</a> can be used:
       </figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex13-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex13-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex13-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex13-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex13-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex13-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "http://example.org/types/application",
+  "@type": "Application",
   "@id": "http://example.org/application/123",
   "displayName": "My Application",
   <b>"image": {
-    "@type": "http://www.w3.org/ns/activitystreams#Link",
+    "@type": "Link",
     "href": "http://example.org/application/123.png",
     "mediaType": "image/png"
   }</b>
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex13-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
+  itemid="http://example.org/application/123">
+  &lt;div itemprop="displayName">My Application&lt;/div>
+  &lt;img itemprop="image" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Link"
+    type="image/png"
+    src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex13-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
+  resource="http://example.org/application/123">
+  &lt;div property="displayName">My Application&lt;/div>
+  &lt;img property="image" typeof="Link"
+    type="image/png"
+    src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex13-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo" 
+       src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex13-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://example.org/application/123&gt; a as:Application ;
+  as:displayName "My Application" ;
+  as:image [
+    a as:Link ;
+      as:href &lt;http://example.org/application/123.png&gt; ;
+      as:mediaType "image/png" .
+  ] .</pre></div>
+</div>
+</figure>
 
       <p>
         Formally, the former example establishes an unqualified 
         direct relationship with the image resource while the 
-        latter creates a qualified, indirect relationship that allows 
-        additional properties about the relationship to be specified. Such properties 
-        (e.g. <code>mediaType</code>, <code>hreflang</code>, <code>rel</code>, 
-        etc) describe the <a>Link</a> itself as opposed to describing the 
-        referenced resource. For many practical applications, this distinction 
-        will likely be fairly insignificant but it is still worth keeping in mind.
+        latter creates a <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified, 
+        indirect relationship</a> that allows additional properties about the 
+        relationship to be specified. Such properties (e.g. <code>mediaType</code>, 
+        <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a> 
+        itself as opposed to describing the referenced resource. For many practical 
+        applications, this distinction will likely be fairly insignificant but it 
+        is still worth keeping in mind.
       </p>
 
       <figure><figcaption>
         If more than one value is to be expressed, A JSON Array with a
         mix of strings and <a>Link</a>s can be used:
       </figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex14-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex14-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex14-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex14-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex14-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "http://example.org/types/application",
+  "@type": "Application",
   "@id": "http://example.org/application/123",
   "displayName": "My Application",
   <b>"image": [
     "http://example.org/application/abc.gif",
     {
-      "@type": "http://www.w3.org/ns/activitystreams#Link",
+      "@type": "Link",
       "href": "http://example.org/application/123.png",
       "mediaType": "image/png"
     }
   ]</b>
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex14-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
+  itemid="http://example.org/application/123">
+  &lt;div itemprop="displayName">My Application&lt;/div>
+  &lt;img itemprop="image"
+    src="http://example.org/application/123.gif" />
+  &lt;img itemprop="image" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Link"
+    type="image/png"
+    src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex14-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
+  resource="http://example.org/application/123">
+  &lt;div property="displayName">My Application&lt;/div>
+  &lt;img property="image"
+    src="http://example.org/application/123.gif" />
+  &lt;img property="image" typeof="Link"
+    type="image/png"
+    src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex14-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-application"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo"
+    src="http://example.org/application/123.gif" />
+  &lt;img class="u-photo" 
+    src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex14-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://example.org/application/123&gt; a as:Application ;
+  as:displayName "My Application" ;
+  as:image (
+    &lt;http://example.org/application/abc.gif&gt;
+    [
+      a as:Link ;
+        as:href &lt;http://example.org/application/123.png&gt; ;
+        as:mediaType "image/png" .
+    ]
+  ) .</pre></div>
+</div>
+</figure>
       
       <p>
         Individual items contained in such an array are independent of the
@@ -720,24 +1709,88 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       <p>
         In the following example, two separate references are provided.  The link
         relation of the first is unspecified, while the link relation of the
-        second is "<code>preview</code>".  Either, however, can be used as 
-        alternative visual representations of the object.
+        second is "<code>canonical</code>".
       </p>
 
       <figure><figcaption></figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex15-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex15-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex15-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex15-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex15-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex15-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:types:application",
-  <b>"image": [
-    "http://example.org/foo.jpg",
+  "@type": "Application",
+  "@id": "http://example.org/application/123",
+  "displayName": "My Application",
+  "image": [
+    "http://example.org/application/abc.gif",
     {
-      "@type": "http://www.w3.org/ns/activitystreams#Link",
-      "href": "http://example.org/screens/1.jpg",
-      "rel": "preview",
-      "mediaType": "image/jpeg"
+      "@type": "Link",
+      "href": "http://example.org/application/123.png",
+      "mediaType": "image/png",
+      "rel": "canonical"
     }
-  ]</b>
-}</pre></figure>
+  ]
+}</pre>
+</div>
+  <div id="ex15-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
+  itemid="http://example.org/application/123">
+  &lt;div itemprop="displayName">My Application&lt;/div>
+  &lt;img itemprop="image"
+    src="http://example.org/application/123.gif" />
+  &lt;img itemprop="image" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Link"
+    type="image/png"
+    src="http://example.org/application/123.png" 
+    rel="canonical" />
+&lt;/div></pre></div>
+  <div id="ex15-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
+  resource="http://example.org/application/123">
+  &lt;div property="displayName">My Application&lt;/div>
+  &lt;img property="image"
+    src="http://example.org/application/123.gif" />
+  &lt;img property="image" typeof="Link"
+    type="image/png"
+    src="http://example.org/application/123.png" 
+    rel="canonical" />
+&lt;/div></pre></div>
+  <div id="ex15-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-application"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo"
+    src="http://example.org/application/123.gif" />
+  &lt;img class="u-photo" 
+       src="http://example.org/application/123.png" 
+       rel="canonical" />
+&lt;/div></pre></div>
+  <div id="ex15-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://example.org/application/123&gt; a as:Application ;
+  as:displayName "My Application" ;
+  as:image (
+    &lt;http://example.org/application/abc.gif&gt;
+    [
+      a as:Link ;
+        as:href &lt;http://example.org/application/123.png&gt; ;
+        as:mediaType "image/png" ;
+        as:rel "canonical" .
+    ]
+  ) .</pre></div>
+</div>
+</figure>
 
       <p>
         It ought to be noted that the [[!HTML5]] specification provides it's own alternative
@@ -756,38 +1809,333 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
     </section>
 
+    <section id="actors">
+      <h2><dfn title="Actor" id="actor">Actor</dfn></h2>
+
+      <p>
+        Actor objects are specializations of the base <a>Object</a>
+        type that represent entities capable of carrying out an 
+        Activity. The <a>Actor</a> class is the base class for all
+        Actor objects. The <a href="activitystreams2-vocabulary">Activity
+        Vocabulary</a> provides the normative definition of eight specific 
+        types of Actors:
+        <code><a href="activitystreams2-vocabulary.html#dfn-application">Application</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-device">Device</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-group">Group</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-organization">Organization</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-person">Person</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-process">Process</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-role">Role</a></code> |
+        <code><a href="activitystreams2-vocabulary.html#dfn-service">Service</a></code>.
+      </p>
+
+      <p>
+        This specification intentionally defines Actors in only the most generalized
+        way, stopping short of defining semantically specific properties for each. 
+        All Actor objects are specializations of <code><a>Object</a></code> and inherit
+        all of the core properties common to all Object's. External vocabularies
+        (VCard for instance) can be used to express additional detail not covered
+        by the Activity Vocabulary.
+      </p>
+
+      <figure><figcaption>An Activity with a Person actor:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex16-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex16-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex16-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex16-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex16-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex16-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Share",
+  "actor": {
+    "@type": "Person",
+    "@id": "acct:sally@example.org",
+    "displayName": "Sally Smith"
+  },
+  "object": {
+    "@type": "Note",
+    "content": "This is a simple note"
+  }
+}</pre>
+</div>
+  <div id="ex16-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Share">
+  &lt;div itemprop="actor" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Person"
+    itemid="acct:sally@example.org">
+    &lt;span itemprop="displayName">Sally Smith&lt;/span>
+  &lt;/div>
+  Shared
+  &lt;div itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    "&lt;span itemprop="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex16-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Share">
+  &lt;div property="actor" typeof="Person" 
+    resource="acct:sally@example.org">
+    &lt;span property="displayName">Sally Smith&lt;/span>
+  &lt;/div>
+  Shared
+  &lt;div property="object" typeof="Note">
+    "&lt;span property="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex16-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;div class="p-author h-card"> 
+    &lt;link class="u-url p-name" href="acct:sally@example.org">
+      Sally Smith
+    &lt;/link>
+  &lt;/div>
+  Shared
+  &lt;div class="p-share-of h-entry">
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex16-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>&lt;acct:sally@example.org&gt; a as:Person ;
+  as:displayName "Sally Smith" .
+
+_:c14n0 a as:Share ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Note ;
+      as:content "This is a simple note" .
+  ] .</pre></div>
+</div>
+</figure>
+
+      <figure><figcaption>An Activity with a Person actor extended with VCard properties:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex17-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex17-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex17-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex17-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex17-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex17-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Share",
+  "actor": {
+    "@type": "Person",
+    "@id": "acct:sally@example.org",
+    "displayName": "Sally Smith",
+    "vcard:given-name": "Sally",
+    "vcard:family-name": "Smith"
+  },
+  "object": {
+    "@type": "Note",
+    "content": "This is a simple note"
+  }
+}</pre>
+</div>
+  <div id="ex17-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Share">
+  &lt;div itemprop="actor" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Person"
+    itemid="acct:sally@example.org">
+    &lt;span itemprop="displayName">
+      &lt;span itemprop="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span> 
+      &lt;span itemprop="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
+    &lt;/span>
+  &lt;/div>
+  Shared
+  &lt;div itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    "&lt;span itemprop="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex17-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Share">
+  &lt;div property="actor" typeof="Person" 
+    resource="acct:sally@example.org">
+      &lt;span property="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span> 
+      &lt;span property="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
+  &lt;/div>
+  Shared
+  &lt;div property="object" typeof="Note">
+    "&lt;span property="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex17-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;div class="p-author h-card"> 
+    &lt;link class="u-url p-name" href="acct:sally@example.org">
+      &lt;span class="p-given-name">Sally&lt;/span> 
+      &lt;span class="p-family-name">Smith&lt;/span>
+    &lt;/link>
+  &lt;/div>
+  Shared
+  &lt;div class="p-share-of h-entry">
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex17-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
+
+&lt;acct:sally@example.org&gt; a as:Person ;
+  as:displayName "Sally Smith" ;
+  vcard:given-name "Sally" ;
+  vcard:family-name "Smith" .
+
+_:c14n0 a as:Share ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Note ;
+      as:content "This is a simple note" .
+  ] .</pre></div>
+</div>
+</figure>
+
+      <p>
+        While implementations are free to introduce new types of Actors beyond 
+        those defined by the Activity Vocabulary, interoperability issues can arise
+        when applications rely too much on extension types that are not recognized 
+        by other implementations. Care should be taken to not unduly overlap with or
+        duplicate the existing Actor types. For instance, some vocabularies (e.g. VCard) 
+        define their own classes for describing people. An implementation that wishes, 
+        for example, to use a <code>vcard:Individual</code> as an Actor SHOULD identify 
+        that Actor as being <em>both</em> a 
+        <code><a href="activitystreams2-vocabulary.html#dfn-person">Person</a></code> and 
+        an <code>vcard:Individual</code>, as illustrated in the following:
+      </p>
+
+      <figure><figcaption>An Actor that is both a <code>Person</code> and a <code>vcard:Individual</code>:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex18-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex18-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex18-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex18-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex18-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Share",
+  "actor": {
+    "@type": ["Person", "vcard:Individual"],
+    "@id": "acct:sally@example.org",
+    "displayName": "Sally Smith",
+    "vcard:given-name": "Sally",
+    "vcard:family-name": "Smith"
+  },
+  "object": {
+    "@type": "Note",
+    "content": "This is a simple note"
+  }
+}</pre>
+</div>
+  <div id="ex18-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope 
+  itemtype="http://www.w3.org/ns/activitystreams#Share">
+  &lt;div itemprop="actor" itemscope 
+    itemtype="
+      http://www.w3.org/ns/activitystreams#Person 
+      http://www.w3.org/2006/vcard/ns#Individual"
+    itemid="acct:sally@example.org">
+    &lt;span itemprop="displayName">
+      &lt;span itemprop="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span> 
+      &lt;span itemprop="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
+    &lt;/span>
+  &lt;/div>
+  Shared
+  &lt;div itemprop="object" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    "&lt;span itemprop="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex18-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Share">
+  &lt;div property="actor" typeof="Person http://www.w3.org/2006/vcard/ns#Individual" 
+    resource="acct:sally@example.org">
+      &lt;span property="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span> 
+      &lt;span property="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
+  &lt;/div>
+  Shared
+  &lt;div property="object" typeof="Note">
+    "&lt;span property="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex18-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;div class="p-author h-card"> 
+    &lt;link class="u-url p-name" href="acct:sally@example.org">
+      &lt;span class="p-given-name">Sally&lt;/span> 
+      &lt;span class="p-family-name">Smith&lt;/span>
+    &lt;/link>
+  &lt;/div>
+  Shared
+  &lt;div class="p-share-of h-entry">
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex18-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
+
+&lt;acct:sally@example.org&gt; a as:Person, vcard:Individual ;
+  as:displayName "Sally Smith" ;
+  vcard:given-name "Sally" ;
+  vcard:family-name "Smith" .
+
+_:c14n0 a as:Share ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Note ;
+      as:content "This is a simple note" .
+  ] .</pre></div>
+</div>
+</figure>
+
+    </section>
+
     <section id="activities">
       <h2><dfn title="Activity" id="activity">Activity</dfn></h2>
 
-      <p><mark>Ed. Note: This section has been refactored to use <code>@type</code>
-      instead of <code>verb</code> to identify the type of action that has occurred.
-      The <code>verb</code> property is deprecated and SHOULD NOT be used in AS2. 
-      When converting from AS1 to AS2, <code>verb</code> MUST be treated as an alias
-      of the JSON-LD <code>@type</code> keyword.</mark></p>
-
       <p>
         Activity objects are specializations of the base <a>Object</a>
-        type that provide information about ongoing or completed actions.
+        type that provide information about pending, ongoing or completed actions.
       </p>
 
       <p>
         In additional to common properties supported by all <a>Object</a>
         instances, <code>Activity</code> objects support the following additional
         properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a>:
-        <code>
-          <a href="activitystreams2-vocabulary.html#dfn-actor">actor</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-object-term">object</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-target">target</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-result">result</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-instrument">instrument</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-participant">participant</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-priority">priority</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-status">status</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-to">to</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-bto">bto</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-cc">cc</a> | 
-          <a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a>
-        </code>
+          <code><a href="activitystreams2-vocabulary.html#dfn-actor">actor</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-object-term">object</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-target">target</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-origin">origin</a></code> |
+          <code><a href="activitystreams2-vocabulary.html#dfn-result">result</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-instrument">instrument</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-participant">participant</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-priority">priority</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-status">status</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-to">to</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-bto">bto</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-cc">cc</a></code> | 
+          <code><a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a></code>
       </p>
 
       <p>
@@ -799,15 +2147,153 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       </p>
 
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex19-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex19-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex19-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex19-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex19-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex19-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:verbs:Like",
+  "@type": "Like",
   "@id": "urn:example:activity:1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
 }
-</code></pre></figure>
+</code></pre>
+</div>
+  <div id="ex19-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Like">
+  &lt;a itemprop="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a itemprop="object" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a> 
+  &lt;meta itemprop="published" content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex19-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Like">
+  &lt;a property="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a property="object" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a> 
+  &lt;meta property="published" content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex19-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-like">
+  &lt;a class="u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a class="u-like-of" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a> 
+  &lt;meta class="dt-published" name="published" 
+    content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex19-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Like ;
+  as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
+  as:actor &lt;http://example.org/profiles/joe&gt; ;
+  as:object &lt;http://example.com/notes/1&gt; .</pre></div>
+</div>
+</figure>
+
+      <p>
+        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a> defines a broad
+        range of <code>Activity</code> types that are common to many "Social" Web applications. 
+        This specification stops short of defining semantically specific properties for most
+        of these activities. External vocabularies can be used to express additional detail not 
+        covered by the Activity Vocabulary.
+      </p>
+
+      <p>
+        Furthermore, while implementations are free to introduce new types of Activites beyond those 
+        defined by the Activity Vocabulary, interoperability issues can arise when applications 
+        rely too much on extension types that are not recognized by other implementations. Care 
+        should be taken to not unduly overlap with or duplicate the existing Activity types. For 
+        instance, some vocabularies (e.g. Schema.org) define their own classes for describing actions. 
+        An implementation that wishes, for example, to use
+        <code><a href="http://schema.org/ShareAction">http://schema.org/LikeAction</a></code> 
+        as an Activity SHOULD identify that Object as being both a 
+        <code><a href="activitystreams2-vocabulary.html#dfn-like">Like</a></code> and an 
+        <code>http://schema.org/LikeAction</code>, as illustrated in the following:
+      </p>
+
+       <figure><figcaption>An Activity that is both a 
+       <code><a href="activitystreams2-vocabulary.html#dfn-like">Like</a></code> and 
+       a <code>http://schema.org/LikeAction</code>:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex20-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex20-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex20-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex20-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex20-jsonld" style="display: block;">
+<pre class="example highlight json"><code>{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": ["Like", "http://schema.org/LikeAction"],
+  "@id": "urn:example:activity:1",
+  "actor": "http://example.org/profiles/joe",
+  "object": "http://example.com/notes/1",
+  "published": "2014-09-30T12:34:56Z"
+}</code></pre>
+</div>
+  <div id="ex20-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope 
+  itemtype="http://www.w3.org/ns/activitystreams#Like http://schema.org/LikeAction">
+  &lt;a itemprop="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a itemprop="object" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a> 
+  &lt;meta itemprop="published" content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex20-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Like http://schema.org/LikeAction">
+  &lt;a property="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a property="object" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a> 
+  &lt;meta property="published" content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex20-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-like">
+  &lt;a class="u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a class="u-like-of" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a> 
+  &lt;meta class="dt-published" name="published" 
+    content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex20-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Like, &lt;http://schema.org/LikeAction&gt;;
+  as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
+  as:actor &lt;http://example.org/profiles/joe&gt; ;
+  as:object &lt;http://example.com/notes/1&gt; .</pre></div>
+</div>
+</figure>
 
       <section id="audienceTargeting">
 
@@ -900,29 +2386,26 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
       <h2><dfn title="Collection" id="collection">Collection</dfn></h2>
 
       <p>
-        Collection objects are a specialization of the base <a>Object</a>
-        that contain a listing of other <a title="Object">Objects</a>.
+        Collection objects are a specialization of the base <code><a>Object</a></code>
+        that contain a listing of other <a title="Object">Objects</a> or <a title="Link">Links</a>.
         The Collection object is used primarily as the root of an 
         <a>Activity Streams Document</a>, but can also be used as the
         value of object properties.
       </p>
 
       <p>
-        Collections have both a logical model and a physical serialization.
-        While the logical view of a collection might contain a large number
-        of objects, any single serialized representation might include only a
-        subset of those objects, with specific "paging" <a title="Link">Links</a> 
+        The model for collections within the Activity Vocabulary is designed 
+        largely around the abstract model of "logical feeds" and "pages" discussed 
+        in [[RFC5005]], Section 1.2. Specifically, collections have both a logical model 
+        and a physical serialization. While the logical model of a collection might 
+        contain a large number of member objects, any single serialized representation 
+        might include only a subset of those objects, with "paging" <a title="Link">Links</a> 
         used to reference additional serialized representations that include
-        additional subsets.  Such representations are known as "multi-page
+        other subsets.  Such representations are known as "multi-page
         collections", with each serialized subset representing a single
         "page".
       </p>
 
-      <p>
-        All Collection objects have an <code><a href="activitystreams2-vocabulary#dfn-items">items</a></code>
-        property whose value is a JSON array of <a title="Object">Objects</a> of any type. The <code>items</code>
-        property MUST be supported by all implementations.
-      </p>
       <p>
         In addition to the common properties shared by all <a>Object</a> instances, 
         <code>Collection</code> objects set of properties defined by the 
@@ -932,8 +2415,6 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
           <a href="activitystreams2-vocabulary.html#dfn-totalitems">totalItems</a> |
           <a href="activitystreams2-vocabulary.html#dfn-itemsperpage">itemsPerPage</a> |
           <a href="activitystreams2-vocabulary.html#dfn-startindex">startIndex</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-itemsafter">itemsAfter</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-itemsbefore">itemsBefore</a> |
           <a href="activitystreams2-vocabulary.html#dfn-current">current</a> |
           <a href="activitystreams2-vocabulary.html#dfn-next">next</a> |
           <a href="activitystreams2-vocabulary.html#dfn-prev">prev</a> |
@@ -943,77 +2424,238 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
         </code>
       </p>
 
-      <figure><figcaption>The following is a simple collection with paging:</figcaption>
-<pre class="example highlight json">
-{
+      <p>
+        Collections can be ordered or unordered. In the JSON-LD serialization,
+        the unordered members of a Collection are represented using the 
+        <code>items</code> property while the ordered members are represented using 
+        the <code>orderedItems</code> property. The normative JSON-LD @context
+        definition maps both the <code>items</code> and <code>orderedItems</code>
+        properties to the Activity Vocabulary <code><a href="activitystreams2-vocabulary.html#dfn-items">items</a></code> term. However, the <code>orderedItems</code> property is defined in
+        the JSON-LD @context as <code>@container = @list</code>, indicating that the
+        items are strictly ordered.
+      </p>
+
+      <p>
+        Note that when using <code>orderedItems</code> within a <code>Collection</code> 
+        object, the order imposed on the items applies only to the subset of items 
+        directly contained within the one <code>Collection</code> object. Implementations 
+        MAY use the <code><a href="activitystreams2-vocabulary.html#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a></code> class to identify collections whose entire logical set of members are 
+        strictly ordered.
+      </p>
+
+      <figure><figcaption>The following is a simple unordered collection with paging:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex21-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex21-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex21-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex21-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex21-jsonld" style="display: block;">
+<pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "http://www.w3.org/ns/activitystreams#Collection",
+  "@type": "Collection",
   "totalItems": 10,
   "itemsPerPage": 1,
-  "itemsSince": "2012-12-12T12:34:56Z",
   "next": "http://example.org/foo?page=2",
   "self": "http://example.org/foo?page=1",
   "items": [
     {
-      "@type": "urn:example:verbs:Post",
+      "@type": "Post",
+      "actor": "urn:example:person:sally",
+      "object": "http://example.org/foo"
+    }
+  ]
+}</pre>
+</div>
+  <div id="ex21-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Collection">
+  &lt;meta itemprop="totalItems" content="10" />
+  &lt;meta itemprop="itemsPerPage" content="1" />
+  &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link itemprop="self" href="http://example.org/foo?page=1" />
+  &lt;ul>
+    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Post"&lt;
+      &lt;link itemprop="actor" href="urn:example:person:sally">Sally&lt;/link>
+      Posted
+      &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ul>
+&lt;/div></pre></div>
+  <div id="ex21-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
+  &lt;meta property="totalItems" content="10" />
+  &lt;meta property="itemsPerPage" content="1" />
+  &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link property="self" href="http://example.org/foo?page=1" />
+  &lt;ul>
+    &lt;li property typeof="Post"&lt;
+      &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
+      Posted
+      &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ul>
+&lt;/div></pre></div>
+  <div id="ex21-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
+  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link rel="self" href="http://example.org/foo?page=1" />
+  &lt;ul class="p-as-items">
+    &lt;li class="h-as-post"&lt;
+      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+      Posted
+      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ul>
+&lt;/div></pre></div>
+  <div id="ex21-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Collection ;
+  as:totalItems "10"^^xsd:nonNegativeInteger ;
+  as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
+  as:next &lt;http://example.org/foo?page=2&gt; ;
+  as:self &lt;http://example.org/foo?page=1&gt; ;
+  as:items [
+      a a:Post; 
+        as:actor &lt;urn:example:person:sally&gt; ;
+        as:object &lt;http://example.org/foo&gt; .
+  ] .</pre></div>
+</div>
+</figure>
+
+      <figure><figcaption>The following is a simple ordered collection with paging:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex22-jsonld" style="display: block;">
+<pre class="example highlight json">
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "OrderedCollection",
+  "totalItems": 10,
+  "itemsPerPage": 1,
+  "next": "http://example.org/foo?page=2",
+  "self": "http://example.org/foo?page=1",
+  "startIndex": 0,
+  "orderedItems": [
+    {
+      "@type": "Post",
       "actor": "urn:example:person:sally",
       "object": "http://example.org/foo"
     }
   ]
 }
-</pre></figure>
+</pre>
+</div>
+  <div id="ex22-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
+  &lt;meta itemprop="totalItems" content="10" />
+  &lt;meta itemprop="itemsPerPage" content="1" />
+  &lt;meta itemprop="startIndex" content="0" />
+  &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link itemprop="self" href="http://example.org/foo?page=1" />
+  &lt;ol>
+    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Post"&lt;
+      &lt;link itemprop="actor" href="urn:example:person:sally">Sally&lt;/link>
+      Posted
+      &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ol>
+&lt;/div></pre></div>
+  <div id="ex22-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="OrderedCollection">
+  &lt;meta property="totalItems" content="10" />
+  &lt;meta property="itemsPerPage" content="1" />
+  &lt;meta property="startIndex" content="0" />
+  &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link property="self" href="http://example.org/foo?page=1" />
+  &lt;ol>
+    &lt;li property typeof="Post"&lt;
+      &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
+      Posted
+      &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ol>
+&lt;/div></pre></div>
+  <div id="ex22-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
+  &lt;meta class="p-as-start-index" name="startIndex" content="0" />
+  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link rel="self" href="http://example.org/foo?page=1" />
+  &lt;ol class="p-as-items"> 
+    &lt;li class="h-as-post"&lt;
+      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+      Posted
+      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ol>
+&lt;/div></pre></div>
+  <div id="ex22-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-    </section>
-
-    <section id="actions">
-
-      <h2><dfn>Potential Actions</dfn></h2>
-
-      <p><mark>Ed.Note: This section is currently provisional and may be moved to a separate document.</mark></p>
+_:c14n0 a as:OrderedCollection ;
+  as:totalItems "10"^^xsd:nonNegativeInteger ;
+  as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
+  as:startIndex "0"^^xsd:nonNegativeInteger ;
+  as:next &lt;http://example.org/foo?page=2&gt; ;
+  as:self &lt;http://example.org/foo?page=1&gt; ;
+  as:items [
+    rdf:first [
+      a a:Post; 
+        as:actor &lt;urn:example:person:sally&gt; ;
+        as:object &lt;http://example.org/foo&gt; .
+    ] ;
+    rdf:rest rdf:nil .
+  ] .</pre></div>
+</div>
+</figure>
 
       <p>
-        All <code>Object</code> instances can have an 
-        <code><a href="activitystreams2-vocabulary.html#dfn-action">action</a></code> property 
-        used to describe the kinds of potential activities that can be taken with 
-        regards to the object. The value is expressed as a JSON object conforming 
-        to the <code><a href="activitystreams2-actions.html#dfn-potentialaction">PotentialAction</a></code>
-        class defined by the <a href="activitystreams2-actions.html">Actions Vocabulary</a>.
+        In ordered collections that use paging, the 
+        <code><a href="activitystreams2-vocabulary.html#dfn-startindex">startIndex</a></code>
+        property is used to indicate the relative index position of the first item contained in
+        the <code>orderedItems</code> list in the logical set of items.
+        A <code>startIndex</code> of <code>0</code> indicates the first item in the collection.
       </p>
 
-        <figure><figcaption>For instance, the following illustrates hypothetical object 
-        with "<code>urn:example:types:note</code>" as the object type, and
-        potential actions "<code>urn:example:actions:ShareAction</code>" and 
-        "<code>urn:example:actions:SaveAction</code>":</figcaption>
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:types:note",
-  "@id": "urn:example:notes:1",
-  "action": [
-    {
-      "@type": "urn:example:actions:ShareAction",
-      "using": {
-        "@type": "http://www.w3.org/ns/activitystreams#HttpRequest",
-        "method": "POST",
-        "url": "http://example.org/share?id=1"
-      }
-    },
-    {
-      "@type": "urn:example:actions:SaveAction",
-      "using": {
-        "@type": "http://www.w3.org/ns/activitystreams#EmbeddedView",
-        "content": "&lt;p>...&lt;/p>",
-        "mediaType": "text/html"
-      }
-    }
-  ]
-}</pre></figure>
+      <p> 
+        Using paging with an <code>OrderedCollection</code> can be tricky because 
+        there is no guarantee that implementations will process the distinct pages 
+        in any predictable order. Therefore, it is strongly recommended that 
+        <code>OrderedCollection</code> instances that require paging always include the 
+        <code><a href="activitystreams2-vocabulary.html#dfn-first">first</a></code>,
+        <code><a href="activitystreams2-vocabulary.html#dfn-next">next</a></code>, 
+        <code><a href="activitystreams2-vocabulary.html#dfn-prev">prev</a></code> and 
+        <code><a href="activitystreams2-vocabulary.html#dfn-last">last</a></code>
+        paging properties. Implementations that wish to reconstruct the appropriate
+        complete ordering of member instances in the logical collection would navigate 
+        to the <code>OrderedCollection</code> instance identified by the <code>first</code> 
+        (or <code>last</code>) link, then recursively follow the <code>next</code> 
+        (or <code>prev</code>) link until all pages have been processed.
+      </p>
 
-        <p>
-          Please refer to the <a href="activitystreams2-actions.html">Actions
-          Vocabulary</a> for more detail on the Potential Actions model.
-        </p>
-
-      </section>
+    </section>
 
   </section>
 
@@ -1118,11 +2760,6 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
     <h2>Extensibility</h2>
 
-      <p><mark>Ed. Note: This section has been refactored to clarify handling of
-      extensions that are not declared in a JSON-LD @context as well as those that
-      use mechanisms that are not compatible with JSON-LD. There should not be 
-      anything too controversial here.</mark></p>
-
       <p>
         In Activity Streams 2.0, an "extension" is any property not defined
         by the <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>.
@@ -1150,9 +2787,10 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
         are free to use such constructs as extensions within an Activity Streams 2.0
         document, consumers that use the standard JSON-LD Processing Algorithms
         will be required to either ignore such extensions or map those to alternative
-        compatible constructs prior to applying the JSON-LD algorithms. GeoJSON extensions,
-        for instance, can be converted to either the <a href="http://www.w3.org/2003/01/geo/">
-        W3C Basic Geo Vocabulary</a> or 
+        compatible constructs prior to applying the JSON-LD algorithms.
+        Simple GeoJSON Points, for instance, can be mapped to
+        <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code> objects,
+        while more complex geometries can be converted to 
         <a href="http://www.opengeospatial.org/standards/geosparql">GeoSparql</a> 
         "Well-Known Text" representations as illustrated in the non-normative examples
         below:
@@ -1160,21 +2798,59 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 
         <figure><figcaption>GeoJSON Point Coordinates:</figcaption>
 <pre class="example highlight json">{
-  "@type": "http://ld.geojson.org/vocab#Point",
+  "type": "Point",
   "coordinates": [36.74, -119.77]
 }</pre></figure>
 
-        <figure><figcaption>The Equivalent W3C Basic Geo alternative:</figcaption>
+        <figure><figcaption>The Equivalent <code>Place</code> alternative:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex23-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex23-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex23-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex23-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex23-jsonld" style="display: block;">
 <pre class="example highlight json">{ 
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "geo:Point",
-  "geo:lat": 36.74,
-  "geo:long": -119.77
-}</pre></figure>
+  "@type": "Place",
+  "latitude": 36.74,
+  "longitude": -119.77
+}</pre>
+</div>
+  <div id="ex23-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Place">
+  &lt;meta itemprop="latitude" content="36.74" />
+  &lt;meta itemprop="longitude" content="-119.77" />
+&lt;/div></pre></div>
+  <div id="ex23-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Place">
+  &lt;meta property="latitude" content="36.74" />
+  &lt;meta property="longitude" content="-119.77" />
+&lt;/div></pre></div>
+  <div id="ex23-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-geo">
+  &lt;meta class="p-latitude" name="latitude" content="36.74" />
+  &lt;meta class="p-longitude" name="longitude" content="-119.77" />
+&lt;/div></pre></div>
+  <div id="ex23-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:c14n0 a as:Place;
+  as:latitude "36.74"^^xsd:float ;
+  as:longitude "-119.77"^^xsd:float .</pre></div>
+</div>
+</figure>
 
 <figure><figcaption>GeoJSON Polygon Coordinates:</figcaption>
 <pre class="example highlight json">{
-  "@type": "http://ld.geojson.org/vocab#Polygon",
+  "type": "Polygon",
   "coordinates": [
     [
       [100.0, 0.0], 
@@ -1187,11 +2863,52 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 }</pre></figure>
 
         <figure><figcaption>The Equivalent GeoSparl Well-Known-Text alternative:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex24-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex24-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex24-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex24-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex24-jsonld" style="display: block;">
 <pre class="example highlight json">{ 
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "geos:Geometry",
   "geos:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
-}</pre></figure>
+}</pre>
+</div>
+  <div id="ex24-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.opengis.net/ont/geosparql#Geometry">
+  &lt;meta 
+    itemprop="http://www.opengis.net/ont/geosparql#asWKT" 
+    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
+&lt;/div></pre></div>
+  <div id="ex24-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" 
+  typeof="itemtype="http://www.opengis.net/ont/geosparql#Geometry"">
+  &lt;meta 
+    property="http://www.opengis.net/ont/geosparql#asWKT" 
+    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
+&lt;/div></pre></div>
+  <div id="ex24-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-geo">
+  &lt;meta 
+    name="wkt" 
+    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
+&lt;/div></pre></div>
+  <div id="ex24-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix geos: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+
+_:c14n0 a geos:Geometry ;
+  geos:asWKT "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"^^geos:wktLiteral .</pre></div>
+</div>
+</figure>
 
     <section id="compact-iris">
       <h2>Handling of JSON-ID Compact IRIs</h2>
@@ -1233,50 +2950,67 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
           <tr>
             <th>Prefix</th>
             <th>Expanded</th>
+            <th>Name</th>
           </tr>
           <tr>
             <td><code>as:</code></td>
             <td><code>http://www.w3.org/ns/activitystreams#</code></td>
+            <td>Activity Streams Vocabulary</td>
           </tr>
           <tr>
             <td><code>dc:</code></td>
             <td><code>http://purl.org/dc/elements/1.1/</code></td>
+            <td>Dublin Core</td>
           </tr>
           <tr>
             <td><code>dct:</code></td>
             <td><code>http://purl.org/dc/terms/</code></td>
+            <td>Dublin Core Terms</td>
           </tr>
           <tr>
             <td><code>dctypes:</code></td>
             <td><code>http://purl.org/dc/dcmitype/</code></td>
+            <td>Dublin Core Types</td>
           </tr>
           <tr>
             <td><code>foaf:</code></td>
             <td><code>http://xmlns.com/foaf/0.1/</code></td>
+            <td>Friend of a Friend</td>
           </tr>
           <tr>
             <td><code>vcard:</code></td>
             <td><code>http://www.w3.org/2006/vcard/ns#</code></td>
+            <td>VCard</td>
           </tr>
           <tr>
             <td><code>org:</code></td>
             <td><code>http://www.w3.org/ns/org#</code></td>
+            <td>W3C Org Ontology</td>
           </tr>
           <tr>
             <td><code>prov:</code></td>
             <td><code>http://www.w3.org/ns/prov#</code></td>
+            <td>W3C Provenance Ontology</td>
           </tr>
           <tr>
             <td><code>geo:</code></td>
             <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></td>
+            <td>W3C Basic Geo Ontology</td>
           </tr>
           <tr>
             <td><code>geos:</code></td>
             <td><code>http://www.opengis.net/ont/geosparql#</code></td>
+            <td>Geo-Sparql</td>
           </tr>
           <tr>
             <td><code>ical:</code></td>
             <td><code>http://www.w3.org/2002/12/cal/ical#</code></td>
+            <td>iCalendar Ontology</td>
+          </tr>
+          <tr>
+            <td><code>oa:</code></td>
+            <td><code>http://www.w3.org/ns/oa#</code></td>
+            <td>Web Annotation Data Model</td>
           </tr>
         </table>
 
@@ -1549,6 +3283,12 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
   </section>
 
   <section id="tof"></section>
+
+<script type="text/javascript" src="nanotabs.js"></script>
+<script type="text/javascript">
+  nanotabs({c:"cell",e:"click",d:-1,f:function(){ return false; }});
+  nanotabs({c:"cell",e:"mouseover",s:"active"});
+</script>
 
 </body>
 </html>
