@@ -18,6 +18,7 @@
     "as": "http://www.w3.org/ns/activitystreams#",
     "Accept": "as:Accept",
     "Activity": "as:Activity",
+    "IntransitiveActivity": "as:IntransitiveActivity",
     "ActivityHandler": "as:ActivityHandler",
     "Actor": "as:Actor",
     "Achieve": "as:Achieve",
