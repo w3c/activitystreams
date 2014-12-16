@@ -2631,8 +2631,11 @@ _:c14n0 a as:OrderedCollection ;
         Using paging with an <code>OrderedCollection</code> can be tricky because 
         there is no guarantee that implementations will process the distinct pages 
         in any predictable order. Therefore, it is strongly recommended that 
-        <code>OrderedCollection</code> instances that require paging always include the <code><a>first</a></code>,
-        <code><a>next</a></code>, <code><a>prev</a></code> and <code><a>last</a></code>
+        <code>OrderedCollection</code> instances that require paging always include the 
+        <code><a href="activitystreams2-vocabulary.html#dfn-first">first</a></code>,
+        <code><a href="activitystreams2-vocabulary.html#dfn-next">next</a></code>, 
+        <code><a href="activitystreams2-vocabulary.html#dfn-prev">prev</a></code> and 
+        <code><a href="activitystreams2-vocabulary.html#dfn-last">last</a></code>
         paging properties. Implementations that wish to reconstruct the appropriate
         complete ordering of member instances in the logical collection would navigate 
         to the <code>OrderedCollection</code> instance identified by the <code>first</code> 

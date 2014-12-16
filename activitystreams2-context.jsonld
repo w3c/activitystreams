@@ -33,7 +33,7 @@
     "BrowserView": "as:BrowserView",
     "Collection": "as:Collection",
     "Confirm": "as:Confirm",
-    "ConnectionRequest": "as:ConnectionRequest",
+    "Connect": "as:Connect",
     "Content": "as:Content",
     "Create": "as:Create",
     "Delete": "as:Delete",
