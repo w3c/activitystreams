@@ -1150,6 +1150,7 @@ _c:14n0 a as:OrderedCollection ;
         <code><a>Arrive</a></code> |
         <code><a>Assign</a></code> |
         <code><a>Block</a></code> |
+        <code><a>Claim</a></code> |
         <code><a>Complete</a></code> |
         <code><a>Confirm</a></code> |
         <code><a>Connect</a></code> |
@@ -6137,6 +6138,102 @@ _c:14n0 a as:Achieve ;
           </tr>
         </tbody>
 
+<tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Claim</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Claim</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex185-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex185-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex185-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex185-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex185-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex185-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Claim",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "@type": "Identity",
+    "displayName": "sally@example.net"
+  }
+}</pre>
+</div>
+<div id="ex185-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Claim">
+  &lt;link itemprop="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  has claimed 
+  &lt;span itemprop="object" itemscope 
+    itemtype="http://www.w3.org/ns/activitystreams#Identity">
+    the identity &lt;span itemprop="displayName">sally@example.net&lt;/span>
+  &lt;/span> 
+  status
+&lt;/div></pre>
+  </div>
+  <div id="ex185-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Claim">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  has claimed
+  &lt;span property="object" typeof="Identity">
+    the identity &lt;span property="displayName">sally@example.net&lt;/span>
+  &lt;/span> 
+  status
+&lt;/div></pre>
+  </div>
+  <div id="ex185-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-claim">
+  &lt;link class="u-author"
+    href="acct:sally@example.org">Sally&lt;/link>
+  has claimed 
+  &lt;span class="p-item h-card">
+    the identity &lt;span class="p-name">sally@example.net&lt;/span>
+  &lt;/span> 
+  status
+&lt;/div></pre>
+  </div>
+<div id="ex185-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Claim ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object [
+    a as:Identity ;
+      as:displayName "sally@example.net" .
+  ].</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Indicates that the <code>actor</code> has claimed the <code>object</code>.
+              The optional <code><a>proof</a></code> property can be provided to demonstrate
+              proof of the claim.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Activity</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
+          </tr>
+        </tbody>
+
       </table>
 
     </section>
@@ -6164,6 +6261,7 @@ _c:14n0 a as:Achieve ;
         <code><a>Event</a></code> |
         <code><a>Folder</a></code> |
         <code><a>Group</a></code> |
+        <code><a>Identity</a></code> |
         <code><a>Image</a></code> |
         <code><a>Mention</a></code> |
         <code><a>Note</a></code> |
@@ -6610,6 +6708,129 @@ _c:14n0 a as:Person ;
             <td>Inherits all properties from <code><a>Actor</a></code>.</td>
           </tr>
         </tbody>
+
+<tbody>
+          <tr>
+            <td rowspan="5" ><dfn>Identity</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Identity</code></td>
+            <td rowspan="5" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex183-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex183-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex183-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex183-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex183-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex183-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Identity",
+  "displayName": "Sally Smith."
+}</pre>
+</div>
+<div id="ex183-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Identity">
+  &lt;span itemprop="displayName">Sally Smith&lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex183-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Identity">
+  &lt;span property="displayName">Sally Smith&lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex183-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-card p-name">Sally Smith&lt;/div></pre>
+  </div>
+<div id="ex183-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_c:14n0 a as:Identity ;
+  as:displayName "Sally Smith".</pre>
+  </div>
+</div>
+
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex184-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex184-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex184-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex184-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex184-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex184-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Identity",
+  "@id": "http://www.w3.org/ns/activitystreams#Anonymous"
+}</pre>
+</div>
+<div id="ex184-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Identity"
+  itemid="http://www.w3.org/ns/activitystreams#Anonymous">
+  Anonymous
+&lt;/div></pre>
+  </div>
+  <div id="ex184-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Identity" 
+  resource="http://www.w3.org/ns/activitystreams#Anonymous">
+  Anonymous
+&lt;/div></pre>
+  </div>
+  <div id="ex184-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-card p-name">Anonymous&lt;/div></pre>
+  </div>
+<div id="ex184-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://www.w3.org/ns/activitystreams#Anonymous> a as:Identity .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              Identities are distinct from other kinds of actors in 
+              that any single actor can have multiple identities.
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Actor</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Actor</a></code>.</td>
+          </tr>
+          <tr>
+            <td>Instances:</td>
+            <td>
+              <p>
+                The Activity Vocabulary defines one common instance 
+                of the <code>Identity</code> class used to represent
+                anonymous identities:
+              </p>
+              <p>
+                <code>http://www.w3.org/ns/activitystreams#Anonymous</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+
         <tbody>
           <tr>
             <td rowspan="4" ><dfn>Process</dfn></td>
@@ -8795,6 +9016,7 @@ _c:14n0 a as:Mention ;
       <code><a>previewOf</a></code> |
       <code><a>result</a></code> |
       <code><a>resultOf</a></code> |
+      <code><a>proof</a></code> | 
       <code><a>provider</a></code> |
       <code><a>providerOf</a></code> |
       <code><a>replies</a></code> |
@@ -20597,6 +20819,121 @@ _c:14n0 a as:Content ;
         <tr>
           <td>Functional:</td>
           <td>True</td>
+        </tr>
+      </tbody>
+
+<tbody>
+        <tr>
+          <td rowspan="4" ><dfn>proof</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#proof</code></td>
+          <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex186-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex186-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex186-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex186-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex186-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex186-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Claim",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "@type": "Identity", 
+    "@id": "acct:sally@example.net"
+  },
+  "proof": {
+    "@type": "urn:ietf:params:oauth:token-type:jwt",
+    "@value": "{jwt-token, omitted for brevity}"
+  }
+}</pre>
+</div>
+<div id="ex186-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Claim">
+  &lt;span itemscope itemprop="actor" 
+    itemid="acct:sally@example.org">Sally&lt;/span>
+  has claimed
+  &lt;span itemscope itemprop="object" 
+    itemtype="http://www.w3.org/ns/activitystreams#Identity"
+    itemid="acct:sally@example.net">
+      the identity "acct:sally@example.net"
+  &lt;/span>
+  using proof
+  &lt;code itemprop="proof" 
+    itemtype="urn:ietf:params:oauth:token-type:jwt">
+    {jwt-token, omitted for brevity}
+  &lt;/code>
+&lt;/div></pre>
+  </div>
+  <div id="ex186-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" 
+  typeof="Claim" >
+  &lt;span property="actor" 
+    resource="acct:sally@example.org">Sally&lt;/span>
+  has claimed
+  &lt;span property="object" typeof="Identity"
+    resource="acct:sally@example.net">
+      the identity "acct:sally@example.net"
+  &lt;/span>
+  using proof
+  &lt;code property="proof" 
+    typeof="urn:ietf:params:oauth:token-type:jwt">
+    {jwt-token, omitted for brevity}
+  &lt;/code>
+&lt;/div></pre>
+  </div>
+  <div id="ex186-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-claim">
+  &lt;link class="p-author" 
+    href="acct:sally@example.org">Sally&lt;/link>
+  has claimed
+  &lt;link class="p-object h-identity" 
+    href="acct:sally@example.net">
+    the identity "acct:sally@example.net"
+  &lt;/link>
+  using proof
+  &lt;code class="p-proof">
+    {jwt-token, omitted for brevity}
+  &lt;/code>
+&lt;/div></pre>
+  </div>
+<div id="ex186-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix o: &lt;urn:ietf:params:oauth:token-type:&gt; .
+
+&lt;acct:sally@example.net&gt; a as:Identity .
+
+_c:14n0 a as:Claim ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object &lt;acct:sally@example.net&gt; ;
+  as:proof "{jwt-token, omitted for brevity}"^^o:jwt .</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td >
+            Any value that can be used to prove the validity of a 
+            <code><a>Claim</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Claim</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code>xsd:anyType</code></td>
         </tr>
       </tbody>
 
