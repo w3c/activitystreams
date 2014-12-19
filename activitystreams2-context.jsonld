@@ -218,14 +218,6 @@
       "@id": "as:inReplyTo",
       "@type": "@id"
     },
-    "instrument": {
-      "@id": "as:instrument",
-      "@type": "@id"
-    },
-    "instrumentOf": {
-      "@id": "as:instrumentOf",
-      "@type": "@id"
-    },
     "items": {
       "@id": "as:items",
       "@type": "@id"
@@ -281,14 +273,6 @@
     },
     "parameter": {
       "@id": "as:parameter",
-      "@type": "@id"
-    },
-    "participant": {
-      "@id": "as:participant",
-      "@type": "@id"
-    },
-    "participantOf": {
-      "@id": "as:participantOf",
       "@type": "@id"
     },
     "prev": {
@@ -459,7 +443,6 @@
       "@id": "as:startTime",
       "@type": "xsd:dateTime"
     },
-    "status": "as:status",
     "summary": "as:summary",
     "summaryMap": {
       "@id": "as:summary",

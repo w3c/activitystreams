@@ -306,24 +306,6 @@ as:inReplyTo a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:LinkNotHandler ) .
   ] .
 
-as:instrument a owl:ObjectProperty ;
-  rdfs:label "instrument"@en ; 
-  rdfs:domain as:Activity ;
-  rdfs:subPropertyOf prov:used ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
-  ] .
-
-as:instrumentOf a owl:ObjectProperty ; 
-  rdfs:label "instrumentOf"@en ;       
-  rdfs:range as:Activity ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
-  ] ;
-  owl:inverseOf as:instrument .
-
 as:items a owl:ObjectProperty, 
            owl:FunctionalProperty ;  
   rdfs:label "items"@en ;       
@@ -432,24 +414,6 @@ as:parameter a owl:ObjectProperty ;
     owl:unionOf (as:HtmlForm as:UrlTemplate)  .
   ] ;
   rdfs:range as:Parameter .
-
-as:participant a owl:ObjectProperty ;   
-  rdfs:label "participant"@en ;    
-  rdfs:domain as:Activity ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
-  ] .
-
-as:participantOf a owl:ObjectProperty ;   
-  rdfs:label "participantOf"@en ;      
-  rdfs:range as:Activity ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
-  ] ;
-  owl:inverseOf as:participant .
 
 as:prev a owl:FunctionalProperty ,
           owl:ObjectProperty ;
@@ -953,28 +917,6 @@ as:startTime a owl:DatatypeProperty ,
   rdfs:subPropertyOf prov:startedAtTime ;
   rdfs:range xsd:dateTime ;
   rdfs:domain as:Object .
-
-as:status a owl:DatatypeProperty ,
-            owl:FunctionalProperty ;
-  rdfs:label "status"@en ;
-  rdfs:comment "Explicitly identifies the current state of an Activity."@en ;
-  rdfs:domain as:Activity ;
-  rdfs:range [
-    a rdfs:Datatype ;
-    owl:unionOf (
-      [
-        a rdfs:Datatype ;
-        owl:oneOf (
-          "pending"
-          "active"
-          "completed"
-          "canceled"
-          "voided"
-        ) .
-      ]
-      xsd:anyURI
-    ) .
-  ] .
 
 as:summary a owl:DatatypeProperty ;
   rdfs:label "summary"@en ;
