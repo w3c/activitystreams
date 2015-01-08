@@ -629,6 +629,11 @@ as:using a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range as:ActivityHandler .
 
+as:proof a owl:ObjectProperty ;
+  rdfs:label "proof"@en;
+  rdfs:comment "Provides proof of a claim"@en ;
+  rdfs:domain as:Claim ;
+  rdfs:range as:Object .
 
 #################################################################
 #
@@ -1201,7 +1206,7 @@ as:Give a owl:Class ;
 as:Group a owl:Class ;         
   rdfs:label "Group"@en ;
   rdfs:subClassOf as:Actor ;
-  rdfs:comment "A Group of any kind. Unlike an Organization, Group's may be informal in nature"@en .
+  rdfs:comment "A Group of any kind."@en .
 
 as:HtmlForm a owl:Class ;    
   rdfs:label "HtmlForm"@en ;
@@ -1377,10 +1382,15 @@ as:OrderedItems a owl:Class ;
 
 as:Organization a owl:Class ;
   rdfs:label "Organization"@en ;
-  rdfs:subClassOf as:Actor ;
+  rdfs:subClassOf as:Group ;
   rdfs:subClassOf prov:Organization ;
   owl:equivalentClass prov:Organization ;
-  rdfs:comment "A formal organization of any type"@en .
+  rdfs:comment "A group where members share a common goal or purpose"@en .
+
+as:Community a owl:Class ;
+  rdfs:label "Community"@en ;
+  rdfs:subClassOf as:Group ;
+  rdfs:comment "A group where members share one or more common characteristics or interests"@en .
 
 as:Page a owl:Class ;
   rdfs:label "Page"@en ;
@@ -1501,5 +1511,20 @@ as:Video a owl:Class ;
   rdfs:label "Video"@en ;
   rdfs:comment "A Video document of any kind."@en ;
   rdfs:subClassOf as:Document .
+
+as:Identity a owl:Class ;
+  rdfs:label "Identity"@en;
+  rdfs:comment "Represents an Identity"@en ;
+  rdfs:subClassOf as:Actor ;
+
+as:Profile a owl:Class ;
+  rdfs:label "Profile"@en;
+  rdfs:comment "A Profile provides a description of an Actor"@en ;
+  rdfs:subClassOf as:Object .
+  
+as:Claim a owl:Class ;
+  rdfs:label "Claim"@en;
+  rdfs:comment "The actor is claiming the object"@en ;
+  rdfs:subClassOf as:Activity .
 
 rdf:nil a as:OrderedItems .

@@ -33,9 +33,11 @@
     "Block": "as:Block",
     "BrowserView": "as:BrowserView",
     "Collection": "as:Collection",
+    "Community": "as:Community",
     "Confirm": "as:Confirm",
     "Connect": "as:Connect",
     "Content": "as:Content",
+    "Claim": "as:Claim",
     "Create": "as:Create",
     "Delete": "as:Delete",
     "Device": "as:Device",
@@ -54,6 +56,7 @@
     "HttpHeader": "as:HttpHeader",
     "HttpRequest": "as:HttpRequest",
     "Ignore": "as:Ignore",
+    "Identity": "as:Identity",
     "Image": "as:Image",
     "Invite": "as:Invite",
     "Join": "as:Join",
@@ -74,9 +77,11 @@
     "PossibleAnswer": "as:PossibleAnswer",
     "Post": "as:Post",
     "Process": "as:Process",
+    "Profile": "as:Profile",
     "Question": "as:Question",
     "Reject": "as:Reject",
     "Remove": "as:Remove",
+    "Relationship": "as:Relationship",
     "Reservation": "as:Reservation",
     "Review": "as:Review",
     "Role": "as:Role",
@@ -281,6 +286,10 @@
     },
     "preview": {
       "@id": "as:preview",
+      "@type": "@id"
+    },
+    "proof": {
+      "@id": "as:proof",
       "@type": "@id"
     },
     "previewOf": {
