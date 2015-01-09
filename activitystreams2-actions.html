@@ -285,11 +285,12 @@ _:c14n0 a as:Note ;
             <a href="http://www.w3.org/TR/html5/browsers.html#sandboxing">Sandboxing</a> policy 
             to be applied to the Browser Context.</p>
 
-            <p>The <code>BrowserView</code> class inherits the properties of the <code><a>Link</a></code>
-            class. Accordingly, the <code><a>href</a></code> property specifies the target URL
-            for the HTTP request. Alternatively, the <code><a>hreftemplate</a></code> property 
-            can be used to describe an [[!RFC6570]] URL Template an implementation can use to 
-            construct the target URL for the HTTP request.</p>
+            <p>The <code>BrowserView</code> class inherits the properties of the 
+            <code><a href="activitystreams2-vocabulary.html#def-link">Link</a></code>
+            class. Accordingly, the <code><a href="activitystreams2-vocabulary.html#def-href">href</a></code> 
+            property specifies the target URL for the HTTP request. Alternatively, the 
+            <code><a>hreftemplate</a></code> property can be used to describe an [[!RFC6570]] 
+            URL Template an implementation can use to construct the target URL for the HTTP request.</p>
           </td>
         </tr>
         <tr>
@@ -373,7 +374,7 @@ _:c14n0 a as:Note ;
             in HTML5.</p> 
 
             <p>The MIME media type of the embedded content is specified using the 
-            <code><a>mediaType</a></code> property.</p>
+            <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> property.</p>
 
             <p>If an implementation chooses to display the embedded content within a 
             browser context as defined by [[!HTML5]], the <code><a>sandbox</a></code> property 
@@ -381,20 +382,24 @@ _:c14n0 a as:Note ;
             policy to be applied to that browser context.</p>
 
             <p>Determining the exact content to embed and how is largely dependent on the 
-            specified MIME media type that is specified. If the <code><a>mediaType</a></code> 
+            specified MIME media type that is specified. If the 
+            <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> 
             property specifies text or HTML based content (e.g. using any variant of 
             "<code>text/*</code>", "<code>application/html</code>" or, "<code>application/xhtml</code>", etc),
-            then the content to display MAY be specified using either the <code><a>content</a></code> or 
-            <code><a>summary</a></code> properties with <code>content</code> being the preferred
+            then the content to display MAY be specified using either the 
+            <code><a href="activitystreams2-vocabulary.html#def-content-term">content</a></code> or 
+            <code><a href="activitystreams2-vocabulary.html#def-summary">summary</a></code> properties with <code>content</code> being the preferred
             means of specifying the full content to display and <code>summary</code> optionally providing
-            a shortened or summarized version. The <code><a>displayName</a></code> and <code><a>title</a></code>
+            a shortened or summarized version. The 
+            <code><a href="activitystreams2-vocabulary.html#def-displayname">displayName</a></code> 
+            and <code><a href="activitystreams2-vocabulary.html#def-title">title</a></code>
             properties can be used to provide captioning information for the embedded content.
-            The <code><a>content</a></code> and <code><a>summary</a></code> properties MUST NOT 
+            The <code>content</code> and <code>summary</code> properties MUST NOT 
             be used for any type of content not intended to be directly viewable by a 
             user either as plain text or processed as markup.</p>
 
-            <p>Alternatively, the <code><a>url</a></code> property can be used to provide the 
-            URL location where the embedded content can be retrieved.</p>
+            <p>Alternatively, the <code><a href="activitystreams2-vocabulary.html#def-url">url</a></code> 
+            property can be used to provide the URL location where the embedded content can be retrieved.</p>
           </td>
         </tr>
         <tr>
@@ -655,11 +660,13 @@ _:c14n0 a as:Note ;
             Unlike <code><a>BrowserView</a></code>, the <code><a>method</a></code> value
             can be any valid HTTP method.</p>
 
-            <p>The <code>HttpRequest</code> class inherits the properties of the <code><a>Link</a></code>
-            class. Accordingly, the <code><a>href</a></code> property specifies the target URL
-            for the HTTP request. Alternatively, the <code><a>hreftemplate</a></code> property 
-            can be used to describe an [[!RFC6570]] URL Template an implementation can use to 
-            construct the target URL for the HTTP request.</p>
+            <p>The <code>HttpRequest</code> class inherits the properties of the 
+            <code><a href="activitystreams2-vocabulary.html#def-link">Link</a></code>
+            class. Accordingly, the 
+            <code><a href="activitystreams2-vocabulary.html#def-href">href</a></code> property 
+            specifies the target URL for the HTTP request. Alternatively, 
+            the <code><a>hreftemplate</a></code> property can be used to describe an [[!RFC6570]] 
+            URL Template an implementation can use to construct the target URL for the HTTP request.</p>
 
             <p>Unlike <code><a>BrowserView</a></code>, the <code><a>HttpRequest</a></code> handler
             is invoked independently of any user interface element. Implementations must determine
@@ -858,8 +865,8 @@ _:c14n0 a as:Note ;
             Instances of this class are intended to be used with the <code><a>hasExpectedInput</a></code>
             and <code><a>hasPotentialResult</a></code> properties to describe the expected
             type of payload.</p>
-            <p>The <code><a>mediaType</a></code> property identifies the expected MIME 
-            media type while the <code><a>shape</a></code> property optionally provides additional 
+            <p>The <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> property identifies the expected MIME 
+            media type while the <code><a href="activitystreams2-vocabulary.html#def-shape">shape</a></code> property optionally provides additional 
             information describing the actual serialization of the payload.
           </td>
         </tr>
@@ -1328,7 +1335,7 @@ _:c14n0 a as:Note ;
               Describes a possible result of an <code><a>ActivityHandler</a></code>. Specific
               results vary based on the type of Activity Handler. Examples include returning
               a particular type of <code><a>Payload</a></code> or <code><a>HttpHeader</a></code>
-              or generating an <code><a>Activity</a></code>.
+              or generating an <code><a href="activitystreams2-vocabulary.html#def-activity">Activity</a></code>.
             </td>
           </tr>
           <tr>
