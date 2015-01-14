@@ -3021,6 +3021,89 @@ _:c14n0 a geos:Geometry ;
 
   </section>
 
+  <section id="microsyntaxes" class="informative">
+    <h2>Mentions, Tags and Other Common Social Microsyntaxes</h2>
+
+    <p>
+      Many social software systems use special text-based microsyntaxes 
+      that allow users to define special addressing for notifications, 
+      linking, or categorization within objects. For example, including 
+      text such as "<code>@username</code>" within an object's content
+      will often route the object to a special "mentions" or "inbox"
+      stream for a particular user. Likewise, including text such as 
+      "<code>#topic</code>" within the object's content will often mark 
+      the object as being related to the topic "<code>topic</code>".
+      Such mechanisms are commonly referred to as "mentions" and "hashtags",
+      respectively.
+    </p>
+
+    <p>
+      While such microsyntaxes MAY be used within the values of the 
+      <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code>,
+      <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>,
+      <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code>, and
+      <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> properties
+      on an Activity Streams <code><a>Object</a></code>, implementations 
+      SHOULD NOT be required to parse the values of those properties in order to 
+      determine the appropriate routing of notifications, categorization or linking
+      between objects. Instead, publishers SHOULD make appropriate use of the 
+      <a href="activitystreams2-vocabulary.html">Activity Streams Vocabulary</a> terms
+      provided specifically for these purposes.
+    </p>
+
+    <p>
+      For example, suppose that an author wishes to send a note of thanks to 
+      another user named "sally" with a hashtag of "#givingthanks". A typical
+      way this message would appear within the content of a note is shown 
+      below:
+    </p>
+
+    <figure><figcaption>A simple note with a mention an a hashtag:</figcaption>
+<pre> "Thank you @sally for all your hard work! #givingthanks" </pre></figure>
+
+    <p>
+      A typical social software implementation would typically render such a 
+      content such that "<code>@sally</code>" is replaced with a hyperlink to "sally"'s
+      social profile page and "<code>#givingthanks</code>" is replaced with a 
+      hyperlink to a listing of other notes that have been "tagged" with the 
+      same topic. Most implementations would also send a special notification 
+      to sally letting her know that a note mentioning her has been posted.
+    </p>
+
+    <p>
+      The following illustrates an equivalent Activity Streams 
+      <code><a href="activitystreams2-vocabulary.html#dfn-note">Note</a></code> object: 
+    </p>
+
+    <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
+<pre>{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "content": "Thank you @sally for all your hard work! #givingthanks",
+  "to": {
+    "@type": "Person",
+    "@id": "http://example.org/people/sally",
+    "alias": "@sally"
+  },
+  "tag": {
+    "@id": "http://example.org/tags/givingthanks",
+    "alias": "#givingthanks"
+  }
+}</pre></figure>
+
+    <p>
+      The <code>to</code> property indicates that the user "@sally" is
+      to be considered part of the <a href="#audienceTargeting">primary audience</a> 
+      of the note and should therefore receive notification. The <code>tag</code>
+      property associates the Note with a reference to 
+      "<code>http://example.org/tags/givingthanks</code>". Note that the note's
+      content still includes the "<code>@sally</code>" and "<code>#givingthanks</code>"
+      microsyntaxes but that consuming implementations are not required to parse
+      those in order to make the appropriate associations.
+    </p>
+
+  </section>
+
   <section id="security-considerations">
 
   <h2>Security Considerations</h2>
