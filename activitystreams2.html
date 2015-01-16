@@ -3021,7 +3021,7 @@ _:c14n0 a geos:Geometry ;
 
   </section>
 
-  <section id="microsyntaxes" class="informative">
+  <section id="microsyntaxes">
     <h2>Mentions, Tags and Other Common Social Microsyntaxes</h2>
 
     <p>
@@ -3101,6 +3101,33 @@ _:c14n0 a geos:Geometry ;
       microsyntaxes but that consuming implementations are not required to parse
       those in order to make the appropriate associations.
     </p>
+
+    <p>
+      In the case a publisher wishes to indicate a mention without an associated 
+      notification, the publisher can use the 
+      <code><a href="activitystreams2-vocabulary.html#dfn-mention">Mention</a></code> object 
+      type as a value of the <code><a href="activitystreams2-vocabulary.html#dfn-tag">tag</a></code>
+      property. The <code>Mention</code> object is a subclass of 
+      <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>.
+    </p>
+
+    <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
+<pre>{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "content": "Thank you @sally for all your hard work! #givingthanks",
+  "tag": [
+    {
+      "@id": "http://example.org/tags/givingthanks",
+      "alias": "#givingthanks"
+    },
+    {
+      "@type": "Mention",
+      "href": "http://example.org/people/sally",
+      "displayName": "@sally"
+    }
+  ]
+}</pre></figure>
 
   </section>
 
@@ -3310,6 +3337,16 @@ _:c14n0 a geos:Geometry ;
 
   <section>
     <h2>Summary of Changes</h2>
+    <h3>2015-01-16</h3>
+      <ul>
+      <li>Include Extended Vocabulary
+        <ul>
+          <li>Add <code>Actor</code>, <code>OrderedCollection</code></li>
+        </ul>
+      </li>
+      <li>Include discussion about Mentions and Tags</li>
+      <li>Expanded Examples</li>
+      </ul>
     <h3>2014-11-06</h3>
       <ul>
       <li>Refactor's Natural Language Context to address JSON-LD
