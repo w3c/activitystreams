@@ -1,0 +1,11 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+<http://example.org/foo> a <http://example.org/types/Note>;
+                         as:author <urn:example:person:joe>;
+                         as:displayName "This is a note";
+                         as:language "en";
+                         as:published "2014-08-21T12:34:56Z"^^<xsd:dateTime> .
+
+<urn:example:person:joe> a <http://example.org/types/Person>;
+                         as:displayName "Joe Smith" .
+

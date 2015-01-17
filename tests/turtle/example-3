@@ -1,0 +1,45 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+_:b0 a as:Collection;
+     as:totalItems "1"^^<xsd:nonNegativeInteger> .
+
+_:b1 a as:Activity;
+     as:memberOf _:b0;
+     as:language "en";
+     as:displayName "Martin phost le fisean nua a albam."@ga;
+     as:displayName "Martin posted a new video to his album."@en;
+     as:verb _:b2;
+     as:actor <urn:example:person:martin>;
+     as:object <http://example.org/album/my_fluffy_cat.jpg>;
+     as:target <http://example.org/album/>;
+     as:generator <http://example.org/activities-app>;
+     as:provider <http://example.org/activity-stream>;
+     as:published "2011-02-10T15:04:55Z"^^<xsd:dateTime> .
+
+<urn:example:person:martin> a <urn:example:types:person>;
+                            as:displayName "Martin Smith";
+                            as:image <http://example.org/martin/image>;
+                            as:url <http://example.org/martin> .
+
+<http://example.org/martin> a as:Link;
+                            as:displayName "Martin's Profile" .
+
+<http://example.org/martin/image> a as:Link, <http://example.org/ImageResource>;
+                                  as:height "250"^^<xsd:nonNegativeInteger>;
+                                  as:mediaType "image/jpeg";
+                                  as:width "250"^^<xsd:nonNegativeInteger> .
+
+<http://example.org/album/my_fluffy_cat.jpg> a <http://example.org/Photo>;
+                                             as:image <http://example.org/album/my_fluffy_cat_thumb.jpg> .
+
+<http://example.org/album/my_fluffy_cat_thumb.jpg> a as:Link;
+                                                   as:mediaType "image/jpeg";
+                                                   as:rel "preview" .
+
+<http://example.org/album/> a <http://example.org/PhotoAlbum>;
+                            as:displayName "Grianghraif Mairtin"@ga;
+                            as:displayName "Martin's Photo Album"@en;
+                            as:image <http://example.org/album/thumbnail.jpg> .
+
+<http://example.org/album/thumbnail.jpg> a as:Link;
+                                         as:mediaType "image/jpeg" .

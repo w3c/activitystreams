@@ -1,0 +1,20 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+<urn:example:notes:1> a <urn:example:types:note> .
+
+_:b0 a <urn:example:actions:ShareAction>;
+     as:object <urn:example:notes:1> .
+
+_:b1 a as:HttpRequest;
+     as:handlerFor _:b0;
+     as:method "POST"^^<xsd:string>;
+     as:url <http://example.org/share?id=1> .
+
+_:b2 a <urn:example:actions:SaveAction>;
+     as:object <urn:example:notes:1> .
+
+_:b3 a as:EmbeddedView;
+     as:handlerFor _:b2;
+     as:content "<p>...</p>";
+     as:mediaType "text/html" .
+

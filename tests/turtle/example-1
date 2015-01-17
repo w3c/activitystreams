@@ -1,0 +1,6 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+_:b0 a as:Activity;
+     as:verb _:b1;
+     as:actor <urn:example:person:martin>;
+     as:object <http://example.org/foo.jpg> .

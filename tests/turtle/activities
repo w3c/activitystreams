@@ -1,0 +1,9 @@
+@prefix as: <http://activitystrea.ms/2.0/> .
+
+<urn:example:activity:1> a as:Activity;
+                         as:actor <http://example.org/profiles/joe>;
+                         as:object <http://example.com/notes/1>;
+                         as:published "2014-09-30T12:34:56Z"^^<xsd:dateTime>;
+                         as:verb <urn:example:verb:like> .
+
+<urn:example:verb:like> as:displayName "like" .
