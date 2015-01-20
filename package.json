@@ -1,0 +1,27 @@
+{
+  "name": "w3c-socialwg-activitystreams",
+  "version": "0.0.0",
+  "description": "Draft Member submission of Activity Streams 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jasnell/w3c-socialwg-activitystreams.git"
+  },
+  "author": "",
+  "license": "OWFa 1.0",
+  "bugs": {
+    "url": "https://github.com/jasnell/w3c-socialwg-activitystreams/issues"
+  },
+  "homepage": "https://github.com/jasnell/w3c-socialwg-activitystreams",
+  "devDependencies": {
+    "cheerio": "~0.18.0",
+    "mocha": "~2.1.0",
+    "chai": "~1.10.0",
+    "rdf-interfaces": "~0.1.0",
+    "rdf-ext": "~0.1.8",
+    "rdf-test-utils": "~0.1.0"
+  }
+}
