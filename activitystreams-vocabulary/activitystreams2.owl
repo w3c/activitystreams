@@ -41,7 +41,7 @@ as:actor a owl:ObjectProperty ;
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Actor as:LinkNotHandler) .
+    owl:unionOf (as:Actor as:LinkNotHandler)
   ] .
 
 as:actorOf a owl:ObjectProperty ;
@@ -50,7 +50,7 @@ as:actorOf a owl:ObjectProperty ;
   rdfs:range as:Activity ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:Actor as:LinkNotHandler) .
+    owl:unionOf (as:Actor as:LinkNotHandler)
   ] ;
   owl:inverseOf as:actor .
 
@@ -60,11 +60,11 @@ as:attributedTo a owl:ObjectProperty ;
   rdfs:subPropertyOf prov:wasAttributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler) .
+    owl:unionOf (as:Object as:LinkNotHandler)
   ] ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler) .
+    owl:unionOf (as:Object as:LinkNotHandler)
   ] ; .
 
 as:attributedWith a owl:ObjectProperty ;
@@ -72,11 +72,11 @@ as:attributedWith a owl:ObjectProperty ;
   rdfs:comment "Identifies entities to which an object is attribute"@en;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler).
+    owl:unionOf (as:Object as:LinkNotHandler)
   ] ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler) .
+    owl:unionOf (as:Object as:LinkNotHandler)
   ] ;
   owl:inverseOf as:attributedTo .
 
@@ -85,11 +85,11 @@ as:attachedTo a owl:ObjectProperty ;
   rdfs:comment "Identifies an entity this object is attached to"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:LinkNotHandler as:Object) .
+    owl:unionOf (as:LinkNotHandler as:Object)
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:LinkNotHandler as:Object) .
+    owl:unionOf (as:LinkNotHandler as:Object)
   ] ; 
   owl:inverseOf as:attachment .
 
@@ -97,7 +97,7 @@ as:attachment a owl:ObjectProperty ;
   rdfs:label "attachment"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:LinkNotHandler as:Object ) .
+    owl:unionOf ( as:LinkNotHandler as:Object )
   ] ;
   rdfs:domain as:Object ;
   owl:equivalentProperty as:attachments .
@@ -108,7 +108,7 @@ as:attachments a owl:ObjectProperty,
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:author a owl:ObjectProperty,
@@ -119,7 +119,7 @@ as:author a owl:ObjectProperty,
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
+    owl:unionOf ( as:Actor as:LinkNotHandler )
   ] .
 
 as:authorOf a owl:ObjectProperty,
@@ -129,7 +129,7 @@ as:authorOf a owl:ObjectProperty,
   rdfs:subPropertyOf as:attributedWith ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
+    owl:unionOf ( as:Actor as:LinkNotHandler )
   ] ;
   rdfs:domain as:Actor ;
   owl:inverseOf as:author .
@@ -139,7 +139,7 @@ as:bcc a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
+    owl:unionOf ( as:Actor as:LinkNotHandler )
   ] .
 
 as:bto a owl:ObjectProperty ;  
@@ -147,7 +147,7 @@ as:bto a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
+    owl:unionOf ( as:Actor as:LinkNotHandler )
   ] .
 
 as:cc a owl:ObjectProperty ;
@@ -155,7 +155,7 @@ as:cc a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
+    owl:unionOf ( as:Actor as:LinkNotHandler )
   ] .
 
 as:context a owl:ObjectProperty ;
@@ -164,7 +164,7 @@ as:context a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler ) .
+      owl:unionOf ( as:Actor as:LinkNotHandler )
   ] ;
   owl:inverseOf as:contextOf .
 
@@ -172,11 +172,11 @@ as:contextOf a owl:ObjectProperty ;
   rdfs:label "contextOf"@en;
   rdfs:domain [
     a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler ) .
+      owl:unionOf ( as:Actor as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler ) .
+      owl:unionOf ( as:Actor as:LinkNotHandler )
   ] ;
   owl:inverseOf as:context .
 
@@ -186,7 +186,7 @@ as:current a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler ) .
+    owl:unionOf ( as:Collection as:LinkNotHandler )
   ] .
 
 as:first a owl:FunctionalProperty ,
@@ -195,7 +195,7 @@ as:first a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler ) .
+    owl:unionOf ( as:Collection as:LinkNotHandler )
   ] .
 
 as:generator a owl:ObjectProperty ;
@@ -203,18 +203,18 @@ as:generator a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:generatorOf a owl:ObjectProperty ;
   rdfs:label "generatorOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler) .
+    owl:unionOf (as:Object as:LinkNotHandler)
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:generator .
 
@@ -262,7 +262,7 @@ as:icon a owl:ObjectProperty ;
   rdfs:label "icon"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Image as:LinkNotHandler ) .
+    owl:unionOf ( as:Image as:LinkNotHandler )
   ] ;
   rdfs:domain as:Object .
 
@@ -270,11 +270,11 @@ as:iconFor a owl:ObjectProperty ;
   rdfs:label "iconFor"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Image as:LinkNotHandler ) .
+    owl:unionOf ( as:Image as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:icon .
 
@@ -282,7 +282,7 @@ as:image a owl:ObjectProperty ;
   rdfs:label "image"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Image as:LinkNotHandler ) .
+    owl:unionOf ( as:Image as:LinkNotHandler )
   ] ;
   rdfs:domain as:Object .
 
@@ -290,11 +290,11 @@ as:imageOf a owl:ObjectProperty ;
   rdfs:label "imageOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Image as:LinkNotHandler ) .
+    owl:unionOf ( as:Image as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:image .
 
@@ -303,7 +303,7 @@ as:inReplyTo a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:items a owl:ObjectProperty, 
@@ -316,10 +316,10 @@ as:items a owl:ObjectProperty,
     owl:unionOf (
       [
         a owl:Class ;
-        owl:unionOf ( as:Object as:LinkNotHandler ) .
+        owl:unionOf ( as:Object as:LinkNotHandler )
       ]
       as:OrderedItems
-    ) .
+    )
   ] .
 
 as:last a owl:FunctionalProperty ,
@@ -328,7 +328,7 @@ as:last a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;      
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler ) .
+    owl:unionOf ( as:Collection as:LinkNotHandler )
   ] .
 
 as:location a owl:ObjectProperty ;   
@@ -337,18 +337,18 @@ as:location a owl:ObjectProperty ;
   rdfs:subPropertyOf prov:atLocation ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:locationOf a owl:ObjectProperty ;
   rdfs:label "locationOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:location .
 
@@ -357,7 +357,7 @@ as:memberOf a owl:ObjectProperty ;
   rdfs:range as:Collection ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:items .
 
@@ -367,7 +367,7 @@ as:next a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler ) .
+    owl:unionOf ( as:Collection as:LinkNotHandler )
   ] .
 
 as:object a owl:ObjectProperty ;
@@ -375,7 +375,7 @@ as:object a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:objectOf a owl:ObjectProperty ;
@@ -384,7 +384,7 @@ as:objectOf a owl:ObjectProperty ;
   rdfs:range as:Activity ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ; 
   owl:inverseOf as:object .
 
@@ -411,7 +411,7 @@ as:parameter a owl:ObjectProperty ;
   rdfs:comment "A parameter"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:HtmlForm as:UrlTemplate)  .
+    owl:unionOf (as:HtmlForm as:UrlTemplate)
   ] ;
   rdfs:range as:Parameter .
 
@@ -421,29 +421,29 @@ as:prev a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler ) .
+    owl:unionOf ( as:Collection as:LinkNotHandler )
   ] .
 
 as:preview a owl:ObjectProperty ;
   rdfs:label "preview"@en ;   
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:previewOf a owl:ObjectProperty ;
   rdfs:label "previewOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:preview .
 
@@ -452,18 +452,18 @@ as:provider a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:providerOf a owl:ObjectProperty ; 
   rdfs:label "providerOf"@en ;     
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:provider .
 
@@ -479,7 +479,7 @@ as:result a owl:ObjectProperty ;
   rdfs:subPropertyOf as:attributedWith;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:resultOf a owl:ObjectProperty ;
@@ -489,7 +489,7 @@ as:resultOf a owl:ObjectProperty ;
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ; 
   owl:inverseOf as:result .
 
@@ -498,7 +498,7 @@ as:role a owl:ObjectProperty ;
   rdfs:comment "Identifies the semantic role of a Parameter."@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler ) .
+    owl:unionOf (as:Object as:LinkNotHandler )
   ] ;
   rdfs:domain as:Parameter .
 
@@ -507,18 +507,18 @@ as:scope a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:scopeOf a owl:ObjectProperty ;
   rdfs:label "scopeOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ; 
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:inverseOf as:scope .
 
@@ -528,7 +528,7 @@ as:self a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler ) .
+    owl:unionOf ( as:Collection as:LinkNotHandler )
   ] .
 
 as:shape a owl:ObjectProperty ;         
@@ -538,7 +538,7 @@ as:shape a owl:ObjectProperty ;
   rdfs:domain [ 
     a owl:Class ;
     owl:unionOf (
-      as:HttpHeader as:Parameter as:Payload as:PossibleAnswer )  .
+      as:HttpHeader as:Parameter as:Payload as:PossibleAnswer )
   ] .
 
 as:tag a owl:ObjectProperty ;
@@ -546,14 +546,14 @@ as:tag a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:tagOf a owl:ObjectProperty ;  
   rdfs:label "tagOf"@en ;       
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;  
   rdfs:range [
     a owl:Class ;
@@ -567,7 +567,7 @@ as:tags a owl:ObjectProperty,
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   owl:equivalentProperty as:tag ;.
 
@@ -576,14 +576,14 @@ as:target a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:targetOf a owl:ObjectProperty ;
   rdfs:label "targetOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   rdfs:range as:Activity ;
   owl:inverseOf as:target .
@@ -594,14 +594,14 @@ as:origin a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] .
 
 as:originOf a owl:ObjectProperty ;
   rdfs:label "originOf"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler ) .
+    owl:unionOf ( as:Object as:LinkNotHandler )
   ] ;
   rdfs:range as:Activity ;
   owl:inverseOf as:origin .
@@ -611,7 +611,7 @@ as:to a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler ) .
+    owl:unionOf ( as:Actor as:LinkNotHandler )
   ] .
 
 as:url a owl:ObjectProperty ;  
@@ -619,7 +619,7 @@ as:url a owl:ObjectProperty ;
   rdfs:comment "Specifies a link to a specific representation of the Object"@en ;  
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:LinkNotHandler owl:Thing ) .
+    owl:unionOf ( as:LinkNotHandler owl:Thing )
   ] ;
   rdfs:domain as:Object .
 
@@ -651,7 +651,7 @@ as:accuracy a owl:DatatypeProperty ,
     owl:onDatatype xsd:float ;
     owl:withRestrictions (
       [ xsd:minInclusive "0.0"^^xsd:float ]
-    ) .
+    )
   ] .
 
 as:alias a owl:DatatypeProperty ,
@@ -677,16 +677,16 @@ as:browserContext a owl:DatatypeProperty ,
     owl:unionOf(
       [
         a owl:Class ;
-        owl:oneOf ( "_blank" "_self" "_parent" "_top" ) .
+        owl:oneOf ( "_blank" "_self" "_parent" "_top" )
       ]
       [
         a rdfs:Datatype ;
         owl:onDatatype xsd:string ;
         owl:withRestrictions (
           [ xsd:pattern "[^_|.].*" ]
-        ) .
+        )
       ]
-    ) .
+    )
   ] ;
   rdfs:domain as:BrowserView .
 
@@ -702,7 +702,7 @@ as:content a owl:DatatypeProperty ;
   rdfs:comment "The content of the object."@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf( rdf:langString xsd:string ) .
+    owl:unionOf( rdf:langString xsd:string )
   ] ;
   rdfs:domain as:Object .
 
@@ -711,11 +711,11 @@ as:displayName a owl:DatatypeProperty ;
   rdfs:displayName "The default, plain-text display name of the object or link."@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf( rdf:langString xsd:string ) .
+    owl:unionOf( rdf:langString xsd:string )
   ] ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:Link) .
+    owl:unionOf ( as:Object as:Link)
   ].
 
 as:downstreamDuplicates a owl:DatatypeProperty,
@@ -730,11 +730,11 @@ as:duration a owl:DatatypeProperty ,
   rdfs:comment "The duration of the object"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( xsd:duration xsd:nonNegativeInteger ) .
+    owl:unionOf ( xsd:duration xsd:nonNegativeInteger )
   ];
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Content as:Link ) .
+    owl:unionOf ( as:Content as:Link )
   ] .
 
 
@@ -753,7 +753,7 @@ as:height a owl:DatatypeProperty ,
   rdfs:range xsd:nonNegativeInteger ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Content as:Link ) .
+    owl:unionOf ( as:Content as:Link )
   ] .
 
 as:href a owl:DatatypeProperty ,
@@ -777,7 +777,7 @@ as:id a owl:DatatypeProperty ,
   rdfs:range xsd:anyURI ;
   rdfs:domain [ 
     a owl:Class ;
-    owl:unionOf (as:Link as:Object).
+    owl:unionOf (as:Link as:Object)
   ] .
 
 as:itemsPerPage a owl:DatatypeProperty ,
@@ -808,7 +808,7 @@ as:mediaType a owl:DatatypeProperty ,
   rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:EmbeddedView as:Link as:Payload ) .
+    owl:unionOf ( as:EmbeddedView as:Link as:Payload )
   ] .
 
 as:method a owl:DatatypeProperty ,
@@ -818,7 +818,7 @@ as:method a owl:DatatypeProperty ,
   rdfs:range xsd:token ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:BrowserView as:HttpRequest ).
+    owl:unionOf ( as:BrowserView as:HttpRequest )
   ] .
 
 as:name a owl:DatatypeProperty ,
@@ -828,7 +828,7 @@ as:name a owl:DatatypeProperty ,
   rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:HttpHeader as:Parameter ) .
+    owl:unionOf ( as:HttpHeader as:Parameter )
   ] .
 
 as:objectType a owl:DatatypeProperty ,
@@ -869,7 +869,7 @@ as:radius a owl:DatatypeProperty ,
     owl:onDatatype xsd:float ;
     owl:withRestrictions (
       [ xsd:minInclusive "0.0"^^xsd:float ]
-    ) .
+    )
   ] .
 
 as:rating a owl:DatatypeProperty ,
@@ -905,7 +905,7 @@ as:sandbox a owl:DatatypeProperty ,
   rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:BrowserView as:EmbeddedView ).
+    owl:unionOf ( as:BrowserView as:EmbeddedView )
   ] .
 
 as:startIndex a owl:DatatypeProperty ,
@@ -928,7 +928,7 @@ as:summary a owl:DatatypeProperty ;
   rdfs:comment "A short summary of the object"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( rdf:langString xsd:string ).
+    owl:unionOf ( rdf:langString xsd:string )
   ] ;
   rdfs:domain as:Object .
 
@@ -944,11 +944,11 @@ as:title a owl:DatatypeProperty ;
   rdfs:comment "The title of the object, HTML markup is permitted."@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( rdf:langString xsd:string ).
+    owl:unionOf ( rdf:langString xsd:string )
   ] ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:Link ) .
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:totalItems a owl:DatatypeProperty ,
@@ -975,7 +975,7 @@ as:units a owl:DatatypeProperty ,
           "km"
         )
       ]
-      xsd:anyURI ) .
+      xsd:anyURI )
   ] ;
   rdfs:domain as:Place .
 
@@ -1006,7 +1006,7 @@ as:width a owl:DatatypeProperty ,
   rdfs:range xsd:nonNegativeInteger ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Content as:Link ).
+    owl:unionOf ( as:Content as:Link )
   ] .
 
 
@@ -1039,7 +1039,7 @@ as:IntransitiveActivity a owl:Class ;
   rdfs:subClassOf [
     a owl:Restriction ;
       owl:onProperty as:object ;
-      owl:maxCardinality "0"^^xsd:nonNegativeInteger .
+      owl:maxCardinality "0"^^xsd:nonNegativeInteger
   ] ;
   rdfs:comment "An Activity that has no direct object"@en .
 
@@ -1348,13 +1348,13 @@ as:OrderedCollection a owl:Class ;
               a owl:Class ;
               owl:complementOf [
                 a owl:Class ;
-                owl:unionOf ( as:Object as:LinkNotHandler ) .
+                owl:unionOf ( as:Object as:LinkNotHandler )
               ]
             ]
-          ) .
-        ] .
+          ) 
+        ] 
       ]
-    ) .
+    ) 
   ] .
 
 as:OrderedItems a owl:Class ;
@@ -1369,15 +1369,15 @@ as:OrderedItems a owl:Class ;
         owl:onProperty rdf:first ;
         owl:allValuesFrom [
           a owl:Class ;
-          owl:unionOf ( as:Object as:LinkNotHandler ) .
-        ] .
+          owl:unionOf ( as:Object as:LinkNotHandler ) 
+        ] 
       ] 
       [
         a owl:Restriction;
         owl:allValuesFrom as:OrderedItems ;
         owl:onProperty rdf:rest
       ]
-    ) .
+    )
   ] .
 
 as:Organization a owl:Class ;
