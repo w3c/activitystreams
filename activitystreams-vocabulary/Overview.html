@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr" typeof="bibo:Document w3p:WD" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
 <head><meta property="dc:language" content="en" lang="">
@@ -192,11 +193,11 @@ code.prettyprint {
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Activity Vocabulary</h1>
   
-  <h2 id="w3c-working-draft-16-january-2015"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2015-01-16">16 January 2015</time></h2>
+  <h2 id="w3c-working-draft-27-january-2015"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2015-01-27">27 January 2015</time></h2>
   <dl>
     
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-activitystreams-vocabulary-20150116/">http://www.w3.org/TR/2015/WD-activitystreams-vocabulary-20150116/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-activitystreams-vocabulary-20150127/">http://www.w3.org/TR/2015/WD-activitystreams-vocabulary-20150127/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/activitystreams-vocabulary/">http://www.w3.org/TR/activitystreams-vocabulary/</a></dd>
     
@@ -258,25 +259,7 @@ code.prettyprint {
   
   
   
-    
-      <p class="copyright">
-        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
-        2015
-         Activity Streams Working Group,IBM &amp;
-        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
-        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
-        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
-        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), 
-        
-        All Rights Reserved.
-        
-        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-        
-          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
-        
-        rules apply.
-      </p>
+<p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2015 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
     
   
   <hr>
@@ -381,7 +364,7 @@ code.prettyprint {
   <section property="bibo:hasPart" resource="#introduction" typeof="bibo:Chapter" id="introduction">
     <!--OddPage--><h2 resource="#h-introduction" id="h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></h2>
     <p>
-      <a href="../WD-activitystreams-core-20150116/">The Activity Streams 2.0 Core Syntax</a> 
+      <a href="../WD-activitystreams-core-20150127/">The Activity Streams 2.0 Core Syntax</a> 
       defines the JSON syntax for Activity Streams. This document defines the 
       vocabulary properties. 
     </p>
@@ -401,7 +384,7 @@ code.prettyprint {
       While not all Activity Streams 2.0 implementations are expected to implement 
       support for the Extended properties, all implementations <em title="MUST" class="rfc2119">MUST</em> at least be capable
       of serializing and deserializing the Extended properties in accordance with the
-      <a href="../WD-activitystreams-core-20150116/">Activity Streams 2.0 Core Syntax</a>.
+      <a href="../WD-activitystreams-core-20150127/">Activity Streams 2.0 Core Syntax</a>.
     </p>
 
     <p>
@@ -1126,7 +1109,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
             </p>
             <p> 
               When multiple, separate <code><a class="internalDFN" href="#dfn-collection">Collection</a></code> instances share the same 
-              identity (represented in the <a href="../WD-activitystreams-core-20150116/">JSON-LD serialization</a> 
+              identity (represented in the <a href="../WD-activitystreams-core-20150127/">JSON-LD serialization</a> 
               using the <code>@id</code> property) and each specifies distinct, non-overlapping subsets 
               of member items (using the <code><a class="internalDFN" href="#dfn-items">items</a></code> property), the membership 
               of the logical collection is the intersection of each of the subsets. However,
@@ -3065,13 +3048,13 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
             <td rowspan="4">
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex22-microdata" class="">Microdata</a></li>
-    <li><a href="#ex22-rdfa" class="">RDFa</a></li>
-    <li><a href="#ex22-microformats" class="">Microformats</a></li>
-    <li><a href="#ex22-turtle" class="">Turtle</a></li>
+    <li><a href="#ex188-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex188-microdata" class="">Microdata</a></li>
+    <li><a href="#ex188-rdfa" class="">RDFa</a></li>
+    <li><a href="#ex188-microformats" class="">Microformats</a></li>
+    <li><a href="#ex188-turtle" class="">Turtle</a></li>
   </ul>
-  <div id="ex22-jsonld" style="display: block;">
+  <div id="ex188-jsonld" style="display: block;">
 <div class="example"><div class="example-title"><span>Example 116</span></div><pre style="" class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
   </span><span class="str">"@context"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://www.w3.org/ns/activitystreams"</span><span class="pun">,</span><span class="pln">
   </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"FriendRequest"</span><span class="pun">,</span><span class="pln">
@@ -3085,7 +3068,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="pun">}</span><span class="pln">
 </span><span class="pun">}</span></pre></div>
 </div>
-<div id="ex22-microdata" style="display:none;">
+<div id="ex188-microdata" style="display:none;">
 <div class="example"><div class="example-title"><span>Example 117</span></div><pre style="" class="example highlight html prettyprint prettyprinted"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">itemscope</span><span class="pln">
   </span><span class="atn">itemtype</span><span class="pun">=</span><span class="atv">"http://www.w3.org/ns/activitystreams#FriendRequest"</span><span class="tag">&gt;</span><span class="pln">
   </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">itemprop</span><span class="pun">=</span><span class="atv">"actor"</span><span class="pln"> </span><span class="atn">itemscope</span><span class="pln">
@@ -3099,7 +3082,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="tag">&lt;/span&gt;</span><span class="pln">
 </span><span class="tag">&lt;/div&gt;</span></pre></div>
   </div>
-  <div id="ex22-rdfa" style="display:none;">
+  <div id="ex188-rdfa" style="display:none;">
 <div class="example"><div class="example-title"><span>Example 118</span></div><pre style="" class="example highlight html prettyprint prettyprinted"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">vocab</span><span class="pun">=</span><span class="atv">"http://www.w3.org/ns/activitystreams#"</span><span class="pln">
   </span><span class="atn">typeof</span><span class="pun">=</span><span class="atv">"FriendRequest"</span><span class="tag">&gt;</span><span class="pln">
   </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">property</span><span class="pun">=</span><span class="atv">"actor"</span><span class="pln"> </span><span class="atn">typeof</span><span class="pun">=</span><span class="atv">"Person"</span><span class="tag">&gt;</span><span class="pln">
@@ -3111,7 +3094,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="tag">&lt;/span&gt;</span><span class="pln">
 </span><span class="tag">&lt;/div&gt;</span></pre></div>
   </div>
-  <div id="ex22-microformats" style="display:none;">
+  <div id="ex188-microformats" style="display:none;">
 <div class="example"><div class="example-title"><span>Example 119</span></div><pre style="" class="example highlight html prettyprint prettyprinted"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"h-entry"</span><span class="tag">&gt;</span><span class="pln">
   </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"p-author h-card"</span><span class="tag">&gt;</span><span class="pln">
     </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"p-name"</span><span class="tag">&gt;</span><span class="pln">Sally</span><span class="tag">&lt;/span&gt;</span><span class="pln">
@@ -3122,7 +3105,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="tag">&lt;/span&gt;</span><span class="pln">
 </span><span class="tag">&lt;/div&gt;</span></pre></div>
   </div>
-<div id="ex22-turtle" style="display: none;">
+<div id="ex188-turtle" style="display: none;">
 <div class="example"><div class="example-title"><span>Example 120</span></div><pre style="" class="example highlight turtle prettyprint prettyprinted"><span class="lit">@prefix</span><span class="pln"> </span><span class="kwd">as</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">http</span><span class="pun">:</span><span class="com">//www.w3.org/ns/activitystreams#&gt; .</span><span class="pln">
 
 _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln"> a </span><span class="kwd">as</span><span class="pun">:</span><span class="typ">FriendRequest</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
@@ -4573,13 +4556,13 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
             <td rowspan="4">
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex160-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex160-microdata" class="">Microdata</a></li>
-    <li><a href="#ex160-rdfa" class="">RDFa</a></li>
-    <li><a href="#ex160-microformats" class="">Microformats</a></li>
-    <li><a href="#ex160-turtle" class="">Turtle</a></li>
+    <li><a href="#ex189-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex189-microdata" class="">Microdata</a></li>
+    <li><a href="#ex189-rdfa" class="">RDFa</a></li>
+    <li><a href="#ex189-microformats" class="">Microformats</a></li>
+    <li><a href="#ex189-turtle" class="">Turtle</a></li>
   </ul>
-  <div id="ex160-jsonld" style="display: block;">
+  <div id="ex189-jsonld" style="display: block;">
 <div class="example"><div class="example-title"><span>Example 181</span></div><pre style="" class="example highlight json prettyprint prettyprinted"><span class="pun">{</span><span class="pln">
   </span><span class="str">"@context"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://www.w3.org/ns/activitystreams"</span><span class="pun">,</span><span class="pln">
   </span><span class="str">"@type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Experience"</span><span class="pun">,</span><span class="pln">
@@ -4593,7 +4576,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="pun">}</span><span class="pln">
 </span><span class="pun">}</span></pre></div>
 </div>
-<div id="ex160-microdata" style="display:none;">
+<div id="ex189-microdata" style="display:none;">
 <div class="example"><div class="example-title"><span>Example 182</span></div><pre style="" class="example highlight html prettyprint prettyprinted"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">itemscope</span><span class="pln">
   </span><span class="atn">itemtype</span><span class="pun">=</span><span class="atv">"http://www.w3.org/ns/activitystreams#Experience"</span><span class="tag">&gt;</span><span class="pln">
   </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">itemprop</span><span class="pun">=</span><span class="atv">"actor"</span><span class="pln"> </span><span class="atn">itemscope</span><span class="pln">
@@ -4609,7 +4592,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="tag">&lt;/span&gt;</span><span class="pln">
 </span><span class="tag">&lt;/div&gt;</span></pre></div>
   </div>
-  <div id="ex160-rdfa" style="display:none;">
+  <div id="ex189-rdfa" style="display:none;">
 <div class="example"><div class="example-title"><span>Example 183</span></div><pre style="" class="example highlight html prettyprint prettyprinted"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">vocab</span><span class="pun">=</span><span class="atv">"http://www.w3.org/ns/activitystreams#"</span><span class="pln">
   </span><span class="atn">typeof</span><span class="pun">=</span><span class="atv">"Update"</span><span class="tag">&gt;</span><span class="pln">
   </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">property</span><span class="pun">=</span><span class="atv">"actor"</span><span class="pln"> </span><span class="atn">typeof</span><span class="pun">=</span><span class="atv">"Person"</span><span class="tag">&gt;</span><span class="pln">
@@ -4623,7 +4606,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="tag">&lt;/span&gt;</span><span class="pln">
 </span><span class="tag">&lt;/div&gt;</span></pre></div>
   </div>
-  <div id="ex160-microformats" style="display:none;">
+  <div id="ex189-microformats" style="display:none;">
 <div class="example"><div class="example-title"><span>Example 184</span></div><pre style="" class="example highlight html prettyprint prettyprinted"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"h-as-experience"</span><span class="tag">&gt;</span><span class="pln">
   </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"p-author h-card"</span><span class="tag">&gt;</span><span class="pln">
     </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"p-name"</span><span class="tag">&gt;</span><span class="pln">Sally</span><span class="tag">&lt;/span&gt;</span><span class="pln">
@@ -4636,7 +4619,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="tag">&lt;/span&gt;</span><span class="pln">
 </span><span class="tag">&lt;/div&gt;</span></pre></div>
   </div>
-<div id="ex160-turtle" style="display: none;">
+<div id="ex189-turtle" style="display: none;">
 <div class="example"><div class="example-title"><span>Example 185</span></div><pre style="" class="example highlight turtle prettyprint prettyprinted"><span class="lit">@prefix</span><span class="pln"> </span><span class="kwd">as</span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">http</span><span class="pun">:</span><span class="com">//www.w3.org/ns/activitystreams#&gt; .</span><span class="pln">
 
 _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln"> a </span><span class="kwd">as</span><span class="pun">:</span><span class="typ">Experience</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
@@ -16301,7 +16284,7 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   </span><span class="kwd">as</span><span class="pun">:</span><span class="pln">targetOf </span><span class="pun">[</span><span class="pln">
     a </span><span class="typ">Share</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
       </span><span class="kwd">as</span><span class="pun">:</span><span class="pln">actor </span><span class="pun">&lt;</span><span class="pln">acct</span><span class="pun">:</span><span class="pln">sally@example</span><span class="pun">.</span><span class="pln">org</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">;</span><span class="pln">
-      </span><span class="kwd">as</span><span class="pun">:</span><span class="kwd">object</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">http</span><span class="pun">:</span><span class="com">//example.org/movie.mkv&gt; .</span><span class="pln">
+      </span><span class="kwd">as</span><span class="pun">:</span><span class="kwd">object</span><span class="pln"> </span><span class="pun">&llt;</span><span class="pln">http</span><span class="pun">:</span><span class="com">//example.org/movie.mkv&gt; .</span><span class="pln">
   </span><span class="pun">]</span><span class="pln"> </span><span class="pun">.</span></pre></div>
   </div>
 </div>
@@ -20089,20 +20072,20 @@ _c</span><span class="pun">:</span><span class="lit">14n0</span><span class="pln
   <section property="bibo:hasPart" resource="#non-normative-ontology-definition" typeof="bibo:Chapter" id="non-normative-ontology-definition" class="appendix informative">
     <!--OddPage--><h2 resource="#h-non-normative-ontology-definition" id="h-non-normative-ontology-definition"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Non-normative Ontology Definition</span></h2><p><em>This section is non-normative.</em></p>
 
-<div class="example"><div class="example-title"><span>Example 921</span></div><pre style="" class="example highlight owl prettyprint prettyprinted">@prefix : <http://www.w3.org/ns/activitystreams#> .
-@prefix as: <http://www.w3.org/ns/activitystreams#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@base <http://www.w3.org/ns/activitystreams> .
+<div class="example"><div class="example-title"><span>Example 921</span></div><pre style="" class="example highlight owl prettyprint prettyprinted">@prefix : &lt;http://www.w3.org/ns/activitystreams#> .
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#> .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#> .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: &lt;http://www.w3.org/ns/prov#> .
+@base &lt;http://www.w3.org/ns/activitystreams> .
 
-<http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
+&lt;http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
   rdfs:comment "Extended Activity Streams 2.0 Vocabulary"@en ;
   rdfs:label "Activity Streams 2.0"@en ;
-  owl:imports <http://www.w3.org/ns/prov#> .
+  owl:imports &lt;http://www.w3.org/ns/prov#> .
 
 #################################################################
 #
@@ -20966,7 +20949,7 @@ as:radius a owl:DatatypeProperty ,
 as:rating a owl:DatatypeProperty ,
     owl:FunctionalProperty ;
   rdfs:label "rating"@en ;
-  rdfs:comment "A numeric rating (>= 0.0, <= 5.0) for the object"@en ;
+  rdfs:comment "A numeric rating (>= 0.0, &lt;= 5.0) for the object"@en ;
   rdfs:domain as:Object ;
   rdfs:range [ 
     a rdfs:Datatype ;
