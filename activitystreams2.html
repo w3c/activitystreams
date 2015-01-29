@@ -309,9 +309,9 @@
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Post ;
+_:b0 a as:Post ;
   as:actor &lt;urn:example:person:martin&gt; ;
-  as:object &lt;http://example.org/foo&gt; .</pre>
+  as:object &lt;http://example.org/foo.jpg&gt; .</pre>
   </div>
 </div>
 </figure>
@@ -472,17 +472,17 @@ _:c14n0 a as:Post ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/martin/image.jpg&gt; ;
-      as:mediaType "image/jpeg" .
+      as:mediaType "image/jpeg"
   ] .
 
-&lt;http://example.org/blog/&gt; a &lt;"urn:example:types:blog"&gt; ;
+&lt;http://example.org/blog/&gt; a &lt;urn:example:types:blog&gt; ;
   as:displayName "Martin's Blog" .
 
 &lt;urn:example:blog:abc123/xyz&gt; a as:Article ;
   as:displayName "Why I love Activity Streams" ;
   as:url &lt;http://example.org/blog/2011/02/entry&gt; .
 
-_:c14n0 as as:Post ;
+_:b0 a as:Post ;
   as:published "2015-02-10T15:04:55Z"^^xsd:dateTime ;
   as:actor &lt;urn:example:person:martin&gt; ;
   as:object &lt;urn:example:blog:abc123/xyz&gt; ;
@@ -750,27 +750,25 @@ _:c14n0 as as:Post ;
       as:href &lt;http://example.org/martin/image&gt; ;
       as:mediaType "image/jpeg" ;
       as:width "250"^^xsd:nonNegativeInteger ;
-      as:height "250"^^xsd:nonNegativeInteger .
+      as:height "250"^^xsd:nonNegativeInteger
   ] .
 
 &lt;http://example.org/album/my_fluffy_cat&gt; a as:Image ;
   as:preview [
     a as:Link ;
       as:href &lt;http://example.org/album/my_fluffy_cat_thumb.jpg&gt; ;
-      as:mediaType "image/jpeg" .
+      as:mediaType "image/jpeg"
   ] ;
-  as:url (
-    [
-      a as:Link ;
-        as:href &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ;
-        as:mediaType "image/jpeg" .
-    ]
-    [
-      a as:Link ;
-        as:href &lt;http://example.org/album/my_fluffy_cat.png&gt; ;
-        as:mediaType "image/png" .
-    ]
-  ) .
+  as:url [
+    a as:Link ;
+      as:href &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ;
+      as:mediaType "image/jpeg"
+  ],
+  [
+    a as:Link ;
+      as:href &lt;http://example.org/album/my_fluffy_cat.png&gt; ;
+      as:mediaType "image/png"
+  ] .
 
 &lt;http://example.org/album/&gt; a as:Album ;
   as:displayName "Martin's Photo Album"@en ;
@@ -778,17 +776,17 @@ _:c14n0 as as:Post ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/album/thumbnail.jpg&gt; ;
-      as:mediaType "image/jpeg" .
+      as:mediaType "image/jpeg"
   ] .
 
-_:c14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "1"^^xsd:nonNegativeInteger ;
   as:items [
     a as:Post ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
       as:provider &lt;http://example.org/activity-stream&gt; ;
-      as:displayName "Martin posted a new video to his album"@en ;
+      as:displayName "Martin posted a new video to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
       as:actor &lt;urn:example:person:martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
@@ -1048,7 +1046,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
   as:actor &lt;http://example.org/~sally&gt; ;
   as:object [
     a as:Link ;
-      as:href &lt;http://example.org/posts/1&gt; .
+      as:href &lt;http://example.org/posts/1&gt;
   ] .</pre></div>
 </div>
 </figure>
@@ -1136,7 +1134,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix gr: &lt;http://purl.org/goodrelations/v1#&gt; .
 
-_:c14n0 a as:Place, gr:Location ;
+_:b0 a as:Place, gr:Location ;
   as:displayName "Sally's Restaurant" ;
   as:longitude "12.34"^^xsd:float ;
   as:latitude "56.78"^^xsd:float ;
@@ -1172,6 +1170,8 @@ _:c14n0 a as:Place, gr:Location ;
   </ul>
   <div id="ex7-jsonld" style="display: block;">
 <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Object",
   <b>"displayName": "This is the title"</b>
 }</pre>
 </div>
@@ -1194,7 +1194,7 @@ _:c14n0 a as:Place, gr:Location ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title" .</pre></div>
 </div>
 </figure>
@@ -1211,6 +1211,8 @@ _:c14n0 a as:Object ;
   </ul>
   <div id="ex8-jsonld" style="display: block;">
 <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Object",
   <b>"displayNameMap": {
     "en": "This is the title",
     "fr": "C'est le titre",
@@ -1243,10 +1245,10 @@ _:c14n0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title"@en ;
   as:displayName "C'est le titre"@fr ;
-  as:displayName "Este el el titulo"@sp .</pre></div>
+  as:displayName "Este es el titulo"@sp .</pre></div>
 </div>
 </figure>
 
@@ -1290,9 +1292,10 @@ _:c14n0 a as:Object ;
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
-    {"@language": "en"}
+    <b>{"@language": "en"}</b>
   ],
-  "displayName": "This is the title"
+  "@type": "Object",
+  <b>"displayName": "This is the title"</b>
 }</pre>
 </div>
   <div id="ex9-microdata" style="display:none;">
@@ -1314,7 +1317,7 @@ _:c14n0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title"@en .</pre></div>
 </div>
 </figure>
@@ -1338,10 +1341,11 @@ _:c14n0 a as:Object ;
   <div id="ex10-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "displayName": {
+  "@type": "Object",
+  <b>"displayName": {
     "@value": "This is the title",
     "@language": "en"
-  }
+  }</b>
 }</pre>
 </div>
   <div id="ex10-microdata" style="display:none;">
@@ -1363,7 +1367,7 @@ _:c14n0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title"@en .</pre></div>
 </div>
 </figure>
@@ -1391,11 +1395,12 @@ _:c14n0 a as:Object ;
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
-    { "@language": "en" }
+    <b>{ "@language": "en" }</b>
   ],
+  "@type": "Object",
   "displayName": {
     "@value": "This is the title",
-    "@language": null
+    <b> "@language": null</b>
   }
 }</pre>
 </div>
@@ -1418,7 +1423,7 @@ _:c14n0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title" .</pre></div>
 </div>
 </figure>
@@ -1595,7 +1600,7 @@ _:c14n0 a as:Object ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/application/123.png&gt; ;
-      as:mediaType "image/png" .
+      as:mediaType "image/png"
   ] .</pre></div>
 </div>
 </figure>
@@ -1679,14 +1684,14 @@ _:c14n0 a as:Object ;
 
 &lt;http://example.org/application/123&gt; a as:Application ;
   as:displayName "My Application" ;
-  as:image (
-    &lt;http://example.org/application/abc.gif&gt;
+  as:image
+    &lt;http://example.org/application/abc.gif&gt; ,
     [
       a as:Link ;
         as:href &lt;http://example.org/application/123.png&gt; ;
-        as:mediaType "image/png" .
-    ]
-  ) .</pre></div>
+        as:mediaType "image/png"
+    ] .
+</pre></div>
 </div>
 </figure>
       
@@ -1777,15 +1782,15 @@ _:c14n0 a as:Object ;
 
 &lt;http://example.org/application/123&gt; a as:Application ;
   as:displayName "My Application" ;
-  as:image (
-    &lt;http://example.org/application/abc.gif&gt;
+  as:image
+    &lt;http://example.org/application/abc.gif&gt; ,
     [
       a as:Link ;
         as:href &lt;http://example.org/application/123.png&gt; ;
         as:mediaType "image/png" ;
-        as:rel "canonical" .
-    ]
-  ) .</pre></div>
+        as:rel "canonical"
+    ] .
+</pre></div>
 </div>
 </figure>
 
@@ -1902,14 +1907,15 @@ _:c14n0 a as:Object ;
 &lt;/div></pre></div>
   <div id="ex16-turtle" style="display:none;">
 <pre class="example highlight turtle"
->&lt;acct:sally@example.org&gt; a as:Person ;
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+  &lt;acct:sally@example.org&gt; a as:Person ;
   as:displayName "Sally Smith" .
 
-_:c14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Note ;
-      as:content "This is a simple note" .
+      as:content "This is a simple note"
   ] .</pre></div>
 </div>
 </figure>
@@ -1998,7 +2004,7 @@ _:c14n0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Note ;
-      as:content "This is a simple note" .
+      as:content "This is a simple note"
   ] .</pre></div>
 </div>
 </figure>
@@ -2099,11 +2105,11 @@ _:c14n0 a as:Share ;
   vcard:given-name "Sally" ;
   vcard:family-name "Smith" .
 
-_:c14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Note ;
-      as:content "This is a simple note" .
+      as:content "This is a simple note"
   ] .</pre></div>
 </div>
 </figure>
@@ -2198,7 +2204,7 @@ _:c14n0 a as:Share ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:c14n0 a as:Like ;
+&lt;urn:example:activity:1&gt; a as:Like ;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -2284,7 +2290,7 @@ _:c14n0 a as:Like ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:c14n0 a as:Like, &lt;http://schema.org/LikeAction&gt;;
+&lt;urn:example:activity:1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -2515,15 +2521,15 @@ _:c14n0 a as:Like, &lt;http://schema.org/LikeAction&gt;;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:c14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "10"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
   as:next &lt;http://example.org/foo?page=2&gt; ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
-      a a:Post; 
+      a as:Post;
         as:actor &lt;urn:example:person:sally&gt; ;
-        as:object &lt;http://example.org/foo&gt; .
+        as:object &lt;http://example.org/foo&gt;
   ] .</pre></div>
 </div>
 </figure>
@@ -2608,6 +2614,7 @@ _:c14n0 a as:Collection ;
   <div id="ex22-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:c14n0 a as:OrderedCollection ;
@@ -2618,11 +2625,11 @@ _:c14n0 a as:OrderedCollection ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
     rdf:first [
-      a a:Post; 
+      a as:Post;
         as:actor &lt;urn:example:person:sally&gt; ;
-        as:object &lt;http://example.org/foo&gt; .
+        as:object &lt;http://example.org/foo&gt;
     ] ;
-    rdf:rest rdf:nil .
+    rdf:rest rdf:nil
   ] .</pre></div>
 </div>
 </figure>
@@ -2858,7 +2865,7 @@ _:c14n0 a as:Place;
   ]
 }</pre></figure>
 
-        <figure><figcaption>The Equivalent GeoSparl Well-Known-Text alternative:</figcaption>
+        <figure><figcaption>The Equivalent GeoSparql Well-Known-Text alternative:</figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
