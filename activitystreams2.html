@@ -309,9 +309,9 @@
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Post ;
+_:b0 a as:Post ;
   as:actor &lt;urn:example:person:martin&gt; ;
-  as:object &lt;http://example.org/foo&gt; .</pre>
+  as:object &lt;http://example.org/foo.jpg&gt; .</pre>
   </div>
 </div>
 </figure>
@@ -750,27 +750,25 @@ _:c14n0 as as:Post ;
       as:href &lt;http://example.org/martin/image&gt; ;
       as:mediaType "image/jpeg" ;
       as:width "250"^^xsd:nonNegativeInteger ;
-      as:height "250"^^xsd:nonNegativeInteger .
+      as:height "250"^^xsd:nonNegativeInteger
   ] .
 
 &lt;http://example.org/album/my_fluffy_cat&gt; a as:Image ;
   as:preview [
     a as:Link ;
       as:href &lt;http://example.org/album/my_fluffy_cat_thumb.jpg&gt; ;
-      as:mediaType "image/jpeg" .
+      as:mediaType "image/jpeg"
   ] ;
-  as:url (
-    [
-      a as:Link ;
-        as:href &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ;
-        as:mediaType "image/jpeg" .
-    ]
-    [
-      a as:Link ;
-        as:href &lt;http://example.org/album/my_fluffy_cat.png&gt; ;
-        as:mediaType "image/png" .
-    ]
-  ) .
+  as:url [
+    a as:Link ;
+      as:href &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ;
+      as:mediaType "image/jpeg"
+  ],
+  [
+    a as:Link ;
+      as:href &lt;http://example.org/album/my_fluffy_cat.png&gt; ;
+      as:mediaType "image/png"
+  ] .
 
 &lt;http://example.org/album/&gt; a as:Album ;
   as:displayName "Martin's Photo Album"@en ;
@@ -778,17 +776,17 @@ _:c14n0 as as:Post ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/album/thumbnail.jpg&gt; ;
-      as:mediaType "image/jpeg" .
+      as:mediaType "image/jpeg"
   ] .
 
-_:c14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "1"^^xsd:nonNegativeInteger ;
   as:items [
     a as:Post ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
       as:provider &lt;http://example.org/activity-stream&gt; ;
-      as:displayName "Martin posted a new video to his album"@en ;
+      as:displayName "Martin posted a new video to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
       as:actor &lt;urn:example:person:martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;

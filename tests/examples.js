@@ -22,3 +22,15 @@ describe('Minimal Activity', function(){
     basicCompare('ex1', done);
   });
 });
+
+//describe('Basic activity with some additional detail', function(){
+  //it('JSON-LD and Turtle should match', function(done){
+    //basicCompare('ex2', done);
+  //});
+//});
+
+describe('An extended activity', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex3', done);
+  });
+});
