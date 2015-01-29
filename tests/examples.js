@@ -8,8 +8,6 @@ function basicCompare(name, done){
   new rdf.TurtleParser().parse(helper.getTurtle(name), function(turtle){
     new rdf.JsonLdParser().parse(helper.getJsonld(name), function(jsonld){
       utils.compareGraph(turtle, jsonld, function(comparison, a, b){
-        console.log('turtle /n', a);
-        console.log('jsonld /n', b);
         expect(comparison).to.be.true;
         done();
       });
@@ -23,11 +21,11 @@ describe('Minimal Activity', function(){
   });
 });
 
-//describe('Basic activity with some additional detail', function(){
-  //it('JSON-LD and Turtle should match', function(done){
-    //basicCompare('ex2', done);
-  //});
-//});
+describe('Basic activity with some additional detail', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex2', done);
+  });
+});
 
 describe('An extended activity', function(){
   it('JSON-LD and Turtle should match', function(done){

@@ -472,17 +472,17 @@ _:b0 a as:Post ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/martin/image.jpg&gt; ;
-      as:mediaType "image/jpeg" .
+      as:mediaType "image/jpeg"
   ] .
 
-&lt;http://example.org/blog/&gt; a &lt;"urn:example:types:blog"&gt; ;
+&lt;http://example.org/blog/&gt; a &lt;urn:example:types:blog&gt; ;
   as:displayName "Martin's Blog" .
 
 &lt;urn:example:blog:abc123/xyz&gt; a as:Article ;
   as:displayName "Why I love Activity Streams" ;
   as:url &lt;http://example.org/blog/2011/02/entry&gt; .
 
-_:c14n0 as as:Post ;
+_:b0 a as:Post ;
   as:published "2015-02-10T15:04:55Z"^^xsd:dateTime ;
   as:actor &lt;urn:example:person:martin&gt; ;
   as:object &lt;urn:example:blog:abc123/xyz&gt; ;
