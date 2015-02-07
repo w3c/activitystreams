@@ -1292,9 +1292,10 @@ _:b0 a as:Object ;
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
-    {"@language": "en"}
+    <b>{"@language": "en"}</b>
   ],
-  "displayName": "This is the title"
+  "@type": "Object",
+  <b>"displayName": "This is the title"</b>
 }</pre>
 </div>
   <div id="ex9-microdata" style="display:none;">
@@ -1316,7 +1317,7 @@ _:b0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title"@en .</pre></div>
 </div>
 </figure>
@@ -1340,10 +1341,11 @@ _:c14n0 a as:Object ;
   <div id="ex10-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "displayName": {
+  "@type": "Object",
+  <b>"displayName": {
     "@value": "This is the title",
     "@language": "en"
-  }
+  }</b>
 }</pre>
 </div>
   <div id="ex10-microdata" style="display:none;">
@@ -1365,7 +1367,7 @@ _:c14n0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title"@en .</pre></div>
 </div>
 </figure>
@@ -1597,7 +1599,7 @@ _:c14n0 a as:Object ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/application/123.png&gt; ;
-      as:mediaType "image/png" .
+      as:mediaType "image/png"
   ] .</pre></div>
 </div>
 </figure>
@@ -1681,14 +1683,14 @@ _:c14n0 a as:Object ;
 
 &lt;http://example.org/application/123&gt; a as:Application ;
   as:displayName "My Application" ;
-  as:image (
-    &lt;http://example.org/application/abc.gif&gt;
+  as:image
+    &lt;http://example.org/application/abc.gif&gt; ,
     [
       a as:Link ;
         as:href &lt;http://example.org/application/123.png&gt; ;
-        as:mediaType "image/png" .
-    ]
-  ) .</pre></div>
+        as:mediaType "image/png"
+    ] .
+</pre></div>
 </div>
 </figure>
       
@@ -1779,15 +1781,15 @@ _:c14n0 a as:Object ;
 
 &lt;http://example.org/application/123&gt; a as:Application ;
   as:displayName "My Application" ;
-  as:image (
-    &lt;http://example.org/application/abc.gif&gt;
+  as:image
+    &lt;http://example.org/application/abc.gif&gt; ,
     [
       a as:Link ;
         as:href &lt;http://example.org/application/123.png&gt; ;
         as:mediaType "image/png" ;
-        as:rel "canonical" .
-    ]
-  ) .</pre></div>
+        as:rel "canonical"
+    ] .
+</pre></div>
 </div>
 </figure>
 

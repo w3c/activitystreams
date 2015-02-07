@@ -4,10 +4,14 @@ var rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
 var utils = require('rdf-test-utils')(rdf);
 
+var fs = require('fs');
+
 function basicCompare(name, done){
   new rdf.TurtleParser().parse(helper.getTurtle(name), function(turtle){
     new rdf.JsonLdParser().parse(helper.getJsonld(name), function(jsonld){
       utils.compareGraph(turtle, jsonld, function(comparison, a, b){
+        fs.writeFileSync('turtle.n3', a);
+        fs.writeFileSync('jsonld.n3', b);
         expect(comparison).to.be.true;
         done();
       });
@@ -60,5 +64,54 @@ describe('displayName', function(){
 describe('displayNameMap', function(){
   it('JSON-LD and Turtle should match', function(done){
     basicCompare('ex8', done);
+  });
+});
+
+describe('default @language', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex9', done);
+  });
+});
+
+describe('specify @language in value object', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex10', done);
+  });
+});
+
+// https://github.com/jasnell/w3c-socialwg-activitystreams/issues/71
+//describe('Excluding a natural language property from the language context', function(){
+  //it('JSON-LD and Turtle should match', function(done){
+    //basicCompare('ex11', done);
+  //});
+//});
+
+describe('single image', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex12', done);
+  });
+});
+
+describe('Link with mediaType', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex13', done);
+  });
+});
+
+describe('string and Link in array', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex14', done);
+  });
+});
+
+describe('Link rel=canonical', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex15', done);
+  });
+});
+
+describe('Link rel=canonical', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex15', done);
   });
 });
