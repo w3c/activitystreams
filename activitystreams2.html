@@ -2520,15 +2520,15 @@ _:b0 a as:Share ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:c14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "10"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
   as:next &lt;http://example.org/foo?page=2&gt; ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
-      a a:Post; 
+      a as:Post;
         as:actor &lt;urn:example:person:sally&gt; ;
-        as:object &lt;http://example.org/foo&gt; .
+        as:object &lt;http://example.org/foo&gt;
   ] .</pre></div>
 </div>
 </figure>
@@ -2613,6 +2613,7 @@ _:c14n0 a as:Collection ;
   <div id="ex22-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+<!--@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .-->
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:c14n0 a as:OrderedCollection ;
@@ -2863,7 +2864,7 @@ _:c14n0 a as:Place;
   ]
 }</pre></figure>
 
-        <figure><figcaption>The Equivalent GeoSparl Well-Known-Text alternative:</figcaption>
+        <figure><figcaption>The Equivalent GeoSparql Well-Known-Text alternative:</figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>

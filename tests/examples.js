@@ -4,14 +4,10 @@ var rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
 var utils = require('rdf-test-utils')(rdf);
 
-var fs = require('fs');
-
 function basicCompare(name, done){
   new rdf.TurtleParser().parse(helper.getTurtle(name), function(turtle){
     new rdf.JsonLdParser().parse(helper.getJsonld(name), function(jsonld){
       utils.compareGraph(turtle, jsonld, function(comparison, a, b){
-        fs.writeFileSync('turtle.n3', a);
-        fs.writeFileSync('jsonld.n3', b);
         expect(comparison).to.be.true;
         done();
       });
@@ -110,12 +106,6 @@ describe('Link rel=canonical', function(){
   });
 });
 
-describe('Link rel=canonical', function(){
-  it('JSON-LD and Turtle should match', function(done){
-    basicCompare('ex15', done);
-  });
-});
-
 describe('An Activity with a Person actor', function(){
   it('JSON-LD and Turtle should match', function(done){
     basicCompare('ex16', done);
@@ -144,4 +134,38 @@ describe('An Activity that is both a Like and a http://schema.org/LikeAction', f
   it('JSON-LD and Turtle should match', function(done){
     basicCompare('ex20', done);
   });
+});
+
+describe('unordered collection with paging', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex21', done);
+  });
+});
+
+//describe('simple ordered collection with paging', function(){
+  //it('JSON-LD and Turtle should match', function(done){
+    //basicCompare('ex22', done);
+  //});
+//});
+
+describe('GeoJSON Point Coordinates', function(){
+});
+
+describe('The Equivalent Place alternative', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex23', done);
+  });
+});
+
+describe('GeoJSON Polygon Coordinates', function(){
+});
+
+
+describe('The Equivalent GeoSparql Well-Known-Text alternative', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex24', done);
+  });
+});
+
+describe('Handling of JSON-ID Compact IRIs', function(){
 });
