@@ -1046,7 +1046,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
   as:actor &lt;http://example.org/~sally&gt; ;
   as:object [
     a as:Link ;
-      as:href &lt;http://example.org/posts/1&gt; .
+      as:href &lt;http://example.org/posts/1&gt;
   ] .</pre></div>
 </div>
 </figure>
@@ -1134,7 +1134,7 @@ considered to be an instance of <a>Object</a> while the value of <code>object</c
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix gr: &lt;http://purl.org/goodrelations/v1#&gt; .
 
-_:c14n0 a as:Place, gr:Location ;
+_:b0 a as:Place, gr:Location ;
   as:displayName "Sally's Restaurant" ;
   as:longitude "12.34"^^xsd:float ;
   as:latitude "56.78"^^xsd:float ;
@@ -1170,6 +1170,8 @@ _:c14n0 a as:Place, gr:Location ;
   </ul>
   <div id="ex7-jsonld" style="display: block;">
 <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Object",
   <b>"displayName": "This is the title"</b>
 }</pre>
 </div>
@@ -1192,7 +1194,7 @@ _:c14n0 a as:Place, gr:Location ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title" .</pre></div>
 </div>
 </figure>
@@ -1209,6 +1211,8 @@ _:c14n0 a as:Object ;
   </ul>
   <div id="ex8-jsonld" style="display: block;">
 <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Object",
   <b>"displayNameMap": {
     "en": "This is the title",
     "fr": "C'est le titre",
@@ -1241,10 +1245,10 @@ _:c14n0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title"@en ;
   as:displayName "C'est le titre"@fr ;
-  as:displayName "Este el el titulo"@sp .</pre></div>
+  as:displayName "Este es el titulo"@sp .</pre></div>
 </div>
 </figure>
 

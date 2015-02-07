@@ -32,3 +32,33 @@ describe('An extended activity', function(){
     basicCompare('ex3', done);
   });
 });
+
+describe('Object', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex4', done);
+  });
+});
+
+describe('Object subclass', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex5', done);
+  });
+});
+
+describe('Object with multiple types', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex6', done);
+  });
+});
+
+describe('displayName', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex7', done);
+  });
+});
+
+describe('displayNameMap', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex8', done);
+  });
+});
