@@ -1,5 +1,6 @@
 var fs = require('fs');
 var $ = require('cheerio');
+var _ = require('lodash');
 
 // cache in memory
 var examples = {};
@@ -20,7 +21,12 @@ var getJsonld = function(name) {
   if (!examples[name]) {
     examples[name] = JSON.parse(doc('#' + name + '-jsonld pre.example').text());
     // set context
-    examples[name]['@context'] = getContext()['@context'];
+    if(examples[name]['@context'] == "http://www.w3.org/ns/activitystreams") {
+      examples[name]['@context'] = getContext()['@context'];
+    } else {
+      var as =_.find(examples[name]['@context'], "http://www.w3.org/ns/activitystreams");
+      as = getContext()['@context'];
+    }
   }
   return examples[name];
 };

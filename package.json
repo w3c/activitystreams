@@ -23,5 +23,8 @@
     "rdf-interfaces": "~0.1.0",
     "rdf-ext": "~0.1.8",
     "rdf-test-utils": "~0.1.0"
+  },
+  "dependencies": {
+    "lodash": "~3.1.0"
   }
 }
