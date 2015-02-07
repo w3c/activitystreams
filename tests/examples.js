@@ -115,3 +115,33 @@ describe('Link rel=canonical', function(){
     basicCompare('ex15', done);
   });
 });
+
+describe('An Activity with a Person actor', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex16', done);
+  });
+});
+
+describe('An Activity with a Person actor extended with VCard properties', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex17', done);
+  });
+});
+
+describe('An Actor that is both a Person and a vcard:Individual', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex18', done);
+  });
+});
+
+describe('simple Activity', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex19', done);
+  });
+});
+
+describe('An Activity that is both a Like and a http://schema.org/LikeAction', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex20', done);
+  });
+});
