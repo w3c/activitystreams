@@ -75,12 +75,11 @@ describe('specify @language in value object', function(){
   });
 });
 
-// https://github.com/jasnell/w3c-socialwg-activitystreams/issues/71
-//describe('Excluding a natural language property from the language context', function(){
-  //it('JSON-LD and Turtle should match', function(done){
-    //basicCompare('ex11', done);
-  //});
-//});
+describe('Excluding a natural language property from the language context', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex11', done);
+  });
+});
 
 describe('single image', function(){
   it('JSON-LD and Turtle should match', function(done){

@@ -1395,11 +1395,12 @@ _:b0 a as:Object ;
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
-    { "@language": "en" }
+    <b>{ "@language": "en" }</b>
   ],
+  "@type": "Object",
   "displayName": {
     "@value": "This is the title",
-    "@language": null
+    <b> "@language": null</b>
   }
 }</pre>
 </div>
@@ -1422,7 +1423,7 @@ _:b0 a as:Object ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Object ;
+_:b0 a as:Object ;
   as:displayName "This is the title" .</pre></div>
 </div>
 </figure>
