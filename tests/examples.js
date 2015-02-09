@@ -141,11 +141,11 @@ describe('unordered collection with paging', function(){
   });
 });
 
-//describe('simple ordered collection with paging', function(){
-  //it('JSON-LD and Turtle should match', function(done){
-    //basicCompare('ex22', done);
-  //});
-//});
+describe('simple ordered collection with paging', function(){
+  it('JSON-LD and Turtle should match', function(done){
+    basicCompare('ex22', done);
+  });
+});
 
 describe('GeoJSON Point Coordinates', function(){
 });

@@ -2614,7 +2614,7 @@ _:b0 a as:Collection ;
   <div id="ex22-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-<!--@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .-->
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:c14n0 a as:OrderedCollection ;
@@ -2625,11 +2625,11 @@ _:c14n0 a as:OrderedCollection ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
     rdf:first [
-      a a:Post; 
+      a as:Post;
         as:actor &lt;urn:example:person:sally&gt; ;
-        as:object &lt;http://example.org/foo&gt; .
+        as:object &lt;http://example.org/foo&gt;
     ] ;
-    rdf:rest rdf:nil .
+    rdf:rest rdf:nil
   ] .</pre></div>
 </div>
 </figure>
