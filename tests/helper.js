@@ -2,11 +2,16 @@ var fs = require('fs');
 var $ = require('cheerio');
 var _ = require('lodash');
 
+var rdf = require('rdf-interfaces');
+require('rdf-ext')(rdf);
+var utils = require('rdf-test-utils')(rdf);
+
+var expect = require('chai').expect;
+
 // cache in memory
 var examples = {};
 var fixtures = {};
 var context;
-
 
 var doc = $.load(fs.readFileSync('./activitystreams2.html').toString());
 
@@ -38,6 +43,18 @@ var getTurtle = function(name) {
   return fixtures[name];
 };
 
-module.exports.getContext = getContext;
-module.exports.getJsonld = getJsonld;
-module.exports.getTurtle = getTurtle;
+var compareTurtle = function(name, done){
+  new rdf.TurtleParser().parse(getTurtle(name), function(turtle){
+    new rdf.JsonLdParser().parse(getJsonld(name), function(jsonld){
+      utils.compareGraph(turtle, jsonld, function(comparison, a, b){
+        expect(comparison).to.be.true;
+        done();
+      });
+    });
+  });
+};
+
+
+module.exports = {
+  compareTurtle: compareTurtle
+};
