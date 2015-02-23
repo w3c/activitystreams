@@ -5,6 +5,9 @@ describe('Minimal Activity', function(){
   it('JSON-LD and Turtle should match', function(done){
     helper.compareTurtle('ex1', done);
   });
+  it('JSON-LD and RDFa should match', function(done){
+    helper.compareRdfa('ex1', done);
+  });
 });
 
 describe('Basic activity with some additional detail', function(){

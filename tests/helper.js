@@ -1,6 +1,10 @@
 var fs = require('fs');
 var $ = require('cheerio');
 var _ = require('lodash');
+var jsdom = require('jsdom');
+
+var jsonld = require('jsonld');
+var RDFa = require('../node_modules/rdf-ext/node_modules/jsonld/js/rdfa');
 
 var rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
@@ -46,6 +50,13 @@ var getTurtle = function(name) {
   return examples.turtle[name];
 };
 
+var getRdfa = function(name) {
+  if (!examples.rdfa[name]) {
+    examples.rdfa[name] = doc('#' + name + '-rdfa pre.example').text();
+  }
+  return examples.rdfa[name];
+};
+
 var compareTurtle = function(name, done){
   new rdf.TurtleParser().parse(getTurtle(name), function(turtle){
     new rdf.JsonLdParser().parse(getJsonld(name), function(jsonld){
@@ -57,7 +68,56 @@ var compareTurtle = function(name, done){
   });
 };
 
+var noise = {
+  '@id': 'http://localhost/',
+  'http://www.w3.org/ns/rdfa#usesVocabulary': [
+    {
+      '@id': 'http://www.w3.org/ns/activitystreams#'
+    }
+  ]
+};
+
+var compareRdfa = function(name, done){
+  var data = getRdfa(name);
+  jsdom.env({
+    url: 'http://localhost/',
+    html: data,
+    done: function(errors, window) {
+      if(errors && errors.length > 0) {
+        return callback({
+          message: 'DOM Errors:',
+          errors: errors,
+          url: 'http://localhost/'
+        });
+      }
+
+      try {
+        // extract JSON-LD from RDFa
+        RDFa.attach(window.document);
+        jsonld.fromRDF(window.document.data, {format: 'rdfa-api'}, function(err, doc) {
+          _.remove(doc, noise);
+          new rdf.JsonLdParser().parse(doc, function(rdfa){
+            new rdf.JsonLdParser().parse(getJsonld(name), function(jsonld){
+              utils.compareGraph(rdfa, jsonld, function(comparison, a, b){
+                expect(comparison).to.be.true;
+                done();
+              });
+            });
+          });
+        });
+      } catch(ex) {
+        // FIXME: expose RDFa/jsonld ex?
+        callback({
+          message: 'RDFa extraction error.',
+          url: 'http://localhost/'
+        });
+      }
+    }
+  });
+};
+
 
 module.exports = {
-  compareTurtle: compareTurtle
+  compareTurtle: compareTurtle,
+  compareRdfa: compareRdfa
 };
