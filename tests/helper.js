@@ -9,8 +9,11 @@ var utils = require('rdf-test-utils')(rdf);
 var expect = require('chai').expect;
 
 // cache in memory
-var examples = {};
-var fixtures = {};
+var examples = {
+  jsonld: {},
+  turtle: {},
+  rdfa: {}
+};
 var context;
 
 var doc = $.load(fs.readFileSync('./activitystreams2.html').toString());
@@ -23,24 +26,24 @@ var getContext = function(){
 };
 
 var getJsonld = function(name) {
-  if (!examples[name]) {
-    examples[name] = JSON.parse(doc('#' + name + '-jsonld pre.example').text());
+  if (!examples.jsonld[name]) {
+    examples.jsonld[name] = JSON.parse(doc('#' + name + '-jsonld pre.example').text());
     // set context
-    if(examples[name]['@context'] == "http://www.w3.org/ns/activitystreams") {
-      examples[name]['@context'] = getContext()['@context'];
+    if(examples.jsonld[name]['@context'] == "http://www.w3.org/ns/activitystreams") {
+      examples.jsonld[name]['@context'] = getContext()['@context'];
     } else {
-      var as =_.find(examples[name]['@context'], "http://www.w3.org/ns/activitystreams");
+      var as =_.find(examples.jsonld[name]['@context'], "http://www.w3.org/ns/activitystreams");
       as = getContext()['@context'];
     }
   }
-  return examples[name];
+  return examples.jsonld[name];
 };
 
 var getTurtle = function(name) {
-  if (!fixtures[name]) {
-    fixtures[name] = doc('#' + name + '-turtle pre.example').text();
+  if (!examples.turtle[name]) {
+    examples.turtle[name] = doc('#' + name + '-turtle pre.example').text();
   }
-  return fixtures[name];
+  return examples.turtle[name];
 };
 
 var compareTurtle = function(name, done){
