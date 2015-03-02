@@ -2058,7 +2058,8 @@ _:c14n0 a as:Share ;
         an <code>vcard:Individual</code>, as illustrated in the following:
       </p>
 
-      <figure><figcaption>An Actor that is both a <code>Person</code> and a <code>vcard:Individual</code>:</figcaption>
+      <figure><figcaption>An Actor that is both a <code>Person</code> and a
+<code>vcard:Individual</code>:</figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
@@ -2248,24 +2249,27 @@ _:b0 a as:Share ;
 </figure>
 
       <p>
-        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a> defines a broad
-        range of <code>Activity</code> types that are common to many "Social" Web applications.
-        This specification stops short of defining semantically specific properties for most
-        of these activities. External vocabularies can be used to express additional detail not
+        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
+        defines a broad range of <code>Activity</code> types that are common to
+        many "Social" Web applications. This specification stops short of
+        defining semantically specific properties for most of these activities.
+        External vocabularies can be used to express additional detail not
         covered by the Activity Vocabulary.
       </p>
 
       <p>
-        Furthermore, while implementations are free to introduce new types of Activites beyond those
-        defined by the Activity Vocabulary, interoperability issues can arise when applications
-        rely too much on extension types that are not recognized by other implementations. Care
-        should be taken to not unduly overlap with or duplicate the existing Activity types. For
-        instance, some vocabularies (e.g. Schema.org) define their own classes for describing actions.
-        An implementation that wishes, for example, to use
-        <code><a href="http://schema.org/ShareAction">http://schema.org/LikeAction</a></code>
+        Furthermore, while implementations are free to introduce new types of
+        Activites beyond those defined by the Activity Vocabulary,
+        interoperability issues can arise when applications rely too much on
+        extension types that are not recognized by other implementations. Care
+        should be taken to not unduly overlap with or duplicate the existing
+        Activity types. For instance, some vocabularies (e.g. Schema.org) define
+        their own classes for describing actions. An implementation that wishes,
+        for example, to use <code><a href="http://schema.org/ShareAction">http://schema.org/LikeAction</a></code>
         as an Activity SHOULD identify that Object as being both a
-        <code><a href="activitystreams2-vocabulary.html#dfn-like">Like</a></code> and an
-        <code>http://schema.org/LikeAction</code>, as illustrated in the following:
+        <code><a href="activitystreams2-vocabulary.html#dfn-like">Like</a></code>
+        and an <code>http://schema.org/LikeAction</code>, as illustrated in the
+        following:
       </p>
 
        <figure><figcaption>An Activity that is both a
@@ -2338,17 +2342,17 @@ _:b0 a as:Share ;
         <h2>Audience Targeting</h2>
 
         <p>
-          Every Activity has both a Primary and Secondary audience. The
-          Primary audience consists of those entities either directly involved
+          Conceptually, every Activity has both a Primary and Secondary audience.
+          The Primary audience consists of those entities either directly involved
           in the performance of the activity or who "own" the objects involved.
           The Secondary audience consists of the collection of entities sharing
-          an interest in the activity but who are not directly involved (e.g.
+          an interest in the activity but who might not be directly involved (e.g.
           "followers").
         </p>
 
         <p>
           For instance, suppose a social network of three individuals: Bob, Joe
-          and Jane.  Bob and Joe are each friends with Jane but not friends
+          and Jane.  Bob and Joe are each friends with Jane but are not friends
           with one another.  Bob has chosen to "follow" activities for which
           Jane is directly involved.  Jane shares a file with Joe.
         </p>
@@ -2362,9 +2366,9 @@ _:b0 a as:Share ;
         </p>
 
         <p>
-          While there are means, based on the action type, actor, object and target of
-          the activity, to infer the primary audience for many types of
-          activities, those do not work in every case and do not provide a
+          While there are means (based on the action type, actor, object and
+          target of the activity) to infer the primary audience for many types of
+          activities, heuristics do not work in every case and do not provide a
           means of identifying the secondary audience.  The
           <code><a href="activitystreams2-vocabulary.html#dfn-to">to</a></code>,
           <code><a href="activitystreams2-vocabulary.html#dfn-cc">cc</a></code>,
@@ -2390,7 +2394,9 @@ _:b0 a as:Share ;
           intermediary SHOULD redistribute that event
           with the values of those fields intact, allowing any processor to see
           who the activity has been targeted to.  This is precisely the same
-          model used by the <code>to</code> and <code>cc</code> fields in email systems.
+          model used by the <code>to</code> and <code>cc</code> fields in email
+          systems.
+        </p>
 
         <p>
           There are situations, however, in which disclosing the identity of
@@ -2468,7 +2474,9 @@ _:b0 a as:Share ;
         <code>items</code> property while the ordered members are represented using
         the <code>orderedItems</code> property. The normative JSON-LD @context
         definition maps both the <code>items</code> and <code>orderedItems</code>
-        properties to the Activity Vocabulary <code><a href="activitystreams2-vocabulary.html#dfn-items">items</a></code> term. However, the <code>orderedItems</code> property is defined in
+        properties to the Activity Vocabulary
+        <code><a href="activitystreams2-vocabulary.html#dfn-items">items</a></code>
+        term. However, the <code>orderedItems</code> property is defined in
         the JSON-LD @context as <code>@container = @list</code>, indicating that the
         items are strictly ordered.
       </p>
@@ -2477,7 +2485,8 @@ _:b0 a as:Share ;
         Note that when using <code>orderedItems</code> within a <code>Collection</code>
         object, the order imposed on the items applies only to the subset of items
         directly contained within the one <code>Collection</code> object. Implementations
-        MAY use the <code><a href="activitystreams2-vocabulary.html#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a></code> class to identify collections whose entire logical set of members are
+        MAY use the <code><a href="activitystreams2-vocabulary.html#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a></code>
+        class to identify collections whose entire logical set of members are
         strictly ordered.
       </p>
 
@@ -2673,16 +2682,17 @@ _:c14n0 a as:OrderedCollection ;
       <p>
         In ordered collections that use paging, the
         <code><a href="activitystreams2-vocabulary.html#dfn-startindex">startIndex</a></code>
-        property is used to indicate the relative index position of the first item contained in
-        the <code>orderedItems</code> list in the logical set of items.
-        A <code>startIndex</code> of <code>0</code> indicates the first item in the collection.
+        property is used to indicate the relative index position within the
+        logical set of items of the first item contained in the
+        <code>orderedItems</code> list. A <code>startIndex</code> of <code>0</code>
+        indicates the first item in the collection.
       </p>
 
       <p>
         Using paging with an <code>OrderedCollection</code> can be tricky because
         there is no guarantee that implementations will process the distinct pages
         in any predictable order. Therefore, it is strongly recommended that
-        <code>OrderedCollection</code> instances that require paging always include the
+        <code>OrderedCollection</code> instances that use paging always include the
         <code><a href="activitystreams2-vocabulary.html#dfn-first">first</a></code>,
         <code><a href="activitystreams2-vocabulary.html#dfn-next">next</a></code>,
         <code><a href="activitystreams2-vocabulary.html#dfn-prev">prev</a></code> and
