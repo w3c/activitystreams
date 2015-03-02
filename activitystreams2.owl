@@ -411,7 +411,7 @@ as:parameter a owl:ObjectProperty ;
   rdfs:comment "A parameter"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:HtmlForm as:UrlTemplate) 
+    owl:unionOf (as:HtmlForm as:UrlTemplate)
   ] ;
   rdfs:range as:Parameter .
 
@@ -538,7 +538,7 @@ as:shape a owl:ObjectProperty ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf (
-      as:HttpHeader as:Parameter as:Payload as:PossibleAnswer ) 
+      as:HttpHeader as:Parameter as:Payload as:PossibleAnswer )
   ] .
 
 as:tag a owl:ObjectProperty ;
@@ -1026,7 +1026,6 @@ as:Activity a owl:Class ;
   rdfs:label "Activity"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:subClassOf prov:Activity ;
-  owl:equivalentClass prov:Activity ;
   rdfs:comment "An Object representing some form of Action that has been taken"@en .
 
 as:Block a owl:Class ;
@@ -1051,7 +1050,6 @@ as:Actor a owl:Class ;
   rdfs:label "Actor"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:subClassOf prov:Agent ;
-  owl:equivalentClass prov:Agent ;
   rdfs:comment "Any entity that can do something"@en .
 
 as:Achieve a owl:Class ;
@@ -1078,7 +1076,6 @@ as:Application a owl:Class ;
   rdfs:label "Application"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:subClassOf prov:SoftwareAgent ;
-  owl:equivalentClass prov:SoftwareAgent ;
   rdfs:comment "Represents a software application of any sort"@en .
 
 as:Arrive a owl:Class ;
@@ -1111,7 +1108,6 @@ as:Collection a owl:Class ;
   rdfs:label "Collection"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:subClassOf prov:Collection ;
-  owl:equivalentClass prov:Collection ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
 
 as:Complete a owl:Class ;
@@ -1136,8 +1132,8 @@ as:Content a owl:Class ;
 
 as:Create a owl:Class ;
   rdfs:label "Create"@en ;
-  owl:equivalentClass as:Post ;
   rdfs:subClassOf as:Activity ;
+  owl:equivalentClass as:Post ;
   owl:equivalentClass prov:Create;
   rdfs:comment "To Create Something"@en .
 
@@ -1322,8 +1318,7 @@ as:Note a owl:Class ;
 
 as:Object a owl:Class ;
   rdfs:label "Object"@en ;
-  rdfs:subClassOf prov:Entity ;
-  owl:equivalentClass prov:Entity .
+  rdfs:subClassOf prov:Entity .
 
 as:Offer a owl:Class ;
   rdfs:label "Offer"@en ;
@@ -1384,7 +1379,6 @@ as:Organization a owl:Class ;
   rdfs:label "Organization"@en ;
   rdfs:subClassOf as:Group ;
   rdfs:subClassOf prov:Organization ;
-  owl:equivalentClass prov:Organization ;
   rdfs:comment "A group where members share a common goal or purpose"@en .
 
 as:Community a owl:Class ;
@@ -1409,14 +1403,12 @@ as:Person a owl:Class ;
   rdfs:label "Person"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:subClassOf prov:Person ;
-  owl:equivalentClass prov:Person ;
   rdfs:comment "A Person"@en .
 
 as:Place a owl:Class ;
   rdfs:label "Place"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:subClassOf prov:Location ;
-  owl:equivalentClass prov:Location ;
   rdfs:comment "A physical or logical location"@en .
 
 as:PossibleAnswer a owl:Class ;
@@ -1459,7 +1451,6 @@ as:Role a owl:Class ;
   rdfs:label "Role"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:subClassOf prov:Role ;
-  owl:equivalentClass prov:Role ;
   rdfs:comment "A Role that can be assumed by a person, group, application, service, process, team or organization"@en .
 
 as:Save a owl:Class ;
