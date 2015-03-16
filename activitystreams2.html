@@ -301,12 +301,10 @@
   </div>
   <div id="ex1-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-post">
-  &lt;link class="u-author" href="urn:example:person:martin">Martin&lt;/link>
+>&lt;div class="h-entry">
+  &lt;a class="p-author h-card" href="http://martin.example.org/">Martin&lt;/a>
   posted
-  &lt;a class="u-item" href="http://example.org/foo.jpg">
-    "http://example.org/foo.jpg"
-  &lt;/a>
+  &lt;img class="u-photo" href="http://martin.example.org/foo.jpg" alt="Photograph of foo"/>
 &lt;/div></pre>
   </div>
   <div id="ex1-turtle" style="display: none;">
@@ -437,33 +435,19 @@ _:b0 a as:Post ;
   <div id="ex2-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;div class="p-author h-card">
-    &lt;meta class="p-as-id" name="id"
-      content="urn:example:person:martin" />
-    &lt;a class="u-url p-name" href="http://example.org/martin">
-      Martin Smith
-    &lt;/a>
+  &lt;a class="p-author h-card" href="http://example.org/martin">
     &lt;img class="u-photo"
-      src="http://example.org/martin/image.jpg"
-      type="image/jpeg" />
-  &lt;/div>
+      src="http://margin.example.org/image.jpg"
+      />Martin Smith
+  &lt;/a>
   Posted
-  &lt;div class="p-item h-entry">
-    &lt;meta class="p-as-id" name="id"
-      content="urn:example:blog:abc123/xyz" />
-    &lt;a class="u-url p-name" href="http://example.org/blog/2011/02/entry">
-      "Why I love Activity Streams"
-    &lt;/a>
-  &lt;/div>
-  To
-  &lt;div class="p-as-target h-entry">
-    &lt;meta class="p-as-id" name="id" content="http://example.org/blog" />
-    "&lt;span class="p-name">Martin's Blog&lt;/span>"
-  &lt;/div>
+  &lt;a class="u-url p-name" href="http://example.org/blog/2011/02/entry">
+    Why I love Activity Streams
+  &lt;/a>
   On
-  &lt;meta class="dt-published" name="published" content="2015-02-10T15:04:55Z">
-    February 10, 2015 at 03:04:55 UTC
-  &lt;/meta>
+  &lt;time class="dt-published" datetime="2015-02-10 15:04:55Z">
+    February 10, 2015 at 15:04:55 UTC
+  &lt;/time>
 &lt;/div></pre>
   </div>
   <div id="ex2-turtle" style="display: none;">
