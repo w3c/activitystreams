@@ -283,43 +283,46 @@
           <td>
             <p>
               <code><a>alias</a></code> |
-              <code><a>attachedTo</a></code> |
               <code><a>attachment</a></code> |
               <code><a>attributedTo</a></code> |
-              <code><a>attributedWith</a></code> |
               <code><a title="content-term">content</a></code> |
               <code><a>context</a></code> |
-              <code><a>contextOf</a></code> |
               <code><a>displayName</a></code> |
               <code><a>endTime</a></code> |
               <code><a>generator</a></code> |
-              <code><a>generatorOf</a></code> |
               <code><a>icon</a></code> |
               <code><a title="image-term">image</a></code> |
               <code><a>inReplyTo</a></code> |
-              <code><a>memberOf</a></code> |
               <code><a>location</a></code> |
-              <code><a>locationOf</a></code> |
-              <code><a>objectOf</a></code> |
-              <code><a>originOf</a></code> |
               <code><a>preview</a></code> |
-              <code><a>previewOf</a></code> |
               <code><a>provider</a></code> |
-              <code><a>providerOf</a></code> |
               <code><a>published</a></code> |
               <code><a>rating</a></code> |
-              <code><a>resultOf</a></code> |
               <code><a>replies</a></code> |
               <code><a>scope</a></code> |
-              <code><a>scopeOf</a></code> |
               <code><a>startTime</a></code> |
               <code><a>summary</a></code> |
               <code><a title="tag-term">tag</a></code> |
-              <code><a>tagOf</a></code> |
-              <code><a>targetOf</a></code> |
               <code><a>title</a></code> |
               <code><a>updated</a></code> |
               <code><a>url</a></code>
+            </p>
+
+            <p>Objects MAY also have the following "inverse properties":
+              <code><a>attachedTo</a></code> |
+              <code><a>attributedWith</a></code> |
+              <code><a>contextOf</a></code> |
+              <code><a>generatorOf</a></code> |
+              <code><a>memberOf</a></code> |
+              <code><a>locationOf</a></code> |
+              <code><a>objectOf</a></code> |
+              <code><a>originOf</a></code> |
+              <code><a>previewOf</a></code> |
+              <code><a>providerOf</a></code> |
+              <code><a>resultOf</a></code> |
+              <code><a>scopeOf</a></code> |
+              <code><a>tagOf</a></code> |
+              <code><a>targetOf</a></code>
             </p>
           </td>
         </tr>
@@ -381,7 +384,7 @@
 >
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Link ;
+_:b0 a as:Link ;
   as:displayName "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
@@ -521,7 +524,7 @@ _:c14n0 a as:Link ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
-_:c14n0 a as:Activity ;
+_:b0 a as:Activity ;
   as:actor [
     a as:Person ;
     as:displayName "Sally" .
@@ -646,7 +649,7 @@ _:c14n0 a as:Activity ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
-_:c14n0 a as:Travel ;
+_:b0 a as:Travel ;
   as:actor [
     a as:Person ;
     as:displayName "Sally" .
@@ -725,7 +728,7 @@ _:c14n0 a as:Travel ;
 <pre class="example highlight turle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
-_:c14n0 a as:Actor ;
+_:b0 a as:Actor ;
   as:displayName "Sally" .</pre>
   </div>
   </div>
@@ -850,7 +853,7 @@ _:c14n0 a as:Actor ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:items (
@@ -1035,7 +1038,7 @@ _c:14n0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
-_c:14n0 a as:OrderedCollection ;
+_:b0 a as:OrderedCollection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:startIndex "0"^^xsd:nonNegativeInteger ;
@@ -1106,9 +1109,10 @@ _c:14n0 a as:OrderedCollection ;
     <p>
       The Activity Streams 2.0 Extended Classes include Activity and Object
       subclasses that are common to many "Social" Web applications. They are
-      divided into two sets:
+      divided into three sets:
       <ul>
         <li><a href="#activity-types">Activity Types</a></li>
+        <li><a href="#actor-types">Actor Types</a></li>
         <li><a href="#object-types">Object Types</a></li>
       </ul>
     </p>
@@ -1293,7 +1297,7 @@ _c:14n0 a as:OrderedCollection ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Accept ;
+_:b0 a as:Accept ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -1430,7 +1434,7 @@ _c:14n0 a as:Accept ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:TentativeAccept ;
+_:b0 a as:TentativeAccept ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -1533,7 +1537,7 @@ _c:14n0 a as:TentativeAccept ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Add ;
+_:b0 a as:Add ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -1627,7 +1631,7 @@ _c:14n0 a as:Add ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Add ;
+_:b0 a as:Add ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -1749,7 +1753,7 @@ _c:14n0 a as:Add ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Arrive ;
+_:b0 a as:Arrive ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -1867,7 +1871,7 @@ _c:14n0 a as:Arrive ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Create ;
+_:b0 a as:Create ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -1974,7 +1978,7 @@ _c:14n0 a as:Create ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Delete ;
+_:b0 a as:Delete ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2072,7 +2076,7 @@ _c:14n0 a as:Delete ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Favorite ;
+_:b0 a as:Favorite ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2174,7 +2178,7 @@ _c:14n0 a as:Favorite ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Follow ;
+_:b0 a as:Follow ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2276,7 +2280,7 @@ _c:14n0 a as:Follow ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Ignore ;
+_:b0 a as:Ignore ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2374,7 +2378,7 @@ _c:14n0 a as:Ignore ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Join ;
+_:b0 a as:Join ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2475,7 +2479,7 @@ _c:14n0 a as:Join ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Leave ;
+_:b0 a as:Leave ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2553,7 +2557,7 @@ _c:14n0 a as:Leave ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Leave ;
+_:b0 a as:Leave ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2653,7 +2657,7 @@ _c:14n0 a as:Leave ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Like ;
+_:b0 a as:Like ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2759,7 +2763,7 @@ _c:14n0 a as:Like ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Offer ;
+_:b0 a as:Offer ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2861,7 +2865,7 @@ _c:14n0 a as:Offer ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Connect ;
+_:b0 a as:Connect ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -2962,7 +2966,7 @@ _c:14n0 a as:Connect ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:FriendRequest ;
+_:b0 a as:FriendRequest ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3081,7 +3085,7 @@ _c:14n0 a as:FriendRequest ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Give ;
+_:b0 a as:Give ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3217,7 +3221,7 @@ _c:14n0 a as:Give ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Invite ;
+_:b0 a as:Invite ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3338,7 +3342,7 @@ _c:14n0 a as:Invite ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Post ;
+_:b0 a as:Post ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3475,7 +3479,7 @@ _c:14n0 a as:Post ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Reject ;
+_:b0 a as:Reject ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3611,7 +3615,7 @@ _c:14n0 a as:Reject ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:TentativeReject ;
+_:b0 a as:TentativeReject ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3741,7 +3745,7 @@ _c:14n0 a as:TentativeReject ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Remove ;
+_:b0 a as:Remove ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -3852,7 +3856,7 @@ _c:14n0 a as:Remove ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Remove ;
+_:b0 a as:Remove ;
   as:actor [
     a as:Role ;
       as:displayName "The Moderator" ;
@@ -3963,7 +3967,7 @@ _c:14n0 a as:Remove ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Review ;
+_:b0 a as:Review ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:rating "3.5"^^xsd:float.
@@ -4085,7 +4089,7 @@ _c:14n0 a as:Review ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Save ;
+_:b0 a as:Save ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -4200,7 +4204,7 @@ _c:14n0 a as:Save ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; .
@@ -4330,7 +4334,7 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Undo ;
+_:b0 a as:Undo ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Share ;
@@ -4430,7 +4434,7 @@ _c:14n0 a as:Undo ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Update ;
+_:b0 a as:Update ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -4536,7 +4540,7 @@ _c:14n0 a as:Update ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Experience ;
+_:b0 a as:Experience ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -4644,7 +4648,7 @@ _c:14n0 a as:Experience ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:View ;
+_:b0 a as:View ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -4744,7 +4748,7 @@ _c:14n0 a as:View ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Watch ;
+_:b0 a as:Watch ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -4841,7 +4845,7 @@ _c:14n0 a as:Watch ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Listen ;
+_:b0 a as:Listen ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -4938,7 +4942,7 @@ _c:14n0 a as:Listen ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Read ;
+_:b0 a as:Read ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -5056,7 +5060,7 @@ _c:14n0 a as:Read ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Respond ;
+_:b0 a as:Respond ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -5191,7 +5195,7 @@ _c:14n0 a as:Respond ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Move ;
+_:b0 a as:Move ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -5317,7 +5321,7 @@ _c:14n0 a as:Move ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Travel ;
+_:b0 a as:Travel ;
   as:actor [
     a as:Person ;
       as:displayName "Sally" .
@@ -5445,7 +5449,7 @@ _c:14n0 a as:Travel ;
 &lt;acct:sally@example.org&gt; a as:Person ;
   as:displayName "Sally" .
 
-_c:14n0 a as:Announce ;
+_:b0 a as:Announce ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Arrive ;
@@ -5534,7 +5538,7 @@ _c:14n0 a as:Announce ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Block ;
+_:b0 a as:Block ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;acct:joe@example.org&gt;.</pre>
   </div>
@@ -5630,7 +5634,7 @@ _c:14n0 a as:Block ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Flag ;
+_:b0 a as:Flag ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Note ;
@@ -5719,7 +5723,7 @@ _c:14n0 a as:Flag ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Dislike ;
+_:b0 a as:Dislike ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; .</pre>
   </div>
@@ -5820,7 +5824,7 @@ _c:14n0 a as:Dislike ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Confirm ;
+_:b0 a as:Confirm ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Reservation ;
@@ -5922,7 +5926,7 @@ _c:14n0 a as:Confirm ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Assign ;
+_:b0 a as:Assign ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Role ;
@@ -6014,7 +6018,7 @@ _c:14n0 a as:Assign ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Complete ;
+_:b0 a as:Complete ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/tasks/1&gt;.</pre>
   </div>
@@ -6105,7 +6109,7 @@ _c:14n0 a as:Complete ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Achieve ;
+_:b0 a as:Achieve ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Object ;
@@ -6199,7 +6203,7 @@ _c:14n0 a as:Achieve ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Claim ;
+_:b0 a as:Claim ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Identity ;
@@ -6234,46 +6238,29 @@ _c:14n0 a as:Claim ;
 
     </section>
 
-    <section id="object-types">
+    <section id="actor-types">
 
-      <h2>Object Types</h2>
+      <h2>Actor Types</h2>
 
       <p>
-        All Object Types inherit the properties of the base <a>Object</a> class.
-        Some specific Object Types are subclasses or specializations of more
-        generalized Object Types (for instance, the <code><a>Person</a></code>
-        Object Type is a more specific form of the <code><a>Actor</a></code> class).
+        All Actor Types inherit the properties of the base <a>Actor</a> class.
+        Actor's are objects that are capable of performing activities. The
+        value of the <a title="actor-term">actor</a> property MUST be a type
+        of Actor.
       </p>
 
       <p>
-        The Object Types include:
-        <code><a>Album</a></code> |
+        The core Actor Types include:
         <code><a>Application</a></code> |
-        <code><a>Article</a></code> |
-        <code><a>Audio</a></code> |
         <code><a>Community</a></code> |
-        <code><a>Content</a></code> |
         <code><a>Device</a></code> |
-        <code><a>Document</a></code> |
-        <code><a>Event</a></code> |
-        <code><a>Folder</a></code> |
         <code><a>Group</a></code> |
         <code><a>Identity</a></code> |
-        <code><a>Image</a></code> |
-        <code><a>Mention</a></code> |
-        <code><a>Note</a></code> |
         <code><a>Organization</a></code> |
-        <code><a>Page</a></code> |
         <code><a>Person</a></code> |
-        <code><a>Place</a></code> |
-        <code><a>PossibleAnswer</a></code> |
         <code><a>Process</a></code> |
-        <code><a>Question</a></code> |
-        <code><a>Reservation</a></code> |
         <code><a>Role</a></code> |
-        <code><a>Service</a></code> |
-        <code><a>Story</a></code> |
-        <code><a>Video</a></code>
+        <code><a>Service</a></code>
       </p>
 
       <table>
@@ -6327,7 +6314,7 @@ _c:14n0 a as:Claim ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Application ;
+_:b0 a as:Application ;
   as:displayName "My Software Application".</pre>
   </div>
 </div>
@@ -6348,106 +6335,6 @@ _c:14n0 a as:Application ;
             <td>Inherits all properties from <code><a>Actor</a></code>.
           </tr>
         </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>Content</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#Content</code></td>
-          <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex35-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex35-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex35-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex35-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex35-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex35-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Content",
-  "displayName": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
-  "height": 100,
-  "width": 100
-}</pre>
-</div>
-<div id="ex35-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="displayName">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
-  </div>
-  <div id="ex35-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content" style="width:100px; height:100px">
-  &lt;div property="displayName">Some generic content&lt;/div>
-  &lt;div property="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" />
-  &lt;meta property="width" content="100" />
-&lt;/div></pre>
-  </div>
-  <div id="ex35-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div property="p-name">Some generic content&lt;/div>
-  &lt;div property="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-<div id="ex35-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_c:14n0 a as:Content ;
-  as:displayName "Some generic content" ;
-  as:content "&lt;This can be any kind of content&gt;" ;
-  as:height "100"^^xsd:nonNegativeInteger ;
-  as:width "100"^^xsd:nonNegativeInteger .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td>
-            Describes an entity representing any form of content. Examples
-            include documents, images, etc. Content objects
-            typically are not able to perform activities on their own, yet
-            rather are usually the object or target of activities.
-          </td>
-        </tr>
-        <tr>
-          <td >Extends:</td>
-          <td ><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Properties:</td>
-          <td>
-            <p>
-              <code><a>duration</a></code> |
-              <code><a>height</a></code> |
-              <code><a>width</a></code>
-            </p>
-
-            <p>
-              Inherits all properties from <code><a>Object</a></code>.
-            </p>
-          </td>
-        </tr>
-</tbody>
         <tbody>
           <tr>
             <td rowspan="4" ><dfn>Device</dfn></td>
@@ -6491,7 +6378,7 @@ _c:14n0 a as:Content ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Device ;
+_:b0 a as:Device ;
   as:displayName "My Android Phone".</pre>
   </div>
 </div>
@@ -6556,7 +6443,7 @@ _c:14n0 a as:Device ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Group ;
+_:b0 a as:Group ;
   as:displayName "A Simple Group".</pre>
   </div>
 </div>
@@ -6620,7 +6507,7 @@ _c:14n0 a as:Group ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Organization ;
+_:b0 a as:Organization ;
   as:displayName "Acme, Inc.".</pre>
   </div>
 </div>
@@ -6684,7 +6571,7 @@ _c:14n0 a as:Organization ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Community ;
+_:b0 a as:Community ;
   as:displayName "Foo Community.".</pre>
   </div>
 </div>
@@ -6748,7 +6635,7 @@ _c:14n0 a as:Community ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Person ;
+_:b0 a as:Person ;
   as:displayName "Sally Smith".</pre>
   </div>
 </div>
@@ -6813,7 +6700,7 @@ _c:14n0 a as:Person ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Identity ;
+_:b0 a as:Identity ;
   as:displayName "Sally Smith".</pre>
   </div>
 </div>
@@ -6935,7 +6822,7 @@ _c:14n0 a as:Identity ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Process ;
+_:b0 a as:Process ;
   as:displayName "A Long Running Process".</pre>
   </div>
 </div>
@@ -7000,7 +6887,7 @@ _c:14n0 a as:Process ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Role ;
+_:b0 a as:Role ;
   as:displayName "The Moderator".</pre>
   </div>
 </div>
@@ -7064,7 +6951,7 @@ _c:14n0 a as:Role ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Service ;
+_:b0 a as:Service ;
   as:displayName "Acme Web Service".</pre>
   </div>
 </div>
@@ -7085,6 +6972,151 @@ _c:14n0 a as:Service ;
             <td>Inherits all properties from <code><a>Actor</a></code>.</td>
           </tr>
         </tbody>
+
+      </table>
+
+    </section>
+
+    <section id="object-types">
+
+      <h2>Object Types</h2>
+
+      <p>
+        All Object Types inherit the properties of the base <a>Object</a> class.
+        Some specific Object Types are subclasses or specializations of more
+        generalized Object Types (for instance, the <code><a>Person</a></code>
+        Object Type is a more specific form of the <code><a>Actor</a></code> class).
+      </p>
+
+      <p>
+        The Object Types include:
+        <code><a>Album</a></code> |
+        <code><a>Article</a></code> |
+        <code><a>Audio</a></code> |
+        <code><a>Content</a></code> |
+        <code><a>Document</a></code> |
+        <code><a>Event</a></code> |
+        <code><a>Folder</a></code> |
+        <code><a>Image</a></code> |
+        <code><a>Mention</a></code> |
+        <code><a>Note</a></code> |
+        <code><a>Page</a></code> |
+        <code><a>Place</a></code> |
+        <code><a>PossibleAnswer</a></code> |
+        <code><a>Question</a></code> |
+        <code><a>Reservation</a></code> |
+        <code><a>Story</a></code> |
+        <code><a>Video</a></code>
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th colspan="2" style="width: 40%">Description</th>
+            <th style="width: 40%">Properties</th>
+          </tr>
+        </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4" ><dfn>Content</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#Content</code></td>
+          <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex35-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex35-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex35-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex35-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex35-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex35-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Content",
+  "displayName": "Some generic content",
+  "content": "&lt;p>This can be any kind of content&lt;/p>",
+  "height": 100,
+  "width": 100
+}</pre>
+</div>
+<div id="ex35-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Content"
+  style="width:100px; height:100px">
+  &lt;div itemprop="displayName">Some generic content&lt;/div>
+  &lt;div itemprop="content">
+    &lt;p>This can be any kind of content&lt;/p>
+  &lt;/div>
+  &lt;meta itemprop="height" content="100" />
+  &lt;meta itemprop="width" content="100" />
+&lt;/div></pre>
+  </div>
+  <div id="ex35-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Content" style="width:100px; height:100px">
+  &lt;div property="displayName">Some generic content&lt;/div>
+  &lt;div property="content">
+    &lt;p>This can be any kind of content&lt;/p>
+  &lt;/div>
+  &lt;meta property="height" content="100" />
+  &lt;meta property="width" content="100" />
+&lt;/div></pre>
+  </div>
+  <div id="ex35-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry" style="width:100px; height:100px">
+  &lt;div property="p-name">Some generic content&lt;/div>
+  &lt;div property="e-content">
+    &lt;p>This can be any kind of content&lt;/p>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+<div id="ex35-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:b0 a as:Content ;
+  as:displayName "Some generic content" ;
+  as:content "&lt;This can be any kind of content&gt;" ;
+  as:height "100"^^xsd:nonNegativeInteger ;
+  as:width "100"^^xsd:nonNegativeInteger .</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td>
+            Describes an entity representing any form of content. Examples
+            include documents, images, etc. Content objects
+            typically are not able to perform activities on their own, yet
+            rather are usually the object or target of activities.
+          </td>
+        </tr>
+        <tr>
+          <td >Extends:</td>
+          <td ><code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td>Properties:</td>
+          <td>
+            <p>
+              <code><a>duration</a></code> |
+              <code><a>height</a></code> |
+              <code><a>width</a></code>
+            </p>
+
+            <p>
+              Inherits all properties from <code><a>Object</a></code>.
+            </p>
+          </td>
+        </tr>
+</tbody>
         <tbody>
           <tr>
             <td rowspan="4" ><dfn>Article</dfn></td>
@@ -7149,7 +7181,7 @@ _c:14n0 a as:Service ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Article ;
+_:b0 a as:Article ;
   as:displayName "A Blog Post" ;
   as:content "&lt;div>... a long blog post&lt;/div>" ;
   as:attributedTo &lt;acct:sally@example.org&gt; .</pre>
@@ -7288,7 +7320,7 @@ _c:14n0 a as:Article ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Album ;
+_:b0 a as:Album ;
   as:displayName "A Photo Album" ;
   as:items (
     [
@@ -7419,7 +7451,7 @@ _c:14n0 a as:Album ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-_c:14n0 a as:Album ;
+_:b0 a as:Album ;
   as:displayName "A Music Playlist" ;
   as:items [
     rdf:first [
@@ -7541,7 +7573,7 @@ _c:14n0 a as:Album ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-_c:14n0 a as:Folder ;
+_:b0 a as:Folder ;
   as:displayName "Some Documents" ;
   as:items (
     [
@@ -7703,7 +7735,7 @@ _c:14n0 a as:Folder ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-_c:14n0 a as:Story ;
+_:b0 a as:Story ;
   as:displayName "My Vacation" ;
   as:items [
     rdf:first [
@@ -7802,7 +7834,7 @@ _c:14n0 a as:Story ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Document ;
+_:b0 a as:Document ;
   as:displayName "4Q Sales Forecast" ;
   as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .</pre>
   </div>
@@ -7885,7 +7917,7 @@ _c:14n0 a as:Document ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Audio ;
+_:b0 a as:Audio ;
   as:displayName "A Simple Podcast" ;
   as:url [
     a as:Link ;
@@ -7989,7 +8021,7 @@ _c:14n0 a as:Audio ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Image ;
+_:b0 a as:Image ;
   as:displayName "A Simple Image" ;
   as:url {
     [
@@ -8080,7 +8112,7 @@ _c:14n0 a as:Image ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Video ;
+_:b0 a as:Video ;
   as:displayName "A Simple Video" ;
   as:url &lt;http://example.org/video.mkv&gt; ;
   as:duration "PT2H"^^xsd:duration.</pre>
@@ -8157,7 +8189,7 @@ _c:14n0 a as:Video ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:displayName "A Short Note" ;
   as:content "This is a short note".</pre>
   </div>
@@ -8232,7 +8264,7 @@ _c:14n0 a as:Note ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Page ;
+_:b0 a as:Page ;
   as:displayName "A Webpage" ;
   as:url &lt;http://example.org/page.html&gt;.</pre>
   </div>
@@ -8363,7 +8395,7 @@ _c:14n0 a as:Page ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Question ;
+_:b0 a as:Question ;
   as:displayName "What is the answer?" ;
   as:oneOf (
     [
@@ -8511,7 +8543,7 @@ _c:14n0 a as:Question ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Question ;
+_:b0 a as:Question ;
   as:displayName "What is the answer?" ;
   as:oneOf (
     [
@@ -8631,7 +8663,7 @@ _c:14n0 a as:Question ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Event ;
+_:b0 a as:Event ;
   as:displayName "A Party!" ;
   as:startTime "2014-12-31T23:00:00-08:00"^^xsd:dateTime ;
   as:endTime "2015-01-01T06:00:00-08:00"^^xsd:dateTime.</pre>
@@ -8697,7 +8729,7 @@ _c:14n0 a as:Event ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Work" .</pre>
   </div>
 </div>
@@ -8803,7 +8835,7 @@ _c:14n0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
@@ -8918,7 +8950,7 @@ _c:14n0 a as:Place ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Reservation ;
+_:b0 a as:Reservation ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Event ;
@@ -8998,7 +9030,7 @@ _c:14n0 a as:Reservation ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Mention ;
+_:b0 a as:Mention ;
   as:href &lt;http://example.org/joe&gt; ;
   as:displayName "Joe" .</pre>
   </div>
@@ -9037,54 +9069,37 @@ _c:14n0 a as:Mention ;
     <p>
       The common properties include:
       <code><a>actor</a></code> |
-      <code><a>actorOf</a></code> |
-      <code><a>attachedTo</a></code> |
       <code><a>attachment</a></code> |
       <code><a>attributedTo</a></code> |
-      <code><a>attributedWith</a></code> |
       <code><a>bcc</a></code> |
       <code><a>bto</a></code> |
       <code><a>cc</a></code> |
       <code><a>context</a></code> |
-      <code><a>contextOf</a></code> |
       <code><a>current</a></code> |
       <code><a>first</a></code> |
       <code><a>generator</a></code> |
-      <code><a>generatorOf</a></code> |
       <code><a>icon</a></code> |
-      <code><a>iconFor</a></code> |
       <code><a>image</a></code> |
-      <code><a>imageOf</a></code> |
       <code><a>inReplyTo</a></code> |
       <code><a>last</a></code> |
       <code><a>location</a></code> |
-      <code><a>locationOf</a></code> |
       <code><a>items</a></code> |
       <code><a>oneOf</a></code> |
       <code><a>anyOf</a></code> |
       <code><a>origin</a></code> |
-      <code><a>originOf</a></code> |
-      <code><a>memberOf</a></code> |
       <code><a>next</a></code> |
       <code><a>object</a></code> |
-      <code><a>objectOf</a></code> |
       <code><a>prev</a></code> |
       <code><a>preview</a></code> |
-      <code><a>previewOf</a></code> |
       <code><a>result</a></code> |
-      <code><a>resultOf</a></code> |
       <code><a>proof</a></code> |
       <code><a>provider</a></code> |
-      <code><a>providerOf</a></code> |
       <code><a>replies</a></code> |
       <code><a>scope</a></code> |
-      <code><a>scopeOf</a></code> |
       <code><a>self</a></code> |
       <code><a>shape</a></code> |
       <code><a title="tag-term">tag</a></code> |
-      <code><a>tagOf</a></code> |
       <code><a>target</a></code> |
-      <code><a>targetOf</a></code> |
       <code><a>to</a></code> |
       <code><a>url</a></code> |
       <code><a>accuracy</a></code> |
@@ -9124,6 +9139,7 @@ _c:14n0 a as:Mention ;
       <code><a>actor</a></code> is a subproperty of <code><a>attributedTo</a></code>.
       Properties marked as being "Functional" can have only one value. Items
       not marked as "Functional" can have multiple values.
+    </p>
 
     <table>
 
@@ -9199,7 +9215,7 @@ _c:14n0 a as:Mention ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/foo&gt; .</pre>
   </div>
@@ -9277,7 +9293,7 @@ _c:14n0 a as:Share ;
 &lt;acct:sally@example.org&gt; a as:Person ;
   as:displayName "Sally" .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/foo&gt; .</pre>
   </div>
@@ -9367,7 +9383,7 @@ _c:14n0 a as:Share ;
 &lt;acct:sally@example.org&gt; a as:Person ;
   as:displayName "Sally" .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor (
     &lt;acct:sally@example.org&gt;
     &lt;acct:joe@example.org&gt;
@@ -9398,224 +9414,6 @@ _c:14n0 a as:Share ;
         <tr>
           <td >Subproperty Of:</td>
           <td ><code><a>attributedTo</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="6" ><dfn>actorOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#actor</code></td>
-          <td rowspan="6">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex62-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex62-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex62-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex62-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex62-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex62-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "displayName": "Sally",
-  "actorOf": [
-    {
-      "@type": "Share",
-      "object": "http://example.org/posts/1",
-      "target": "acct:joe@example.org"
-    }
-  ]
-}</pre>
-</div>
-<div id="ex62-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;span itemprop="actorOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Share">
-    shared
-    &lt;link itemprop="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/link>
-    with
-    &lt;link itemprop="target"
-      href="acct:joe@example.org">Joe&lt;/link>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex62-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Share">
-  &lt;span property="displayName">Sally&lt;/span>
-  &lt;span property="actorOf" typeof="Share">
-    shared
-    &lt;link property="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/link>
-    with
-    &lt;link property="target"
-      href="acct:joe@example.org">Joe&lt;/link>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex62-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-card">
-  &lt;span class="p-name">Sally&lt;/span>
-  shared
-  &lt;span class="p-as-author-of h-as-share">
-    &lt;link class="u-share-of"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/link>
-    with
-    &lt;link class="u-as-target"
-      href="acct:joe@example.org">Joe&lt;/link>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex62-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Person ;
-  as:displayName "Sally" ;
-  as:actorOf [
-    a as:Share ;
-      as:object &lt;http://example.org/posts/1&gt; ;
-      as:target &lt;acct:joe@example.org&gt; .
-  ] .</pre>
-  </div>
-</div>
-
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies one or more Activities attributed to this actor.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Actor</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td >Subproperty Of:</td>
-          <td><code><a>attributedWith</a></code>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td><code><a title="actor-term">actor</a></code>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>attachedTo</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#attachedTo</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex63-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex63-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex63-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex63-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex63-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex63-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
-  "displayName": "A Simple Image",
-  "url": "http://example.org/cat.jpeg",
-  "attachedTo": [
-    {
-      "@type": "Note",
-      "content": "A Simple Note"
-    }
-  ]
-}</pre>
-</div>
-<div id="ex63-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;span itemprop="displayName">A Simple Image&lt;/span>
-  &lt;img itemprop="url" src="http://example.org/cat.jpeg"/>
-  &lt;div itemprop="attachedTo" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    attached to
-    "&lt;span itemprop="content">A Simple Note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex63-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Image">
-  &lt;span property="displayName">A Simple Image&lt;/span>
-  &lt;img property="url" src="http://example.org/cat.jpeg"/>
-  &lt;div property="attachedTo" typeof="Note">
-    attached to
-    "&lt;span property="content">A Simple Note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex63-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-name">A Simple Image&lt;/span>
-  &lt;img class="u-url" src="http://example.org/cat.jpeg"/>
-  &lt;div class="p-as-attached-to h-entry">
-    attached to
-    "&lt;span class="e-content">A Simple Note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-<div id="ex63-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Image ;
-  as:displayName "A Simple Image" ;
-  as:url &lt;http://example.org/cat.jpeg&gt; ;
-  as:attachedTo [
-    a as:Note ;
-      as:content "A Simple Note" .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity to which this object is attached
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>attachment</a></code></td>
         </tr>
       </tbody>
 
@@ -9708,7 +9506,7 @@ _c:14n0 a as:Image ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:displayName "A Simple Note" ;
   as:attachment [
     a as:Image ;
@@ -9731,7 +9529,7 @@ _c:14n0 a as:Note ;
         </tr>
         <tr>
           <td >Range:</td>
-          <td ><code><a>Object</a></code> | </td><a>Link</a></code></td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td >Inverse Of:</td>
@@ -9807,7 +9605,7 @@ _c:14n0 a as:Note ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Image ;
+_:b0 a as:Image ;
   as:displayName "A Simple Image" ;
   as:url &lt;http://example.org/cat.jpeg&gt; ;
   as:attributedTo [
@@ -9887,7 +9685,7 @@ _c:14n0 a as:Image ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Image ;
+_:b0 a as:Image ;
   as:displayName "A Simple Image" ;
   as:url &lt;http://example.org/cat.jpeg&gt; ;
   as:attributedTo (
@@ -9920,98 +9718,6 @@ _c:14n0 a as:Image ;
         <tr>
           <td >Inverse Of:</td>
           <td ><code><a>attributedWith</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>attributedWith</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#attributedWith</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex67-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex67-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex67-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex67-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex67-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex67-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "displayName": "Sally",
-  "attributedWith": {
-    "@type": "Note",
-    "content": "A Simple Note"
-  }
-}</pre>
-</div>
-<div id="ex67-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;span itemprop="displayName">Sally&lt;/span>
-  wrote
-  &lt;span itemprop="attributedWith" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    "&lt;span itemprop="content">A Simple Note&lt;span>"
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex67-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Person">
-  &lt;span property="displayName">Sally&lt;/span>
-  wrote
-  &lt;span property="attributedWith" typeof="Note">
-    "&lt;span property="content">A Simple Note&lt;span>"
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex67-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-card">
-  &lt;span class="p-name">Sally&lt;/span>
-  wrote
-  &lt;span class="p-as-attributed-with h-entry">
-    "&lt;span class="e-content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex67-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Person ;
-  as:displayName "Sally" ;
-  as:attributedWith [
-    a as:Note;
-      as:content "A Simple Note" .
-  ].</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies one or more objects attributed to this object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>attributedTo</a></code></td>
         </tr>
       </tbody>
 
@@ -10112,7 +9818,7 @@ _c:14n0 a as:Person ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; ;
@@ -10238,7 +9944,7 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; ;
@@ -10364,7 +10070,7 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; ;
@@ -10547,16 +10253,16 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Collection ;
-  as:items ( _c:14n1 _c:14n2 ) .
+_:b0 a as:Collection ;
+  as:items ( _:b1 _:b2 ) .
 
-_c:14n1 a as:Share ;
+_:b1 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; ;
   as:context &lt;http://example.org/contexts/1&gt; .
 
-_c:14n2 a as:Like ;
+_:b2 a as:Like ;
   as:actor &lt;acct:joe@example.org&gt; ;
   as:object &lt;http://example.org/posts/2&gt; ;
   as:context &lt;http://example.org/contexts/1&gt; .
@@ -10576,128 +10282,6 @@ _c:14n2 a as:Like ;
         <tr>
           <td >Domain:</td>
           <td ><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>contextOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#contextOf</code></td>
-          <td rowspan="4">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex172-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex172-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex172-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex172-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex172-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex172-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  "@id": "http://example.org/contexts/1",
-  "contextOf": {
-    "@type": "Share",
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/posts/1",
-    "target": "acct:john@example.org",
-    "context": "http://example.org/contexts/1"
-  }
-}</pre>
-  </div>
-  <div id="ex172-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object"
-  itemid="http://example.org/contexts/1">
-  &lt;span itemprop="contextOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Share">
-    &lt;span itemprop="actor"
-      itemid="acct:sally@example.org">
-        Sally
-    &lt;span>
-    shared
-    &lt;a itemprop="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    with
-    &lt;link itemprop="target"
-      href="acct:john@example.org">
-        John
-    &lt;link>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex172-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object"
-  resource="http://example.org/contexts/1">
-  &lt;span property="contextOf" typeof="Share">
-    &lt;link property="actor"
-      href="acct:sally@example.org">
-        Sally
-    &lt;link>
-    shared
-    &lt;a property="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    with
-    &lt;link property="target"
-      href="acct:john@example.org">
-        John
-    &lt;link>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex172-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;link class="h-entry" href="http://example.org/contexts/1">
-  &lt;span class="p-as-context-of h-entry">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;link>
-    shared
-    &lt;a class="u-share-of"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    with
-    &lt;link class="u-as-target"
-      href="acct:john@example.org">John&lt;link>
-  &lt;/span>
-&lt;/link></pre>
-  </div>
-  <div id="ex172-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-&lt;http://example.org/contexts/1&gt; a as:Object ;
-  as:contextOf [
-    a as:Share ;
-    as:actor &lt;acct:sally@example.org&gt; ;
-    as:object &lt;http://example.org/posts/1&gt; ;
-    as:target &lt;acct:john@example.org&gt; .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Specifies that this <code>Object</code> or <code>Link</code> identifies
-            the context of the referenced entity.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td >Range:</td>
@@ -10832,7 +10416,7 @@ _c:14n2 a as:Like ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:current &lt;http://example.org/collection&gt; ;
@@ -10976,7 +10560,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:current [
@@ -11142,7 +10726,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:first &lt;http://example.org/collection&gt; ;
@@ -11286,7 +10870,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:first [
@@ -11390,7 +10974,7 @@ _c:14n0 a as:Collection ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:generator [
     a as:Application ;
@@ -11418,105 +11002,6 @@ _c:14n0 a as:Note ;
         <tr>
           <td >Inverse Of:</td>
           <td ><code><a>generatorOf</a></code>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>generatorOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#generatorOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex76-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex76-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex76-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex76-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex76-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex76-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
-  "displayName": "My Note Application",
-  "generatorOf": {
-    "@type": "Note",
-    "content": "A Simple Note"
-  }
-}</pre>
-  </div>
-  <div id="ex76-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Application">
-  &lt;span itemprop="displayName">
-    My Note Application
-  &lt;/span>
-  generated
-  &lt;span itemprop="generatorOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-     "&lt;span itemprop="content">A Simple Note&lt;/span>""
-   &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex76-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Application">
-  &lt;span property="displayName">
-    My Note Application
-  &lt;/span>
-  generated
-  &lt;span property="generatorOf" typeof="Note">
-     "&lt;span property="content">A Simple Note&lt;/span>""
-   &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex76-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-as-application">
-  &lt;span property="p-name">
-    My Note Application
-  &lt;/span>
-  generated
-  &lt;span class="p-as-generator-of h-entry" >
-     "&lt;span class="e-content">A Simple Note&lt;/span>""
-   &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex76-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Application ;
-  as:displayName "My Note Application" ;
-  as:generatorOf [
-    a as:Note ;
-    as:content "A Simple Note" .
-  ].
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates an entity this object is responsible for generating.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>generator</a></code></td>
         </tr>
       </tbody>
 
@@ -11586,7 +11071,7 @@ _c:14n0 a as:Application ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:icon [
     a as:Image ;
@@ -11671,7 +11156,7 @@ _c:14n0 a as:Note ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:icon (
     [
@@ -11713,113 +11198,6 @@ _c:14n0 a as:Note ;
         <tr>
           <td >Inverse Of:</td>
           <td ><code><a>iconFor</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>iconFor</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#iconFor</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex79-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex79-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex79-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex79-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex79-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex79-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
-  "displayName": "Note Icon (16x16)",
-  "url": "http://example.org/note.png",
-  "width": 16,
-  "height": 16,
-  "iconFor": {
-    "@type": "Note",
-    "content": "A Simple note",
-  }
-}</pre>
-  </div>
-  <div id="ex79-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;img itemprop="url"
-    src="http://www.example.org/note.png"
-    alt="Note (16x16)"
-    width="16px" height="16px" />
-  &lt;span itemprop="iconFor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    &lt;span itemprop="content">A Simple Note&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex79-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Image">
-  &lt;img property="url"
-    src="http://www.example.org/note.png"
-    alt="Note (16x16)"
-    width="16px" height="16px" />
-  &lt;span property="iconFor" typeof="Note">
-    &lt;span property="content">A Simple Note&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex79-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;img class="u-photo"
-    src="http://www.example.org/note.png"
-    alt="Note (16x16)"
-    width="16px" height="16px" />
-  &lt;span class="p-as-icon-for h-entry">
-    &lt;span class="e-content">A Simple Note&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex79-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_c:14n0 a as:Image ;
-  as:displayName "Note (16x16)" ;
-  as:url &lt;http://example.org/note.png&gt; ;
-  as:height "16"^^xsd:nonNegativeInteger ;
-  as:width "16"^^xsd:nonNegativeInteger ;
-  as:iconFor [
-    a as:Note;
-      as:content "A Simple Note" .
-  ].
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates one or more entities for which this Image (or Link to an image)
-            describes an Icon for.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>icon</a></code></td>
         </tr>
       </tbody>
 
@@ -11890,7 +11268,7 @@ _c:14n0 a as:Image ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:image [
     a as:Image ;
@@ -11985,7 +11363,7 @@ _c:14n0 a as:Note ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:image (
     [
@@ -12023,104 +11401,6 @@ _c:14n0 a as:Note ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>imageOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>imageOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#imageOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex82-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex82-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex82-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex82-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex82-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex82-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
-  "displayName": "Picture of the Eiffel Tower",
-  "url": "http://www.example.org/eiffel.png",
-  "imageOf": {
-    "@type": "Place",
-    "displayName": "The Eiffel Tower",
-  }
-}</pre>
-  </div>
-  <div id="ex82-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;img itemprop="url"
-    src="http://www.example.org/eiffel.png"
-    alt="Picture of the Eiffel Tower"/>
-  &lt;span itemprop="imageOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">The Eiffel Tower&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex82-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Image">
-  &lt;img property="url"
-    src="http://www.example.org/eiffel.png"
-    alt="Picture of the Eiffel Tower"/>
-  &lt;span property="imageOf" typeof="Place">
-    &lt;span property="displayName">The Eiffel Tower&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex82-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;img class="u-photo"
-    src="http://www.example.org/eiffel.png"
-    alt="Picture of the Eiffel Tower"/>
-  &lt;span class="p-as-image-of h-geo">
-    &lt;span class="p-name">The Eiffel Tower&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex82-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Image ;
-  as:displayName "Picture of the Eiffel Tower" ;
-  as:url &lt;http://www.example.org/eiffel.png&gt; ;
-  as:imageOf [
-    a as:Place;
-      as:displayName "The Eiffel Tower" .
-  ].
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates an entity this Image is a depiction of
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a> | <a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a title="image-term">image</a></code></td>
         </tr>
       </tbody>
 
@@ -12186,7 +11466,7 @@ _c:14n0 a as:Image ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note" ;
   as:inReplyTo [
     a as:Note;
@@ -12251,7 +11531,7 @@ _c:14n0 a as:Note ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note" ;
   as:inReplyTo &lt;http://example.org/posts/1&gt;.
 </pre>
@@ -12402,7 +11682,7 @@ _c:14n0 a as:Note ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:last &lt;http://example.org/collection&gt; ;
@@ -12546,7 +11826,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:last [
@@ -12669,7 +11949,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Person ;
+_:b0 a as:Person ;
   as:displayName "Sally" ;
   as:location [
     a as:Place ;
@@ -12700,124 +11980,6 @@ _c:14n0 a as:Person ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>locationOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>locationOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#location</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex90-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex90-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex90-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex90-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex90-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex90-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
-  "longitude": 12.34,
-  "latitude": 56.78,
-  "altitude": 90,
-  "units": "m",
-  "locationOf": {
-    "@type": "Person",
-    "displayName": "Sally"
-  }
-}</pre>
-  </div>
-  <div id="ex90-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Place">
-  &lt;span itemprop="locationOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  is at
-  Latitude
-  &lt;span itemprop="latitude">56.78&lt;/span>,
-  Longitude
-  &lt;span itemprop="longitude">12.34&lt;/span>,
-  at an altitude of
-  &lt;span itemprop="altitude">90&lt;/span>
-  &lt;meta itemprop="units" content="m">meters&lt;/meta>
-&lt;/div></pre>
-  </div>
-  <div id="ex90-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;span property="locationOf" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  is at
-  Latitude
-  &lt;span property="latitude">56.78&lt;/span>,
-  Longitude
-  &lt;span property="longitude">12.34&lt;/span>,
-  at an altitude of
-  &lt;span property="altitude">90&lt;/span>
-  &lt;meta property="units" content="m">meters&lt;/meta>
-&lt;/div></pre>
-  </div>
-  <div id="ex90-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-geo">
-  &lt;span class="p-as-location-of h-card">
-    &lt;span class="p-name">Sally&lt;/span>
-  &lt;/span>
-  is at
-  Latitude
-  &lt;span class="p-latitude">56.78&lt;/span>,
-  Longitude
-  &lt;span class="p-longitude">12.34&lt;/span>,
-  at an altitude of
-  &lt;span class="p-altitude">90&lt;/span>
-  &lt;meta class="p-as-units" content="m">meters&lt;/meta>
-&lt;/div></pre>
-  </div>
-  <div id="ex90-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_c:14n0 a as:Place ;
-  as:latitude "56.78"^^xsd:float ;
-  as:longitude "12.34"^^xsd:float ;
-  as:altitude "90"^^xsd:float ;
-  as:units "meters" ;
-  as:locationOf [
-    a as:Person ;
-    as:displayName "Sally"
-  ] .
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates that this object is the location of the referenced object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>location</a></code></td>
         </tr>
       </tbody>
 
@@ -12917,7 +12079,7 @@ _c:14n0 a as:Place ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:items (
@@ -13030,7 +12192,7 @@ _c:14n0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
-_c:14n0 a as:OrderedCollection ;
+_:b0 a as:OrderedCollection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:startIndex "0"^^xsd:nonNegativeInteger ;
@@ -13182,7 +12344,7 @@ _c:14n0 a as:OrderedCollection ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Question ;
+_:b0 a as:Question ;
   as:displayName "What is the answer?" ;
   as:oneOf (
     [
@@ -13327,7 +12489,7 @@ _c:14n0 a as:Question ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Question ;
+_:b0 a as:Question ;
   as:displayName "What is the answer?" ;
   as:anyOf (
     [
@@ -13465,7 +12627,7 @@ _c:14n0 a as:Question ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Move ;
+_:b0 a as:Move ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target [
@@ -13498,241 +12660,6 @@ _c:14n0 a as:Move ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>originOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>originOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#originOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex167-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex167-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex167-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex167-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex167-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex167-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "displayName": "List A",
-  "originOf": {
-    "@type": "Move",
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/posts/1",
-    "target": {
-      "@type": "Collection",
-      "displayName": "List B"
-    }
-  }
-}</pre>
-  </div>
-  <div id="ex167-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;span itemprop="originOf" itemscope
-      itemtype="http://www.w3.org/ns/activitystreams#Move">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">
-      Sally
-    &lt;/link>
-    moved
-    &lt;a itemprop="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    to
-    &lt;span itemprop="target" itemscope
-      itemtype="http://www.w3.org/ns/activitystreams#Collection">
-      &lt;span itemprop="displayName">List B&lt;/span>
-    &lt;/span>
-  &lt;/span>
-  from &lt;span itemprop="p-name">List A&lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex167-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;span itemprop="originOf" itemscope
-    itemtype="Move">
-    &lt;link property="actor"
-      href="acct:sally@example.org">
-      Sally
-    &lt;/link>
-    moved
-    &lt;a property="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    to
-    &lt;span property="target" typeof="Collection">
-      &lt;span property="displayName">List B&lt;/span>
-    &lt;/span>
-  &lt;/span>
-  from &lt;span property="displayName">List A&lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex167-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;span class="p-as-origin-of h-as-move">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;link>
-    moved
-    &lt;a class="u-item"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    to
-    &lt;span class="p-as-target h-as-collection">
-      &lt;span class="p-name">List B&lt;/span>
-    &lt;/span>
-  &lt;/span>
-  from &lt;span class="p-name">List A&lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex167-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Collection ;
-  as:displayName "List A" ;
-  as:originOf [
-    a as:Move ;
-      as:actor &lt;acct:sally@example.org&gt; ;
-      as:object &lt;http://example.org/posts/1&gt; ;
-      as:target [
-        a as:Collection ;
-          as:displayName "List B" .
-      ] .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Specifies that the object is the <code><a>origin</a></code> of the reference Activity
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>origin</a></code></td>
-        </tr>
-      </tbody>
-
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>memberOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#memberOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex95-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex95-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex95-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex95-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex95-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex95-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "content": "A simple note",
-  "memberOf": {
-    "@type": "Folder",
-    "displayName": "My Notes Folder"
-  }
-}</pre>
-</div>
-<div id="ex95-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  The note
-  "&lt;span itemprop="content">A simple note&lt;span>"
-  is in
-  &lt;span itemprop="memberOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Folder">
-    "&lt;span itemprop="displayName">
-      My Notes Folder
-    &lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex95-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
-  The note
-  "&lt;span property="content">A simple note&lt;span>"
-  is in
-  &lt;span property="memberOf" typeof="Folder">
-    "&lt;span property="displayName">
-      My Notes Folder
-    &lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex95-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  The note
-  "&lt;span class="e-content">A simple note&lt;span>"
-  is in
-  &lt;span class="p-as-member-of h-as-folder">
-    "&lt;span class="p-name">My Notes Folder&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex95-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Note
-  as:content "A simple note" ;
-  as:memberOf [
-    a as:Folder ;
-      as:displayName "My Notes Folder" .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies a collection this object can be considered a member of
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Collection</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>items</a></code></td>
         </tr>
       </tbody>
 
@@ -13863,7 +12790,7 @@ _c:14n0 a as:Note
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:next &lt;http://example.org/collection&gt; ;
@@ -14007,7 +12934,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:next [
@@ -14110,7 +13037,7 @@ _c:14n0 a as:Collection ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Like
+_:b0 a as:Like
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; .</pre>
   </div>
@@ -14181,7 +13108,7 @@ _c:14n0 a as:Like
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Like
+_:b0 a as:Like
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object [
     a as:Note;
@@ -14270,7 +13197,7 @@ _c:14n0 a as:Like
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Like
+_:b0 a as:Like
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object (
     &lt;http://example.org/posts/1&gt;
@@ -14300,101 +13227,6 @@ _c:14n0 a as:Like
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>objectOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>objectOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#objectOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex101-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex101-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex101-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex101-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex101-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex101-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "content": "A simple note",
-  "objectOf": {
-    "@type": "Like",
-    "actor": "acct:sally@example.org"
-  }
-}</pre>
-</div>
-<div id="ex101-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="objectOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Like">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    liked
-  &lt;/span>
-  "&lt;span itemprop="content">A simple note&lt;/span>"
-&lt;/div></pre>
-  </div>
-  <div id="ex101-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
-  &lt;span property="objectOf" typeof="Like">
-    &lt;link property="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    liked
-  &lt;/span>
-  "&lt;span property="content">A simple note&lt;/span>"
-&lt;/div></pre>
-  </div>
-  <div id="ex101-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-as-object-of h-as-like">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;/link>
-    liked
-  &lt;/span>
-  "&lt;span class="e-content">A simple note&lt;/span>"
-&lt;/div></pre>
-  </div>
-<div id="ex101-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Note ;
-  as:content "A simple note" ;
-  as:objectOf [
-    a as:Like ;
-      as:actor &lt;acct:sally@example.org&gt; .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates an activity that acted on this object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>object</a></code></td>
         </tr>
       </tbody>
 
@@ -14525,7 +13357,7 @@ _c:14n0 a as:Note ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:prev &lt;http://example.org/collection&gt; ;
@@ -14669,7 +13501,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:prev [
@@ -14793,7 +13625,7 @@ _c:14n0 a as:Collection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_:c14n0 a as:Movie ;
+_:b0 a as:Movie ;
   as:displayName "Cool New Movie" ;
   as:duration "PT2H30M"^^xsd:duration ;
   as:preview": [
@@ -14824,125 +13656,6 @@ _:c14n0 a as:Movie ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>previewOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>previewOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#previewOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex107-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex107-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex107-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex107-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex107-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex107-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
-  "displayName": "Cool New Movie Trailer",
-  "href": "http://example.org/trailer.mkv",
-  "mediaType": "video/mkv",
-  "duration": "PT1M",
-  "previewOf": {
-    "@type": "Video",
-    "displayName": "Cool New Movie",
-    "duration": "PT2H30M"
-  }
-}</pre>
-</div>
-<div id="ex107-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Link">
-  &lt;span itemprop="previewOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Video">
-    &lt;span itemprop="displayName">
-      Cool New Movie
-    &lt;/span>
-    &lt;meta itemprop="duration" content="PT2H30M">(2H 30M)&lt;/meta>
-  &lt;/span>
-  - &lt;span itemprop="displayName">Trailer&lt;span>
-  &lt;meta itemprop="duration" content="PT1M">(1M)&lt;/meta>
-  &lt;a itemprop="href"
-    href="http://example.org/trailer.mkv"
-    type="video/mkv">Watch&lt;/a>
-&lt;/div></pre>
-  </div>
-  <div id="ex107-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Link">
-  &lt;span property="previewOf" typeof="Video">
-    &lt;span property="displayName">
-      Cool New Movie
-    &lt;/span>
-    &lt;meta property="duration" content="PT2H30M">(2H 30M)&lt;/meta>
-  &lt;/span>
-  - &lt;span property="displayName">Trailer&lt;span>
-  &lt;meta property="duration" content="PT1M">(1M)&lt;/meta>
-  &lt;a property="href"
-    href="http://example.org/trailer.mkv"
-    type="video/mkv">Watch&lt;/a>
-&lt;/div></pre>
-  </div>
-  <div id="ex107-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-as-preview-of h-entry">
-    &lt;span class="p-name">Cool New Movie&lt;/span>
-    &lt;meta class="p-as-duration" name="duration"
-      content="PT2H30M">(2H 30M)&lt;/meta>
-  &lt;/span>
-  - &lt;span class="p-name">Trailer&lt;span>
-  &lt;meta class="p-as-duration" name="duration"
-    content="PT1M">(1M)&lt;/meta>
-  &lt;a class="u-url"
-    href="http://example.org/trailer.mkv"
-    type="video/mkv">Watch&lt;/a>
-&lt;/div></pre>
-  </div>
-<div id="ex107-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_:c14n0 a as:Link ;
-  as:displayName "Trailer" ;
-  as:href &lt;http://example.org/trailer.mkv&gt; ;
-  as:mediaType "video/mkv" ;
-  as:duration "PT1M"^^xsd:duration ;
-  as:previewOf [
-    a as:Movie ;
-    as:displayName "Cool New Movie" ;
-    as:duration "PT2H30M"^^xsd:duration .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity for which this object is a preview
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td><code><a>preview</a></code></td>
         </tr>
       </tbody>
 
@@ -15023,7 +13736,7 @@ _:c14n0 a as:Link ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Activity,
+_:b0 a as:Activity,
           &lt;urn:example:verbs:Check&gt; ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/flights/1&gt; ;
@@ -15056,119 +13769,6 @@ _:c14n0 a as:Activity,
         <tr>
           <td>Subproperty Of:</td>
           <td><code><a>attributedWith</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="6" ><dfn>resultOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#resultOf</code></td>
-          <td rowspan="6">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex109-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex109-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex109-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex109-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex109-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex109-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:types:flightstatus",
-  "displayName": "On Time",
-  "resultOf": {
-    "@type": ["Activity", "urn:example:verbs:Check"],
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/flights/1"
-  }
-}</pre>
-</div>
-<div id="ex109-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="urn:example:types:flightstatus">
-  &lt;span itemprop="resultOf" itemscope
-    itemtype="
-      http://www.w3.org/ns/activitystreams#Activity
-      urn:example:verbs:Check">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link itemprop="object"
-      href="http://example.org/flights/1">flight&lt;/link>
-  &lt;/span>
-  is
-  &lt;span itemprop="displayName">On Time&lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex109-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="urn:example:types:flightstatus">
-  &lt;span property="resultOf"
-    typeof="
-      http://www.w3.org/ns/activitystreams#Activity
-      urn:example:verbs:Check">
-    &lt;link property="actor"
-      href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link property="object"
-      href="http://example.org/flights/1">flight&lt;/link>
-  &lt;/span>
-  is
-  &lt;span property="displayName">On Time&lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex109-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-as-result-of h-as-activity h-x-check">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link class="u-item"
-      href="http://example.org/flights/1">flight&lt;/link>
-  &lt;/span>
-  is
-  &lt;span class="p-name">On Time&lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex109-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:c14n0 a &lt;urn:example:types:flightstatus&gt; ;
-  as:displayName "On Time" ;
-  as:resultOf [
-    a as:Activity,
-      &lt;urn:example:verbs:Check&gt; ;
-      as:actor &lt;acct:sally@example.org&gt; ;
-      as:object &lt;http://example.org/flights/1&gt; .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies that this object is a result of the given activity
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>result</a></code></td>
-        </tr>
-        <tr>
-          <td>Subproperty Of:</td>
-          <td><code><a>attributedTo</a></code></td>
         </tr>
       </tbody>
 
@@ -15235,7 +13835,7 @@ _:c14n0 a &lt;urn:example:types:flightstatus&gt; ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:provider [
     a as:Service ;
@@ -15263,103 +13863,6 @@ _c:14n0 a as:Note ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>providerOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>providerOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#providerOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex111-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex111-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex111-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex111-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex111-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex111-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Service",
-  "displayName": "My Note Service",
-  "providerOf": {
-    "@type": "Note",
-    "content": "A Simple Note"
-  }
-}</pre>
-  </div>
-  <div id="ex111-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Service">
-  &lt;span itemprop="displayName">
-    My Note Service
-  &lt;/span>
-  generated
-  &lt;span itemprop="providerOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-     "&lt;span itemprop="content">A Simple Note&lt;/span>""
-   &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex111-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Service">
-  &lt;span property="displayName">
-    My Note Service
-  &lt;/span>
-  generated
-  &lt;span property="providerOf" typeof="Note">
-     "&lt;span property="content">A Simple Note&lt;/span>""
-   &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex111-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-as-service">
-  &lt;span class="p-name">My Note Service&lt;/span>
-  generated
-  &lt;span class="p-as-provider-of h-entry" >
-     "&lt;span class="e-content">A Simple Note&lt;/span>""
-   &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex111-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Service ;
-  as:displayName "My Note Service" ;
-  as:providerOf [
-    a as:Note ;
-    as:content "A Simple Note" .
-  ].
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity this object is responsible for providing
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>provider</a></code></td>
         </tr>
       </tbody>
 
@@ -15472,9 +13975,9 @@ _c:14n0 a as:Service ;
 
 &lt;urn:example:notes:1&gt; a as:Note ;
   as:content "A simple note" ;
-  as:replies _:c14n0 .
+  as:replies _:b0 .
 
-_:c14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "1"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
   as:items [
@@ -15577,7 +14080,7 @@ _:c14n0 a as:Collection ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note" ;
   as:scope [
     a as:Organization ;
@@ -15605,107 +14108,6 @@ _c:14n0 a as:Note ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>scopeOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>scopeOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#scopeOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex114-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex114-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex114-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex114-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex114-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex114-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Organization",
-  "displayName": "My Organization",
-  "scopeOf": {
-    "@type": "Note",
-    "content": "A simple note"
-  }
-}</pre>
-  </div>
-  <div id="ex114-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Organization">
-  &lt;div itemprop="displayName">
-    My Organization
-  &lt;/div>
-  &lt;div itemprop="scopeOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    &lt;div itemprop="content">
-      A simple note
-    &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex114-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Organization">
-  &lt;div property="displayName">
-    My Organization
-  &lt;/div>
-  &lt;div property="scopeOf" typeof="Note">
-    &lt;div property="content">
-      A simple note
-    &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex114-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-org">
-  &lt;div class="p-name">
-    My Organization
-  &lt;/div>
-  &lt;div class="p-as-scope-of h-entry">
-    &lt;div class="e-content">
-      A simple note
-    &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex114-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Organization;
-  as:displayName "My Organization";
-  as:scopeOf [
-    a as:Note ;
-    as:content "A simple note" .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the entity to which this object is considered to define the scope.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>scope</a></code></td>
         </tr>
       </tbody>
 
@@ -15836,7 +14238,7 @@ _c:14n0 a as:Organization;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:self &lt;http://example.org/collection&gt; ;
@@ -15980,7 +14382,7 @@ _c:14n0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:self [
@@ -16127,7 +14529,7 @@ _c:14n0 a as:Collection ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Question ;
+_:b0 a as:Question ;
   as:displayName "What is the answer?" ;
   as:option (
     [
@@ -16239,7 +14641,7 @@ _c:14n0 a as:Question ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Image ;
+_:b0 a as:Image ;
   as:displayName "Picture of Sally" ;
   as:url &lt;http://example.org/sally.jpg&gt; ;
   as:tag [
@@ -16271,114 +14673,6 @@ _c:14n0 a as:Image ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>tagOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>tagOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#tagOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex119-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex119-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex119-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex119-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex119-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex119-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "displayName": "Sally",
-  "tagOf": [
-    {
-      "@type": "Image",
-      "displayName": "Picture of Sally",
-      "url": "http://example.org/sally.jpg"
-    }
-  ]
-}</pre>
-</div>
-<div id="ex119-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;div itemprop="displayName">Sally&lt;/div>
-  is tagged in
-  &tl;figure itemprop="tagOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">
-      Picture of Sally
-    &lt;/figcaption>
-    &lt;img itemprop="url"
-      src="http://example.org/sally.jpg" />
-  &lt;/figure>
-&lt;/div></pre>
-  </div>
-  <div id="ex119-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Person">
-  &lt;div property="displayName">Sally&lt;/div>
-  is tagged in
-  &tl;figure property="tagOf" typeof="Image">
-    &lt;figcaption property="displayName">
-      Picture of Sally
-    &lt;/figcaption>
-    &lt;img property="url"
-      src="http://example.org/sally.jpg" />
-  &lt;/figure>
-&lt;/div></pre>
-  </div>
-  <div id="ex119-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-card">
-  &lt;div class="p-name">Sally&lt;/div>
-  is tagged in
-  &tl;figure class="p-as-tag-of h-entry">
-    &lt;figcaption class="p-name">
-      Picture of Sally
-    &lt;/figcaption>
-    &lt;img class="u-url"
-      src="http://example.org/sally.jpg" />
-  &lt;/figure>
-&lt;/div></pre>
-  </div>
-<div id="ex119-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_c:14n0 a as:Person ;
-  as:displayName "Sally" ;
-  as:tagOf [
-    a as:Image ;
-    as:displayName "Picture of Sally" ;
-    as:url &lt;http://example.org/sally.jpg&gt; .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity this object "tags".
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a title="tag-term">tag</a></code></td>
         </tr>
       </tbody>
 
@@ -16468,7 +14762,7 @@ _c:14n0 a as:Person ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; .
@@ -16558,7 +14852,7 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target [
@@ -16587,117 +14881,6 @@ _c:14n0 a as:Share ;
         <tr>
           <td>Inverse Of:</td>
           <td><code><a>targetOf</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>targetOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#targetOf</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex122-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex122-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex122-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex122-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex122-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex122-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "@id": "acct:joe@example.org",
-  "targetOf": {
-    "@type": "Share",
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/movie.mkv"
-  }
-}</pre>
-</div>
-<div id="ex122-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person"
-  itemid="acct:joe@example.org">
-  &lt;span itemprop="targetOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Share">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    watched
-    &lt;link itemprop="object"
-      href="http://example.org/movie.mkv">
-      "http://example.org/movie.mkv"
-    &lt;/link>
-  &lt;/span>
-  with Joe
-&lt;/div></pre>
-  </div>
-  <div id="ex122-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Person" resource="acct:joe@example.org">
-  &lt;span property="targetOf"
-    typeof="Share">
-    &lt;link property="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    watched
-    &lt;link property="object"
-      href="http://example.org/movie.mkv">
-      "http://example.org/movie.mkv"
-    &lt;/link>
-  &lt;/span>
-  with Joe
-&lt;/div></pre>
-  </div>
-  <div id="ex122-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;link class="h-card"
-  href="acct:joe@example.org">
-  &lt;span class="p-as-target-of h-as-share">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;/link>
-    shared
-    &lt;link class="u-share-of"
-      href="http://example.org/movie.mkv">
-      "http://example.org/movie.mkv"
-    &lt;/link>
-  &lt;/span>
-  with Joe
-&lt;/link></pre>
-  </div>
-<div id="ex122-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-&lt;acct:joe@example.org&gt; a as:Person ;
-  as:targetOf [
-    a Share ;
-      as:actor &lt;acct:sally@example.org&gt; ;
-      as:object &lt;http://example.org/movie.mkv&gt; .
-  ] .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies that this object is the target of the referenced Activity
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>target</a></code></td>
         </tr>
       </tbody>
 
@@ -16798,7 +14981,7 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; ;
@@ -16878,7 +15061,7 @@ _c:14n0 a as:Share ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Document ;
+_:b0 a as:Document ;
   as:displayName "4Q Sales Forecast" ;
   as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .</pre>
   </div>
@@ -16934,7 +15117,7 @@ _c:14n0 a as:Document ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Document ;
+_:b0 a as:Document ;
   as:displayName "4Q Sales Forecast" ;
   as:url [
     a as:Link ;
@@ -17014,7 +15197,7 @@ _c:14n0 a as:Document ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Document ;
+_:b0 a as:Document ;
   as:displayName "4Q Sales Forecast" ;
   as:url (
     [
@@ -17130,7 +15313,7 @@ _c:14n0 a as:Document ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:accuracy "94.5"^^xsd:float .</pre>
@@ -17226,7 +15409,7 @@ _c:14n0 a as:Place ;
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Home" ;
   as:alias &lt;@home&gt; .</pre>
   </div>
@@ -17236,14 +15419,16 @@ _c:14n0 a as:Place ;
         <tr>
           <td >Notes:</td>
           <td >
-            Provides a contextually meaningful alternative label for the object
+            <p>Provides a contextually meaningful alternative label for the object
             in addition to the <code><a>id</a></code>. For instance, within some
             systems, groups can be identified by both a unique global identifier
             and a more "human-friendly" label such as "<code>@friends</code>" or
             "<code>@network</code>". The value of the <code><a>alias</a></code>
             property MUST match either the <code>isegment-nz-nc</code> or
             <code>IRI</code> productions in [[RFC3987]]. The use of a relative
-            reference other than a simple name is not allowed.
+            reference other than a simple name is not allowed.</p>
+            <p>It is important to note that the meaning of the <code>alias</code>
+            value is implementation and context dependent.</p>
           </td>
         </tr>
         <tr>
@@ -17367,7 +15552,7 @@ _c:14n0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
@@ -17452,7 +15637,7 @@ _c:14n0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note".</pre>
   </div>
 </div>
@@ -17515,7 +15700,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note"@en ;
   as:content "Una simple nota"@sp.</pre>
   </div>
@@ -17592,7 +15777,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:displayName "A simple note".</pre>
   </div>
 </div>
@@ -17655,7 +15840,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:displayName "A simple note"@en ;
   as:displayName "Una simple nota"@sp.</pre>
   </div>
@@ -17738,7 +15923,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Video ;
+_:b0 a as:Video ;
   as:displayName "A Simple Video" ;
   as:url &lt;http://example.org/video.mkv&gt; ;
   as:duration "PT2H"^^xsd:duration.</pre>
@@ -17797,7 +15982,7 @@ _c:14n0 a as:Video ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Video ;
+_:b0 a as:Video ;
   as:displayName "A Simple Video" ;
   as:url &lt;http://example.org/video.mkv&gt; ;
   as:duration "3600"^^xsd:nonNegativeInteger.</pre>
@@ -17819,7 +16004,7 @@ _c:14n0 a as:Video ;
         </tr>
         <tr>
           <td >Domain:</td>
-          <td ><code><a>Content</a> | <a>Link</a></code></td>
+          <td ><code><a>Content</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td >Range:</td>
@@ -17894,7 +16079,7 @@ _c:14n0 a as:Video ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Content ;
+_:b0 a as:Content ;
   as:displayName "Some generic content" ;
   as:content "&lt;This can be any kind of content&gt;" ;
   as:height "100"^^xsd:nonNegativeInteger ;
@@ -17913,7 +16098,7 @@ _c:14n0 a as:Content ;
         </tr>
         <tr>
           <td >Domain:</td>
-          <td ><code><a>Content</a> | <a>Link</a></code></td>
+          <td ><code><a>Content</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td >Range:</td>
@@ -17979,7 +16164,7 @@ _c:14n0 a as:Content ;
 >
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Link ;
+_:b0 a as:Link ;
   as:displayName "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
@@ -18062,7 +16247,7 @@ _:c14n0 a as:Link ;
 >
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Link ;
+_:b0 a as:Link ;
   as:displayName "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
@@ -18187,7 +16372,7 @@ _:c14n0 a as:Link ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:items (
@@ -18334,7 +16519,7 @@ _c:14n0 a as:Collection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
@@ -18471,7 +16656,7 @@ _c:14n0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
@@ -18555,7 +16740,7 @@ _c:14n0 a as:Place ;
 >
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Link ;
+_:b0 a as:Link ;
   as:displayName "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
@@ -18674,7 +16859,7 @@ _:c14n0 a as:Link ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Share ;
+_:b0 a as:Share ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target &lt;acct:john@example.org&gt; ;
@@ -18821,7 +17006,7 @@ _c:14n0 a as:Share ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Event ;
+_:b0 a as:Event ;
   as:displayName "A Party!" ;
   as:startTime "2014-12-31T23:00:00-08:00"^^xsd:dateTime ;
   as:endTime "2015-01-01T06:00:00-08:00"^^xsd:dateTime.</pre>
@@ -18911,7 +17096,7 @@ _c:14n0 a as:Event ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note" ;
   as:published "2014-12-12T12:12:12Z"^^xsd:dateTime.</pre>
   </div>
@@ -19018,7 +17203,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Event ;
+_:b0 a as:Event ;
   as:displayName "A Party!" ;
   as:startTime "2014-12-31T23:00:00-08:00"^^xsd:dateTime ;
   as:endTime "2015-01-01T06:00:00-08:00"^^xsd:dateTime.</pre>
@@ -19156,7 +17341,7 @@ _c:14n0 a as:Event ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
@@ -19262,7 +17447,7 @@ _c:14n0 a as:Place ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Review ;
+_:b0 a as:Review ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:rating "3.5"^^xsd:float.
@@ -19351,7 +17536,7 @@ _c:14n0 a as:Review ;
 >
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:c14n0 a as:Link ;
+_:b0 a as:Link ;
   as:displayName "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
@@ -19479,7 +17664,7 @@ _:c14n0 a as:Link ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
-_c:14n0 a as:OrderedCollection ;
+_:b0 a as:OrderedCollection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:startIndex "0"^^xsd:nonNegativeInteger ;
@@ -19574,7 +17759,7 @@ _c:14n0 a as:OrderedCollection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:summary "A simple note".</pre>
   </div>
 </div>
@@ -19637,7 +17822,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:summary "A simple note"@en ;
   as:summary "Una simple nota"@sp.</pre>
   </div>
@@ -19715,7 +17900,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:title "A simple note".</pre>
   </div>
 </div>
@@ -19778,7 +17963,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:title "A simple note"@en ;
   as:title "Una simple nota"@sp.</pre>
   </div>
@@ -19903,7 +18088,7 @@ _c:14n0 a as:Note ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Collection ;
+_:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:items (
@@ -20051,7 +18236,7 @@ _c:14n0 a as:Collection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Place ;
+_:b0 a as:Place ;
   as:displayName "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
@@ -20152,7 +18337,7 @@ _c:14n0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_c:14n0 a as:Note ;
+_:b0 a as:Note ;
   as:content "A simple note" ;
   as:updated "2014-12-12T12:12:12Z"^^xsd:dateTime.</pre>
   </div>
@@ -20242,7 +18427,7 @@ _c:14n0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_c:14n0 a as:Content ;
+_:b0 a as:Content ;
   as:displayName "Some generic content" ;
   as:content "&lt;This can be any kind of content&gt;" ;
   as:height "100"^^xsd:nonNegativeInteger ;
@@ -20363,7 +18548,7 @@ _c:14n0 a as:Content ;
 
 &lt;acct:sally@example.net&gt; a as:Identity .
 
-_c:14n0 a as:Claim ;
+_:b0 a as:Claim ;
   as:actor &lt;acct:sally@example.org&gt; ;
   as:object &lt;acct:sally@example.net&gt; ;
   as:proof "{jwt-token, omitted for brevity}"^^o:jwt .</pre>
@@ -20390,6 +18575,1861 @@ _c:14n0 a as:Claim ;
 
     </table>
 
+  <section id="inverse-properties">
+
+    <h3>Inverse Properties</h3>
+
+    <p>
+      The following are inversions of other core properties. For example,
+      given the relationship, "An Activity has an Actor", it is possible
+      to state the inverse, "An Actor has Activities" using the
+      <code><a>actorOf</a></code> property.
+    </p>
+
+    <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
+
+    <p>
+      The inverse properties include:
+      <code><a>actorOf</a></code> |
+      <code><a>attachedTo</a></code> |
+      <code><a>attributedWith</a></code> |
+      <code><a>contextOf</a></code> |
+      <code><a>generatorOf</a></code> |
+      <code><a>iconFor</a></code> |
+      <code><a>imageOf</a></code> |
+      <code><a>locationOf</a></code> |
+      <code><a>originOf</a></code> |
+      <code><a>memberOf</a></code> |
+      <code><a>objectOf</a></code> |
+      <code><a>previewOf</a></code> |
+      <code><a>resultOf</a></code> |
+      <code><a>providerOf</a></code> |
+      <code><a>scopeOf</a></code> |
+      <code><a>tagOf</a></code> |
+      <code><a>targetOf</a></code> |
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%">Term</th>
+          <th colspan="2">Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="6" ><dfn>actorOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#actor</code></td>
+          <td rowspan="6">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex62-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex62-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex62-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex62-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex62-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex62-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "displayName": "Sally",
+  "actorOf": [
+    {
+      "@type": "Share",
+      "object": "http://example.org/posts/1",
+      "target": "acct:joe@example.org"
+    }
+  ]
+}</pre>
+      </div>
+      <div id="ex62-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person">
+  &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;span itemprop="actorOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Share">
+    shared
+    &lt;link itemprop="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/link>
+    with
+    &lt;link itemprop="target"
+      href="acct:joe@example.org">Joe&lt;/link>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex62-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Share">
+  &lt;span property="displayName">Sally&lt;/span>
+  &lt;span property="actorOf" typeof="Share">
+    shared
+    &lt;link property="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/link>
+    with
+    &lt;link property="target"
+      href="acct:joe@example.org">Joe&lt;/link>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex62-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-card">
+  &lt;span class="p-name">Sally&lt;/span>
+  shared
+  &lt;span class="p-as-author-of h-as-share">
+    &lt;link class="u-share-of"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/link>
+    with
+    &lt;link class="u-as-target"
+      href="acct:joe@example.org">Joe&lt;/link>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex62-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Person ;
+  as:displayName "Sally" ;
+  as:actorOf [
+    a as:Share ;
+    as:object &lt;http://example.org/posts/1&gt; ;
+    as:target &lt;acct:joe@example.org&gt; .
+  ] .</pre>
+      </div>
+      </div>
+
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies one or more Activities attributed to this actor.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Actor</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td >Subproperty Of:</td>
+          <td><code><a>attributedWith</a></code>
+        </tr>
+        <tr>
+          <td >Inverse Of:</td>
+          <td><code><a title="actor-term">actor</a></code>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>attachedTo</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#attachedTo</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex63-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex63-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex63-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex63-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex63-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex63-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Image",
+  "displayName": "A Simple Image",
+  "url": "http://example.org/cat.jpeg",
+  "attachedTo": [
+    {
+      "@type": "Note",
+      "content": "A Simple Note"
+    }
+  ]
+}</pre>
+      </div>
+      <div id="ex63-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Image">
+  &lt;span itemprop="displayName">A Simple Image&lt;/span>
+  &lt;img itemprop="url" src="http://example.org/cat.jpeg"/>
+  &lt;div itemprop="attachedTo" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    attached to
+    "&lt;span itemprop="content">A Simple Note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex63-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Image">
+  &lt;span property="displayName">A Simple Image&lt;/span>
+  &lt;img property="url" src="http://example.org/cat.jpeg"/>
+  &lt;div property="attachedTo" typeof="Note">
+    attached to
+    "&lt;span property="content">A Simple Note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex63-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  &lt;span class="p-name">A Simple Image&lt;/span>
+  &lt;img class="u-url" src="http://example.org/cat.jpeg"/>
+  &lt;div class="p-as-attached-to h-entry">
+    attached to
+    "&lt;span class="e-content">A Simple Note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex63-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Image ;
+  as:displayName "A Simple Image" ;
+  as:url &lt;http://example.org/cat.jpeg&gt; ;
+  as:attachedTo [
+    a as:Note ;
+    as:content "A Simple Note" .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies an entity to which this object is attached
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Inverse Of:</td>
+          <td ><code><a>attachment</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>attributedWith</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#attributedWith</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex67-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex67-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex67-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex67-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex67-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex67-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "displayName": "Sally",
+  "attributedWith": {
+    "@type": "Note",
+    "content": "A Simple Note"
+  }
+}</pre>
+      </div>
+      <div id="ex67-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person">
+  &lt;span itemprop="displayName">Sally&lt;/span>
+  wrote
+  &lt;span itemprop="attributedWith" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    "&lt;span itemprop="content">A Simple Note&lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex67-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Person">
+  &lt;span property="displayName">Sally&lt;/span>
+  wrote
+  &lt;span property="attributedWith" typeof="Note">
+    "&lt;span property="content">A Simple Note&lt;span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex67-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-card">
+  &lt;span class="p-name">Sally&lt;/span>
+  wrote
+  &lt;span class="p-as-attributed-with h-entry">
+    "&lt;span class="e-content">A Simple Note&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex67-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Person ;
+  as:displayName "Sally" ;
+  as:attributedWith [
+    a as:Note;
+    as:content "A Simple Note" .
+  ].</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies one or more objects attributed to this object.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Inverse Of:</td>
+          <td ><code><a>attributedTo</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="4" ><dfn>contextOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#contextOf</code></td>
+          <td rowspan="4">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex172-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex172-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex172-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex172-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex172-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex172-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Object",
+  "@id": "http://example.org/contexts/1",
+  "contextOf": {
+    "@type": "Share",
+    "actor": "acct:sally@example.org",
+    "object": "http://example.org/posts/1",
+    "target": "acct:john@example.org",
+    "context": "http://example.org/contexts/1"
+  }
+}</pre>
+      </div>
+      <div id="ex172-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object"
+  itemid="http://example.org/contexts/1">
+  &lt;span itemprop="contextOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Share">
+  &lt;span itemprop="actor"
+    itemid="acct:sally@example.org">
+    Sally
+  &lt;span>
+    shared
+    &lt;a itemprop="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    with
+    &lt;link itemprop="target"
+      href="acct:john@example.org">
+      John
+    &lt;link>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex172-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object"
+  resource="http://example.org/contexts/1">
+    &lt;span property="contextOf" typeof="Share">
+    &lt;link property="actor"
+      href="acct:sally@example.org">
+      Sally
+    &lt;link>
+    shared
+    &lt;a property="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    with
+    &lt;link property="target"
+      href="acct:john@example.org">
+      John
+    &lt;link>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex172-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;link class="h-entry" href="http://example.org/contexts/1">
+  &lt;span class="p-as-context-of h-entry">
+    &lt;link class="u-author"
+      href="acct:sally@example.org">Sally&lt;link>
+    shared
+    &lt;a class="u-share-of"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    with
+    &lt;link class="u-as-target"
+      href="acct:john@example.org">John&lt;link>
+  &lt;/span>
+&lt;/link></pre>
+      </div>
+      <div id="ex172-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://example.org/contexts/1&gt; a as:Object ;
+  as:contextOf [
+  a as:Share ;
+  as:actor &lt;acct:sally@example.org&gt; ;
+  as:object &lt;http://example.org/posts/1&gt; ;
+  as:target &lt;acct:john@example.org&gt; .
+] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Specifies that this <code>Object</code> or <code>Link</code> identifies
+            the context of the referenced entity.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>generatorOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#generatorOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex76-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex76-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex76-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex76-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex76-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex76-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Application",
+  "displayName": "My Note Application",
+  "generatorOf": {
+    "@type": "Note",
+    "content": "A Simple Note"
+  }
+}</pre>
+      </div>
+      <div id="ex76-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Application">
+  &lt;span itemprop="displayName">
+    My Note Application
+  &lt;/span>
+  generated
+  &lt;span itemprop="generatorOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    "&lt;span itemprop="content">A Simple Note&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+</div>
+<div id="ex76-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Application">
+  &lt;span property="displayName">
+    My Note Application
+  &lt;/span>
+  generated
+  &lt;span property="generatorOf" typeof="Note">
+   "&lt;span property="content">A Simple Note&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex76-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-as-application">
+  &lt;span property="p-name">
+    My Note Application
+  &lt;/span>
+  generated
+  &lt;span class="p-as-generator-of h-entry" >
+    "&lt;span class="e-content">A Simple Note&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex76-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Application ;
+  as:displayName "My Note Application" ;
+  as:generatorOf [
+    a as:Note ;
+    as:content "A Simple Note" .
+  ].
+      </pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Indicates an entity this object is responsible for generating.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Inverse Of:</td>
+          <td ><code><a>generator</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>iconFor</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#iconFor</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex79-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex79-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex79-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex79-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex79-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex79-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Image",
+  "displayName": "Note Icon (16x16)",
+  "url": "http://example.org/note.png",
+  "width": 16,
+  "height": 16,
+  "iconFor": {
+    "@type": "Note",
+    "content": "A Simple note",
+  }
+}</pre>
+      </div>
+      <div id="ex79-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Image">
+  &lt;img itemprop="url"
+    src="http://www.example.org/note.png"
+    alt="Note (16x16)"
+    width="16px" height="16px" />
+  &lt;span itemprop="iconFor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    &lt;span itemprop="content">A Simple Note&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex79-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Image">
+  &lt;img property="url"
+    src="http://www.example.org/note.png"
+    alt="Note (16x16)"
+    width="16px" height="16px" />
+  &lt;span property="iconFor" typeof="Note">
+    &lt;span property="content">A Simple Note&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex79-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  &lt;img class="u-photo"
+    src="http://www.example.org/note.png"
+    alt="Note (16x16)"
+    width="16px" height="16px" />
+  &lt;span class="p-as-icon-for h-entry">
+    &lt;span class="e-content">A Simple Note&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex79-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+_:b0 a as:Image ;
+  as:displayName "Note (16x16)" ;
+  as:url &lt;http://example.org/note.png&gt; ;
+  as:height "16"^^xsd:nonNegativeInteger ;
+  as:width "16"^^xsd:nonNegativeInteger ;
+  as:iconFor [
+    a as:Note;
+    as:content "A Simple Note" .
+  ].
+      </pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Indicates one or more entities for which this Image (or Link to an image)
+            describes an Icon for.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Inverse Of:</td>
+          <td ><code><a>icon</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>imageOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#imageOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex82-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex82-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex82-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex82-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex82-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex82-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Image",
+  "displayName": "Picture of the Eiffel Tower",
+  "url": "http://www.example.org/eiffel.png",
+  "imageOf": {
+    "@type": "Place",
+    "displayName": "The Eiffel Tower",
+  }
+}</pre>
+      </div>
+      <div id="ex82-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Image">
+  &lt;img itemprop="url"
+    src="http://www.example.org/eiffel.png"
+    alt="Picture of the Eiffel Tower"/>
+  &lt;span itemprop="imageOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Place">
+    &lt;span itemprop="displayName">The Eiffel Tower&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex82-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Image">
+  &lt;img property="url"
+    src="http://www.example.org/eiffel.png"
+    alt="Picture of the Eiffel Tower"/>
+  &lt;span property="imageOf" typeof="Place">
+    &lt;span property="displayName">The Eiffel Tower&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex82-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  &lt;img class="u-photo"
+    src="http://www.example.org/eiffel.png"
+    alt="Picture of the Eiffel Tower"/>
+  &lt;span class="p-as-image-of h-geo">
+    &lt;span class="p-name">The Eiffel Tower&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex82-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Image ;
+  as:displayName "Picture of the Eiffel Tower" ;
+  as:url &lt;http://www.example.org/eiffel.png&gt; ;
+  as:imageOf [
+    a as:Place;
+    as:displayName "The Eiffel Tower" .
+  ].
+</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Indicates an entity this Image is a depiction of
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a title="image-term">image</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>locationOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#location</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex90-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex90-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex90-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex90-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex90-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex90-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Place",
+  "longitude": 12.34,
+  "latitude": 56.78,
+  "altitude": 90,
+  "units": "m",
+  "locationOf": {
+    "@type": "Person",
+    "displayName": "Sally"
+  }
+}</pre>
+      </div>
+      <div id="ex90-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Place">
+  &lt;span itemprop="locationOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  is at
+  Latitude &lt;span itemprop="latitude">56.78&lt;/span>,
+  Longitude &lt;span itemprop="longitude">12.34&lt;/span>,
+  at an altitude of
+  &lt;span itemprop="altitude">90&lt;/span>
+  &lt;meta itemprop="units" content="m">meters&lt;/meta>
+&lt;/div></pre>
+      </div>
+      <div id="ex90-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Place">
+  &lt;span property="locationOf" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  is at
+  Latitude &lt;span property="latitude">56.78&lt;/span>,
+  Longitude &lt;span property="longitude">12.34&lt;/span>,
+  at an altitude of
+  &lt;span property="altitude">90&lt;/span>
+  &lt;meta property="units" content="m">meters&lt;/meta>
+&lt;/div></pre>
+      </div>
+      <div id="ex90-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-geo">
+  &lt;span class="p-as-location-of h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
+  is at
+  Latitude &lt;span class="p-latitude">56.78&lt;/span>,
+  Longitude &lt;span class="p-longitude">12.34&lt;/span>,
+  at an altitude of
+  &lt;span class="p-altitude">90&lt;/span>
+  &lt;meta class="p-as-units" content="m">meters&lt;/meta>
+&lt;/div></pre>
+      </div>
+      <div id="ex90-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+_:b0 a as:Place ;
+  as:latitude "56.78"^^xsd:float ;
+  as:longitude "12.34"^^xsd:float ;
+  as:altitude "90"^^xsd:float ;
+  as:units "meters" ;
+  as:locationOf [
+    a as:Person ;
+    as:displayName "Sally"
+  ] .
+      </pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Indicates that this object is the location of the referenced object.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>location</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>originOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#originOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex167-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex167-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex167-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex167-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex167-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex167-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Collection",
+  "displayName": "List A",
+  "originOf": {
+    "@type": "Move",
+    "actor": "acct:sally@example.org",
+    "object": "http://example.org/posts/1",
+    "target": {
+      "@type": "Collection",
+      "displayName": "List B"
+    }
+  }
+}</pre>
+      </div>
+      <div id="ex167-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Collection">
+  &lt;span itemprop="originOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Move">
+    &lt;link itemprop="actor"
+      href="acct:sally@example.org">
+    Sally
+    &lt;/link>
+    moved
+    &lt;a itemprop="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    to
+    &lt;span itemprop="target" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Collection">
+      &lt;span itemprop="displayName">List B&lt;/span>
+    &lt;/span>
+  &lt;/span>
+  from &lt;span itemprop="p-name">List A&lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex167-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Collection">
+  &lt;span itemprop="originOf" itemscope
+    itemtype="Move">
+    &lt;link property="actor"
+      href="acct:sally@example.org">
+    Sally
+    &lt;/link>
+    moved
+    &lt;a property="object"
+      href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    to
+    &lt;span property="target" typeof="Collection">
+      &lt;span property="displayName">List B&lt;/span>
+    &lt;/span>
+  &lt;/span>
+  from &lt;span property="displayName">List A&lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex167-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-as-collection">
+  &lt;span class="p-as-origin-of h-as-move">
+  &lt;link class="u-author"
+    href="acct:sally@example.org">Sally&lt;link>
+    moved
+    &lt;a class="u-item" href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+    to
+    &lt;span class="p-as-target h-as-collection">
+      &lt;span class="p-name">List B&lt;/span>
+    &lt;/span>
+  &lt;/span>
+  from &lt;span class="p-name">List A&lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex167-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Collection ;
+  as:displayName "List A" ;
+  as:originOf [
+    a as:Move ;
+    as:actor &lt;acct:sally@example.org&gt; ;
+    as:object &lt;http://example.org/posts/1&gt; ;
+    as:target [
+      a as:Collection ;
+      as:displayName "List B" .
+    ] .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Specifies that the object is the <code><a>origin</a></code> of the reference Activity
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>origin</a></code></td>
+        </tr>
+      </tbody>
+
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>memberOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#memberOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex95-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex95-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex95-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex95-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex95-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex95-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "content": "A simple note",
+  "memberOf": {
+    "@type": "Folder",
+    "displayName": "My Notes Folder"
+  }
+}</pre>
+      </div>
+      <div id="ex95-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Note">
+  The note
+  "&lt;span itemprop="content">A simple note&lt;span>"
+  is in
+  &lt;span itemprop="memberOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Folder">
+    "&lt;span itemprop="displayName">
+      My Notes Folder
+    &lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex95-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Note">
+  The note
+  "&lt;span property="content">A simple note&lt;span>"
+  is in
+  &lt;span property="memberOf" typeof="Folder">
+    "&lt;span property="displayName">
+      My Notes Folder
+    &lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex95-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  The note
+  "&lt;span class="e-content">A simple note&lt;span>"
+  is in
+  &lt;span class="p-as-member-of h-as-folder">
+    "&lt;span class="p-name">My Notes Folder&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex95-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Note
+  as:content "A simple note" ;
+  as:memberOf [
+    a as:Folder ;
+    as:displayName "My Notes Folder" .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies a collection this object can be considered a member of
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Collection</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>items</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>objectOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#objectOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex101-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex101-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex101-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex101-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex101-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex101-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "content": "A simple note",
+  "objectOf": {
+    "@type": "Like",
+    "actor": "acct:sally@example.org"
+  }
+}</pre>
+      </div>
+      <div id="ex101-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Note">
+  &lt;span itemprop="objectOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Like">
+    &lt;link itemprop="actor"
+      href="acct:sally@example.org">Sally&lt;/link>
+    liked
+  &lt;/span>
+  "&lt;span itemprop="content">A simple note&lt;/span>"
+&lt;/div></pre>
+      </div>
+      <div id="ex101-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Note">
+  &lt;span property="objectOf" typeof="Like">
+    &lt;link property="actor"
+      href="acct:sally@example.org">Sally&lt;/link>
+    liked
+  &lt;/span>
+  "&lt;span property="content">A simple note&lt;/span>"
+&lt;/div></pre>
+      </div>
+      <div id="ex101-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  &lt;span class="p-as-object-of h-as-like">
+    &lt;link class="u-author"
+      href="acct:sally@example.org">Sally&lt;/link>
+    liked
+  &lt;/span>
+  "&lt;span class="e-content">A simple note&lt;/span>"
+&lt;/div></pre>
+      </div>
+      <div id="ex101-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Note ;
+  as:content "A simple note" ;
+  as:objectOf [
+    a as:Like ;
+    as:actor &lt;acct:sally@example.org&gt; .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Indicates an activity that acted on this object.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>object</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="6" ><dfn>resultOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#resultOf</code></td>
+          <td rowspan="6">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex109-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex109-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex109-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex109-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex109-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex109-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "urn:example:types:flightstatus",
+  "displayName": "On Time",
+  "resultOf": {
+    "@type": ["Activity", "urn:example:verbs:Check"],
+    "actor": "acct:sally@example.org",
+    "object": "http://example.org/flights/1"
+  }
+}</pre>
+      </div>
+      <div id="ex109-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="urn:example:types:flightstatus">
+  &lt;span itemprop="resultOf" itemscope
+    itemtype="
+      http://www.w3.org/ns/activitystreams#Activity
+      urn:example:verbs:Check">
+    &lt;link itemprop="actor"
+      href="acct:sally@example.org">Sally's&lt;/link>
+    &lt;link itemprop="object"
+      href="http://example.org/flights/1">flight&lt;/link>
+  &lt;/span>
+  is
+  &lt;span itemprop="displayName">On Time&lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex109-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="urn:example:types:flightstatus">
+  &lt;span property="resultOf"
+    typeof="
+      http://www.w3.org/ns/activitystreams#Activity
+      urn:example:verbs:Check">
+    &lt;link property="actor"
+      href="acct:sally@example.org">Sally's&lt;/link>
+    &lt;link property="object"
+      href="http://example.org/flights/1">flight&lt;/link>
+  &lt;/span>
+  is
+  &lt;span property="displayName">On Time&lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex109-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  &lt;span class="p-as-result-of h-as-activity h-x-check">
+    &lt;link class="u-author"
+      href="acct:sally@example.org">Sally's&lt;/link>
+    &lt;link class="u-item"
+      href="http://example.org/flights/1">flight&lt;/link>
+  &lt;/span>
+  is
+  &lt;span class="p-name">On Time&lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex109-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a &lt;urn:example:types:flightstatus&gt; ;
+  as:displayName "On Time" ;
+  as:resultOf [
+    a as:Activity,
+    &lt;urn:example:verbs:Check&gt; ;
+    as:actor &lt;acct:sally@example.org&gt; ;
+    as:object &lt;http://example.org/flights/1&gt; .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies that this object is a result of the given activity
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>result</a></code></td>
+        </tr>
+        <tr>
+          <td>Subproperty Of:</td>
+          <td><code><a>attributedTo</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>providerOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#providerOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex111-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex111-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex111-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex111-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex111-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex111-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Service",
+  "displayName": "My Note Service",
+  "providerOf": {
+    "@type": "Note",
+    "content": "A Simple Note"
+  }
+}</pre>
+      </div>
+      <div id="ex111-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Service">
+  &lt;span itemprop="displayName">
+    My Note Service
+  &lt;/span>
+  generated
+  &lt;span itemprop="providerOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    "&lt;span itemprop="content">A Simple Note&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex111-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Service">
+  &lt;span property="displayName">
+    My Note Service
+  &lt;/span>
+  generated
+  &lt;span property="providerOf" typeof="Note">
+    "&lt;span property="content">A Simple Note&lt;/span>"
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex111-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-as-service">
+  &lt;span class="p-name">My Note Service&lt;/span>
+  generated
+  &lt;span class="p-as-provider-of h-entry" >
+    "&lt;span class="e-content">A Simple Note&lt;/span>""
+  &lt;/span>
+&lt;/div></pre>
+      </div>
+      <div id="ex111-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Service ;
+  as:displayName "My Note Service" ;
+  as:providerOf [
+    a as:Note ;
+    as:content "A Simple Note" .
+  ].
+      </pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies an entity this object is responsible for providing
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>provider</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>scopeOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#scopeOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex114-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex114-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex114-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex114-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex114-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex114-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Organization",
+  "displayName": "My Organization",
+  "scopeOf": {
+    "@type": "Note",
+    "content": "A simple note"
+  }
+}</pre>
+      </div>
+      <div id="ex114-microdata" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Organization">
+  &lt;div itemprop="displayName">
+    My Organization
+  &lt;/div>
+  &lt;div itemprop="scopeOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+    &lt;div itemprop="content">
+      A simple note
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex114-rdfa" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Organization">
+  &lt;div property="displayName">
+    My Organization
+  &lt;/div>
+  &lt;div property="scopeOf" typeof="Note">
+    &lt;div property="content">
+      A simple note
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex114-microformats" style="display: none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-org">
+  &lt;div class="p-name">
+    My Organization
+  &lt;/div>
+  &lt;div class="p-as-scope-of h-entry">
+    &lt;div class="e-content">
+      A simple note
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex114-turtle" style="display: none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Organization;
+  as:displayName "My Organization";
+  as:scopeOf [
+    a as:Note ;
+    as:content "A simple note" .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies the entity to which this object is considered to define the scope.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>scope</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>tagOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#tagOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex119-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex119-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex119-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex119-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex119-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex119-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "displayName": "Sally",
+  "tagOf": [
+    {
+      "@type": "Image",
+      "displayName": "Picture of Sally",
+      "url": "http://example.org/sally.jpg"
+    }
+  ]
+}</pre>
+      </div>
+      <div id="ex119-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person">
+  &lt;div itemprop="displayName">Sally&lt;/div>
+    is tagged in
+  &tl;figure itemprop="tagOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Image">
+    &lt;figcaption itemprop="displayName">
+      Picture of Sally
+    &lt;/figcaption>
+    &lt;img itemprop="url"
+      src="http://example.org/sally.jpg" />
+  &lt;/figure>
+&lt;/div></pre>
+      </div>
+      <div id="ex119-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Person">
+  &lt;div property="displayName">Sally&lt;/div>
+  is tagged in
+  &tl;figure property="tagOf" typeof="Image">
+    &lt;figcaption property="displayName">
+      Picture of Sally
+    &lt;/figcaption>
+    &lt;img property="url"
+      src="http://example.org/sally.jpg" />
+  &lt;/figure>
+&lt;/div></pre>
+      </div>
+      <div id="ex119-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-card">
+  &lt;div class="p-name">Sally&lt;/div>
+  is tagged in
+  &tl;figure class="p-as-tag-of h-entry">
+    &lt;figcaption class="p-name">
+      Picture of Sally
+    &lt;/figcaption>
+    &lt;img class="u-url"
+      src="http://example.org/sally.jpg" />
+  &lt;/figure>
+&lt;/div></pre>
+      </div>
+      <div id="ex119-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Person ;
+  as:displayName "Sally" ;
+  as:tagOf [
+    a as:Image ;
+    as:displayName "Picture of Sally" ;
+    as:url &lt;http://example.org/sally.jpg&gt; .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies an entity this object "tags".
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a title="tag-term">tag</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>targetOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#targetOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex122-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex122-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex122-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex122-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex122-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex122-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "@id": "acct:joe@example.org",
+  "targetOf": {
+    "@type": "Share",
+    "actor": "acct:sally@example.org",
+    "object": "http://example.org/movie.mkv"
+  }
+}</pre>
+      </div>
+      <div id="ex122-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person"
+  itemid="acct:joe@example.org">
+  &lt;span itemprop="targetOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Share">
+    &lt;link itemprop="actor"
+      href="acct:sally@example.org">Sally&lt;/link>
+    watched
+    &lt;link itemprop="object"
+      href="http://example.org/movie.mkv">
+      "http://example.org/movie.mkv"
+    &lt;/link>
+  &lt;/span>
+  with Joe
+&lt;/div></pre>
+      </div>
+      <div id="ex122-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Person" resource="acct:joe@example.org">
+  &lt;span property="targetOf" typeof="Share">
+  &lt;link property="actor"
+    href="acct:sally@example.org">Sally&lt;/link>
+  watched
+  &lt;link property="object"
+    href="http://example.org/movie.mkv">
+    "http://example.org/movie.mkv"
+  &lt;/link>
+  &lt;/span>
+  with Joe
+&lt;/div></pre>
+      </div>
+      <div id="ex122-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;link class="h-card"
+  href="acct:joe@example.org">
+  &lt;span class="p-as-target-of h-as-share">
+    &lt;link class="u-author"
+      href="acct:sally@example.org">Sally&lt;/link>
+    shared
+    &lt;link class="u-share-of"
+      href="http://example.org/movie.mkv">
+      "http://example.org/movie.mkv"
+    &lt;/link>
+  &lt;/span>
+  with Joe
+&lt;/link></pre>
+  </div>
+      <div id="ex122-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;acct:joe@example.org&gt; a as:Person ;
+  as:targetOf [
+    a Share ;
+    as:actor &lt;acct:sally@example.org&gt; ;
+    as:object &lt;http://example.org/movie.mkv&gt; .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies that this object is the target of the referenced Activity
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td>Inverse Of:</td>
+          <td><code><a>target</a></code></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn>previewOf</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#previewOf</code></td>
+          <td rowspan="5">
+      <div class="nanotabs">
+      <ul>
+      <li><a href="#ex107-jsonld" class="selected">JSON-LD</a></li>
+      <li><a href="#ex107-microdata" class="selected">Microdata</a></li>
+      <li><a href="#ex107-rdfa" class="selected">RDFa</a></li>
+      <li><a href="#ex107-microformats" class="selected">Microformats</a></li>
+      <li><a href="#ex107-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex107-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Link",
+  "displayName": "Cool New Movie Trailer",
+  "href": "http://example.org/trailer.mkv",
+  "mediaType": "video/mkv",
+  "duration": "PT1M",
+  "previewOf": {
+    "@type": "Video",
+    "displayName": "Cool New Movie",
+    "duration": "PT2H30M"
+  }
+}</pre>
+      </div>
+      <div id="ex107-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Link">
+  &lt;span itemprop="previewOf" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Video">
+    &lt;span itemprop="displayName">
+      Cool New Movie
+    &lt;/span>
+    &lt;meta itemprop="duration" content="PT2H30M">(2H 30M)&lt;/meta>
+  &lt;/span>
+  - &lt;span itemprop="displayName">Trailer&lt;span>
+  &lt;meta itemprop="duration" content="PT1M">(1M)&lt;/meta>
+  &lt;a itemprop="href"
+    href="http://example.org/trailer.mkv"
+    type="video/mkv">Watch&lt;/a>
+&lt;/div></pre>
+      </div>
+      <div id="ex107-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Link">
+  &lt;span property="previewOf" typeof="Video">
+    &lt;span property="displayName">
+      Cool New Movie
+    &lt;/span>
+    &lt;meta property="duration" content="PT2H30M">(2H 30M)&lt;/meta>
+  &lt;/span>
+  - &lt;span property="displayName">Trailer&lt;span>
+  &lt;meta property="duration" content="PT1M">(1M)&lt;/meta>
+  &lt;a property="href"
+    href="http://example.org/trailer.mkv"
+    type="video/mkv">Watch&lt;/a>
+&lt;/div></pre>
+      </div>
+      <div id="ex107-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+  &lt;span class="p-as-preview-of h-entry">
+    &lt;span class="p-name">Cool New Movie&lt;/span>
+    &lt;meta class="p-as-duration" name="duration"
+      content="PT2H30M">(2H 30M)&lt;/meta>
+  &lt;/span>
+  - &lt;span class="p-name">Trailer&lt;span>
+  &lt;meta class="p-as-duration" name="duration"
+    content="PT1M">(1M)&lt;/meta>
+  &lt;a class="u-url"
+    href="http://example.org/trailer.mkv"
+    type="video/mkv">Watch&lt;/a>
+&lt;/div></pre>
+      </div>
+      <div id="ex107-turtle" style="display: none;">
+      <pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+_:b0 a as:Link ;
+  as:displayName "Trailer" ;
+  as:href &lt;http://example.org/trailer.mkv&gt; ;
+  as:mediaType "video/mkv" ;
+  as:duration "PT1M"^^xsd:duration ;
+  as:previewOf [
+    a as:Movie ;
+    as:displayName "Cool New Movie" ;
+    as:duration "PT2H30M"^^xsd:duration .
+  ] .</pre>
+      </div>
+      </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies an entity for which this object is a preview
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td >Inverse Of:</td>
+          <td><code><a>preview</a></code></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
   </section>
 
   <section id="as1properties">
@@ -20578,7 +20618,7 @@ _c:14n0 a as:Claim ;
         </tr>
         <tr>
           <td >Range:</td>
-          <td ><code><a>Object</a> | <a>Link</a></code></td>
+          <td ><code><a>Object</a><code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td >Equivalent To:</td>
@@ -20606,7 +20646,7 @@ _c:14n0 a as:Claim ;
         </tr>
         <tr>
           <td >Range:</td>
-          <td ><code><a>Object</a> | <a>Link</a></code></td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td >Equivalent To:</td>
