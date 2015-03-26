@@ -9,7 +9,7 @@
     "org": "http://www.w3.org/ns/org#",
     "prov": "http://www.w3.org/ns/prov#",
     "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
-    "geos": "http://www.opengis.net/ont/geosparql#",
+    "gsp": "http://www.opengis.net/ont/geosparql#",
     "ical": "http://www.w3.org/2002/12/cal/ical#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
@@ -488,7 +488,7 @@
     }
   },
  {
-    "geos:asWKT": { "@type": "geos:wktLiteral" },
+    "gsp:asWKT": { "@type": "gsp:wktLiteral" },
     "geo:alt": {"@type": "xsd:float"},
     "geo:lat": {"@type": "xsd:float"},
     "geo:long": {"@type": "xsd:float"},
