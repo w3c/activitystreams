@@ -1142,11 +1142,6 @@ as:Delete a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Delete Something"@en .
 
-as:Device a owl:Class ;
-  rdfs:label "Device"@en ;
-  rdfs:subClassOf as:Actor ;
-  rdfs:comment "Represents a physical hardware devices of any sort"@en .
-
 as:Dislike a owl:Class ;
   rdfs:label "Dislike"@en;
   rdfs:subClassOf as:Respond ;
@@ -1375,17 +1370,6 @@ as:OrderedItems a owl:Class ;
     )
   ] .
 
-as:Organization a owl:Class ;
-  rdfs:label "Organization"@en ;
-  rdfs:subClassOf as:Group ;
-  rdfs:subClassOf prov:Organization ;
-  rdfs:comment "A group where members share a common goal or purpose"@en .
-
-as:Community a owl:Class ;
-  rdfs:label "Community"@en ;
-  rdfs:subClassOf as:Group ;
-  rdfs:comment "A group where members share one or more common characteristics or interests"@en .
-
 as:Page a owl:Class ;
   rdfs:label "Page"@en ;
   rdfs:subClassOf as:Content ;
@@ -1447,12 +1431,6 @@ as:Review a owl:Class ;
   rdfs:subClassOf as:Respond ;
   rdfs:comment "To Review/Rate Something"@en .
 
-as:Role a owl:Class ;
-  rdfs:label "Role"@en ;
-  rdfs:subClassOf as:Actor ;
-  rdfs:subClassOf prov:Role ;
-  rdfs:comment "A Role that can be assumed by a person, group, application, service, process, team or organization"@en .
-
 as:Save a owl:Class ;
   rdfs:label "Save"@en ;
   rdfs:subClassOf as:Activity ;
@@ -1502,11 +1480,6 @@ as:Video a owl:Class ;
   rdfs:label "Video"@en ;
   rdfs:comment "A Video document of any kind."@en ;
   rdfs:subClassOf as:Document .
-
-as:Identity a owl:Class ;
-  rdfs:label "Identity"@en;
-  rdfs:comment "Represents an Identity"@en ;
-  rdfs:subClassOf as:Actor .
 
 as:Profile a owl:Class ;
   rdfs:label "Profile"@en;
