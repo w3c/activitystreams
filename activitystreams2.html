@@ -2902,8 +2902,8 @@ _:c14n0 a as:Place;
   <div id="ex24-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "geos:Geometry",
-  "geos:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
+  "@type": "gsp:Geometry",
+  "gsp:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
 }</pre>
 </div>
   <div id="ex24-microdata" style="display:none;">
@@ -2931,10 +2931,10 @@ _:c14n0 a as:Place;
   <div id="ex24-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix geos: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+@prefix gsp: &lt;http://www.opengis.net/ont/geosparql#&gt; .
 
-_:c14n0 a geos:Geometry ;
-  geos:asWKT "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"^^geos:wktLiteral .</pre></div>
+_:c14n0 a gsp:Geometry ;
+  gsp:asWKT "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"^^gsp:wktLiteral .</pre></div>
 </div>
 </figure>
 
@@ -3026,7 +3026,7 @@ _:c14n0 a geos:Geometry ;
             <td>W3C Basic Geo Ontology</td>
           </tr>
           <tr>
-            <td><code>geos:</code></td>
+            <td><code>gsp:</code></td>
             <td><code>http://www.opengis.net/ont/geosparql#</code></td>
             <td>Geo-Sparql</td>
           </tr>
