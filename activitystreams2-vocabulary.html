@@ -307,23 +307,6 @@
               <code><a>updated</a></code> |
               <code><a>url</a></code>
             </p>
-
-            <p>Objects MAY also have the following "inverse properties":
-              <code><a>attachedTo</a></code> |
-              <code><a>attributedWith</a></code> |
-              <code><a>contextOf</a></code> |
-              <code><a>generatorOf</a></code> |
-              <code><a>memberOf</a></code> |
-              <code><a>locationOf</a></code> |
-              <code><a>objectOf</a></code> |
-              <code><a>originOf</a></code> |
-              <code><a>previewOf</a></code> |
-              <code><a>providerOf</a></code> |
-              <code><a>resultOf</a></code> |
-              <code><a>scopeOf</a></code> |
-              <code><a>tagOf</a></code> |
-              <code><a>targetOf</a></code>
-            </p>
           </td>
         </tr>
 </tbody>
@@ -424,27 +407,6 @@ _:b0 a as:Link ;
               <code><a>height</a></code> |
               <code><a>width</a></code> |
               <code><a>duration</a></code>
-            </p>
-
-            <p>
-              Links MAY also have the following "inverse properties":
-              <code><a>actorOf</a></code> |
-              <code><a>attachedTo</a></code> |
-              <code><a>attributedWith</a></code> |
-              <code><a>contextOf</a></code> |
-              <code><a>generatorOf</a></code> |
-              <code><a>iconFor</a></code> |
-              <code><a>imageOf</a></code> |
-              <code><a>locationOf</a></code> |
-              <code><a>memberOf</a></code> |
-              <code><a>objectOf</a></code> |
-              <code><a>originOf</a></code> |
-              <code><a>previewOf</a></code> |
-              <code><a>providerOf</a></code> |
-              <code><a>resultOf</a></code> |
-              <code><a>scopeOf</a></code> |
-              <code><a>tagOf</a></code> |
-              <code><a>targetOf</a></code>
             </p>
           </td>
         </tr>
@@ -750,10 +712,6 @@ _:b0 a as:Actor ;
         <tr>
           <td>Properties:</td>
           <td>
-            <p>
-              <code><a>actorOf</a></code>
-            </p>
-
             <p>
               Inherits all properties from <code><a>Object</a></code>.
             </p>
@@ -7048,7 +7006,7 @@ _:b0 a as:Folder ;
       "@type": "Image",
       "displayName": "Visiting the Vatican",
       "url": "http://example.org/photo5.jpeg",
-      "imageOf": {
+      "location": {
         "@type": "Place",
         "displayName": "The Vatican"
       }
@@ -7057,7 +7015,7 @@ _:b0 a as:Folder ;
       "@type": "Image",
       "displayName": "Visiting the Eiffel Tower",
       "url": "http://example.org/photo6.jpeg",
-      "imageOf": {
+      "location": {
         "@type": "Place",
         "displayName": "The Eiffel Tower"
       }
@@ -7074,7 +7032,7 @@ _:b0 a as:Folder ;
     itemtype="http://www.w3.org/ns/activitystreams#Image">
     &lt;figcaption itemprop="displayName"&gt;
       Visiting the
-      &lt;span itemprop="imageOf" itemscope
+      &lt;span itemprop="location" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Place">
           &lt;span itemprop="displayName">
             Vatican
@@ -7088,7 +7046,7 @@ _:b0 a as:Folder ;
     itemtype="http://www.w3.org/ns/activitystreams#Image">
     &lt;figcaption itemprop="displayName"&gt;
       Visiting the
-      &lt;span itemprop="imageOf" itemscope
+      &lt;span itemprop="location" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Place">
           &lt;span itemprop="displayName">
             Eiffel Tower
@@ -7108,7 +7066,7 @@ _:b0 a as:Folder ;
   &lt;figure property="items" typeof="Image">
     &lt;figcaption property="displayName"&gt;
       Visiting the
-      &lt;span property="imageOf" typeof="Place">
+      &lt;span property="location" typeof="Place">
           &lt;span property="displayName">
             Vatican
           &lt;/span>
@@ -7120,7 +7078,7 @@ _:b0 a as:Folder ;
   &lt;figure property="items" typeof="Image">
     &lt;figcaption property="displayName"&gt;
       Visiting the
-      &lt;span property="imageOf" typeof="Place">
+      &lt;span property="location" typeof="Place">
           &lt;span property="displayName">
             Eiffel Tower
           &lt;/span>
@@ -7163,7 +7121,7 @@ _:b0 a as:Story ;
       a as:Image ;
         as:displayName "Visiting The Vatican" ;
         as:url &lt;http://example.org/photo5.jpeg&gt; ;
-        as:imageOf [
+        as:location [
           a as:Place ;
             as:displayName "The Vatican" .
         ] .
@@ -7173,7 +7131,7 @@ _:b0 a as:Story ;
         a as:Image ;
         as:displayName "Visiting The Eiffel Tower" ;
         as:url &lt;http://example.org/photo6.jpeg&gt; ;
-        as:imageOf [
+        as:location [
           a as:Place ;
             as:displayName "The Eiffel Tower" .
         ]
@@ -8730,10 +8688,10 @@ _:b0 a as:Share ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>attachment</dfn></td>
+          <td rowspan="4" ><dfn>attachment</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#attachment</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex64-jsonld" class="selected">JSON-LD</a></li>
@@ -8842,18 +8800,14 @@ _:b0 a as:Note ;
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>attachedTo</a></code></td>
-        </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>attributedTo</dfn></td>
+          <td rowspan="4" ><dfn>attributedTo</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#attributedTo</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex65-jsonld" class="selected">JSON-LD</a></li>
@@ -9025,10 +8979,6 @@ _:b0 a as:Image ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>attributedWith</a></code></td>
         </tr>
       </tbody>
 
@@ -10222,10 +10172,10 @@ _:b0 a as:Collection ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>generator</dfn></td>
+          <td rowspan="4" ><dfn>generator</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#generator</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex75-jsonld" class="selected">JSON-LD</a></li>
@@ -10310,18 +10260,14 @@ _:b0 a as:Note ;
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>generatorOf</a></code>
-        </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>icon</dfn></td>
+          <td rowspan="4" ><dfn>icon</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#icon</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex77-jsonld" class="selected">JSON-LD</a></li>
@@ -10506,18 +10452,14 @@ _:b0 a as:Note ;
           <td >Range:</td>
           <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
         </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>iconFor</a></code></td>
-        </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="image-term">image</dfn></td>
+          <td rowspan="4" ><dfn title="image-term">image</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#image</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex80-jsonld" class="selected">JSON-LD</a></li>
@@ -10708,10 +10650,6 @@ _:b0 a as:Note ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>imageOf</a></code></td>
         </tr>
       </tbody>
 
@@ -11178,10 +11116,10 @@ _:b0 a as:Collection ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>location</dfn></td>
+          <td rowspan="4" ><dfn>location</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#location</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex89-jsonld" class="selected">JSON-LD</a></li>
@@ -11288,18 +11226,14 @@ _:b0 a as:Person ;
           <td >Range:</td>
           <td ><code><a>Object</a> | <a>Link</a></code></td>
         </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>locationOf</a></code></td>
-        </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>items</dfn></td>
+          <td rowspan="4" ><dfn>items</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#items</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex91-jsonld" class="selected">JSON-LD</a></li>
@@ -11539,10 +11473,6 @@ _:b0 a as:OrderedCollection ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code> | Ordered List of [<code><a>Object</a></code> | <code><a>Link</a></code> ]</td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>memberOf</a></code></td>
         </tr>
       </tbody>
 
@@ -11838,10 +11768,10 @@ _:b0 a as:Question ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>origin</dfn></td>
+          <td rowspan="4" ><dfn>origin</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#origin</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex166-jsonld" class="selected">JSON-LD</a></li>
@@ -11967,10 +11897,6 @@ _:b0 a as:Move ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>originOf</a></code></td>
         </tr>
       </tbody>
 
@@ -12286,10 +12212,10 @@ _:b0 a as:Collection ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="object-term">object</dfn></td>
+          <td rowspan="4" ><dfn title="object-term">object</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#object</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex98-jsonld" class="selected">JSON-LD</a></li>
@@ -12534,10 +12460,6 @@ _:b0 a as:Like
         <tr>
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>objectOf</a></code></td>
         </tr>
       </tbody>
 
@@ -12853,10 +12775,10 @@ _:b0 a as:Collection ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>preview</dfn></td>
+          <td rowspan="4" ><dfn>preview</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#preview</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex106-jsonld" class="selected">JSON-LD</a></li>
@@ -12964,18 +12886,14 @@ _:b0 a as:Movie ;
           <td >Range:</td>
           <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
         </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>previewOf</a></code></td>
-        </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="6" ><dfn>result</dfn></td>
+          <td rowspan="5" ><dfn>result</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#result</code></td>
-          <td rowspan="6">
+          <td rowspan="5">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex108-jsonld" class="selected">JSON-LD</a></li>
@@ -13074,10 +12992,6 @@ _:b0 a as:Activity,
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>resultOf</a></code></td>
-        </tr>
-        <tr>
           <td>Subproperty Of:</td>
           <td><code><a>attributedWith</a></code></td>
         </tr>
@@ -13085,10 +12999,10 @@ _:b0 a as:Activity,
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>provider</dfn></td>
+          <td rowspan="4" ><dfn>provider</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#provider</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex110-jsonld" class="selected">JSON-LD</a></li>
@@ -13170,10 +13084,6 @@ _:b0 a as:Note ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>providerOf</a></code></td>
         </tr>
       </tbody>
 
@@ -13324,10 +13234,10 @@ _:b0 a as:Collection ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>scope</dfn></td>
+          <td rowspan="4" ><dfn>scope</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#scope</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex113-jsonld" class="selected">JSON-LD</a></li>
@@ -13416,10 +13326,6 @@ _:b0 a as:Note ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>scopeOf</a></code></td>
         </tr>
       </tbody>
 
@@ -13881,10 +13787,10 @@ _:b0 a as:Question ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="tag-term">tag</dfn></td>
+          <td rowspan="4" ><dfn title="tag-term">tag</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#tag</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex118-jsonld" class="selected">JSON-LD</a></li>
@@ -13982,18 +13888,14 @@ _:b0 a as:Image ;
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>tagOf</a></code></td>
-        </tr>
       </tbody>
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>target</dfn></td>
+          <td rowspan="4" ><dfn>target</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#target</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex120-jsonld" class="selected">JSON-LD</a></li>
@@ -14189,10 +14091,6 @@ _:b0 a as:Share ;
         <tr>
           <td >Range:</td>
           <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>targetOf</a></code></td>
         </tr>
       </tbody>
 
@@ -17772,1862 +17670,6 @@ _:b0 a as:Content ;
 
     </table>
 
-  <section id="inverse-properties">
-
-    <h3>Inverse Properties</h3>
-
-    <p>
-      The following are inversions of other core properties. For example,
-      given the relationship, "An Activity has an Actor", it is possible
-      to state the inverse, "An Actor has Activities" using the
-      <code><a>actorOf</a></code> property.
-    </p>
-
-    <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
-
-    <p>
-      The inverse properties include:
-      <code><a>actorOf</a></code> |
-      <code><a>attachedTo</a></code> |
-      <code><a>attributedWith</a></code> |
-      <code><a>contextOf</a></code> |
-      <code><a>generatorOf</a></code> |
-      <code><a>iconFor</a></code> |
-      <code><a>imageOf</a></code> |
-      <code><a>locationOf</a></code> |
-      <code><a>originOf</a></code> |
-      <code><a>memberOf</a></code> |
-      <code><a>objectOf</a></code> |
-      <code><a>previewOf</a></code> |
-      <code><a>resultOf</a></code> |
-      <code><a>providerOf</a></code> |
-      <code><a>scopeOf</a></code> |
-      <code><a>tagOf</a></code> |
-      <code><a>targetOf</a></code> |
-    </p>
-
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 15%">Term</th>
-          <th colspan="2">Description</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan="6" ><dfn>actorOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#actor</code></td>
-          <td rowspan="6">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex62-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex62-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex62-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex62-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex62-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex62-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "displayName": "Sally",
-  "actorOf": [
-    {
-      "@type": "Share",
-      "object": "http://example.org/posts/1",
-      "target": "acct:joe@example.org"
-    }
-  ]
-}</pre>
-      </div>
-      <div id="ex62-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;span itemprop="actorOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Share">
-    shared
-    &lt;link itemprop="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/link>
-    with
-    &lt;link itemprop="target"
-      href="acct:joe@example.org">Joe&lt;/link>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex62-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Share">
-  &lt;span property="displayName">Sally&lt;/span>
-  &lt;span property="actorOf" typeof="Share">
-    shared
-    &lt;link property="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/link>
-    with
-    &lt;link property="target"
-      href="acct:joe@example.org">Joe&lt;/link>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex62-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-card">
-  &lt;span class="p-name">Sally&lt;/span>
-  shared
-  &lt;span class="p-as-author-of h-as-share">
-    &lt;link class="u-share-of"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/link>
-    with
-    &lt;link class="u-as-target"
-      href="acct:joe@example.org">Joe&lt;/link>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex62-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Person ;
-  as:displayName "Sally" ;
-  as:actorOf [
-    a as:Share ;
-    as:object &lt;http://example.org/posts/1&gt; ;
-    as:target &lt;acct:joe@example.org&gt; .
-  ] .</pre>
-      </div>
-      </div>
-
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies one or more Activities attributed to this actor.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Actor</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td >Subproperty Of:</td>
-          <td><code><a>attributedWith</a></code>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td><code><a title="actor-term">actor</a></code>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>attachedTo</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#attachedTo</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex63-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex63-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex63-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex63-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex63-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex63-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
-  "displayName": "A Simple Image",
-  "url": "http://example.org/cat.jpeg",
-  "attachedTo": [
-    {
-      "@type": "Note",
-      "content": "A Simple Note"
-    }
-  ]
-}</pre>
-      </div>
-      <div id="ex63-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;span itemprop="displayName">A Simple Image&lt;/span>
-  &lt;img itemprop="url" src="http://example.org/cat.jpeg"/>
-  &lt;div itemprop="attachedTo" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    attached to
-    "&lt;span itemprop="content">A Simple Note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre>
-      </div>
-      <div id="ex63-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Image">
-  &lt;span property="displayName">A Simple Image&lt;/span>
-  &lt;img property="url" src="http://example.org/cat.jpeg"/>
-  &lt;div property="attachedTo" typeof="Note">
-    attached to
-    "&lt;span property="content">A Simple Note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre>
-      </div>
-      <div id="ex63-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  &lt;span class="p-name">A Simple Image&lt;/span>
-  &lt;img class="u-url" src="http://example.org/cat.jpeg"/>
-  &lt;div class="p-as-attached-to h-entry">
-    attached to
-    "&lt;span class="e-content">A Simple Note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre>
-      </div>
-      <div id="ex63-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Image ;
-  as:displayName "A Simple Image" ;
-  as:url &lt;http://example.org/cat.jpeg&gt; ;
-  as:attachedTo [
-    a as:Note ;
-    as:content "A Simple Note" .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity to which this object is attached
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>attachment</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>attributedWith</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#attributedWith</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex67-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex67-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex67-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex67-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex67-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex67-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "displayName": "Sally",
-  "attributedWith": {
-    "@type": "Note",
-    "content": "A Simple Note"
-  }
-}</pre>
-      </div>
-      <div id="ex67-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;span itemprop="displayName">Sally&lt;/span>
-  wrote
-  &lt;span itemprop="attributedWith" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    "&lt;span itemprop="content">A Simple Note&lt;span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex67-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Person">
-  &lt;span property="displayName">Sally&lt;/span>
-  wrote
-  &lt;span property="attributedWith" typeof="Note">
-    "&lt;span property="content">A Simple Note&lt;span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex67-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-card">
-  &lt;span class="p-name">Sally&lt;/span>
-  wrote
-  &lt;span class="p-as-attributed-with h-entry">
-    "&lt;span class="e-content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex67-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Person ;
-  as:displayName "Sally" ;
-  as:attributedWith [
-    a as:Note;
-    as:content "A Simple Note" .
-  ].</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies one or more objects attributed to this object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>attributedTo</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>contextOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#contextOf</code></td>
-          <td rowspan="4">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex172-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex172-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex172-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex172-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex172-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex172-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  "@id": "http://example.org/contexts/1",
-  "contextOf": {
-    "@type": "Share",
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/posts/1",
-    "target": "acct:john@example.org",
-    "context": "http://example.org/contexts/1"
-  }
-}</pre>
-      </div>
-      <div id="ex172-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object"
-  itemid="http://example.org/contexts/1">
-  &lt;span itemprop="contextOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Share">
-  &lt;span itemprop="actor"
-    itemid="acct:sally@example.org">
-    Sally
-  &lt;span>
-    shared
-    &lt;a itemprop="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    with
-    &lt;link itemprop="target"
-      href="acct:john@example.org">
-      John
-    &lt;link>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex172-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object"
-  resource="http://example.org/contexts/1">
-    &lt;span property="contextOf" typeof="Share">
-    &lt;link property="actor"
-      href="acct:sally@example.org">
-      Sally
-    &lt;link>
-    shared
-    &lt;a property="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    with
-    &lt;link property="target"
-      href="acct:john@example.org">
-      John
-    &lt;link>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex172-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;link class="h-entry" href="http://example.org/contexts/1">
-  &lt;span class="p-as-context-of h-entry">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;link>
-    shared
-    &lt;a class="u-share-of"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    with
-    &lt;link class="u-as-target"
-      href="acct:john@example.org">John&lt;link>
-  &lt;/span>
-&lt;/link></pre>
-      </div>
-      <div id="ex172-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-&lt;http://example.org/contexts/1&gt; a as:Object ;
-  as:contextOf [
-  a as:Share ;
-  as:actor &lt;acct:sally@example.org&gt; ;
-  as:object &lt;http://example.org/posts/1&gt; ;
-  as:target &lt;acct:john@example.org&gt; .
-] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Specifies that this <code>Object</code> or <code>Link</code> identifies
-            the context of the referenced entity.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>generatorOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#generatorOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex76-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex76-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex76-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex76-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex76-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex76-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
-  "displayName": "My Note Application",
-  "generatorOf": {
-    "@type": "Note",
-    "content": "A Simple Note"
-  }
-}</pre>
-      </div>
-      <div id="ex76-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Application">
-  &lt;span itemprop="displayName">
-    My Note Application
-  &lt;/span>
-  generated
-  &lt;span itemprop="generatorOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    "&lt;span itemprop="content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-</div>
-<div id="ex76-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Application">
-  &lt;span property="displayName">
-    My Note Application
-  &lt;/span>
-  generated
-  &lt;span property="generatorOf" typeof="Note">
-   "&lt;span property="content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex76-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-as-application">
-  &lt;span property="p-name">
-    My Note Application
-  &lt;/span>
-  generated
-  &lt;span class="p-as-generator-of h-entry" >
-    "&lt;span class="e-content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex76-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Application ;
-  as:displayName "My Note Application" ;
-  as:generatorOf [
-    a as:Note ;
-    as:content "A Simple Note" .
-  ].
-      </pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates an entity this object is responsible for generating.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>generator</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>iconFor</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#iconFor</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex79-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex79-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex79-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex79-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex79-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex79-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
-  "displayName": "Note Icon (16x16)",
-  "url": "http://example.org/note.png",
-  "width": 16,
-  "height": 16,
-  "iconFor": {
-    "@type": "Note",
-    "content": "A Simple note",
-  }
-}</pre>
-      </div>
-      <div id="ex79-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;img itemprop="url"
-    src="http://www.example.org/note.png"
-    alt="Note (16x16)"
-    width="16px" height="16px" />
-  &lt;span itemprop="iconFor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    &lt;span itemprop="content">A Simple Note&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex79-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Image">
-  &lt;img property="url"
-    src="http://www.example.org/note.png"
-    alt="Note (16x16)"
-    width="16px" height="16px" />
-  &lt;span property="iconFor" typeof="Note">
-    &lt;span property="content">A Simple Note&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex79-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  &lt;img class="u-photo"
-    src="http://www.example.org/note.png"
-    alt="Note (16x16)"
-    width="16px" height="16px" />
-  &lt;span class="p-as-icon-for h-entry">
-    &lt;span class="e-content">A Simple Note&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex79-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_:b0 a as:Image ;
-  as:displayName "Note (16x16)" ;
-  as:url &lt;http://example.org/note.png&gt; ;
-  as:height "16"^^xsd:nonNegativeInteger ;
-  as:width "16"^^xsd:nonNegativeInteger ;
-  as:iconFor [
-    a as:Note;
-    as:content "A Simple Note" .
-  ].
-      </pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates one or more entities for which this Image (or Link to an image)
-            describes an Icon for.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td ><code><a>icon</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>imageOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#imageOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex82-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex82-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex82-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex82-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex82-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex82-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
-  "displayName": "Picture of the Eiffel Tower",
-  "url": "http://www.example.org/eiffel.png",
-  "imageOf": {
-    "@type": "Place",
-    "displayName": "The Eiffel Tower",
-  }
-}</pre>
-      </div>
-      <div id="ex82-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;img itemprop="url"
-    src="http://www.example.org/eiffel.png"
-    alt="Picture of the Eiffel Tower"/>
-  &lt;span itemprop="imageOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">The Eiffel Tower&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex82-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Image">
-  &lt;img property="url"
-    src="http://www.example.org/eiffel.png"
-    alt="Picture of the Eiffel Tower"/>
-  &lt;span property="imageOf" typeof="Place">
-    &lt;span property="displayName">The Eiffel Tower&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex82-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  &lt;img class="u-photo"
-    src="http://www.example.org/eiffel.png"
-    alt="Picture of the Eiffel Tower"/>
-  &lt;span class="p-as-image-of h-geo">
-    &lt;span class="p-name">The Eiffel Tower&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex82-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Image ;
-  as:displayName "Picture of the Eiffel Tower" ;
-  as:url &lt;http://www.example.org/eiffel.png&gt; ;
-  as:imageOf [
-    a as:Place;
-    as:displayName "The Eiffel Tower" .
-  ].
-</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates an entity this Image is a depiction of
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Image</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a title="image-term">image</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>locationOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#location</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex90-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex90-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex90-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex90-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex90-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex90-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
-  "longitude": 12.34,
-  "latitude": 56.78,
-  "altitude": 90,
-  "units": "m",
-  "locationOf": {
-    "@type": "Person",
-    "displayName": "Sally"
-  }
-}</pre>
-      </div>
-      <div id="ex90-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Place">
-  &lt;span itemprop="locationOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  is at
-  Latitude &lt;span itemprop="latitude">56.78&lt;/span>,
-  Longitude &lt;span itemprop="longitude">12.34&lt;/span>,
-  at an altitude of
-  &lt;span itemprop="altitude">90&lt;/span>
-  &lt;meta itemprop="units" content="m">meters&lt;/meta>
-&lt;/div></pre>
-      </div>
-      <div id="ex90-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;span property="locationOf" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  is at
-  Latitude &lt;span property="latitude">56.78&lt;/span>,
-  Longitude &lt;span property="longitude">12.34&lt;/span>,
-  at an altitude of
-  &lt;span property="altitude">90&lt;/span>
-  &lt;meta property="units" content="m">meters&lt;/meta>
-&lt;/div></pre>
-      </div>
-      <div id="ex90-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-geo">
-  &lt;span class="p-as-location-of h-card">
-    &lt;span class="p-name">Sally&lt;/span>
-  &lt;/span>
-  is at
-  Latitude &lt;span class="p-latitude">56.78&lt;/span>,
-  Longitude &lt;span class="p-longitude">12.34&lt;/span>,
-  at an altitude of
-  &lt;span class="p-altitude">90&lt;/span>
-  &lt;meta class="p-as-units" content="m">meters&lt;/meta>
-&lt;/div></pre>
-      </div>
-      <div id="ex90-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_:b0 a as:Place ;
-  as:latitude "56.78"^^xsd:float ;
-  as:longitude "12.34"^^xsd:float ;
-  as:altitude "90"^^xsd:float ;
-  as:units "meters" ;
-  as:locationOf [
-    a as:Person ;
-    as:displayName "Sally"
-  ] .
-      </pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates that this object is the location of the referenced object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>location</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>originOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#originOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex167-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex167-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex167-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex167-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex167-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex167-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "displayName": "List A",
-  "originOf": {
-    "@type": "Move",
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/posts/1",
-    "target": {
-      "@type": "Collection",
-      "displayName": "List B"
-    }
-  }
-}</pre>
-      </div>
-      <div id="ex167-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;span itemprop="originOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Move">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">
-    Sally
-    &lt;/link>
-    moved
-    &lt;a itemprop="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    to
-    &lt;span itemprop="target" itemscope
-      itemtype="http://www.w3.org/ns/activitystreams#Collection">
-      &lt;span itemprop="displayName">List B&lt;/span>
-    &lt;/span>
-  &lt;/span>
-  from &lt;span itemprop="p-name">List A&lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex167-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;span itemprop="originOf" itemscope
-    itemtype="Move">
-    &lt;link property="actor"
-      href="acct:sally@example.org">
-    Sally
-    &lt;/link>
-    moved
-    &lt;a property="object"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    to
-    &lt;span property="target" typeof="Collection">
-      &lt;span property="displayName">List B&lt;/span>
-    &lt;/span>
-  &lt;/span>
-  from &lt;span property="displayName">List A&lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex167-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-as-collection">
-  &lt;span class="p-as-origin-of h-as-move">
-  &lt;link class="u-author"
-    href="acct:sally@example.org">Sally&lt;link>
-    moved
-    &lt;a class="u-item" href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    to
-    &lt;span class="p-as-target h-as-collection">
-      &lt;span class="p-name">List B&lt;/span>
-    &lt;/span>
-  &lt;/span>
-  from &lt;span class="p-name">List A&lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex167-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Collection ;
-  as:displayName "List A" ;
-  as:originOf [
-    a as:Move ;
-    as:actor &lt;acct:sally@example.org&gt; ;
-    as:object &lt;http://example.org/posts/1&gt; ;
-    as:target [
-      a as:Collection ;
-      as:displayName "List B" .
-    ] .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Specifies that the object is the <code><a>origin</a></code> of the reference Activity
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>origin</a></code></td>
-        </tr>
-      </tbody>
-
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>memberOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#memberOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex95-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex95-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex95-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex95-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex95-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex95-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "content": "A simple note",
-  "memberOf": {
-    "@type": "Folder",
-    "displayName": "My Notes Folder"
-  }
-}</pre>
-      </div>
-      <div id="ex95-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  The note
-  "&lt;span itemprop="content">A simple note&lt;span>"
-  is in
-  &lt;span itemprop="memberOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Folder">
-    "&lt;span itemprop="displayName">
-      My Notes Folder
-    &lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex95-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
-  The note
-  "&lt;span property="content">A simple note&lt;span>"
-  is in
-  &lt;span property="memberOf" typeof="Folder">
-    "&lt;span property="displayName">
-      My Notes Folder
-    &lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex95-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  The note
-  "&lt;span class="e-content">A simple note&lt;span>"
-  is in
-  &lt;span class="p-as-member-of h-as-folder">
-    "&lt;span class="p-name">My Notes Folder&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex95-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Note
-  as:content "A simple note" ;
-  as:memberOf [
-    a as:Folder ;
-    as:displayName "My Notes Folder" .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies a collection this object can be considered a member of
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Collection</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>items</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>objectOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#objectOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex101-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex101-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex101-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex101-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex101-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex101-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "content": "A simple note",
-  "objectOf": {
-    "@type": "Like",
-    "actor": "acct:sally@example.org"
-  }
-}</pre>
-      </div>
-      <div id="ex101-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="objectOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Like">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    liked
-  &lt;/span>
-  "&lt;span itemprop="content">A simple note&lt;/span>"
-&lt;/div></pre>
-      </div>
-      <div id="ex101-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
-  &lt;span property="objectOf" typeof="Like">
-    &lt;link property="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    liked
-  &lt;/span>
-  "&lt;span property="content">A simple note&lt;/span>"
-&lt;/div></pre>
-      </div>
-      <div id="ex101-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  &lt;span class="p-as-object-of h-as-like">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;/link>
-    liked
-  &lt;/span>
-  "&lt;span class="e-content">A simple note&lt;/span>"
-&lt;/div></pre>
-      </div>
-      <div id="ex101-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Note ;
-  as:content "A simple note" ;
-  as:objectOf [
-    a as:Like ;
-    as:actor &lt;acct:sally@example.org&gt; .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Indicates an activity that acted on this object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>object</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="6" ><dfn>resultOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#resultOf</code></td>
-          <td rowspan="6">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex109-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex109-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex109-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex109-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex109-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex109-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "urn:example:types:flightstatus",
-  "displayName": "On Time",
-  "resultOf": {
-    "@type": ["Activity", "urn:example:verbs:Check"],
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/flights/1"
-  }
-}</pre>
-      </div>
-      <div id="ex109-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="urn:example:types:flightstatus">
-  &lt;span itemprop="resultOf" itemscope
-    itemtype="
-      http://www.w3.org/ns/activitystreams#Activity
-      urn:example:verbs:Check">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link itemprop="object"
-      href="http://example.org/flights/1">flight&lt;/link>
-  &lt;/span>
-  is
-  &lt;span itemprop="displayName">On Time&lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex109-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="urn:example:types:flightstatus">
-  &lt;span property="resultOf"
-    typeof="
-      http://www.w3.org/ns/activitystreams#Activity
-      urn:example:verbs:Check">
-    &lt;link property="actor"
-      href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link property="object"
-      href="http://example.org/flights/1">flight&lt;/link>
-  &lt;/span>
-  is
-  &lt;span property="displayName">On Time&lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex109-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  &lt;span class="p-as-result-of h-as-activity h-x-check">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally's&lt;/link>
-    &lt;link class="u-item"
-      href="http://example.org/flights/1">flight&lt;/link>
-  &lt;/span>
-  is
-  &lt;span class="p-name">On Time&lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex109-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a &lt;urn:example:types:flightstatus&gt; ;
-  as:displayName "On Time" ;
-  as:resultOf [
-    a as:Activity,
-    &lt;urn:example:verbs:Check&gt; ;
-    as:actor &lt;acct:sally@example.org&gt; ;
-    as:object &lt;http://example.org/flights/1&gt; .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies that this object is a result of the given activity
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>result</a></code></td>
-        </tr>
-        <tr>
-          <td>Subproperty Of:</td>
-          <td><code><a>attributedTo</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>providerOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#providerOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex111-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex111-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex111-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex111-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex111-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex111-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Service",
-  "displayName": "My Note Service",
-  "providerOf": {
-    "@type": "Note",
-    "content": "A Simple Note"
-  }
-}</pre>
-      </div>
-      <div id="ex111-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Service">
-  &lt;span itemprop="displayName">
-    My Note Service
-  &lt;/span>
-  generated
-  &lt;span itemprop="providerOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    "&lt;span itemprop="content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex111-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Service">
-  &lt;span property="displayName">
-    My Note Service
-  &lt;/span>
-  generated
-  &lt;span property="providerOf" typeof="Note">
-    "&lt;span property="content">A Simple Note&lt;/span>"
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex111-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-as-service">
-  &lt;span class="p-name">My Note Service&lt;/span>
-  generated
-  &lt;span class="p-as-provider-of h-entry" >
-    "&lt;span class="e-content">A Simple Note&lt;/span>""
-  &lt;/span>
-&lt;/div></pre>
-      </div>
-      <div id="ex111-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Service ;
-  as:displayName "My Note Service" ;
-  as:providerOf [
-    a as:Note ;
-    as:content "A Simple Note" .
-  ].
-      </pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity this object is responsible for providing
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>provider</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>scopeOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#scopeOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex114-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex114-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex114-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex114-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex114-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex114-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "http://example.org/Organization",
-  "displayName": "My Organization",
-  "scopeOf": {
-    "@type": "Note",
-    "content": "A simple note"
-  }
-}</pre>
-      </div>
-      <div id="ex114-microdata" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://example.org/Organization">
-  &lt;div itemprop="displayName">
-    My Organization
-  &lt;/div>
-  &lt;div itemprop="scopeOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    &lt;div itemprop="content">
-      A simple note
-    &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-      </div>
-      <div id="ex114-rdfa" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="http://example.org/Organization">
-  &lt;div property="displayName">
-    My Organization
-  &lt;/div>
-  &lt;div property="scopeOf" typeof="Note">
-    &lt;div property="content">
-      A simple note
-    &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-      </div>
-      <div id="ex114-microformats" style="display: none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-org">
-  &lt;div class="p-name">
-    My Organization
-  &lt;/div>
-  &lt;div class="p-as-scope-of h-entry">
-    &lt;div class="e-content">
-      A simple note
-    &lt;/div>
-  &lt;/div>
-&lt;/div></pre>
-      </div>
-      <div id="ex114-turtle" style="display: none;">
-      <pre class="example highlight turtle"
-      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-&prefix ex: &lt;http://example.org/&gt; .
-
-_:b0 a ex:Organization;
-  as:displayName "My Organization";
-  as:scopeOf [
-    a as:Note ;
-    as:content "A simple note" .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the entity to which this object is considered to define the scope.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>scope</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>tagOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#tagOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex119-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex119-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex119-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex119-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex119-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex119-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "displayName": "Sally",
-  "tagOf": [
-    {
-      "@type": "Image",
-      "displayName": "Picture of Sally",
-      "url": "http://example.org/sally.jpg"
-    }
-  ]
-}</pre>
-      </div>
-      <div id="ex119-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;div itemprop="displayName">Sally&lt;/div>
-    is tagged in
-  &tl;figure itemprop="tagOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">
-      Picture of Sally
-    &lt;/figcaption>
-    &lt;img itemprop="url"
-      src="http://example.org/sally.jpg" />
-  &lt;/figure>
-&lt;/div></pre>
-      </div>
-      <div id="ex119-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Person">
-  &lt;div property="displayName">Sally&lt;/div>
-  is tagged in
-  &tl;figure property="tagOf" typeof="Image">
-    &lt;figcaption property="displayName">
-      Picture of Sally
-    &lt;/figcaption>
-    &lt;img property="url"
-      src="http://example.org/sally.jpg" />
-  &lt;/figure>
-&lt;/div></pre>
-      </div>
-      <div id="ex119-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-card">
-  &lt;div class="p-name">Sally&lt;/div>
-  is tagged in
-  &tl;figure class="p-as-tag-of h-entry">
-    &lt;figcaption class="p-name">
-      Picture of Sally
-    &lt;/figcaption>
-    &lt;img class="u-url"
-      src="http://example.org/sally.jpg" />
-  &lt;/figure>
-&lt;/div></pre>
-      </div>
-      <div id="ex119-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Person ;
-  as:displayName "Sally" ;
-  as:tagOf [
-    a as:Image ;
-    as:displayName "Picture of Sally" ;
-    as:url &lt;http://example.org/sally.jpg&gt; .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity this object "tags".
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a title="tag-term">tag</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>targetOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#targetOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex122-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex122-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex122-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex122-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex122-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex122-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
-  "@id": "acct:joe@example.org",
-  "targetOf": {
-    "@type": "Share",
-    "actor": "acct:sally@example.org",
-    "object": "http://example.org/movie.mkv"
-  }
-}</pre>
-      </div>
-      <div id="ex122-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Person"
-  itemid="acct:joe@example.org">
-  &lt;span itemprop="targetOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Share">
-    &lt;link itemprop="actor"
-      href="acct:sally@example.org">Sally&lt;/link>
-    watched
-    &lt;link itemprop="object"
-      href="http://example.org/movie.mkv">
-      "http://example.org/movie.mkv"
-    &lt;/link>
-  &lt;/span>
-  with Joe
-&lt;/div></pre>
-      </div>
-      <div id="ex122-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Person" resource="acct:joe@example.org">
-  &lt;span property="targetOf" typeof="Share">
-  &lt;link property="actor"
-    href="acct:sally@example.org">Sally&lt;/link>
-  watched
-  &lt;link property="object"
-    href="http://example.org/movie.mkv">
-    "http://example.org/movie.mkv"
-  &lt;/link>
-  &lt;/span>
-  with Joe
-&lt;/div></pre>
-      </div>
-      <div id="ex122-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;link class="h-card"
-  href="acct:joe@example.org">
-  &lt;span class="p-as-target-of h-as-share">
-    &lt;link class="u-author"
-      href="acct:sally@example.org">Sally&lt;/link>
-    shared
-    &lt;link class="u-share-of"
-      href="http://example.org/movie.mkv">
-      "http://example.org/movie.mkv"
-    &lt;/link>
-  &lt;/span>
-  with Joe
-&lt;/link></pre>
-  </div>
-      <div id="ex122-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-&lt;acct:joe@example.org&gt; a as:Person ;
-  as:targetOf [
-    a Share ;
-    as:actor &lt;acct:sally@example.org&gt; ;
-    as:object &lt;http://example.org/movie.mkv&gt; .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies that this object is the target of the referenced Activity
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Inverse Of:</td>
-          <td><code><a>target</a></code></td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>previewOf</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#previewOf</code></td>
-          <td rowspan="5">
-      <div class="nanotabs">
-      <ul>
-      <li><a href="#ex107-jsonld" class="selected">JSON-LD</a></li>
-      <li><a href="#ex107-microdata" class="selected">Microdata</a></li>
-      <li><a href="#ex107-rdfa" class="selected">RDFa</a></li>
-      <li><a href="#ex107-microformats" class="selected">Microformats</a></li>
-      <li><a href="#ex107-turtle" class="selected">Turtle</a></li>
-      </ul>
-      <div id="ex107-jsonld" style="display: block;">
-      <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
-  "displayName": "Cool New Movie Trailer",
-  "href": "http://example.org/trailer.mkv",
-  "mediaType": "video/mkv",
-  "duration": "PT1M",
-  "previewOf": {
-    "@type": "Video",
-    "displayName": "Cool New Movie",
-    "duration": "PT2H30M"
-  }
-}</pre>
-      </div>
-      <div id="ex107-microdata" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Link">
-  &lt;span itemprop="previewOf" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Video">
-    &lt;span itemprop="displayName">
-      Cool New Movie
-    &lt;/span>
-    &lt;meta itemprop="duration" content="PT2H30M">(2H 30M)&lt;/meta>
-  &lt;/span>
-  - &lt;span itemprop="displayName">Trailer&lt;span>
-  &lt;meta itemprop="duration" content="PT1M">(1M)&lt;/meta>
-  &lt;a itemprop="href"
-    href="http://example.org/trailer.mkv"
-    type="video/mkv">Watch&lt;/a>
-&lt;/div></pre>
-      </div>
-      <div id="ex107-rdfa" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Link">
-  &lt;span property="previewOf" typeof="Video">
-    &lt;span property="displayName">
-      Cool New Movie
-    &lt;/span>
-    &lt;meta property="duration" content="PT2H30M">(2H 30M)&lt;/meta>
-  &lt;/span>
-  - &lt;span property="displayName">Trailer&lt;span>
-  &lt;meta property="duration" content="PT1M">(1M)&lt;/meta>
-  &lt;a property="href"
-    href="http://example.org/trailer.mkv"
-    type="video/mkv">Watch&lt;/a>
-&lt;/div></pre>
-      </div>
-      <div id="ex107-microformats" style="display:none;">
-      <pre class="example highlight html"
-      >&lt;div class="h-entry">
-  &lt;span class="p-as-preview-of h-entry">
-    &lt;span class="p-name">Cool New Movie&lt;/span>
-    &lt;meta class="p-as-duration" name="duration"
-      content="PT2H30M">(2H 30M)&lt;/meta>
-  &lt;/span>
-  - &lt;span class="p-name">Trailer&lt;span>
-  &lt;meta class="p-as-duration" name="duration"
-    content="PT1M">(1M)&lt;/meta>
-  &lt;a class="u-url"
-    href="http://example.org/trailer.mkv"
-    type="video/mkv">Watch&lt;/a>
-&lt;/div></pre>
-      </div>
-      <div id="ex107-turtle" style="display: none;">
-      <pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_:b0 a as:Link ;
-  as:displayName "Trailer" ;
-  as:href &lt;http://example.org/trailer.mkv&gt; ;
-  as:mediaType "video/mkv" ;
-  as:duration "PT1M"^^xsd:duration ;
-  as:previewOf [
-    a as:Movie ;
-    as:displayName "Cool New Movie" ;
-    as:duration "PT2H30M"^^xsd:duration .
-  ] .</pre>
-      </div>
-      </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies an entity for which this object is a preview
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td >Inverse Of:</td>
-          <td><code><a>preview</a></code></td>
-        </tr>
-      </tbody>
-    </table>
-
-  </section>
   </section>
 
   <section id="as1properties">
@@ -19903,18 +17945,8 @@ _:b0 a as:Link ;
     rdfs:subPropertyOf as:attributedTo ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf (as:Actor as:LinkNotHandler)
+      owl:unionOf (as:Actor as:Link)
     ] .
-
-  as:actorOf a owl:ObjectProperty ;
-    rdfs:label "actorOf"@en ;
-    rdfs:subPropertyOf as:attributedWith ;
-    rdfs:range as:Activity ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (as:Actor as:LinkNotHandler)
-    ] ;
-    owl:inverseOf as:actor .
 
   as:attributedTo a owl:ObjectProperty ;
     rdfs:label "attributedTo"@en;
@@ -19922,44 +17954,18 @@ _:b0 a as:Link ;
     rdfs:subPropertyOf prov:wasAttributedTo ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf (as:Object as:LinkNotHandler)
+      owl:unionOf (as:Object as:Link)
     ] ;
     rdfs:domain [
       a owl:Class ;
-      owl:unionOf (as:Object as:LinkNotHandler)
+      owl:unionOf (as:Object as:Link)
     ] ; .
-
-  as:attributedWith a owl:ObjectProperty ;
-    rdfs:label "attributedWith"@en;
-    rdfs:comment "Identifies entities to which an object is attribute"@en;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf (as:Object as:LinkNotHandler)
-    ] ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (as:Object as:LinkNotHandler)
-    ] ;
-    owl:inverseOf as:attributedTo .
-
-  as:attachedTo a owl:ObjectProperty ;
-    rdfs:label "attachedTo"@en ;
-    rdfs:comment "Identifies an entity this object is attached to"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (as:LinkNotHandler as:Object)
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf (as:LinkNotHandler as:Object)
-    ] ;
-    owl:inverseOf as:attachment .
 
   as:attachment a owl:ObjectProperty ;
     rdfs:label "attachment"@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:LinkNotHandler as:Object )
+      owl:unionOf ( as:Link as:Object )
     ] ;
     rdfs:domain as:Object ;
     owl:equivalentProperty as:attachments .
@@ -19970,7 +17976,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
 
   as:author a owl:ObjectProperty,
@@ -19981,27 +17987,15 @@ _:b0 a as:Link ;
     rdfs:subPropertyOf as:attributedTo ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
+      owl:unionOf ( as:Actor as:Link )
     ] .
-
-  as:authorOf a owl:ObjectProperty,
-                owl:DeprecatedProperty ;
-    rdfs:label "authorOf"@en;
-    rdfs:comment "Identifies an object for which this actor is an author. Deprecated. Use as:attributedWith instead"@en;
-    rdfs:subPropertyOf as:attributedWith ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
-    ] ;
-    rdfs:domain as:Actor ;
-    owl:inverseOf as:author .
 
   as:bcc a owl:ObjectProperty ;
     rdfs:label "bcc"@en ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
+      owl:unionOf ( as:Actor as:Link )
     ] .
 
   as:bto a owl:ObjectProperty ;
@@ -20009,7 +18003,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
+      owl:unionOf ( as:Actor as:Link )
     ] .
 
   as:cc a owl:ObjectProperty ;
@@ -20017,7 +18011,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
+      owl:unionOf ( as:Actor as:Link )
     ] .
 
   as:context a owl:ObjectProperty ;
@@ -20026,21 +18020,8 @@ _:b0 a as:Link ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-        owl:unionOf ( as:Actor as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:contextOf .
-
-  as:contextOf a owl:ObjectProperty ;
-    rdfs:label "contextOf"@en;
-    rdfs:domain [
-      a owl:Class ;
-        owl:unionOf ( as:Actor as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-        owl:unionOf ( as:Actor as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:context .
+        owl:unionOf ( as:Actor as:Link )
+    ] .
 
   as:current a owl:FunctionalProperty ,
                owl:ObjectProperty ;
@@ -20048,7 +18029,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Collection ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Collection as:LinkNotHandler )
+      owl:unionOf ( as:Collection as:Link )
     ] .
 
   as:first a owl:FunctionalProperty ,
@@ -20057,7 +18038,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Collection ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Collection as:LinkNotHandler )
+      owl:unionOf ( as:Collection as:Link )
     ] .
 
   as:generator a owl:ObjectProperty ;
@@ -20065,107 +18046,31 @@ _:b0 a as:Link ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:generatorOf a owl:ObjectProperty ;
-    rdfs:label "generatorOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (as:Object as:LinkNotHandler)
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:generator .
-
-  as:handlerFor a owl:ObjectProperty ;
-    rdfs:label "handlerFor"@en ;
-    rdfs:comment "Describes the Activity an ActivityHandler is intended to carry out"@en ;
-    rdfs:range as:Activity ;
-    rdfs:domain as:ActivityHandler ;
-    owl:inverseOf as:using .
-
-  as:hasExpectedInput a owl:ObjectProperty ;
-    rdfs:label "hasExpectedInput"@en ;
-    rdfs:comment "Describes something that an ActivityHandler expects as input"@en ;
-    rdfs:range owl:Thing ;
-    rdfs:domain as:ActivityHandler .
-
-  as:hasPotentialResult a owl:ObjectProperty ;
-    rdfs:label "hasPotentialResult"@en ;
-    rdfs:comment "Describes a potential result of an ActivityHandler"@en ;
-    rdfs:range owl:Thing ;
-    rdfs:domain as:ActivityHandler .
-
-  as:hasPreference a owl:ObjectProperty ;
-    rdfs:label "hasPreference"@en ;
-    rdfs:comment "Describes something that an ActivityHandler prefers"@en ;
-    rdfs:range owl:Thing ;
-    rdfs:domain as:ActivityHandler .
-
-  as:hasRequirement a owl:ObjectProperty ;
-    rdfs:label "hasRequirement"@en ;
-    rdfs:comment "Describes something that an ActivityHandler requires"@en ;
-    rdfs:range owl:Thing ;
-    rdfs:domain as:ActivityHandler .
-
-  as:hreftemplate a owl:FunctionalProperty ,
-                    owl:ObjectProperty ;
-    rdfs:label "hreftemplate"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (as:BrowserView as:HttpRequest)
-    ] ;
-    rdfs:range as:UrlTemplate .
 
   as:icon a owl:ObjectProperty ;
     rdfs:label "icon"@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Image as:LinkNotHandler )
+      owl:unionOf ( as:Image as:Link )
     ] ;
     rdfs:domain as:Object .
-
-  as:iconFor a owl:ObjectProperty ;
-    rdfs:label "iconFor"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Image as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:icon .
 
   as:image a owl:ObjectProperty ;
     rdfs:label "image"@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Image as:LinkNotHandler )
+      owl:unionOf ( as:Image as:Link )
     ] ;
     rdfs:domain as:Object .
-
-  as:imageOf a owl:ObjectProperty ;
-    rdfs:label "imageOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Image as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:image .
 
   as:inReplyTo a owl:ObjectProperty ;
     rdfs:label "inReplyTo"@en ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
 
   as:items a owl:ObjectProperty,
@@ -20178,7 +18083,7 @@ _:b0 a as:Link ;
       owl:unionOf (
         [
           a owl:Class ;
-          owl:unionOf ( as:Object as:LinkNotHandler )
+          owl:unionOf ( as:Object as:Link )
         ]
         as:OrderedItems
       )
@@ -20190,7 +18095,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Collection ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Collection as:LinkNotHandler )
+      owl:unionOf ( as:Collection as:Link )
     ] .
 
   as:location a owl:ObjectProperty ;
@@ -20199,29 +18104,8 @@ _:b0 a as:Link ;
     rdfs:subPropertyOf prov:atLocation ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:locationOf a owl:ObjectProperty ;
-    rdfs:label "locationOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:location .
-
-  as:memberOf a owl:ObjectProperty ;
-    rdfs:label "memberOf"@en ;
-    rdfs:range as:Collection ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:items .
 
   as:next a owl:FunctionalProperty ,
             owl:ObjectProperty ;
@@ -20229,7 +18113,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Collection ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Collection as:LinkNotHandler )
+      owl:unionOf ( as:Collection as:Link )
     ] .
 
   as:object a owl:ObjectProperty ;
@@ -20237,25 +18121,15 @@ _:b0 a as:Link ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:objectOf a owl:ObjectProperty ;
-    rdfs:label "objectOf"@en ;
-    rdfs:comment "Identifies Activities for which this object is the object of"@en ;
-    rdfs:range as:Activity ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:object .
 
   as:oneOf a owl:ObjectProperty ;
     rdfs:label "oneOf"@en ;
     rdfs:comment "Describes a possible exclusive answer or option for a question."@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] ;
     rdfs:domain as:Question .
 
@@ -20264,7 +18138,7 @@ _:b0 a as:Link ;
     rdfs:comment "Describes a possible inclusive answer or option for a question."@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] ;
     rdfs:domain as:Question .
 
@@ -20283,51 +18157,27 @@ _:b0 a as:Link ;
     rdfs:domain as:Collection ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Collection as:LinkNotHandler )
+      owl:unionOf ( as:Collection as:Link )
     ] .
 
   as:preview a owl:ObjectProperty ;
     rdfs:label "preview"@en ;
     rdfs:domain [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:previewOf a owl:ObjectProperty ;
-    rdfs:label "previewOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:preview .
 
   as:provider a owl:ObjectProperty ;
     rdfs:label "provider"@en ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:providerOf a owl:ObjectProperty ;
-    rdfs:label "providerOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:provider .
 
   as:replies a owl:ObjectProperty ;
     rdfs:label "replies"@en ;
@@ -20341,26 +18191,15 @@ _:b0 a as:Link ;
     rdfs:subPropertyOf as:attributedWith;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:resultOf a owl:ObjectProperty ;
-    rdfs:label "resultOf"@en ;
-    rdfs:range as:Activity ;
-    rdfs:subPropertyOf prov:wasGeneratedBy ;
-    rdfs:subPropertyOf as:attributedTo ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:result .
 
   as:role a owl:ObjectProperty ;
     rdfs:label "role"@en;
     rdfs:comment "Identifies the semantic role of a Parameter."@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf (as:Object as:LinkNotHandler )
+      owl:unionOf (as:Object as:Link )
     ] ;
     rdfs:domain as:Parameter .
 
@@ -20369,20 +18208,8 @@ _:b0 a as:Link ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:scopeOf a owl:ObjectProperty ;
-    rdfs:label "scopeOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:scope .
 
   as:self a owl:FunctionalProperty ,
             owl:ObjectProperty ;
@@ -20390,7 +18217,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Collection ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Collection as:LinkNotHandler )
+      owl:unionOf ( as:Collection as:Link )
     ] .
 
   as:shape a owl:ObjectProperty ;
@@ -20408,20 +18235,8 @@ _:b0 a as:Link ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:tagOf a owl:ObjectProperty ;
-    rdfs:label "tagOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    owl:inverseOf as:tag .
 
   as:tags a owl:ObjectProperty,
           owl:DeprecatedProperty ;
@@ -20429,7 +18244,7 @@ _:b0 a as:Link ;
     rdfs:domain as:Object ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] ;
     owl:equivalentProperty as:tag ;.
 
@@ -20438,17 +18253,8 @@ _:b0 a as:Link ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:targetOf a owl:ObjectProperty ;
-    rdfs:label "targetOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range as:Activity ;
-    owl:inverseOf as:target .
 
   as:origin a owl:ObjectProperty ;
     rdfs:label "origin"@en ;
@@ -20456,24 +18262,15 @@ _:b0 a as:Link ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
+      owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:originOf a owl:ObjectProperty ;
-    rdfs:label "originOf"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:LinkNotHandler )
-    ] ;
-    rdfs:range as:Activity ;
-    owl:inverseOf as:origin .
 
   as:to a owl:ObjectProperty ;
     rdfs:label "to"@en ;
     rdfs:domain as:Activity ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
+      owl:unionOf ( as:Actor as:Link )
     ] .
 
   as:url a owl:ObjectProperty ;
@@ -20481,7 +18278,7 @@ _:b0 a as:Link ;
     rdfs:comment "Specifies a link to a specific representation of the Object"@en ;
     rdfs:range [
       a owl:Class ;
-      owl:unionOf ( as:LinkNotHandler owl:Thing )
+      owl:unionOf ( as:Link owl:Thing )
     ] ;
     rdfs:domain as:Object .
 
@@ -20898,10 +18695,6 @@ _:b0 a as:Link ;
     ] ;
     rdfs:comment "An Activity that has no direct object"@en .
 
-  as:ActivityHandler a owl:Class ;
-    rdfs:label "ActivityHandler"@en ;
-    rdfs:comment "Describes a way of carrying out an Activity"@en .
-
   as:Actor a owl:Class ;
     rdfs:label "Actor"@en ;
     rdfs:subClassOf as:Object ;
@@ -20948,12 +18741,6 @@ _:b0 a as:Link ;
     rdfs:label "Audio"@en ;
     rdfs:subClassOf as:Document ;
     rdfs:comment "An audio file"@en .
-
-  as:BrowserView a owl:Class ;
-    rdfs:label "BrowserView"@en ;
-    rdfs:subClassOf as:ActivityHandler ,
-                    as:Link ;
-    rdfs:comment "Describes how to carry out an Activity using a Browser View"@en .
 
   as:Collection a owl:Class ;
     rdfs:label "Collection"@en ;
@@ -21003,12 +18790,6 @@ _:b0 a as:Link ;
     rdfs:subClassOf as:Content ;
     rdfs:comment "Represents a digital document/file of any sort"@en .
 
-  as:EmbeddedView a owl:Class ;
-    rdfs:label "EmbeddedView"@en ;
-    rdfs:subClassOf as:ActivityHandler ,
-                    as:Content ;
-    rdfs:comment "Describes how to carry out an Activity using embedded content"@en .
-
   as:Event a owl:Class ;
     rdfs:label "Event"@en ;
     rdfs:subClassOf as:Object ;
@@ -21049,20 +18830,6 @@ _:b0 a as:Link ;
     rdfs:label "Group"@en ;
     rdfs:subClassOf as:Actor ;
     rdfs:comment "A Group of any kind."@en .
-
-  as:HtmlForm a owl:Class ;
-    rdfs:label "HtmlForm"@en ;
-    rdfs:comment "Describes an HTML Form. This is intended primary to be used as the value of \"shape\" on a Payload when the Payload is expected to be an HTML Form. The Payload's mediaType property specifies whether it's form encoded or url encoded."@en .
-
-  as:HttpHeader a owl:Class ;
-    rdfs:label "HttpHeader"@en ;
-    rdfs:comment "Describes an HTTP Header. This is primarily intended for use as a \"Potential Input\" for an ActivityHandler, particularly the HttpRequest and BrowserView. It can also be used as a \"Potential Result\"."@en .
-
-  as:HttpRequest a owl:Class ;
-    rdfs:label "HttpRequest"@en ;
-    rdfs:subClassOf as:ActivityHandler ,
-                    as:Link ;
-    rdfs:comment "Describes how to carry out an Activity using an HttpRequest"@en .
 
   as:Ignore a owl:Class ;
     rdfs:label "Ignore"@en ;
@@ -21144,14 +18911,6 @@ _:b0 a as:Link ;
     rdfs:subClassOf as:Link ;
     rdfs:comment "A specialized Link that represents an @mention"@en .
 
-  as:LinkNotHandler a owl:Class ;
-    rdfs:label "Links that are Not Handlers"@en ;
-    rdfs:subClassOf as:Link ,
-                    [ rdf:type owl:Class ;
-                      owl:complementOf as:ActivityHandler
-                    ] ;
-    rdfs:comment "Represents instances of as:Link that are not also as:ActivityHandler"@en .
-
   as:Note a owl:Class ;
     rdfs:label "Note"@en ;
     rdfs:subClassOf as:Content ;
@@ -21184,7 +18943,7 @@ _:b0 a as:Link ;
                 a owl:Class ;
                 owl:complementOf [
                   a owl:Class ;
-                  owl:unionOf ( as:Object as:LinkNotHandler )
+                  owl:unionOf ( as:Object as:Link )
                 ]
               ]
             )
@@ -21205,7 +18964,7 @@ _:b0 a as:Link ;
           owl:onProperty rdf:first ;
           owl:allValuesFrom [
             a owl:Class ;
-            owl:unionOf ( as:Object as:LinkNotHandler )
+            owl:unionOf ( as:Object as:Link )
           ]
         ]
         [
@@ -21220,14 +18979,6 @@ _:b0 a as:Link ;
     rdfs:label "Page"@en ;
     rdfs:subClassOf as:Content ;
     rdfs:comment "A Web Page"@en .
-
-  as:Parameter a owl:Class ;
-    rdfs:label "Parameter"@en ;
-    rdfs:comment "Represents a variable parameter, used typically with UrlTemplate and HtmlForm objects"@en .
-
-  as:Payload a owl:Class ;
-    rdfs:label "Payload"@en ;
-    rdfs:comment "Describes a data payload of any type, typically used to describe the input or output of an HttpRequest or BrowserView ActivityHandler. The mediaType property describes the MIME media type while the shape property describes the shape of the actual content"@en .
 
   as:Person a owl:Class ;
     rdfs:label "Person"@en ;
@@ -21317,10 +19068,6 @@ _:b0 a as:Link ;
     rdfs:comment "To Update/Modify Something"@en ;
     owl:equivalentClass prov:Modify ;
     rdfs:subClassOf as:Activity .
-
-  as:UrlTemplate a owl:Class ;
-    rdfs:label "UrlTemplate"@en ;
-    rdfs:comment "Describes a URL Template as defined by RFC 6570"@en .
 
   as:Video a owl:Class ;
     rdfs:label "Video"@en ;
