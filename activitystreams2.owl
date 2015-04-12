@@ -629,12 +629,6 @@ as:using a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range as:ActivityHandler .
 
-as:proof a owl:ObjectProperty ;
-  rdfs:label "proof"@en;
-  rdfs:comment "Provides proof of a claim"@en ;
-  rdfs:domain as:Claim ;
-  rdfs:range as:Object .
-
 #################################################################
 #
 #    Data properties
@@ -1052,11 +1046,6 @@ as:Actor a owl:Class ;
   rdfs:subClassOf prov:Agent ;
   rdfs:comment "Any entity that can do something"@en .
 
-as:Achieve a owl:Class ;
-  rdfs:label "Achieve"@en ;
-  rdfs:subClassOf as:Object ;
-  rdfs:comment "The actor achieves the object"@en .
-
 as:Add a owl:Class ;
   rdfs:label "Add"@en ;
   rdfs:subClassOf as:Activity ;
@@ -1267,11 +1256,6 @@ as:Read a owl:Class ;
   rdfs:label "Read"@en ;
   rdfs:subClassOf as:View ;
   rdfs:comment "The actor read the object"@en .
-
-as:Reservation a owl:Class ;
-  rdfs:label "Reservation"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "The actor is creating a reservation for the object"@en .
 
 as:Respond a owl:Class ;
   rdfs:label "Respond"@en ;
@@ -1485,10 +1469,5 @@ as:Profile a owl:Class ;
   rdfs:label "Profile"@en;
   rdfs:comment "A Profile provides a description of an Actor"@en ;
   rdfs:subClassOf as:Object .
-
-as:Claim a owl:Class ;
-  rdfs:label "Claim"@en;
-  rdfs:comment "The actor is claiming the object"@en ;
-  rdfs:subClassOf as:Activity .
 
 rdf:nil a as:OrderedItems .
