@@ -338,6 +338,26 @@ as:url a owl:ObjectProperty ;
   ] ;
   rdfs:domain as:Object .
 
+as:a a owl:FunctionalProperty,
+       owl:ObjectProperty;
+  rdfs:label "a"@en;
+  rdfs:comment "On a Connection object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'a' refers to 'John'"@en ;
+  rdfs:domain as:Connection ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Object )
+  ];
+
+as:b a owl:FunctionalProperty,
+       owl:ObjectProperty;
+  rdfs:label "b"@en;
+  rdfs:comment "On a Connection object, identifies the object. e.g. when saying \"John is connected to Sally\", 'b' refers to 'Sally'"@en ;
+  rdfs:domain as:Connection ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Object )
+  ];
+
 #################################################################
 #
 #    Data properties
@@ -724,10 +744,10 @@ as:Confirm a owl:Class ;
   rdfs:subClassOf as:Respond ;
   rdfs:comment "The actor is confirming the object"@en .
 
-as:Connect a owl:Class ;
-  rdfs:label "Connect"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "The Actor is wishing to establish a connection with the Object. For instance, when one person is requesting to be added to another persons friends list."@en .
+as:Connection a owl:Class ;
+  rdfs:label "Connection"@en ;
+  rdfs:subClassOf as:Object ;
+  rdfs:comment "Represents a Social Graph connection between two Individuals (indicated by the 'a' and 'b' properties)"@en .
 
 as:Content a owl:Class ;
   rdfs:label "Content"@en ;
@@ -780,11 +800,6 @@ as:Follow a owl:Class ;
   rdfs:label "Follow"@en ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Express Interest in Something"@en .
-
-as:FriendRequest a owl:Class ;
-  rdfs:label "FriendRequest"@en ;
-  rdfs:subClassOf as:Connect ;
-  rdfs:comment "A Friend Request"@en .
 
 as:Give a owl:Class ;
   rdfs:label "Give"@en ;

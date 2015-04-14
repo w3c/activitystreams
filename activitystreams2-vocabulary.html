@@ -1090,10 +1090,10 @@ _:b0 a as:OrderedCollection ;
       <p>
         All Activity Types inherit the properties of the base <a>Activity</a> class.
         Some specific Activity Types are subclasses or specializations of more
-        generalized Activity Types (for instance, the <code><a>FriendRequest</a></code>
-        Activity Type is a more specific form of the <code><a>Connect</a></code>
+        generalized Activity Types (for instance, the <code><a>Like</a></code>
+        Activity Type is a more specific form of the <code><a>Respond</a></code>
         Activity Type).
-      </p>
+      </p>i
 
       <p>
         The Activity Types include:
@@ -1105,7 +1105,6 @@ _:b0 a as:OrderedCollection ;
         <code><a>Block</a></code> |
         <code><a>Complete</a></code> |
         <code><a>Confirm</a></code> |
-        <code><a>Connect</a></code> |
         <code><a>Create</a></code> |
         <code><a>Delete</a></code> |
         <code><a>Dislike</a></code> |
@@ -1113,7 +1112,6 @@ _:b0 a as:OrderedCollection ;
         <code><a>Favorite</a></code> |
         <code><a>Flag</a></code> |
         <code><a>Follow</a></code> |
-        <code><a>FriendRequest</a></code> |
         <code><a>Give</a></code> |
         <code><a>Ignore</a></code> |
         <code><a>Invite</a></code> |
@@ -2745,208 +2743,6 @@ _:b0 a as:Offer ;
           <tr>
             <td>Properties:</td>
             <td>Inherits all properties from <code><a>Activity</a></code>.</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>Connect</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#Connect</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex22-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Connect",
-  "actor": {
-    "@type": "Person",
-    "displayName": "Sally"
-  },
-  "object": {
-    "@type": "Person",
-    "displayName": "John"
-  }
-}</pre>
-</div>
-<div id="ex22-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Connect">
-  &lt;span itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  wants to create a connection with
-  &lt;span itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Connect">
-  &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  wants to create a connection with
-  &lt;span property="object" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-as-connect">
-  &lt;span class="p-author h-card">
-    &lt;span class="p-name">Sally&lt;/span>
-  &lt;/span>
-  wants to create a connection with
-  &lt;span class="p-item h-card">
-    &lt;span class="p-name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex22-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Connect ;
-  as:actor [
-    a as:Person ;
-      as:displayName "Sally" .
-  ] ;
-  as:object [
-    a as:Person ;
-      as:displayName "John" .
-  ] .</pre>
-  </div>
-</div>            </td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td>
-              Indicates that the <code>actor</code> is establishing a connection
-              to the <code>object</code>. The <code>target</code> and <code>origin</code>
-              typically have no defined meaning.
-            </td>
-          </tr>
-          <tr>
-            <td >Extends:</td>
-            <td ><code><a>Activity</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>FriendRequest</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td ><code>http://www.w3.org/ns/activitystreams#FriendRequest</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex22-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "FriendRequest",
-  "actor": {
-    "@type": "Person",
-    "displayName": "Sally"
-  },
-  "object": {
-    "@type": "Person",
-    "displayName": "John"
-  }
-}</pre>
-</div>
-<div id="ex22-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#FriendRequest">
-  &lt;span itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  wants to be friends with
-  &lt;span itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="FriendRequest">
-  &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  wants to be friends with
-  &lt;span property="object" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-author h-card">
-    &lt;span class="p-name">Sally&lt;/span>
-  &lt;/span>
-  wants to be friends with
-  &lt;span class="p-item h-card">
-    &lt;span class="p-name">Sally&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex22-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:FriendRequest ;
-  as:actor [
-    a as:Person ;
-      as:displayName "Sally" .
-  ] ;
-  as:object [
-    a as:Person ;
-      as:displayName "John" .
-  ] .</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td >Notes:</td>
-            <td>
-              A specialization of <code><a>Connect</a></code> in which the <code>actor</code> is
-              establishing a "friendship" with the <code>object</code>.
-            </td>
-          </tr>
-          <tr>
-            <td >Extends:</td>
-            <td ><code><a>Connect</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Connect</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -6372,6 +6168,7 @@ _:b0 a as:Service ;
         <code><a>Album</a></code> |
         <code><a>Article</a></code> |
         <code><a>Audio</a></code> |
+        <code><a>Connection</a></code> |
         <code><a>Content</a></code> |
         <code><a>Document</a></code> |
         <code><a>Event</a></code> |
@@ -6394,6 +6191,111 @@ _:b0 a as:Service ;
             <th style="width: 40%">Properties</th>
           </tr>
         </thead>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Connection</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td ><code>http://www.w3.org/ns/activitystreams#Connection</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex22-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Connection",
+  "a": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "b": {
+    "@type": "Person",
+    "displayName": "John"
+  }
+}</pre>
+</div>
+<div id="ex22-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Connection">
+  &lt;span itemprop="a" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span itemprop="b" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Connection">
+  &lt;span property="a" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span property="b" typeof="Person">
+    &lt;span property="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-connection">
+  &lt;span class="h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span class="h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex22-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Connection ;
+  as:a [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:b [
+    a as:Person ;
+      as:displayName "John" .
+  ] .</pre>
+  </div>
+</div>            </td>
+          </tr>
+          <tr>
+            <td >Notes:</td>
+            <td>
+              <p>Describes a connection between two individuals. The <code><a title="a-term">a</a></code> and <code><a title="b-term">b</a></code> properties are used to identify the connected individuals.</p>
+            </td>
+          </tr>
+          <tr>
+            <td >Extends:</td>
+            <td ><code><a>Object</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>
+              <p><code><a title="a-term">a</a></code> |
+              <code title="b-term"><a title="b-term">b</a></code></p>
+              <p>Inherits all properties from <code><a>Object</a></code>.</p>
+            </td>
+          </tr>
+        </tbody>
+
       <tbody>
         <tr>
           <td rowspan="4" ><dfn>Content</dfn></td>
@@ -8221,7 +8123,9 @@ _:b0 a as:Mention ;
       <code><a>totalItems</a></code> |
       <code><a>units</a></code> |
       <code><a>updated</a></code> |
-      <code><a>width</a></code>
+      <code><a>width</a></code> |
+      <code><a title="a-term">a</a></code> |
+      <code><a title="b-term">b</a></code>
     </p>
 
     <p>
@@ -17202,6 +17106,222 @@ _:b0 a as:Content ;
         </tr>
       </tbody>
 
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn title="a-term">a</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#a</code></td>
+          <td rowspan="5">
+            <div class="nanotabs">
+              <ul>
+                <li><a href="#ex22a-jsonld" class="selected">JSON-LD</a></li>
+                <li><a href="#ex22a-microdata" class="selected">Microdata</a></li>
+                <li><a href="#ex22a-rdfa" class="selected">RDFa</a></li>
+                <li><a href="#ex22a-microformats" class="selected">Microformats</a></li>
+                <li><a href="#ex22a-turtle" class="selected">Turtle</a></li>
+              </ul>
+              <div id="ex22a-jsonld" style="display: block;">
+            <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Connection",
+  "a": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "b": {
+    "@type": "Person",
+    "displayName": "John"
+  }
+}</pre>
+</div>
+<div id="ex22a-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Connection">
+  &lt;span itemprop="a" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span itemprop="b" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22a-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Connection">
+  &lt;span property="a" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span property="b" typeof="Person">
+    &lt;span property="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22a-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-connection">
+  &lt;span class="h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span class="h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex22a-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Connection ;
+  as:a [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:b [
+    a as:Person ;
+      as:displayName "John" .
+  ] .</pre>
+  </div>
+</div>
+</td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td >
+            On a <code><a>Connection</a></code> object, the <code>a</code>
+            property identifies one of the connected individuals. For
+            instance, for a Connection object describing "John is connected to
+            Sally", <code>a</code> would refer to John.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Connection</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td>Functional:</td>
+          <td>True</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn title="b-term">b</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#b</code></td>
+          <td rowspan="5">
+            <div class="nanotabs">
+              <ul>
+                <li><a href="#ex22b-jsonld" class="selected">JSON-LD</a></li>
+                <li><a href="#ex22b-microdata" class="selected">Microdata</a></li>
+                <li><a href="#ex22b-rdfa" class="selected">RDFa</a></li>
+                <li><a href="#ex22b-microformats" class="selected">Microformats</a></li>
+                <li><a href="#ex22b-turtle" class="selected">Turtle</a></li>
+              </ul>
+              <div id="ex22b-jsonld" style="display: block;">
+            <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Connection",
+  "a": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "b": {
+    "@type": "Person",
+    "displayName": "John"
+  }
+}</pre>
+</div>
+<div id="ex22b-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Connection">
+  &lt;span itemprop="a" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span itemprop="b" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22b-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Connection">
+  &lt;span property="a" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span property="b" typeof="Person">
+    &lt;span property="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22b-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-connection">
+  &lt;span class="h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span class="h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex22b-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Connection ;
+  as:a [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:b [
+    a as:Person ;
+      as:displayName "John" .
+  ] .</pre>
+  </div>
+</div>
+</td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td >
+            On a <code><a>Connection</a></code> object, the <code>b</code>
+            property identifies one of the connected individuals. For
+            instance, for a Connection object describing "John is connected to
+            Sally", <code>b</code> would refer to Sally.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Connection</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Link</a></code> | <code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td>Functional:</td>
+          <td>True</td>
+        </tr>
+      </tbody>
+
     </table>
 
   </section>
@@ -17808,6 +17928,26 @@ _:b0 a as:Content ;
     ] ;
     rdfs:domain as:Object .
 
+  as:a a owl:FunctionalProperty,
+         owl:ObjectProperty;
+    rdfs:label "a"@en;
+    rdfs:comment "On a Connection object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'a' refers to 'John'"@en ;
+    rdfs:domain as:Connection ;
+    rdfs:range [
+      a owl:Class ;
+      owl:unionOf ( as:Link as:Object )
+    ];
+
+  as:b a owl:FunctionalProperty,
+         owl:ObjectProperty;
+    rdfs:label "b"@en;
+    rdfs:comment "On a Connection object, identifies the object. e.g. when saying \"John is connected to Sally\", 'b' refers to 'Sally'"@en ;
+    rdfs:domain as:Connection ;
+    rdfs:range [
+      a owl:Class ;
+      owl:unionOf ( as:Link as:Object )
+    ];
+
   #################################################################
   #
   #    Data properties
@@ -18194,10 +18334,10 @@ _:b0 a as:Content ;
     rdfs:subClassOf as:Respond ;
     rdfs:comment "The actor is confirming the object"@en .
 
-  as:Connect a owl:Class ;
-    rdfs:label "Connect"@en ;
-    rdfs:subClassOf as:Activity ;
-    rdfs:comment "The Actor is wishing to establish a connection with the Object. For instance, when one person is requesting to be added to another persons friends list."@en .
+  as:Connection a owl:Class ;
+    rdfs:label "Connection"@en ;
+    rdfs:subClassOf as:Object ;
+    rdfs:comment "Represents a Social Graph connection between two Individuals (indicated by the 'a' and 'b' properties)"@en .
 
   as:Content a owl:Class ;
     rdfs:label "Content"@en ;
@@ -18250,11 +18390,6 @@ _:b0 a as:Content ;
     rdfs:label "Follow"@en ;
     rdfs:subClassOf as:Activity ;
     rdfs:comment "To Express Interest in Something"@en .
-
-  as:FriendRequest a owl:Class ;
-    rdfs:label "FriendRequest"@en ;
-    rdfs:subClassOf as:Connect ;
-    rdfs:comment "A Friend Request"@en .
 
   as:Give a owl:Class ;
     rdfs:label "Give"@en ;
