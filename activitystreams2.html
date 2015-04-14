@@ -508,7 +508,6 @@ _:b0 a as:Post ;
       "@type": "Post",
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
-      "provider": "http://example.org/activity-stream",
       "displayNameMap": {
         "en": "Martin posted a new video to his album.",
         "ga": "Martin phost le fisean nua a albam."
@@ -571,7 +570,6 @@ _:b0 a as:Post ;
   &lt;div itemprop="items" itemscope itemtype="http://www.w3.org/ns/activitystreams#Post">
     &lt;meta itemprop="published" content="2011-02-10T15:04:55Z" />
     &lt;link itemprop="generator" href="http://example.org/activities-app" />
-    &lt;link itemprop="provider"  href="http://example.org/activity-stream" />
     &lt;div itemprop="displayName" lang="en">
       Martin posted a new video to his album.
     &lt;/div>
@@ -629,7 +627,6 @@ _:b0 a as:Post ;
   &lt;div property="items"  typeof="Post">
     &lt;meta property="published" content="2011-02-10T15:04:55Z" />
     &lt;link property="generator" href="http://example.org/activities-app" />
-    &lt;link property="provider"  href="http://example.org/activity-stream" />
     &lt;div property="displayName" lang="en">
       Martin posted a new video to his album.
     &lt;/div>
@@ -681,7 +678,6 @@ _:b0 a as:Post ;
   &lt;div class="p-as-items h-as-post">
     &lt;meta class="dt-published" name="published" content="2011-02-10T15:04:55Z" />
     &lt;link class="u-as-generator" href="http://example.org/activities-app" />
-    &lt;link class="u-as-provider"  href="http://example.org/activity-stream" />
     &lt;div class="p-name" lang="en">
       Martin posted a new video to his album.
     &lt;/div>
@@ -773,7 +769,6 @@ _:b0 a as:Collection ;
     a as:Post ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
-      as:provider &lt;http://example.org/activity-stream&gt; ;
       as:displayName "Martin posted a new video to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
       as:actor &lt;urn:example:person:martin&gt; ;
@@ -831,7 +826,6 @@ _:b0 a as:Collection ;
           <code><a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-location">location</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-preview">preview</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-provider">provider</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-published">published</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-rating">rating</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code> |
