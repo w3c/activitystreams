@@ -295,7 +295,6 @@
               <code><a>inReplyTo</a></code> |
               <code><a>location</a></code> |
               <code><a>preview</a></code> |
-              <code><a>provider</a></code> |
               <code><a>published</a></code> |
               <code><a>rating</a></code> |
               <code><a>replies</a></code> |
@@ -8189,7 +8188,6 @@ _:b0 a as:Mention ;
       <code><a>prev</a></code> |
       <code><a>preview</a></code> |
       <code><a>result</a></code> |
-      <code><a>provider</a></code> |
       <code><a>replies</a></code> |
       <code><a>scope</a></code> |
       <code><a>self</a></code> |
@@ -12668,10 +12666,10 @@ _:b0 a as:Movie ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>result</dfn></td>
+          <td rowspan="4" ><dfn>result</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#result</code></td>
-          <td rowspan="5">
+          <td rowspan="4">
 <div class="nanotabs">
   <ul>
     <li><a href="#ex108-jsonld" class="selected">JSON-LD</a></li>
@@ -12764,100 +12762,6 @@ _:b0 a as:Activity,
         <tr>
           <td >Domain:</td>
           <td ><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Subproperty Of:</td>
-          <td><code><a>attributedWith</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>provider</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#provider</code></td>
-          <td rowspan="4">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex110-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex110-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex110-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex110-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex110-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex110-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "content": "A simple note",
-  "provider": {
-    "@type": "Service",
-    "displayName": "My Note Service"
-  }
-}</pre>
-  </div>
-  <div id="ex110-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="content">
-    A Simple Note
-  &lt;/span>
-  (&lt;span itemprop="provider" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Service">
-     &lt;span itemprop="displayName">My Note Service&lt;/span>
-   &lt;/span>)
-&lt;/div></pre>
-  </div>
-  <div id="ex110-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
-  &lt;span property="content">
-    A Simple Note
-  &lt;/span>
-  (&lt;span property="provider" typeof="Service">
-     &lt;span property="displayName">My Note Service&lt;/span>
-   &lt;/span>)
-&lt;/div></pre>
-  </div>
-  <div id="ex110-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="e-content">A Simple Note&lt;/span>
-  (&lt;span class="p-as-provider h-as-service" >
-     &lt;span class="p-name">My Note Service&lt;/span>
-   &lt;/span>)
-&lt;/div></pre>
-  </div>
-  <div id="ex110-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Note ;
-  as:content "A Simple Note" ;
-  as:provider [
-    a as:Service ;
-      as:displayName "My Note Service" .
-  ].
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the entity (e.g. an application) that published the object. Note that this is not necessarily the same entity that generated the object.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td >Range:</td>
@@ -17443,6 +17347,28 @@ _:b0 a as:Content ;
 
       <tbody>
         <tr>
+          <td rowspan="4" ><dfn>provider</dfn></td>
+          <td style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#provider</code></td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies the entity (e.g. an application) that published the object. Note that this is not necessarily the same entity that generated the object.
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
           <td rowspan="4" ><dfn>upstreamDuplicates</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td ><code>http://www.w3.org/ns/activitystreams#upstreamDuplicates</code></td>
@@ -17539,7 +17465,6 @@ _:b0 a as:Content ;
   @prefix xml: &lt;http://www.w3.org/XML/1998/namespace> .
   @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
   @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-  @prefix prov: &lt;http://www.w3.org/ns/prov#> .
   @base &lt;http://www.w3.org/ns/activitystreams> .
 
   &lt;http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
@@ -17575,7 +17500,6 @@ _:b0 a as:Content ;
   as:attributedTo a owl:ObjectProperty ;
     rdfs:label "attributedTo"@en;
     rdfs:comment "Identifies an entity to which an object is attributed"@en;
-    rdfs:subPropertyOf prov:wasAttributedTo ;
     rdfs:range [
       a owl:Class ;
       owl:unionOf (as:Object as:Link)
@@ -17701,7 +17625,6 @@ _:b0 a as:Content ;
              owl:FunctionalProperty ;
     rdfs:label "items"@en ;
     rdfs:domain as:Collection ;
-    rdfs:subPropertyOf prov:hadMember ;
     rdfs:range [
       a owl:Class ;
       owl:unionOf (
@@ -17725,7 +17648,6 @@ _:b0 a as:Content ;
   as:location a owl:ObjectProperty ;
     rdfs:label "location"@en ;
     rdfs:domain as:Object ;
-    rdfs:subPropertyOf prov:atLocation ;
     rdfs:range [
       a owl:Class ;
       owl:unionOf ( as:Object as:Link )
@@ -17786,14 +17708,6 @@ _:b0 a as:Content ;
       owl:unionOf ( as:Object as:Link )
     ] .
 
-  as:provider a owl:ObjectProperty ;
-    rdfs:label "provider"@en ;
-    rdfs:domain as:Object ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:Link )
-    ] .
-
   as:replies a owl:ObjectProperty ;
     rdfs:label "replies"@en ;
     rdfs:range as:Collection ;
@@ -17802,8 +17716,6 @@ _:b0 a as:Content ;
   as:result a owl:ObjectProperty ;
     rdfs:label "result"@en ;
     rdfs:domain as:Activity ;
-    rdfs:subPropertyOf prov:generated;
-    rdfs:subPropertyOf as:attributedWith;
     rdfs:range [
       a owl:Class ;
       owl:unionOf ( as:Object as:Link )
@@ -17852,6 +17764,15 @@ _:b0 a as:Content ;
       owl:unionOf ( as:Object as:Link )
     ] ;
     owl:equivalentProperty as:tag ;.
+
+  as:provider a owl:ObjectProperty,
+                owl:DeprecatedProperty ;
+    rdfs:label "provider"@en ;
+    rdfs:domain as:Object ;
+    rdfs:range [
+      a owl:Class ;
+      owl:unionOf ( as:Object as:Link )
+    ] .
 
   as:target a owl:ObjectProperty ;
     rdfs:label "target"@en ;
@@ -17965,7 +17886,6 @@ _:b0 a as:Content ;
       owl:FunctionalProperty ;
     rdfs:label "endTime"@en ;
     rdfs:comment "The ending time of the object"@en ;
-    rdfs:subPropertyOf prov:endedAtTime ;
     rdfs:range xsd:dateTime ;
     rdfs:domain as:Object .
 
@@ -18055,7 +17975,6 @@ _:b0 a as:Content ;
         owl:FunctionalProperty ;
     rdfs:label "published"@en ;
     rdfs:comment "Specifies the date and time the object was published"@en ;
-    rdfs:subPropertyOf prov:generatedAtTime ;
     rdfs:range xsd:dateTime ;
     rdfs:domain as:Object .
 
@@ -18102,7 +18021,6 @@ _:b0 a as:Content ;
          owl:FunctionalProperty ;
     rdfs:label "startTime"@en ;
     rdfs:comment "The starting time of the object"@en ;
-    rdfs:subPropertyOf prov:startedAtTime ;
     rdfs:range xsd:dateTime ;
     rdfs:domain as:Object .
 
@@ -18195,13 +18113,11 @@ _:b0 a as:Content ;
   as:Accept a owl:Class ;
     rdfs:label "Accept"@en ;
     rdfs:subClassOf as:Respond ;
-    owl:equivalentClass prov:Accept ;
     rdfs:comment "Actor accepts the Object"@en .
 
   as:Activity a owl:Class ;
     rdfs:label "Activity"@en ;
     rdfs:subClassOf as:Object ;
-    rdfs:subClassOf prov:Activity ;
     rdfs:comment "An Object representing some form of Action that has been taken"@en .
 
   as:Block a owl:Class ;
@@ -18221,7 +18137,6 @@ _:b0 a as:Content ;
   as:Actor a owl:Class ;
     rdfs:label "Actor"@en ;
     rdfs:subClassOf as:Object ;
-    rdfs:subClassOf prov:Agent ;
     rdfs:comment "Any entity that can do something"@en .
 
   as:Add a owl:Class ;
@@ -18242,7 +18157,6 @@ _:b0 a as:Content ;
   as:Application a owl:Class ;
     rdfs:label "Application"@en ;
     rdfs:subClassOf as:Actor ;
-    rdfs:subClassOf prov:SoftwareAgent ;
     rdfs:comment "Represents a software application of any sort"@en .
 
   as:Arrive a owl:Class ;
@@ -18268,7 +18182,6 @@ _:b0 a as:Content ;
   as:Collection a owl:Class ;
     rdfs:label "Collection"@en ;
     rdfs:subClassOf as:Object ;
-    rdfs:subClassOf prov:Collection ;
     rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
 
   as:Complete a owl:Class ;
@@ -18295,7 +18208,6 @@ _:b0 a as:Content ;
     rdfs:label "Create"@en ;
     rdfs:subClassOf as:Activity ;
     owl:equivalentClass as:Post ;
-    owl:equivalentClass prov:Create;
     rdfs:comment "To Create Something"@en .
 
   as:Delete a owl:Class ;
@@ -18440,8 +18352,7 @@ _:b0 a as:Content ;
     rdfs:comment "A Short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""@en .
 
   as:Object a owl:Class ;
-    rdfs:label "Object"@en ;
-    rdfs:subClassOf prov:Entity .
+    rdfs:label "Object"@en .
 
   as:Offer a owl:Class ;
     rdfs:label "Offer"@en ;
@@ -18506,19 +18417,16 @@ _:b0 a as:Content ;
   as:Person a owl:Class ;
     rdfs:label "Person"@en ;
     rdfs:subClassOf as:Actor ;
-    rdfs:subClassOf prov:Person ;
     rdfs:comment "A Person"@en .
 
   as:Place a owl:Class ;
     rdfs:label "Place"@en ;
     rdfs:subClassOf as:Object ;
-    rdfs:subClassOf prov:Location ;
     rdfs:comment "A physical or logical location"@en .
 
   as:Post a owl:Class ;
     rdfs:label "Post"@en ;
     rdfs:subClassOf as:Activity ;
-    owl:equivalentClass prov:Publish ;
     rdfs:comment "To Post/Create Something"@en .
 
   as:Process a owl:Class ;
@@ -18584,7 +18492,6 @@ _:b0 a as:Content ;
   as:Update a owl:Class ;
     rdfs:label "Update"@en ;
     rdfs:comment "To Update/Modify Something"@en ;
-    owl:equivalentClass prov:Modify ;
     rdfs:subClassOf as:Activity .
 
   as:Video a owl:Class ;

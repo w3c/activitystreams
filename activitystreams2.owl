@@ -5,7 +5,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @base <http://www.w3.org/ns/activitystreams> .
 
 <http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
@@ -41,7 +40,6 @@ as:actor a owl:ObjectProperty ;
 as:attributedTo a owl:ObjectProperty ;
   rdfs:label "attributedTo"@en;
   rdfs:comment "Identifies an entity to which an object is attributed"@en;
-  rdfs:subPropertyOf prov:wasAttributedTo ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf (as:Object as:Link)
@@ -167,7 +165,6 @@ as:items a owl:ObjectProperty,
            owl:FunctionalProperty ;
   rdfs:label "items"@en ;
   rdfs:domain as:Collection ;
-  rdfs:subPropertyOf prov:hadMember ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf (
@@ -191,7 +188,6 @@ as:last a owl:FunctionalProperty ,
 as:location a owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:domain as:Object ;
-  rdfs:subPropertyOf prov:atLocation ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )
@@ -268,8 +264,6 @@ as:replies a owl:ObjectProperty ;
 as:result a owl:ObjectProperty ;
   rdfs:label "result"@en ;
   rdfs:domain as:Activity ;
-  rdfs:subPropertyOf prov:generated;
-  rdfs:subPropertyOf as:attributedWith;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )
@@ -422,7 +416,6 @@ as:endTime a owl:DatatypeProperty ,
     owl:FunctionalProperty ;
   rdfs:label "endTime"@en ;
   rdfs:comment "The ending time of the object"@en ;
-  rdfs:subPropertyOf prov:endedAtTime ;
   rdfs:range xsd:dateTime ;
   rdfs:domain as:Object .
 
@@ -512,7 +505,6 @@ as:published a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
   rdfs:label "published"@en ;
   rdfs:comment "Specifies the date and time the object was published"@en ;
-  rdfs:subPropertyOf prov:generatedAtTime ;
   rdfs:range xsd:dateTime ;
   rdfs:domain as:Object .
 
@@ -559,7 +551,6 @@ as:startTime a owl:DatatypeProperty ,
        owl:FunctionalProperty ;
   rdfs:label "startTime"@en ;
   rdfs:comment "The starting time of the object"@en ;
-  rdfs:subPropertyOf prov:startedAtTime ;
   rdfs:range xsd:dateTime ;
   rdfs:domain as:Object .
 
@@ -652,13 +643,11 @@ as:width a owl:DatatypeProperty ,
 as:Accept a owl:Class ;
   rdfs:label "Accept"@en ;
   rdfs:subClassOf as:Respond ;
-  owl:equivalentClass prov:Accept ;
   rdfs:comment "Actor accepts the Object"@en .
 
 as:Activity a owl:Class ;
   rdfs:label "Activity"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:subClassOf prov:Activity ;
   rdfs:comment "An Object representing some form of Action that has been taken"@en .
 
 as:Block a owl:Class ;
@@ -678,7 +667,6 @@ as:IntransitiveActivity a owl:Class ;
 as:Actor a owl:Class ;
   rdfs:label "Actor"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:subClassOf prov:Agent ;
   rdfs:comment "Any entity that can do something"@en .
 
 as:Add a owl:Class ;
@@ -699,7 +687,6 @@ as:Announce a owl:Class ;
 as:Application a owl:Class ;
   rdfs:label "Application"@en ;
   rdfs:subClassOf as:Actor ;
-  rdfs:subClassOf prov:SoftwareAgent ;
   rdfs:comment "Represents a software application of any sort"@en .
 
 as:Arrive a owl:Class ;
@@ -725,7 +712,6 @@ as:Audio a owl:Class ;
 as:Collection a owl:Class ;
   rdfs:label "Collection"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:subClassOf prov:Collection ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
 
 as:Complete a owl:Class ;
@@ -752,7 +738,6 @@ as:Create a owl:Class ;
   rdfs:label "Create"@en ;
   rdfs:subClassOf as:Activity ;
   owl:equivalentClass as:Post ;
-  owl:equivalentClass prov:Create;
   rdfs:comment "To Create Something"@en .
 
 as:Delete a owl:Class ;
@@ -897,8 +882,7 @@ as:Note a owl:Class ;
   rdfs:comment "A Short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""@en .
 
 as:Object a owl:Class ;
-  rdfs:label "Object"@en ;
-  rdfs:subClassOf prov:Entity .
+  rdfs:label "Object"@en .
 
 as:Offer a owl:Class ;
   rdfs:label "Offer"@en ;
@@ -963,19 +947,16 @@ as:Page a owl:Class ;
 as:Person a owl:Class ;
   rdfs:label "Person"@en ;
   rdfs:subClassOf as:Actor ;
-  rdfs:subClassOf prov:Person ;
   rdfs:comment "A Person"@en .
 
 as:Place a owl:Class ;
   rdfs:label "Place"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:subClassOf prov:Location ;
   rdfs:comment "A physical or logical location"@en .
 
 as:Post a owl:Class ;
   rdfs:label "Post"@en ;
   rdfs:subClassOf as:Activity ;
-  owl:equivalentClass prov:Publish ;
   rdfs:comment "To Post/Create Something"@en .
 
 as:Process a owl:Class ;
@@ -1041,7 +1022,6 @@ as:Undo a owl:Class ;
 as:Update a owl:Class ;
   rdfs:label "Update"@en ;
   rdfs:comment "To Update/Modify Something"@en ;
-  owl:equivalentClass prov:Modify ;
   rdfs:subClassOf as:Activity .
 
 as:Video a owl:Class ;
