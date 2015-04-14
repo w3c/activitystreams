@@ -19,7 +19,6 @@
     "Accept": "as:Accept",
     "Activity": "as:Activity",
     "IntransitiveActivity": "as:IntransitiveActivity",
-    "ActivityHandler": "as:ActivityHandler",
     "Actor": "as:Actor",
     "Add": "as:Add",
     "Album": "as:Album",
@@ -30,7 +29,6 @@
     "Assign": "as:Assign",
     "Audio": "as:Audio",
     "Block": "as:Block",
-    "BrowserView": "as:BrowserView",
     "Collection": "as:Collection",
     "Confirm": "as:Confirm",
     "Connect": "as:Connect",
@@ -39,7 +37,6 @@
     "Delete": "as:Delete",
     "Dislike": "as:Dislike",
     "Document": "as:Document",
-    "EmbeddedView": "as:EmbeddedView",
     "Event": "as:Event",
     "Favorite": "as:Favorite",
     "Folder": "as:Folder",
@@ -48,9 +45,6 @@
     "FriendRequest": "as:FriendRequest",
     "Give": "as:Give",
     "Group": "as:Group",
-    "HtmlForm": "as:HtmlForm",
-    "HttpHeader": "as:HttpHeader",
-    "HttpRequest": "as:HttpRequest",
     "Ignore": "as:Ignore",
     "Image": "as:Image",
     "Invite": "as:Invite",
@@ -64,8 +58,6 @@
     "Offer": "as:Offer",
     "OrderedCollection": "as:OrderedCollection",
     "Page": "as:Page",
-    "Parameter": "as:Parameter",
-    "Payload": "as:Payload",
     "Person": "as:Person",
     "Place": "as:Place",
     "PossibleAnswer": "as:PossibleAnswer",
@@ -75,7 +67,6 @@
     "Question": "as:Question",
     "Reject": "as:Reject",
     "Remove": "as:Remove",
-    "Relationship": "as:Relationship",
     "Review": "as:Review",
     "Save": "as:Save",
     "Service": "as:Service",
@@ -107,14 +98,6 @@
       "@id": "as:attributedTo",
       "@type": "@id"
     },
-    "attributedWith": {
-      "@type": "as:attributedWith",
-      "@type": "@id"
-    },
-    "actorOf": {
-      "@id": "as:actorOf",
-      "@type": "@id"
-    },
     "attachedTo": {
       "@id": "as:attachedTo",
       "@type": "@id"
@@ -129,10 +112,6 @@
     },
     "author": {
       "@id": "as:author",
-      "@type": "@id"
-    },
-    "authorOf": {
-      "@id": "as:authorOf",
       "@type": "@id"
     },
     "bcc": {
@@ -151,10 +130,6 @@
       "@id": "as:context",
       "@type": "@id"
     },
-    "contextOf": {
-      "@id": "as:contextOf",
-      "@type": "@id"
-    },
     "current": {
       "@id": "as:current",
       "@type": "@id"
@@ -165,14 +140,6 @@
     },
     "generator": {
       "@id": "as:generator",
-      "@type": "@id"
-    },
-    "generatorOf": {
-      "@id": "as:generatorOf",
-      "@type": "@id"
-    },
-    "handlerFor": {
-      "@id": "as:handlerFor",
       "@type": "@id"
     },
     "hasExpectedInput": {
@@ -199,16 +166,8 @@
       "@id": "as:icon",
       "@type": "@id"
     },
-    "iconFor": {
-      "@id": "as:iconFor",
-      "@type": "@id"
-    },
     "image": {
       "@id": "as:image",
-      "@type": "@id"
-    },
-    "imageOf": {
-      "@id": "as:imageOf",
       "@type": "@id"
     },
     "inReplyTo": {
@@ -232,24 +191,12 @@
       "@id": "as:location",
       "@type": "@id"
     },
-    "locationOf": {
-      "@id": "as:locationOf",
-      "@type": "@id"
-    },
-    "memberOf": {
-      "@id": "as:memberOf",
-      "@type": "@id"
-    },
     "next": {
       "@id": "as:next",
       "@type": "@id"
     },
     "object": {
       "@id": "as:object",
-      "@type": "@id"
-    },
-    "objectOf": {
-      "@id": "as:objectOf",
       "@type": "@id"
     },
     "oneOf": {
@@ -264,10 +211,6 @@
       "@id": "as:origin",
       "@type": "@id"
     },
-    "originOf": {
-      "@id": "as:originOf",
-      "@type": "@id"
-    },
     "parameter": {
       "@id": "as:parameter",
       "@type": "@id"
@@ -280,16 +223,8 @@
       "@id": "as:preview",
       "@type": "@id"
     },
-    "previewOf": {
-      "@id": "as:previewOf",
-      "@type": "@id"
-    },
     "provider": {
       "@id": "as:provider",
-      "@type": "@id"
-    },
-    "providerOf": {
-      "@id": "as:providerOf",
       "@type": "@id"
     },
     "replies": {
@@ -300,16 +235,8 @@
       "@id": "as:result",
       "@type": "@id"
     },
-    "resultOf": {
-      "@id": "as:resultOf",
-      "@type": "@id"
-    },
     "scope": {
       "@id": "as:scope",
-      "@type": "@id"
-    },
-    "scopeOf": {
-      "@id": "as:scopeOf",
       "@type": "@id"
     },
     "self": {
@@ -324,20 +251,12 @@
       "@id": "as:tag",
       "@type": "@id"
     },
-    "tagOf": {
-      "@id": "as:tagOf",
-      "@type": "@id"
-    },
     "tags": {
       "@id": "as:tag",
       "@type": "@id"
     },
     "target": {
       "@id": "as:target",
-      "@type": "@id"
-    },
-    "targetOf": {
-      "@id": "as:targetOf",
       "@type": "@id"
     },
     "to": {
