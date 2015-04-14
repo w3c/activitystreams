@@ -323,7 +323,7 @@ as:shape a owl:ObjectProperty ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf (
-      as:HttpHeader as:Parameter as:Payload as:PossibleAnswer )
+      as:HttpHeader as:Parameter as:Payload )
   ] .
 
 as:tag a owl:ObjectProperty ;
@@ -1133,11 +1133,6 @@ as:Place a owl:Class ;
   rdfs:subClassOf as:Object ;
   rdfs:subClassOf prov:Location ;
   rdfs:comment "A physical or logical location"@en .
-
-as:PossibleAnswer a owl:Class ;
-  rdfs:label "PossibleAnswer"@en;
-  rdfs:comment "The as:PossibleAnswer is an as:Object that describes one possible answer to an as:Question. While the properties of the as:PossibleAnswer describe the PossibleAnswer itself, the shape property describes what form the actual answer to the question must take."@en ;
-  rdfs:subClassOf as:Content .
 
 as:Post a owl:Class ;
   rdfs:label "Post"@en ;
