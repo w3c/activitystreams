@@ -28,12 +28,6 @@ xsd:duration a rdfs:Datatype .
 #
 #################################################################
 
-as:action a owl:ObjectProperty ;
-  rdfs:label "action"@en;
-  rdfs:comment "Specifies an potential action for the object"@en;
-  rdfs:domain as:Object;
-  rdfs:range as:Activity .
-
 as:actor a owl:ObjectProperty ;
   rdfs:label "actor"@en ;
   rdfs:domain as:Activity ;
@@ -41,7 +35,7 @@ as:actor a owl:ObjectProperty ;
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Actor as:LinkNotHandler)
+    owl:unionOf (as:Actor as:Link)
   ] .
 
 as:attributedTo a owl:ObjectProperty ;
@@ -50,18 +44,18 @@ as:attributedTo a owl:ObjectProperty ;
   rdfs:subPropertyOf prov:wasAttributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler)
+    owl:unionOf (as:Object as:Link)
   ] ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler)
+    owl:unionOf (as:Object as:Link)
   ] ; .
 
 as:attachment a owl:ObjectProperty ;
   rdfs:label "attachment"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:LinkNotHandler as:Object )
+    owl:unionOf ( as:Link as:Object )
   ] ;
   rdfs:domain as:Object ;
   owl:equivalentProperty as:attachments .
@@ -72,7 +66,7 @@ as:attachments a owl:ObjectProperty,
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:author a owl:ObjectProperty,
@@ -83,7 +77,7 @@ as:author a owl:ObjectProperty,
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler )
+    owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:bcc a owl:ObjectProperty ;
@@ -91,7 +85,7 @@ as:bcc a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler )
+    owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:bto a owl:ObjectProperty ;
@@ -99,7 +93,7 @@ as:bto a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler )
+    owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:cc a owl:ObjectProperty ;
@@ -107,7 +101,7 @@ as:cc a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler )
+    owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:context a owl:ObjectProperty ;
@@ -116,7 +110,7 @@ as:context a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-      owl:unionOf ( as:Actor as:LinkNotHandler )
+      owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:current a owl:FunctionalProperty ,
@@ -125,7 +119,7 @@ as:current a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler )
+    owl:unionOf ( as:Collection as:Link )
   ] .
 
 as:first a owl:FunctionalProperty ,
@@ -134,7 +128,7 @@ as:first a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler )
+    owl:unionOf ( as:Collection as:Link )
   ] .
 
 as:generator a owl:ObjectProperty ;
@@ -142,14 +136,14 @@ as:generator a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:icon a owl:ObjectProperty ;
   rdfs:label "icon"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Image as:LinkNotHandler )
+    owl:unionOf ( as:Image as:Link )
   ] ;
   rdfs:domain as:Object .
 
@@ -157,7 +151,7 @@ as:image a owl:ObjectProperty ;
   rdfs:label "image"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Image as:LinkNotHandler )
+    owl:unionOf ( as:Image as:Link )
   ] ;
   rdfs:domain as:Object .
 
@@ -166,7 +160,7 @@ as:inReplyTo a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:items a owl:ObjectProperty,
@@ -179,7 +173,7 @@ as:items a owl:ObjectProperty,
     owl:unionOf (
       [
         a owl:Class ;
-        owl:unionOf ( as:Object as:LinkNotHandler )
+        owl:unionOf ( as:Object as:Link )
       ]
       as:OrderedItems
     )
@@ -191,7 +185,7 @@ as:last a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler )
+    owl:unionOf ( as:Collection as:Link )
   ] .
 
 as:location a owl:ObjectProperty ;
@@ -200,7 +194,7 @@ as:location a owl:ObjectProperty ;
   rdfs:subPropertyOf prov:atLocation ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:next a owl:FunctionalProperty ,
@@ -209,7 +203,7 @@ as:next a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler )
+    owl:unionOf ( as:Collection as:Link )
   ] .
 
 as:object a owl:ObjectProperty ;
@@ -217,7 +211,7 @@ as:object a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:oneOf a owl:ObjectProperty ;
@@ -225,7 +219,7 @@ as:oneOf a owl:ObjectProperty ;
   rdfs:comment "Describes a possible exclusive answer or option for a question."@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] ;
   rdfs:domain as:Question .
 
@@ -234,18 +228,9 @@ as:anyOf a owl:ObjectProperty ;
   rdfs:comment "Describes a possible inclusive answer or option for a question."@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] ;
   rdfs:domain as:Question .
-
-as:parameter a owl:ObjectProperty ;
-  rdfs:label "parameter"@en ;
-  rdfs:comment "A parameter"@en ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (as:HtmlForm as:UrlTemplate)
-  ] ;
-  rdfs:range as:Parameter .
 
 as:prev a owl:FunctionalProperty ,
           owl:ObjectProperty ;
@@ -253,18 +238,18 @@ as:prev a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler )
+    owl:unionOf ( as:Collection as:Link )
   ] .
 
 as:preview a owl:ObjectProperty ;
   rdfs:label "preview"@en ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:provider a owl:ObjectProperty ;
@@ -272,7 +257,7 @@ as:provider a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:replies a owl:ObjectProperty ;
@@ -287,24 +272,15 @@ as:result a owl:ObjectProperty ;
   rdfs:subPropertyOf as:attributedWith;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
-
-as:role a owl:ObjectProperty ;
-  rdfs:label "role"@en;
-  rdfs:comment "Identifies the semantic role of a Parameter."@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf (as:Object as:LinkNotHandler )
-  ] ;
-  rdfs:domain as:Parameter .
 
 as:scope a owl:ObjectProperty ;
   rdfs:label "scope"@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:self a owl:FunctionalProperty ,
@@ -313,17 +289,7 @@ as:self a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:LinkNotHandler )
-  ] .
-
-as:shape a owl:ObjectProperty ;
-  rdfs:label "shape"@en ;
-  rdfs:comment "Describes the data shape of a payload"@en ;
-  rdfs:range owl:Thing ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (
-      as:HttpHeader as:Parameter as:Payload )
+    owl:unionOf ( as:Collection as:Link )
   ] .
 
 as:tag a owl:ObjectProperty ;
@@ -331,7 +297,7 @@ as:tag a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:tags a owl:ObjectProperty,
@@ -340,7 +306,7 @@ as:tags a owl:ObjectProperty,
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] ;
   owl:equivalentProperty as:tag ;.
 
@@ -349,7 +315,7 @@ as:target a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:origin a owl:ObjectProperty ;
@@ -358,7 +324,7 @@ as:origin a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Object as:LinkNotHandler )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:to a owl:ObjectProperty ;
@@ -366,7 +332,7 @@ as:to a owl:ObjectProperty ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:LinkNotHandler )
+    owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:url a owl:ObjectProperty ;
@@ -374,15 +340,9 @@ as:url a owl:ObjectProperty ;
   rdfs:comment "Specifies a link to a specific representation of the Object"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:LinkNotHandler owl:Thing )
+    owl:unionOf ( as:Link owl:Thing )
   ] ;
   rdfs:domain as:Object .
-
-as:using a owl:ObjectProperty ;
-  rdfs:label "using"@en ;
-  rdfs:comment "Describes an ActivityHandler that can be used to carry out an Activity"@en ;
-  rdfs:domain as:Activity ;
-  rdfs:range as:ActivityHandler .
 
 #################################################################
 #
@@ -416,35 +376,6 @@ as:altitude a owl:DatatypeProperty ,
   rdfs:comment "The altitude of a place"@en;
   rdfs:domain as:Place ;
   rdfs:range xsd:float .
-
-as:browserContext a owl:DatatypeProperty ,
-    owl:FunctionalProperty ;
-  rdfs:label "browserContext"@en ;
-  rdfs:comment "Identifies the browser context name for a BrowserView, as defined by HTML5"@en ;
-  rdfs:range [
-    a rdfs:Datatype ;
-    owl:unionOf (
-      [
-        a owl:Class ;
-        owl:oneOf ( "_blank" "_self" "_parent" "_top" )
-      ]
-      [
-        a rdfs:Datatype ;
-        owl:onDatatype xsd:string ;
-        owl:withRestrictions (
-          [ xsd:pattern "[^_|.].*" ]
-        )
-      ]
-    )
-  ] ;
-  rdfs:domain as:BrowserView .
-
-as:confirm a owl:DatatypeProperty ,
-           owl:FunctionalProperty ;
-  rdfs:label "confirm"@en ;
-  rdfs:comment "True if the Action Handler must be confirmed prior to invocation"@en ;
-  rdfs:range xsd:boolean ;
-  rdfs:domain as:ActivityHandler .
 
 as:content a owl:DatatypeProperty ;
   rdfs:label "content"@en ;
@@ -555,30 +486,7 @@ as:mediaType a owl:DatatypeProperty ,
   rdfs:label "mediaType"@en ;
   rdfs:comment "The MIME Media Type"@en ;
   rdfs:range xsd:string ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:EmbeddedView as:Link as:Payload )
-  ] .
-
-as:method a owl:DatatypeProperty ,
-    owl:FunctionalProperty ;
-  rdfs:label "method"@en ;
-  rdfs:comment "The HTTP Method to use"@en ;
-  rdfs:range xsd:token ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:BrowserView as:HttpRequest )
-  ] .
-
-as:name a owl:DatatypeProperty ,
-  owl:FunctionalProperty ;
-  rdfs:label "name"@en ;
-  rdfs:comment "The name of a Parameter or HttpHeader"@en ;
-  rdfs:range xsd:string ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:HttpHeader as:Parameter )
-  ] .
+  rdfs:domain as:Link .
 
 as:objectType a owl:DatatypeProperty ,
         owl:FunctionalProperty,
@@ -640,23 +548,6 @@ as:rel a owl:DatatypeProperty ;
   rdfs:range xsd:string ;
   rdfs:domain as:Link .
 
-as:optional a owl:DatatypeProperty ,
-              owl:FunctionalProperty ;
-  rdfs:label "optional"@en ;
-  rdfs:comment "Indicates if the parameter is optional. By default, all parameters are considered to be required."@en ;
-  rdfs:range xsd:boolean ;
-  rdfs:domain as:Parameter .
-
-as:sandbox a owl:DatatypeProperty ,
-     owl:FunctionalProperty ;
-  rdfs:label "sandbox"@en ;
-  rdfs:comment "Browser sandbox policy for EmbeddedView and BrowserView"@en ;
-  rdfs:range xsd:string ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:BrowserView as:EmbeddedView )
-  ] .
-
 as:startIndex a owl:DatatypeProperty ,
         owl:FunctionalProperty ;
   rdfs:label "startIndex"@en ;
@@ -680,13 +571,6 @@ as:summary a owl:DatatypeProperty ;
     owl:unionOf ( rdf:langString xsd:string )
   ] ;
   rdfs:domain as:Object .
-
-as:template a owl:DatatypeProperty ,
-  owl:FunctionalProperty ;
-  rdfs:label "template"@en ;
-  rdfs:comment "A URL Template as defined in RFC 6570"@en ;
-  rdfs:range xsd:string ;
-  rdfs:domain as:UrlTemplate .
 
 as:title a owl:DatatypeProperty ;
   rdfs:label "title"@en ;
@@ -791,10 +675,6 @@ as:IntransitiveActivity a owl:Class ;
   ] ;
   rdfs:comment "An Activity that has no direct object"@en .
 
-as:ActivityHandler a owl:Class ;
-  rdfs:label "ActivityHandler"@en ;
-  rdfs:comment "Describes a way of carrying out an Activity"@en .
-
 as:Actor a owl:Class ;
   rdfs:label "Actor"@en ;
   rdfs:subClassOf as:Object ;
@@ -841,12 +721,6 @@ as:Audio a owl:Class ;
   rdfs:label "Audio"@en ;
   rdfs:subClassOf as:Document ;
   rdfs:comment "An audio file"@en .
-
-as:BrowserView a owl:Class ;
-  rdfs:label "BrowserView"@en ;
-  rdfs:subClassOf as:ActivityHandler ,
-                  as:Link ;
-  rdfs:comment "Describes how to carry out an Activity using a Browser View"@en .
 
 as:Collection a owl:Class ;
   rdfs:label "Collection"@en ;
@@ -896,12 +770,6 @@ as:Document a owl:Class ;
   rdfs:subClassOf as:Content ;
   rdfs:comment "Represents a digital document/file of any sort"@en .
 
-as:EmbeddedView a owl:Class ;
-  rdfs:label "EmbeddedView"@en ;
-  rdfs:subClassOf as:ActivityHandler ,
-                  as:Content ;
-  rdfs:comment "Describes how to carry out an Activity using embedded content"@en .
-
 as:Event a owl:Class ;
   rdfs:label "Event"@en ;
   rdfs:subClassOf as:Object ;
@@ -942,20 +810,6 @@ as:Group a owl:Class ;
   rdfs:label "Group"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:comment "A Group of any kind."@en .
-
-as:HtmlForm a owl:Class ;
-  rdfs:label "HtmlForm"@en ;
-  rdfs:comment "Describes an HTML Form. This is intended primary to be used as the value of \"shape\" on a Payload when the Payload is expected to be an HTML Form. The Payload's mediaType property specifies whether it's form encoded or url encoded."@en .
-
-as:HttpHeader a owl:Class ;
-  rdfs:label "HttpHeader"@en ;
-  rdfs:comment "Describes an HTTP Header. This is primarily intended for use as a \"Potential Input\" for an ActivityHandler, particularly the HttpRequest and BrowserView. It can also be used as a \"Potential Result\"."@en .
-
-as:HttpRequest a owl:Class ;
-  rdfs:label "HttpRequest"@en ;
-  rdfs:subClassOf as:ActivityHandler ,
-                  as:Link ;
-  rdfs:comment "Describes how to carry out an Activity using an HttpRequest"@en .
 
 as:Ignore a owl:Class ;
   rdfs:label "Ignore"@en ;
@@ -1037,14 +891,6 @@ as:Mention a owl:Class ;
   rdfs:subClassOf as:Link ;
   rdfs:comment "A specialized Link that represents an @mention"@en .
 
-as:LinkNotHandler a owl:Class ;
-  rdfs:label "Links that are Not Handlers"@en ;
-  rdfs:subClassOf as:Link ,
-                  [ rdf:type owl:Class ;
-                    owl:complementOf as:ActivityHandler
-                  ] ;
-  rdfs:comment "Represents instances of as:Link that are not also as:ActivityHandler"@en .
-
 as:Note a owl:Class ;
   rdfs:label "Note"@en ;
   rdfs:subClassOf as:Content ;
@@ -1077,7 +923,7 @@ as:OrderedCollection a owl:Class ;
               a owl:Class ;
               owl:complementOf [
                 a owl:Class ;
-                owl:unionOf ( as:Object as:LinkNotHandler )
+                owl:unionOf ( as:Object as:Link )
               ]
             ]
           )
@@ -1098,7 +944,7 @@ as:OrderedItems a owl:Class ;
         owl:onProperty rdf:first ;
         owl:allValuesFrom [
           a owl:Class ;
-          owl:unionOf ( as:Object as:LinkNotHandler )
+          owl:unionOf ( as:Object as:Link )
         ]
       ]
       [
@@ -1113,14 +959,6 @@ as:Page a owl:Class ;
   rdfs:label "Page"@en ;
   rdfs:subClassOf as:Content ;
   rdfs:comment "A Web Page"@en .
-
-as:Parameter a owl:Class ;
-  rdfs:label "Parameter"@en ;
-  rdfs:comment "Represents a variable parameter, used typically with UrlTemplate and HtmlForm objects"@en .
-
-as:Payload a owl:Class ;
-  rdfs:label "Payload"@en ;
-  rdfs:comment "Describes a data payload of any type, typically used to describe the input or output of an HttpRequest or BrowserView ActivityHandler. The mediaType property describes the MIME media type while the shape property describes the shape of the actual content"@en .
 
 as:Person a owl:Class ;
   rdfs:label "Person"@en ;
@@ -1206,18 +1044,9 @@ as:Update a owl:Class ;
   owl:equivalentClass prov:Modify ;
   rdfs:subClassOf as:Activity .
 
-as:UrlTemplate a owl:Class ;
-  rdfs:label "UrlTemplate"@en ;
-  rdfs:comment "Describes a URL Template as defined by RFC 6570"@en .
-
 as:Video a owl:Class ;
   rdfs:label "Video"@en ;
   rdfs:comment "A Video document of any kind."@en ;
   rdfs:subClassOf as:Document .
-
-as:Profile a owl:Class ;
-  rdfs:label "Profile"@en;
-  rdfs:comment "A Profile provides a description of an Actor"@en ;
-  rdfs:subClassOf as:Object .
 
 rdf:nil a as:OrderedItems .

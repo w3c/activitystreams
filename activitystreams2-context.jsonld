@@ -75,7 +75,6 @@
     "TentativeReject": "as:TentativeReject",
     "Undo": "as:Undo",
     "Update": "as:Update",
-    "UrlTemplate": "as:UrlTemplate",
     "Video": "as:Video",
     "Experience": "as:Experience",
     "View": "as:View",
@@ -95,10 +94,6 @@
     },
     "attributedTo": {
       "@id": "as:attributedTo",
-      "@type": "@id"
-    },
-    "attachedTo": {
-      "@id": "as:attachedTo",
       "@type": "@id"
     },
     "attachment": {
@@ -139,26 +134,6 @@
     },
     "generator": {
       "@id": "as:generator",
-      "@type": "@id"
-    },
-    "hasExpectedInput": {
-      "@id": "as:hasExpectedInput",
-      "@type": "@id"
-    },
-    "hasPotentialResult": {
-      "@id": "as:hasPotentialResult",
-      "@type": "@id"
-    },
-    "hasPreference": {
-      "@id": "as:hasPreference",
-      "@type": "@id"
-    },
-    "hasRequirement": {
-      "@id": "as:hasRequirement",
-      "@type": "@id"
-    },
-    "hreftemplate": {
-      "@id": "as:hreftemplate",
       "@type": "@id"
     },
     "icon": {
@@ -210,10 +185,6 @@
       "@id": "as:origin",
       "@type": "@id"
     },
-    "parameter": {
-      "@id": "as:parameter",
-      "@type": "@id"
-    },
     "prev": {
       "@id": "as:prev",
       "@type": "@id"
@@ -242,10 +213,6 @@
       "@id": "as:self",
       "@type": "@id"
     },
-    "shape": {
-      "@id": "as:shape",
-      "@type": "@id"
-    },
     "tag": {
       "@id": "as:tag",
       "@type": "@id"
@@ -266,10 +233,6 @@
       "@id": "as:url",
       "@type": "@id"
     },
-    "using": {
-      "@id": "as:using",
-      "@type": "@id"
-    },
     "alias": {
       "@id": "as:alias",
       "@type": "@id"
@@ -278,7 +241,6 @@
       "@id": "as:altitude",
       "@type": "xsd:float"
     },
-    "browserContext": "as:browserContext",
     "confirm": {
       "@id": "as:confirm",
       "@type": "xsd:boolean"
@@ -329,8 +291,6 @@
       "@type": "xsd:float"
     },
     "mediaType": "as:mediaType",
-    "method": "as:method",
-    "name": "as:name",
     "objectType": "as:objectType",
     "priority": {
       "@id": "as:priority",
@@ -349,7 +309,6 @@
       "@type": "xsd:float"
     },
     "rel": "as:rel",
-    "sandbox": "as:sandbox",
     "startIndex": {
       "@id": "as:startIndex",
       "@type": "xsd:nonNegativeInteger"
@@ -363,7 +322,6 @@
       "@id": "as:summary",
       "@container": "@language"
     },
-    "template": "as:template",
     "title": "as:title",
     "titleMap": {
       "@id": "as:title",
@@ -384,14 +342,6 @@
       "@id": "as:width",
       "@type": "xsd:nonNegativeInteger"
     },
-    "optional": {
-      "@id": "as:optional",
-      "@type": "xsd:boolean"
-    },
-    "role": {
-      "@id": "as:role",
-      "@type": "@id"
-    }
   },
  {
     "gsp:asWKT": { "@type": "gsp:wktLiteral" },

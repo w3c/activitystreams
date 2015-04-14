@@ -17562,12 +17562,6 @@ _:b0 a as:Content ;
   #
   #################################################################
 
-  as:action a owl:ObjectProperty ;
-    rdfs:label "action"@en;
-    rdfs:comment "Specifies an potential action for the object"@en;
-    rdfs:domain as:Object;
-    rdfs:range as:Activity .
-
   as:actor a owl:ObjectProperty ;
     rdfs:label "actor"@en ;
     rdfs:domain as:Activity ;
@@ -17772,15 +17766,6 @@ _:b0 a as:Content ;
     ] ;
     rdfs:domain as:Question .
 
-  as:parameter a owl:ObjectProperty ;
-    rdfs:label "parameter"@en ;
-    rdfs:comment "A parameter"@en ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (as:HtmlForm as:UrlTemplate)
-    ] ;
-    rdfs:range as:Parameter .
-
   as:prev a owl:FunctionalProperty ,
             owl:ObjectProperty ;
     rdfs:label "prev"@en ;
@@ -17902,12 +17887,6 @@ _:b0 a as:Content ;
     ] ;
     rdfs:domain as:Object .
 
-  as:using a owl:ObjectProperty ;
-    rdfs:label "using"@en ;
-    rdfs:comment "Describes an ActivityHandler that can be used to carry out an Activity"@en ;
-    rdfs:domain as:Activity ;
-    rdfs:range as:ActivityHandler .
-
   #################################################################
   #
   #    Data properties
@@ -17940,35 +17919,6 @@ _:b0 a as:Content ;
     rdfs:comment "The altitude of a place"@en;
     rdfs:domain as:Place ;
     rdfs:range xsd:float .
-
-  as:browserContext a owl:DatatypeProperty ,
-      owl:FunctionalProperty ;
-    rdfs:label "browserContext"@en ;
-    rdfs:comment "Identifies the browser context name for a BrowserView, as defined by HTML5"@en ;
-    rdfs:range [
-      a rdfs:Datatype ;
-      owl:unionOf (
-        [
-          a owl:Class ;
-          owl:oneOf ( "_blank" "_self" "_parent" "_top" )
-        ]
-        [
-          a rdfs:Datatype ;
-          owl:onDatatype xsd:string ;
-          owl:withRestrictions (
-            [ xsd:pattern "[^_|.].*" ]
-          )
-        ]
-      )
-    ] ;
-    rdfs:domain as:BrowserView .
-
-  as:confirm a owl:DatatypeProperty ,
-             owl:FunctionalProperty ;
-    rdfs:label "confirm"@en ;
-    rdfs:comment "True if the Action Handler must be confirmed prior to invocation"@en ;
-    rdfs:range xsd:boolean ;
-    rdfs:domain as:ActivityHandler .
 
   as:content a owl:DatatypeProperty ;
     rdfs:label "content"@en ;
@@ -18079,30 +18029,7 @@ _:b0 a as:Content ;
     rdfs:label "mediaType"@en ;
     rdfs:comment "The MIME Media Type"@en ;
     rdfs:range xsd:string ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:EmbeddedView as:Link as:Payload )
-    ] .
-
-  as:method a owl:DatatypeProperty ,
-      owl:FunctionalProperty ;
-    rdfs:label "method"@en ;
-    rdfs:comment "The HTTP Method to use"@en ;
-    rdfs:range xsd:token ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:BrowserView as:HttpRequest )
-    ] .
-
-  as:name a owl:DatatypeProperty ,
-    owl:FunctionalProperty ;
-    rdfs:label "name"@en ;
-    rdfs:comment "The name of a Parameter or HttpHeader"@en ;
-    rdfs:range xsd:string ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:HttpHeader as:Parameter )
-    ] .
+    rdfs:domain as:Link .
 
   as:objectType a owl:DatatypeProperty ,
           owl:FunctionalProperty,
@@ -18164,23 +18091,6 @@ _:b0 a as:Content ;
     rdfs:range xsd:string ;
     rdfs:domain as:Link .
 
-  as:optional a owl:DatatypeProperty ,
-                owl:FunctionalProperty ;
-    rdfs:label "optional"@en ;
-    rdfs:comment "Indicates if the parameter is optional. By default, all parameters are considered to be required."@en ;
-    rdfs:range xsd:boolean ;
-    rdfs:domain as:Parameter .
-
-  as:sandbox a owl:DatatypeProperty ,
-       owl:FunctionalProperty ;
-    rdfs:label "sandbox"@en ;
-    rdfs:comment "Browser sandbox policy for EmbeddedView and BrowserView"@en ;
-    rdfs:range xsd:string ;
-    rdfs:domain [
-      a owl:Class ;
-      owl:unionOf ( as:BrowserView as:EmbeddedView )
-    ] .
-
   as:startIndex a owl:DatatypeProperty ,
           owl:FunctionalProperty ;
     rdfs:label "startIndex"@en ;
@@ -18204,13 +18114,6 @@ _:b0 a as:Content ;
       owl:unionOf ( rdf:langString xsd:string )
     ] ;
     rdfs:domain as:Object .
-
-  as:template a owl:DatatypeProperty ,
-    owl:FunctionalProperty ;
-    rdfs:label "template"@en ;
-    rdfs:comment "A URL Template as defined in RFC 6570"@en ;
-    rdfs:range xsd:string ;
-    rdfs:domain as:UrlTemplate .
 
   as:title a owl:DatatypeProperty ;
     rdfs:label "title"@en ;
@@ -18688,11 +18591,6 @@ _:b0 a as:Content ;
     rdfs:label "Video"@en ;
     rdfs:comment "A Video document of any kind."@en ;
     rdfs:subClassOf as:Document .
-
-  as:Profile a owl:Class ;
-    rdfs:label "Profile"@en;
-    rdfs:comment "A Profile provides a description of an Actor"@en ;
-    rdfs:subClassOf as:Object .
 
   rdf:nil a as:OrderedItems .
 </pre>
