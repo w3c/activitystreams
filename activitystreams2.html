@@ -3246,7 +3246,15 @@ _:c14n0 a gsp:Geometry ;
         </tr>
         <tr>
           <td>Optional parameters: </td>
-          <td>None</td>
+          <td>profile: The profile parameter for the application/activity+json media type allows
+   one or more profile URIs to be specified.  These profile URIs have
+   the identifier semantics defined in [[!RFC6906]]. The "profile" media type parameter MUST be quoted.
+   It contains a non-empty list of space-separated URIs (the profile URIs).
+   <pre>profile-param = "profile=" profile-value
+profile-value = <"> profile-URI 0*( 1*SP profile-URI ) <">
+profile-URI   = URI</pre>
+   The "URI" in the above grammar refers to the "URI" as defined in
+   Section 3 of [[!RFC3986]].</td>
         </tr>
         <tr>
           <td>Encoding considerations: </td>
@@ -3293,7 +3301,15 @@ _:c14n0 a gsp:Geometry ;
         </tr>
         <tr>
           <td>Optional parameters: </td>
-          <td>None</td>
+          <td>profile: The profile parameter for the application/stream+json media type allows
+   one or more profile URIs to be specified.  These profile URIs have
+   the identifier semantics defined in [[!RFC6906]]. The "profile" media type parameter MUST be quoted.
+   It contains a non-empty list of space-separated URIs (the profile URIs).
+   <pre>profile-param = "profile=" profile-value
+profile-value = <"> profile-URI 0*( 1*SP profile-URI ) <">
+profile-URI   = URI</pre>
+   The "URI" in the above grammar refers to the "URI" as defined in
+   Section 3 of [[!RFC3986]].</td>
         </tr>
         <tr>
           <td>Encoding considerations: </td>
