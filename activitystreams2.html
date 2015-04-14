@@ -350,8 +350,8 @@ _:b0 a as:Post ;
    "displayName": "Martin Smith",
    "url": "http://example.org/martin",
    "image": {
-     "@type": "Link",
-     "href": "http://example.org/martin/image.jpg",
+     "@id": "http://example.org/martin/image.jpg",
+     "@type": "ImageBlob",
      "mediaType": "image/jpeg"
    }
   },
@@ -457,11 +457,10 @@ _:b0 a as:Post ;
 &lt;urn:example:person:martin&gt; a as:Person ;
   as:displayName "Martin Smith" ;
   as:url &lt;http://example.org/martin&gt; ;
-  as:image [
-    a as:Link ;
-      as:href &lt;http://example.org/martin/image.jpg&gt; ;
-      as:mediaType "image/jpeg"
-  ] .
+  as:image &lt;http://example.org/martin/image.jpg&gt; .
+
+&lt;http://example.org/martin/image.jpg&gt; a as:ImageBlob ;
+  as:mediaType "image/jpeg" .
 
 &lt;http://example.org/blog/&gt; a &lt;urn:example:types:blog&gt; ;
   as:displayName "Martin's Blog" .
@@ -519,8 +518,8 @@ _:b0 a as:Post ;
         "displayName": "Martin Smith",
         "url": "http://example.org/martin",
         "image": {
-          "@type": "Link",
-          "href": "http://example.org/martin/image",
+          "@id": "http://example.org/martin/image",
+          "@type": "ImageBlob",
           "mediaType": "image/jpeg",
           "width": 250,
           "height": 250
@@ -530,19 +529,19 @@ _:b0 a as:Post ;
         "@type": "Image",
         "@id": "http://example.org/album/my_fluffy_cat",
         "preview": {
-          "@type": "Link",
-          "href": "http://example.org/album/my_fluffy_cat_thumb.jpg",
+          "@id": "http://example.org/album/my_fluffy_cat_thumb.jpg",
+          "@type": "ImageBlob",
           "mediaType": "image/jpeg"
         },
-        "url": [
+        "encoding": [
           {
-            "@type": "Link",
-            "href": "http://example.org/album/my_fluffy_cat.jpg",
+            "@id": "http://example.org/album/my_fluffy_cat.jpg",
+            "@type": "ImageBlob",
             "mediaType": "image/jpeg"
           },
           {
-            "@type": "Link",
-            "href": "http://example.org/album/my_fluffy_cat.png",
+            "@id": "http://example.org/album/my_fluffy_cat.png",
+            "@type": "ImageBlob",
             "mediaType": "image/png"
           }
         ]
@@ -555,8 +554,8 @@ _:b0 a as:Post ;
           "ga": "Grianghraif Mairtin"
         },
         "image": {
-          "@type": "Link",
-          "href": "http://example.org/album/thumbnail.jpg",
+          "@id": "http://example.org/album/thumbnail.jpg",
+          "@type": "ImageBlob",
           "mediaType": "image/jpeg"
         }
       }
@@ -733,39 +732,35 @@ _:b0 a as:Post ;
 &lt;urn:example:person:martin&gt; a as:Person ;
   as:displayName "Martin Smith" ;
   as:url &lt;http://example.org/martin&gt; ;
-  as:image [
-    a as:Link ;
-      as:href &lt;http://example.org/martin/image&gt; ;
-      as:mediaType "image/jpeg" ;
-      as:width "250"^^xsd:nonNegativeInteger ;
-      as:height "250"^^xsd:nonNegativeInteger
-  ] .
+  as:image &lt;http://example.org/martin/image&gt; .
+
+&lt;http://example.org/martin/image&gt; a as:ImageBlob ;
+  as:mediaType "image/jpeg" ;
+  as:width "250"^^xsd:nonNegativeInteger ;
+  as:height "250"^^xsd:nonNegativeInteger .
 
 &lt;http://example.org/album/my_fluffy_cat&gt; a as:Image ;
-  as:preview [
-    a as:Link ;
-      as:href &lt;http://example.org/album/my_fluffy_cat_thumb.jpg&gt; ;
-      as:mediaType "image/jpeg"
-  ] ;
-  as:url [
-    a as:Link ;
-      as:href &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ;
-      as:mediaType "image/jpeg"
-  ],
-  [
-    a as:Link ;
-      as:href &lt;http://example.org/album/my_fluffy_cat.png&gt; ;
-      as:mediaType "image/png"
-  ] .
+  as:preview &lt;http://example.org/album/my_fluffy_cat_thumb.jpg&gt; ;
+  as:encoding &lt;http://example.org/album/my_fluffy_cat.jpg&gt; ,
+         &lt;http://example.org/album/my_fluffy_cat.png&gt; .
+
+
+&lt;http://example.org/album/my_fluffy_cat_thumb.jpg&gt; a as:ImageBlob ;
+  as:mediaType "image/jpeg" .
+
+&lt;http://example.org/album/my_fluffy_cat.jpg&gt; a as:ImageBlob ;
+  as:mediaType "image/jpeg" .
+
+&lt;http://example.org/album/my_fluffy_cat.png&gt; a as:ImageBlob ;
+  as:mediaType "image/png" .
 
 &lt;http://example.org/album/&gt; a as:Album ;
   as:displayName "Martin's Photo Album"@en ;
   as:displayName "Grianghraif Mairtin"@ga ;
-  as:image [
-    a as:Link ;
-      as:href &lt;http://example.org/album/thumbnail.jpg&gt; ;
-      as:mediaType "image/jpeg"
-  ] .
+  as:image &lt;http://example.org/album/thumbnail.jpg&gt; .
+
+&lt;http://example.org/album/thumbnail.jpg&gt; a as:ImageBlob ;
+  as:mediaType "image/jpeg" .
 
 _:b0 a as:Collection ;
   as:totalItems "1"^^xsd:nonNegativeInteger ;
