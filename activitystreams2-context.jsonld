@@ -68,7 +68,6 @@
     "Payload": "as:Payload",
     "Person": "as:Person",
     "Place": "as:Place",
-    "PossibleAnswer": "as:PossibleAnswer",
     "Post": "as:Post",
     "Process": "as:Process",
     "Profile": "as:Profile",
@@ -314,10 +313,6 @@
     },
     "self": {
       "@id": "as:self",
-      "@type": "@id"
-    },
-    "shape": {
-      "@id": "as:shape",
       "@type": "@id"
     },
     "tag": {
