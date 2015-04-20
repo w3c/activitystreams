@@ -971,10 +971,7 @@ value of <code>object</code> is not:</figcaption>
     "@id": "http://example.org/~sally",
     "displayName": "Sally"
   },
-  "object": {
-    "@type": "Link",
-    "href": "http://example.org/posts/1"
-  }
+  "object": "http://example.org/posts/1"
 }</pre>
   </div>
   <div id="ex5-microdata" style="display: none;">
@@ -1032,10 +1029,8 @@ value of <code>object</code> is not:</figcaption>
 &lt;http://example.org/foo&gt; a as:Share ;
   as:displayName "A Test" ;
   as:actor &lt;http://example.org/~sally&gt; ;
-  as:object [
-    a as:Link ;
-      as:href &lt;http://example.org/posts/1&gt;
-  ] .</pre></div>
+  as:object &lt;http://example.org/posts/1&gt; .
+</pre></div>
 </div>
 </figure>
 
