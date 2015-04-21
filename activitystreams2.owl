@@ -554,12 +554,6 @@ as:rating a owl:DatatypeProperty ,
       [ xsd:maxInclusive "5.0"^^xsd:float ]
     )] .
 
-as:rel a owl:DatatypeProperty ;
-  rdfs:label "rel"@en ;
-  rdfs:comment "The RFC 5988 or HTML5 Link Relation associated with the Link"@en ;
-  rdfs:range xsd:string ;
-  rdfs:domain as:Link .
-
 as:startIndex a owl:DatatypeProperty ,
         owl:FunctionalProperty ;
   rdfs:label "startIndex"@en ;

@@ -398,7 +398,6 @@ _:b0 a as:Link ;
           <td>
             <p>
               <code><a>href</a></code> |
-              <code><a>rel</a></code> |
               <code><a>mediaType</a></code> |
               <code><a>displayName</a></code> |
               <code><a>title</a></code> |
@@ -8116,7 +8115,6 @@ _:b0 a as:Mention ;
       <code><a>startTime</a></code> |
       <code><a>radius</a></code> |
       <code><a>rating</a></code> |
-      <code><a>rel</a></code> |
       <code><a>startIndex</a></code> |
       <code><a>summary</a></code> |
       <code><a>title</a></code> |
@@ -16125,91 +16123,6 @@ _:b0 a as:Review ;
         </tr>
       </tbody>
 
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>rel</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td ><code>http://www.w3.org/ns/activitystreams#rel</code></td>
-          <td rowspan="4">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex149-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex149-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex149-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex149-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex149-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex149-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
-  "href": "http://example.org/abc",
-  "hreflang": "en",
-  "mediaType": "text/html",
-  "displayName": "An example link",
-  "rel": ["canonical", "preview"]
-}</pre>
-  </div>
-  <div id="ex149-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;a itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Link"
-    href="http://example.org/abc"
-    hreflang="en"
-    type="text/html"
-    rel="canonical preview"
-    itemprop="displayName">An example link&lt;/a></pre>
-  </div>
-  <div id="ex149-rdfa" style="display: none;">
-<pre class="example highlight json"
->&lt;a vocab="http://www.w3.org/ns/activitystreams#"
-    typeof="Link"
-    href="http://example.org/abc"
-    hreflang="en"
-    type="text/html"
-    rel="canonical preview"
-    property="displayName">An example link&lt;/a></pre>
-  </div>
-  <div id="ex149-microformats" style="display: none;">
-<pre class="example highlight json"
->&lt;a class="h-entry p-name"
-    href="http://example.org/abc"
-    hreflang="en"
-    rel="canonical preview"
-    type="text/html">An example link&lt;/a></pre>
-  </div>
-  <div id="ex149-turtle" style="display: none;">
-<pre class="example highlight turtle"
->
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Link ;
-  as:displayName "An example link" ;
-  as:href &lt;http://example.org/abc&gt; ;
-  as:hreflang "en" ;
-  as:rel ["canonical" "preview"] ;
-  as:mediaType "text/html" .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td >Notes:</td>
-          <td >
-            An RFC 5988 Link Relation associated with a <code><a>Link</a></code>.
-          </td>
-        </tr>
-        <tr>
-          <td >Domain:</td>
-          <td ><code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td >Range:</td>
-          <td >[[!RFC5988]] or <a class="bibref" href="http://www.w3.org/TR/html5/document-metadata.html#attr-link-rel">[HTML5]</a> Link Relation</td>
-        </tr>
-      </tbody>
-
       <tbody>
          <tr>
             <td rowspan="5" ><dfn>startIndex</dfn></td>
@@ -18143,12 +18056,6 @@ _:b0 a as:Connection ;
         [ xsd:minInclusive "0.0"^^xsd:float ]
         [ xsd:maxInclusive "5.0"^^xsd:float ]
       )] .
-
-  as:rel a owl:DatatypeProperty ;
-    rdfs:label "rel"@en ;
-    rdfs:comment "The RFC 5988 or HTML5 Link Relation associated with the Link"@en ;
-    rdfs:range xsd:string ;
-    rdfs:domain as:Link .
 
   as:startIndex a owl:DatatypeProperty ,
           owl:FunctionalProperty ;

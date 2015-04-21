@@ -308,7 +308,6 @@
       "@id": "as:rating",
       "@type": "xsd:float"
     },
-    "rel": "as:rel",
     "startIndex": {
       "@id": "as:startIndex",
       "@type": "xsd:nonNegativeInteger"
