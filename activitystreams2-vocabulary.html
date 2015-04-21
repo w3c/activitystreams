@@ -6272,7 +6272,7 @@ _:b0 a as:Service ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
-  as:relationship <http://example.org/relationship/knows> ;
+  as:relationship &lt;http://example.org/relationship/knows&gt; ;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
@@ -17196,7 +17196,7 @@ _:b0 a as:Content ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
-  as:relationship <http://example.org/relationship/knows>;
+  as:relationship &lt;http://example.org/relationship/knows&gt; ;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
@@ -17254,6 +17254,7 @@ _:b0 a as:Connection ;
     "@type": "Person",
     "displayName": "Sally"
   },
+  "relationship": "http://example.org/relationship/knows",
   "b": {
     "@type": "Person",
     "displayName": "John"
@@ -17268,7 +17269,10 @@ _:b0 a as:Connection ;
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span itemprop="relationship"
+    itemid="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span itemprop="b" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
@@ -17282,7 +17286,10 @@ _:b0 a as:Connection ;
   &lt;span property="a" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span property="relationship"
+    resource="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span property="b" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
@@ -17294,7 +17301,7 @@ _:b0 a as:Connection ;
   &lt;span class="h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  knows
   &lt;span class="h-card">
     &lt;span class="p-name">John&lt;/span>
   &lt;/span>
@@ -17305,7 +17312,7 @@ _:b0 a as:Connection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
-  as:relationship <http://example.org/relationship/knows>;
+  as:relationship &lt;http://example.org/relationship/knows&gt; ;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
@@ -17363,6 +17370,7 @@ _:b0 a as:Connection ;
     "@type": "Person",
     "displayName": "Sally"
   },
+  "relationship": "http://example.org/relationship/knows",
   "b": {
     "@type": "Person",
     "displayName": "John"
@@ -17377,7 +17385,10 @@ _:b0 a as:Connection ;
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span itemprop="relationship"
+    itemid="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span itemprop="b" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
@@ -17391,7 +17402,10 @@ _:b0 a as:Connection ;
   &lt;span property="a" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span property="relationship"
+    resource="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span property="b" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
@@ -17403,7 +17417,7 @@ _:b0 a as:Connection ;
   &lt;span class="h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  knows
   &lt;span class="h-card">
     &lt;span class="p-name">John&lt;/span>
   &lt;/span>
@@ -17414,7 +17428,7 @@ _:b0 a as:Connection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
-  as:relationship <http://example.org/relationship/knows>;
+  as:relationship &lt;http://example.org/relationship/knows&gt; ;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
