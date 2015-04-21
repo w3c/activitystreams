@@ -112,10 +112,6 @@
       "@id": "as:bcc",
       "@type": "@id"
     },
-    "bto": {
-      "@id": "as:bto",
-      "@type": "@id"
-    },
     "cc": {
       "@id": "as:cc",
       "@type": "@id"
@@ -223,10 +219,6 @@
     },
     "target": {
       "@id": "as:target",
-      "@type": "@id"
-    },
-    "to": {
-      "@id": "as:to",
       "@type": "@id"
     },
     "url": {
