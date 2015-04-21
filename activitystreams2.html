@@ -1443,7 +1443,6 @@ _:b0 a as:Object ;
           <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-hreflang">hreflang</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-height">height</a></code> |
@@ -1678,20 +1677,12 @@ _:b0 a as:Object ;
       </p>
 
       <p>
-        RFC 5988 defines that all Links have a "link relation" that describes
-        the contextual purpose of the link.  Within a <a>Link</a>,
-        the <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> property
-        provides the link relation value. If no <code>rel</code> property is
-        specified, the link relation is considered to be unspecified. Any given
-        Link can have multiple link relation values. In the JSON-LD serialization,
-        A single link relation is expressed as a single JSON string. Multiple
-        link relations are expressed as an array of JSON strings.
-      </p>
-
-      <p>
-        In the following example, two separate references are provided.  The link
-        relation of the first is unspecified, while the link relation of the
-        second is "<code>canonical</code>".
+        RFC 5988 defines that all Links have a link relation that describes
+        the contextual purpose of the link. Within an Activity Streams 2.0
+        document, the link relation is the JSON-LD expanded identifier of the
+        property whose value is a <a>Link</a>. For instance, in the following
+        example, two separate image references are provided. The link relation
+        for both is <code>http://www.w3.org/ns/activitystreams#image</code>.
       </p>
 
       <figure><figcaption></figcaption>
@@ -1714,8 +1705,7 @@ _:b0 a as:Object ;
     {
       "@type": "Link",
       "href": "http://example.org/application/123.png",
-      "mediaType": "image/png",
-      "rel": "canonical"
+      "mediaType": "image/png"
     }
   ]
 }</pre>
@@ -1726,12 +1716,13 @@ _:b0 a as:Object ;
   itemid="http://example.org/application/123">
   &lt;div itemprop="displayName">My Application&lt;/div>
   &lt;img itemprop="image"
-    src="http://example.org/application/123.gif" />
+    src="http://example.org/application/123.gif"
+    rel="http://www.w3.org/ns/acivitystreams#image" />
   &lt;img itemprop="image" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link"
     type="image/png"
     src="http://example.org/application/123.png"
-    rel="canonical" />
+    rel="http://www.w3.org/ns/acivitystreams#image" />
 &lt;/div></pre></div>
   <div id="ex15-rdfa" style="display:none;">
 <pre class="example highlight html"
@@ -1739,11 +1730,12 @@ _:b0 a as:Object ;
   resource="http://example.org/application/123">
   &lt;div property="displayName">My Application&lt;/div>
   &lt;img property="image"
-    src="http://example.org/application/123.gif" />
+    src="http://example.org/application/123.gif"
+    rel="http://www.w3.org/ns/acivitystreams#image" />
   &lt;img property="image" typeof="Link"
     type="image/png"
     src="http://example.org/application/123.png"
-    rel="canonical" />
+    rel="http://www.w3.org/ns/acivitystreams#image" />
 &lt;/div></pre></div>
   <div id="ex15-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -1751,10 +1743,11 @@ _:b0 a as:Object ;
   &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
   &lt;div class="p-name">My Application&lt;/div>
   &lt;img class="u-photo"
-    src="http://example.org/application/123.gif" />
+    src="http://example.org/application/123.gif"
+    rel="http://www.w3.org/ns/acivitystreams#image"/>
   &lt;img class="u-photo"
-       src="http://example.org/application/123.png"
-       rel="canonical" />
+    src="http://example.org/application/123.png"
+    rel="http://www.w3.org/ns/acivitystreams#image" />
 &lt;/div></pre></div>
   <div id="ex15-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1767,23 +1760,11 @@ _:b0 a as:Object ;
     [
       a as:Link ;
         as:href &lt;http://example.org/application/123.png&gt; ;
-        as:mediaType "image/png" ;
-        as:rel "canonical"
+        as:mediaType "image/png"
     ] .
 </pre></div>
 </div>
 </figure>
-
-      <p>
-        It ought to be noted that the [[!HTML5]] specification provides it's
-        own alternative definition of a "link relation" that differs slightly
-        from the [[RFC5988]] definition. In the HTML5 definition, any string
-        that does not contain the "space" U+0020, "tab" (U+0009), "LF" (U+000A),
-        "FF" (U+000C), "CR" (U+000D) or "," (U+002C) characters can be used as a
-        valid link relation. To promote interoperability, Activity Streams 2.0
-        implementations MUST only use link relations that are valid in terms of
-        both the [[RFC5988]] and [[HTML5]] definitions.
-      </p>
 
       <p>
         Note that the <a>Link</a> and <a>Object</a> classes are disjoint from one
