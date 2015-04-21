@@ -80,15 +80,7 @@ as:author a owl:ObjectProperty,
 
 as:bcc a owl:ObjectProperty ;
   rdfs:label "bcc"@en ;
-  rdfs:domain as:Activity ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
-  ] .
-
-as:bto a owl:ObjectProperty ;
-  rdfs:label "bto"@en ;
-  rdfs:domain as:Activity ;
+  rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Actor as:Link )
@@ -96,7 +88,7 @@ as:bto a owl:ObjectProperty ;
 
 as:cc a owl:ObjectProperty ;
   rdfs:label "cc"@en ;
-  rdfs:domain as:Activity ;
+  rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Actor as:Link )
@@ -319,14 +311,6 @@ as:origin a owl:ObjectProperty ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )
-  ] .
-
-as:to a owl:ObjectProperty ;
-  rdfs:label "to"@en ;
-  rdfs:domain as:Activity ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
   ] .
 
 as:url a owl:ObjectProperty ;
