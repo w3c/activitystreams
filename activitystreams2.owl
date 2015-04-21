@@ -343,20 +343,29 @@ as:a a owl:FunctionalProperty,
   rdfs:label "a"@en;
   rdfs:comment "On a Connection object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'a' refers to 'John'"@en ;
   rdfs:domain as:Connection ;
+  rdfs:subPropertyOf rdf:subject ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Link as:Object )
-  ];
+  ].
 
 as:b a owl:FunctionalProperty,
        owl:ObjectProperty;
   rdfs:label "b"@en;
   rdfs:comment "On a Connection object, identifies the object. e.g. when saying \"John is connected to Sally\", 'b' refers to 'Sally'"@en ;
   rdfs:domain as:Connection ;
+  rdfs:subPropertyOf rdf:object ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Link as:Object )
-  ];
+  ].
+
+as:relationship a owl:ObjectProperty;
+  rdfs:label "relationship"@en;
+  rdfs:comment "On a Connection object, describes the type of relationship"@en;
+  rdfs:subPropertyOf rdf:predicate ;
+  rdfs:domain as:Connection ;
+  rdfs:range rdf:Property ;
 
 #################################################################
 #
@@ -738,7 +747,7 @@ as:Confirm a owl:Class ;
   rdfs:subClassOf as:Respond ;
   rdfs:comment "The actor is confirming the object"@en .
 
-as:Connection a owl:Class ;
+as:Connection a owl:Class, rdf:Statement ;
   rdfs:label "Connection"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "Represents a Social Graph connection between two Individuals (indicated by the 'a' and 'b' properties)"@en .
