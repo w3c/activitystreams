@@ -6212,6 +6212,7 @@ _:b0 a as:Service ;
     "@type": "Person",
     "displayName": "Sally"
   },
+  "relationship": "http://example.org/relationship/knows",
   "b": {
     "@type": "Person",
     "displayName": "John"
@@ -6226,7 +6227,10 @@ _:b0 a as:Service ;
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span itemprop="relationship"
+    itemid="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span itemprop="b" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
@@ -6240,7 +6244,10 @@ _:b0 a as:Service ;
   &lt;span property="a" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span property="relationship"
+    resource="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span property="b" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
@@ -6252,7 +6259,7 @@ _:b0 a as:Service ;
   &lt;span class="h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  knows
   &lt;span class="h-card">
     &lt;span class="p-name">John&lt;/span>
   &lt;/span>
@@ -6263,6 +6270,7 @@ _:b0 a as:Service ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
+  as:relationship <http://example.org/relationship/knows> ;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
@@ -6288,7 +6296,8 @@ _:b0 a as:Connection ;
             <td>Properties:</td>
             <td>
               <p><code><a title="a-term">a</a></code> |
-              <code title="b-term"><a title="b-term">b</a></code></p>
+              <code><a title="b-term">b</a></code> |
+              <code><a>relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
@@ -8121,7 +8130,8 @@ _:b0 a as:Mention ;
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
       <code><a title="a-term">a</a></code> |
-      <code><a title="b-term">b</a></code>
+      <code><a title="b-term">b</a></code> |
+      <code><a>relationship</a></code>
     </p>
 
     <p>
@@ -16925,6 +16935,7 @@ _:b0 a as:Content ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
+  as:relationship <http://example.org/relationship/knows>;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
@@ -16982,6 +16993,7 @@ _:b0 a as:Connection ;
     "@type": "Person",
     "displayName": "Sally"
   },
+  "relationship": "http://example.org/relationship/knows",
   "b": {
     "@type": "Person",
     "displayName": "John"
@@ -16996,7 +17008,10 @@ _:b0 a as:Connection ;
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span itemprop="relationship"
+    itemid="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span itemprop="b" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
@@ -17010,7 +17025,10 @@ _:b0 a as:Connection ;
   &lt;span property="a" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  &lt;span property="relationship"
+    resource="http://example.org/relationship/knows">
+    knows
+  &lt;/span>
   &lt;span property="b" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
@@ -17022,7 +17040,7 @@ _:b0 a as:Connection ;
   &lt;span class="h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
-  is connected to
+  knows
   &lt;span class="h-card">
     &lt;span class="p-name">John&lt;/span>
   &lt;/span>
@@ -17033,6 +17051,7 @@ _:b0 a as:Connection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Connection ;
+  as:relationship <http://example.org/relationship/knows>;
   as:a [
     a as:Person ;
       as:displayName "Sally" .
@@ -17313,6 +17332,113 @@ _:b0 a as:Connection ;
         <tr>
           <td >Equivalent To:</td>
           <td ><code><a>attachment</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn title="relationship">relationship</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td ><code>http://www.w3.org/ns/activitystreams#relationship</code></td>
+          <td rowspan="5">
+            <div class="nanotabs">
+              <ul>
+                <li><a href="#ex22c-jsonld" class="selected">JSON-LD</a></li>
+                <li><a href="#ex22c-microdata" class="selected">Microdata</a></li>
+                <li><a href="#ex22c-rdfa" class="selected">RDFa</a></li>
+                <li><a href="#ex22c-microformats" class="selected">Microformats</a></li>
+                <li><a href="#ex22c-turtle" class="selected">Turtle</a></li>
+              </ul>
+              <div id="ex22c-jsonld" style="display: block;">
+            <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Connection",
+  "a": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "b": {
+    "@type": "Person",
+    "displayName": "John"
+  }
+}</pre>
+</div>
+<div id="ex22c-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Connection">
+  &lt;span itemprop="a" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span itemprop="b" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22c-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Connection">
+  &lt;span property="a" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span property="b" typeof="Person">
+    &lt;span property="displayName">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex22c-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-connection">
+  &lt;span class="h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
+  is connected to
+  &lt;span class="h-card">
+    &lt;span class="p-name">John&lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+<div id="ex22c-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Connection ;
+  as:relationship <http://example.org/relationship/knows>;
+  as:a [
+    a as:Person ;
+      as:displayName "Sally" .
+  ] ;
+  as:b [
+    a as:Person ;
+      as:displayName "John" .
+  ] .</pre>
+  </div>
+</div>
+</td>
+        </tr>
+        <tr>
+          <td >Notes:</td>
+          <td >
+            On a <code><a>Connection</a></code> object, the
+            <code>relationship</code> property identifies the kind of
+            relationship that exists between
+            <code><a title="a-term">a</a></code> and
+            <code><a title="b-term">b</a></code>.
+
+          </td>
+        </tr>
+        <tr>
+          <td >Domain:</td>
+          <td ><code><a>Connection</a></code></td>
+        </tr>
+        <tr>
+          <td >Range:</td>
+          <td ><code><a>Object</a></code></td>
         </tr>
       </tbody>
 
@@ -17663,20 +17789,29 @@ _:b0 a as:Connection ;
     rdfs:label "a"@en;
     rdfs:comment "On a Connection object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'a' refers to 'John'"@en ;
     rdfs:domain as:Connection ;
+    rdfs:subPropertyOf rdf:subject ;
     rdfs:range [
       a owl:Class ;
       owl:unionOf ( as:Link as:Object )
-    ];
+    ].
 
   as:b a owl:FunctionalProperty,
          owl:ObjectProperty;
     rdfs:label "b"@en;
     rdfs:comment "On a Connection object, identifies the object. e.g. when saying \"John is connected to Sally\", 'b' refers to 'Sally'"@en ;
     rdfs:domain as:Connection ;
+    rdfs:subPropertyOf rdf:object ;
     rdfs:range [
       a owl:Class ;
       owl:unionOf ( as:Link as:Object )
-    ];
+    ].
+
+  as:relationship a owl:ObjectProperty;
+    rdfs:label "relationship"@en;
+    rdfs:comment "On a Connection object, describes the type of relationship"@en;
+    rdfs:subPropertyOf rdf:predicate ;
+    rdfs:domain as:Connection ;
+    rdfs:range rdf:Property ;
 
   #################################################################
   #
@@ -18064,7 +18199,7 @@ _:b0 a as:Connection ;
     rdfs:subClassOf as:Respond ;
     rdfs:comment "The actor is confirming the object"@en .
 
-  as:Connection a owl:Class ;
+  as:Connection a owl:Class, rdf:Statement ;
     rdfs:label "Connection"@en ;
     rdfs:subClassOf as:Object ;
     rdfs:comment "Represents a Social Graph connection between two Individuals (indicated by the 'a' and 'b' properties)"@en .
