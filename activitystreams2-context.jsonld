@@ -14,6 +14,293 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   {
+    "Acquaintance": "vcard:Acquaintance",
+    "Address": "vcard:Address",
+    "Agent": "vcard:Agent",
+    "Cell": "vcard:Cell",
+    "Child": "vcard:Child",
+    "Colleague": "vcard:Colleague",
+    "Contact": "vcard:Contact",
+    "Coresident": "vcard:Coresident",
+    "Coworker": "vcard:Coworker",
+    "Crush": "vcard:Crush",
+    "Date": "vcard:Date",
+    "Emergency": "vcard:Emergency",
+    "Fax": "vcard:Fax",
+    "Female": "vcard:Female",
+    "Friend": "vcard:Friend",
+    "Gender": "vcard:Gender",
+    "Home": "vcard:Home",
+    "Individual": "vcard:Individual",
+    "Kin": "vcard:Kin",
+    "Kind": "vcard:Kind",
+    "Location": "vcard:Location",
+    "Male": "vcard:Male",
+    "Me": "vcard:Me",
+    "Met": "vcard:Met",
+    "Muse": "vcard:Muse",
+    "Name": "vcard:Name",
+    "Neighbor": "vcard:Neighbor",
+    "None": "vcard:None",
+    "Organization": "vcard:Organization",
+    "Other": "vcard:Other",
+    "Pager": "vcard:Pager",
+    "Parent": "vcard:Parent",
+    "TelephoneType": "vcard:TelephoneType",
+    "RelatedType": "vcard:RelatedType",
+    "Sibling": "vcard:Sibling",
+    "Spouse": "vcard:Spouse",
+    "Sweetheart": "vcard:Sweetheart",
+    "Text": "vcard:Text",
+    "TextPhone": "vcard:TextPhone",
+    "Type": "vcard:Type",
+    "Unknown": "vcard:Unknown",
+    "VCard": "vcard:VCard",
+    "VideoPhone": "vcard:Video",
+    "Voice": "vcard:Voice",
+    "Work": "vcard:Work",
+    "hasAdditionalName": {
+      "@id": "vcard:hasAdditionalName",
+      "@type": "@id"
+    },
+    "hasAddress": {
+      "@id": "vcard:hasAddress",
+      "@type": "@id"
+    },
+    "hasCalendarBusy": {
+      "@id": "vcard:hasCalendarBusy",
+      "@type": "@id"
+    },
+    "hasCalendarLink": {
+      "@id": "vcard:hasCalendarLink",
+      "@type": "@id"
+    },
+    "hasCalendarRequest": {
+      "@id": "vcard:hasCalendarRequest",
+      "@type": "@id"
+    },
+    "hasCategory": {
+      "@id": "vcard:hasCategory",
+      "@type": "@id"
+    },
+    "hasCountryName": {
+      "@id": "vcard:hasCountryName",
+      "@type": "@id"
+    },
+    "hasEmail": {
+      "@id": "vcard:hasEmail",
+      "@type": "@id"
+    },
+    "hasFN": {
+      "@id": "vcard:hasFN",
+      "@type": "@id"
+    },
+    "hasFamilyName": {
+      "@id": "vcard:hasFamilyName",
+      "@type": "@id"
+    },
+    "hasGender": {
+      "@id": "vcard:hasGender",
+      "@type": "@id"
+    },
+    "hasGeo": {
+      "@id": "vcard:hasGeo",
+      "@type": "@id"
+    },
+    "hasGivenName": {
+      "@id": "vcard:hasGivenName",
+      "@type": "@id"
+    },
+    "hasHonorificPrefix": {
+      "@id": "vcard:hasHonorificPrefix",
+      "@type": "@id"
+    },
+    "hasHonorificSuffix": {
+      "@id": "vcard:hasHonorificSuffix",
+      "@type": "@id"
+    },
+    "hasInstantMessage": {
+      "@id": "vcard:hasInstantMessage",
+      "@type": "@id"
+    },
+    "hasKey": {
+      "@id": "vcard:hasKey",
+      "@type": "@id"
+    },
+    "hasLanguage": {
+      "@id": "vcard:hasLanguage",
+      "@type": "@id"
+    },
+    "hasLocality": {
+      "@id": "vcard:hasLocality",
+      "@type": "@id"
+    },
+    "hasLogo": {
+      "@id": "vcard:hasLogo",
+      "@type": "@id"
+    },
+    "hasMember": {
+      "@id": "vcard:hasMember",
+      "@type": "@id"
+    },
+    "hasName": {
+      "@id": "vcard:hasName",
+      "@type": "@id"
+    },
+    "hasNickname": {
+      "@id": "vcard:hasNickname",
+      "@type": "@id"
+    },
+    "hasNote": {
+      "@id": "vcard:hasNote",
+      "@type": "@id"
+    },
+    "hasOrganizationName": {
+      "@id": "vcard:hasOrganizationName",
+      "@type": "@id"
+    },
+    "hasOrganizationUnit": {
+      "@id": "vcard:hasOrganizationUnit",
+      "@type": "@id"
+    },
+    "hasPhoto": {
+      "@id": "vcard:hasPhoto",
+      "@type": "@id"
+    },
+    "hasPostalCode": {
+      "@id": "vcard:hasPostalCode",
+      "@type": "@id"
+    },
+    "hasRegion": {
+      "@id": "vcard:hasRegion",
+      "@type": "@id"
+    },
+    "hasRelated": {
+      "@id": "vcard:hasRelated",
+      "@type": "@id"
+    },
+    "hasRole": {
+      "@id": "vcard:hasRole",
+      "@type": "@id"
+    },
+    "hasSound": {
+      "@id": "vcard:hasSound",
+      "@type": "@id"
+    },
+    "hasSource": {
+      "@id": "vcard:hasSource",
+      "@type": "@id"
+    },
+    "hasStreetAddress": {
+      "@id": "vcard:hasStreetAddress",
+      "@type": "@id"
+    },
+    "hasTelephone": {
+      "@id": "vcard:hasTelephone",
+      "@type": "@id"
+    },
+    "hasTitle": {
+      "@id": "vcard:hasTitle",
+      "@type": "@id"
+    },
+    "hasUID": {
+      "@id": "vcard:hasUID",
+      "@type": "@id"
+    },
+    "hasURL": {
+      "@id": "vcard:hasURL",
+      "@type": "@id"
+    },
+    "hasValue": {
+      "@id": "vcard:hasValue",
+      "@type": "@id"
+    },
+    "key": {
+      "@id": "vcard:key",
+      "@type": "@id"
+    },
+    "logo": {
+      "@id": "vcard:logo",
+      "@type": "@id"
+    },
+    "n": {
+      "@id": "vcard:n",
+      "@type": "@id"
+    },
+    "org": {
+      "@id": "vcard:org",
+      "@type": "@id"
+    },
+    "photo": {
+      "@id": "vcard:photo",
+      "@type": "@id"
+    },
+    "rev": {
+      "@id": "vcard:rev",
+      "@type": "xsd:dateTime"
+    },
+    "sound": {
+      "@id": "vcard:sound",
+      "@type": "@id"
+    },
+    "tel": {
+      "@id": "vcard:tel",
+      "@type": "@id"
+    },
+    "additional-name": "vcard:additional-name",
+    "anniversary": {
+      "@id": "vcard:anniversary",
+      "@type": "xsd:dateTime"
+    },
+    "anniversaryYear": {
+      "@id": "vcard:anniversary",
+      "@type": "xsd:gYear"
+    },
+    "bday": {
+      "@id": "vcard:bday",
+      "@type": "xsd:dateTime"
+    },
+    "bdayYear": {
+      "@id": "vcard:bday",
+      "@type": "xsd:gYear"
+    },
+    "adr": {
+      "@id": "vcard:adr",
+      "@type": "@id"
+    },
+    "email": {
+      "@id": "vcard:email",
+      "@type": "@id"
+    },
+    "geo": {
+      "@id": "vcard:geo",
+      "@type": "@id"
+    },
+    "category": "vcard:category",
+    "country-name": "vcard:country-name",
+    "family-name": "vcard:family-name",
+    "fn": "vcard:fn",
+    "given-name": "vcard:given-name",
+    "honorific-prefix": "vcard:honorific-prefix",
+    "honorific-suffix": "vcard:honorific-suffix",
+    "language": "vcard:language",
+    "locality": "vcard:locality",
+    "nickname": "vcard:nickname",
+    "note": "vcard:note",
+    "organization-name": "vcard:organization-name",
+    "organization-unit": "vcard:organization-unit",
+    "postal-code": "vcard:postal-code",
+    "prodid": "vcard:prodid",
+    "region": "vcard:region",
+    "revision": "vcard:revision",
+    "role": "vcard:role",
+    "sort-string": "vcard:sort-string",
+    "street-address": "vcard:street-address",
+    "tz": "vcard:tz",
+    "job-title": "vcard:title",
+    "value": "vcard:value"
+  },
+  {
     "@vocab": "_:",
     "as": "http://www.w3.org/ns/activitystreams#",
     "Accept": "as:Accept",
@@ -341,283 +628,7 @@
     "width": {
       "@id": "as:width",
       "@type": "xsd:nonNegativeInteger"
-    },
-  },
- {
-    "gsp:asWKT": { "@type": "gsp:wktLiteral" },
-    "geo:alt": {"@type": "xsd:float"},
-    "geo:lat": {"@type": "xsd:float"},
-    "geo:long": {"@type": "xsd:float"},
-    "vcard:adr": { "@type": "@id" },
-    "vcard:agent": { "@type": "@id" },
-    "vcard:email": { "@type": "@id" },
-    "vcard:geo": { "@type": "@id" },
-    "vcard:hasAdditionalName": { "@type": "@id" },
-    "vcard:hasAddress": { "@type": "@id" },
-    "vcard:hasCalendarBusy": { "@type": "@id" },
-    "vcard:hasCalendarLink": { "@type": "@id" },
-    "vcard:hasCalendarRequest": { "@type": "@id" },
-    "vcard:hasCategory": { "@type": "@id" },
-    "vcard:hasCountryName": { "@type": "@id" },
-    "vcard:hasEmail": { "@type": "@id" },
-    "vcard:hasFN": { "@type": "@id" },
-    "vcard:hasFamilyName": { "@type": "@id" },
-    "vcard:hasGender": { "@type": "@id" },
-    "vcard:hasGeo": { "@type": "@id" },
-    "vcard:hasGivenName": { "@type": "@id" },
-    "vcard:hasHonorificPrefix": { "@type": "@id" },
-    "vcard:hasHonorificSuffix": { "@type": "@id" },
-    "vcard:hasInstantMessage": { "@type": "@id" },
-    "vcard:hasKey": { "@type": "@id" },
-    "vcard:hasLanguage": { "@type": "@id" },
-    "vcard:hasLocality": { "@type": "@id" },
-    "vcard:hasLogo": { "@type": "@id" },
-    "vcard:hasMember": { "@type": "@id" },
-    "vcard:hasName": { "@type": "@id" },
-    "vcard:hasNickname": { "@type": "@id" },
-    "vcard:hasNote": { "@type": "@id" },
-    "vcard:hasOrganizationName": { "@type": "@id" },
-    "vcard:hasOrganizationUnit": { "@type": "@id" },
-    "vcard:hasPhoto": { "@type": "@id" },
-    "vcard:hasPostalCode": { "@type": "@id" },
-    "vcard:hasRegion": { "@type": "@id" },
-    "vcard:hasRelated": { "@type": "@id" },
-    "vcard:hasRole": { "@type": "@id" },
-    "vcard:hasSound": { "@type": "@id" },
-    "vcard:hasSource": { "@type": "@id" },
-    "vcard:hasStreetAddress": { "@type": "@id" },
-    "vcard:hasTelephone": { "@type": "@id" },
-    "vcard:hasTitle": { "@type": "@id" },
-    "vcard:hasUID": { "@type": "@id" },
-    "vcard:hasURL": { "@type": "@id" },
-    "vcard:hasValue": { "@type": "@id" },
-    "vcard:key": { "@type": "@id" },
-    "vcard:logo": { "@type": "@id" },
-    "vcard:n": { "@type": "@id" },
-    "vcard:org": { "@type": "@id" },
-    "vcard:photo": { "@type": "@id" },
-    "vcard:rev": { "@type": "xsd:dateTime" },
-    "vcard:sound": { "@type": "@id" },
-    "vcard:tel": { "@type": "@id" },
-    "vcard:url": { "@type": "@id" },
-    "foaf:homepage": { "@type": "@id"},
-    "foaf:isPrimaryTopicOf": { "@type": "@id"},
-    "foaf:knows": { "@type": "@id"},
-    "foaf:made": { "@type": "@id"},
-    "foaf:maker": { "@type": "@id"},
-    "foaf:mbox": { "@type": "@id"},
-    "foaf:member": { "@type": "@id"},
-    "foaf:page": { "@type": "@id"},
-    "foaf:primaryTopic": { "@type": "@id"},
-    "foaf:weblog": { "@type": "@id"},
-    "foaf:account": { "@type": "@id"},
-    "foaf:accountServiceHomepage": { "@type": "@id"},
-    "foaf:basedNear": { "@type": "@id"},
-    "foaf:currentProject": { "@type": "@id"},
-    "foaf:depiction": { "@type": "@id"},
-    "foaf:depicts": { "@type": "@id"},
-    "foaf:focus": { "@type": "@id"},
-    "foaf:img": { "@type": "@id"},
-    "foaf:interest": { "@type": "@id"},
-    "foaf:logo": { "@type": "@id"},
-    "foaf:openid": { "@type": "@id"},
-    "foaf:pastProject": { "@type": "@id"},
-    "foaf:publications": { "@type": "@id"},
-    "foaf:schoolHomepage": { "@type": "@id"},
-    "foaf:thumbnail": { "@type": "@id"},
-    "foaf:tipjar": { "@type": "@id"},
-    "foaf:topic": { "@type": "@id"},
-    "foaf:topic_interest": { "@type": "@id"},
-    "foaf:workInfoHomepage": { "@type": "@id"},
-    "foaf:workplaceHomepage": { "@type": "@id"},
-    "foaf:fundedBy": { "@type": "@id"},
-    "foaf:holdsAccount": { "@type": "@id"},
-    "foaf:theme": { "@type": "@id"},
-    "foaf:birthday": { "@type": "xsd:gMonthDay" },
-    "foaf:age": { "@type": "xsd:integer" },
-    "dct:accessRights": { "@type": "@id" },
-    "dct:accrualMethod": { "@type": "@id" },
-    "dct:accrualPeriodicity": { "@type": "@id" },
-    "dct:accrualPolicy": { "@type": "@id" },
-    "dct:audience": { "@type": "@id" },
-    "dct:conformsTo": { "@type": "@id" },
-    "dct:contributor": { "@type": "@id" },
-    "dct:coverage": { "@type": "@id" },
-    "dct:creator": { "@type": "@id" },
-    "dct:educationLevel": { "@type": "@id" },
-    "dct:extent": { "@type": "@id" },
-    "dct:format": { "@type": "@id" },
-    "dct:hasFormat": { "@type": "@id" },
-    "dct:hasPart": { "@type": "@id" },
-    "dct:hasVersion": { "@type": "@id" },
-    "dct:instructionalMethod": { "@type": "@id" },
-    "dct:isFormatOf": { "@type": "@id" },
-    "dct:isPartOf": { "@type": "@id" },
-    "dct:isReferencedBy": { "@type": "@id" },
-    "dct:isReplacedBy": { "@type": "@id" },
-    "dct:isRequiredBy": { "@type": "@id" },
-    "dct:isVersionOf": { "@type": "@id" },
-    "dct:license": { "@type": "@id" },
-    "dct:mediator": { "@type": "@id" },
-    "dct:medium": { "@type": "@id" },
-    "dct:prevenance": { "@type": "@id" },
-    "dct:publisher": { "@type": "@id" },
-    "dct:references": { "@type": "@id" },
-    "dct:relation": { "@type": "@id" },
-    "dct:replaces": { "@type": "@id" },
-    "dct:requires": { "@type": "@id" },
-    "dct:rights": { "@type": "@id" },
-    "dct:rightsHolder": { "@type": "@id" },
-    "dct:source": { "@type": "@id" },
-    "dct:spatial": { "@type": "@id" },
-    "dct:subject": { "@type": "@id" },
-    "dct:tableOfContents": { "@type": "@id" },
-    "dct:temporal": { "@type": "@id" },
-    "dct:type": { "@type": "@id" },
-    "dc:contributor": { "@type": "@id" },
-    "dc:coverage": { "@type": "@id" },
-    "dc:creator": { "@type": "@id" },
-    "dc:format": { "@type": "@id" },
-    "dc:publisher": { "@type": "@id" },
-    "dc:relation": { "@type": "@id" },
-    "dc:rights": { "@type": "@id" },
-    "dc:source": { "@type": "@id" },
-    "dc:subject": { "@type": "@id" },
-    "dc:type": { "@type": "@id" },
-    "dct:available": { "@type": "xsd:dateTime"} ,
-    "dct:created": { "@type": "xsd:dateTime"} ,
-    "dct:date": { "@type": "xsd:dateTime"} ,
-    "dct:dateAccepted": { "@type": "xsd:dateTime"} ,
-    "dct:dateCopyrighted": { "@type": "xsd:dateTime"} ,
-    "dct:dateSubmitted": { "@type": "xsd:dateTime"} ,
-    "dct:issued": { "@type": "xsd:dateTime"} ,
-    "dct:modified": { "@type": "xsd:dateTime"} ,
-    "dc:date": { "@type": "xsd:dateTime"},
-    "org:basedAt": { "@type": "@id" },
-    "org:changedBy": { "@type": "@id" },
-    "org:classification": { "@type": "@id" },
-    "org:hasMember": { "@type": "@id" },
-    "org:hasMembership": { "@type": "@id" },
-    "org:hasPost": { "@type": "@id" },
-    "org:hasPrimarySite": { "@type": "@id" },
-    "org:hasRegisteredSite": { "@type": "@id" },
-    "org:hasSite": { "@type": "@id" },
-    "org:hasSubOrganization": { "@type": "@id" },
-    "org:hasUnit": { "@type": "@id" },
-    "org:headOf": { "@type": "@id" },
-    "org:heldBy": { "@type": "@id" },
-    "org:holds": { "@type": "@id" },
-    "org:linkedTo": { "@type": "@id" },
-    "org:location": { "@type": "@id" },
-    "org:memberOf": { "@type": "@id" },
-    "org:member": { "@type": "@id" },
-    "org:organization": { "@type": "@id" },
-    "org:originalOrganization": { "@type": "@id" },
-    "org:postIn": { "@type": "@id" },
-    "org:reportsTo": { "@type": "@id" },
-    "org:resultedFrom": { "@type": "@id" },
-    "org:resultingOrganization": { "@type": "@id" },
-    "org:role": { "@type": "@id" },
-    "org:roleProperty": { "@type": "@id" },
-    "org:siteOf": { "@type": "@id" },
-    "org:subOrganizationOf": { "@type": "@id" },
-    "org:transitiveSubOrganizationOf": { "@type": "@id" },
-    "org:unitOf": { "@type": "@id" },
-    "prov:wasGeneratedBy": { "@type": "@id" },
-    "prov:wasDerivedFrom": { "@type": "@id" },
-    "prov:wasAttributedTo": { "@type": "@id" },
-    "prov:used": { "@type": "@id" },
-    "prov:wasInformedBy": { "@type": "@id" },
-    "prov:wasAssociatedWith": { "@type": "@id" },
-    "prov:actedOnBehalfOf": { "@type": "@id" },
-    "prov:alternateOf": { "@type": "@id" },
-    "prov:specializationOf": { "@type": "@id" },
-    "prov:hadPrimarySource": { "@type": "@id" },
-    "prov:wasQuotedFrom": { "@type": "@id" },
-    "prov:wasRevisionOf": { "@type": "@id" },
-    "prov:wasInvalidatedBy": { "@type": "@id" },
-    "prov:hadMember": { "@type": "@id" },
-    "prov:wasStartedBy": { "@type": "@id" },
-    "prov:wasEndedBy": { "@type": "@id" },
-    "prov:invalidated": { "@type": "@id" },
-    "prov:influenced": { "@type": "@id" },
-    "prov:atLocation": { "@type": "@id" },
-    "prov:generated": { "@type": "@id" },
-    "prov:wasInfluencedBy": { "@type": "@id" },
-    "prov:qualifiedInfluence": { "@type": "@id" },
-    "prov:qualifiedGeneration": { "@type": "@id" },
-    "prov:qualifiedDerivation": { "@type": "@id" },
-    "prov:qualifiedPrimarySource": { "@type": "@id" },
-    "prov:qualifiedQuotation": { "@type": "@id" },
-    "prov:qualifiedRevision": { "@type": "@id" },
-    "prov:qualifiedAttribution": { "@type": "@id" },
-    "prov:qualifiedInvalidation": { "@type": "@id" },
-    "prov:qualifiedStart": { "@type": "@id" },
-    "prov:qualifiedUsage": { "@type": "@id" },
-    "prov:qualifiedCommunication": { "@type": "@id" },
-    "prov:qualifiedAssociation": { "@type": "@id" },
-    "prov:qualifiedEnd": { "@type": "@id" },
-    "prov:qualifiedDelegation": { "@type": "@id" },
-    "prov:influencer": { "@type": "@id" },
-    "prov:entity": { "@type": "@id" },
-    "prov:hadUsage": { "@type": "@id" },
-    "prov:hadGeneration": { "@type": "@id" },
-    "prov:activity": { "@type": "@id" },
-    "prov:agent": { "@type": "@id" },
-    "prov:hadPlan": { "@type": "@id" },
-    "prov:hadActivity": { "@type": "@id" },
-    "prov:hadRole": { "@type": "@id" },
-    "prov:atTime": { "@type": "xsd:dateTime"},
-    "prov:invalidatedAtTime": { "@type": "xsd:dateTime"},
-    "prov:generatedAtTime": { "@type": "xsd:dateTime"},
-    "prov:endedAtTime": { "@type": "xsd:dateTime"},
-    "prov:startedAtTime": { "@type": "xsd:dateTime"},
-    "ical:calscale": { "@type": "xsd:string" },
-    "ical:method": { "@type": "xsd:string" },
-    "ical:prodid": { "@type": "xsd:string" },
-    "ical:version": { "@type": "xsd:string" },
-    "ical:location": { "@type": "xsd:string" },
-    "ical:resources": { "@type": "xsd:string" },
-    "ical:status": { "@type": "xsd:string" },
-    "ical:transp": { "@type": "xsd:string" },
-    "ical:tzid": { "@type": "xsd:string" },
-    "ical:tzname": { "@type": "xsd:string" },
-    "ical:tzoffsetfrom": { "@type": "xsd:string" },
-    "ical:tzoffsetto": { "@type": "xsd:string" },
-    "ical:contact": { "@type": "xsd:string" },
-    "ical:relatedTo": { "@type": "xsd:string" },
-    "ical:uid": { "@type": "xsd:string" },
-    "ical:action": { "@type": "xsd:string" },
-    "ical:requestStatus": { "@type": "xsd:string" },
-    "ical:exrule": { "@type": "xsd:string" },
-    "ical:rrule": { "@type": "xsd:string" },
-    "ical:freebusy": { "@type": "xsd:string" },
-    "ical:categories": { "@type": "xsd:string" },
-    "ical:lastModified": { "@type": "xsd:dateTime" },
-    "ical:dtstamp": { "@type": "xsd:dateTime" },
-    "ical:created": { "@type": "xsd:dateTime" },
-    "ical:exdate": { "@type": "xsd:dateTime" },
-    "ical:completed": { "@type": "xsd:dateTime" },
-    "ical:dtend": { "@type": "xsd:dateTime" },
-    "ical:due": { "@type": "xsd:dateTime" },
-    "ical:dtstart": { "@type": "xsd:dateTime" },
-    "ical:recurrenceId": { "@type": "xsd:dateTime" },
-    "ical:sequence": { "@type": "xsd:integer" },
-    "ical:repeat": { "@type": "xsd:integer" },
-    "ical:percentComplete": { "@type": "xsd:integer" },
-    "ical:priority": { "@type": "xsd:integer" },
-    "ical:triggerDate": { "@id": "ical:trigger", "@type": "xsd:dateTime" },
-    "ical:triggerDuration": { "@id": "ical:trigger", "@type": "xsd:duration" },
-    "ical:duration": { "@type": "xsd:duration" },
-    "ical:rdate": { "@id": "ical:rdate", "@type": "xsd:dateTime" },
-    "ical:rdatePeriod": { "@id": "ical:rdate", "@type": "xsd:string" },
-    "ical:url": { "@type": "@id" },
-    "ical:organizer": { "@type": "@id" },
-    "ical:attendee": { "@type": "@id" },
-    "ical:tzurl": { "@type": "@id" },
-    "ical:attach": { "@type": "@id" },
-    "ical:class": { "@type": "@id" },
-    "ical:geo": { "@container": "@list", "@type": "xsd:float"}
+    }
   }
   ]
 }

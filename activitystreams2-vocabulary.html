@@ -17910,6 +17910,7 @@ _:b0 a as:Connection ;
   @prefix xml: &lt;http://www.w3.org/XML/1998/namespace> .
   @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
   @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+  @prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#> .
   @base &lt;http://www.w3.org/ns/activitystreams> .
 
   &lt;http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
@@ -18153,6 +18154,15 @@ _:b0 a as:Connection ;
       owl:unionOf ( as:Object as:Link )
     ] .
 
+  as:provider a owl:ObjectProperty,
+                owl:DeprecatedProperty ;
+    rdfs:label "provider"@en ;
+    rdfs:domain as:Object ;
+    rdfs:range [
+      a owl:Class ;
+      owl:unionOf ( as:Object as:Link )
+    ] .
+
   as:replies a owl:ObjectProperty ;
     rdfs:label "replies"@en ;
     rdfs:range as:Collection ;
@@ -18165,15 +18175,6 @@ _:b0 a as:Connection ;
       a owl:Class ;
       owl:unionOf ( as:Object as:Link )
     ] .
-
-  as:role a owl:ObjectProperty ;
-    rdfs:label "role"@en;
-    rdfs:comment "Identifies the semantic role of a Parameter."@en ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf (as:Object as:Link )
-    ] ;
-    rdfs:domain as:Parameter .
 
   as:scope a owl:ObjectProperty ;
     rdfs:label "scope"@en ;
@@ -18209,15 +18210,6 @@ _:b0 a as:Connection ;
       owl:unionOf ( as:Object as:Link )
     ] ;
     owl:equivalentProperty as:tag ;.
-
-  as:provider a owl:ObjectProperty,
-                owl:DeprecatedProperty ;
-    rdfs:label "provider"@en ;
-    rdfs:domain as:Object ;
-    rdfs:range [
-      a owl:Class ;
-      owl:unionOf ( as:Object as:Link )
-    ] .
 
   as:target a owl:ObjectProperty ;
     rdfs:label "target"@en ;
@@ -18468,7 +18460,7 @@ _:b0 a as:Connection ;
   as:rating a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
     rdfs:label "rating"@en ;
-    rdfs:comment "A numeric rating (>= 0.0, <= 5.0) for the object"@en ;
+    rdfs:comment "A numeric rating (>= 0.0, &lt;= 5.0) for the object"@en ;
     rdfs:domain as:Object ;
     rdfs:range [
       a rdfs:Datatype ;
@@ -18733,7 +18725,8 @@ _:b0 a as:Connection ;
   as:Group a owl:Class ;
     rdfs:label "Group"@en ;
     rdfs:subClassOf as:Actor ;
-    rdfs:comment "A Group of any kind."@en .
+    rdfs:comment "A Group of any kind."@en ;
+    owl:equivalentClass vcard:Group .
 
   as:Ignore a owl:Class ;
     rdfs:label "Ignore"@en ;
@@ -18886,12 +18879,14 @@ _:b0 a as:Connection ;
   as:Person a owl:Class ;
     rdfs:label "Person"@en ;
     rdfs:subClassOf as:Actor ;
-    rdfs:comment "A Person"@en .
+    rdfs:comment "A Person"@en ;
+    owl:equivalentClass vcard:Individual .
 
   as:Place a owl:Class ;
     rdfs:label "Place"@en ;
     rdfs:subClassOf as:Object ;
-    rdfs:comment "A physical or logical location"@en .
+    rdfs:comment "A physical or logical location"@en ;
+    owl:equivalentClass vcard:Location .
 
   as:Post a owl:Class ;
     rdfs:label "Post"@en ;
