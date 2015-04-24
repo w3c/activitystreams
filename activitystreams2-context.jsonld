@@ -371,6 +371,18 @@
     "Respond": "as:Respond",
     "Move": "as:Move",
     "Travel": "as:Travel",
+    "a": {
+      "@id": "as:a",
+      "@type": "@id"
+    },
+    "b": {
+      "@id": "as:b",
+      "@type": "@id"
+    },
+    "relationship": {
+      "@id": "as:relationship",
+      "@type": "@id"
+    },
     "action": {
       "@id": "as:action",
       "@type": "@id"
