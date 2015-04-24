@@ -162,8 +162,7 @@ as:inReplyTo a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
-as:items a owl:ObjectProperty,
-           owl:FunctionalProperty ;
+as:items a owl:ObjectProperty ;
   rdfs:label "items"@en ;
   rdfs:domain as:Collection ;
   rdfs:range [
