@@ -315,6 +315,7 @@
     "Article": "as:Article",
     "Assign": "as:Assign",
     "Audio": "as:Audio",
+    "Blob": "as:Blob",
     "Block": "as:Block",
     "Collection": "as:Collection",
     "Confirm": "as:Confirm",
@@ -334,6 +335,7 @@
     "Group": "as:Group",
     "Ignore": "as:Ignore",
     "Image": "as:Image",
+    "ImageBlob": "as:ImageBlob",
     "Invite": "as:Invite",
     "Join": "as:Join",
     "Leave": "as:Leave",
@@ -425,6 +427,10 @@
     },
     "current": {
       "@id": "as:current",
+      "@type": "@id"
+    },
+    "encoding": {
+      "@id": "as:encoding",
       "@type": "@id"
     },
     "first": {
