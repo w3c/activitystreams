@@ -973,6 +973,11 @@ as:Person a owl:Class ;
   rdfs:subClassOf as:Actor ;
   rdfs:comment "A Person"@en .
 
+as:Profile a owl:Class ;
+  rdfs:label "Profile"@en;
+  rdfs:subClassOf as:Content ;
+  rdfs:comment "A Profile Document"@en .
+
 as:Place a owl:Class ;
   rdfs:label "Place"@en ;
   rdfs:subClassOf as:Object ;
