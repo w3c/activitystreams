@@ -789,8 +789,14 @@ _:b0 a as:Collection ;
       defines the abstract model for Activity Streams 2.0. The vocabulary
       is segmented into a one set of seven core class and an extended set of
       Activity and Object types common to most "Social" Web applications. The
-      core classes include: <a>Object</a>, <a>Link</a>, <a>Actor</a>, <a>Activity</a>,
-      <a href="activitystreams2-vocabulary.html#dfn-intransitiveactivity">IntransitiveActivity</a>, <a>Collection</a> and <a>OrderedCollection</a>.
+      core classes include:
+        <a>Object</a>,
+        <a>Link</a>,
+        <a>Actor</a>,
+        <a>Activity</a>,
+        <a href="activitystreams2-vocabulary.html#dfn-intransitiveactivity">IntransitiveActivity</a>,
+        <a>Collection</a>
+        and <a>OrderedCollection</a>.
       Each of these classes is described and illustrated below. The extended
       Activity and Object types are defined normatively in the Activity
       Vocabulary specification.
@@ -806,10 +812,12 @@ _:b0 a as:Collection ;
 
       <p>
         In addition to having a global identifier (expressed as an absolute IRI
-        using the JSON-LD <code>@id</code> keyword) and an "object type" (expressed
-        using the JSON-LD <code>@type</code> keyword), all instances of the <code>Object</code>
-        class share a common set of properties normatively defined by the
-        <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>. These include:
+        using the JSON-LD <code>@id</code> keyword) and an "object type"
+        (expressed using the JSON-LD <code>@type</code> keyword), all instances
+        of the <code>Object</code> class share a common set of properties
+        normatively defined by the
+        <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>.
+        These include:
         <code>
           <code><a href="activitystreams2-vocabulary.html#dfn-alias">alias</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a></code> |
@@ -842,9 +850,10 @@ _:b0 a as:Collection ;
       </p>
 
       <p>
-        Previous versions of the Activity Streams format used the <code>objectType</code>
-        property to identify the action type. The <code>objectType</code> property MUST NOT
-        be used within an Activity Streams 2.0 document to represent object type.
+        Previous versions of the Activity Streams format used the
+        <code>objectType</code> property to identify the action type. The
+        <code>objectType</code> property MUST NOT be used within an Activity
+        Streams 2.0 document to represent object type.
       </p>
 
       <p>
@@ -1454,17 +1463,18 @@ _:b0 a as:Object ;
       <p>
         For example, all <a title="Object">Objects</a> can contain an
         <code><a href="activitystreams2-vocabulary.html#dfn-image-term">image</a></code>
-        property whose value describes a graphical representation of the containing
-        object.  This property will typically be used to provide the URL to an image
-        (e.g. JPEG, GIF or PNG) resource that can be displayed to the user.  Any given
-        object might have multiple such visual representations -- multiple screenshots,
-        for instance, or the same image at different resolutions. In Activity Streams 2.0,
-        there are essentially three ways of describing such references.
+        property whose value describes a graphical representation of the
+        containing object.  This property will typically be used to provide the
+        URL to an image (e.g. JPEG, GIF or PNG) resource that can be displayed
+        to the user.  Any given object might have multiple such visual
+        representations -- multiple screenshots, for instance, or the same
+        image at different resolutions. In Activity Streams 2.0, there are
+        essentially three ways of describing such references.
       </p>
 
-      <figure><figcaption>To reference a single image without any additional metadata,
-      a direct association can be expressed as a JSON string containing an absolute
-      or relative IRI.</figcaption>
+      <figure><figcaption>To reference a single image without any additional
+      metadata, a direct association can be expressed as a JSON string
+      containing an absolute or relative IRI.</figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
@@ -1589,9 +1599,9 @@ _:b0 a as:Object ;
         indirect relationship</a> that allows additional properties about the
         relationship to be specified. Such properties (e.g. <code>mediaType</code>,
         <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a>
-        itself as opposed to describing the referenced resource. For many practical
-        applications, this distinction will likely be fairly insignificant but it
-        is still worth keeping in mind.
+        itself as opposed to describing the referenced resource. For many
+        practical applications, this distinction will likely be fairly
+        insignificant but it is still worth keeping in mind.
       </p>
 
       <figure><figcaption>
@@ -1683,15 +1693,16 @@ _:b0 a as:Object ;
         the <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> property
         provides the link relation value. If no <code>rel</code> property is
         specified, the link relation is considered to be unspecified. Any given
-        Link can have multiple link relation values. In the JSON-LD serialization,
-        A single link relation is expressed as a single JSON string. Multiple
-        link relations are expressed as an array of JSON strings.
+        Link can have multiple link relation values. In the JSON-LD
+        serialization, A single link relation is expressed as a single JSON
+        string. Multiple link relations are expressed as an array of JSON
+        strings.
       </p>
 
       <p>
-        In the following example, two separate references are provided.  The link
-        relation of the first is unspecified, while the link relation of the
-        second is "<code>thumbnail</code>".
+        In the following example, two separate references are provided.  The
+        link relation of the first is unspecified, while the link relation of
+        the second is "<code>thumbnail</code>".
       </p>
 
       <figure><figcaption></figcaption>
@@ -1786,8 +1797,9 @@ _:b0 a as:Object ;
       </p>
 
       <p>
-        Note that the <a>Link</a> and <a>Object</a> classes are disjoint from one
-        another. That is, any given <a>Object</a> cannot also be a <a>Link</a>.
+        Note that the <a>Link</a> and <a>Object</a> classes are disjoint from
+        one another. That is, any given <a>Object</a> cannot also be a
+        <a>Link</a>.
       </p>
 
     </section>
@@ -1811,12 +1823,13 @@ _:b0 a as:Object ;
       </p>
 
       <p>
-        This specification intentionally defines Actors in only the most generalized
-        way, stopping short of defining semantically specific properties for each.
-        All Actor objects are specializations of <code><a>Object</a></code> and inherit
-        all of the core properties common to all Object's. External vocabularies
-        (VCard for instance) can be used to express additional detail not covered
-        by the Activity Vocabulary.
+        This specification intentionally defines Actors in only the most
+        generalized way, stopping short of defining semantically specific
+        properties for each. All Actor objects are specializations of
+        <code><a>Object</a></code> and inherit all of the core properties
+        common to all Object's. External vocabularies (VCard for instance) can
+        be used to express additional detail not covered by the Activity
+        Vocabulary.
       </p>
 
       <figure><figcaption>An Activity with a Person actor:</figcaption>
@@ -1908,7 +1921,10 @@ _:b0 a as:Share ;
   </ul>
   <div id="ex17-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"vcard": "http://www.w3.org/2006/vcard/ns#"}
+  ],
   "@type": "Share",
   "actor": {
     "@type": "Person",
@@ -1988,15 +2004,15 @@ _:c14n0 a as:Share ;
 
       <p>
         While implementations are free to introduce new types of Actors beyond
-        those defined by the Activity Vocabulary, interoperability issues can arise
-        when applications rely too much on extension types that are not recognized
-        by other implementations. Care should be taken to not unduly overlap with or
-        duplicate the existing Actor types. For instance, some vocabularies (e.g. VCard)
-        define their own classes for describing people. An implementation that wishes,
-        for example, to use a <code>vcard:Individual</code> as an Actor SHOULD identify
-        that Actor as being <em>both</em> a
-        <code><a href="activitystreams2-vocabulary.html#dfn-person">Person</a></code> and
-        an <code>vcard:Individual</code>, as illustrated in the following:
+        those defined by the Activity Vocabulary, interoperability issues can
+        arise when applications rely too much on extension types that are not
+        recognized by other implementations. Care should be taken to not unduly
+        overlap with or duplicate the existing Actor types. For instance, some
+        vocabularies (e.g. VCard) define their own classes for describing
+        people. An implementation that wishes, for example, to use a
+        <code>vcard:Individual</code> as an Actor SHOULD identify that Actor as
+        being <em>both</em> a <code><a href="activitystreams2-vocabulary.html#dfn-person">Person</a></code>
+        and an <code>vcard:Individual</code>, as illustrated in the following:
       </p>
 
       <figure><figcaption>An Actor that is both a <code>Person</code> and a
@@ -2011,7 +2027,10 @@ _:c14n0 a as:Share ;
   </ul>
   <div id="ex18-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"vcard": "http://www.w3.org/2006/vcard/ns#"}
+  ],
   "@type": "Share",
   "actor": {
     "@type": ["Person", "vcard:Individual"],
@@ -2692,21 +2711,23 @@ _:c14n0 a as:OrderedCollection ;
       generic "<code>application/json</code>" MIME media type MUST follow
       the syntax and processing rules set by [[!AS1]].  The 2.0
       syntax and processing rules apply only when handling
-      serializations using the "<code>application/activity+json</code>" media type.
+      serializations using the "<code>application/activity+json</code>" media
+      type.
     </li>
     <li>
       When processing Activity Streams 1.0 documents using a JSON-LD processing
-      model, implementations MUST use the special AS 1.0 to AS 2.0 expansion @context
-      definition provided <a href="activitystreams1-context.jsonld">here</a> to produce
+      model, implementations MUST use the special AS 1.0 to AS 2.0 expansion
+      @context definition provided <a href="activitystreams1-context.jsonld">here</a> to produce
       the JSON-LD expanded representation. Refer to the
-      <a href="http://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD Processing
-      Algorithms and API</a> for details.
+      <a href="http://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD
+      Processing Algorithms and API</a> for details.
     </li>
     <li>
-      When processing Activity Streams 1.0 documents and converting those to 2.0,
-      implementations MUST treat <code>id</code> as an alias for the JSON-LD
-      <code>@id</code> key word; and the <code>objectType</code> and <code>verb</code>
-      properties as aliases for the JSON-LD <code>@type</code> keyword.
+      When processing Activity Streams 1.0 documents and converting those to
+      2.0, implementations MUST treat <code>id</code> as an alias for the
+      JSON-LD <code>@id</code> key word; and the <code>objectType</code> and
+      <code>verb</code> properties as aliases for the JSON-LD
+      <code>@type</code> keyword.
     </li>
     <li>
       This document redefines the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>,
@@ -2722,20 +2743,21 @@ _:c14n0 a as:OrderedCollection ;
     </li>
     <li>
       This document redefines a large number of common properties
-      defined originally as Objects in 1.0 as either <a title="Object">Objects</a> or
-      <a title="Link">Links</a>. The JSON-LD serialization allows such property values
-      to be expressed as either an IRI String, an JSON object, or an Array of IRI Strings
-      and JSON objects. Because the 1.0 values are a valid subset allowed
-      by this specification, existing implementations are not required to take
-      any specific action to continue supporting those values.
+      defined originally as Objects in 1.0 as either
+      <a title="Object">Objects</a> or <a title="Link">Links</a>. The JSON-LD
+      serialization allows such property values to be expressed as either an
+      IRI String, an JSON object, or an Array of IRI Strings and JSON objects.
+      Because the 1.0 values are a valid subset allowed by this specification,
+      existing implementations are not required to take any specific action to
+      continue supporting those values.
     </li>
     <li>
       This specification deprecates the <code>upstreamDuplicates</code> and
-      <code>downstreamDuplicates</code> properties defined by Activity Streams 1.0
-      and does not provide a replacement. This is due largely to lack of any
-      reasonable implementation evidence. While the <code>upstreamDuplicates</code>
-      and <code>downstreamDuplicates</code> properties MAY continue to be used,
-      implementations SHOULD avoid them.
+      <code>downstreamDuplicates</code> properties defined by Activity Streams
+      1.0 and does not provide a replacement. This is due largely to lack of any
+      reasonable implementation evidence. While the
+      <code>upstreamDuplicates</code> and <code>downstreamDuplicates</code>
+      properties MAY continue to be used, implementations SHOULD avoid them.
     </li>
     </ol>
 
@@ -2752,38 +2774,37 @@ _:c14n0 a as:OrderedCollection ;
 
       <p>
         In Activity Streams 2.0, an "extension" is any property not defined
-        by the <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>.
-        Consuming implementations that encounter unfamiliar extensions
-        MUST NOT stop processing or signal an error and MUST
+        by the <a href="activitystreams2-vocabulary.html">Activity
+        Vocabulary</a>. Consuming implementations that encounter unfamiliar
+        extensions MUST NOT stop processing or signal an error and MUST
         continue processing the items as if those properties were not
         present. Support for specific extensions can vary across implementations
         and no normative processing model for extensions is provided.
       </p>
 
       <p>
-        While consuming implementations are not required to use the
-        standard JSON-LD Processing Algorithms [[JSON-LD-API]], it is important
-        to note that the algorithms, as currently defined, will silently ignore
-        any property that is not defined in a JSON-LD @context. Implementations
-        that publish Activity Streams 2.0 documents that contain extension properties
-        SHOULD provide a @context definition of those extensions.
+        It is important to note that the JSON-LD Processing Algorithms
+        [[JSON-LD-API]], as currently defined, will silently ignore any
+        property not defined in a JSON-LD @context. Implementations that
+        publish Activity Streams 2.0 documents containing extension
+        properties SHOULD provide a @context definition for all extensions.
       </p>
 
       <p>
         It is also important to note that there are valid JSON constructs which
         cannot be used within a JSON-LD document. For instance, JSON-LD forbids
         "arrays of arrays" as used, for example, by the popular
-        <a href="http://geojson.org/">GeoJSON</a> specification. While implementations
-        are free to use such constructs as extensions within an Activity Streams 2.0
-        document, consumers that use the standard JSON-LD Processing Algorithms
-        will be required to either ignore such extensions or map those to alternative
-        compatible constructs prior to applying the JSON-LD algorithms.
-        Simple GeoJSON Points, for instance, can be mapped to
-        <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code> objects,
-        while more complex geometries can be converted to
+        <a href="http://geojson.org/">GeoJSON</a> specification. While
+        implementations are free to use such constructs as extensions within an
+        Activity Streams 2.0 document, consumers that use the standard JSON-LD
+        Processing Algorithms will be required to either ignore such extensions
+        or map those to alternative compatible constructs prior to applying the
+        JSON-LD algorithms. Simple GeoJSON Points, for instance, can be mapped
+        to <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code>
+        objects, while more complex geometries can be converted to
         <a href="http://www.opengeospatial.org/standards/geosparql">GeoSparql</a>
-        "Well-Known Text" representations as illustrated in the non-normative examples
-        below:
+        "Well-Known Text" representations as illustrated in the non-normative
+        examples below:
       </p>
 
         <figure><figcaption>GeoJSON Point Coordinates:</figcaption>
@@ -2863,7 +2884,10 @@ _:c14n0 a as:Place;
   </ul>
   <div id="ex24-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"gsp": "http://www.opengis.net/ont/geosparql"}
+  ],
   "@type": "gsp:Geometry",
   "gsp:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
 }</pre>
@@ -2900,119 +2924,6 @@ _:c14n0 a gsp:Geometry ;
 </div>
 </figure>
 
-    <section id="compact-iris">
-      <h2>Handling of JSON-LD Compact IRIs</h2>
-
-        <p>
-          In JSON-LD, a "Compact IRI" is a type of shorthand notation that
-          allows absolute IRI values to be split into an absolute base IRI and
-          a relative token.  For instance, in the following example:
-        </p>
-
-        <figure><figcaption></figcaption>
-<pre class="example highlight json">{
-  "@context": {
-    "foaf": "http://xmlns.com/foaf/0.1/"
-  },
-  "foaf:givenName": "Sam"
-}</pre></figure>
-
-        <p>
-          The property name <code>foaf:givenName</code> is a Compact IRI that expands to
-          "<code>http://xmlns.com/foaf/0.1/givenName</code>" when processed by a JSON-LD
-          implementation.
-        </p>
-
-        <p>
-          While there are differences of opinion on how extensively Compact
-          IRIs ought to be used within JSON-LD document instances, JSON-LD
-          implementations are required to support them.
-        </p>
-
-        <p>
-          In order to simplify implementation and encourage interoperable reuse,
-          the following predefined prefixes are defined in the normative
-          Activity Streams 2.0 JSON-LD @context. Implementations MUST NOT
-          redefine any of the provided prefix mappings.
-        </p>
-
-        <table>
-          <tr>
-            <th>Prefix</th>
-            <th>Expanded</th>
-            <th>Name</th>
-          </tr>
-          <tr>
-            <td><code>as:</code></td>
-            <td><code>http://www.w3.org/ns/activitystreams#</code></td>
-            <td>Activity Streams Vocabulary</td>
-          </tr>
-          <tr>
-            <td><code>dc:</code></td>
-            <td><code>http://purl.org/dc/elements/1.1/</code></td>
-            <td>Dublin Core</td>
-          </tr>
-          <tr>
-            <td><code>dct:</code></td>
-            <td><code>http://purl.org/dc/terms/</code></td>
-            <td>Dublin Core Terms</td>
-          </tr>
-          <tr>
-            <td><code>dctypes:</code></td>
-            <td><code>http://purl.org/dc/dcmitype/</code></td>
-            <td>Dublin Core Types</td>
-          </tr>
-          <tr>
-            <td><code>foaf:</code></td>
-            <td><code>http://xmlns.com/foaf/0.1/</code></td>
-            <td>Friend of a Friend</td>
-          </tr>
-          <tr>
-            <td><code>vcard:</code></td>
-            <td><code>http://www.w3.org/2006/vcard/ns#</code></td>
-            <td>VCard</td>
-          </tr>
-          <tr>
-            <td><code>org:</code></td>
-            <td><code>http://www.w3.org/ns/org#</code></td>
-            <td>W3C Org Ontology</td>
-          </tr>
-          <tr>
-            <td><code>prov:</code></td>
-            <td><code>http://www.w3.org/ns/prov#</code></td>
-            <td>W3C Provenance Ontology</td>
-          </tr>
-          <tr>
-            <td><code>geo:</code></td>
-            <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></td>
-            <td>W3C Basic Geo Ontology</td>
-          </tr>
-          <tr>
-            <td><code>gsp:</code></td>
-            <td><code>http://www.opengis.net/ont/geosparql#</code></td>
-            <td>Geo-Sparql</td>
-          </tr>
-          <tr>
-            <td><code>ical:</code></td>
-            <td><code>http://www.w3.org/2002/12/cal/ical#</code></td>
-            <td>iCalendar Ontology</td>
-          </tr>
-          <tr>
-            <td><code>oa:</code></td>
-            <td><code>http://www.w3.org/ns/oa#</code></td>
-            <td>Web Annotation Data Model</td>
-          </tr>
-        </table>
-
-        <p>
-          For instance, the property name <code>foaf:givenName</code> would expand to
-          "<code>http://xmlns.com/foaf/0.1/givenName</code>", while the property
-          <code>prov:actingOnBehalfOf</code> would expand to
-          "<code>http://w3.org/ns/prov#actingOnBehalfOf</code>".
-        </p>
-
-      </section>
-
   </section>
 
   <section id="microsyntaxes">
@@ -3039,10 +2950,10 @@ _:c14n0 a gsp:Geometry ;
       <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> properties
       on an Activity Streams <code><a>Object</a></code>, implementations
       SHOULD NOT be required to parse the values of those properties in order to
-      determine the appropriate routing of notifications, categorization or linking
-      between objects. Instead, publishers SHOULD make appropriate use of the
-      <a href="activitystreams2-vocabulary.html">Activity Streams Vocabulary</a> terms
-      provided specifically for these purposes.
+      determine the appropriate routing of notifications, categorization or
+      linking between objects. Instead, publishers SHOULD make appropriate use
+      of the <a href="activitystreams2-vocabulary.html">Activity Streams Vocabulary</a>
+      terms provided specifically for these purposes.
     </p>
 
     <p>
@@ -3057,16 +2968,18 @@ _:c14n0 a gsp:Geometry ;
 
     <p>
       A typical social software implementation would typically render such a
-      content such that "<code>@sally</code>" is replaced with a hyperlink to "sally"'s
-      social profile page and "<code>#givingthanks</code>" is replaced with a
-      hyperlink to a listing of other notes that have been "tagged" with the
-      same topic. Most implementations would also send a special notification
-      to sally letting her know that a note mentioning her has been posted.
+      content such that "<code>@sally</code>" is replaced with a hyperlink to
+      "sally"'s social profile page and "<code>#givingthanks</code>" is
+      replaced with a hyperlink to a listing of other notes that have been
+      "tagged" with the same topic. Most implementations would also send a
+      special notification to sally letting her know that a note mentioning her
+      has been posted.
     </p>
 
     <p>
       The following illustrates an equivalent Activity Streams
-      <code><a href="activitystreams2-vocabulary.html#dfn-note">Note</a></code> object:
+      <code><a href="activitystreams2-vocabulary.html#dfn-note">Note</a></code>
+      object:
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
@@ -3087,9 +3000,9 @@ _:c14n0 a gsp:Geometry ;
 
     <p>
       The <code>to</code> property indicates that the user "@sally" is
-      to be considered part of the <a href="#audienceTargeting">primary audience</a>
-      of the note and should therefore receive notification. The <code>tag</code>
-      property associates the Note with a reference to
+      to be considered part of the <a href="#audienceTargeting">primary
+      audience</a> of the note and should therefore receive notification. The
+      <code>tag</code> property associates the Note with a reference to
       "<code>http://example.org/tags/givingthanks</code>". Note that the note's
       content still includes the "<code>@sally</code>" and "<code>#givingthanks</code>"
       microsyntaxes but that consuming implementations are not required to parse
@@ -3099,8 +3012,8 @@ _:c14n0 a gsp:Geometry ;
     <p>
       In the case a publisher wishes to indicate a mention without an associated
       notification, the publisher can use the
-      <code><a href="activitystreams2-vocabulary.html#dfn-mention">Mention</a></code> object
-      type as a value of the <code><a href="activitystreams2-vocabulary.html#dfn-tag">tag</a></code>
+      <code><a href="activitystreams2-vocabulary.html#dfn-mention">Mention</a></code>
+      object type as a value of the <code><a href="activitystreams2-vocabulary.html#dfn-tag">tag</a></code>
       property. The <code>Mention</code> object is a subclass of
       <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>.
     </p>
@@ -3208,15 +3121,18 @@ _:c14n0 a gsp:Geometry ;
         </tr>
         <tr>
           <td>Optional parameters: </td>
-          <td>profile: The profile parameter for the application/activity+json media type allows
-   one or more profile URIs to be specified.  These profile URIs have
-   the identifier semantics defined in [[!RFC6906]]. The "profile" media type parameter MUST be quoted.
-   It contains a non-empty list of space-separated URIs (the profile URIs).
+          <td>
+            profile: The profile parameter for the application/activity+json
+            media type allows one or more profile URIs to be specified.  These
+            profile URIs have the identifier semantics defined in [[!RFC6906]].
+            The "profile" media type parameter MUST be quoted. It contains a
+            non-empty list of space-separated URIs (the profile URIs).
    <pre>profile-param = "profile=" profile-value
 profile-value = <"> profile-URI 0*( 1*SP profile-URI ) <">
 profile-URI   = URI</pre>
-   The "URI" in the above grammar refers to the "URI" as defined in
-   Section 3 of [[!RFC3986]].</td>
+            The "URI" in the above grammar refers to the "URI" as defined in
+            Section 3 of [[!RFC3986]].
+          </td>
         </tr>
         <tr>
           <td>Encoding considerations: </td>
@@ -3234,7 +3150,9 @@ profile-URI   = URI</pre>
         </tr>
         <tr>
           <td>Contact: </td>
-          <td>James M Snell &lt;<a href="mailto:jasnell@gmail.com">jasnell@gmail.com</a>&gt;</td>
+          <td>
+            James M Snell &lt;<a href="mailto:jasnell@gmail.com">jasnell@gmail.com</a>&gt;
+          </td>
         </tr>
         </table>
 
@@ -3244,7 +3162,8 @@ profile-URI   = URI</pre>
       <h2>The <code>application/stream+json</code> Media Type</h2>
 
       <p>
-        This specification registers the <code><dfn title="application/stream+json">application/stream+json</dfn></code> MIME Media Type specifically for identifying documents
+        This specification registers the <code><dfn title="application/stream+json">application/stream+json</dfn></code>
+        MIME Media Type specifically for identifying documents
         conforming to the JSON Activity Streams 1.0 [[!AS1]] format.
       </p>
 
@@ -3263,15 +3182,18 @@ profile-URI   = URI</pre>
         </tr>
         <tr>
           <td>Optional parameters: </td>
-          <td>profile: The profile parameter for the application/stream+json media type allows
-   one or more profile URIs to be specified.  These profile URIs have
-   the identifier semantics defined in [[!RFC6906]]. The "profile" media type parameter MUST be quoted.
-   It contains a non-empty list of space-separated URIs (the profile URIs).
+          <td>
+            profile: The profile parameter for the application/stream+json
+            media type allows one or more profile URIs to be specified.  These
+            profile URIs have the identifier semantics defined in [[!RFC6906]].
+            The "profile" media type parameter MUST be quoted. It contains a
+            non-empty list of space-separated URIs (the profile URIs).
    <pre>profile-param = "profile=" profile-value
 profile-value = <"> profile-URI 0*( 1*SP profile-URI ) <">
 profile-URI   = URI</pre>
-   The "URI" in the above grammar refers to the "URI" as defined in
-   Section 3 of [[!RFC3986]].</td>
+            The "URI" in the above grammar refers to the "URI" as defined in
+            Section 3 of [[!RFC3986]].
+          </td>
         </tr>
         <tr>
           <td>Encoding considerations: </td>

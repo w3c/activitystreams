@@ -5,7 +5,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @base <http://www.w3.org/ns/activitystreams> .
 
 <http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
@@ -819,8 +818,7 @@ as:Give a owl:Class ;
 as:Group a owl:Class ;
   rdfs:label "Group"@en ;
   rdfs:subClassOf as:Actor ;
-  rdfs:comment "A Group of any kind."@en ;
-  owl:equivalentClass vcard:Group .
+  rdfs:comment "A Group of any kind."@en .
 
 as:Ignore a owl:Class ;
   rdfs:label "Ignore"@en ;
@@ -973,14 +971,12 @@ as:Page a owl:Class ;
 as:Person a owl:Class ;
   rdfs:label "Person"@en ;
   rdfs:subClassOf as:Actor ;
-  rdfs:comment "A Person"@en ;
-  owl:equivalentClass vcard:Individual .
+  rdfs:comment "A Person"@en .
 
 as:Place a owl:Class ;
   rdfs:label "Place"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:comment "A physical or logical location"@en ;
-  owl:equivalentClass vcard:Location .
+  rdfs:comment "A physical or logical location"@en .
 
 as:Post a owl:Class ;
   rdfs:label "Post"@en ;
