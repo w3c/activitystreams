@@ -551,7 +551,8 @@ as:radius a owl:DatatypeProperty ,
   ] .
 
 as:rating a owl:DatatypeProperty ,
-    owl:FunctionalProperty ;
+    owl:FunctionalProperty,
+    owl:DeprecatedProperty ;
   rdfs:label "rating"@en ;
   rdfs:comment "A numeric rating (>= 0.0, <= 5.0) for the object"@en ;
   rdfs:domain as:Object ;
