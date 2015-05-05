@@ -2778,8 +2778,11 @@ _:c14n0 a as:OrderedCollection ;
         Vocabulary</a>. Consuming implementations that encounter unfamiliar
         extensions MUST NOT stop processing or signal an error and MUST
         continue processing the items as if those properties were not
-        present. Support for specific extensions can vary across implementations
-        and no normative processing model for extensions is provided.
+        present. Note that support for extensions can vary across
+        implementations and no normative processing model for extensions is
+        defined. Accordingly, implementations that rely too heavily on
+        the use of extensions may experience reduced interoperability with
+        other implementations.
       </p>
 
       <p>
@@ -2924,6 +2927,223 @@ _:c14n0 a gsp:Geometry ;
 </div>
 </figure>
 
+    <section id="extension-round-trip">
+
+      <h2>Re-serialization of Extensions</h2>
+
+      <p>
+        Implementations that parse and then reserialize Activity Streams
+        2.0 documents that contain extension properties SHOULD take
+        sufficient care to ensure that extension properties used within
+        the original document are preserved and serialized appropriately.
+      </p>
+
+      <p>
+        For instance, consider the following simple Activity Stream object
+        containing hypothetical <code>foo</code> and <code>bar</code> extension
+        properties. The <code>foo</code> extension is defined within the
+        JSON-LD <code>@context</code> while the <code>bar</code> extension
+        property is not.
+      </p>
+
+      <figure><figcaption>A simple extended Object</figcaption>
+<pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"foo": "http://example.org/foo"}
+  ],
+  "@type": "Note",
+  "content": "This is a simple note",
+  "foo": 123,
+  "bar": 321
+}</pre></figure>
+
+      <p>
+        An implementation that receives this Note object can choose to parse
+        the object as an ordinary JSON object or it can use the standard
+        JSON-LD Expansion algorithm.
+      </p>
+
+      <p>
+        If the implementation chooses to parse the object as ordinary JSON
+        and then reserializes the object (e.g. for storage or redistribution),
+        then it would simply preserve the values of the <code>@context</code>,
+        <code>foo</code> and <code>bar</code> properties as they are and
+        include those in the reserialized output.
+      </p>
+
+      <p>
+        However, if the implementation chooses to use the JSON-LD expansion
+        algorithm, the <code>@context</code> and <code>bar</code> properties
+        will be removed from the expanded result.
+      </p>
+
+      <figure><figcaption>The JSON-LD Expanded version of the previous object:</figcaption>
+<pre class="example highlight json">[
+  {
+    "@type": ["http://www.w3.org/ns/activitystreams#Note"],
+    "http://www.w3.org/ns/activitystreams#content": [
+      {
+        "@value": "This is a simple note"
+      }
+    ],
+    "http://example.org/foo": [
+      {
+        "@value": 123,
+        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+      }
+    ]
+  }
+]</pre></figure>
+
+      <p>
+        If this document is then reserialized using only the normative
+        Activity Streams 2.0 context, the JSON-LD compacted form would
+        be:
+      </p>
+
+      <figure><figcaption>The reserialized compacted form:</figcaption>
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Note",
+  "content": "This is a simple note",
+  "http://example.org/foo": 123,
+}</pre></figure>
+
+      <p>
+        The loss of the <code>bar</code> property, as well as the use of
+        fully expanded URI label for the <code>foo</code> property is
+        not ideal. To ensure that the reserialized object is serialized
+        correctly, implementations that perform JSON-LD expansion of
+        received documents SHOULD, as much as possible, preserve the original
+        <code>@context</code> used when performing the JSON-LD expansion, then
+        reuse that when reserializing the object into the JSON-LD compacted
+        form.
+      </p>
+
+      <figure><figcaption>The reserialized compacted form using the original <code>@context</code></figcaption>
+<pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"foo": "http://example.org/foo"}
+  ],
+  "@type": "Note",
+  "content": "This is a simple note",
+  "foo": 123
+}</pre></figure>
+
+      <p>
+        Because the <code>bar</code> property is not defined within the
+        <code>@context</code>, it is still lost from the reserialized output,
+        but the <code>foo</code> property is serialized as expected using the
+        shortened name. To ensure that there is no loss of data, all extension
+        properties SHOULD be defined within the <code>@context</code>.
+      </p>
+
+    </section>
+
+    <section id="aggregation-of-extensions">
+
+      <h2>Aggregation of Extensions</h2>
+
+      <p>
+        Implementations that collect and aggregate Activity Streams objects
+        from multiple sources may often need to deal with conflicting or
+        incompatible extensions.
+      </p>
+
+      <p>
+        For instance, an implementation could receive both of the following
+        objects from clients. In each, a <code>foo</code> extension property
+        is defined and used but the definition of each are incompatible:
+      </p>
+
+      <figure><figcaption><code>foo</code> as an integer</figcaption>
+<pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {
+      "foo": {
+        "@id": "http://example.org/foo",
+        "@type": "xsd:integer"
+      }
+    }
+  ],
+  "@type": "Note",
+  "content": "This is a simple note",
+  "foo": 123
+}</pre></figure>
+
+<figure><figcaption><code>foo</code> as a date-time</figcaption>
+<pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {
+      "foo": {
+        "@id": "http://example.net/fooDate",
+        "@type": "xsd:dateTime"
+      }
+    }
+  ],
+  "@type": "Note",
+  "content": "This is another note",
+  "foo": "2015-12-11T12:34:56Z"
+}</pre></figure>
+
+      <p>
+        An implementation that wishes to include both objects within a
+        Collection serialized into JSON-LD compacted form would face a
+        number of issues due to the conflicting definitions of the
+        <code>foo</code> property. To serialize correctly, the
+        implementation SHOULD preserve the <code>@context</code> property
+        for each of the original objects and include those directly within
+        the serialized result:
+      </p>
+
+      <figure><figcaption>A <code>Collection</code> containing both objects:</figcaption>
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Collection",
+  "items": [
+    {
+      "@context": [
+        "http://www.w3.org/ns/activitystreams",
+        {
+          "foo": {
+            "@id": "http://example.org/foo",
+            "@type": "xsd:integer"
+          }
+        }
+      ],
+      "@type": "Note",
+      "content": "This is a simple note",
+      "foo": 123
+    },
+    {
+      "@context": [
+        "http://www.w3.org/ns/activitystreams",
+        {
+          "foo": {
+            "@id": "http://example.net/fooDate",
+            "@type": "xsd:dateTime"
+          }
+        }
+      ],
+      "@type": "Note",
+      "content": "This is another note",
+      "foo": "2015-12-11T12:34:56Z"
+    }
+  ]
+}</pre></figure>
+
+      <p>
+        While the serialized result is verbose, the use of the localized
+        <code>@context</code> definitions ensures that the conflicting
+        extension properties will be serialized appropriately.
+      </p>
+
+    </section>
+
   </section>
 
   <section id="microsyntaxes">
@@ -2983,7 +3203,7 @@ _:c14n0 a gsp:Geometry ;
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
-<pre>{
+<pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
   "content": "Thank you @sally for all your hard work! #givingthanks",
@@ -3019,7 +3239,7 @@ _:c14n0 a gsp:Geometry ;
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
-<pre>{
+<pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
   "content": "Thank you @sally for all your hard work! #givingthanks",
