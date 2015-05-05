@@ -2973,8 +2973,9 @@ _:c14n0 a gsp:Geometry ;
 
       <p>
         However, if the implementation chooses to use the JSON-LD expansion
-        algorithm, the <code>@context</code> and <code>bar</code> properties
-        will be removed from the expanded result.
+        algorithm, the <code>@context</code> will be removed from the expanded
+        result and the <code>bar</code> property will be mapped to the
+        "blank node" <code>_:bar</code>.
       </p>
 
       <figure><figcaption>The JSON-LD Expanded version of the previous object:</figcaption>
@@ -2990,6 +2991,11 @@ _:c14n0 a gsp:Geometry ;
       {
         "@value": 123,
         "@type": "http://www.w3.org/2001/XMLSchema#integer"
+      }
+    ],
+    "_:bar": [
+      {
+        "@value": "321"
       }
     ]
   }
@@ -3007,17 +3013,17 @@ _:c14n0 a gsp:Geometry ;
   "@type": "Note",
   "content": "This is a simple note",
   "http://example.org/foo": 123,
+  "bar": 321
 }</pre></figure>
 
       <p>
-        The loss of the <code>bar</code> property, as well as the use of
-        fully expanded URI label for the <code>foo</code> property is
-        not ideal. To ensure that the reserialized object is serialized
-        correctly, implementations that perform JSON-LD expansion of
-        received documents SHOULD, as much as possible, preserve the original
-        <code>@context</code> used when performing the JSON-LD expansion, then
-        reuse that when reserializing the object into the JSON-LD compacted
-        form.
+        While this is close, the use of fully expanded URI label for the
+        <code>foo</code> property is not ideal. To ensure that the reserialized
+        object is serialized correctly, implementations that perform JSON-LD
+        expansion of received documents SHOULD, as much as possible, preserve
+        the original <code>@context</code> used when performing the JSON-LD
+        expansion, then reuse that when reserializing the object into the
+        JSON-LD compacted form.
       </p>
 
       <figure><figcaption>The reserialized compacted form using the original <code>@context</code></figcaption>
@@ -3028,16 +3034,9 @@ _:c14n0 a gsp:Geometry ;
   ],
   "@type": "Note",
   "content": "This is a simple note",
-  "foo": 123
+  "foo": 123,
+  "bar": 321
 }</pre></figure>
-
-      <p>
-        Because the <code>bar</code> property is not defined within the
-        <code>@context</code>, it is still lost from the reserialized output,
-        but the <code>foo</code> property is serialized as expected using the
-        shortened name. To ensure that there is no loss of data, all extension
-        properties SHOULD be defined within the <code>@context</code>.
-      </p>
 
     </section>
 
