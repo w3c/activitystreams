@@ -365,7 +365,7 @@ as:relationship a owl:ObjectProperty;
   rdfs:comment "On a Connection object, describes the type of relationship"@en;
   rdfs:subPropertyOf rdf:predicate ;
   rdfs:domain as:Connection ;
-  rdfs:range rdf:Property ;
+  rdfs:range rdf:Property .
 
 #################################################################
 #
