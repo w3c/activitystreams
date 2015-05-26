@@ -868,7 +868,7 @@ as:Listen a owl:Class ;
 
 as:Read a owl:Class ;
   rdfs:label "Read"@en ;
-  rdfs:subClassOf as:View ;
+  rdfs:subClassOf as:Experience ;
   rdfs:comment "The actor read the object"@en .
 
 as:Respond a owl:Class ;
