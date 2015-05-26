@@ -861,11 +861,6 @@ as:View a owl:Class ;
   rdfs:subClassOf as:Experience ;
   rdfs:comment "The actor viewed the object"@en .
 
-as:Watch a owl:Class ;
-  rdfs:label "Watch"@en ;
-  rdfs:subClassOf as:View ;
-  rdfs:comment "The actor watched the object"@en .
-
 as:Listen a owl:Class ;
   rdfs:label "Listen"@en ;
   rdfs:subClassOf as:Experience ;
