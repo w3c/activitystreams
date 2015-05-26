@@ -367,6 +367,13 @@ as:relationship a owl:ObjectProperty;
   rdfs:domain as:Connection ;
   rdfs:range rdf:Property .
 
+as:describes a owl:ObjectProperty,
+               owl:FunctionalProperty;
+  rdfs:label "describes"@en;
+  rdfs:comment "On a Profile object, describes the object described by the profile"@en ;
+  rdfs:domain as:Profile ;
+  rdfs:range as:Object .
+
 #################################################################
 #
 #    Data properties
@@ -662,7 +669,6 @@ as:width a owl:DatatypeProperty ,
     a owl:Class ;
     owl:unionOf ( as:Content as:Link )
   ] .
-
 
 #################################################################
 #
