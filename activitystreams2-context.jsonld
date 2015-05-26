@@ -337,6 +337,10 @@
     "width": {
       "@id": "as:width",
       "@type": "xsd:nonNegativeInteger"
+    },
+    "describes": {
+      "@id": "as:describes",
+      "@type": "@id"
     }
   }
 }
