@@ -850,7 +850,7 @@ _:b0 a as:Collection ;
 
       <p>
         Previous versions of the Activity Streams format used the
-        <code>objectType</code> property to identify the action type. The
+        <code>objectType</code> property to identify the object type. The
         <code>objectType</code> property MUST NOT be used within an Activity
         Streams 2.0 document to represent object type.
       </p>
@@ -860,7 +860,6 @@ _:b0 a as:Collection ;
         SHOULD at least contain either the
         <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>
         or <code><a href="activitystreams2-vocabulary.html#def-displayname">displayNameMap</a></code>.
-        An object MAY contain both.
       </p>
 
 <figure><figcaption>Following is an example Object that uses the JSON-LD <code>@id</code> and <code>@type</code>
@@ -939,7 +938,8 @@ keywords to express the global identifier and object type:</figcaption>
 
       <p>
         Implementations MUST treat all object types in an Activity Streams
-        document as subclasses of <a>Object</a> unless the object is a <a>Link</a>.
+        document as subclasses of <a>Object</a> unless the object is a
+        <a>Link</a>.
       </p>
 
 <figure><figcaption>For instance, in the following example, the value of
@@ -1051,8 +1051,8 @@ value of <code>object</code> is not:</figcaption>
       classes for describing locations. An implementation that wishes, for
       example, to use a
   <code><a href="http://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
-      as an object type SHOULD also identify the
-      object as being both a <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code> and an
+      as an object type SHOULD also identify the object as being both a
+      <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code> and an
       <code>http://purl.org/goodrelations/v1#Location</code>, as
       illustrated in the following:
      </p>
@@ -1141,17 +1141,20 @@ _:b0 a as:Place, gr:Location ;
       <h2>Natural Language Values</h2>
 
       <p>
-        Several properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a>
-        are defined as having natural language values. These are representations
-        of human-readable character sequences using one or more languages.
+        Several properties defined by the
+        <a href="activitystreams2-vocabulary.html">Vocabulary</a> are defined
+        as having natural language values. These are representations of
+        human-readable character sequences using one or more languages.
         Within the JSON-LD serialization, they are expressed as either (1) a
-        single JSON string or (2) a JSON object mapping [[RFC5646]] Language-Tags
-        to localized, equivalent translations of the same string value. In
-        [[JSON-LD]], such constructs are referred to as "Language Maps". In the
-        serialized JSON-LD, these two forms are differentiated using a simple
-        property naming convention, for instance: "<code>displayName</code>"
-        identifies the JSON string form for the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>property
-        while "<code>displayNameMap</code>" represents the Language Map form.
+        single JSON string or (2) a JSON object mapping [[RFC5646]]
+        Language-Tags to localized, equivalent translations of the same string
+        value. In [[JSON-LD]], such constructs are referred to as "Language
+        Maps". In the serialized JSON-LD, these two forms are differentiated
+        using a simple property naming convention, for instance:
+        "<code>displayName</code>" identifies the JSON string form for the
+        <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>
+        property while "<code>displayNameMap</code>" represents the Language
+        Map form.
       </p>
 
       <figure>
@@ -1249,29 +1252,32 @@ _:b0 a as:Object ;
 </figure>
 
       <p>
-        Every key in the Language Map form MUST be a valid [[RFC5646]] Language-Tag.
-        The associated values MUST be Strings.
+        Every key in the Language Map form MUST be a valid [[RFC5646]]
+        Language-Tag. The associated values MUST be Strings.
       </p>
 
       <p>
-        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a> defines
-        four specific natural language values:
+        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
+        defines four specific natural language values:
         <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>,
         <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code>,
         <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code>, and
         <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code>.
-        Accordingly, the Activity Streams <a href="activitystreams2-context.jsonld">JSON-LD
-        @context</a> definition respectively maps the terms "<code>displayName</code>",
-        "<code>title</code>", "<code>summary</code>", and "<code>content</code>" for representing
-        the JSON string forms and the terms "<code>displayNameMap</code>", "<code>titleMap</code>",
-        "<code>summaryMap</code>", and "<code>contentMap</code>" for representing the Language Map
-        forms.
+        Accordingly, the Activity Streams
+        <a href="activitystreams2-context.jsonld">JSON-LD
+        @context</a> definition respectively maps the terms
+        "<code>displayName</code>",
+        "<code>title</code>", "<code>summary</code>", and
+        "<code>content</code>" for representing the JSON string forms and the
+        terms "<code>displayNameMap</code>", "<code>titleMap</code>",
+        "<code>summaryMap</code>", and "<code>contentMap</code>" for
+        representing the Language Map forms.
       </p>
 
       <p>
-        The default language for document or an individual object can be established
-        using the JSON-LD <code>@language</code> keyword within a <code>@context</code>
-        definition. For instance:
+        The default language for document or an individual object can be
+        established using the JSON-LD <code>@language</code> keyword within a
+        <code>@context</code> definition. For instance:
       </p>
 
       <figure>
@@ -1370,11 +1376,12 @@ _:b0 a as:Object ;
 
       <p>
         While Activity Streams 2.0 implementations MAY use JSON-LD value
-        objects in this manner, doing so is strongly discouraged. Implementations
-        SHOULD, instead, use the Language Map form. The one situation where use of
-        the value object cannot be avoided is when a default language context
-        has been established and a particular language-sensitive field needs to
-        be explicitly excluded from that context, as in the following example:
+        objects in this manner, doing so is strongly discouraged.
+        Implementations SHOULD, instead, use the Language Map form. The one
+        situation where use of the value object cannot be avoided is when a
+        default language context has been established and a particular
+        language-sensitive field needs to be explicitly excluded from that
+        context, as in the following example:
       </p>
 
 <figure>
@@ -1443,10 +1450,10 @@ _:b0 a as:Object ;
 
       <p>
         The target URI of the Link is expressed using the required
-        <code><a href="activitystreams2-vocabulary.html#dfn-href">href</a></code> keyword.
-        In addition, all <code>Link</code> instances share the following common set of
-        optional properties as normatively defined by the
-        <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>:
+        <code><a href="activitystreams2-vocabulary.html#dfn-href">href</a></code>
+        keyword. In addition, all <code>Link</code> instances share the
+        following common set of optional properties as normatively defined by
+        the <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>:
           <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a></code> |
           <code><a href="activitystreams2-vocabulary.html#dfn-hreflang">hreflang</a></code> |
