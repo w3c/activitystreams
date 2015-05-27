@@ -994,11 +994,6 @@ as:Remove a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Remove Something"@en .
 
-as:Save a owl:Class ;
-  rdfs:label "Save"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "To Save Something for later"@en .
-
 as:Service a owl:Class ;
   rdfs:label "Service"@en ;
   rdfs:subClassOf as:Actor ;
