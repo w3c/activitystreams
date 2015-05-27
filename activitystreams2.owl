@@ -755,11 +755,6 @@ as:Complete a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "The actor has completed the object"@en .
 
-as:Confirm a owl:Class ;
-  rdfs:label "Confirm"@en ;
-  rdfs:subClassOf as:Respond ;
-  rdfs:comment "The actor is confirming the object"@en .
-
 as:Connection a owl:Class, rdf:Statement ;
   rdfs:label "Connection"@en ;
   rdfs:subClassOf as:Object ;

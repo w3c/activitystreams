@@ -16,7 +16,6 @@
     "Audio": "as:Audio",
     "Block": "as:Block",
     "Collection": "as:Collection",
-    "Confirm": "as:Confirm",
     "Connection": "as:Connection",
     "Content": "as:Content",
     "Create": "as:Create",
@@ -77,10 +76,6 @@
     },
     "relationship": {
       "@id": "as:relationship",
-      "@type": "@id"
-    },
-    "action": {
-      "@id": "as:action",
       "@type": "@id"
     },
     "actor": {
@@ -235,10 +230,6 @@
     "altitude": {
       "@id": "as:altitude",
       "@type": "xsd:float"
-    },
-    "confirm": {
-      "@id": "as:confirm",
-      "@type": "xsd:boolean"
     },
     "content": "as:content",
     "contentMap": {
