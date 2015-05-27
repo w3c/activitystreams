@@ -259,7 +259,7 @@
 
   <figure>
   <figcaption>
-    Expresses the statement <code>'urn:example:person:martin' posted
+    Expresses the statement <code>'urn:example:person:martin' created
     'http://example.org/foo.jpg'</code>.  No additional detail is given.
   </figcaption>
 <div class="nanotabs">
@@ -272,7 +272,7 @@
   <div id="ex1-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Post",
+  "@type": "Create",
   "actor": "urn:example:person:martin",
   "object": "http://example.org/foo.jpg"
 }</pre>
@@ -280,9 +280,9 @@
   <div id="ex1-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Post">
+  itemtype="http://www.w3.org/ns/activitystreams#Create">
   &lt;link itemprop="actor" href="urn:example:person:martin">Martin&lt;/link>
-  posted
+  created
   &lt;a itemprop="object" href="http://example.org/foo.jpg">
     "http://example.org/foo.jpg"
   &lt;/a>
@@ -290,9 +290,9 @@
   </div>
   <div id="ex1-rdfa" style="display: none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Post">
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;link property="actor" href="urn:example:person:martin">Martin&lt;/link>
-  posted
+  created
   &lt;a property="object" href="http://example.org/foo.jpg">
     "http://example.org/foo.jpg"
   &lt;/a>
@@ -302,7 +302,7 @@
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
-_:b0 a as:Post ;
+_:b0 a as:Create ;
   as:actor &lt;urn:example:person:martin&gt; ;
   as:object &lt;http://example.org/foo.jpg&gt; .</pre>
   </div>
@@ -315,7 +315,7 @@ _:b0 a as:Post ;
 
       <figure>
       <figcaption>
-        Expresses the statement "Martin Smith posted an article to the blog
+        Expresses the statement "Martin Smith added an article to the blog
         'Martin's Blog' at 3:04 PM UTC on February 2, 2015."  Some additional
         details about the article, actor and target blog are given using
         properties defined by the
@@ -332,7 +332,7 @@ _:b0 a as:Post ;
   <div id="ex2-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Post",
+  "@type": "Add",
   "published": "2015-02-10T15:04:55Z",
   "actor": {
    "@type": "Person",
@@ -360,7 +360,7 @@ _:b0 a as:Post ;
   </div>
   <div id="ex2-microdata" style="display: none;">
 <pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Post">
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Add">
   &lt;div itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemid="urn:example:person:martin">
@@ -372,7 +372,7 @@ _:b0 a as:Post ;
       src="http://example.org/martin/image.jpg"
       type="image/jpeg" />
   &lt;/div>
-  Posted
+  created
   &lt;div itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Article"
     itemid="urn:example:blog:abc123/xyz">
@@ -394,7 +394,7 @@ _:b0 a as:Post ;
   </div>
   <div id="ex2-rdfa" style="display: none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Post">
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Add">
   &lt;div property="actor" typeof="Person"
     resource="urn:example:person:martin">
     &lt;a property="url" href="http://example.org/martin">
@@ -404,7 +404,7 @@ _:b0 a as:Post ;
       src="http://example.org/martin/image.jpg"
       type="image/jpeg" />
   &lt;/div>
-  Posted
+  created
   &lt;div property="object" typeof="Article"
     resource="urn:example:blog:abc123/xyz">
     &lt;a property="url" href="http://example.org/blog/2011/02/entry">
@@ -443,7 +443,7 @@ _:b0 a as:Post ;
   as:displayName "Why I love Activity Streams" ;
   as:url &lt;http://example.org/blog/2011/02/entry&gt; .
 
-_:b0 a as:Post ;
+_:b0 a as:Add ;
   as:published "2015-02-10T15:04:55Z"^^xsd:dateTime ;
   as:actor &lt;urn:example:person:martin&gt; ;
   as:object &lt;urn:example:blog:abc123/xyz&gt; ;
@@ -477,11 +477,11 @@ _:b0 a as:Post ;
   "totalItems": 1,
   "items" : [
     {
-      "@type": "Post",
+      "@type": "Add",
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
       "displayNameMap": {
-        "en": "Martin posted a new video to his album.",
+        "en": "Martin added a new video to his album.",
         "ga": "Martin phost le fisean nua a albam."
       },
       "actor": {
@@ -539,14 +539,14 @@ _:b0 a as:Post ;
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="1" />
-  &lt;div itemprop="items" itemscope itemtype="http://www.w3.org/ns/activitystreams#Post">
+  &lt;div itemprop="items" itemscope itemtype="http://www.w3.org/ns/activitystreams#Add">
     &lt;meta itemprop="published" content="2011-02-10T15:04:55Z" />
     &lt;link itemprop="generator" href="http://example.org/activities-app" />
     &lt;div itemprop="displayName" lang="en">
-      Martin posted a new video to his album.
+      Martin added a new video to his album.
     &lt;/div>
     &lt;div itemprop="displayName" lang="ga">
-      Martin posted a new video to his album.
+      Martin added a new video to his album.
     &lt;/div>
     &lt;div itemprop="actor" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Person"
@@ -596,14 +596,14 @@ _:b0 a as:Post ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
   &lt;meta property="totalItems" content="1" />
-  &lt;div property="items"  typeof="Post">
+  &lt;div property="items"  typeof="Add">
     &lt;meta property="published" content="2011-02-10T15:04:55Z" />
     &lt;link property="generator" href="http://example.org/activities-app" />
     &lt;div property="displayName" lang="en">
-      Martin posted a new video to his album.
+      Martin added a new video to his album.
     &lt;/div>
     &lt;div property="displayName" lang="ga">
-      Martin posted a new video to his album.
+      Martin added a new video to his album.
     &lt;/div>
     &lt;div property="actor" typeof="Person"
       resource="urn:example:person:martin">
@@ -688,10 +688,10 @@ _:b0 a as:Post ;
 _:b0 a as:Collection ;
   as:totalItems "1"^^xsd:nonNegativeInteger ;
   as:items [
-    a as:Post ;
+    a as:Add ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
-      as:displayName "Martin posted a new video to his album."@en ;
+      as:displayName "Martin added a new video to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
       as:actor &lt;urn:example:person:martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
@@ -2218,7 +2218,7 @@ _:b0 a as:Share ;
   "self": "http://example.org/foo?page=1",
   "items": [
     {
-      "@type": "Post",
+      "@type": "Create",
       "actor": "urn:example:person:sally",
       "object": "http://example.org/foo"
     }
@@ -2233,9 +2233,9 @@ _:b0 a as:Share ;
   &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
   &lt;link itemprop="self" href="http://example.org/foo?page=1" />
   &lt;ul>
-    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Post"&lt;
+    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
       &lt;link itemprop="actor" href="urn:example:person:sally">Sally&lt;/link>
-      Posted
+      created
       &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
   &lt;ul>
@@ -2248,9 +2248,9 @@ _:b0 a as:Share ;
   &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
   &lt;link property="self" href="http://example.org/foo?page=1" />
   &lt;ul>
-    &lt;li property typeof="Post"&lt;
+    &lt;li property typeof="Create"&lt;
       &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
-      Posted
+      created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
   &lt;ul>
@@ -2266,7 +2266,7 @@ _:b0 a as:Collection ;
   as:next &lt;http://example.org/foo?page=2&gt; ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
-      a as:Post;
+      a as:Create;
         as:actor &lt;urn:example:person:sally&gt; ;
         as:object &lt;http://example.org/foo&gt;
   ] .</pre></div>
@@ -2293,7 +2293,7 @@ _:b0 a as:Collection ;
   "startIndex": 0,
   "orderedItems": [
     {
-      "@type": "Post",
+      "@type": "Create",
       "actor": "urn:example:person:sally",
       "object": "http://example.org/foo"
     }
@@ -2310,9 +2310,9 @@ _:b0 a as:Collection ;
   &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
   &lt;link itemprop="self" href="http://example.org/foo?page=1" />
   &lt;ol>
-    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Post"&lt;
+    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
       &lt;link itemprop="actor" href="urn:example:person:sally">Sally&lt;/link>
-      Posted
+      created
       &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
   &lt;ol>
@@ -2326,9 +2326,9 @@ _:b0 a as:Collection ;
   &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
   &lt;link property="self" href="http://example.org/foo?page=1" />
   &lt;ol>
-    &lt;li property typeof="Post"&lt;
+    &lt;li property typeof="Create"&lt;
       &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
-      Posted
+      created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
   &lt;ol>
@@ -2347,7 +2347,7 @@ _:c14n0 a as:OrderedCollection ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
     rdf:first [
-      a as:Post;
+      a as:Create;
         as:actor &lt;urn:example:person:sally&gt; ;
         as:object &lt;http://example.org/foo&gt;
     ] ;
@@ -2475,6 +2475,22 @@ _:c14n0 a as:OrderedCollection ;
       reasonable implementation evidence. While the
       <code>upstreamDuplicates</code> and <code>downstreamDuplicates</code>
       properties MAY continue to be used, implementations SHOULD avoid them.
+    </li>
+    <li>
+      In Activity Streams 1.0, the "<code>post</code>" verb was defined to
+      describe the action of both creating an object and "posting" or uploading
+      it to a service. This specification replaces the "<code>post</code>" verb
+      with separate
+      <code><a href="activitystreams2-vocabulary.html#dfn-create">Create</a></code> and
+      <code><a href="activitystreams2-vocabulary.html#dfn-add">Add</a></code>
+      Activity types. When processing Activity Streams 1.0 documents and
+      converting those into 2.0, implementations SHOULD treat instances of the
+      "<code>post</code>" verb as equivalent to
+      <code><a href="activitystreams2-vocabulary.html#dfn-create">Create</a></code>
+      <i>if there is no <code>target</code> property specified</i>; and
+      equivalent to
+      <code><a href="activitystreams2-vocabulary.html#dfn-add">Add</a></code>
+      <i>if there is a <code>target</code> property specified</i>.
     </li>
     </ol>
 
@@ -2894,7 +2910,7 @@ _:c14n0 a gsp:Geometry ;
       replaced with a hyperlink to a listing of other notes that have been
       "tagged" with the same topic. Most implementations would also send a
       special notification to sally letting her know that a note mentioning her
-      has been posted.
+      has been created.
     </p>
 
     <p>

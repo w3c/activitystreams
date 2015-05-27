@@ -773,7 +773,6 @@ as:Content a owl:Class ;
 as:Create a owl:Class ;
   rdfs:label "Create"@en ;
   rdfs:subClassOf as:Activity ;
-  owl:equivalentClass as:Post ;
   rdfs:comment "To Create Something"@en .
 
 as:Delete a owl:Class ;
@@ -984,11 +983,6 @@ as:Place a owl:Class ;
   rdfs:label "Place"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "A physical or logical location"@en .
-
-as:Post a owl:Class ;
-  rdfs:label "Post"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "To Post/Create Something"@en .
 
 as:Process a owl:Class ;
   rdfs:label "Process"@en ;
