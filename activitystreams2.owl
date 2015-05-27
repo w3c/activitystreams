@@ -811,11 +811,6 @@ as:Follow a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Express Interest in Something"@en .
 
-as:Give a owl:Class ;
-  rdfs:label "Give"@en ;
-  rdfs:subClassOf as:Offer ;
-  rdfs:comment "To Give Something to Some recipient"@en .
-
 as:Group a owl:Class ;
   rdfs:label "Group"@en ;
   rdfs:subClassOf as:Actor ;
