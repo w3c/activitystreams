@@ -735,11 +735,6 @@ as:Article a owl:Class ;
   rdfs:subClassOf as:Content ;
   rdfs:comment "A written work. Typically several paragraphs long. For example, a blog post or a news article."@en .
 
-as:Assign a owl:Class ;
-  rdfs:label "Assign"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "The actor is assigning the object to the target"@en .
-
 as:Audio a owl:Class ;
   rdfs:label "Audio"@en ;
   rdfs:subClassOf as:Document ;
@@ -749,11 +744,6 @@ as:Collection a owl:Class ;
   rdfs:label "Collection"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
-
-as:Complete a owl:Class ;
-  rdfs:label "Complete"@en;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "The actor has completed the object"@en .
 
 as:Connection a owl:Class, rdf:Statement ;
   rdfs:label "Connection"@en ;
