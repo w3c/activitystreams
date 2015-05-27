@@ -1014,11 +1014,6 @@ as:Service a owl:Class ;
   rdfs:subClassOf as:Actor ;
   rdfs:comment "A service provided by some entity"@en .
 
-as:Share a owl:Class ;
-  rdfs:label "Share"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "To Share Something with Someone"@en .
-
 as:Story a owl:Class ;
   rdfs:label "Story"@en ;
   rdfs:subClassOf as:OrderedCollection ;
