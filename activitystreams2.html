@@ -2047,93 +2047,6 @@ _:b0 a as:Create ;
 </div>
 </figure>
 
-      <section id="audienceTargeting">
-
-        <h2>Audience Targeting</h2>
-
-        <p>
-          Conceptually, every Activity has both a Primary and Secondary audience.
-          The Primary audience consists of those entities either directly involved
-          in the performance of the activity or who "own" the objects involved.
-          The Secondary audience consists of the collection of entities sharing
-          an interest in the activity but who might not be directly involved (e.g.
-          "followers").
-        </p>
-
-        <p>
-          For instance, suppose a social network of three individuals: Bob, Joe
-          and Jane.  Bob and Joe are each friends with Jane but are not friends
-          with one another.  Bob has chosen to "follow" activities for which
-          Jane is directly involved.  Jane shares a file with Joe.
-        </p>
-
-        <p>
-          In this example, Jane and Joe are each directly involved in the file
-          sharing activity and together make up the Primary Audience for that
-          event.  Bob, having an interest in activities involving Jane, is the
-          Secondary Audience.  Knowing this, a system that produces or consumes
-          the activity can intelligently notify each person of the event.
-        </p>
-
-        <p>
-          While there are means (based on the action type, actor, object and
-          target of the activity) to infer the primary audience for many types of
-          activities, heuristics do not work in every case and do not provide a
-          means of identifying the secondary audience.  The
-          <code><a href="activitystreams2-vocabulary.html#dfn-to">to</a></code>,
-          <code><a href="activitystreams2-vocabulary.html#dfn-cc">cc</a></code>,
-          <code><a href="activitystreams2-vocabulary.html#dfn-bto">bto</a></code> and
-          <code><a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a></code>
-          properties MAY be used within an Activity to explicitly identify the
-          Primary and Secondary audiences.
-        </p>
-
-        <p>
-          The prototypical use case for an Activity containing these properties
-          is the publication and redistribution of Activities through an
-          intermediary.  That is, an event source generates the activity and
-          publishes it to the intermediary which determines a subset of events
-          to display to specific individual users or groups.  Such a
-          determination can be made, in part, by identifying the Primary and
-          Secondary Audiences for each activity.
-        </p>
-
-        <p>
-          When the event source generates the activity and specifies values for
-          the <code>to</code> and <code>cc</code> fields, the
-          intermediary SHOULD redistribute that event
-          with the values of those fields intact, allowing any processor to see
-          who the activity has been targeted to.  This is precisely the same
-          model used by the <code>to</code> and <code>cc</code> fields in email
-          systems.
-        </p>
-
-        <p>
-          There are situations, however, in which disclosing the identity of
-          specific members of the audience may be inappropriate.  For instance,
-          a user may not wish to let other users know that they are interested
-          in various topics, individuals or types of events.  To support this
-          option, an event source generating an activity MAY use the
-          <code>bto</code> and <code>bcc</code> properties to list
-          entities to whom the activity should be privately targeted.  When an
-          intermediary receives an activity containing these properties, it
-          MUST remove those values prior to redistributing the activity.  The
-          intent is that systems MUST consider entities listed within the
-          <code>bto</code> and <code>bcc</code> properties as
-          part of the Primary and Secondary audience but MUST NOT disclose that
-          fact to any other party.
-        </p>
-
-        <p>
-          Audience targeting information included within an Activity only
-          describes the intent of the activity creator.  With clear exception
-          given to the appropriate handling of <code>bto</code> and
-          <code>bcc</code>, this specification leaves it up to implementations
-          to determine how the audience targeting information is used.
-        </p>
-
-      </section>
-
     </section>
 
     <section id="collections">
@@ -2392,6 +2305,91 @@ _:c14n0 a as:OrderedCollection ;
       An <dfn title="Activity Streams Document">Activity Streams Document</dfn>
       is a JSON-LD document whose root value is a <a>Collection</a> and
       whose MIME media type is "<code>application/activity+json</code>".
+    </p>
+
+  </section>
+
+  <section id="audienceTargeting">
+
+    <h2>Audience Targeting</h2>
+
+    <p>
+      Conceptually, every Object has both a Primary and Secondary audience.
+      The Primary audience consists of those entities directly involved or
+      owning the object. The Secondary audience consists of the collection of
+      entities sharing an interest in the object but who might not be directly
+      involved (e.g."followers").
+    </p>
+
+    <p>
+      For instance, suppose a social network of three individuals: Bob, Joe
+      and Jane.  Bob and Joe are each friends with Jane but are not friends
+      with one another.  Bob has chosen to "follow" activities for which
+      Jane is directly involved.  Jane shares a file with Joe.
+    </p>
+
+    <p>
+      In this example, Jane and Joe are each directly involved in the file
+      sharing activity and together make up the Primary Audience for that
+      event.  Bob, having an interest in activities involving Jane, is the
+      Secondary Audience.  Knowing this, a system that produces or consumes
+      the activity can intelligently notify each person of the event.
+    </p>
+
+    <p>
+      While there are means (based on the action type, actor, object and
+      target of the activity) to infer the primary audience for many types of
+      activities, heuristics do not work in every case and do not provide a
+      means of identifying the secondary audience.  The
+      <code><a href="activitystreams2-vocabulary.html#dfn-to">to</a></code>,
+      <code><a href="activitystreams2-vocabulary.html#dfn-cc">cc</a></code>,
+      <code><a href="activitystreams2-vocabulary.html#dfn-bto">bto</a></code> and
+      <code><a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a></code>
+      properties MAY be used within an Activity to explicitly identify the
+      Primary and Secondary audiences.
+    </p>
+
+    <p>
+      The prototypical use case for an Object containing these properties
+      is the publication and redistribution of objects through an
+      intermediary.  That is, an event source generates the object and
+      publishes it to the intermediary which determines a subset of items
+      to display to specific individual users or groups.  Such a
+      determination can be made, in part, by identifying the Primary and
+      Secondary Audiences for each object.
+    </p>
+
+    <p>
+      When the event source generates the object and specifies values for
+      the <code>to</code> and <code>cc</code> fields, the intermediary SHOULD
+      redistribute that object with the values of those fields intact, allowing
+      any processor to see who the object has been targeted to.  This is
+      precisely the same model used by the <code>to</code> and <code>cc</code>
+      fields in email systems.
+    </p>
+
+    <p>
+      There are situations, however, in which disclosing the identity of
+      specific members of the audience may be inappropriate.  For instance,
+      a user may not wish to let other users know that they are interested
+      in various topics, individuals or types of events.  To support this
+      option, an implementation generating an object MAY use the
+      <code>bto</code> and <code>bcc</code> properties to list
+      entities to whom the object should be privately targeted.  When an
+      intermediary receives an object containing these properties, it
+      MUST remove those values prior to redistributing the object.  The
+      intent is that systems MUST consider entities listed within the
+      <code>bto</code> and <code>bcc</code> properties as
+      part of the Primary and Secondary audience but MUST NOT disclose that
+      fact to any other party.
+    </p>
+
+    <p>
+      Audience targeting information included within an Object only
+      describes the intent of the object creator.  With clear exception
+      given to the appropriate handling of <code>bto</code> and
+      <code>bcc</code>, this specification leaves it up to implementations
+      to determine how the audience targeting information is used.
     </p>
 
   </section>
