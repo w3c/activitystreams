@@ -59,7 +59,6 @@
     "View": "as:View",
     "Listen": "as:Listen",
     "Read": "as:Read",
-    "Respond": "as:Respond",
     "Move": "as:Move",
     "Travel": "as:Travel",
     "a": {

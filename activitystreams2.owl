@@ -678,7 +678,7 @@ as:width a owl:DatatypeProperty ,
 
 as:Accept a owl:Class ;
   rdfs:label "Accept"@en ;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "Actor accepts the Object"@en .
 
 as:Activity a owl:Class ;
@@ -777,7 +777,7 @@ as:Delete a owl:Class ;
 
 as:Dislike a owl:Class ;
   rdfs:label "Dislike"@en;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "The actor dislikes the object"@en .
 
 as:Document a owl:Class ;
@@ -793,12 +793,12 @@ as:Event a owl:Class ;
 as:Favorite a owl:Class ;
   rdfs:label "Favorite"@en ;
   owl:equivalentClass as:Like ;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "To Favorite/Like Something"@en .
 
 as:Flag a owl:Class ;
   rdfs:label "Flag"@en;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "To flag something (e.g. flag as inappropriate, flag as spam, etc)"@en .
 
 as:Folder a owl:Class ;
@@ -818,7 +818,7 @@ as:Group a owl:Class ;
 
 as:Ignore a owl:Class ;
   rdfs:label "Ignore"@en ;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "Actor is ignoring the Object"@en .
 
 as:Image a owl:Class ;
@@ -843,7 +843,7 @@ as:Leave a owl:Class ;
 
 as:Like a owl:Class ;
   rdfs:label "Like"@en ;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "To Like/Favorite Something"@en .
 
 as:Experience a owl:Class;
@@ -865,11 +865,6 @@ as:Read a owl:Class ;
   rdfs:label "Read"@en ;
   rdfs:subClassOf as:Experience ;
   rdfs:comment "The actor read the object"@en .
-
-as:Respond a owl:Class ;
-  rdfs:label "Respond"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "The actor responded to the object"@en .
 
 as:Move a owl:Class ;
   rdfs:label "Move"@en ;
@@ -986,7 +981,7 @@ as:Question a owl:Class ;
 
 as:Reject a owl:Class ;
   rdfs:label "Reject"@en ;
-  rdfs:subClassOf as:Respond ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "Actor rejects the Object"@en .
 
 as:Remove a owl:Class ;
