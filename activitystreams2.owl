@@ -994,11 +994,6 @@ as:Remove a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Remove Something"@en .
 
-as:Review a owl:Class ;
-  rdfs:label "Review"@en ;
-  rdfs:subClassOf as:Respond ;
-  rdfs:comment "To Review/Rate Something"@en .
-
 as:Save a owl:Class ;
   rdfs:label "Save"@en ;
   rdfs:subClassOf as:Activity ;

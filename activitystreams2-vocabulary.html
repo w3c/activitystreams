@@ -1071,7 +1071,6 @@ _:b0 a as:OrderedCollection ;
         <code><a>Read</a></code> |
         <code><a>Remove</a></code> |
         <code><a>Respond</a></code> |
-        <code><a>Review</a></code> |
         <code><a>Save</a></code> |
         <code><a>TentativeReject</a></code> |
         <code><a>TentativeAccept</a></code> |
@@ -3146,97 +3145,6 @@ _:b0 a as:Remove ;
           <tr>
             <td>Properties:</td>
             <td>Inherits all properties from <code><a>Activity</a></code>.</td>
-          </tr>
-        </tbody>
-
- <tbody>
-          <tr>
-            <td rowspan="4"><dfn>Review</dfn></td>
-            <td style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Review</code></td>
-            <td rowspan="4">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex160-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex160-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex160-rdfa" class="selected">RDFa</a></li>
-
-    <li><a href="#ex160-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex160-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Review",
-  "actor": "acct:sally@example.org",
-  "object": "http://example.org/posts/1"
-  "content": "I liked this post"
-}</pre>
-  </div>
-  <div id="ex160-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Review">
-  &lt;link itemprop="actor"
-    href="acct:sally@example.org">
-    Sally
-  &lt;/link>
-  reviewed
-  &lt;a itemprop="object"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>,
-  "&lt;span itemprop="comment">
-    I liked this post
-  &lt;/span>"
-&lt;/div></pre>
-  </div>
-  <div id="ex160-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Review">
-  &lt;link property="actor"
-    href="acct:sally@example.org">
-    Sally
-  &lt;/link>
-  reviewed
-  &lt;a property="object"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
-  "&lt;span property="comment">
-    I liked this post
-  &lt;/span>"
-&lt;/div></pre>
-  </div>
-  <div id="ex160-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Review ;
-  as:actor &lt;acct:sally@example.org&gt; ;
-  as:object &lt;http://example.org/posts/1&gt; ;
-  as:comment "I liked this post".
-</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              Indicates that the <code>actor</code> has reviewed the
-              <code>object</code>. The <code>target</code> typically has no
-              defined meaning.
-            </td>
-          </tr>
-          <tr>
-            <td>Extends:</td>
-            <td><code><a>Respond</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Respond</a></code>.</td>
           </tr>
         </tbody>
 
