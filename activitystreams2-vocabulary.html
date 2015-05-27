@@ -1058,7 +1058,6 @@ _:b0 a as:OrderedCollection ;
         <code><a>Favorite</a></code> |
         <code><a>Flag</a></code> |
         <code><a>Follow</a></code> |
-        <code><a>Give</a></code> |
         <code><a>Ignore</a></code> |
         <code><a>Invite</a></code> |
         <code><a>Join</a></code> |
@@ -2580,115 +2579,6 @@ _:b0 a as:Offer ;
           <tr>
             <td>Properties:</td>
             <td>Inherits all properties from <code><a>Activity</a></code>.</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>Give</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Give</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex23-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex23-rdfa" class="selected">RDFa</a></li>
-
-    <li><a href="#ex23-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex23-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Give",
-  "actor": {
-    "@type": "Person",
-    "displayName": "Sally"
-  },
-  "object": {
-    "@type": "urn:example:types:Present",
-    "displayName": "A Present"
-  },
-  "target": {
-    "@type": "Person",
-    "displayName": "John"
-  }
-}</pre>
-</div>
-<div id="ex23-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Give">
-  &lt;span itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  gave
-  &lt;span itemprop="object" itemscope
-    itemtype="urn:example:types:Present">
-    &lt;span itemprop="displayName">A Present&lt;/span>
-  &lt;/span>
-  to
-  &lt;span itemprop="target" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex23-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Give">
-  &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  gave
-  &lt;span property="object"
-    typeof="urn:example:types:Present">
-    &lt;span property="displayName">A Present&lt;/span>
-  &lt;/span>
-  to
-  &lt;span property="target" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex23-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Give ;
-  as:actor [
-    a as:Person ;
-      as:displayName "Sally" .
-  ] ;
-  as:object [
-    a &lt;urn:example:types:Present&gt; ;
-      as:displayName "A Present" .
-  ] ;
-  as:target [
-    a as:Person ;
-      as:displayName "John" .
-  ] .</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              A specialization of <code><a>Offer</a></code> in which the
-              <code>actor</code> is giving the <code>object</code> to the
-              <code>target</code>. If the <code>target</code> is not specified
-              it can be determined by context.
-            </td>
-          </tr>
-          <tr>
-            <td>Extends:</td>
-            <td><code><a>Offer</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Offer</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
