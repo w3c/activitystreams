@@ -1071,7 +1071,6 @@ _:b0 a as:OrderedCollection ;
         <code><a>Read</a></code> |
         <code><a>Remove</a></code> |
         <code><a>Respond</a></code> |
-        <code><a>Save</a></code> |
         <code><a>TentativeReject</a></code> |
         <code><a>TentativeAccept</a></code> |
         <code><a>Travel</a></code> |
@@ -3136,119 +3135,6 @@ _:b0 a as:Remove ;
               <code>object</code>. If specified, the <code>origin</code>
               indicates the context from which the <code>object</code> is
               being removed.
-            </td>
-          </tr>
-          <tr>
-            <td>Extends:</td>
-            <td><code><a>Activity</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>Save</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Save</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex30-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex30-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex30-rdfa" class="selected">RDFa</a></li>
-
-    <li><a href="#ex30-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex30-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Save",
-  "actor": {
-    "@type": "Person",
-    "displayName": "Sally"
-  },
-  "object": "http://example.org/posts/1",
-  "target": {
-    "@type": "OrderedCollection",
-    "displayName": "Sally's Reading List"
-  }
-}</pre>
-  </div>
-  <div id="ex30-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Save">
-  &lt;span itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
-      Sally
-    &lt;/span>
-  &lt;span>
-  saved
-  &lt;a itemprop="object"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
-  to
-  &lt;span itemprop="target" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
-    &lt;span itemprop="displayName">
-      Sally's Reading List
-    &lt;/span>
-  &lt;span>
-&lt;/div></pre>
-  </div>
-  <div id="ex30-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Save">
-  &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">
-      Sally
-    &lt;/span>
-  &lt;span>
-  saved
-  &lt;a property="object"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
-  to
-  &lt;span property="target" typeof="OrderedCollection">
-    &lt;span property="displayName">
-      Sally's Reading List
-    &lt;/span>
-  &lt;span>
-&lt;/div></pre>
-  </div>
-  <div id="ex30-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Save ;
-  as:actor [
-    a as:Person ;
-      as:displayName "Sally" .
-  ] ;
-  as:object &lt;http://example.org/posts/1&gt; ;
-  as:target [
-    a as:OrderedCollection ;
-      as:displayName "Sally's Reading List" .
-  ] .
-</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              Indicates that the <code>actor</code> is saving the
-              <code>object</code>. If specified, the <code>target</code>
-              indicates the context into which the <code>object</code> is being
-              saved. The <code>origin</code> typically has no defined meaning.
             </td>
           </tr>
           <tr>
@@ -10279,8 +10165,8 @@ _:b0 a as:Like
           <td>Notes:</td>
           <td>
             Describes the direct object of the activity. For instance, in the
-            activity "John saved a movie to his wishlist", the object of the
-            activity is the movie saved.
+            activity "John added a movie to his wishlist", the object of the
+            activity is the movie added.
           </td>
         </tr>
         <tr>
@@ -11435,7 +11321,7 @@ _:b0 a as:Offer ;
             Describes the indirect object, or target, of the activity. The
             precise meaning of the target is largely dependent on the type of
             action being described but will often be the object of the English
-            preposition "to". For instance, in the activity "John saved a movie
+            preposition "to". For instance, in the activity "John added a movie
             to his wishlist", the target of the activity is John's wishlist. An
             activity can have more than one target.
           </td>
