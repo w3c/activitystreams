@@ -15,7 +15,7 @@
     "Audio": "as:Audio",
     "Block": "as:Block",
     "Collection": "as:Collection",
-    "Connection": "as:Connection",
+    "Relationship": "as:Relationship",
     "Content": "as:Content",
     "Create": "as:Create",
     "Delete": "as:Delete",
@@ -60,12 +60,8 @@
     "Read": "as:Read",
     "Move": "as:Move",
     "Travel": "as:Travel",
-    "a": {
-      "@id": "as:a",
-      "@type": "@id"
-    },
-    "b": {
-      "@id": "as:b",
+    "subject": {
+      "@id": "as:subject",
       "@type": "@id"
     },
     "relationship": {

@@ -4542,7 +4542,6 @@ _:b0 a as:Service ;
         <code><a>Album</a></code> |
         <code><a>Article</a></code> |
         <code><a>Audio</a></code> |
-        <code><a>Connection</a></code> |
         <code><a>Content</a></code> |
         <code><a>Document</a></code> |
         <code><a>Event</a></code> |
@@ -4554,6 +4553,7 @@ _:b0 a as:Service ;
         <code><a>Place</a></code> |
         <code><a>Profile</a></code> |
         <code><a>Question</a></code> |
+        <code><a>Relationship</a></code> |
         <code><a>Story</a></code> |
         <code><a>Video</a></code>
       </p>
@@ -4569,9 +4569,9 @@ _:b0 a as:Service ;
 
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>Connection</dfn></td>
+            <td rowspan="4" ><dfn>Relationship</dfn></td>
             <td  style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Connection</code></td>
+            <td><code>http://www.w3.org/ns/activitystreams#Relationship</code></td>
             <td rowspan="4" >
 <div class="nanotabs">
   <ul>
@@ -4584,13 +4584,13 @@ _:b0 a as:Service ;
   <div id="ex22-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Connection",
-  "a": {
+  "@type": "Relationship",
+  "subject": {
     "@type": "Person",
     "displayName": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "b": {
+  "object": {
     "@type": "Person",
     "displayName": "John"
   }
@@ -4599,8 +4599,8 @@ _:b0 a as:Service ;
 <div id="ex22-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Connection">
-  &lt;span itemprop="a" itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Relationship">
+  &lt;span itemprop="subject" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
@@ -4608,7 +4608,7 @@ _:b0 a as:Service ;
     itemid="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
-  &lt;span itemprop="b" itemscope
+  &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
   &lt;/span>
@@ -4617,15 +4617,15 @@ _:b0 a as:Service ;
   <div id="ex22-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Connection">
-  &lt;span property="a" typeof="Person">
+  typeof="Relationship">
+  &lt;span property="subject" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
   &lt;span property="relationship"
     resource="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
-  &lt;span property="b" typeof="Person">
+  &lt;span property="object" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -4635,13 +4635,13 @@ _:b0 a as:Service ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
 
-_:b0 a as:Connection ;
+_:b0 a as:Relationship ;
   as:relationship rel:closeFriendOf ;
-  as:a [
+  as:subject [
     a as:Person ;
       as:displayName "Sally" .
   ] ;
-  as:b [
+  as:object [
     a as:Person ;
       as:displayName "John" .
   ] .</pre>
@@ -4651,7 +4651,11 @@ _:b0 a as:Connection ;
           <tr>
             <td>Notes:</td>
             <td>
-              <p>Describes a connection between two individuals. The <code><a title="a-term">a</a></code> and <code><a title="b-term">b</a></code> properties are used to identify the connected individuals.</p>
+              <p>
+                Describes a relationship between two individuals.
+                The <code><a title="subject">subject</a></code> and
+                <code><a title="object-term">object</a></code> properties are
+                used to identify the connected individuals.</p>
             </td>
           </tr>
           <tr>
@@ -4661,8 +4665,8 @@ _:b0 a as:Connection ;
           <tr>
             <td>Properties:</td>
             <td>
-              <p><code><a title="a-term">a</a></code> |
-              <code><a title="b-term">b</a></code> |
+              <p><code><a title="subject">subject</a></code> |
+              <code><a title="object-term">object</a></code> |
               <code><a>relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
@@ -6292,14 +6296,14 @@ _:b0 a as:Profile ;
       </table>
 
       <section id="connections">
-        <h2>Representing Connections Between Entities</h2>
+        <h2>Representing Relationships Between Entities</h2>
 
         <p>
-          The <code><a>Connection</a></code> object is used to represent
+          The <code><a>Relationship</a></code> object is used to represent
           relationships between individuals. It can be used, for instance,
           to describe that one person is a friend of another, or that one
           person is a member of a particular organization. The intent of
-          modeling Connection in this way is to allow descriptions of
+          modeling Relationship in this way is to allow descriptions of
           activities that operate on the relationships in general, and
           to allow representation of Collections of relationships.
         </p>
@@ -6308,12 +6312,12 @@ _:b0 a as:Profile ;
           For instance, many social sytems have a notion of a "friends list".
           These are the collection of individuals that are directly connected
           within a person's social graph. Suppose we have a user, Sally,
-          with direct connections to users Joe and Jane. Sally considers Joe
+          with direct relationships to users Joe and Jane. Sally considers Joe
           to be a close friend while Jane is just an acquaintance.
         </p>
 
         <p>
-          Using the <code><a>Connection</a></code> object, we can model
+          Using the <code><a>Relationship</a></code> object, we can model
           these relationships as:
         </p>
 
@@ -6323,25 +6327,25 @@ _:b0 a as:Profile ;
   "@type": "Collection",
   "items": [
     {
-      "@type": "Connection",
-      "a": {
+      "@type": "Relationship",
+      "subject": {
         "@type": "Person",
         "displayName": "Sally"
       },
       "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-      "b": {
+      "object": {
         "@type": "Person",
         "displayName": "Joe"
       }
     },
     {
-      "@type": "Connection",
-      "a": {
+      "@type": "Relationship",
+      "subject": {
         "@type": "Person",
         "displayName": "Sally"
       },
       "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
-      "b": {
+      "object": {
         "@type": "Person",
         "displayName": "Jane"
       }
@@ -6352,24 +6356,25 @@ _:b0 a as:Profile ;
 
         <p>
           The <code><a>relationship</a></code> property specifies the kind
-          of connection that exists between the two individuals identified
-          by the <code><a title="a-term">a</a></code> and
-          <code><a title="b-term">b</a></code> properties. Used together,
+          of relationship that exists between the two individuals identified
+          by the <code><a title="subject">subject</a></code> and
+          <code><a title="object">object</a></code> properties. Used together,
           these three properties form what is commonly known as a
           "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
-          where <code><a title="a-term">a</a></code> identifies the subject,
-          <code><a>relationship</a></code> identifies the predicate, and
-          <code><a title="b-term">b</a></code> identifies the object.
+          where <code><a title="subject">subject</a></code> identifies the
+          subject, <code><a>relationship</a></code> identifies the predicate,
+          and <code><a title="object-term">object</a></code> identifies the
+          object.
         </p>
 
         <p>
           While use of reified statements can be problematic and confusing
           in certain situations, their use within the Activity Streams
-          vocabulary to describe connections provides a straightforward
+          vocabulary to describe relationships provides a straightforward
           mechanism of describing changes to an individual's social graph.
           For instance, to indicate that Sally has created a
-          new connection to user Matt, an implementer can use the
-          <code><a>Connection</a></code> object together with the
+          new relationship to user Matt, an implementer can use the
+          <code><a>Relationship</a></code> object together with the
           <code><a>Create</a></code> activity:
         </p>
 
@@ -6379,10 +6384,10 @@ _:b0 a as:Profile ;
   "@type": "Create",
   "actor": "acct:sally@example.org",
   "object": {
-    "@type": "Connection",
-    "a": "acct:sally@example.org",
+    "@type": "Relationship",
+    "subject": "acct:sally@example.org",
     "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-    "b": "acct:matt@example.org",
+    "object": "acct:matt@example.org",
     "startTime": "2015-04-21T12:34:56"
   }
 }</pre>
@@ -6536,8 +6541,7 @@ _:b0 a as:Profile ;
       <code><a>units</a></code> |
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
-      <code><a title="a-term">a</a></code> |
-      <code><a title="b-term">b</a></code> |
+      <code><a>subject</a></code> |
       <code><a>relationship</a></code> |
       <code><a>describes</a></code>
     </p>
@@ -9891,14 +9895,24 @@ _:b0 a as:Like
         <tr>
           <td>Notes:</td>
           <td>
-            Describes the direct object of the activity. For instance, in the
-            activity "John added a movie to his wishlist", the object of the
-            activity is the movie added.
+            <p>
+              When used within an <code><a>Activity</a></code>, describes the
+              direct object of the activity. For instance, in the activity
+              "John added a movie to his wishlist", the object of the activity
+              is the movie added.
+            </p>
+            <p>
+              When used within a <code><a>Relationship</a></code> describes
+              the entity to which the <code><a>subject</a></code> is
+              related.
+            </p>
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Activity</a></code></td>
+          <td>
+            <code><a>Activity</a></code> | <code><a>Relationship</a></code>
+          </td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -14078,9 +14092,9 @@ _:b0 a as:Content ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="a-term">a</dfn></td>
+          <td rowspan="5" ><dfn>subject</dfn></td>
           <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#a</code></td>
+          <td><code>http://www.w3.org/ns/activitystreams#subject</code></td>
           <td rowspan="5">
             <div class="nanotabs">
               <ul>
@@ -14092,13 +14106,13 @@ _:b0 a as:Content ;
               <div id="ex22a-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Connection",
-  "a": {
+  "@type": "Relationship",
+  "subject": {
     "@type": "Person",
     "displayName": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "b": {
+  "object": {
     "@type": "Person",
     "displayName": "John"
   }
@@ -14107,8 +14121,8 @@ _:b0 a as:Content ;
 <div id="ex22a-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Connection">
-  &lt;span itemprop="a" itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Relationship">
+  &lt;span itemprop="subject" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
@@ -14116,7 +14130,7 @@ _:b0 a as:Content ;
     itemid="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
-  &lt;span itemprop="b" itemscope
+  &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
   &lt;/span>
@@ -14125,15 +14139,15 @@ _:b0 a as:Content ;
   <div id="ex22a-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Connection">
-  &lt;span property="a" typeof="Person">
+  typeof="Relationship">
+  &lt;span property="subject" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
   &lt;span property="relationship"
     resource="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
-  &lt;span property="b" typeof="Person">
+  &lt;span property="object" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -14143,13 +14157,13 @@ _:b0 a as:Content ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
 
-_:b0 a as:Connection ;
+_:b0 a as:Relationship ;
   as:relationship rel:closeFriendOf ;
-  as:a [
+  as:subject [
     a as:Person ;
       as:displayName "Sally" .
   ] ;
-  as:b [
+  as:object [
     a as:Person ;
       as:displayName "John" .
   ] .</pre>
@@ -14160,119 +14174,16 @@ _:b0 a as:Connection ;
         <tr>
           <td>Notes:</td>
           <td>
-            On a <code><a>Connection</a></code> object, the <code>a</code>
+            On a <code><a>Relationship</a></code> object, the <code>a</code>
             property identifies one of the connected individuals. For
-            instance, for a Connection object describing "John is connected to
-            Sally", <code>a</code> would refer to John.
+            instance, for a Relationship object describing
+            "John is related to Sally", <code>subject</code> would refer to
+            John.
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Connection</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Functional:</td>
-          <td>True</td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn title="b-term">b</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#b</code></td>
-          <td rowspan="5">
-            <div class="nanotabs">
-              <ul>
-                <li><a href="#ex22b-jsonld" class="selected">JSON-LD</a></li>
-                <li><a href="#ex22b-microdata" class="selected">Microdata</a></li>
-                <li><a href="#ex22b-rdfa" class="selected">RDFa</a></li>
-                <li><a href="#ex22b-turtle" class="selected">Turtle</a></li>
-              </ul>
-              <div id="ex22b-jsonld" style="display: block;">
-            <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Connection",
-  "a": {
-    "@type": "Person",
-    "displayName": "Sally"
-  },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "b": {
-    "@type": "Person",
-    "displayName": "John"
-  }
-}</pre>
-</div>
-<div id="ex22b-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Connection">
-  &lt;span itemprop="a" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  &lt;span itemprop="relationship"
-    itemid="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span itemprop="b" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22b-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Connection">
-  &lt;span property="a" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  &lt;span property="relationship"
-    resource="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span property="b" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex22b-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
-
-_:b0 a as:Connection ;
-  as:relationship rel:closeFriendOf ;
-  as:a [
-    a as:Person ;
-      as:displayName "Sally" .
-  ] ;
-  as:b [
-    a as:Person ;
-      as:displayName "John" .
-  ] .</pre>
-  </div>
-</div>
-</td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            On a <code><a>Connection</a></code> object, the <code>b</code>
-            property identifies one of the connected individuals. For
-            instance, for a Connection object describing "John is connected to
-            Sally", <code>b</code> would refer to Sally.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Connection</a></code></td>
+          <td><code><a>Relationship</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -14302,13 +14213,13 @@ _:b0 a as:Connection ;
               <div id="ex22c-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Connection",
-  "a": {
+  "@type": "Relationship",
+  "subject": {
     "@type": "Person",
     "displayName": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "b": {
+  "object": {
     "@type": "Person",
     "displayName": "John"
   }
@@ -14317,8 +14228,8 @@ _:b0 a as:Connection ;
 <div id="ex22c-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Connection">
-  &lt;span itemprop="a" itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Relationship">
+  &lt;span itemprop="subject" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span>
@@ -14326,7 +14237,7 @@ _:b0 a as:Connection ;
     itemid="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
-  &lt;span itemprop="b" itemscope
+  &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">John&lt;/span>
   &lt;/span>
@@ -14335,15 +14246,15 @@ _:b0 a as:Connection ;
   <div id="ex22c-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Connection">
-  &lt;span property="a" typeof="Person">
+  typeof="Relationship">
+  &lt;span property="subject" typeof="Person">
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/span>
   &lt;span property="relationship"
     resource="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
-  &lt;span property="b" typeof="Person">
+  &lt;span property="object" typeof="Person">
     &lt;span property="displayName">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -14353,13 +14264,13 @@ _:b0 a as:Connection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
 
-_:b0 a as:Connection ;
+_:b0 a as:Relationship ;
   as:relationship rel:closeFriendOf ;
-  as:a [
+  as:subject [
     a as:Person ;
       as:displayName "Sally" .
   ] ;
-  as:b [
+  as:object [
     a as:Person ;
       as:displayName "John" .
   ] .</pre>
@@ -14370,17 +14281,17 @@ _:b0 a as:Connection ;
         <tr>
           <td>Notes:</td>
           <td>
-            On a <code><a>Connection</a></code> object, the
+            On a <code><a>Relationship</a></code> object, the
             <code>relationship</code> property identifies the kind of
             relationship that exists between
-            <code><a title="a-term">a</a></code> and
-            <code><a title="b-term">b</a></code>.
+            <code><a title="subject">subject</a></code> and
+            <code><a title="object-term">object</a></code>.
 
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Connection</a></code></td>
+          <td><code><a>Relationship</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>

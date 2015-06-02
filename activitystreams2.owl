@@ -203,7 +203,10 @@ as:next a owl:FunctionalProperty ,
 
 as:object a owl:ObjectProperty ;
   rdfs:label "object"@en ;
-  rdfs:domain as:Activity ;
+  rdfs:domain [
+    a owl:Class ;
+      owl:unionOf ( as:Activity as:Relationship )
+  ];
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )
@@ -338,23 +341,12 @@ as:url a owl:ObjectProperty ;
   ] ;
   rdfs:domain as:Object .
 
-as:a a owl:FunctionalProperty,
+as:subject a owl:FunctionalProperty,
        owl:ObjectProperty;
   rdfs:label "a"@en;
-  rdfs:comment "On a Connection object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'a' refers to 'John'"@en ;
-  rdfs:domain as:Connection ;
+  rdfs:comment "On a Relationship object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'subject' refers to 'John'"@en ;
+  rdfs:domain as:Relationship ;
   rdfs:subPropertyOf rdf:subject ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Link as:Object )
-  ].
-
-as:b a owl:FunctionalProperty,
-       owl:ObjectProperty;
-  rdfs:label "b"@en;
-  rdfs:comment "On a Connection object, identifies the object. e.g. when saying \"John is connected to Sally\", 'b' refers to 'Sally'"@en ;
-  rdfs:domain as:Connection ;
-  rdfs:subPropertyOf rdf:object ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Link as:Object )
@@ -362,9 +354,9 @@ as:b a owl:FunctionalProperty,
 
 as:relationship a owl:ObjectProperty;
   rdfs:label "relationship"@en;
-  rdfs:comment "On a Connection object, describes the type of relationship"@en;
+  rdfs:comment "On a Relationship object, describes the type of relationship"@en;
   rdfs:subPropertyOf rdf:predicate ;
-  rdfs:domain as:Connection ;
+  rdfs:domain as:Relationship ;
   rdfs:range rdf:Property .
 
 as:describes a owl:ObjectProperty,
@@ -745,10 +737,10 @@ as:Collection a owl:Class ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
 
-as:Connection a owl:Class, rdf:Statement ;
-  rdfs:label "Connection"@en ;
+as:Relationship a owl:Class, rdf:Statement ;
+  rdfs:label "Relationship"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:comment "Represents a Social Graph connection between two Individuals (indicated by the 'a' and 'b' properties)"@en .
+  rdfs:comment "Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)"@en .
 
 as:Content a owl:Class ;
   rdfs:label "Content"@en ;
