@@ -6,7 +6,7 @@
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
-    specStatus: "ED",
+    specStatus: "WD",
     edDraftURI: "http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams2-vocabulary.html",
     shortName: "activitystreams-vocabulary",
     editors: [
@@ -19,8 +19,8 @@
     ],
     additionalCopyrightHolders: ["Activity Streams Working Group", "IBM"],
     maxTocLevel: 2,
-    previousMaturity: "FPWD",
-    previousPublishDate:  "2014-10-23",
+    previousMaturity: "WD",
+    previousPublishDate:  "2015-01-29",
     wg: "Social Web Working Group",
     wgURI: "http://www.w3.org/Social/WG",
     wgPublicList: "public-socialweb",
@@ -89,15 +89,6 @@
     <p>
       This specification describes the Activity vocabulary.
     </p>
-
-    <section id="ednote" class="informative">
-    <h2>Editor's Note</h2>
-    <p><mark>This is an Editor's Draft. There are a significant
-    number of changes that have been made to this vocabulary
-    since the publication of the First Public Working Draft.
-    All changes should be considered provisional pending
-    working group discussion and acceptance.</mark></p>
-    </section>
 
     <section id="authorsnote" class="informative">
       <h2>Author's Note</h2>
@@ -4667,7 +4658,7 @@ _:b0 a as:Relationship ;
             <td>
               <p><code><a title="subject">subject</a></code> |
               <code><a title="object-term">object</a></code> |
-              <code><a>relationship</a></code></p>
+              <code><a title="relationship-term">relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
@@ -6355,15 +6346,17 @@ _:b0 a as:Profile ;
         </div>
 
         <p>
-          The <code><a>relationship</a></code> property specifies the kind
-          of relationship that exists between the two individuals identified
-          by the <code><a title="subject">subject</a></code> and
+          The <code><a title="relationship-term">relationship</a></code>
+          property specifies the kind of relationship that exists between the
+          two individuals identified by the
+          <code><a title="subject">subject</a></code> and
           <code><a title="object">object</a></code> properties. Used together,
           these three properties form what is commonly known as a
           "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
           where <code><a title="subject">subject</a></code> identifies the
-          subject, <code><a>relationship</a></code> identifies the predicate,
-          and <code><a title="object-term">object</a></code> identifies the
+          subject, <code><a title="relationship-term">relationship</a></code>
+          identifies the predicate, and
+          <code><a title="object-term">object</a></code> identifies the
           object.
         </p>
 
@@ -6402,7 +6395,8 @@ _:b0 a as:Profile ;
 
         <p>
           The Activity Streams vocabulary does not define normative values
-          for use with the <code><a>relationship</a></code> property.
+          for use with the
+          <code><a title="relationship-term">relationship</a></code> property.
           It is expected that implementations will make use of several
           existing vocabularies that have been developed for the purpose
           of describing relationships. Examples of such vocabularies include
@@ -6542,7 +6536,7 @@ _:b0 a as:Profile ;
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
       <code><a>subject</a></code> |
-      <code><a>relationship</a></code> |
+      <code><a title="relationship-term">relationship</a></code> |
       <code><a>describes</a></code>
     </p>
 
@@ -14197,7 +14191,9 @@ _:b0 a as:Relationship ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="relationship">relationship</dfn></td>
+          <td rowspan="5" >
+            <dfn title="relationship-term">relationship</dfn>
+          </td>
           <td  style="width: 10%">URI:</td>
           <td>
             <code>http://www.w3.org/ns/activitystreams#relationship</code>
