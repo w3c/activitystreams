@@ -267,6 +267,7 @@
     <li><a href="#ex1-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex1-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex1-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex1-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex1-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex1-jsonld" style="display: block;">
@@ -298,6 +299,14 @@
   &lt;/a>
 &lt;/div></pre>
   </div>
+  <div id="ex1-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;a class="p-author h-card" href="http://martin.example.org/">Martin&lt;/a>
+  created
+  &lt;img class="u-photo" href="http://martin.example.org/foo.jpg" alt="Photograph of foo"/>
+&lt;/div></pre>
+  </div>
   <div id="ex1-turtle" style="display: none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -327,6 +336,7 @@ _:b0 a as:Create ;
     <li><a href="#ex2-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex2-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex2-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex2-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex2-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex2-jsonld" style="display: block;">
@@ -422,6 +432,23 @@ _:b0 a as:Create ;
   &lt;/meta>
 &lt;/div></pre>
   </div>
+  <div id="ex2-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;a class="p-author h-card" href="http://martin.example.org/">
+    &lt;img src="http://martin.example.org/image.jpg" alt=""
+      />Martin Smith
+  &lt;/a>
+  created
+  &lt;a class="u-url p-name" href="http://martin.example.org/blog/2011/02/entry">
+    Why I love Activity Streams
+  &lt;/a>
+  On
+  &lt;time class="dt-published" datetime="2015-02-10 15:04:55Z">
+    February 10, 2015 at 15:04:55 UTC
+  &lt;/time>
+&lt;/div></pre>
+  </div>
   <div id="ex2-turtle" style="display: none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -468,6 +495,7 @@ _:b0 a as:Add ;
     <li><a href="#ex3-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex3-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex3-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex3-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex3-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex3-jsonld" style="display: block;">
@@ -643,6 +671,56 @@ _:b0 a as:Add ;
   &lt;/div>
 &lt;/div></pre>
   </div>
+  <div id="ex3-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" content="1" />
+  &lt;div class="p-as-items h-as-add">
+    &lt;meta class="dt-published" name="published" content="2011-02-10T15:04:55Z" />
+    &lt;link class="u-as-generator" href="http://example.org/activities-app" />
+    &lt;div class="p-name" lang="en">
+      Martin added a new video to his album.
+    &lt;/div>
+    &lt;div class="p-name" lang="ga">
+      Martin added a new video to his album.
+    &lt;/div>
+    &lt;div class="p-author h-card">
+      &lt;meta class="p-as-id" name="id" content="urn:example:person:martin" />
+      &lt;div class="p-name">
+        &lt;a class="u-url" href="http://example.org/martin">Martin Smith&lt;/a>
+      &lt;/div>
+      &lt;img class="u-photo"
+        src="http://example.org/martin/image"
+        type="image/jpeg"
+        height="250" width="250" />
+    &lt;/div>
+    &lt;div class="p-item h-entry">
+      &lt;meta class="p-as-id" name="id" content="http://example.org/album/my_fluffy_cat" />
+      &lt;img class="u-preview"
+        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
+        type="image/jpeg" />
+      &lt;a class="u-url"
+        href="http://example.org/album/my_fluffy_cat.jpg"
+        type="image/jpeg">JPG&lt;/a> |
+      &lt;a class="u-url" typeof="Link"
+        href="http://example.org/album/my_fluffy_cat.png"
+        type="image/png">PNG&lt;/a>
+    &lt;/div>
+    &lt;div class="p-as-target h-entry"
+      &lt;meta class="p-as-id" name="id" content="http://example.org/album/" />
+      &lt;div class="p-name" lang="en">
+        Martin's Photo Album
+      &lt;/div>
+      &lt;div class="p-name" lang="ga">
+        Grianghraif Mairtin
+      &lt;/div>
+      &lt;img class="u-photo"
+        href="http://example.org/album/thumbnail.jpg"
+        type="image/jpeg" />
+    &lt;/div>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
   <div id="ex3-turtle" style="display: none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -792,6 +870,7 @@ keywords to express the global identifier and object type:</figcaption>
     <li><a href="#ex4-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex4-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex4-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex4-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex4-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex4-jsonld" style="display: block;">
@@ -831,6 +910,17 @@ keywords to express the global identifier and object type:</figcaption>
   &lt;/div>
   &lt;div property="published">2014-08-21T12:34:56Z&lt;/div>
 &lt;/div></pre></div>
+  <div id="ex4-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;meta class="p-as-id" name="id" content="http://example.org/foo" />
+  &lt;div class="p-name">This is a note&lt;/div>
+  &lt;div class="p-author h-card">
+    &lt;meta class="p-as-id" name="id" content="urn:example:person:joe" />
+    &lt;span class="p-name">Joe Smith&lt;/span>
+  &lt;/div>
+  &lt;div class="dt-published">2014-08-21T12:34:56Z&lt;/div>
+&lt;/div></pre></div>
   <div id="ex4-turtle" style="display: none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -860,6 +950,7 @@ value of <code>object</code> is not:</figcaption>
     <li><a href="#ex5-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex5-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex5-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex5-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex5-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex5-jsonld" style="display: block;">
@@ -905,6 +996,20 @@ value of <code>object</code> is not:</figcaption>
     &lt;span property="displayName">Sally&lt;/span>
   &lt;/div>
   &lt;a property="object" itemscope typeof="Link"
+    href="http://example.org/posts/1">
+    http://example.org/posts/1
+  &lt;/a>
+&lt;/div></pre></div>
+  <div id="ex5-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;meta class="p-as-id" name="id" content="http://example.org/foo" />
+  &lt;div class="p-name">A Test&lt;/div>
+  &lt;div class="p-author h-card"
+    &lt;meta class="p-as-id" name="id" content="http://example.org/~sally" />
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/div>
+  &lt;a class="u-share-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
@@ -958,6 +1063,7 @@ value of <code>object</code> is not:</figcaption>
     <li><a href="#ex6-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex6-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex6-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex6-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex6-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex6-jsonld" style="display: block;">
@@ -997,6 +1103,15 @@ value of <code>object</code> is not:</figcaption>
   Latitude: &lt;span property="latitude">56.78&lt;/span>.
   &lt;meta property="http://purl.org/goodrelations/v1#category"
     content="restaurants/french_restaurants" />
+&lt;/div></pre></div>
+  <div id="ex6-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-geo">
+  &lt;div class="p-name">Sally's Restaurant&lt;/div>
+  At
+  Longitude: &lt;span class="p-longitude">12.34&lt;/span>,
+  Latitude: &lt;span class="p-latitude">56.78&lt;/span>.
+  &lt;meta name="category" content="restaurants/french_restaurants" />
 &lt;/div></pre></div>
   <div id="ex6-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1049,6 +1164,7 @@ _:b0 a as:Place, gr:Location ;
     <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex7-jsonld" style="display: block;">
@@ -1068,6 +1184,11 @@ _:b0 a as:Place, gr:Location ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
   &lt;div property="displayName">This is the title&lt;/div>
 &lt;/div></pre></div>
+  <div id="ex7-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name">This is the title&lt;/div>
+&lt;/div></pre></div>
   <div id="ex7-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -1084,6 +1205,7 @@ _:b0 a as:Object ;
     <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex8-jsonld" style="display: block;">
@@ -1110,6 +1232,13 @@ _:b0 a as:Object ;
   &lt;div property="displayName" lang="en">This is the title&lt;/div>
   &lt;div property="displayName" lang="fr">C'est le titre&lt;/div>
   &lt;div property="displayName" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name" lang="en">This is the title&lt;/div>
+  &lt;div class="p-name" lang="fr">C'est le titre&lt;/div>
+  &lt;div class="p-name" lang="sp">Este es el titulo&lt;/div>
 &lt;/div></pre></div>
   <div id="ex8-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1158,6 +1287,7 @@ _:b0 a as:Object ;
     <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex9-jsonld" style="display: block;">
@@ -1179,6 +1309,11 @@ _:b0 a as:Object ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
   &lt;div property="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry" lang="en">
+  &lt;div class="p-name">This is the title&lt;/div>
 &lt;/div></pre></div>
   <div id="ex9-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1202,6 +1337,7 @@ _:b0 a as:Object ;
     <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex10-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex10-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex10-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex10-jsonld" style="display: block;">
@@ -1223,6 +1359,11 @@ _:b0 a as:Object ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
   &lt;div property="displayName" lang="en">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex10-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name" lang="en">This is the title&lt;/div>
 &lt;/div></pre></div>
   <div id="ex10-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1250,6 +1391,7 @@ _:b0 a as:Object ;
     <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex11-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex11-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex11-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex11-jsonld" style="display: block;">
@@ -1273,6 +1415,11 @@ _:b0 a as:Object ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
   &lt;div property="displayName" lang="">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex11-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry" lang="en">
+  &lt;div class="p-name" lang="">This is the title&lt;/div>
 &lt;/div></pre></div>
   <div id="ex11-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1339,6 +1486,7 @@ _:b0 a as:Object ;
     <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex12-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex12-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex12-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex12-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex12-jsonld" style="display: block;">
@@ -1366,6 +1514,14 @@ _:b0 a as:Object ;
   &lt;img property="image"
        src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
+  <div id="ex12-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo"
+       src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
   <div id="ex12-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -1385,6 +1541,7 @@ _:b0 a as:Object ;
     <li><a href="#ex13-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex13-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex13-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex13-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex13-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex13-jsonld" style="display: block;">
@@ -1418,6 +1575,14 @@ _:b0 a as:Object ;
   &lt;img property="image" typeof="Link"
     type="image/png"
     src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex13-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo"
+       src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
   <div id="ex13-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1454,6 +1619,7 @@ _:b0 a as:Object ;
     <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex14-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex14-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex14-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex14-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex14-jsonld" style="display: block;">
@@ -1493,6 +1659,16 @@ _:b0 a as:Object ;
     src="http://example.org/application/123.gif" />
   &lt;img property="image" typeof="Link"
     type="image/png"
+    src="http://example.org/application/123.png" />
+&lt;/div></pre></div>
+  <div id="ex14-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-application"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo"
+    src="http://example.org/application/123.gif" />
+  &lt;img class="u-photo"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
   <div id="ex14-turtle" style="display:none;">
@@ -1541,6 +1717,7 @@ _:b0 a as:Object ;
     <li><a href="#ex15-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex15-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex15-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex15-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex15-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex15-jsonld" style="display: block;">
@@ -1584,6 +1761,17 @@ _:b0 a as:Object ;
     type="image/png"
     src="http://example.org/application/123.png"
     rel="thumbnail" />
+&lt;/div></pre></div>
+  <div id="ex15-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-application"
+  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
+  &lt;div class="p-name">My Application&lt;/div>
+  &lt;img class="u-photo"
+    src="http://example.org/application/123.gif" />
+  &lt;img class="u-photo"
+       src="http://example.org/application/123.png"
+       rel="thumbnail" />
 &lt;/div></pre></div>
   <div id="ex15-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1656,6 +1844,7 @@ _:b0 a as:Object ;
     <li><a href="#ex16-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex16-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex16-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex16-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex16-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex16-jsonld" style="display: block;">
@@ -1699,6 +1888,19 @@ _:b0 a as:Object ;
     "&lt;span property="content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
+  <div id="ex16-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;div class="p-author h-card">
+    &lt;link class="u-url p-name" href="acct:sally@example.org">
+      Sally Smith
+    &lt;/link>
+  &lt;/div>
+  created
+  &lt;div class="p-share-of h-entry">
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
   <div id="ex16-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -1720,6 +1922,7 @@ _:b0 a as:Create ;
     <li><a href="#ex17-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex17-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex17-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex17-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex17-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex17-jsonld" style="display: block;">
@@ -1772,6 +1975,20 @@ _:b0 a as:Create ;
     "&lt;span property="content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
+  <div id="ex17-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;div class="p-author h-card">
+    &lt;link class="u-url p-name" href="acct:sally@example.org">
+      &lt;span class="p-given-name">Sally&lt;/span>
+      &lt;span class="p-family-name">Smith&lt;/span>
+    &lt;/link>
+  &lt;/div>
+  created
+  &lt;div class="p-share-of h-entry">
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
   <div id="ex17-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -1811,6 +2028,7 @@ _:c14n0 a as:Create ;
     <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex18-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex18-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex18-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex18-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex18-jsonld" style="display: block;">
@@ -1864,6 +2082,20 @@ _:c14n0 a as:Create ;
   created
   &lt;div property="object" typeof="Note">
     "&lt;span property="content">This is a simple note&lt;/span>"
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex18-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-share">
+  &lt;div class="p-author h-card">
+    &lt;link class="u-url p-name" href="acct:sally@example.org">
+      &lt;span class="p-given-name">Sally&lt;/span>
+      &lt;span class="p-family-name">Smith&lt;/span>
+    &lt;/link>
+  &lt;/div>
+  created
+  &lt;div class="p-share-of h-entry">
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
   <div id="ex18-turtle" style="display:none;">
@@ -1925,6 +2157,7 @@ _:b0 a as:Create ;
     <li><a href="#ex19-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex19-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex19-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex19-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex19-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex19-jsonld" style="display: block;">
@@ -1957,6 +2190,17 @@ _:b0 a as:Create ;
     "http://example.org/notes/1"
   &lt;/a>
   &lt;meta property="published" content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex19-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-like">
+  &lt;a class="u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a class="u-like-of" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a>
+  &lt;meta class="dt-published" name="published"
+    content="2014-09-30T12:34:56Z" />
 &lt;/div></pre></div>
   <div id="ex19-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -2002,6 +2246,7 @@ _:b0 a as:Create ;
     <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex20-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex20-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex20-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex20-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex20-jsonld" style="display: block;">
@@ -2034,6 +2279,17 @@ _:b0 a as:Create ;
     "http://example.org/notes/1"
   &lt;/a>
   &lt;meta property="published" content="2014-09-30T12:34:56Z" />
+&lt;/div></pre></div>
+  <div id="ex20-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-like">
+  &lt;a class="u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
+  liked
+  &lt;a class="u-like-of" href="http://example.org/notes/1">
+    "http://example.org/notes/1"
+  &lt;/a>
+  &lt;meta class="dt-published" name="published"
+    content="2014-09-30T12:34:56Z" />
 &lt;/div></pre></div>
   <div id="ex20-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -2119,6 +2375,7 @@ _:b0 a as:Create ;
     <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex21-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex21-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex21-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex21-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex21-jsonld" style="display: block;">
@@ -2168,6 +2425,21 @@ _:b0 a as:Create ;
     &lt;/li&lt;
   &lt;ul>
 &lt;/div></pre></div>
+  <div id="ex21-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
+  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link rel="self" href="http://example.org/foo?page=1" />
+  &lt;ul class="p-as-items">
+    &lt;li class="h-as-post"&lt;
+      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+      created
+      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ul>
+&lt;/div></pre></div>
   <div id="ex21-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
@@ -2192,6 +2464,7 @@ _:b0 a as:Collection ;
     <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex22-jsonld" style="display: block;">
@@ -2243,6 +2516,22 @@ _:b0 a as:Collection ;
       &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
       created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+    &lt;/li&lt;
+  &lt;ol>
+&lt;/div></pre></div>
+  <div id="ex22-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-collection">
+  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
+  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
+  &lt;meta class="p-as-start-index" name="startIndex" content="0" />
+  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;link rel="self" href="http://example.org/foo?page=1" />
+  &lt;ol class="p-as-items">
+    &lt;li class="h-as-post"&lt;
+      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+      created
+      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
   &lt;ol>
 &lt;/div></pre></div>
@@ -2553,6 +2842,7 @@ _:c14n0 a as:OrderedCollection ;
     <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex23-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex23-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex23-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex23-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex23-jsonld" style="display: block;">
@@ -2574,6 +2864,12 @@ _:c14n0 a as:OrderedCollection ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Place">
   &lt;meta property="latitude" content="36.74" />
   &lt;meta property="longitude" content="-119.77" />
+&lt;/div></pre></div>
+  <div id="ex23-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-geo">
+  &lt;meta class="p-latitude" name="latitude" content="36.74" />
+  &lt;meta class="p-longitude" name="longitude" content="-119.77" />
 &lt;/div></pre></div>
   <div id="ex23-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -2606,6 +2902,7 @@ _:c14n0 a as:Place;
     <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
     <li><a href="#ex24-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex24-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex24-microformats" class="selected">Microformats</a></li>
     <li><a href="#ex24-turtle" class="selected">Turtle</a></li>
   </ul>
   <div id="ex24-jsonld" style="display: block;">
@@ -2631,6 +2928,13 @@ _:c14n0 a as:Place;
   typeof="itemtype="http://www.opengis.net/ont/geosparql#Geometry"">
   &lt;meta
     property="http://www.opengis.net/ont/geosparql#asWKT"
+    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
+&lt;/div></pre></div>
+  <div id="ex24-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-geo">
+  &lt;meta
+    name="wkt"
     content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
 &lt;/div></pre></div>
   <div id="ex24-turtle" style="display:none;">
