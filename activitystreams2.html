@@ -509,7 +509,7 @@ _:b0 a as:Add ;
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
       "displayNameMap": {
-        "en": "Martin added a new video to his album.",
+        "en": "Martin added a new image to his album.",
         "ga": "Martin phost le fisean nua a albam."
       },
       "actor": {
@@ -571,10 +571,10 @@ _:b0 a as:Add ;
     &lt;meta itemprop="published" content="2011-02-10T15:04:55Z" />
     &lt;link itemprop="generator" href="http://example.org/activities-app" />
     &lt;div itemprop="displayName" lang="en">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div itemprop="displayName" lang="ga">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div itemprop="actor" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Person"
@@ -628,10 +628,10 @@ _:b0 a as:Add ;
     &lt;meta property="published" content="2011-02-10T15:04:55Z" />
     &lt;link property="generator" href="http://example.org/activities-app" />
     &lt;div property="displayName" lang="en">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div property="displayName" lang="ga">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div property="actor" typeof="Person"
       resource="urn:example:person:martin">
@@ -673,50 +673,20 @@ _:b0 a as:Add ;
   </div>
   <div id="ex3-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems" content="1" />
-  &lt;div class="p-as-items h-as-add">
-    &lt;meta class="dt-published" name="published" content="2011-02-10T15:04:55Z" />
-    &lt;link class="u-as-generator" href="http://example.org/activities-app" />
-    &lt;div class="p-name" lang="en">
-      Martin added a new video to his album.
-    &lt;/div>
-    &lt;div class="p-name" lang="ga">
-      Martin added a new video to his album.
-    &lt;/div>
-    &lt;div class="p-author h-card">
-      &lt;meta class="p-as-id" name="id" content="urn:example:person:martin" />
-      &lt;div class="p-name">
-        &lt;a class="u-url" href="http://example.org/martin">Martin Smith&lt;/a>
-      &lt;/div>
+>&lt;div class="h-feed">
+  &lt;div class="h-entry">
+    &lt;header>Published on &lt;time class="dt-published" datetime="2011-02-10T15:04:55Z">February 10th, 2011 3:04 PM&lt;/time>
+    &lt;/header>
+    &lt;div class="e-content p-name">
+      &lt;a class="p-author h-card" href="http://example.org/martin">Martin Smith&lt;/a>
+      added a new 
+      &lt;a class="u-url" href="http://example.org/album/my_fluffy_cat.jpg">image&lt;a>
+      to his 
+      &lt;a class="u-url" href="http://example.org/album">album&lt;a>
+      .
       &lt;img class="u-photo"
-        src="http://example.org/martin/image"
-        type="image/jpeg"
+        src="http://example.org/martin/album/my_fluffy_cat.jpg"
         height="250" width="250" />
-    &lt;/div>
-    &lt;div class="p-item h-entry">
-      &lt;meta class="p-as-id" name="id" content="http://example.org/album/my_fluffy_cat" />
-      &lt;img class="u-preview"
-        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
-        type="image/jpeg" />
-      &lt;a class="u-url"
-        href="http://example.org/album/my_fluffy_cat.jpg"
-        type="image/jpeg">JPG&lt;/a> |
-      &lt;a class="u-url" typeof="Link"
-        href="http://example.org/album/my_fluffy_cat.png"
-        type="image/png">PNG&lt;/a>
-    &lt;/div>
-    &lt;div class="p-as-target h-entry"
-      &lt;meta class="p-as-id" name="id" content="http://example.org/album/" />
-      &lt;div class="p-name" lang="en">
-        Martin's Photo Album
-      &lt;/div>
-      &lt;div class="p-name" lang="ga">
-        Grianghraif Mairtin
-      &lt;/div>
-      &lt;img class="u-photo"
-        href="http://example.org/album/thumbnail.jpg"
-        type="image/jpeg" />
     &lt;/div>
   &lt;/div>
 &lt;/div></pre>
@@ -769,7 +739,7 @@ _:b0 a as:Collection ;
     a as:Add ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
-      as:displayName "Martin added a new video to his album."@en ;
+      as:displayName "Martin added a new image to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
       as:actor &lt;urn:example:person:martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
