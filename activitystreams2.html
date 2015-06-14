@@ -302,7 +302,7 @@
   <div id="ex1-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;a class="p-author h-card" href="http://martin.example.org/">Martin&lt;/a>
+  &lt;a class="u-author h-card" href="http://martin.example.org/">Martin&lt;/a>
   created
   &lt;img class="u-photo" href="http://martin.example.org/foo.jpg" alt="Photograph of foo"/>
 &lt;/div></pre>
@@ -435,7 +435,7 @@ _:b0 a as:Create ;
   <div id="ex2-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;a class="p-author h-card" href="http://martin.example.org/">
+  &lt;a class="u-author h-card" href="http://martin.example.org/">
     &lt;img src="http://martin.example.org/image.jpg" alt=""
       />Martin Smith
   &lt;/a>
@@ -678,7 +678,7 @@ _:b0 a as:Add ;
     &lt;header>&lt;time class="dt-published" datetime="2011-02-10T15:04:55Z">February 10th, 2011 3:04 PM&lt;/time>
     &lt;/header>
     &lt;div class="e-content p-name">
-      &lt;a class="p-author h-card" href="http://example.org/martin">Martin Smith&lt;/a>
+      &lt;a class="u-author h-card" href="http://example.org/martin">Martin Smith&lt;/a>
       added a new 
       &lt;a class="u-url" href="http://example.org/album/my_fluffy_cat.jpg">image&lt;a>
       to his 
@@ -884,7 +884,7 @@ keywords to express the global identifier and object type:</figcaption>
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;header>
-    &lt;a class="p-author h-card" href="http://example.org/person/joe">Joe Smith&lt;/a>
+    &lt;a class="u-author h-card" href="http://example.org/person/joe">Joe Smith&lt;/a>
     &lt;/div>
     &lt;time class="dt-published" datetime="2014-08-21T12:34:56Z">August 21st, 2014 at 12:34 PM&lt;/time>
     &lt;a class="u-url" href="http://example.org/foo">Permalink&lt;/a>
@@ -2053,7 +2053,7 @@ _:c14n0 a as:Create ;
   <div id="ex18-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;div class="p-author h-card p-vcard-individual">
+  &lt;div class="u-author h-card p-vcard-individual">
     &lt;a class="u-url p-name" href="http://sally.example.org">
       &lt;span class="p-given-name">Sally&lt;/span>
       &lt;span class="p-family-name">Smith&lt;/span>
@@ -2160,7 +2160,7 @@ _:b0 a as:Create ;
   <div id="ex19-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry e-content p-name">
-  &lt;a class="h-card p-author u-url" href="http://example.org/profiles/joe">Joe&lt;/a>
+  &lt;a class="h-card u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
   liked
   &lt;a class="u-like-of" href="http://example.org/notes/1">
     "http://example.org/notes/1"
@@ -2250,7 +2250,7 @@ _:b0 a as:Create ;
   <div id="ex20-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry e-content p-name">
-  &lt;a class="h-card p-author u-url" href="http://example.org/profiles/joe">Joe&lt;/a>
+  &lt;a class="h-card u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
   liked
   &lt;a class="u-like-of" href="http://example.org/notes/1">
     "http://example.org/notes/1"
@@ -2395,16 +2395,14 @@ _:b0 a as:Create ;
 &lt;/div></pre></div>
   <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
+>&lt;div class="h-feed">
   &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link rel="self" href="http://example.org/foo?page=1" />
-  &lt;ul class="p-as-items">
-    &lt;li class="h-as-post"&lt;
-      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+  &lt;a class="u-url" href="http://example.org/foo" >This Collection&lt;/a>
+  &lt;ul>
+    &lt;li class="h-entry">
+      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
       created
-      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li&lt;
   &lt;ul>
 &lt;/div></pre></div>
@@ -2489,17 +2487,14 @@ _:b0 a as:Collection ;
 &lt;/div></pre></div>
   <div id="ex22-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
-  &lt;meta class="p-as-start-index" name="startIndex" content="0" />
+>&lt;div class="h-feed">
   &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link rel="self" href="http://example.org/foo?page=1" />
-  &lt;ol class="p-as-items">
-    &lt;li class="h-as-post"&lt;
-      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+  &lt;a class="u-url" href="http://example.org/foo">This Collection&lt;/a>
+  &lt;ol>
+    &lt;li class="h-entry"&lt;
+      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
       created
-      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li&lt;
   &lt;ol>
 &lt;/div></pre></div>
