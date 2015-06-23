@@ -259,10 +259,10 @@
   <div id="ex1-microformats" style="display: none;">
     <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;link class="p-name u-url"
-    href="urn:example:object:1">
+  &lt;a class="p-name u-url"
+    href="http://www.example.com/object/1">
       A Simple, non-specific object
-  &lt;/link>
+  &lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex1-turtle" style="display: none;">
@@ -372,12 +372,14 @@
   </div>
   <div id="ex2-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-entry u-url p-name"
+>&lt;div class="h-entry">
+  &lt;a class="u-url p-name"
     href="http://example.org/abc"
     hreflang="en"
     type="text/html">
     An example link
-&lt;/a></pre>
+  &lt;/a>
+&lt;/div></pre>
   </div>
   <div id="ex2-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -489,13 +491,13 @@ _:b0 a as:Link ;
   </div>
   <div id="ex3-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-activity">
+>&lt;div class="h-entry">
   &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   did something to
   &lt;span class="p-item h-entry">
-    &lt;span class="p-name">A Note&lt;/span>
+    &lt;a href="www.example.com/anote">A Note&lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
