@@ -1,6 +1,7 @@
 {
   "@context": {
     "@vocab": "_:",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "as": "http://www.w3.org/ns/activitystreams#",
     "Accept": "as:Accept",
     "Activity": "as:Activity",
