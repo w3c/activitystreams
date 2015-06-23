@@ -133,6 +133,10 @@
       "@id": "as:items",
       "@type": "@id"
     },
+    "instrument": {
+      "@id": "as:instrument",
+      "@type": "@id"
+    },
     "orderedItems": {
       "@id": "as:items",
       "@type": "@id",
