@@ -176,10 +176,22 @@
       </p>
 
       <p>
-        Note that this document uses illustrative examples using JSON-LD,
-        Microdata, RDFa, Microformats and Turtle. Only the JSON-LD examples
-        are normative. The non-JSON-LD examples are strictly informational.
+        The examples included in this document use the normative JSON-LD
+        serialization defined by this specification along with generally
+        equivalent, non-normative Microdata, RDFa, Microformats, and Turtle
+        serializations. These non-JSON-LD alternatives are included solely for
+        illustrative purposes.
       </p>
+
+      <section id="ednote" class="informative">
+      <h2>Editor's Note</h2>
+      <p><mark>The Microdata, RDFa and Microformats examples included in this
+        document are purely informative and may not currently reflect actual
+        implementation experience or accepted best practices for each
+        format. These alternate serializations may be removed from future
+        iterations of this document and moved to a separate informative WG
+        Note.</mark></p>
+      </section>
 
     </section>
 
@@ -5260,7 +5272,7 @@ _:b0 a as:Relationship ;
             <td>
               <p><code><a title="subject">subject</a></code> |
               <code><a title="object-term">object</a></code> |
-              <code><a>relationship</a></code></p>
+              <code><a title="relationship-term">relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
@@ -7178,15 +7190,17 @@ _:b0 a as:Profile ;
         </div>
 
         <p>
-          The <code><a>relationship</a></code> property specifies the kind
-          of relationship that exists between the two individuals identified
-          by the <code><a title="subject">subject</a></code> and
+          The <code><a title="relationship-term">relationship</a></code>
+          property specifies the kind of relationship that exists between the
+          two individuals identified by the
+          <code><a title="subject">subject</a></code> and
           <code><a title="object">object</a></code> properties. Used together,
           these three properties form what is commonly known as a
           "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
           where <code><a title="subject">subject</a></code> identifies the
-          subject, <code><a>relationship</a></code> identifies the predicate,
-          and <code><a title="object-term">object</a></code> identifies the
+          subject, <code><a title="relationship-term">relationship</a></code>
+          identifies the predicate, and
+          <code><a title="object-term">object</a></code> identifies the
           object.
         </p>
 
@@ -7225,7 +7239,8 @@ _:b0 a as:Profile ;
 
         <p>
           The Activity Streams vocabulary does not define normative values
-          for use with the <code><a>relationship</a></code> property.
+          for use with the
+          <code><a title="relationship-term">relationship</a></code> property.
           It is expected that implementations will make use of several
           existing vocabularies that have been developed for the purpose
           of describing relationships. Examples of such vocabularies include
@@ -7365,7 +7380,7 @@ _:b0 a as:Profile ;
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
       <code><a>subject</a></code> |
-      <code><a>relationship</a></code> |
+      <code><a title="relationship-term">relationship</a></code> |
       <code><a>describes</a></code>
     </p>
 
@@ -16425,7 +16440,7 @@ _:b0 a as:Relationship ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="relationship">relationship</dfn></td>
+          <td rowspan="5" ><dfn title="relationship-term">relationship</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td>
             <code>http://www.w3.org/ns/activitystreams#relationship</code>
