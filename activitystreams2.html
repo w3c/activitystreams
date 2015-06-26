@@ -319,7 +319,7 @@
   <div id="ex1-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;a class="p-author h-card" href="http://martin.example.org/">Martin&lt;/a>
+  &lt;a class="u-author h-card" href="http://martin.example.org/">Martin&lt;/a>
   created
   &lt;img class="u-photo" href="http://martin.example.org/foo.jpg" alt="Photograph of foo"/>
 &lt;/div></pre>
@@ -452,7 +452,7 @@ _:b0 a as:Create ;
   <div id="ex2-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;a class="p-author h-card" href="http://martin.example.org/">
+  &lt;a class="u-author h-card" href="http://martin.example.org/">
     &lt;img src="http://martin.example.org/image.jpg" alt=""
       />Martin Smith
   &lt;/a>
@@ -526,7 +526,7 @@ _:b0 a as:Add ;
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
       "displayNameMap": {
-        "en": "Martin added a new video to his album.",
+        "en": "Martin added a new image to his album.",
         "ga": "Martin phost le fisean nua a albam."
       },
       "actor": {
@@ -588,10 +588,10 @@ _:b0 a as:Add ;
     &lt;meta itemprop="published" content="2011-02-10T15:04:55Z" />
     &lt;link itemprop="generator" href="http://example.org/activities-app" />
     &lt;div itemprop="displayName" lang="en">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div itemprop="displayName" lang="ga">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div itemprop="actor" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Person"
@@ -645,10 +645,10 @@ _:b0 a as:Add ;
     &lt;meta property="published" content="2011-02-10T15:04:55Z" />
     &lt;link property="generator" href="http://example.org/activities-app" />
     &lt;div property="displayName" lang="en">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div property="displayName" lang="ga">
-      Martin added a new video to his album.
+      Martin added a new image to his album.
     &lt;/div>
     &lt;div property="actor" typeof="Person"
       resource="urn:example:person:martin">
@@ -690,50 +690,20 @@ _:b0 a as:Add ;
   </div>
   <div id="ex3-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems" content="1" />
-  &lt;div class="p-as-items h-as-add">
-    &lt;meta class="dt-published" name="published" content="2011-02-10T15:04:55Z" />
-    &lt;link class="u-as-generator" href="http://example.org/activities-app" />
-    &lt;div class="p-name" lang="en">
-      Martin added a new video to his album.
-    &lt;/div>
-    &lt;div class="p-name" lang="ga">
-      Martin added a new video to his album.
-    &lt;/div>
-    &lt;div class="p-author h-card">
-      &lt;meta class="p-as-id" name="id" content="urn:example:person:martin" />
-      &lt;div class="p-name">
-        &lt;a class="u-url" href="http://example.org/martin">Martin Smith&lt;/a>
-      &lt;/div>
+>&lt;div class="h-feed">
+  &lt;div class="h-entry">
+    &lt;header>&lt;time class="dt-published" datetime="2011-02-10T15:04:55Z">February 10th, 2011 3:04 PM&lt;/time>
+    &lt;/header>
+    &lt;div class="e-content p-name">
+      &lt;a class="u-author h-card" href="http://example.org/martin">Martin Smith&lt;/a>
+      added a new 
+      &lt;a class="u-url" href="http://example.org/album/my_fluffy_cat.jpg">image&lt;a>
+      to his 
+      &lt;a class="u-url" href="http://example.org/album">album&lt;a>
+      .
       &lt;img class="u-photo"
-        src="http://example.org/martin/image"
-        type="image/jpeg"
+        src="http://example.org/martin/album/my_fluffy_cat.jpg"
         height="250" width="250" />
-    &lt;/div>
-    &lt;div class="p-item h-entry">
-      &lt;meta class="p-as-id" name="id" content="http://example.org/album/my_fluffy_cat" />
-      &lt;img class="u-preview"
-        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
-        type="image/jpeg" />
-      &lt;a class="u-url"
-        href="http://example.org/album/my_fluffy_cat.jpg"
-        type="image/jpeg">JPG&lt;/a> |
-      &lt;a class="u-url" typeof="Link"
-        href="http://example.org/album/my_fluffy_cat.png"
-        type="image/png">PNG&lt;/a>
-    &lt;/div>
-    &lt;div class="p-as-target h-entry"
-      &lt;meta class="p-as-id" name="id" content="http://example.org/album/" />
-      &lt;div class="p-name" lang="en">
-        Martin's Photo Album
-      &lt;/div>
-      &lt;div class="p-name" lang="ga">
-        Grianghraif Mairtin
-      &lt;/div>
-      &lt;img class="u-photo"
-        href="http://example.org/album/thumbnail.jpg"
-        type="image/jpeg" />
     &lt;/div>
   &lt;/div>
 &lt;/div></pre>
@@ -786,7 +756,7 @@ _:b0 a as:Collection ;
     a as:Add ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
-      as:displayName "Martin added a new video to his album."@en ;
+      as:displayName "Martin added a new image to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
       as:actor &lt;urn:example:person:martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
@@ -934,13 +904,13 @@ keywords to express the global identifier and object type:</figcaption>
   <div id="ex4-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;meta class="p-as-id" name="id" content="http://example.org/foo" />
-  &lt;div class="p-name">This is a note&lt;/div>
-  &lt;div class="p-author h-card">
-    &lt;meta class="p-as-id" name="id" content="urn:example:person:joe" />
-    &lt;span class="p-name">Joe Smith&lt;/span>
-  &lt;/div>
-  &lt;div class="dt-published">2014-08-21T12:34:56Z&lt;/div>
+  &lt;header>
+    &lt;a class="u-author h-card" href="http://example.org/person/joe">Joe Smith&lt;/a>
+    &lt;/div>
+    &lt;time class="dt-published" datetime="2014-08-21T12:34:56Z">August 21st, 2014 at 12:34 PM&lt;/time>
+    &lt;a class="u-url" href="http://example.org/foo">Permalink&lt;/a>
+  &lt;/header>
+  &lt;div class="p-name e-content">This is a note&lt;/div>
 &lt;/div></pre></div>
   <div id="ex4-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -1023,14 +993,13 @@ value of <code>object</code> is not:</figcaption>
 &lt;/div></pre></div>
   <div id="ex5-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-share">
-  &lt;meta class="p-as-id" name="id" content="http://example.org/foo" />
+>&lt;div class="h-entry">
+  &lt;a class="u-url" href="http://example.org/foo">Permalink&lt;/a>
   &lt;div class="p-name">A Test&lt;/div>
   &lt;div class="p-author h-card"
-    &lt;meta class="p-as-id" name="id" content="http://example.org/~sally" />
-    &lt;span class="p-name">Sally&lt;/span>
+    &lt;a class="u-url p-name" href="http://example.org/~sally">Sally&lt;/a>
   &lt;/div>
-  &lt;a class="u-share-of"
+  &lt;a class="h-cite u-url"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
@@ -1132,7 +1101,8 @@ value of <code>object</code> is not:</figcaption>
   At
   Longitude: &lt;span class="p-longitude">12.34&lt;/span>,
   Latitude: &lt;span class="p-latitude">56.78&lt;/span>.
-  &lt;meta name="category" content="restaurants/french_restaurants" />
+  Filed under 
+  &lt;span class="p-category">restaurants/french_restaurants&lt;/span>
 &lt;/div></pre></div>
   <div id="ex6-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1537,9 +1507,8 @@ _:b0 a as:Object ;
 &lt;/div></pre></div>
   <div id="ex12-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry"
-  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
-  &lt;div class="p-name">My Application&lt;/div>
+>&lt;div class="h-card">
+  &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
   &lt;img class="u-photo"
        src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
@@ -1599,11 +1568,11 @@ _:b0 a as:Object ;
 &lt;/div></pre></div>
   <div id="ex13-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry"
-  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
-  &lt;div class="p-name">My Application&lt;/div>
+>&lt;div class="h-card">
+  &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
   &lt;img class="u-photo"
-       src="http://example.org/application/123.png" />
+    type="image/png"
+    src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
   <div id="ex13-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -1684,12 +1653,12 @@ _:b0 a as:Object ;
 &lt;/div></pre></div>
   <div id="ex14-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-application"
-  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
-  &lt;div class="p-name">My Application&lt;/div>
+>&lt;div class="h-card">
+  &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
   &lt;img class="u-photo"
     src="http://example.org/application/123.gif" />
   &lt;img class="u-photo"
+    type="image/png"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
   <div id="ex14-turtle" style="display:none;">
@@ -1785,9 +1754,8 @@ _:b0 a as:Object ;
 &lt;/div></pre></div>
   <div id="ex15-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-application"
-  &lt;meta class="p-as-id" name="id" content="http://example.org/application/123">
-  &lt;div class="p-name">My Application&lt;/div>
+>&lt;div class="h-card">
+  &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
   &lt;img class="u-photo"
     src="http://example.org/application/123.gif" />
   &lt;img class="u-photo"
@@ -1911,15 +1879,15 @@ _:b0 a as:Object ;
 &lt;/div></pre></div>
   <div id="ex16-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-share">
-  &lt;div class="p-author h-card">
-    &lt;link class="u-url p-name" href="acct:sally@example.org">
+>&lt;div class="h-entry">
+  &lt;span class="p-author h-card">
+    &lt;a class="u-url p-name" href="http://sally.example.org/">
       Sally Smith
-    &lt;/link>
-  &lt;/div>
+    &lt;/a>
+  &lt;/span>
   created
-  &lt;div class="p-share-of h-entry">
-    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;div class="e-content">
+    This is a simple note
   &lt;/div>
 &lt;/div></pre></div>
   <div id="ex16-turtle" style="display:none;">
@@ -1998,16 +1966,15 @@ _:b0 a as:Create ;
 &lt;/div></pre></div>
   <div id="ex17-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-share">
+>&lt;div class="h-entry">
   &lt;div class="p-author h-card">
-    &lt;link class="u-url p-name" href="acct:sally@example.org">
+    &lt;a class="u-url p-name" href="http://sally.example.org">&lt;/a>
       &lt;span class="p-given-name">Sally&lt;/span>
       &lt;span class="p-family-name">Smith&lt;/span>
-    &lt;/link>
   &lt;/div>
   created
-  &lt;div class="p-share-of h-entry">
-    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;div class="e-content">
+    This is a simple note
   &lt;/div>
 &lt;/div></pre></div>
   <div id="ex17-turtle" style="display:none;">
@@ -2107,16 +2074,16 @@ _:c14n0 a as:Create ;
 &lt;/div></pre></div>
   <div id="ex18-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-share">
-  &lt;div class="p-author h-card">
-    &lt;link class="u-url p-name" href="acct:sally@example.org">
+>&lt;div class="h-entry">
+  &lt;div class="u-author h-card p-vcard-individual">
+    &lt;a class="u-url p-name" href="http://sally.example.org">
       &lt;span class="p-given-name">Sally&lt;/span>
       &lt;span class="p-family-name">Smith&lt;/span>
-    &lt;/link>
+    &lt;/a>
   &lt;/div>
   created
-  &lt;div class="p-share-of h-entry">
-    "&lt;span class="e-content">This is a simple note&lt;/span>"
+  &lt;div class="e-content">
+    This is a simple note
   &lt;/div>
 &lt;/div></pre></div>
   <div id="ex18-turtle" style="display:none;">
@@ -2211,14 +2178,15 @@ _:b0 a as:Create ;
 &lt;/div></pre></div>
   <div id="ex19-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-like">
-  &lt;a class="u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
+>&lt;div class="h-entry e-content p-name">
+  &lt;a class="h-card u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
   liked
   &lt;a class="u-like-of" href="http://example.org/notes/1">
     "http://example.org/notes/1"
   &lt;/a>
-  &lt;meta class="dt-published" name="published"
-    content="2014-09-30T12:34:56Z" />
+  &lt;footer>
+    &lt;time class="dt-published" datetime="2014-09-30T12:34:56Z">September 30th, 2014 at 12:34 PM&lt;/time>
+  &lt;/footer>
 &lt;/div></pre></div>
   <div id="ex19-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -2300,14 +2268,15 @@ _:b0 a as:Create ;
 &lt;/div></pre></div>
   <div id="ex20-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-like">
-  &lt;a class="u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
+>&lt;div class="h-entry e-content p-name">
+  &lt;a class="h-card u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
   liked
   &lt;a class="u-like-of" href="http://example.org/notes/1">
     "http://example.org/notes/1"
   &lt;/a>
-  &lt;meta class="dt-published" name="published"
-    content="2014-09-30T12:34:56Z" />
+  &lt;footer>
+    &lt;time class="dt-published" datetime="2014-09-30T12:34:56Z">September 30th, 2014 at 12:34 PM&lt;/time>
+  &lt;/footer>
 &lt;/div></pre></div>
   <div id="ex20-turtle" style="display:none;">
 <pre class="example highlight turtle"
@@ -2445,16 +2414,14 @@ _:b0 a as:Create ;
 &lt;/div></pre></div>
   <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
+>&lt;div class="h-feed">
   &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link rel="self" href="http://example.org/foo?page=1" />
-  &lt;ul class="p-as-items">
-    &lt;li class="h-as-post"&lt;
-      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+  &lt;a class="u-url" href="http://example.org/foo" >This Collection&lt;/a>
+  &lt;ul>
+    &lt;li class="h-entry">
+      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
       created
-      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li&lt;
   &lt;ul>
 &lt;/div></pre></div>
@@ -2539,17 +2506,14 @@ _:b0 a as:Collection ;
 &lt;/div></pre></div>
   <div id="ex22-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems" content="10" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage" content="1" />
-  &lt;meta class="p-as-start-index" name="startIndex" content="0" />
+>&lt;div class="h-feed">
   &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link rel="self" href="http://example.org/foo?page=1" />
-  &lt;ol class="p-as-items">
-    &lt;li class="h-as-post"&lt;
-      &lt;link class="u-author" href="urn:example:person:sally">Sally&lt;/link>
+  &lt;a class="u-url" href="http://example.org/foo">This Collection&lt;/a>
+  &lt;ol>
+    &lt;li class="h-entry"&lt;
+      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
       created
-      &lt;a class="u-item" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li&lt;
   &lt;ol>
 &lt;/div></pre></div>
@@ -2886,8 +2850,8 @@ _:c14n0 a as:OrderedCollection ;
   <div id="ex23-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-geo">
-  &lt;meta class="p-latitude" name="latitude" content="36.74" />
-  &lt;meta class="p-longitude" name="longitude" content="-119.77" />
+  &lt;span class="p-latitude">36.74&lt;/span>
+  &lt;span class="p-longitude">-119.77&lt;/span>
 &lt;/div></pre></div>
   <div id="ex23-turtle" style="display:none;">
 <pre class="example highlight turtle"
