@@ -324,6 +324,15 @@ as:origin a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
+as:instrument a owl:ObjectProperty ;
+  rdfs:label "instrument"@en ;
+  rdfs:comment "Indentifies an object used (or to be used) to complete an activity"@en ;
+  rdfs:domain as:Activity ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Object as:Link )
+  ] .
+
 as:to a owl:ObjectProperty ;
   rdfs:label "to"@en ;
   rdfs:domain as:Object ;

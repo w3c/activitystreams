@@ -176,10 +176,22 @@
       </p>
 
       <p>
-        Note that this document uses illustrative examples using JSON-LD,
-        Microdata, RDFa, Microformats and Turtle. Only the JSON-LD examples
-        are normative. The non-JSON-LD examples are strictly informational.
+        The examples included in this document use the normative JSON-LD
+        serialization defined by this specification along with generally
+        equivalent, non-normative Microdata, RDFa, Microformats, and Turtle
+        serializations. These non-JSON-LD alternatives are included solely for
+        illustrative purposes.
       </p>
+
+      <section id="ednote" class="informative">
+      <h2>Editor's Note</h2>
+      <p><mark>The Microdata, RDFa and Microformats examples included in this
+        document are purely informative and may not currently reflect actual
+        implementation experience or accepted best practices for each
+        format. These alternate serializations may be removed from future
+        iterations of this document and moved to a separate informative WG
+        Note.</mark></p>
+      </section>
 
     </section>
 
@@ -543,6 +555,7 @@ _:b0 a as:Activity ;
               <code><a>target</a></code> |
               <code><a>result</a></code> |
               <code><a>origin</a></code> |
+              <code><a>instrument</a></code> |
               <code><a>priority</a></code>
             </p>
 
@@ -5247,7 +5260,7 @@ _:b0 a as:Relationship ;
             <td>
               <p><code><a title="subject">subject</a></code> |
               <code><a title="object-term">object</a></code> |
-              <code><a>relationship</a></code></p>
+              <code><a title="relationship-term">relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
@@ -7165,15 +7178,17 @@ _:b0 a as:Profile ;
         </div>
 
         <p>
-          The <code><a>relationship</a></code> property specifies the kind
-          of relationship that exists between the two individuals identified
-          by the <code><a title="subject">subject</a></code> and
+          The <code><a title="relationship-term">relationship</a></code>
+          property specifies the kind of relationship that exists between the
+          two individuals identified by the
+          <code><a title="subject">subject</a></code> and
           <code><a title="object">object</a></code> properties. Used together,
           these three properties form what is commonly known as a
           "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
           where <code><a title="subject">subject</a></code> identifies the
-          subject, <code><a>relationship</a></code> identifies the predicate,
-          and <code><a title="object-term">object</a></code> identifies the
+          subject, <code><a title="relationship-term">relationship</a></code>
+          identifies the predicate, and
+          <code><a title="object-term">object</a></code> identifies the
           object.
         </p>
 
@@ -7212,7 +7227,8 @@ _:b0 a as:Profile ;
 
         <p>
           The Activity Streams vocabulary does not define normative values
-          for use with the <code><a>relationship</a></code> property.
+          for use with the
+          <code><a title="relationship-term">relationship</a></code> property.
           It is expected that implementations will make use of several
           existing vocabularies that have been developed for the purpose
           of describing relationships. Examples of such vocabularies include
@@ -7307,6 +7323,7 @@ _:b0 a as:Profile ;
       <code><a>icon</a></code> |
       <code><a>image</a></code> |
       <code><a>inReplyTo</a></code> |
+      <code><a>instrument</a></code> |
       <code><a>last</a></code> |
       <code><a>location</a></code> |
       <code><a>items</a></code> |
@@ -7352,7 +7369,7 @@ _:b0 a as:Profile ;
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
       <code><a>subject</a></code> |
-      <code><a>relationship</a></code> |
+      <code><a title="relationship-term">relationship</a></code> |
       <code><a>describes</a></code>
     </p>
 
@@ -9770,6 +9787,121 @@ _:b0 a as:Note ;
         <tr>
           <td>Range:</td>
           <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+      </tbody>
+
+
+      <tbody>
+        <tr>
+          <td rowspan="4" ><dfn>instrument</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td><code>http://www.w3.org/ns/activitystreams#instrument</code></td>
+          <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex101-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex101-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex101-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex101-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex101-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex101-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Listen",
+  "actor": {
+    "@type": "Person",
+    "displayName": "Sally"
+  },
+  "object": "http://example.org/foo.mp3",
+  "instrument": {
+    "@type": "Service",
+    "displayName": "Acme Music Service"
+  }
+}</pre>
+  </div>
+  <div id="ex101-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Listen">
+  &lt;span itemprop="actor" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Person">
+    &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;/span>
+  listened to
+  &lt;a itemprop="object" href="http://example.org/foo.mp3" />
+  using
+  &lt;span itemprop="instrument" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Service">
+    &lt;span itemprop="displayName">
+      Acme Music Service
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex101-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Listen">
+  &lt;span property="actor" typeof="Person">
+    &lt;span property="displayName">Sally&lt;/span>
+  &lt;/span>
+  listened to
+  &lt;a property="object" href="http://example.org/foo.mp3" />
+  using
+  &lt;span property="instrument" typeof="Service">
+    &lt;span property="displayName">
+      Acme Music Service
+    &lt;/span>
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex101-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;span class="h-card p-name">Sally&lt;/span>
+  listened to
+  &lt;a href="http://example.org/foo.mp3" />
+  using
+  &lt;span class="h-entry p-name>
+    Acme Music Service
+  &lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex101-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+_:b0 a as:Listen ;
+  as:actor [
+    a as:Person ;
+      as:displayName "Sally"
+  ] ;
+  as:object &lt;http://example.org/foo.mp3> ;
+  as:instrument [
+    a as:Service ;
+      as:displayName "Acme Music Service"
+  ] .
+</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies one or more objects used (or to be used) in the
+            completion of an <code><a>Activity</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td>Domain:</td>
+          <td><code><a>Activity</a></code></td>
+        </tr>
+        <tr>
+          <td>Range:</td>
+          <td><code><a>Object</a> | <a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -16412,7 +16544,7 @@ _:b0 a as:Relationship ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="relationship">relationship</dfn></td>
+          <td rowspan="5" ><dfn title="relationship-term">relationship</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td>
             <code>http://www.w3.org/ns/activitystreams#relationship</code>
