@@ -271,10 +271,10 @@
   <div id="ex1-microformats" style="display: none;">
     <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;link class="p-name u-url"
-    href="urn:example:object:1">
+  &lt;a class="p-name u-url"
+    href="http://www.example.com/object/1">
       A Simple, non-specific object
-  &lt;/link>
+  &lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex1-turtle" style="display: none;">
@@ -384,12 +384,14 @@
   </div>
   <div id="ex2-microformats" style="display: none;">
 <pre class="example highlight json"
->&lt;a class="h-entry u-url p-name"
+>&lt;div class="h-entry">
+  &lt;a class="u-url p-name"
     href="http://example.org/abc"
     hreflang="en"
     type="text/html">
     An example link
-&lt;/a></pre>
+  &lt;/a>
+&lt;/div></pre>
   </div>
   <div id="ex2-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -501,13 +503,13 @@ _:b0 a as:Link ;
   </div>
   <div id="ex3-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-activity">
+>&lt;div class="h-entry">
   &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   did something to
   &lt;span class="p-item h-entry">
-    &lt;span class="p-name">A Note&lt;/span>
+    &lt;a href="www.example.com/anote">A Note&lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -627,11 +629,11 @@ _:b0 a as:Activity ;
   <div id="ex182-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-travel">
-  &lt;meta class="p-author h-card">
-    &lt;meta class="p-name">Sally&lt;/meta>
-  &lt;/meta>
+  &lt;span class="p-author h-card">
+    &lt;span class="p-name">Sally&lt;/span>
+  &lt;/span>
   is traveling to
-  &lt;span class="p-as-target h-geo">
+  &lt;span class="h-geo">
     &lt;span class="p-name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -823,12 +825,8 @@ _:b0 a as:Actor ;
   </div>
   <div id="ex5-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
-  &lt;ul class="p-as-items">
+>&lt;div class="h-feed">
+  &lt;ul>
     &lt;li class="h-entry p-name">A Simple Note&lt;/li>
     &lt;li class="h-entry p-name">Another Simple Note&lt;/li>
   &lt;/ul>
@@ -1014,14 +1012,8 @@ _:b0 a as:Collection ;
   </div>
   <div id="ex6-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
-  &lt;meta class="p-as-start-index" name="startIndex"
-    content="0" /&gt;
-  &lt;ol class="p-as-items">
+>&lt;div class="h-feed">
+  &lt;ol>
     &lt;li class="h-entry p-name">A Simple Note&lt;/li>
     &lt;li class="h-entry p-name">Another Simple Note&lt;/li>
   &lt;/ol>
@@ -1261,16 +1253,16 @@ _:b0 a as:OrderedCollection ;
   </div>
   <div id="ex7-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-accept">
+>&lt;div class="h-entry">
   &lt;span class="p-author h-card" >
     &lt;span class="p-name">Sally&lt;/span>
   &lt;span>
   accepted
-  &lt;span class="p-item h-as-invite">
-    &lt;link class="u-author"
-      href="acct:john@example.org">John's&lt;/link>
+  &lt;span class="h-card">
+    &lt;a class="u-author"
+      href="john.example.org">John's&lt;/link>
       invitation to
-    &lt;span class="p-item h-event">
+    &lt;span class="h-event">
       &lt;span class="p-name">
         A Party!
       &lt;/span>
@@ -1844,17 +1836,14 @@ _:b0 a as:Arrive ;
   </div>
   <div id="ex12-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-create">
+>&lt;div class="h-entry">
   &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
-  created
-  &lt;span class="p-item h-entry">
-    a note titled
+  created a note titled
     "&lt;span class="p-name">A Simple Note&lt;/span>"
     with content
-    "&lt;span class="e-content">This is a simple note&lt;/span>""
-  &lt;/span>
+    "&lt;span class="e-content">This is a simple note&lt;/span>"
 &lt;/div></pre>
   </div>
 <div id="ex12-turtle" style="display: none;">
@@ -1947,17 +1936,15 @@ _:b0 a as:Create ;
   </div>
   <div id="ex13-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-delete">
+>&lt;div class="h-entry">
   &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   deleted
-  &lt;span class="p-item h-entry">
     &lt;a class="u-url"
       href="http://example.org/notes/1">
       http://example.org/notes/1
     &lt;/a>
-  &lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex13-turtle" style="display: none;">
@@ -2048,12 +2035,12 @@ _:b0 a as:Delete ;
   </div>
   <div id="ex14-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-favorite">
+>&lt;div class="h-entry p-name">
   &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   favorited
-  &lt;a class="u-favorite-of"
+  &lt;a class="u-like-of"
     href="http://example.org/notes/1">
     http://example.org/notes/1
   &lt;/a>
@@ -2634,7 +2621,7 @@ _:b0 a as:Leave ;
   </div>
   <div id="ex20-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-like">
+>&lt;div class="h-entry p-name">
   &lt;span class="p-author h-card">
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
