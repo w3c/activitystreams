@@ -1842,7 +1842,7 @@ _:b0 a as:Object ;
   "@type": "Create",
   "actor": {
     "@type": "Person",
-    "@id": "acct:sally@example.org",
+    "@id": "http://sally.example.org",
     "displayName": "Sally Smith"
   },
   "object": {
@@ -1856,7 +1856,7 @@ _:b0 a as:Object ;
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Create">
   &lt;div itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
-    itemid="acct:sally@example.org">
+    itemid="http://sally.example.org">
     &lt;span itemprop="displayName">Sally Smith&lt;/span>
   &lt;/div>
   created
@@ -1869,7 +1869,7 @@ _:b0 a as:Object ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;div property="actor" typeof="Person"
-    resource="acct:sally@example.org">
+    resource="http://sally.example.org">
     &lt;span property="displayName">Sally Smith&lt;/span>
   &lt;/div>
   created
@@ -1893,11 +1893,11 @@ _:b0 a as:Object ;
   <div id="ex16-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-  &lt;acct:sally@example.org&gt; a as:Person ;
+  &lt;http://sally.example.org&gt; a as:Person ;
   as:displayName "Sally Smith" .
 
 _:b0 a as:Create ;
-  as:actor &lt;acct:sally@example.org&gt; ;
+  as:actor &lt;http://sally.example.org&gt; ;
   as:object [
     a as:Note ;
       as:content "This is a simple note"
@@ -1923,7 +1923,7 @@ _:b0 a as:Create ;
   "@type": "Create",
   "actor": {
     "@type": "Person",
-    "@id": "acct:sally@example.org",
+    "@id": "http://sally.example.org",
     "displayName": "Sally Smith",
     "vcard:given-name": "Sally",
     "vcard:family-name": "Smith"
@@ -1939,7 +1939,7 @@ _:b0 a as:Create ;
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Create">
   &lt;div itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
-    itemid="acct:sally@example.org">
+    itemid="http://sally.example.org">
     &lt;span itemprop="displayName">
       &lt;span itemprop="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span>
       &lt;span itemprop="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
@@ -1955,7 +1955,7 @@ _:b0 a as:Create ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;div property="actor" typeof="Person"
-    resource="acct:sally@example.org">
+    resource="http://sally.example.org">
       &lt;span property="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span>
       &lt;span property="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
   &lt;/div>
@@ -1982,13 +1982,13 @@ _:b0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
 
-&lt;acct:sally@example.org&gt; a as:Person ;
+&lt;http://sally.example.org&gt; a as:Person ;
   as:displayName "Sally Smith" ;
   vcard:given-name "Sally" ;
   vcard:family-name "Smith" .
 
 _:c14n0 a as:Create ;
-  as:actor &lt;acct:sally@example.org&gt; ;
+  as:actor &lt;http://sally.example.org&gt; ;
   as:object [
     a as:Note ;
       as:content "This is a simple note"
@@ -2028,7 +2028,7 @@ _:c14n0 a as:Create ;
   "@type": "Create",
   "actor": {
     "@type": ["Person", "vcard:Individual"],
-    "@id": "acct:sally@example.org",
+    "@id": "http://sally.example.org",
     "displayName": "Sally Smith",
     "vcard:given-name": "Sally",
     "vcard:family-name": "Smith"
@@ -2047,7 +2047,7 @@ _:c14n0 a as:Create ;
     itemtype="
       http://www.w3.org/ns/activitystreams#Person
       http://www.w3.org/2006/vcard/ns#Individual"
-    itemid="acct:sally@example.org">
+    itemid="http://sally.example.org">
     &lt;span itemprop="displayName">
       &lt;span itemprop="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span>
       &lt;span itemprop="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
@@ -2063,7 +2063,7 @@ _:c14n0 a as:Create ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;div property="actor" typeof="Person http://www.w3.org/2006/vcard/ns#Individual"
-    resource="acct:sally@example.org">
+    resource="http://sally.example.org">
       &lt;span property="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span>
       &lt;span property="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
   &lt;/div>
@@ -2091,13 +2091,13 @@ _:c14n0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
 
-&lt;acct:sally@example.org&gt; a as:Person, vcard:Individual ;
+&lt;http://sally.example.org&gt; a as:Person, vcard:Individual ;
   as:displayName "Sally Smith" ;
   vcard:given-name "Sally" ;
   vcard:family-name "Smith" .
 
 _:b0 a as:Create ;
-  as:actor &lt;acct:sally@example.org&gt; ;
+  as:actor &lt;http://sally.example.org&gt; ;
   as:object [
     a as:Note ;
       as:content "This is a simple note"
