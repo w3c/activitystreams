@@ -1217,8 +1217,8 @@ _:b0 a as:OrderedCollection ;
   accepted
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Invite">
-    &lt;link itemprop="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a itemprop="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
@@ -1240,8 +1240,8 @@ _:b0 a as:OrderedCollection ;
   &lt;span>
   accepted
   &lt;span property="object" typeof="Invite">
-    &lt;link property="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a property="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
       &lt;span property="displayName">
@@ -1260,7 +1260,7 @@ _:b0 a as:OrderedCollection ;
   accepted
   &lt;span class="h-card">
     &lt;a class="u-author"
-      href="john.example.org">John's&lt;/link>
+      href="john.example.org">John's&lt;/a>
       invitation to
     &lt;span class="h-event">
       &lt;span class="p-name">
@@ -1357,8 +1357,8 @@ _:b0 a as:Accept ;
   tentatively accepted
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Invite">
-    &lt;link itemprop="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a itemprop="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
@@ -1380,8 +1380,8 @@ _:b0 a as:Accept ;
   &lt;span>
   tentatively accepted
   &lt;span property="object" typeof="Invite">
-    &lt;link property="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a property="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
       &lt;span property="displayName">
@@ -1399,8 +1399,8 @@ _:b0 a as:Accept ;
   &lt;span>
   tentatively accepted
   &lt;span class="p-item h-as-invite">
-    &lt;link class="u-author"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a class="u-author"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span class="p-item h-event">
       &lt;span class="p-name">A Party!&lt;/span>
@@ -2961,8 +2961,8 @@ _:b0 a as:Invite ;
   rejected
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Invite">
-    &lt;link itemprop="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a itemprop="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
@@ -2984,8 +2984,8 @@ _:b0 a as:Invite ;
   &lt;span>
   rejected
   &lt;span property="object" typeof="Invite">
-    &lt;link property="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a property="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
       &lt;span property="displayName">
@@ -3004,8 +3004,8 @@ _:b0 a as:Invite ;
   rejected
   &lt;span class="p-item h-as-invite">
     &lt;span class="p-author h-card">
-      &lt;link class="u-url"
-        href="http://john.example.org">John's&lt;/link>
+      &lt;a class="u-url"
+        href="http://john.example.org">John's&lt;/a>
     &lt;/span>
     invitation to
     &lt;span class="p-item h-event">
@@ -3098,8 +3098,8 @@ _:b0 a as:Reject ;
   tentatively rejected
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Invite">
-    &lt;link itemprop="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a itemprop="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
@@ -3121,8 +3121,8 @@ _:b0 a as:Reject ;
   &lt;span>
   tentatively rejected
   &lt;span property="object" typeof="Invite">
-    &lt;link property="actor"
-      href="http://john.example.org">John's&lt;/link>
+    &lt;a property="actor"
+      href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
       &lt;span property="displayName">
@@ -3141,8 +3141,8 @@ _:b0 a as:Reject ;
   tentatively rejected
   &lt;span class="p-item h-as-invite">
     &lt;span class="p-author h-card">
-      &lt;link class="u-url"
-        href="http://john.example.org">John's&lt;/link>
+      &lt;a class="u-url"
+        href="http://john.example.org">John's&lt;/a>
     &lt;/span>
     invitation to
     &lt;span class="p-item h-event">
@@ -3465,25 +3465,27 @@ _:b0 a as:Remove ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Undo">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   stopped
   &lt;span itemprop="object" itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-    &lt;link itemprop="actor"
-    href="http://sally.example.org" />
+    &lt;a itemprop="actor"
+    href="http://sally.example.org">
+    http://sally.example.org
+    &lt;/a>
     sharing
     &lt;a itemprop="object"
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     with
-    &lt;link itemprop="target"
+    &lt;a itemprop="target"
       href="http://john.example.org">
       John
-    &lt;/link>
+    &lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -3491,33 +3493,36 @@ _:b0 a as:Remove ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Undo">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   stopped
   &lt;span property="object" typeof="Offer">
-    &lt;link property="actor"
-    href="http://sally.example.org" />
+    &lt;a property="actor"
+      href="http://sally.example.org">
+      http://sally.example.org
+    &lt;/a>
+
     sharing
     &lt;a property="object"
       href="http://example.org/posts/1">
       http://example.org/posts/1
     &lt;/a>
     with
-    &lt;link property="target"
+    &lt;a property="target"
       href="http://john.example.org">
       John
-    &lt;/link>
+    &lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex32-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-undo">
-  &lt;link class="u-author"href="http://sally.example.org">
+  &lt;a class="u-author"href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   stopped
   &lt;span class="h-as-offer">
     sharing
@@ -3526,10 +3531,10 @@ _:b0 a as:Remove ;
       http://example.org/posts/1
     &lt;/a>
     with
-    &lt;link class="u-as-target"
+    &lt;a class="u-as-target"
       href="http://john.example.org">
       John
-    &lt;/link>
+    &lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -4506,32 +4511,32 @@ _:b0 a as:Announce ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Block">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   blocked
-  &lt;link itemprop="object"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a itemprop="object"
+    href="http://joe.example.org">Joe&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex173-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Block">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   blocked
-  &lt;link property="object"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a property="object"
+    href="http://joe.example.org">Joe&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex173-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-block">
-  &lt;link class="u-actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-actor"
+    href="http://sally.example.org">Sally&lt;/a>
   blocked
-  &lt;link class="u-item"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a class="u-item"
+    href="http://joe.example.org">Joe&lt;/a>
 &lt;/div></pre>
   </div>
 <div id="ex173-turtle" style="display: none;">
@@ -4595,8 +4600,8 @@ _:b0 a as:Block ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Flag">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   flagged
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -4610,8 +4615,8 @@ _:b0 a as:Block ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Flag">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   flagged
   &lt;span property="object" typeof="Note">
     "&lt;span property="content">
@@ -4623,8 +4628,8 @@ _:b0 a as:Block ;
   <div id="ex174-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-flag">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   flagged
   &lt;span class="p-item h-entry">
     "&lt;span class="e-content">An inappropriate note&lt;/span>"
@@ -4690,8 +4695,8 @@ _:b0 a as:Flag ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Dislike">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   dislikes
   &lt;a itemprop="object" href="http://example.org/posts/1">
     http://example.org/posts/1
@@ -4702,8 +4707,8 @@ _:b0 a as:Flag ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Dislike">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   dislikes
   &lt;a property="object" href="http://example.org/posts/1">
     http://example.org/posts/1
@@ -4713,8 +4718,8 @@ _:b0 a as:Flag ;
   <div id="ex175-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-dislike">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   dislikes
   &lt;a class="u-dislike-of" href="http://example.org/posts/1">
     http://example.org/posts/1
@@ -6333,7 +6338,7 @@ _:b0 a as:Image ;
   &lt;span itemprop="displayName">A Simple Video&lt;/span>
   &lt;meta itemprop="duration" content="PT2H">(2 hours)&lt;meta> -
   &lt;a itemprop="url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex51-rdfa" style="display:none;">
@@ -6343,7 +6348,7 @@ _:b0 a as:Image ;
 &lt;span property="displayName">A Simple Video&lt;/span>
   &lt;meta property="duration" content="PT2H">(2 hours)&lt;meta> -
   &lt;a property="url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex51-microformats" style="display:none;">
@@ -6353,7 +6358,7 @@ _:b0 a as:Image ;
   &lt;meta class="p-as-duration" name="duration"
     content="PT2H">(2 hours)&lt;meta> -
   &lt;a class="u-url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
 <div id="ex51-turtle" style="display: none;">
@@ -7420,8 +7425,8 @@ _:b0 a as:Profile ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/foo">
@@ -7433,8 +7438,8 @@ _:b0 a as:Profile ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/foo">
@@ -7445,8 +7450,8 @@ _:b0 a as:Profile ;
   <div id="ex59-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-author
+    href="http://sally.example.org">Sally&lt;/a>
   offered
   &lt;a class="u-item"
     href="http://example.org/foo">
@@ -7569,8 +7574,8 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://joe.example.org">Joe&lt;/a>
   and
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
@@ -7588,8 +7593,8 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a property="actor"
+    href="http://joe.example.org">Joe&lt;/a>
   and
   &lt;span property="actor" typeof="Person"
     resource="http://sally.example.org">
@@ -7605,12 +7610,12 @@ _:b0 a as:Offer ;
   <div id="ex61-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a class="u-author"
+    href="http://joe.example.org">Joe&lt;/a>
   and
   &lt;span class="p-author h-card">
-    &lt;link class="u-url p-name"
-      href="http://sally.example.org">Sally&lt;/link>
+    &lt;a class="u-url p-name"
+      href="http://sally.example.org">Sally&lt;/a>
   &lt;/span>
   offered
   &lt;a class="u-item"
@@ -7890,8 +7895,8 @@ _:b0 a as:Image ;
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     &lt;span itemprop="displayName">Sally&lt;/span>
   &lt;/span> and
-  &lt;link itemprop="attributedTo"
-    href="http://joe.example.org">Joe&lt;link>
+  &lt;a itemprop="attributedTo"
+    href="http://joe.example.org">Joe&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex66-rdfa" style="display:none;">
@@ -7904,8 +7909,8 @@ _:b0 a as:Image ;
   &lt;span property="attributedTo" typeof="Note">
     &lt;span property="displayName">Sally&lt;/span>"
   &lt;/span> and
-  &lt;link property="attributedTo"
-    href="http://joe.example.org">Joe&lt;link>
+  &lt;a property="attributedTo"
+    href="http://joe.example.org">Joe&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex66-microformats" style="display:none;">
@@ -7918,8 +7923,8 @@ _:b0 a as:Image ;
     &lt;span class="p-name">Sally&lt;/span>
   &lt;/span>
   and
-  &lt;link class="u-author"
-    href="http://joe.example.org">Joe&lt;/link>
+  &lt;a class="u-author"
+    href="http://joe.example.org">Joe&lt;/a>
 &lt;/div></pre>
   </div>
 <div id="ex66-turtle" style="display: none;">
@@ -7986,69 +7991,69 @@ _:b0 a as:Image ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link itemprop="target"
+  &lt;a itemprop="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (bcc: &lt;link itemprop="bcc"
+  &lt;/a>
+  (bcc: &lt;a itemprop="bcc"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex68-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link property="target"
+  &lt;a property="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (bcc: &lt;link property="bcc"
+  &lt;/a>
+  (bcc: &lt;a property="bcc"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex68-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   offered
   &lt;a class="u-offer-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="u-as-target"
+  &lt;a class="u-as-target"
     href="http://sally.example.org">
       John
-  &lt;link>
-  (bcc: &lt;link class="u-as-bcc"
+  &lt;/a>
+  (bcc: &lt;a class="u-as-bcc"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex68-turtle" style="display: none;">
@@ -8110,71 +8115,71 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link itemprop="target"
+  &lt;a itemprop="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (bto: &lt;link itemprop="bto"
+  &lt;/a>
+  (bto: &lt;a itemprop="bto"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex69-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link property="target"
+  &lt;a property="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (bto: &lt;link property="bto"
+  &lt;/a>
+  (bto: &lt;a property="bto"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex69-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
+  &lt;a class="u-author"
     href="http://sally.example.org">
       Sally
-  &lt;link>
+  &lt;/a>
   offered
   &lt;a class="u-offer-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="u-as-target"
+  &lt;a class="u-as-target"
     href="http://sally.example.org">
       John
-  &lt;link>
-  (bto: &lt;link class="u-as-bto"
+  &lt;/a>
+  (bto: &lt;a class="u-as-bto"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex69-turtle" style="display: none;">
@@ -8236,71 +8241,71 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link itemprop="target"
+  &lt;a itemprop="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (cc: &lt;link itemprop="cc"
+  &lt;/a>
+  (cc: &lt;a itemprop="cc"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex70-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link property="target"
+  &lt;a property="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (cc: &lt;link property="cc"
+  &lt;/a>
+  (cc: &lt;a property="cc"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex70-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
+  &lt;a class="u-author"
     href="http://sally.example.org">
       Sally
-  &lt;link>
+  &lt;/a>
   offered
   &lt;a class="u-offer-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="u-as-target"
+  &lt;a class="u-as-target"
     href="http://sally.example.org">
       John
-  &lt;link>
-  (cc: &lt;link class="u-as-cc"
+  &lt;/a>
+  (cc: &lt;a class="u-as-cc"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex70-turtle" style="display: none;">
@@ -8382,15 +8387,17 @@ _:b0 a as:Offer ;
       offered
       &lt;a itemprop="object"
         href="http://example.org/posts/1">
-        http://example.org/posts/1
+          http://example.org/posts/1
       &lt;/a>
       with
-      &lt;link itemprop="target"
+      &lt;a itemprop="target"
         href="http://john.example.org">
           John
-      &lt;link>
-      &lt;link itemprop="context"
-        href="http://example.org/contexts/1" />
+      &lt;/a>
+      &lt;a itemprop="context"
+        href="http://example.org/contexts/1">
+        http://example.org/contexts/1 
+      &lt;/a>
     &lt;/li>
     &lt;li itemprop="items" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Like">
@@ -8403,8 +8410,10 @@ _:b0 a as:Offer ;
         href="http://example.org/posts/1">
         http://example.org/posts/2
       &lt;/a>
-      &lt;link itemprop="context"
-        href="http://example.org/contexts/1" />
+      &lt;a itemprop="context"
+        href="http://example.org/contexts/1">
+        http://example.org/contexts/1
+      &lt;/a>
     &lt;/li>
   &lt;/ul>
 &lt;/div></pre>
@@ -8422,15 +8431,17 @@ _:b0 a as:Offer ;
       offered
       &lt;a property="object"
         href="http://example.org/posts/1">
-        http://example.org/posts/1
+          http://example.org/posts/1
       &lt;/a>
       with
-      &lt;link property="target"
+      &lt;a property="target"
         href="http://john.example.org">
           John
-      &lt;link>
-      &lt;link property="context"
-        href="http://example.org/contexts/1" />
+      &lt;/a>
+      &lt;a property="context"
+        href="http://example.org/contexts/1">
+          http://example.org/contexts/1
+      &lt;/a>
     &lt;/li>
     &lt;li property="items" typeof="Like">
       &lt;span property="actor"
@@ -8440,10 +8451,12 @@ _:b0 a as:Offer ;
       liked
       &lt;a property="object"
         href="http://example.org/posts/1">
-        http://example.org/posts/2
+          http://example.org/posts/2
       &lt;/a>
-      &lt;link property="context"
-        href="http://example.org/contexts/1" />
+      &lt;a property="context"
+        href="http://example.org/contexts/1">
+          http://example.org/contexts/1
+      &lt;/a>
     &lt;/li>
   &lt;/ul>
 &lt;/div></pre>
@@ -8453,35 +8466,39 @@ _:b0 a as:Offer ;
 >&lt;div class="h-as-collection">
   &lt;ul class="p-as-items">
     &lt;li class="h-as-offer">
-      &lt;link class="u-author"
+      &lt;a class="u-author"
         href="http://sally.example.org">
           Sally
-      &lt;link>
+      &lt;/a>
       offered
       &lt;a class="u-offer-of"
         href="http://example.org/posts/1">
-        http://example.org/posts/1
+          http://example.org/posts/1
       &lt;/a>
       with
-      &lt;link class="u-as-target"
+      &lt;a class="u-as-target"
         href="http://john.example.org">
           John
-      &lt;link>
-      &lt;link class="u-as-context"
-        href="http://example.org/contexts/1" />
+      &lt;/a>
+      &lt;a class="u-as-context"
+        href="http://example.org/contexts/1">
+        http://example.org/contexts/1
+      &lt;/a>
     &lt;/li>
     &lt;li class="h-as-like">
-      &lt;link class="u-author"
+      &lt;a class="u-author"
         href="http://joe.example.org">
           Joe
-      &lt;link>
+      &lt;/a>
       liked
       &lt;a class="u-like-of"
         href="http://example.org/posts/1">
-        http://example.org/posts/2
+          http://example.org/posts/2
       &lt;/a>
-      &lt;link class="u-as-context"
-        href="http://example.org/contexts/1" />
+      &lt;a class="u-as-context"
+        href="http://example.org/contexts/1">
+          http://example.org/contexts/1
+      &lt;/a>
     &lt;/li>
   &lt;/ul>
 &lt;/div></pre>
@@ -10859,10 +10876,10 @@ _:b0 a as:Question ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Move">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   moved
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
@@ -10884,10 +10901,10 @@ _:b0 a as:Question ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Move">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   moved
   &lt;a property="object"
     href="http://example.org/posts/1">
@@ -10906,8 +10923,8 @@ _:b0 a as:Question ;
   <div id="ex166-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-move">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   moved
   &lt;a class="u-item"
     href="http://example.org/posts/1">
@@ -11299,8 +11316,8 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Like">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
@@ -11312,8 +11329,8 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Like">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
   &lt;a property="object"
     href="http://example.org/posts/1">
@@ -11324,8 +11341,8 @@ _:b0 a as:Collection ;
   <div id="ex98-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-like">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
   &lt;a class="u-like-of"
     href="http://example.org/posts/1">
@@ -11366,8 +11383,8 @@ _:b0 a as:Like
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Like">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -11381,8 +11398,8 @@ _:b0 a as:Like
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Like">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
   &lt;span property="object" typeof="Note">
     "&lt;span property="content">
@@ -11394,8 +11411,8 @@ _:b0 a as:Like
   <div id="ex99-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-like">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
   &lt;span class="p-like-of h-entry">
     "&lt;span class="e-content">
@@ -11443,13 +11460,13 @@ _:b0 a as:Like
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Like">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
-  &lt;link itemprop="object"
+  &lt;a itemprop="object"
     href="http://example.org/posts/1">
     "http://example.org/posts/1"
-  &lt;/link> and
+  &lt;/a> and
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Note">
     "&lt;span itemprop="content">
@@ -11462,13 +11479,13 @@ _:b0 a as:Like
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Like">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
-  &lt;link property="object"
+  &lt;a property="object"
     href="http://example.org/posts/1">
     "http://example.org/posts/1"
-  &lt;/link> and
+  &lt;/a> and
   &lt;span property="object" typeof="Note">
     "&lt;span property="content">
       A simple note
@@ -11479,13 +11496,13 @@ _:b0 a as:Like
   <div id="ex100-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-like">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;/link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   liked
-  &lt;link class="u-like-of"
+  &lt;a class="u-like-of"
     href="http://example.org/posts/1">
     "http://example.org/posts/1"
-  &lt;/link> and
+  &lt;/a> and
   &lt;span class="p-like-of h-entry">
     "&lt;span class="e-content">
       A simple note
@@ -11995,10 +12012,10 @@ _:b0 a as:Movie ;
   itemtype="
     http://www.w3.org/ns/activitystreams#Activity
     urn:example:verbs:Check">
-  &lt;link itemprop="actor"
-    href="http://sally.example.org">Sally's&lt;/link>
-  &lt;link itemprop="object"
-    href="http://example.org/flights/1">flight&lt;/link>
+  &lt;a itemprop="actor"
+    href="http://sally.example.org">Sally's&lt;/a>
+  &lt;a itemprop="object"
+    href="http://example.org/flights/1">flight&lt;/a>
   is
   &lt;span itemprop="result" itemscope
     itemtype="urn:example:types:flightstatus">
@@ -12012,10 +12029,10 @@ _:b0 a as:Movie ;
   typeof="
     http://www.w3.org/ns/activitystreams#Activity
     urn:example:verbs:Check">
-  &lt;link property="actor"
-    href="http://sally.example.org">Sally's&lt;/link>
-  &lt;link property="object"
-    href="http://example.org/flights/1">flight&lt;/link>
+  &lt;a property="actor"
+    href="http://sally.example.org">Sally's&lt;/a>
+  &lt;a property="object"
+    href="http://example.org/flights/1">flight&lt;/a>
   is
   &lt;span property="result"
     typeof="urn:example:types:flightstatus">
@@ -12026,10 +12043,10 @@ _:b0 a as:Movie ;
   <div id="ex108-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-activity h-x-check">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally's&lt;/link>
-  &lt;link class="u-item"
-    href="http://example.org/flights/1">flight&lt;/link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally's&lt;/a>
+  &lt;a class="u-item"
+    href="http://example.org/flights/1">flight&lt;/a>
   is
   &lt;span class="p-as-result h-entry">
     &lt;span class="p-name">On Time&lt;/span>
@@ -12122,8 +12139,10 @@ _:b0 a as:Activity,
         &lt;span itemprop="content">
           A response to the note
         &lt;/span>
-        &lt;link itemprop="inReplyTo"
-          href="urn:example:notes:1" /&gt;
+        &lt;a itemprop="inReplyTo"
+          href="urn:example:notes:1">
+            urn:example:notes:1
+        &lt;/a>
       &lt;/li>
     &lt;/ul>
   &lt;/div>
@@ -12144,8 +12163,10 @@ _:b0 a as:Activity,
         &lt;span property="content">
           A response to the note
         &lt;/span>
-        &lt;link property="inReplyTo"
-          href="urn:example:notes:1" /&gt;
+        &lt;a property="inReplyTo"
+          href="urn:example:notes:1" />
+            urn:example:notes:1
+        &lt;/a>
       &lt;/li>
     &lt;/ul>
   &lt;/div>
@@ -12165,8 +12186,10 @@ _:b0 a as:Activity,
         &lt;span class="e-content">
           A response to the note
         &lt;/span>
-        &lt;link rel="u-in-reply-to"
-          href="urn:example:notes:1" /&gt;
+        &lt;a rel="u-in-reply-to"
+          href="urn:example:notes:1">
+            urn:example:notes:1
+        &lt;/a>
       &lt;/li>
     &lt;/ul>
   &lt;/div>
@@ -12754,59 +12777,59 @@ _:b0 a as:Image ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link itemprop="target"
+  &lt;a itemprop="target"
     href="http://john.example.org">
     John
-  &lt;/link>
+  &lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex120-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link property="target"
+  &lt;a property="target"
     href="http://john.example.org">
     John
-  &lt;/link>
+  &lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex120-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
+  &lt;a class="u-author"
     href="http://sally.example.org">
       Sally
-  &lt;link>
+  &lt;/a>
   offered
   &lt;a class="u-offer-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="u-as-target"
+  &lt;a class="u-as-target"
     href="http://sally.example.org">
       John
-  &lt;link>
+  &lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex120-turtle" style="display: none;">
@@ -12845,10 +12868,10 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
@@ -12865,10 +12888,10 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
@@ -12884,10 +12907,10 @@ _:b0 a as:Offer ;
   <div id="ex121-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
+  &lt;a class="u-author"
     href="http://sally.example.org">
       Sally
-  &lt;link>
+  &lt;/a>
   offered
   &lt;a class="u-offer-of"
     href="http://example.org/posts/1">
@@ -12964,69 +12987,69 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link itemprop="target"
+  &lt;a itemprop="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (to: &lt;link itemprop="to"
+  &lt;/a>
+  (to: &lt;a itemprop="to"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex123-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link property="target"
+  &lt;a property="target"
     href="http://john.example.org">
     John
-  &lt;/link>
-  (to: &lt;link property="to"
+  &lt;/a>
+  (to: &lt;a property="to"
     href="http://joe.example.org">
     John
-  &lt;/link>)
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex123-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author
-    href="http://sally.example.org">Sally&lt;link>
+  &lt;a class="u-author
+    href="http://sally.example.org">Sally&lt;a>
   offered
   &lt;a class="u-offer-of"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="u-as-target"
+  &lt;a class="u-as-target"
     href="http://sally.example.org">
       John
-  &lt;link>
-  (to: &lt;link class="u-as-to"
+  &lt;a>
+  (to: &lt;a class="u-as-to"
     href="http://joe.example.org">
-    John
-  &lt;/link>)
+      John
+  &lt;/a>)
 &lt;/div></pre>
   </div>
   <div id="ex123-turtle" style="display: none;">
@@ -13950,7 +13973,7 @@ _:b0 a as:Note ;
   &lt;span itemprop="displayName">A Simple Video&lt;/span>
   &lt;meta itemprop="duration" content="PT2H">(2 hours)&lt;meta> -
   &lt;a itemprop="url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex134-rdfa" style="display:none;">
@@ -13960,7 +13983,7 @@ _:b0 a as:Note ;
 &lt;span property="displayName">A Simple Video&lt;/span>
   &lt;meta property="duration" content="PT2H">(2 hours)&lt;meta> -
   &lt;a property="url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex134-microformats" style="display:none;">
@@ -13970,7 +13993,7 @@ _:b0 a as:Note ;
   &lt;meta class="p-as-duration" name="duration"
     content="PT2H">(2 hours)&lt;meta> -
   &lt;a class="u-url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
 <div id="ex134-turtle" style="display: none;">
@@ -14009,7 +14032,7 @@ _:b0 a as:Video ;
   &lt;span itemprop="displayName">A Simple Video&lt;/span>
   &lt;meta itemprop="duration" content="3600">(2 hours)&lt;meta> -
   &lt;a itemprop="url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex135-rdfa" style="display:none;">
@@ -14019,7 +14042,7 @@ _:b0 a as:Video ;
 &lt;span property="displayName">A Simple Video&lt;/span>
   &lt;meta property="duration" content="3600">(2 hours)&lt;meta> -
   &lt;a property="url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex135-microformats" style="display:none;">
@@ -14029,7 +14052,7 @@ _:b0 a as:Video ;
   &lt;meta class="p-as-duration" name="duration"
     content="3600">(2 hours)&lt;meta> -
   &lt;a class="u-url"
-    href="http://example.org/video.mkv">Watch&lt;a>
+    href="http://example.org/video.mkv">Watch&lt;/a>
 &lt;/div></pre>
   </div>
 <div id="ex135-turtle" style="display: none;">
@@ -14857,20 +14880,20 @@ _:b0 a as:Link ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
-  &lt;link itemprop="actor"
+  &lt;a itemprop="actor"
     href="http://sally.example.org">
-    Sally
-  &lt;/link>
+      Sally
+  &lt;/a>
   offered
   &lt;a itemprop="object"
     href="http://example.org/posts/1">
-    http://example.org/posts/1
+      http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link itemprop="target"
+  &lt;a itemprop="target"
     href="http://john.example.org">
-    John
-  &lt;/link>
+      John
+  &lt;/a>
   &lt;meta itemprop="priority" content="0.80" />
 &lt;/div></pre>
   </div>
@@ -14878,38 +14901,38 @@ _:b0 a as:Link ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
-  &lt;link property="actor"
+  &lt;a property="actor"
     href="http://sally.example.org">
     Sally
-  &lt;/link>
+  &lt;/a>
   offered
   &lt;a property="object"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link property="target"
+  &lt;a property="target"
     href="http://john.example.org">
     John
-  &lt;/link>
+  &lt;/a>
   &lt;meta property="priority" content="0.80" />
 &lt;/div></pre>
   </div>
   <div id="ex143-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-offer">
-  &lt;link class="u-author"
-    href="http://sally.example.org">Sally&lt;link>
+  &lt;a class="u-author"
+    href="http://sally.example.org">Sally&lt;/a>
   offered
   &lt;a class="u-item"
     href="http://example.org/posts/1">
     http://example.org/posts/1
   &lt;/a>
   with
-  &lt;link class="u-as-target"
+  &lt;a class="u-as-target"
     href="http://sally.example.org">
       John
-  &lt;link>
+  &lt;/a>
   &lt;meta name="p-as-priority" content="0.80" />
 &lt;/div></pre>
   </div>
