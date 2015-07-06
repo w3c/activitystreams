@@ -299,7 +299,7 @@
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Create">
-  &lt;link itemprop="actor" href="urn:example:person:martin">Martin&lt;/link>
+  &lt;a itemprop="actor" href="urn:example:person:martin">Martin&lt;/a>
   created
   &lt;a itemprop="object" href="http://example.org/foo.jpg">
     "http://example.org/foo.jpg"
@@ -309,7 +309,7 @@
   <div id="ex1-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
-  &lt;link property="actor" href="urn:example:person:martin">Martin&lt;/link>
+  &lt;a property="actor" href="urn:example:person:martin">Martin&lt;/a>
   created
   &lt;a property="object" href="http://example.org/foo.jpg">
     "http://example.org/foo.jpg"
@@ -586,7 +586,9 @@ _:b0 a as:Add ;
   &lt;meta itemprop="totalItems" content="1" />
   &lt;div itemprop="items" itemscope itemtype="http://www.w3.org/ns/activitystreams#Add">
     &lt;meta itemprop="published" content="2011-02-10T15:04:55Z" />
-    &lt;link itemprop="generator" href="http://example.org/activities-app" />
+    &lt;a itemprop="generator" href="http://example.org/activities-app" />
+      http://example.org/activities-app
+    &lt;/a>
     &lt;div itemprop="displayName" lang="en">
       Martin added a new image to his album.
     &lt;/div>
@@ -643,7 +645,9 @@ _:b0 a as:Add ;
   &lt;meta property="totalItems" content="1" />
   &lt;div property="items"  typeof="Add">
     &lt;meta property="published" content="2011-02-10T15:04:55Z" />
-    &lt;link property="generator" href="http://example.org/activities-app" />
+    &lt;a property="generator" href="http://example.org/activities-app">
+      http://example.org/activities-app
+    &lt;/a>i
     &lt;div property="displayName" lang="en">
       Martin added a new image to his album.
     &lt;/div>
@@ -697,9 +701,9 @@ _:b0 a as:Add ;
     &lt;div class="e-content p-name">
       &lt;a class="u-author h-card" href="http://example.org/martin">Martin Smith&lt;/a>
       added a new 
-      &lt;a class="u-url" href="http://example.org/album/my_fluffy_cat.jpg">image&lt;a>
+      &lt;a class="u-url" href="http://example.org/album/my_fluffy_cat.jpg">image&lt;/a>
       to his 
-      &lt;a class="u-url" href="http://example.org/album">album&lt;a>
+      &lt;a class="u-url" href="http://example.org/album">album&lt;/a>
       .
       &lt;img class="u-photo"
         src="http://example.org/martin/album/my_fluffy_cat.jpg"
@@ -2388,10 +2392,12 @@ _:b0 a as:Create ;
   &lt;meta itemprop="totalItems" content="10" />
   &lt;meta itemprop="itemsPerPage" content="1" />
   &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link itemprop="self" href="http://example.org/foo?page=1" />
+  &lt;a itemprop="self" href="http://example.org/foo?page=1" />
+    http://example.org/foo?page=1
+  &lt;/a>
   &lt;ul>
     &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
-      &lt;link itemprop="actor" href="urn:example:person:sally">Sally&lt;/link>
+      &lt;a itemprop="actor" href="urn:example:person:sally">Sally&lt;/a>
       created
       &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2403,10 +2409,12 @@ _:b0 a as:Create ;
   &lt;meta property="totalItems" content="10" />
   &lt;meta property="itemsPerPage" content="1" />
   &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link property="self" href="http://example.org/foo?page=1" />
+  &lt;a property="self" href="http://example.org/foo?page=1">
+    http://example.org/foo?page=1
+  &lt;\a>
   &lt;ul>
     &lt;li property typeof="Create"&lt;
-      &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
+      &lt;a property="actor" href="urn:example:person:sally">Sally&lt;/a>
       created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2479,10 +2487,12 @@ _:b0 a as:Collection ;
   &lt;meta itemprop="itemsPerPage" content="1" />
   &lt;meta itemprop="startIndex" content="0" />
   &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link itemprop="self" href="http://example.org/foo?page=1" />
+  &lt;a itemprop="self" href="http://example.org/foo?page=1">
+    http://example.org/foo?page=1
+  &lt;/a>
   &lt;ol>
     &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
-      &lt;link itemprop="actor" href="urn:example:person:sally">Sally&lt;/link>
+      &lt;a itemprop="actor" href="urn:example:person:sally">Sally&lt;/a>
       created
       &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2495,10 +2505,12 @@ _:b0 a as:Collection ;
   &lt;meta property="itemsPerPage" content="1" />
   &lt;meta property="startIndex" content="0" />
   &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;link property="self" href="http://example.org/foo?page=1" />
+  &lt;a property="self" href="http://example.org/foo?page=1">
+    http://example.org/foo?page=1
+  &lt;/a>
   &lt;ol>
     &lt;li property typeof="Create"&lt;
-      &lt;link property="actor" href="urn:example:person:sally">Sally&lt;/link>
+      &lt;a property="actor" href="urn:example:person:sally">Sally&lt;/a>
       created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
