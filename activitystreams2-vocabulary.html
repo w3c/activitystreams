@@ -4701,6 +4701,7 @@ _:b0 a as:Dislike ;
         The core Actor Types include:
         <code><a>Application</a></code> |
         <code><a>Group</a></code> |
+        <code><a>Organization</a><code> |
         <code><a>Person</a></code> |
         <code><a>Process</a></code> |
         <code><a>Service</a></code>
@@ -4842,6 +4843,72 @@ _:b0 a as:Group ;
             <td>Inherits all properties from <code><a>Actor</a></code>.</td>
           </tr>
         </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Organization</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td><code>http://www.w3.org/ns/activitystreams#Organization</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex186-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex186-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex186-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex186-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex186-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex186-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Organization",
+  "displayName": "Example Co."
+}</pre>
+</div>
+<div id="ex186-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Organization">
+  &lt;span itemprop="displayName">Example Co.&lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex186-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Organization">
+  &lt;span property="displayName">Example Co.&lt;/span>
+&lt;/div></pre>
+  </div>
+  <div id="ex186-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-card">Example Co.&lt;/div></pre>
+  </div>
+<div id="ex186-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Organization ;
+  as:displayName "Example Co.".</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Notes:</td>
+            <td>
+              Represents an organization.
+            </td>
+          </tr>
+          <tr>
+            <td>Extends:</td>
+            <td><code><a>Actor</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>Inherits all properties from <code><a>Actor</a></code>.</td>
+          </tr>
+        </tbody>
+
         <tbody>
           <tr>
             <td rowspan="4" ><dfn>Person</dfn></td>
@@ -8316,7 +8383,7 @@ _:b0 a as:Offer ;
       &lt;/a>
       &lt;a itemprop="context"
         href="http://example.org/contexts/1">
-        http://example.org/contexts/1 
+        http://example.org/contexts/1
       &lt;/a>
     &lt;/li>
     &lt;li itemprop="items" itemscope
