@@ -40,6 +40,7 @@
     "Object": "as:Object",
     "Offer": "as:Offer",
     "OrderedCollection": "as:OrderedCollection",
+    "Organization": "as:Organization",
     "Page": "as:Page",
     "Person": "as:Person",
     "Place": "as:Place",
