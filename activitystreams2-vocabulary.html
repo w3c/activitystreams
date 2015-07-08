@@ -2756,13 +2756,19 @@ _:b0 a as:Offer ;
     "displayName": "Sally"
   },
   "object": {
-    "@type": "urn:example:types:Present",
-    "displayName": "A Present"
+    "@type": "Event",
+    "displayName": "A Party"
   },
-  "target": {
-    "@type": "Person",
-    "displayName": "John"
-  }
+  "target": [
+    {
+      "@type": "Person",
+      "displayName": "John"
+    },
+    {
+      "@type": "Person",
+      "displayName": "Lisa"
+    }
+  ]
 }</pre>
 </div>
 <div id="ex24-microdata" style="display:none;">
@@ -3502,9 +3508,18 @@ _:b0 a as:Undo ;
           <tr>
             <td>Notes:</td>
             <td>
-              Indicates that the <code>actor</code> is undoing the
-              <code>object</code>. The <code>target</code> and
-              <code>origin</code> typically have no defined meaning.
+              <p>
+                Indicates that the <code>actor</code> is undoing the
+                <code>object</code>. In most cases, the <code>object</code>
+                will be an <code><a>Activity</a></code> describing some
+                previously performed action (for instance, a person may
+                have previously "liked" an article but, for whatever reason,
+                might choose to undo that like at some later point in time).
+              </p>
+              <p>
+                The <code>target</code> and <code>origin</code> typically
+                have no defined meaning.
+              </p>
             </td>
           </tr>
           <tr>
@@ -3598,9 +3613,16 @@ _:b0 a as:Update ;
           <tr>
             <td>Notes:</td>
             <td>
-              Indicates that the <code>actor</code> has updated the
-              <code>object</code>. The <code>target</code> and
-              <code>origin</code> typically have no defined meaning.
+              <p>
+                Indicates that the <code>actor</code> has updated the
+                <code>object</code>. Note, however, that this vocabulary
+                does not define a mechanism for describing the actual
+                set of modifications made to <code>object</code>.
+              </p>
+              <p>
+                The <code>target</code> and
+                <code>origin</code> typically have no defined meaning.
+              </p>
             </td>
           </tr>
           <tr>
@@ -4398,9 +4420,13 @@ _:b0 a as:Announce ;
           <tr>
             <td>Notes:</td>
             <td>
-              Indicates that the <code>actor</code> is announcing the
-              <code>object</code> to <code>target</code>. The
-              <code>origin</code> typically has no defined meaning.
+              <p>
+                Indicates that the <code>actor</code> is calling
+                the <code>target</code>'s attention the <code>object</code>.
+              </p>
+              <p>
+                The <code>origin</code> typically has no defined meaning.
+              </p>
             </td>
           </tr>
           <tr>
@@ -4701,7 +4727,7 @@ _:b0 a as:Dislike ;
         The core Actor Types include:
         <code><a>Application</a></code> |
         <code><a>Group</a></code> |
-        <code><a>Organization</a><code> |
+        <code><a>Organization</a></code> |
         <code><a>Person</a></code> |
         <code><a>Process</a></code> |
         <code><a>Service</a></code>
@@ -5244,7 +5270,11 @@ _:b0 a as:Relationship ;
                 Describes a relationship between two individuals.
                 The <code><a title="subject">subject</a></code> and
                 <code><a title="object-term">object</a></code> properties are
-                used to identify the connected individuals.</p>
+                used to identify the connected individuals.
+              </p>
+              <p>
+                See <a href="#connections"></a> for additional information.
+              </p>
             </td>
           </tr>
           <tr>
@@ -6924,7 +6954,8 @@ _:b0 a as:Place ;
           <tr>
             <td>Notes:</td>
             <td>
-              Represents a logical or physical location.
+              Represents a logical or physical location. See
+              <a href="#places"></a> for additional information.
             </td>
           </tr>
           <tr>
@@ -7093,10 +7124,10 @@ _:b0 a as:Profile ;
           <tr>
             <td>Notes:</td>
             <td>
-              A Profile is a document that describes another Object, typically
-              used to describe Person objects. The <code><a>describes</a></code>
-              property is used to reference the object described by the
-              profile.
+              A Profile is a content object that describes another Object,
+              typically used to describe <code><a>Actor</a></code>,
+              objects. The <code><a>describes</a></code> property is used to
+              reference the object being described by the profile.
             </td>
           </tr>
           <tr>
@@ -7233,6 +7264,140 @@ _:b0 a as:Profile ;
           and "<a href="http://vocab.org/relationship/.html">Relationship</a>"
           vocabularies.
         </p>
+
+        <section class="informative">
+
+          <h2>Modeling "friend requests"</h2>
+
+          <p>
+            One common use case for many social platforms is the establishment
+            of symmetrical "friend" relationships, in which one user initially
+            extends a request to another user to establish a new connection.
+            Once the connection is made, both users automatically begin
+            receiving notifications about activities performed by the other,
+            and the established relationship becomes visible in either user's
+            "friends list".
+          </p>
+          <p>
+            The initial "friend request" can be modeled by composing the
+            <code><a>Offer</a></code> and <code><a>Relationship</a></code>
+            object types as in the following example:
+          </p>
+
+          <div id="ex187-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
+  ],
+  "@id": "http://example.org/connection-requests/123",
+  "@type": "Offer",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "@id": "http://example.org/connections/123",
+    "@type": "Relationship",
+    "subject": "acct:sally@example.org",
+    "relationship": "colleagueOf",
+    "object": "acct:john@example.org"
+  },
+  "target": "acct:john@example.org"
+}</pre>
+          </div>
+
+          <p>
+            Assuming the "friend request" is accepted, the remaining steps
+            in this common application scenario can be represented as a
+            set of distinct activities:
+          </p>
+
+          <div id="ex188-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Collection",
+  "items": [
+    {
+      "@id": "http://example.org/activities/122",
+      "@type": "Accept",
+      "actor": "acct:john@example.org",
+      "object": "http://example.org/connection-requests/123",
+      "inReplyTo": "http://example.org/connection-requests/123",
+      "context": "http://example.org/connections/123",
+      "result": [
+        "http://example.org/activities/123",
+        "http://example.org/activities/124",
+        "http://example.org/activities/125",
+        "http://example.org/activities/126"
+      ]
+    },
+    {
+      "@id": "http://example.org/activities/123",
+      "@type": "Follow",
+      "actor": "acct:john@example.org",
+      "object": "acct:sally@example.org",
+      "context": "http://example.org/connections/123",
+    },
+    {
+      "@id": "http://example.org/activities/124",
+      "@type": "Follow",
+      "actor": "acct:sally@example.org",
+      "object": "acct:john@example.org",
+      "context": "http://example.org/connections/123",
+    },
+    {
+      "@id": "http://example.org/activities/125",
+      "@type": "Add",
+      "actor": "acct:john@example.org",
+      "object": "http://example.org/connections/123",
+      "target": {
+        "@type": "Collection",
+        "displayName": "John's Connections"
+      },
+      "context": "http://example.org/connections/123",
+    },
+    {
+      "@id": "http://example.org/activities/126",
+      "@type": "Add",
+      "actor": "acct:sally@example.org",
+      "object": "http://example.org/connections/123",
+      "target": {
+        "@type": "Collection",
+        "displayName": "Sally's Connections"
+      },
+      "context": "http://example.org/connections/123",
+    }
+  ]
+}</pre>
+          </div>
+
+          <p>
+            As illustrated in this example, accepting the "friend request"
+            results in four additional activities including: John following
+            Sally, Sally following John, John adding the relationship with
+            Sally to his collection of Connections, and Sally adding the
+            relationship with John to her collection of Connections.
+          </p>
+
+          <p>
+            In this example,
+            <ol>
+              <li>
+                The optional <code><a>result</a></code> property is used
+                within the <code>Accept</code> activity to identify the
+                additional activities that occurred as a result of the
+                accept.
+              </li>
+              <li>
+                The optional <code><a>context</a></code> property is used
+                to relate the various activities back to a common reference
+                point, which in this example is the relationship being
+                established. The <code>context</code> allows an implementation
+                to efficiently group related activities together for
+                display or analytic purposes.
+              </li>
+            </ol>
+          </p>
+
+        </section>
 
       </section>
 
@@ -7638,7 +7803,7 @@ _:b0 a as:Offer ;
           <td>
             Describes one or more entities that either performed or are
             expected to perform the activity. Any single activity can have
-            multiple <code>actor</code>s. The <code>actor</actor> MAY be
+            multiple <code>actor</code>s. The <code>actor</code> MAY be
             specified using an indirect <code><a>Link</a></code>.
           </td>
         </tr>
@@ -7759,7 +7924,10 @@ _:b0 a as:Note ;
         <tr>
           <td>Notes:</td>
           <td>
-            Identifies an entity that is directly or indirected attached to this object
+            Identifies a resource attached or related to an object
+            that potentially requires special handling. The intent is to
+            provide a model that is at least semantically similar to
+            attachments in email.
           </td>
         </tr>
         <tr>
@@ -16753,8 +16921,6 @@ _:b0 a as:Profile ;
           <td>True</td>
         </tr>
       </tbody>
-
-
     </table>
 
   </section>
