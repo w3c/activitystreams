@@ -118,14 +118,13 @@
     <h2>Introduction</h2>
     <p>
       In the most basic sense, an "Activity" is a semantic description of
-      a completed or ongoing action. It is the goal of this specification
-      to provide a JSON-based syntax that is sufficient to express metadata
-      about activities in a rich, human-friendly but machine-processable and
-      extensible manner.  This can include constructing natural-language
-      descriptions or visual representations about the activity, associating
-      actionable information with various types of objects, communicating or
-      recording activity logs, or delegation of potential actions to other
-      applications.
+      an action. It is the goal of this specification to provide a JSON-based
+      syntax that is sufficient to express metadata about activities in a rich,
+      human-friendly but machine-processable and extensible manner.  This can
+      include constructing natural-language descriptions or visual
+      representations about the activity, associating actionable information
+      with various types of objects, communicating or recording activity logs,
+      or delegation of potential actions to other applications.
     </p>
 
     <p>
@@ -206,6 +205,13 @@
         uppercase "Z" character in the absence of a numeric time zone offset.
         All such timestamps SHOULD be represented relative to Coordinated
         Universal Time (UTC).
+      </p>
+
+      <p>
+        An <dfn title="Activity Streams Document">Activity Streams
+        Document</dfn> is a JSON-LD document whose root value is an
+        Activity Streams <a>Object</a> of any type and whose MIME media
+        type is "<code>application/activity+json</code>".
       </p>
 
       <p>
@@ -1370,13 +1376,12 @@ _:b0 a as:Object ;
 </figure>
 
       <p>
-        While Activity Streams 2.0 implementations MAY use JSON-LD value
-        objects in this manner, doing so is strongly discouraged.
-        Implementations SHOULD, instead, use the Language Map form. The one
-        situation where use of the value object cannot be avoided is when a
-        default language context has been established and a particular
-        language-sensitive field needs to be explicitly excluded from that
-        context, as in the following example:
+        Activity Streams 2.0 implementations SHOULD NOT use JSON-LD value
+        objects in this manner. Implementations SHOULD, instead, use the
+        Language Map form. The one situation where use of the value object
+        cannot be avoided is when a default language context has been
+        established and a particular language-sensitive field needs to be
+        explicitly excluded from that context, as in the following example:
       </p>
 
 <figure>
@@ -1827,9 +1832,12 @@ _:b0 a as:Object ;
         generalized way, stopping short of defining semantically specific
         properties for each. All Actor objects are specializations of
         <code><a>Object</a></code> and inherit all of the core properties
-        common to all Objects. External vocabularies (VCard for instance) can
-        be used to express additional detail not covered by the Activity
-        Vocabulary.
+        common to all Objects. External vocabularies can be used to express
+        additional detail not covered by the Activity Vocabulary. VCard
+        [[vcard-rdf]] SHOULD be used to provide additional metadata for
+        <a href="activitystreams2-vocabulary.html#dfn-person">Person</a>,
+        <a href="activitystreams2-vocabulary.html#dfn-group">Group</a>,
+        and <a href="activitystreams2-vocabulary.html#dfn-organization">Organization</a> instances.
       </p>
 
       <figure><figcaption>An Activity with a Person actor:</figcaption>
@@ -2117,7 +2125,9 @@ _:b0 a as:Create ;
 
       <p>
         Activity objects are specializations of the base <a>Object</a>
-        type that provide information about pending, ongoing or completed actions.
+        type that provide information about actions that have either
+        already occurred, are in the process of occurring, or may occur
+        in the future.
       </p>
 
       <p>
@@ -2294,6 +2304,19 @@ _:b0 a as:Create ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
 </div>
 </figure>
+
+      <p>
+        Implementations are free to use Activity objects in both passive and
+        imperative operations. In the passive sense, the Activity is used
+        to record that an activity has or is occurring. In the imperative
+        sense, the Activity can be used as a form of command, instructing
+        an application to modify state in some manner consistent with the
+        action being described. However, because this specification does not
+        define a normative processing model that constrains how applications
+        make use of the format, the distinction been whether an Activity
+        statement is intended to be interpreted as a passive notification or as
+        an imperative command can vary across implementations.
+      </p>
 
     </section>
 
@@ -2565,8 +2588,7 @@ _:c14n0 a as:OrderedCollection ;
       <p>
         Using paging with an <code>OrderedCollection</code> can be tricky because
         there is no guarantee that implementations will process the distinct pages
-        in any predictable order. Therefore, it is strongly recommended that
-        <code>OrderedCollection</code> instances that use paging always include the
+        in any predictable order. <code>OrderedCollection</code> instances that use paging SHOULD include the
         <code><a href="activitystreams2-vocabulary.html#dfn-first">first</a></code>,
         <code><a href="activitystreams2-vocabulary.html#dfn-next">next</a></code>,
         <code><a href="activitystreams2-vocabulary.html#dfn-prev">prev</a></code> and
@@ -2579,17 +2601,6 @@ _:c14n0 a as:OrderedCollection ;
       </p>
 
     </section>
-
-  </section>
-
-  <section id="document">
-    <h2>Activity Streams Document</h2>
-
-    <p>
-      An <dfn title="Activity Streams Document">Activity Streams Document</dfn>
-      is a JSON-LD document whose root value is a <a>Collection</a> and
-      whose MIME media type is "<code>application/activity+json</code>".
-    </p>
 
   </section>
 
@@ -3220,10 +3231,10 @@ _:c14n0 a gsp:Geometry ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
-  "content": "Thank you @sally for all your hard work! #givingthanks",
+  "content": "Thank you <a href="http://sally.example.org">@sally</a> for all your hard work! <a href="http://example.org/tags/givingthanks">#givingthanks</a>",
   "to": {
     "@type": "Person",
-    "@id": "http://example.org/people/sally",
+    "@id": "http://sally.example.org",
     "alias": "@sally"
   },
   "tag": {
