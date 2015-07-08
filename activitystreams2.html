@@ -386,7 +386,7 @@ _:b0 a as:Create ;
   },
   "target" : {
    "@id": "http://example.org/blog/",
-   "@type": "urn:example:types:blog",
+   "@type": "OrderedCollection",
    "displayName": "Martin's Blog"
   }
 }</pre>
@@ -415,7 +415,7 @@ _:b0 a as:Create ;
   &lt;/div>
   To
   &lt;div itemprop="target" itemscope
-    itemtype="urn:example:types:blog"
+    itemtype="OrderedCollection"
     itemid="http://example.org/blog">
     "&lt;span itemprop="displayName">Martin's Blog&lt;/span>"
   &lt;/div>
@@ -445,7 +445,7 @@ _:b0 a as:Create ;
     &lt;/a>
   &lt;/div>
   To
-  &lt;div property="target" typeof="urn:example:types:blog"
+  &lt;div property="target" typeof="OrderedCollection"
     resource="http://example.org/blog">
     "&lt;span property="displayName">Martin's Blog&lt;/span>"
   &lt;/div>
@@ -486,7 +486,7 @@ _:b0 a as:Create ;
       as:mediaType "image/jpeg"
   ] .
 
-&lt;http://example.org/blog/&gt; a &lt;urn:example:types:blog&gt; ;
+&lt;http://example.org/blog/&gt; a as:OrderedCollection ;
   as:displayName "Martin's Blog" .
 
 &lt;urn:example:blog:abc123/xyz&gt; a as:Article ;
