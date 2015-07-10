@@ -170,7 +170,7 @@
 
       <p>
         This specification describes a JSON-based [[!RFC7159]] serialization
-        syntax for the <a href="activitystreams2-vocabulary.html">Activity
+        syntax for the <a href="../activitystreams-vocabulary/">Activity
         Vocabulary</a> that follows the conventions defined by the
         [[!JSON-LD]] specification. While serialization forms other than
         JSON-LD are possible, alternatives are not discussed by this
@@ -357,7 +357,7 @@ _:b0 a as:Create ;
         'Martin's Blog' at 3:04 PM UTC on February 2, 2015."  Some additional
         details about the article, actor and target blog are given using
         properties defined by the
-        <a href="activitystreams2-vocabulary.html">Activity Streams 2.0
+        <a href="../activitystreams-vocabulary/">Activity Streams 2.0
         Vocabulary</a>.
       </figcaption>
 <div class="nanotabs">
@@ -788,7 +788,7 @@ _:b0 a as:Collection ;
     <h2>Model</h2>
 
     <p>
-      The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
+      The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
       defines the abstract model for Activity Streams 2.0. The vocabulary
       is segmented into a set of seven core classes and an extended set of
       Activity and Object types common to most social Web applications. The
@@ -797,7 +797,7 @@ _:b0 a as:Collection ;
         <a>Link</a>,
         <a>Actor</a>,
         <a>Activity</a>,
-        <a href="activitystreams2-vocabulary.html#dfn-intransitiveactivity">IntransitiveActivity</a>,
+        <a href="../activitystreams-vocabulary/#dfn-intransitiveactivity">IntransitiveActivity</a>,
         <a>Collection</a>
         and <a>OrderedCollection</a>.
       Each of these classes is described and illustrated below. The extended
@@ -809,7 +809,7 @@ _:b0 a as:Collection ;
       <h2><dfn title="Object" id="asobject">Object</dfn></h2>
 
       <p>
-        The <code><a href="activitystreams2-vocabulary.html#dfn-object">Object</a></code>
+        The <code><a href="../activitystreams-vocabulary/#dfn-object">Object</a></code>
         class is the primary base class for the Activity Streams vocabulary.
       </p>
 
@@ -819,39 +819,39 @@ _:b0 a as:Collection ;
         (expressed using the JSON-LD <code>@type</code> keyword), all instances
         of the <code>Object</code> class share a common set of properties
         normatively defined by the
-        <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>.
+        <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>.
         These include:
         <code>
-          <code><a href="activitystreams2-vocabulary.html#dfn-alias">alias</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-attachment">attachment</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-attributedto">attributedTo</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-content-term">content</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-context">context</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-content">contentMap</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-endtime">endTime</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-generator">generator</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-icon">icon</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-image-term">image</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-inreplyto">inReplyTo</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-location">location</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-preview">preview</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-published">published</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-replies">replies</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-scope">scope</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-starttime">startTime</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-summary">summaryMap</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-tag">tag</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-updated">updated</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-url">url</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-to">to</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-bto">bto</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-cc">cc</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a></code>
+          <code><a href="../activitystreams-vocabulary/#dfn-alias">alias</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-attachment">attachment</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-attributedto">attributedTo</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-content-term">content</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-context">context</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-content">contentMap</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayNameMap</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-endtime">endTime</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-generator">generator</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-icon">icon</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-image-term">image</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-inreplyto">inReplyTo</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-location">location</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-preview">preview</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-published">published</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-replies">replies</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-scope">scope</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-starttime">startTime</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-summary">summaryMap</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-tag">tag</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-title">titleMap</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-updated">updated</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-url">url</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-to">to</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-bto">bto</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-cc">cc</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-bcc">bcc</a></code>
         </code>
       </p>
 
@@ -865,8 +865,8 @@ _:b0 a as:Collection ;
       <p>
         While all properties are optional, all <code>Object</code> instances
         SHOULD at least contain either the
-        <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>
-        or <code><a href="activitystreams2-vocabulary.html#def-displayname">displayNameMap</a></code>.
+        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
+        or <code><a href="../activitystreams-vocabulary/#def-displayname">displayNameMap</a></code>.
       </p>
 
 <figure><figcaption>Following is an example Object that uses the JSON-LD <code>@id</code> and <code>@type</code>
@@ -950,8 +950,8 @@ keywords to express the global identifier and object type:</figcaption>
       </p>
 
 <figure><figcaption>For instance, in the following example, the value of
-the <code><a href="activitystreams2-vocabulary.html#dfn-actor-term">actor</a></code>
-property is considered to be an instance of the <a>Object</a> class while the value of the <code><a href="activitystreams2-vocabulary.html#dfn-object-term">object</a></code> property is
+the <code><a href="../activitystreams-vocabulary/#dfn-actor-term">actor</a></code>
+property is considered to be an instance of the <a>Object</a> class while the value of the <code><a href="../activitystreams-vocabulary/#dfn-object-term">object</a></code> property is
 not:</figcaption>
 <div class="nanotabs">
   <ul>
@@ -1040,7 +1040,7 @@ not:</figcaption>
 </figure>
 
      <p>
-       The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
+       The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
        defines a broad range of <code>Object</code> types that are common to
        many social Web applications. This specification stops short of
        defining semantically specific properties for most of these objects.
@@ -1059,7 +1059,7 @@ not:</figcaption>
       example, to use a
   <code><a href="http://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
       as an object type SHOULD also identify the object as being both a
-      <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code> and an
+      <code><a href="../activitystreams-vocabulary/#dfn-place">Place</a></code> and an
       <code>http://purl.org/goodrelations/v1#Location</code>, as
       illustrated in the following:
      </p>
@@ -1150,7 +1150,7 @@ _:b0 a as:Place, gr:Location ;
 
       <p>
         Several properties defined by the
-        <a href="activitystreams2-vocabulary.html">Vocabulary</a> are defined
+        <a href="../activitystreams-vocabulary/">Vocabulary</a> are defined
         as having natural language values. These are representations of
         human-readable character sequences using one or more languages.
         Within the JSON-LD serialization, they are expressed as either (1) a
@@ -1160,7 +1160,7 @@ _:b0 a as:Place, gr:Location ;
         Maps". In the serialized JSON-LD, these two forms are differentiated
         using a simple property naming convention, for instance:
         "<code>displayName</code>" identifies the JSON string form for the
-        <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
         property while "<code>displayNameMap</code>" represents the Language
         Map form.
       </p>
@@ -1265,12 +1265,12 @@ _:b0 a as:Object ;
       </p>
 
       <p>
-        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
+        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
         defines four specific natural language values:
-        <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>,
-        <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code>,
-        <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code>, and
-        <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code>.
+        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
+        <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
+        <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
+        <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>.
         Accordingly, the Activity Streams
         <a href="activitystreams2-context.jsonld">JSON-LD
         @context</a> definition respectively maps the terms
@@ -1457,25 +1457,25 @@ _:b0 a as:Object ;
 
       <p>
         The target URI of the Link is expressed using the required
-        <code><a href="activitystreams2-vocabulary.html#dfn-href">href</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-href">href</a></code>
         keyword. In addition, all <code>Link</code> instances share the
         following common set of optional properties as normatively defined by
-        the <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>:
-          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayNameMap</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-hreflang">hreflang</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-title">titleMap</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-height">height</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-width">width</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-duration">duration</a></code>
+        the <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>:
+          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayNameMap</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-title">titleMap</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
       </p>
 
       <p>
         For example, all <a title="Object">Objects</a> can contain an
-        <code><a href="activitystreams2-vocabulary.html#dfn-image-term">image</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-image-term">image</a></code>
         property whose value describes a graphical representation of the
         containing object.  This property will typically be used to provide the
         URL to an image (e.g. JPEG, GIF or PNG) resource that can be displayed
@@ -1702,7 +1702,7 @@ _:b0 a as:Object ;
       <p>
         RFC 5988 defines that all Links have a "link relation" that describes
         the contextual purpose of the link.  Within a <a>Link</a>,
-        the <code><a href="activitystreams2-vocabulary.html#dfn-rel">rel</a></code> property
+        the <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> property
         provides the link relation value. If no <code>rel</code> property is
         specified, the link relation is considered to be unspecified. Any given
         Link can have multiple link relation values. In the JSON-LD
@@ -1822,16 +1822,16 @@ _:b0 a as:Object ;
         Actor objects are specializations of the base <a>Object</a>
         type that represent entities capable of carrying out an
         Activity. The <a>Actor</a> class is the base class for all
-        Actor objects. The <a href="activitystreams2-vocabulary.html">Activity
+        Actor objects. The <a href="../activitystreams-vocabulary/">Activity
         Vocabulary</a> provides the normative definition of six specific
         types of Actors:
-        <code><a href="activitystreams2-vocabulary.html#dfn-application">Application</a>
+        <code><a href="../activitystreams-vocabulary/#dfn-application">Application</a>
         </code> |
-        <code><a href="activitystreams2-vocabulary.html#dfn-group">Group</a></code> |
-        <code><a href="activitystreams2-vocabulary.html#dfn-organization">Organization</a></code>
-        <code><a href="activitystreams2-vocabulary.html#dfn-person">Person</a></code> |
-        <code><a href="activitystreams2-vocabulary.html#dfn-process">Process</a></code> |
-        <code><a href="activitystreams2-vocabulary.html#dfn-service">Service</a></code>.
+        <code><a href="../activitystreams-vocabulary/#dfn-group">Group</a></code> |
+        <code><a href="../activitystreams-vocabulary/#dfn-organization">Organization</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-person">Person</a></code> |
+        <code><a href="../activitystreams-vocabulary/#dfn-process">Process</a></code> |
+        <code><a href="../activitystreams-vocabulary/#dfn-service">Service</a></code>.
       </p>
 
       <p>
@@ -1842,9 +1842,9 @@ _:b0 a as:Object ;
         common to all Objects. External vocabularies can be used to express
         additional detail not covered by the Activity Vocabulary. VCard
         [[vcard-rdf]] SHOULD be used to provide additional metadata for
-        <a href="activitystreams2-vocabulary.html#dfn-person">Person</a>,
-        <a href="activitystreams2-vocabulary.html#dfn-group">Group</a>,
-        and <a href="activitystreams2-vocabulary.html#dfn-organization">Organization</a> instances.
+        <a href="../activitystreams-vocabulary/#dfn-person">Person</a>,
+        <a href="../activitystreams-vocabulary/#dfn-group">Group</a>,
+        and <a href="../activitystreams-vocabulary/#dfn-organization">Organization</a> instances.
       </p>
 
       <figure><figcaption>An Activity with a Person actor:</figcaption>
@@ -2025,7 +2025,7 @@ _:c14n0 a as:Create ;
         vocabularies (e.g. VCard) define their own classes for describing
         people. An implementation that wishes, for example, to use a
         <code>vcard:Individual</code> as an Actor SHOULD identify that Actor as
-        being <em>both</em> a <code><a href="activitystreams2-vocabulary.html#dfn-person">Person</a></code>
+        being <em>both</em> a <code><a href="../activitystreams-vocabulary/#dfn-person">Person</a></code>
         and an <code>vcard:Individual</code>, as illustrated in the following:
       </p>
 
@@ -2140,14 +2140,14 @@ _:b0 a as:Create ;
       <p>
         In addition to common properties supported by all <a>Object</a>
         instances, <code>Activity</code> objects support the following additional
-        properties defined by the <a href="activitystreams2-vocabulary.html">Vocabulary</a>:
-          <code><a href="activitystreams2-vocabulary.html#dfn-actor">actor</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-object-term">object</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-target">target</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-origin">origin</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-result">result</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-priority">priority</a></code> |
-          <code><a href="activitystreams2-vocabulary.html#dfn-instrument">instrument</a></code>
+        properties defined by the <a href="../activitystreams-vocabulary/">Vocabulary</a>:
+          <code><a href="../activitystreams-vocabulary/#dfn-actor">actor</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-object-term">object</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-target">target</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-origin">origin</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-result">result</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-priority">priority</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-instrument">instrument</a></code>
       </p>
 
       <p>
@@ -2223,7 +2223,7 @@ _:b0 a as:Create ;
 </figure>
 
       <p>
-        The <a href="activitystreams2-vocabulary.html">Activity Vocabulary</a>
+        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
         defines a broad range of <code>Activity</code> types that are common to
         many social Web applications. This specification stops short of
         defining semantically specific properties for most of these activities.
@@ -2241,13 +2241,13 @@ _:b0 a as:Create ;
         their own classes for describing actions. An implementation that wishes,
         for example, to use <code><a href="http://schema.org/LikeAction">http://schema.org/LikeAction</a></code>
         as an Activity SHOULD identify that Object as being both a
-        <code><a href="activitystreams2-vocabulary.html#dfn-like">Like</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-like">Like</a></code>
         and an <code>http://schema.org/LikeAction</code>, as illustrated in the
         following:
       </p>
 
        <figure><figcaption>An Activity that is both a
-       <code><a href="activitystreams2-vocabulary.html#dfn-like">Like</a></code> and
+       <code><a href="../activitystreams-vocabulary/#dfn-like">Like</a></code> and
        a <code>http://schema.org/LikeAction</code>:</figcaption>
 <div class="nanotabs">
   <ul>
@@ -2354,18 +2354,18 @@ _:b0 a as:Create ;
       <p>
         In addition to the common properties shared by all <a>Object</a> instances,
         <code>Collection</code> objects set of properties defined by the
-        <a href="activitystreams2-vocabulary.html">Vocabulary</a>. These include:
+        <a href="../activitystreams-vocabulary/">Vocabulary</a>. These include:
         <code>
-          <a href="activitystreams2-vocabulary.html#dfn-items">items</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-totalitems">totalItems</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-itemsperpage">itemsPerPage</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-startindex">startIndex</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-current">current</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-next">next</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-prev">prev</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-first">first</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-last">last</a> |
-          <a href="activitystreams2-vocabulary.html#dfn-self">self</a>
+          <a href="../activitystreams-vocabulary/#dfn-items">items</a> |
+          <a href="../activitystreams-vocabulary/#dfn-totalitems">totalItems</a> |
+          <a href="../activitystreams-vocabulary/#dfn-itemsperpage">itemsPerPage</a> |
+          <a href="../activitystreams-vocabulary/#dfn-startindex">startIndex</a> |
+          <a href="../activitystreams-vocabulary/#dfn-current">current</a> |
+          <a href="../activitystreams-vocabulary/#dfn-next">next</a> |
+          <a href="../activitystreams-vocabulary/#dfn-prev">prev</a> |
+          <a href="../activitystreams-vocabulary/#dfn-first">first</a> |
+          <a href="../activitystreams-vocabulary/#dfn-last">last</a> |
+          <a href="../activitystreams-vocabulary/#dfn-self">self</a>
         </code>
       </p>
 
@@ -2376,7 +2376,7 @@ _:b0 a as:Create ;
         the <code>orderedItems</code> property. The normative JSON-LD @context
         definition maps both the <code>items</code> and <code>orderedItems</code>
         properties to the Activity Vocabulary
-        <code><a href="activitystreams2-vocabulary.html#dfn-items">items</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-items">items</a></code>
         term. However, the <code>orderedItems</code> property is defined in
         the JSON-LD @context as <code>@container = @list</code>, indicating that the
         items are strictly ordered.
@@ -2386,7 +2386,7 @@ _:b0 a as:Create ;
         Note that when using <code>orderedItems</code> within a <code>Collection</code>
         object, the order imposed on the items applies only to the subset of items
         directly contained within the one <code>Collection</code> object. Implementations
-        MAY use the <code><a href="activitystreams2-vocabulary.html#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a></code>
+        MAY use the <code><a href="../activitystreams-vocabulary/#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a></code>
         class to identify collections whose entire logical set of members are
         strictly ordered.
       </p>
@@ -2585,7 +2585,7 @@ _:c14n0 a as:OrderedCollection ;
 
       <p>
         In ordered collections that use paging, the
-        <code><a href="activitystreams2-vocabulary.html#dfn-startindex">startIndex</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-startindex">startIndex</a></code>
         property is used to indicate the relative index position within the
         logical set of items of the first item contained in the
         <code>orderedItems</code> list. A <code>startIndex</code> of <code>0</code>
@@ -2596,10 +2596,10 @@ _:c14n0 a as:OrderedCollection ;
         Using paging with an <code>OrderedCollection</code> can be tricky because
         there is no guarantee that implementations will process the distinct pages
         in any predictable order. <code>OrderedCollection</code> instances that use paging SHOULD include the
-        <code><a href="activitystreams2-vocabulary.html#dfn-first">first</a></code>,
-        <code><a href="activitystreams2-vocabulary.html#dfn-next">next</a></code>,
-        <code><a href="activitystreams2-vocabulary.html#dfn-prev">prev</a></code> and
-        <code><a href="activitystreams2-vocabulary.html#dfn-last">last</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-first">first</a></code>,
+        <code><a href="../activitystreams-vocabulary/#dfn-next">next</a></code>,
+        <code><a href="../activitystreams-vocabulary/#dfn-prev">prev</a></code> and
+        <code><a href="../activitystreams-vocabulary/#dfn-last">last</a></code>
         paging properties. Implementations that wish to reconstruct the appropriate
         complete ordering of member instances in the logical collection would navigate
         to the <code>OrderedCollection</code> instance identified by the <code>first</code>
@@ -2643,10 +2643,10 @@ _:c14n0 a as:OrderedCollection ;
       target of the activity) to infer the primary audience for many types of
       activities, heuristics do not work in every case and do not provide a
       means of identifying the secondary audience.  The
-      <code><a href="activitystreams2-vocabulary.html#dfn-to">to</a></code>,
-      <code><a href="activitystreams2-vocabulary.html#dfn-cc">cc</a></code>,
-      <code><a href="activitystreams2-vocabulary.html#dfn-bto">bto</a></code> and
-      <code><a href="activitystreams2-vocabulary.html#dfn-bcc">bcc</a></code>
+      <code><a href="../activitystreams-vocabulary/#dfn-to">to</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-cc">cc</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-bto">bto</a></code> and
+      <code><a href="../activitystreams-vocabulary/#dfn-bcc">bcc</a></code>
       properties MAY be used within an Object to explicitly identify the
       Primary and Secondary audiences.
     </p>
@@ -2747,10 +2747,10 @@ _:c14n0 a as:OrderedCollection ;
       <code>@type</code> keyword.
     </li>
     <li>
-      This document redefines the <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>,
-      <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code>,
-      <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code> and
-      <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code>
+      This document redefines the <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code> and
+      <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
       properties as natural language values which means their values can be expressed
       as either a String or a JSON-LD Language Map. In the 1.0 syntax, these are expressed
       solely as String values.  Because the 1.0 values are a valid
@@ -2781,15 +2781,15 @@ _:c14n0 a as:OrderedCollection ;
       describe the action of both creating an object and "posting" or uploading
       it to a service. This specification replaces the "<code>post</code>" verb
       with separate
-      <code><a href="activitystreams2-vocabulary.html#dfn-create">Create</a></code> and
-      <code><a href="activitystreams2-vocabulary.html#dfn-add">Add</a></code>
+      <code><a href="../activitystreams-vocabulary/#dfn-create">Create</a></code> and
+      <code><a href="../activitystreams-vocabulary/#dfn-add">Add</a></code>
       Activity types. When processing Activity Streams 1.0 documents and
       converting those into 2.0, implementations SHOULD treat instances of the
       "<code>post</code>" verb as equivalent to
-      <code><a href="activitystreams2-vocabulary.html#dfn-create">Create</a></code>
+      <code><a href="../activitystreams-vocabulary/#dfn-create">Create</a></code>
       <i>if there is no <code>target</code> property specified</i>; and
       equivalent to
-      <code><a href="activitystreams2-vocabulary.html#dfn-add">Add</a></code>
+      <code><a href="../activitystreams-vocabulary/#dfn-add">Add</a></code>
       <i>if there is a <code>target</code> property specified</i>.
     </li>
     </ol>
@@ -2807,7 +2807,7 @@ _:c14n0 a as:OrderedCollection ;
 
       <p>
         In Activity Streams 2.0, an "extension" is any property not defined
-        by the <a href="activitystreams2-vocabulary.html">Activity
+        by the <a href="../activitystreams-vocabulary/">Activity
         Vocabulary</a>. Consuming implementations that encounter unfamiliar
         extensions MUST NOT stop processing or signal an error and MUST
         continue processing the items as if those properties were not
@@ -2836,7 +2836,7 @@ _:c14n0 a as:OrderedCollection ;
         Processing Algorithms will be required to either ignore such extensions
         or map those to alternative compatible constructs prior to applying the
         JSON-LD algorithms. Simple GeoJSON Points, for instance, can be mapped
-        to <code><a href="activitystreams2-vocabulary.html#dfn-place">Place</a></code>
+        to <code><a href="../activitystreams-vocabulary/#dfn-place">Place</a></code>
         objects, while more complex geometries can be converted to
         <a href="http://www.opengeospatial.org/standards/geosparql">GeoSparql</a>
         "Well-Known Text" representations as illustrated in the non-normative
@@ -3196,15 +3196,15 @@ _:c14n0 a gsp:Geometry ;
 
     <p>
       While such microsyntaxes MAY be used within the values of the
-      <code><a href="activitystreams2-vocabulary.html#dfn-content">content</a></code>,
-      <code><a href="activitystreams2-vocabulary.html#dfn-displayname">displayName</a></code>,
-      <code><a href="activitystreams2-vocabulary.html#dfn-summary">summary</a></code>, and
-      <code><a href="activitystreams2-vocabulary.html#dfn-title">title</a></code> properties
+      <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
+      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> properties
       on an Activity Streams <code><a>Object</a></code>, implementations
       SHOULD NOT be required to parse the values of those properties in order to
       determine the appropriate routing of notifications, categorization or
       linking between objects. Instead, publishers SHOULD make appropriate use
-      of the <a href="activitystreams2-vocabulary.html">Activity Streams Vocabulary</a>
+      of the <a href="../activitystreams-vocabulary/">Activity Streams Vocabulary</a>
       terms provided specifically for these purposes.
     </p>
 
@@ -3230,7 +3230,7 @@ _:c14n0 a gsp:Geometry ;
 
     <p>
       The following illustrates an equivalent Activity Streams
-      <code><a href="activitystreams2-vocabulary.html#dfn-note">Note</a></code>
+      <code><a href="../activitystreams-vocabulary/#dfn-note">Note</a></code>
       object:
     </p>
 
@@ -3264,10 +3264,10 @@ _:c14n0 a gsp:Geometry ;
     <p>
       In the case a publisher wishes to indicate a mention without an associated
       notification, the publisher can use the
-      <code><a href="activitystreams2-vocabulary.html#dfn-mention">Mention</a></code>
-      object type as a value of the <code><a href="activitystreams2-vocabulary.html#dfn-tag">tag</a></code>
+      <code><a href="../activitystreams-vocabulary/#dfn-mention">Mention</a></code>
+      object type as a value of the <code><a href="../activitystreams-vocabulary/#dfn-tag">tag</a></code>
       property. The <code>Mention</code> object is a subclass of
-      <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>.
+      <code><a href="../activitystreams-vocabulary/#dfn-link">Link</a></code>.
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
@@ -3572,7 +3572,7 @@ profile-URI   = URI</pre>
     <h3>2014-09-30</h3>
     <ul>
       <li>Rework serialization model to be based on JSON-LD.</li>
-      <li>Updated <a href="activitystreams2-vocabulary.html">vocabulary model</a>.</li>
+      <li>Updated <a href="../activitystreams-vocabulary/">vocabulary model</a>.</li>
       <li>Remove notion of "Type Values".</li>
       <li>Redefine "Link Values" as "Link".</li>
       <li>Removed the "duplicates" property introduced in earlier AS2 drafts due to lack of any implementation evidence.</li>
