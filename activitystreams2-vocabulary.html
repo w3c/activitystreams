@@ -244,14 +244,14 @@
     <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Object",
-  "@id": "urn:example:object:1",
+  "@id": "http://www.test.example/object/1",
   "displayName": "A Simple, non-specific object"
 }</pre>
   </div>
   <div id="ex1-microdata" style="display: none;">
     <pre class="example highlight html"
 >&lt;div itemscope
-  itemid="urn:example:object:1"
+  itemid="http://www.test.example/object/1"
   itemtype="http://www.w3.org/ns/activitystreams#Object"&gt;
   &lt;span itemprop="displayName"&gt;
     A Simple, non-specific object
@@ -261,7 +261,7 @@
   <div id="ex1-rdfa" style="display: none;">
     <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  resource="urn:example:object:1"
+  resource="http://www.test.example/object/1"
   typeof="Object"&gt;
   &lt;span property="displayName"&gt;
     A Simple, non-specific object
@@ -281,7 +281,7 @@
     <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
-&lt;urn:example:object:1&gt; a as:Object ;
+&lt;http://www.test.example/object/1&gt; a as:Object ;
   as:displayName "A Simple, non-specific object" .</pre>
   </div>
 </div>
@@ -2650,7 +2650,7 @@ _:b0 a as:Like ;
     "displayName": "Sally"
   },
   "object": {
-    "@type": "urn:examples:types:ProductOffer",
+    "@type": "http://www.types.example/ProductOffer",
     "displayName": "50% Off!"
   }
 }</pre>
@@ -2665,7 +2665,7 @@ _:b0 a as:Like ;
   &lt;/span>
   is offering
   &lt;span itemprop="object" itemscope
-    itemtype="urn:examples:types:ProductOffer">
+    itemtype="http://www.types.example/ProductOffer">
     &lt;span itemprop="displayName">
       50% Off!
     &lt;/span>
@@ -2681,7 +2681,7 @@ _:b0 a as:Like ;
   &lt;/span>
   is offering
   &lt;span property="object"
-    typeof="urn:examples:types:ProductOffer">
+    typeof="http://www.types.example/ProductOffer">
     &lt;span property="displayName">
       50% Off!
     &lt;/span>
@@ -2708,7 +2708,7 @@ _:b0 a as:Offer ;
       as:displayName "Sally" .
   ] ;
   as:object [
-    a &lt;urn:examples:types:ProductOffer&gt; ;
+    a &lt;http://www.types.example/ProductOffer&gt; ;
       as:displayName "50% Off!" .
   ] .</pre>
   </div>
@@ -12152,11 +12152,11 @@ _:b0 a as:Movie ;
   <div id="ex108-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": ["Activity", "urn:example:verbs:Check"],
+  "@type": ["Activity", "http://www.verbs.example/Check"],
   "actor": "http://sally.example.org",
   "object": "http://example.org/flights/1",
   "result": {
-    "@type": "urn:example:types:flightstatus",
+    "@type": "http://www.types.example/flightstatus",
     "displayName": "On Time"
   }
 }</pre>
@@ -12166,14 +12166,14 @@ _:b0 a as:Movie ;
 >&lt;div itemscope
   itemtype="
     http://www.w3.org/ns/activitystreams#Activity
-    urn:example:verbs:Check">
+    http://www.verbs.example/Check">
   &lt;a itemprop="actor"
     href="http://sally.example.org">Sally's&lt;/a>
   &lt;a itemprop="object"
     href="http://example.org/flights/1">flight&lt;/a>
   is
   &lt;span itemprop="result" itemscope
-    itemtype="urn:example:types:flightstatus">
+    itemtype="http://www.types.example/flightstatus">
     &lt;span itemprop="displayName">On Time&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -12183,14 +12183,14 @@ _:b0 a as:Movie ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="
     http://www.w3.org/ns/activitystreams#Activity
-    urn:example:verbs:Check">
+    http://www.verbs.example/Check">
   &lt;a property="actor"
     href="http://sally.example.org">Sally's&lt;/a>
   &lt;a property="object"
     href="http://example.org/flights/1">flight&lt;/a>
   is
   &lt;span property="result"
-    typeof="urn:example:types:flightstatus">
+    typeof="http://www.types.example/flightstatus">
     &lt;span property="displayName">On Time&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -12213,11 +12213,11 @@ _:b0 a as:Movie ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Activity,
-          &lt;urn:example:verbs:Check&gt; ;
+          &lt;http://www.verbs.example/Check&gt; ;
   as:actor &lt;http://sally.example.org&gt; ;
   as:object &lt;http://example.org/flights/1&gt; ;
   as:result [
-    a &lt;urn:example:types:flightstatus&gt; ;
+    a &lt;http://www.types.example/flightstatus&gt; ;
       as:displayName "On Time" .
   ] .</pre>
   </div>
@@ -12260,7 +12260,7 @@ _:b0 a as:Activity,
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
-  "@id": "urn:example:notes:1",
+  "@id": "http://www.test.example/notes/1",
   "content": "A simple note",
   "replies": {
     "@type": "Collection",
@@ -12270,7 +12270,7 @@ _:b0 a as:Activity,
       {
         "@type": "Note",
         "content": "A response to the note",
-        "inReplyTo": "urn:example:notes:1"
+        "inReplyTo": "http://www.test.example/notes/1"
       }
     ]
   }
@@ -12280,7 +12280,7 @@ _:b0 a as:Activity,
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note"
-  itemid="urn:example:notes:1">
+  itemid="http://www.test.example/notes/1">
   &lt;div itemprop="content">
     A simple note
   &lt;/div>
@@ -12295,8 +12295,8 @@ _:b0 a as:Activity,
           A response to the note
         &lt;/span>
         &lt;a itemprop="inReplyTo"
-          href="urn:example:notes:1">
-            urn:example:notes:1
+          href="http://www.test.example/notes/1">
+            http://www.test.example/notes/1
         &lt;/a>
       &lt;/li>
     &lt;/ul>
@@ -12306,7 +12306,7 @@ _:b0 a as:Activity,
   <div id="ex112-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note" resource="urn:example:notes:1">
+  typeof="Note" resource="http://www.test.example/notes/1">
   &lt;div property="content">
     A simple note
   &lt;/div>
@@ -12319,8 +12319,8 @@ _:b0 a as:Activity,
           A response to the note
         &lt;/span>
         &lt;a property="inReplyTo"
-          href="urn:example:notes:1" />
-            urn:example:notes:1
+          href="http://www.test.example/notes/1" />
+            http://www.test.example/notes/1
         &lt;/a>
       &lt;/li>
     &lt;/ul>
@@ -12342,8 +12342,8 @@ _:b0 a as:Activity,
           A response to the note
         &lt;/span>
         &lt;a rel="u-in-reply-to"
-          href="urn:example:notes:1">
-            urn:example:notes:1
+          href="http://www.test.example/notes/1">
+            http://www.test.example/notes/1
         &lt;/a>
       &lt;/li>
     &lt;/ul>
@@ -12355,7 +12355,7 @@ _:b0 a as:Activity,
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-&lt;urn:example:notes:1&gt; a as:Note ;
+&lt;http://www.test.example/notes/1&gt; a as:Note ;
   as:content "A simple note" ;
   as:replies _:b0 .
 
@@ -12365,7 +12365,7 @@ _:b0 a as:Collection ;
   as:items [
     a as:Note ;
       as:content "A response to the note" ;
-      as:inReplyTo &lt;urn:example:notes:1&gt;.
+      as:inReplyTo &lt;http://www.test.example/notes/1&gt;.
   ] .
 </pre>
   </div>

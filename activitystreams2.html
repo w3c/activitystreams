@@ -267,14 +267,20 @@
       non-JSON-LD alternatives are included solely for illustrative purposes.
     </p>
 
-        <section id="ednote" class="informative">
-        <h2>Editor's Note</h2>
+        <section id="ednotes" class="informative">
+        <h2>Editor's Notes</h2>
         <p><mark>The Microdata, RDFa and Microformats examples included in this
           document are purely informative and may not currently reflect actual
           implementation experience or accepted best practices for each
           format. These alternate serializations may be removed from future
           iterations of this document and moved to a separate informative WG
           Note.</mark></p>
+
+        <p><mark>The examples included in this document all use HTTP URLs for
+          @id values.  These values are not limited to URLs and it is perfectly
+          legal to use HTTPS URLs or any URI, URN, or IRI value for the @id.
+          </mark></p>
+
         </section>
 
     <section id="example-1">
@@ -282,7 +288,7 @@
 
   <figure>
   <figcaption>
-    Expresses the statement <code>'urn:example:person:martin' created
+    Expresses the statement <code>'http://www.test.example/martin' created
     'http://example.org/foo.jpg'</code>.  No additional detail is given.
   </figcaption>
 <div class="nanotabs">
@@ -297,7 +303,7 @@
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Create",
-  "actor": "urn:example:person:martin",
+  "actor": "http://www.test.example/martin",
   "object": "http://example.org/foo.jpg"
 }</pre>
   </div>
@@ -305,7 +311,7 @@
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Create">
-  &lt;a itemprop="actor" href="urn:example:person:martin">Martin&lt;/a>
+  &lt;a itemprop="actor" href="http://www.test.example/martin">Martin&lt;/a>
   created
   &lt;a itemprop="object" href="http://example.org/foo.jpg">
     "http://example.org/foo.jpg"
@@ -315,7 +321,7 @@
   <div id="ex1-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
-  &lt;a property="actor" href="urn:example:person:martin">Martin&lt;/a>
+  &lt;a property="actor" href="http://www.test.example/martin">Martin&lt;/a>
   created
   &lt;a property="object" href="http://example.org/foo.jpg">
     "http://example.org/foo.jpg"
@@ -335,7 +341,7 @@
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Create ;
-  as:actor &lt;urn:example:person:martin&gt; ;
+  as:actor &lt;http://www.test.example/martin&gt; ;
   as:object &lt;http://example.org/foo.jpg&gt; .</pre>
   </div>
 </div>
@@ -369,7 +375,7 @@ _:b0 a as:Create ;
   "published": "2015-02-10T15:04:55Z",
   "actor": {
    "@type": "Person",
-   "@id": "urn:example:person:martin",
+   "@id": "http://www.test.example/martin",
    "displayName": "Martin Smith",
    "url": "http://example.org/martin",
    "image": {
@@ -379,7 +385,7 @@ _:b0 a as:Create ;
    }
   },
   "object" : {
-   "@id": "urn:example:blog:abc123/xyz",
+   "@id": "http://www.test.example/blog/abc123/xyz",
    "@type": "Article",
    "url": "http://example.org/blog/2011/02/entry",
    "displayName": "Why I love Activity Streams"
@@ -396,7 +402,7 @@ _:b0 a as:Create ;
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Add">
   &lt;div itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
-    itemid="urn:example:person:martin">
+    itemid="http://www.test.example/martin">
     &lt;a itemprop="url" href="http://example.org/martin">
       &lt;span itemprop="displayName">Martin Smith&lt;/span>
     &lt;/a>
@@ -408,7 +414,7 @@ _:b0 a as:Create ;
   created
   &lt;div itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Article"
-    itemid="urn:example:blog:abc123/xyz">
+    itemid="http://www.test.example/blog/abc123/xyz">
     &lt;a itemprop="url" href="http://example.org/blog/2011/02/entry">
       "&lt;span itemprop="displayName">Why I love Activity Streams&lt;/span>"
     &lt;/a>
@@ -429,7 +435,7 @@ _:b0 a as:Create ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Add">
   &lt;div property="actor" typeof="Person"
-    resource="urn:example:person:martin">
+    resource="http://www.test.example/martin">
     &lt;a property="url" href="http://example.org/martin">
       &lt;span property="displayName">Martin Smith&lt;/span>
     &lt;/a>
@@ -439,7 +445,7 @@ _:b0 a as:Create ;
   &lt;/div>
   created
   &lt;div property="object" typeof="Article"
-    resource="urn:example:blog:abc123/xyz">
+    resource="http://www.test.example/blog/abc123/xyz">
     &lt;a property="url" href="http://example.org/blog/2011/02/entry">
       "&lt;span property="displayName">Why I love Activity Streams&lt;/span>"
     &lt;/a>
@@ -477,7 +483,7 @@ _:b0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;urn:example:person:martin&gt; a as:Person ;
+&lt;http://www.test.example/martin&gt; a as:Person ;
   as:displayName "Martin Smith" ;
   as:url &lt;http://example.org/martin&gt; ;
   as:image [
@@ -489,14 +495,14 @@ _:b0 a as:Create ;
 &lt;http://example.org/blog/&gt; a as:OrderedCollection ;
   as:displayName "Martin's Blog" .
 
-&lt;urn:example:blog:abc123/xyz&gt; a as:Article ;
+&lt;http://www.test.example/blog/abc123/xyz&gt; a as:Article ;
   as:displayName "Why I love Activity Streams" ;
   as:url &lt;http://example.org/blog/2011/02/entry&gt; .
 
 _:b0 a as:Add ;
   as:published "2015-02-10T15:04:55Z"^^xsd:dateTime ;
-  as:actor &lt;urn:example:person:martin&gt; ;
-  as:object &lt;urn:example:blog:abc123/xyz&gt; ;
+  as:actor &lt;http://www.test.example/martin&gt; ;
+  as:object &lt;http://www.test.example/blog/abc123/xyz&gt; ;
   as:target &lt;http://example.org/blog/&gt; .</pre>
   </div>
 </div>
@@ -537,7 +543,7 @@ _:b0 a as:Add ;
       },
       "actor": {
         "@type": "Person",
-        "@id": "urn:example:person:martin",
+        "@id": "http://www.test.example/martin",
         "displayName": "Martin Smith",
         "url": "http://example.org/martin",
         "image": {
@@ -603,7 +609,7 @@ _:b0 a as:Add ;
     &lt;/div>
     &lt;div itemprop="actor" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Person"
-      itemid="urn:example:person:martin">
+      itemid="http://www.test.example/martin">
       &lt;div itemprop="displayName">
         &lt;a itemprop="url" href="http://example.org/martin">Martin Smith&lt;/a>
       &lt;/div>
@@ -661,7 +667,7 @@ _:b0 a as:Add ;
       Martin added a new image to his album.
     &lt;/div>
     &lt;div property="actor" typeof="Person"
-      resource="urn:example:person:martin">
+      resource="http://www.test.example/martin">
       &lt;div property="displayName">
         &lt;a property="url" href="http://example.org/martin">Martin Smith&lt;/a>
       &lt;/div>
@@ -723,7 +729,7 @@ _:b0 a as:Add ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;urn:example:person:martin&gt; a as:Person ;
+&lt;http://www.test.example/martin&gt; a as:Person ;
   as:displayName "Martin Smith" ;
   as:url &lt;http://example.org/martin&gt; ;
   as:image [
@@ -768,7 +774,7 @@ _:b0 a as:Collection ;
       as:generator &lt;http://example.org/activities-app&gt; ;
       as:displayName "Martin added a new image to his album."@en ;
       as:displayName "Martin phost le fisean nua a albam."@ga ;
-      as:actor &lt;urn:example:person:martin&gt; ;
+      as:actor &lt;http://www.test.example/martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
       as:target &lt;http://example.org/album/&gt;
   ] .</pre>
@@ -881,7 +887,7 @@ keywords to express the global identifier and object type:</figcaption>
   "@type": "Note",
   "displayName": "This is a note",
   "attributedTo": {
-    "@id": "urn:example:person:joe",
+    "@id": "http://joe.website.example/",
     "@type": "Person",
     "displayName": "Joe Smith"
   },
@@ -895,7 +901,7 @@ keywords to express the global identifier and object type:</figcaption>
   &lt;div itemprop="displayName">This is a note&lt;/div>
   &lt;div itemprop="attributedTo" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
-    itemid="urn:example:person:joe">
+    itemid="http://joe.website.example/">
     &lt;span itemprop="displayName">Joe Smith&lt;/span>
   &lt;/div>
   &lt;div itemprop="published">2014-08-21T12:34:56Z&lt;/div>
@@ -906,7 +912,7 @@ keywords to express the global identifier and object type:</figcaption>
   resource="http://example.org/foo">
   &lt;div property="displayName">This is a note&lt;/div>
   &lt;div property="attributedTo" typeof="Person"
-    resource="urn:example:person:joe">
+    resource="http://joe.website.example/">
     &lt;span property="displayName">Joe Smith&lt;/span>
   &lt;/div>
   &lt;div property="published">2014-08-21T12:34:56Z&lt;/div>
@@ -927,12 +933,12 @@ keywords to express the global identifier and object type:</figcaption>
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;urn:example:person:joe&gt; a as:Person ;
+&lt;http://joe.website.example/&gt; a as:Person ;
   as:displayName "Joe Smith" .
 
 &lt;http://example.org/foo&gt; a as:Note ;
   as:displayName "This is a note" ;
-  as:attributedTo &lt;urn:example:person:joe&gt; ;
+  as:attributedTo &lt;http://joe.website.example/&gt; ;
   as:published "2014-08-21T12:34:56Z"^^xsd:dateTime .</pre></div>
 </div>
 </figure>
@@ -2165,7 +2171,7 @@ _:b0 a as:Create ;
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Like",
-  "@id": "urn:example:activity:1",
+  "@id": "http://www.test.example/activiy/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -2209,7 +2215,7 @@ _:b0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;urn:example:activity:1&gt; a as:Like ;
+&lt;http://www.test.example/activiy/1&gt; a as:Like ;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -2255,7 +2261,7 @@ _:b0 a as:Create ;
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": ["Like", "http://schema.org/LikeAction"],
-  "@id": "urn:example:activity:1",
+  "@id": "http://www.test.example/activiy/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -2299,7 +2305,7 @@ _:b0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;urn:example:activity:1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
+&lt;http://www.test.example/activiy/1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -2405,7 +2411,7 @@ _:b0 a as:Create ;
   "items": [
     {
       "@type": "Create",
-      "actor": "urn:example:person:sally",
+      "actor": "http://www.test.example/sally,
       "object": "http://example.org/foo"
     }
   ]
@@ -2422,7 +2428,7 @@ _:b0 a as:Create ;
   &lt;/a>
   &lt;ul>
     &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
-      &lt;a itemprop="actor" href="urn:example:person:sally">Sally&lt;/a>
+      &lt;a itemprop="actor" href="http://www.test.example/sally>Sally&lt;/a>
       created
       &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2439,7 +2445,7 @@ _:b0 a as:Create ;
   &lt;\a>
   &lt;ul>
     &lt;li property typeof="Create"&lt;
-      &lt;a property="actor" href="urn:example:person:sally">Sally&lt;/a>
+      &lt;a property="actor" href="http://www.test.example/sally>Sally&lt;/a>
       created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2470,7 +2476,7 @@ _:b0 a as:Collection ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
   as:items [
       a as:Create;
-        as:actor &lt;urn:example:person:sally&gt; ;
+        as:actor &lt;http://www.test.example/sallygt; ;
         as:object &lt;http://example.org/foo&gt;
   ] .</pre></div>
 </div>
@@ -2498,7 +2504,7 @@ _:b0 a as:Collection ;
   "orderedItems": [
     {
       "@type": "Create",
-      "actor": "urn:example:person:sally",
+      "actor": "http://www.test.example/sally,
       "object": "http://example.org/foo"
     }
   ]
@@ -2517,7 +2523,7 @@ _:b0 a as:Collection ;
   &lt;/a>
   &lt;ol>
     &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
-      &lt;a itemprop="actor" href="urn:example:person:sally">Sally&lt;/a>
+      &lt;a itemprop="actor" href="http://www.test.example/sally>Sally&lt;/a>
       created
       &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2535,7 +2541,7 @@ _:b0 a as:Collection ;
   &lt;/a>
   &lt;ol>
     &lt;li property typeof="Create"&lt;
-      &lt;a property="actor" href="urn:example:person:sally">Sally&lt;/a>
+      &lt;a property="actor" href="http://www.test.example/sally>Sally&lt;/a>
       created
       &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
     &lt;/li&lt;
@@ -2569,7 +2575,7 @@ _:c14n0 a as:OrderedCollection ;
   as:items [
     rdf:first [
       a as:Create;
-        as:actor &lt;urn:example:person:sally&gt; ;
+        as:actor &lt;http://www.test.example/sallygt; ;
         as:object &lt;http://example.org/foo&gt;
     ] ;
     rdf:rest rdf:nil
