@@ -781,12 +781,6 @@ as:Event a owl:Class ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "An Event of any kind"@en .
 
-as:Favorite a owl:Class ;
-  rdfs:label "Favorite"@en ;
-  owl:equivalentClass as:Like ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "To Favorite/Like Something"@en .
-
 as:Flag a owl:Class ;
   rdfs:label "Flag"@en;
   rdfs:subClassOf as:Activity ;
@@ -835,7 +829,7 @@ as:Leave a owl:Class ;
 as:Like a owl:Class ;
   rdfs:label "Like"@en ;
   rdfs:subClassOf as:Activity ;
-  rdfs:comment "To Like/Favorite Something"@en .
+  rdfs:comment "To Like Something"@en .
 
 as:Experience a owl:Class;
   rdfs:label "Experience"@en ;

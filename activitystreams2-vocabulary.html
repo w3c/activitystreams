@@ -1137,7 +1137,6 @@ _:b0 a as:OrderedCollection ;
         <code><a>Delete</a></code> |
         <code><a>Dislike</a></code> |
         <code><a>Experience</a></code> |
-        <code><a>Favorite</a></code> |
         <code><a>Flag</a></code> |
         <code><a>Follow</a></code> |
         <code><a>Ignore</a></code> |
@@ -1963,106 +1962,6 @@ _:b0 a as:Delete ;
         </tbody>
         <tbody>
           <tr>
-            <td rowspan="4" ><dfn>Favorite</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Favorite</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex14-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex14-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex14-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex14-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex14-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Favorite",
-  "actor": {
-    "@type": "Person",
-    "displayName": "Sally"
-  },
-  "object": "http://example.org/notes/1"
-}</pre>
-</div>
-<div id="ex14-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Favorite">
-  &lt;span itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/span>
-  favorited
-  &lt;a itemprop="object"
-    href="http://example.org/notes/1">
-    http://example.org/notes/1
-  &lt;/a>
-&lt;/div></pre>
-  </div>
-  <div id="ex14-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Favorite">
-  &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/span>
-  favorited
-  &lt;a property="object"
-    href="http://example.org/notes/1">
-    http://example.org/notes/1
-  &lt;/a>
-&lt;/div></pre>
-  </div>
-  <div id="ex14-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry p-name">
-  &lt;span class="p-author h-card">Sally&lt;/span>
-  favorited
-  &lt;a class="u-like-of"
-    href="http://example.org/notes/1">
-    http://example.org/notes/1
-  &lt;/a>
-&lt;/div></pre>
-  </div>
-<div id="ex14-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Favorite ;
-  as:actor [
-    a as:Person ;
-      as:displayName "Sally" .
-  ] ;
-  as:object &lt;http://example.org/notes/1&gt; .</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              <p>Indicates that the <code>actor</code> likes, recommends or
-              endorses the <code>object</code>. The <code>target</code> and
-              <code>origin</code> typically have no defined meaning.</p>
-
-              <p>The <code><a>Favorite</a></code> and <code><a>Like</a></code>
-              activity types MAY be used as equivalent synonyms if an
-              implementation chooses.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Extends:</td>
-            <td><code><a>Activity</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Activity</a></code>.</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
             <td rowspan="4" ><dfn>Follow</dfn></td>
             <td  style="width: 10%">URI:</td>
             <td><code>http://www.w3.org/ns/activitystreams#Follow</code></td>
@@ -2611,11 +2510,10 @@ _:b0 a as:Like ;
           <tr>
             <td>Notes:</td>
             <td>
-              <p>Indicates that the <code>actor</code> likes, recommends or endorses the <code>object</code>.
-              The <code>target</code> and <code>origin</code> typically have no defined meaning.</p>
-
-              <p>The <code><a>Favorite</a></code> and <code><a>Like</a></code> activity types
-              MAY be used as equivalent synonyms if an implementation chooses.</p>
+              <p>
+                Indicates that the <code>actor</code> likes, recommends or
+                endorses the <code>object</code>. The <code>target</code> and
+                <code>origin</code> typically have no defined meaning.</p>
             </td>
           </tr>
           <tr>
