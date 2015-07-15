@@ -259,11 +259,6 @@ as:provider a owl:ObjectProperty,
     owl:unionOf ( as:Object as:Link )
   ] .
 
-as:replies a owl:ObjectProperty ;
-  rdfs:label "replies"@en ;
-  rdfs:range as:Collection ;
-  rdfs:domain as:Object .
-
 as:result a owl:ObjectProperty ;
   rdfs:label "result"@en ;
   rdfs:domain as:Activity ;
@@ -366,7 +361,7 @@ as:relationship a owl:ObjectProperty;
   rdfs:comment "On a Relationship object, describes the type of relationship"@en;
   rdfs:subPropertyOf rdf:predicate ;
   rdfs:domain as:Relationship ;
-  rdfs:range rdf:Property .
+  rdfs:range owl:Thing .
 
 as:describes a owl:ObjectProperty,
                owl:FunctionalProperty;
@@ -374,6 +369,85 @@ as:describes a owl:ObjectProperty,
   rdfs:comment "On a Profile object, describes the object described by the profile"@en ;
   rdfs:domain as:Profile ;
   rdfs:range as:Object .
+
+#################################################################
+#
+#    Collection properties
+#
+#################################################################
+
+as:CollectionProperty a rdfs:Class ;
+  rdfs:label "CollectionProperty"@en ;
+  rdfs:comment "The class of Collection Properties" ;
+  rdfs:subClassOf owl:ObjectProperty .
+
+as:replies a as:CollectionProperty ;
+  rdfs:label "replies"@en ;
+  rdfs:comment "A collection of known responses to the object."@en ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Collection )
+  ] ;
+  rdfs:domain as:Object .
+
+as:inbox a as:CollectionProperty ;
+  rdfs:label "inbox"@en;
+  rdfs:comment "A collection of objects directed at an object using implicit or explicit audience targeting."@en ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Collection )
+  ] ;
+  rdfs:domain as:Object .
+
+as:outbox a as:CollectionProperty ;
+  rdfs:label "outbox"@en;
+  rdfs:comment "A collection of objects attributed to the object."@en ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Collection )
+  ] ;
+  rdfs:domain as:Object .
+
+as:store a as:CollectionProperty ;
+  rdfs:label "objects"@en;
+  rdfs:comment "A collection of objects 'stored' for an actor."@en ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Collection )
+  ] ;
+  rdfs:domain as:Actor .
+
+as:relationships a as:CollectionProperty ;
+  rdfs:label "relationships"@en;
+  rdfs:comment "A collection of Relationships associated with the object"@en ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf ( as:Link as:Collection )
+  ] ;
+  rdfs:domain as:Object .
+
+#################################################################
+#
+#    Relationship Types (for use with as:relationship)
+#
+#################################################################
+as:RelationshipProperty a owl:Class ;
+  rdfs:subClassOf rdf:Property .
+as:isBlocking a as:RelationshipProperty ;
+  rdfs:label "isBlocking"@en;
+  rdfs:comment "The subject (typically an as:Actor) is blocking the object"@en .
+as:isIgnoring a as:RelationshipProperty ;
+  rdfs:label "isIgnoring"@en;
+  rdfs:comment "The subject (typically an as:Actor) is ignoring the object"@en .
+as:isFollowing a as:RelationshipProperty ;
+  rdfs:label "isFollowing"@en;
+  rdfs:comment "The subject (typically an as:Actor) is following the object"@en .
+as:isFollowedBy a as:RelationshipProperty ;
+  rdfs:label "isFollowedBy"@en;
+  rdfs:comment "The subject (any as:Object) is being followed by the object (typically an as:Actor)"@en .
+as:isMemberOf a as:RelationshipProperty ;
+  rdfs:label "isMemberOf"@en ;
+  rdfs:comment "The subject is a member of the object (typically an as:Group or as:Organization)" .
 
 #################################################################
 #

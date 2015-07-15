@@ -319,13 +319,16 @@
               <code><a>generator</a></code> |
               <code><a>icon</a></code> |
               <code><a title="image-term">image</a></code> |
+              <code><a>inbox</a></code> |
               <code><a>inReplyTo</a></code> |
               <code><a>location</a></code> |
+              <code><a>outbox</a></code> |
               <code><a>preview</a></code> |
               <code><a>published</a></code> |
-              <code><a>replies</a></code> |
+              <code><a>relationships</a></code> |
               <code><a>scope</a></code> |
               <code><a>startTime</a></code> |
+              <code><a>store</a></code> |
               <code><a>summary</a></code> |
               <code><a title="tag-term">tag</a></code> |
               <code><a>title</a></code> |
@@ -7151,17 +7154,145 @@ _:b0 a as:Profile ;
           began or ended.
         </p>
 
+        <section id="relationship-values">
+          <h2>Relationship Values</h2>
+
+          <p>
+            The Activity Streams vocabulary defines a limited set of normative
+            values for use with the
+            <code><a title="relationship-term">relationship</a></code> property.
+            In addition to these, it is expected that implementations will make
+            use of other existing vocabularies that have been developed for the
+            purpose of describing relationships. Examples of such vocabularies
+            include the "<a href="http://xmlns.com/foaf/spec/">Friend of a
+            Friend</a>"
+            and "<a href="http://vocab.org/relationship/.html">Relationship</a>"
+            vocabularies.
+          </p>
+
         <p>
-          The Activity Streams vocabulary does not define normative values
-          for use with the
-          <code><a title="relationship-term">relationship</a></code> property.
-          It is expected that implementations will make use of several
-          existing vocabularies that have been developed for the purpose
-          of describing relationships. Examples of such vocabularies include
-          the "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>"
-          and "<a href="http://vocab.org/relationship/.html">Relationship</a>"
-          vocabularies.
+          The normative relationship values defined as part of the Activity
+          Streams vocabulary include:
         </p>
+
+        <table>
+
+          <thead>
+            <tr>
+              <th style="width: 15%">Term</th>
+              <th colspan="2">Description</th>
+            </tr>
+            <tbody>
+              <tr>
+                <td rowspan="2"><dfn>isBlocking</dfn></td>
+                <td style="width: 10%">URI:</td>
+                <td><code>http://www.w3.org/ns/activitystreams#isBlocking</code></td>
+              </tr>
+              <tr>
+                <td>Notes:</td>
+                <td>
+                  Indicates that the <code><a>subject</a></code> (typically
+                  an <code><a>Actor</a></code>) has blocked
+                  (using <code><a>Block</a></code>) the
+                  <code><a>object</a></code>).
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td rowspan="2"><dfn>isIgnoring</dfn></td>
+                <td style="width: 10%">URI:</td>
+                <td><code>http://www.w3.org/ns/activitystreams#isIgnoring</code></td>
+              </tr>
+              <tr>
+                <td>Notes:</td>
+                <td>
+                  Indicates that the <code><a>subject</a></code> (typically
+                  an <code><a>Actor</a></code>) is ignoring
+                  (using <code><a>Ignore</a></code>) the
+                  <code><a>object</a></code>).
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td rowspan="2"><dfn>isFollowing</dfn></td>
+                <td style="width: 10%">URI:</td>
+                <td><code>http://www.w3.org/ns/activitystreams#isFollowing</code></td>
+              </tr>
+              <tr>
+                <td>Notes:</td>
+                <td>
+                  Indicates that the <code><a>subject</a></code> (typically
+                  an <code><a>Actor</a></code>) is following
+                  (using <code><a>Follow</a></code>) the
+                  <code><a>object</a></code>).
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td rowspan="2"><dfn>isFollowedBy</dfn></td>
+                <td style="width: 10%">URI:</td>
+                <td><code>http://www.w3.org/ns/activitystreams#isFollowedBy</code></td>
+              </tr>
+              <tr>
+                <td>Notes:</td>
+                <td>
+                  Indicates that the <code><a>subject</a></code> (typically
+                  an <code><a>Actor</a></code>) is being followed by
+                  (using <code><a>Follow</a></code>) the
+                  <code><a>object</a></code>).
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td rowspan="2"><dfn>isMemberOf</dfn></td>
+                <td style="width: 10%">URI:</td>
+                <td><code>http://www.w3.org/ns/activitystreams#isMemberOf</code></td>
+              </tr>
+              <tr>
+                <td>Notes:</td>
+                <td>
+                  Indicates that the <code><a>subject</a></code> is a member of
+                  the <code><a>object</a></code> (typically a
+                  <code><a>Group</a></code> or
+                  <code><a>Organization</a></code>).
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+
+        <p>
+          Implementations MAY use relationship values as direct properties
+          on an object. In such cases, the "subject" is the containing
+          object. For instance, the Relationship:
+        </p>
+
+<figure><figcaption>A simple relationship:</figcaption>
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreamd#",
+  "@type": "Relationship",
+  "subject": "http://sally.example.org",
+  "relationship": "isFollowing",
+  "object": "http://joe.example.org"
+}</pre></figure>
+
+        <p>
+          Can be equivalently expressed as:
+        </p>
+
+<figure><figcaption>A simple relationship:</figcaption>
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreamd#",
+  "@type": "Person",
+  "@id": "http://sally.example.org",
+  "isFollowing": "http://joe.example.org"
+}</pre></figure>
+
+        </section>
 
         <section class="informative">
 
@@ -7395,7 +7526,6 @@ _:b0 a as:Profile ;
       <code><a>prev</a></code> |
       <code><a>preview</a></code> |
       <code><a>result</a></code> |
-      <code><a>replies</a></code> |
       <code><a>scope</a></code> |
       <code><a>self</a></code> |
       <code><a title="tag-term">tag</a></code> |
@@ -7701,7 +7831,7 @@ _:b0 a as:Offer ;
           <td>
             Describes one or more entities that either performed or are
             expected to perform the activity. Any single activity can have
-            multiple <code>actor</code>s. The <code>actor</code> MAY be
+            multiple <code>actors</code>. The <code>actor</code> MAY be
             specified using an indirect <code><a>Link</a></code>.
           </td>
         </tr>
@@ -12142,157 +12272,6 @@ _:b0 a as:Activity,
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>replies</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#replies</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex112-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex112-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex112-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex112-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex112-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex112-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "@id": "http://www.test.example/notes/1",
-  "content": "A simple note",
-  "replies": {
-    "@type": "Collection",
-    "totalItems": 1,
-    "itemsPerPage": 1,
-    "items": [
-      {
-        "@type": "Note",
-        "content": "A response to the note",
-        "inReplyTo": "http://www.test.example/notes/1"
-      }
-    ]
-  }
-}</pre>
-  </div>
-  <div id="ex112-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note"
-  itemid="http://www.test.example/notes/1">
-  &lt;div itemprop="content">
-    A simple note
-  &lt;/div>
-  &lt;div itemprop="replies" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Collection">
-    &lt;meta itemprop="totalItems" content="1" /&gt;
-    &lt;meta itemprop="itemsPerPage" content="1" /&gt;
-    &lt;ul>
-      &lt;li itemprop="items" itemscope
-        itemtype="http://www.w3.org/ns/activitystreams#Note">
-        &lt;span itemprop="content">
-          A response to the note
-        &lt;/span>
-        &lt;a itemprop="inReplyTo"
-          href="http://www.test.example/notes/1">
-            http://www.test.example/notes/1
-        &lt;/a>
-      &lt;/li>
-    &lt;/ul>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex112-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note" resource="http://www.test.example/notes/1">
-  &lt;div property="content">
-    A simple note
-  &lt;/div>
-  &lt;div property="replies" typeof="Collection">
-    &lt;meta property="totalItems" content="1" /&gt;
-    &lt;meta property="itemsPerPage" content="1" /&gt;
-    &lt;ul>
-      &lt;li property="items" typeof="Note">
-        &lt;span property="content">
-          A response to the note
-        &lt;/span>
-        &lt;a property="inReplyTo"
-          href="http://www.test.example/notes/1" />
-            http://www.test.example/notes/1
-        &lt;/a>
-      &lt;/li>
-    &lt;/ul>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex112-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="e-content">A simple note&lt;/div>
-  &lt;div class="p-as-replies h-as-collection">
-    &lt;meta class="p-as-total-items" name="totalItems"
-      content="1" /&gt;
-    &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-      content="1" /&gt;
-    &lt;ul class="p-as-items">
-      &lt;li class="h-entry">
-        &lt;span class="e-content">
-          A response to the note
-        &lt;/span>
-        &lt;a rel="u-in-reply-to"
-          href="http://www.test.example/notes/1">
-            http://www.test.example/notes/1
-        &lt;/a>
-      &lt;/li>
-    &lt;/ul>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex112-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-&lt;http://www.test.example/notes/1&gt; a as:Note ;
-  as:content "A simple note" ;
-  as:replies _:b0 .
-
-_:b0 a as:Collection ;
-  as:totalItems "1"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
-  as:items [
-    a as:Note ;
-      as:content "A response to the note" ;
-      as:inReplyTo &lt;http://www.test.example/notes/1&gt;.
-  ] .
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies a <code><a>Collection</a></code> containing objects
-            considered to be responses to this object.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Collection</a></code></td>
-        </tr>
-        <tr>
-          <td>Functional:</td>
-          <td>True</td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
           <td rowspan="4" ><dfn>scope</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#scope</code></td>
@@ -16709,12 +16688,21 @@ _:b0 a as:Relationship ;
         <tr>
           <td>Notes:</td>
           <td>
-            On a <code><a>Relationship</a></code> object, the
-            <code>relationship</code> property identifies the kind of
-            relationship that exists between
-            <code><a title="subject">subject</a></code> and
-            <code><a title="object-term">object</a></code>.
-
+            <p>
+              On a <code><a>Relationship</a></code> object, the
+              <code>relationship</code> property identifies the kind of
+              relationship that exists between
+              <code><a title="subject">subject</a></code> and
+              <code><a title="object-term">object</a></code>.
+            </p>
+            <p>
+              Note that the <code>subject</code> and <code>object</code>
+              could share multiple relationships.
+            </p>
+            <p>
+              See <a href="#relationship-values"></a> for additional
+              information.
+            </p>
           </td>
         </tr>
         <tr>
@@ -16820,6 +16808,592 @@ _:b0 a as:Profile ;
         </tr>
       </tbody>
     </table>
+
+    <section id="collection-properties">
+      <h2>Collection Properties</h2>
+
+      <p>
+        Any object can have any number of <code><a>Collection</a></code>
+        objects associated with it. Collection properties are distinct from
+        other properties on an object in that their values MUST be one or more
+        <code><a>Collection</a></code> instances or
+        <code><a title="Link">Links</a></code> that point to Activity Stream
+        documents whose roots are <code><a>Collection</a></code> objects.
+      </p>
+
+      <p>
+        The Activity Streams 2.0 vocabulary includes definitions for a
+        small number of Collection properties that are common to many
+        social web applications. Implementations are free to define their
+        own Collection properties via extensions.
+      </p>
+
+      <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
+
+      <p>
+        The common collection properties include:
+        <code><a>inbox</a></code> |
+        <code><a>outbox</a></code> |
+        <code><a>relationships</a></code> |
+        <code><a>store</a></code>
+      </p>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th style="width: 15%">Term</th>
+            <th colspan="2">Description</th>
+            <th>Example</th>
+          </tr>
+
+          <tbody>
+            <tr>
+              <td rowspan="4" ><dfn>inbox</dfn></td>
+              <td  style="width: 10%">URI:</td>
+              <td><code>http://www.w3.org/ns/activitystreams#inbox</code></td>
+              <td rowspan="4">
+    <div class="nanotabs">
+      <ul>
+        <li><a href="#ex192-jsonld" class="selected">JSON-LD</a></li>
+        <li><a href="#ex192-microdata" class="selected">Microdata</a></li>
+        <li><a href="#ex192-rdfa" class="selected">RDFa</a></li>
+        <li><a href="#ex192-microformats" class="selected">Microformats</a></li>
+        <li><a href="#ex192-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex192-jsonld" style="display: block;">
+    <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "@id": "http://sally.example.org",
+  "displayName": "Sally",
+  "inbox": {
+    "@type": "Link",
+    "displayName": "Received Items",
+    "href": "http://sally.example.org/inbox",
+    "mediaType": "application/activity+json"
+  }
+}</pre>
+      </div>
+      <div id="ex192-microdata" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person"
+  itemid="http://sally.example.org">
+  &lt;div itemprop="displayName">Sally&lt;/div>
+  &lt;div itemprop="inbox" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Link">
+    &lt;span itemprop="displayName">Received Items&lt;/span>:
+    &lt;a itemprop="href" href="http://sally.example.org/inbox"
+      type="application/activity+json">
+      http://sally.example.org/inbox
+    &lt;/a>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex192-rdfa" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div vocabulary="http://www.w3.org/ns/activitystreams"
+  typeof="Person"
+  resource="http://sally.example.org">
+  &lt;div property="displayName">Sally&lt;/div>
+  &lt;div property="inbox" typeof="Link">
+    &lt;span property="displayName">Received Items&lt;/span>:
+    &lt;a property="href" href="http://sally.example.org/inbox"
+      type="application/activity+json">
+      http://sally.example.org/inbox
+    &lt;/a>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex192-microformats" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div class="h-card">
+  &lt;div class="p-name">Sally&lt;/div>
+  &lt;div class="p-as-inbox h-entry">
+    &lt;span class="p-name">Received Items&lt;/span>
+    &lt;a class="u-url" href="http://sally.example.org/inbox"
+      type="application/activity+json">
+      http://sally.example.org/inbox
+    &lt;/a>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex192-turtle" style="display: none;">
+    <pre class="example highlight turtle"
+    >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://sally.example.org&gt; a as:Person ;
+  as:displayName "Sally" ;
+  as:inbox [
+    a as:Link ;
+      as:displayName "Received Items" ;
+      as:href "http://sally.example.org/inbox" ;
+      as:mediaType "application/activity+json"
+  ] .
+</pre>
+      </div>
+    </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Notes:</td>
+              <td>
+                Identifies a <code><a>Collection</a></code> of objects
+                (typically <code><a>Activity</a></code> objects) directed
+                towards the containing object either via explicit or implicit
+                audience targeting.
+              </td>
+            </tr>
+            <tr>
+              <td>Domain:</td>
+              <td><code><a>Object</a></code></td>
+            </tr>
+            <tr>
+              <td>Range:</td>
+              <td>
+                <code><a>Collection</a></code> | <code><a>Link</a></code>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <td rowspan="4" ><dfn>outbox</dfn></td>
+              <td  style="width: 10%">URI:</td>
+              <td><code>http://www.w3.org/ns/activitystreams#outbox</code></td>
+              <td rowspan="4">
+    <div class="nanotabs">
+      <ul>
+        <li><a href="#ex191-jsonld" class="selected">JSON-LD</a></li>
+        <li><a href="#ex191-microdata" class="selected">Microdata</a></li>
+        <li><a href="#ex191-rdfa" class="selected">RDFa</a></li>
+        <li><a href="#ex191-microformats" class="selected">Microformats</a></li>
+        <li><a href="#ex191-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex191-jsonld" style="display: block;">
+    <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "@id": "http://sally.example.org",
+  "displayName": "Sally",
+  "outbox": {
+    "@type": "Link",
+    "displayName": "Sent Items",
+    "href": "http://sally.example.org/outbox",
+    "mediaType": "application/activity+json"
+  }
+}</pre>
+      </div>
+      <div id="ex191-microdata" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person"
+  itemid="http://sally.example.org">
+  &lt;div itemprop="displayName">Sally&lt;/div>
+  &lt;div itemprop="outbox" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Link">
+    &lt;span itemprop="displayName">Sent Items&lt;/span>:
+    &lt;a itemprop="href" href="http://sally.example.org/outbox"
+      type="application/activity+json">
+      http://sally.example.org/outbox
+    &lt;/a>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex191-rdfa" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div vocabulary="http://www.w3.org/ns/activitystreams"
+  typeof="Person"
+  resource="http://sally.example.org">
+  &lt;div property="displayName">Sally&lt;/div>
+  &lt;div property="outbox" typeof="Link">
+    &lt;span property="displayName">Sent Items&lt;/span>:
+    &lt;a property="href" href="http://sally.example.org/outbox"
+      type="application/activity+json">
+      http://sally.example.org/outbox
+    &lt;/a>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex191-microformats" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div class="h-card">
+  &lt;div class="p-name">Sally&lt;/div>
+  &lt;div class="p-as-outbox h-entry">
+    &lt;span class="p-name">Sent Items&lt;/span>
+    &lt;a class="u-url" href="http://sally.example.org/outbox"
+      type="application/activity+json">
+      http://sally.example.org/outbox
+    &lt;/a>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex191-turtle" style="display: none;">
+    <pre class="example highlight turtle"
+    >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://sally.example.org&gt; a as:Person ;
+  as:displayName "Sally" ;
+  as:outbox [
+    a as:Link ;
+      as:displayName "Sent Items" ;
+      as:href "http://sally.example.org/outbox" ;
+      as:mediaType "application/activity+json"
+  ] .
+</pre>
+      </div>
+    </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Notes:</td>
+              <td>
+                Identifies a <code><a>Collection</a></code> of objects
+                (typically <code><a>Activity</a></code> objects) attributed
+                to an object and directed towards other objects either via
+                explicit or implicit audience targeting.
+              </td>
+            </tr>
+            <tr>
+              <td>Domain:</td>
+              <td><code><a>Object</a></code></td>
+            </tr>
+            <tr>
+              <td>Range:</td>
+              <td>
+                <code><a>Collection</a></code> | <code><a>Link</a></code>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <td rowspan="4" ><dfn>relationships</dfn></td>
+              <td  style="width: 10%">URI:</td>
+              <td><code>http://www.w3.org/ns/activitystreams#relationships</code></td>
+              <td rowspan="4">
+    <div class="nanotabs">
+      <ul>
+        <li><a href="#ex190-jsonld" class="selected">JSON-LD</a></li>
+        <li><a href="#ex190-microdata" class="selected">Microdata</a></li>
+        <li><a href="#ex190-rdfa" class="selected">RDFa</a></li>
+        <li><a href="#ex190-microformats" class="selected">Microformats</a></li>
+        <li><a href="#ex190-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex190-jsonld" style="display: block;">
+    <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "@id": "http://sally.example.org",
+  "displayName": "Sally",
+  "relationships": {
+    "@type": "Collection",
+    "items": [
+      {
+        "@type": "Relationship",
+        "subject": "http://sally.example.org",
+        "relationship": "isFollowing",
+        "object": "http://joe.example.org"
+      },
+      {
+        "@type": "Relationship",
+        "subject": "http://sally.example.org",
+        "relationship": "isMemberOf",
+        "object": "http://orgA.example.org"
+      }
+    ]
+  }
+}</pre>
+      </div>
+      <div id="ex190-microdata" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person"
+  itemid="http://sally.example.org">
+  &lt;div itemprop="displayName">Sally&lt;/div>
+  &lt;div itemprop="relationships" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Collection">
+    &lt;ul itemprop="items">
+      &lt;li itemscope
+        itemtype="http://www.w3.org/ns/activitystreams#Relationship">
+        &lt;span itemprop="subject" itemscope
+          itemid="http://sally.example.org>Sally&lt;/span>
+        is &lt;span itemprop="relationship" itemscope
+          itemid="http://www.w3.org/ns/activitystreams#isFollowing">
+            following
+        &lt;/span>
+        &lt;span itemprop="object" itemscope
+          itemid="http://joe.example.org">Joe&lt;/span>
+      &lt;/li>
+      &lt;li itemscope
+        itemtype="http://www.w3.org/ns/activitystreams#Relationship">
+        &lt;span itemprop="subject" itemscope
+          itemid="http://sally.example.org>Sally&lt;/span>
+        is &lt;span itemprop="relationship" itemscope
+          itemid="http://www.w3.org/ns/activitystreams#isMemberOf">
+            is a member of
+        &lt;/span>
+        &lt;span itemprop="object" itemscope
+          itemid="http://orgA.example.org">Organization A&lt;/span>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex190-rdfa" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div vocabulary="http://www.w3.org/ns/activitystreams#"
+  typeof="Person"
+  resource="http://sally.example.org">
+  &lt;div property="displayName">Sally&lt;/div>
+  &lt;div property="relationships" typeof="Collection">
+    &lt;ul property="items">
+      &lt;li typeof="Relationship">
+        &lt;span property="subject"
+          resource="http://sally.example.org>Sally&lt;/span>
+        is &lt;span property="relationship"
+          resource="http://www.w3.org/ns/activitystreams#isFollowing">
+            following
+        &lt;/span>
+        &lt;span property="object"
+          resource="http://joe.example.org">Joe&lt;/span>
+      &lt;/li>
+      &lt;li typeof="Relationship">
+        &lt;span property="subject"
+          resource="http://sally.example.org>Sally&lt;/span>
+        is &lt;span property="relationship"
+          resource="http://www.w3.org/ns/activitystreams#isMemberOf">
+            is a member of
+        &lt;/span>
+        &lt;span property="object"
+          resource="http://orgA.example.org">Organization A&lt;/span>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex190-microformats" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div class="h-card">
+  &lt;div class="p-name">Sally&lt;/div>
+  &lt;div class="p-as-relationships h-as-folder">
+    &lt;ul class="p-as-items">
+    &lt;li class="h-entry">
+      &lt;a class="p-subject" href="http://sally.example.org>Sally&lt;/a>
+      is &lt;span class="p-relationship h-as-isFollowing">
+        is following
+      &lt;/span>
+      &lt;a class="p-object h-card"
+        href="http://joe.example.org">Joe&lt;/a>
+    &lt;/li>
+      &lt;li class="h-entry">
+        &lt;a class="p-subject" href="http://sally.example.org>Sally&lt;/a>
+        is &lt;span class="p-relationship h-as-isMemberOf">
+          is a member of
+        &lt;/span>
+        &lt;a class="p-object"
+          href="http://orgA.example.org">Organization A&lt;/a>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex190-turtle" style="display: none;">
+    <pre class="example highlight turtle"
+    >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+&lt;http://sally.example.org&gt; a as:Person ;
+  as:displayName "Sally" ;
+  as:relationships [
+    a as:Collection ;
+      as:items (
+        [
+          a as:Relationship ;
+            as:subject &lt;http://sally.example.org&gt; ;
+            as:relationship &lt;as:isFollowing&gt; ;
+            as:object &lt;http://joe.example.org&gt;
+        ]
+        [
+          a as:Relationship ;
+            as:subject &lt;http://sally.example.org&gt; ;
+            as:relationship &lt;as:isMemberOf&gt; ;
+            as:object &lt;http://orgA.example.org&gt;
+        ]
+      )
+  ] .
+</pre>
+      </div>
+    </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Notes:</td>
+              <td>
+                Identifies a <code><a>Collection</a></code> of relationships
+                associated with the object
+              </td>
+            </tr>
+            <tr>
+              <td>Domain:</td>
+              <td><code><a>Object</a></code></td>
+            </tr>
+            <tr>
+              <td>Range:</td>
+              <td>
+                <code><a>Collection</a></code> | <code><a>Link</a></code>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <td rowspan="4" ><dfn>store</dfn></td>
+              <td  style="width: 10%">URI:</td>
+              <td><code>http://www.w3.org/ns/activitystreams#store</code></td>
+              <td rowspan="4">
+    <div class="nanotabs">
+      <ul>
+        <li><a href="#ex189-jsonld" class="selected">JSON-LD</a></li>
+        <li><a href="#ex189-microdata" class="selected">Microdata</a></li>
+        <li><a href="#ex189-rdfa" class="selected">RDFa</a></li>
+        <li><a href="#ex189-microformats" class="selected">Microformats</a></li>
+        <li><a href="#ex189-turtle" class="selected">Turtle</a></li>
+      </ul>
+      <div id="ex189-jsonld" style="display: block;">
+    <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Person",
+  "@id": "http://sally.example.org",
+  "displayName": "Sally",
+  "store": {
+    "@type": "Folder",
+    "totalItems": 1,
+    "itemsPerPage": 1,
+    "items": [{
+        "@type": "Link",
+        "displayName": "Images Folder",
+        "href": "http://sally.example.org/images",
+        "mediaType": "application/activity+json"
+    }]
+  }
+}</pre>
+      </div>
+      <div id="ex189-microdata" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Person"
+  itemid="http://sally.example.org">
+  &lt;div itemprop="displayName">Sally&lt;/div>
+  &lt;div itemprop="store" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#Folder">
+    &lt;meta itemprop="totalItems" content="1" /&gt;
+    &lt;meta itemprop="itemsPerPage" content="1" /&gt;
+    &lt;ul itemprop="items">
+      &lt;li>
+        &lt;a href="http://sally.example.org/images" itemscope
+              itemtype="http://www.w3.org/ns/activitystreams#Link"
+              type="application/activity+json">
+          Images Folder
+        &lt;/a>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex189-rdfa" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div vocabulary="http://www.w3.org/ns/activitystreams#"
+  typeof="Person"
+  resource="http://sally.example.org">
+  &lt;div property="displayName">Sally&lt;/div>
+  &lt;div property="store" typeof="Folder">
+    &lt;meta property="totalItems" content="1" /&gt;
+    &lt;meta property="itemsPerPage" content="1" /&gt;
+    &lt;ul property="items">
+      &lt;li>
+        &lt;a href="http://sally.example.org/images" typeof="Link"
+              type="application/activity+json">
+          Images Folder
+        &lt;/a>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex189-microformats" style="display: none;">
+    <pre class="example highlight html"
+    >&lt;div class="h-card">
+  &lt;div class="p-name">Sally&lt;/div>
+  &lt;div class="p-as-store h-as-folder">
+    &lt;meta class="p-as-total-items" name="totalItems"
+      content="1" /&gt;
+    &lt;meta class="p-as-items-per-page" name="itemsPerPage"
+      content="1" /&gt;
+    &lt;ul class="p-as-items">
+      &lt;li class="h-entry">
+        &lt;span class="e-content">
+          Images Folder
+        &lt;/span> -
+        &lt;a rel="u-in-reply-to"
+          href="http://sally.example.org/images"
+          type="application/activity+json">
+            http://sally.example.org/images
+        &lt;/a>
+      &lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div></pre>
+      </div>
+      <div id="ex189-turtle" style="display: none;">
+    <pre class="example highlight turtle"
+    >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+&lt;http://sally.example.org&gt; a as:Person ;
+  as:displayName "Sally" ;
+  as:store [
+    a as:Folder ;
+      as:totalItems "1"^^xsd:nonNegativeInteger ;
+      as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
+      as:items (
+        [
+          a as:Link ;
+            as:displayName "Images Folder" ;
+            as:href "http://sally.example.org/images"^^xsd:anyURI ;
+            as:mediaType "application/activity+json"
+        ]
+      )
+  ] .
+</pre>
+      </div>
+    </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Notes:</td>
+              <td>
+                Identifies a <code><a>Collection</a></code> containing objects
+                being stored on behalf of the object.
+              </td>
+            </tr>
+            <tr>
+              <td>Domain:</td>
+              <td><code><a>Object</a></code></td>
+            </tr>
+            <tr>
+              <td>Range:</td>
+              <td>
+                <code><a>Collection</a></code> | <code><a>Link</a></code>
+              </td>
+            </tr>
+          </tbody>
+
+        </thead>
+      </table>
+
+    </section>
 
   </section>
 

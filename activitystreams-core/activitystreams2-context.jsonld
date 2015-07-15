@@ -61,6 +61,11 @@
     "Read": "as:Read",
     "Move": "as:Move",
     "Travel": "as:Travel",
+    "isBlocking": "as:isBlocking",
+    "isIgnoring": "as:isIgnoring",
+    "isFollowing": "as:isFollowing",
+    "isFollowedBy": "as:isFollowedBy",
+    "isMemberOf": "as:isMemberOf",
     "subject": {
       "@id": "as:subject",
       "@type": "@id"
@@ -182,8 +187,20 @@
       "@id": "as:provider",
       "@type": "@id"
     },
-    "replies": {
-      "@id": "as:replies",
+    "inbox": {
+      "@id": "as:inbox",
+      "@type": "@id"
+    },
+    "outbox": {
+      "@id": "as:outbox",
+      "@type": "@id"
+    },
+    "relationships": {
+      "@id": "as:relationships",
+      "@type": "@id"
+    },
+    "store": {
+      "@id": "as:store",
       "@type": "@id"
     },
     "result": {
