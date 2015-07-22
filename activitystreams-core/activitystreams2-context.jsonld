@@ -170,6 +170,10 @@
       "@id": "as:origin",
       "@type": "@id"
     },
+    "accuracy": {
+      "@id": "as:accuracy",
+      "@type": "xsd:float"
+    },
     "prev": {
       "@id": "as:prev",
       "@type": "@id"
