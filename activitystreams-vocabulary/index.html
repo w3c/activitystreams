@@ -1249,20 +1249,14 @@ _:b0 a as:OrderedCollection ;
   </div>
   <div id="ex7-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-author h-card" >Sally&lt;span>
-  accepted
-  &lt;span class="h-card">
-    &lt;a class="u-author"
-      href="john.example.org">John's&lt;/a>
-      invitation to
-    &lt;span class="h-event">
-      &lt;span class="p-name">
-        A Party!
-      &lt;/span>
-    &lt;/span>
-  &lt;/span>
-&lt;/div></pre>
+  >&lt;div class="h-entry">
+    &lt;span class="h-card p-author">Sally&lt;/span>
+    &lt;data class="p-rsvp" value="yes">accepted&lt;/data>
+    &lt;span class="h-card p-name">&lt;a href="http://john.example.org" class="u-url">John&lt;/a>&lt;/span>'s
+    &lt;a href="http://john.example.org/invitation/1" class="u-in-reply-to">invitation&lt;/a>
+    to &lt;span class="h-event p-name">A Party!&lt;/span>
+  </div>
+</pre>
   </div>
   <div id="ex7-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -1387,18 +1381,13 @@ _:b0 a as:Accept ;
   </div>
   <div id="ex8-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-tentativeaccept">
-  &lt;span class="p-author h-card" >Sally&lt;/span>
-  tentatively accepted
-  &lt;span class="p-item h-as-invite">
-    &lt;a class="u-author"
-      href="http://john.example.org">John's&lt;/a>
-      invitation to
-    &lt;span class="p-item h-event">
-      &lt;span class="p-name">A Party!&lt;/span>
-    &lt;/span>
-  &lt;/span>
-&lt;/div></pre>
+  >&lt;div class="h-entry">
+    &lt;span class="h-card p-author">Sally&lt;/span>
+    &lt;data class="p-rsvp" value="maybe">tentatively accepted&lt;/data>
+    &lt;span class="h-card p-name">&lt;a href="http://john.example.org" class="u-url">John&lt;/a>&lt;/span>'s
+    &lt;a href="http://john.example.org/invitation/1" class="u-in-reply-to">invitation&lt;/a>
+    to &lt;span class="h-event p-name">A Party!&lt;/span>
+    </pre>
   </div>
   <div id="ex8-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -1702,14 +1691,14 @@ _:b0 a as:Add ;
   </div>
   <div id="ex11-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-arrive">
+>&lt;div class="h-entry e-content">
   &lt;span class="p-author h-card">Sally&lt;/span>
   arrived at
-  &lt;span class="p-as-target h-geo">
+  &lt;span class="p-location h-geo">
     &lt;span class="p-name">Work&lt;/span>
   &lt;/span>
   from
-  &lt;span class="p-as-origin h-geo">
+  &lt;span class="h-geo">
     &lt;span class="p-name">Home&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -1823,11 +1812,9 @@ _:b0 a as:Arrive ;
   <div id="ex12-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span class="p-author h-card">Sally&lt;/span>
-  created a note titled
-    "&lt;span class="p-name">A Simple Note&lt;/span>"
-    with content
-    "&lt;span class="e-content">This is a simple note&lt;/span>"
+    &lt;h1 class="p-name">A Simple Note&lt;/h1>
+    &lt;div class="e-content">This is a simple note&lt;/div>
+    created by &lt;span class="p-author h-card">Sally&lt;/span>
 &lt;/div></pre>
   </div>
 <div id="ex12-turtle" style="display: none;">
@@ -2589,11 +2576,11 @@ _:b0 a as:Like ;
   </div>
   <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-offer">
+>&lt;div class="h-listing">
   &lt;span class="p-author h-card">Sally&lt;/span>
   is offering
-  &lt;span class="p-item h-entry">
-    &lt;span class="p-name">50% Off!&lt;/span>
+  &lt;span class="p-item">
+    &lt;data class="p-name p-action" value="offer">50% Off!&lt;/data>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2855,19 +2842,13 @@ _:b0 a as:Invite ;
   <div id="ex26-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;span class="p-author h-card">Sally&lt;/span>
-  rejected
-  &lt;span class="p-item h-as-invite">
-    &lt;span class="p-author h-card">
-      &lt;a class="u-url"
-        href="http://john.example.org">John's&lt;/a>
-    &lt;/span>
-    invitation to
-    &lt;span class="p-item h-event">
-      &lt;span class="p-name">A Party!&lt;/span>
-    &lt;/span>
-  &lt;/span>
-&lt;/div></pre>
+    &lt;span class="h-card p-author">Sally&lt;/span>
+    &lt;data class="p-rsvp" value="no">rejected&lt;/data>
+    &lt;span class="h-card p-name">&lt;a href="http://john.example.org" class="u-url">John&lt;/a>&lt;/span>'s
+    &lt;a href="http://john.example.org/invitation/1" class="u-in-reply-to">invitation&lt;/a>
+    to &lt;span class="h-event p-name">A Party!&lt;/span>
+  &lt;/div>
+  </pre>
   </div>
   <div id="ex26-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -2989,20 +2970,14 @@ _:b0 a as:Reject ;
   </div>
   <div id="ex27-microformats" style="display: none;">
 <pre class="example highlight html"
->&lt;div class="h-as-tentativereject">
-  &lt;span class="p-author h-card" >Sally&lt;/span>
-  tentatively rejected
-  &lt;span class="p-item h-as-invite">
-    &lt;span class="p-author h-card">
-      &lt;a class="u-url"
-        href="http://john.example.org">John's&lt;/a>
-    &lt;/span>
-    invitation to
-    &lt;span class="p-item h-event">
-      &lt;span class="p-name">A Party!&lt;/span>
-    &lt;/span>
-  &lt;/span>
-&lt;/div></pre>
+>&lt;div class="h-entry">
+    &lt;span class="h-card p-author">Sally&lt;/span>
+    &lt;data class="p-rsvp" value="probably not">tentatively rejected&lt;/data>
+    &lt;span class="h-card p-name">&lt;a href="http://john.example.org" class="u-url">John&lt;/a>&lt;/span>'s
+    &lt;a href="http://john.example.org/invitation/1" class="u-in-reply-to">invitation&lt;/a>
+    to &lt;span class="h-event p-name">A Party!&lt;/span>
+  &lt;/div>
+  </pre>
   </div>
   <div id="ex27-turtle" style="display: none;">
 <pre class="example highlight turtle"
@@ -4568,8 +4543,8 @@ _:b0 a as:Flag ;
   </div>
   <div id="ex175-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-as-dislike">
-  &lt;a class="u-author"
+>&lt;div class="h-entry">
+  &lt;a class="u-author h-card p-name"
     href="http://sally.example.org">Sally&lt;/a>
   dislikes
   &lt;a class="u-dislike-of" href="http://example.org/posts/1">
