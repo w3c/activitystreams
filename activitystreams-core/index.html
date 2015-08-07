@@ -441,7 +441,8 @@ _:b0 a as:Create ;
       Martin Smith
     &lt;/a>
     &lt;span rel="image">
-      &lt;img about="_:b1" typeof="Link" property="mediaType" content="image/jpeg"
+      &lt;img about="_:b1" typeof="Link"
+        property="mediaType" content="image/jpeg" lang=""
         rel="href" src="http://example.org/martin/image.jpg" />
     &lt;/span>
   &lt;/span>
@@ -675,7 +676,8 @@ _:b0 a as:Add ;
           Martin Smith
         &lt;/a>
       &lt;span rel="image" resource="_:b1">
-        &lt;img about="_:b1" typeof="Link" property="mediaType" content="image/jpeg" lang=""
+        &lt;img about="_:b1" typeof="Link"
+          property="mediaType" content="image/jpeg" lang=""
           height="250" width="250"
           rel="href" src="http://example.org/martin/image.jpg" />
         (
@@ -2904,8 +2906,8 @@ _:c14n0 a as:OrderedCollection ;
   <div id="ex23-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Place">
-  &lt;meta property="latitude" content="36.74" />
-  &lt;meta property="longitude" content="-119.77" />
+  &lt;span property="latitude" datatype="xsd:float">36.74&lt;/span>
+  &lt;span property="longitude" datatype="xsd:float">-119.77&lt;/span>
 &lt;/div></pre></div>
   <div id="ex23-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -2967,10 +2969,11 @@ _:c14n0 a as:Place;
   <div id="ex24-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="itemtype="http://www.opengis.net/ont/geosparql#Geometry"">
+  typeof="http://www.opengis.net/ont/geosparql#Geometry">
   &lt;meta
     property="http://www.opengis.net/ont/geosparql#asWKT"
-    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
+    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
+    datatype="http://www.opengis.net/ont/geosparql#wktLiteral" />
 &lt;/div></pre></div>
   <div id="ex24-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -3264,10 +3267,20 @@ _:c14n0 a gsp:Geometry ;
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
-<pre class="example highlight json">{
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex25-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex25-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex25-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex25-jsonld" style="display: block;">
+<pre class="example highlight json"
+>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
-  "content": "Thank you <a href="http://sally.example.org">@sally</a> for all your hard work! <a href="http://example.org/tags/givingthanks">#givingthanks</a>",
+  "content": "Thank you &lt;a href=\"http://sally.example.org\">@sally&lt;/a>
+              for all your hard work!
+              &lt;a href=\"http://example.org/tags/givingthanks\">#givingthanks&lt;/a>",
   "to": {
     "@type": "Person",
     "@id": "http://sally.example.org",
@@ -3277,7 +3290,47 @@ _:c14n0 a gsp:Geometry ;
     "@id": "http://example.org/tags/givingthanks",
     "alias": "#givingthanks"
   }
-}</pre></figure>
+}</pre></div>
+  <div id="ex25-rdfa" style="display: block;">
+<pre class="example highlight rdfa"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
+  &lt;p property="content" datatype="rdf:HTML">Thank you
+    &lt;a rel="to" typeof="Person" href="http://sally.example.org">
+      &lt;span property="alias" lang="">@sally&lt;/span>
+    &lt;/a>
+    for all your hard work!
+    &lt;a rel="tag" href="http://example.org/tags/givingthanks">
+      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+    &lt;/a>
+  &lt;/p>
+&lt;/div>
+</pre></div>
+  <div id="ex25-turtle" style="display: block;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b1
+  a as:Note ;
+  as:conntent """Thank you
+  &lt;a rel="to" typeof="Person" href="http://sally.example.org">
+    &lt;span property="alias" lang="">@sally&lt;/span>
+  &lt;/a>
+  for all your hard work!
+  &lt;a rel="tag" href="http://example.org/tags/givingthanks">
+    &lt;span property="alias" lang="">#givingthanks&lt;/span>
+  &lt;/a>
+  """^^rdf:HTML ;
+  as:to &lt;http://sally.example.org> ;
+  as:tag &lt;http://example.org/tags/givingthanks> .
+
+&lt;http://sally.example.org>
+  a as:Person ;
+  as:alias "@sally" .
+
+&lt;http://example.org/tags/givingthanks>
+  as:alias "#givingthanks" .
+</pre></div>
+</div></figure>
 
     <p>
       The <code>to</code> property indicates that the user "@sally" is
@@ -3300,22 +3353,66 @@ _:c14n0 a gsp:Geometry ;
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
-<pre class="example highlight json">{
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex26-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex26-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex26-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex26-jsonld" style="display: block;">
+<pre class="example highlight json"
+>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
   "content": "Thank you @sally for all your hard work! #givingthanks",
   "tag": [
     {
-      "@id": "http://example.org/tags/givingthanks",
-      "alias": "#givingthanks"
-    },
-    {
       "@type": "Mention",
       "href": "http://example.org/people/sally",
       "displayName": "@sally"
+    },
+    {
+      "@id": "http://example.org/tags/givingthanks",
+      "alias": "#givingthanks"
     }
   ]
-}</pre></figure>
+}</pre></div>
+  <div id="ex26-rdfa" style="display: block;">
+<pre class="example highlight rdfa"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
+  &lt;p property="content">Thank you
+    &lt;span rel="tag">
+      &lt;a about="_:b1" typeof="Mention"
+        property="displayName" lang=""
+        rel="href" href="http://sally.example.org">
+        @sally
+      &lt;/a>
+    &lt;/span>
+    for all your hard work!
+    &lt;a rel="tag" href="http://example.org/tags/givingthanks">
+      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+    &lt;/a>
+  &lt;/p>
+&lt;/div>
+</pre></div>
+  <div id="ex26-turtle" style="display: block;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b1
+  a as:Note ;
+  as:content """Thank you @sally for all your hard work! #givingthanks""";
+  as:tag [
+    a as:Mention ;
+    as:href &lt;http://example.org/people/sally> ;
+    as:displayName "@sally" .
+  ] ;
+  as:tag &lt;http://example.org/tags/givingthanks> .
+
+&lt;http://example.org/tags/givingthanks>
+  as:alias "#givingthanks" .
+</pre></div>
+</div></figure>
 
   </section>
 
