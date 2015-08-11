@@ -322,10 +322,10 @@
   <div id="ex1-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
-  &lt;a property="actor" href="http://www.test.example/martin">Martin&lt;/a>
+  &lt;a rel="actor" href="http://www.test.example/martin">Martin&lt;/a>
   created
-  &lt;a property="object" href="http://example.org/foo.jpg">
-    "http://example.org/foo.jpg"
+  &lt;a rel="object" href="http://example.org/foo.jpg">
+    http://example.org/foo.jpg
   &lt;/a>
 &lt;/div></pre>
   </div>
@@ -435,31 +435,32 @@ _:b0 a as:Create ;
   <div id="ex2-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Add">
-  &lt;div property="actor" typeof="Person"
+  &lt;span property="actor" typeof="Person"
     resource="http://www.test.example/martin">
-    &lt;a property="url" href="http://example.org/martin">
-      &lt;span property="displayName">Martin Smith&lt;/span>
+    &lt;a property="displayName" rel="url" href="http://example.org/martin">
+      Martin Smith
     &lt;/a>
-    &lt;img property="image" typeof="Image"
-      src="http://example.org/martin/image.jpg"
-      type="image/jpeg" />
-  &lt;/div>
+    &lt;span property="image" typeof="Link">
+      &lt;img property="mediaType" content="image/jpeg" lang=""
+        rel="href" src="http://example.org/martin/image.jpg" />
+    &lt;/span>
+  &lt;/span>
   created
-  &lt;div property="object" typeof="Article"
+  &lt;span property="object" typeof="Article"
     resource="http://www.test.example/blog/abc123/xyz">
-    &lt;a property="url" href="http://example.org/blog/2011/02/entry">
-      "&lt;span property="displayName">Why I love Activity Streams&lt;/span>"
+    &lt;a rel="url" property="displayName"
+      href="http://example.org/blog/2011/02/entry">Why I love Activity Streams
     &lt;/a>
-  &lt;/div>
-  To
-  &lt;div property="target" typeof="OrderedCollection"
-    resource="http://example.org/blog">
-    "&lt;span property="displayName">Martin's Blog&lt;/span>"
-  &lt;/div>
-  On
-  &lt;meta property="published"  content="2015-02-10T15:04:55Z">
-    February 10, 2015 at 03:04:55 UTC
-  &lt;/meta>
+  &lt;/span>
+  to
+  &lt;span property="target" typeof="OrderedCollection"
+    resource="http://example.org/blog/">
+    &lt;span property="displayName">Martin's Blog&lt;/span>
+  &lt;/span>
+  on
+  &lt;time property="published" datatype="xsd:dateTime" datetime="2015-02-10T15:04:55Z">
+    2015-02-10T15:04:55Z
+  &lt;/time>
 &lt;/div></pre>
   </div>
   <div id="ex2-microformats" style="display: none;">
@@ -655,53 +656,68 @@ _:b0 a as:Add ;
   <div id="ex3-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
-  &lt;meta property="totalItems" content="1" />
-  &lt;div property="items"  typeof="Add">
-    &lt;meta property="published" content="2011-02-10T15:04:55Z" />
-    &lt;a property="generator" href="http://example.org/activities-app">
-      http://example.org/activities-app
-    &lt;/a>i
-    &lt;div property="displayName" lang="en">
+  &lt;p>This collection has &lt;span property="totalItems" datatype="xsd:xsd:nonNegativeInteger">1&lt;/span> item.&lt;/p>
+  &lt;div property="items" typeof="Add">
+    At
+    &lt;time property="published" datatype="xsd:dateTime" datetime="2011-02-10T15:04:55Z">
+      2011-02-10T15:04:55Z
+    &lt;/time>
+    &lt;span property="displayName" lang="en">
       Martin added a new image to his album.
-    &lt;/div>
-    &lt;div property="displayName" lang="ga">
-      Martin added a new image to his album.
-    &lt;/div>
-    &lt;div property="actor" typeof="Person"
+    &lt;/span>
+    &lt;span property="displayName" lang="ga">
+      Martin phost le fisean nua a albam.
+    &lt;/span>
+    &lt;span property="actor" typeof="Person"
       resource="http://www.test.example/martin">
-      &lt;div property="displayName">
-        &lt;a property="url" href="http://example.org/martin">Martin Smith&lt;/a>
-      &lt;/div>
-      &lt;img property="image" typeof="Link"
-        src="http://example.org/martin/image"
-        type="image/jpeg"
-        height="250" width="250" />
-    &lt;/div>
-    &lt;div property="object" typeof="Image"
+        &lt;a rel="url" property="displayName"
+          href="http://example.org/martin">
+          Martin Smith
+        &lt;/a>
+      &lt;span property="image" typeof="Link">
+        &lt;img property="mediaType" content="image/jpeg" lang=""
+          height="250" width="250"
+          rel="href" src="http://example.org/martin/image.jpg" />
+        (
+        &lt;span property="width" datatype="xsd:nonNegativeInteger">250&lt;/span>x
+        &lt;span property="height" datatype="xsd:nonNegativeInteger">250&lt;/span>
+        )
+      &lt;/span>
+    &lt;/span>
+    added
+    &lt;span property="object" typeof="Image"
       resource="http://example.org/album/my_fluffy_cat">
-      &lt;img property="preview"
-        typeof="Link"
-        src="http://example.org/album/my_fluffy_cat_thumb.jpg"
-        type="image/jpeg" />
-      &lt;a property="url" typeof="Link"
-        href="http://example.org/album/my_fluffy_cat.jpg"
-        type="image/jpeg">JPG&lt;/a> |
-      &lt;a property="url" typeof="Link"
-        href="http://example.org/album/my_fluffy_cat.png"
-        type="image/png">PNG&lt;/a>
-    &lt;/div>
-    &lt;div property="target" typeof="Album"
+      &lt;span property="preview" typeof="Link">
+        &lt;img property="mediaType" content="image/jpeg" lang=""
+          rel="href" src="http://example.org/album/my_fluffy_cat_thumb.jpg" />
+      &lt;/span>
+      &lt;span rel="url">
+        &lt;a about="_:b3" typeof="Link"
+          property="mediaType" content="image/jpeg" lang=""
+          rel="href" href="http://example.org/album/my_fluffy_cat.jpg">JPG&lt;/a> |
+        &lt;a about="_:b4" typeof="Link"
+          property="mediaType" content="image/png" lang=""
+          rel="href" href="http://example.org/album/my_fluffy_cat.png">PNG&lt;/a>
+      &lt;/span>
+    &lt;/span>
+    and they were generated by
+    &lt;a property="generator" href="http://example.org/activities-app">
+      activities-app
+    &lt;/a>
+    and placed into
+    &lt;span property="target" typeof="Album"
       resource="http://example.org/album/">
-      &lt;div property="displayName" lang="en">
+      &lt;span property="displayName" lang="en">
         Martin's Photo Album
-      &lt;/div>
-      &lt;div property="displayName" lang="ga">
+      &lt;/span>
+      &lt;span property="displayName" lang="ga">
         Grianghraif Mairtin
-      &lt;/div>
-      &lt;img property="image" typeof="Link"
-        href="http://example.org/album/thumbnail.jpg"
-        type="image/jpeg" />
-    &lt;/div>
+      &lt;/span>
+      &lt;span property="image" typeof="Link">
+        &lt;img property="mediaType" content="image/png" lang=""
+          rel="href" src="http://example.org/album/thumbnail.jpg" />
+      &lt;/span>
+    &lt;/span>
   &lt;/div>
 &lt;/div></pre>
   </div>
@@ -911,12 +927,14 @@ keywords to express the global identifier and object type:</figcaption>
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note"
   resource="http://example.org/foo">
-  &lt;div property="displayName">This is a note&lt;/div>
-  &lt;div property="attributedTo" typeof="Person"
+  &lt;p property="displayName">This is a note&lt;/p>
+  &lt;p property="attributedTo" typeof="Person"
     resource="http://joe.website.example/">
     &lt;span property="displayName">Joe Smith&lt;/span>
-  &lt;/div>
-  &lt;div property="published">2014-08-21T12:34:56Z&lt;/div>
+  &lt;/p>
+  &lt;time property="published" datatype="xsd:dateTime" datetime="2014-08-21T12:34:56Z">
+    2014-08-21T12:34:56Z
+  &lt;/time>
 &lt;/div></pre></div>
   <div id="ex4-microformats" style="display: none;">
 <pre class="example highlight html"
@@ -999,15 +1017,15 @@ not:</figcaption>
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create"
   resource="http://example.org/foo">
-  &lt;div property="displayName">A Test&lt;/div>
-  &lt;div property="actor" itemscope typeof="Person"
-    resource="http://example.org/~sally">
+  &lt;p property="displayName">A Test&lt;/p>
+  &lt;p property="actor" typeof="Person" resource="http://example.org/~sally">
     &lt;span property="displayName">Sally&lt;/span>
-  &lt;/div>
-  &lt;a property="object" itemscope typeof="Link"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
+  &lt;/p>
+  &lt;span property="object" typeof="Link">
+    &lt;a property="href" href="http://example.org/posts/1">
+      http://example.org/posts/1
+    &lt;/a>
+  &lt;/span>
 &lt;/div></pre></div>
   <div id="ex5-microformats" style="display: none;">
 <pre class="example highlight html"
@@ -1105,12 +1123,13 @@ not:</figcaption>
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place http://purl.org/goodrelations/v1#Location">
-  &lt;div property="displayName">Sally's Restaurant&lt;/div>
-  At
-  Longitude: &lt;span property="longitude">12.34&lt;/span>,
-  Latitude: &lt;span property="latitude">56.78&lt;/span>.
-  &lt;meta property="http://purl.org/goodrelations/v1#category"
-    content="restaurants/french_restaurants" />
+  &lt;span property="displayName">Sally's Restaurant&lt;/span>
+  at
+  Longitude: &lt;span property="longitude" datatype="xsd:float">12.34&lt;/span>,
+  Latitude: &lt;span property="latitude" datatype="xsd:float">56.78&lt;/span>.
+  &lt;p property="http://purl.org/goodrelations/v1#category">
+    restaurants/french_restaurants
+  &lt;/p>
 &lt;/div></pre></div>
   <div id="ex6-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -1519,8 +1538,8 @@ _:b0 a as:Object ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
   &lt;div property="displayName">My Application&lt;/div>
-  &lt;img property="image"
-       src="http://example.org/application/123.png" />
+  &lt;img rel="image"
+    src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
   <div id="ex12-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -1579,9 +1598,10 @@ _:b0 a as:Object ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
   &lt;div property="displayName">My Application&lt;/div>
-  &lt;img property="image" typeof="Link"
-    type="image/png"
-    src="http://example.org/application/123.png" />
+  &lt;span property="image" typeof="Link">
+    &lt;img property="mediaType" content="image/png" lang=""
+      rel="href" src="http://example.org/application/123.png" />
+  &lt;/span>
 &lt;/div></pre></div>
   <div id="ex13-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -1662,11 +1682,12 @@ _:b0 a as:Object ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
   &lt;div property="displayName">My Application&lt;/div>
-  &lt;img property="image"
-    src="http://example.org/application/123.gif" />
-  &lt;img property="image" typeof="Link"
-    type="image/png"
-    src="http://example.org/application/123.png" />
+  &lt;span rel="image">
+    &lt;img src="http://example.org/application/123.gif" />
+    &lt;img about="_:b1" typeof="Link"
+      property="mediaType" content="image/png" lang=""
+      rel="href" src="http://example.org/application/123.png" />
+  &lt;/span>
 &lt;/div></pre></div>
   <div id="ex14-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -1762,12 +1783,12 @@ _:b0 a as:Object ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
   &lt;div property="displayName">My Application&lt;/div>
-  &lt;img property="image"
-    src="http://example.org/application/123.gif" />
-  &lt;img property="image" typeof="Link"
-    type="image/png"
-    src="http://example.org/application/123.png"
-    rel="thumbnail" />
+  &lt;span rel="image">
+    &lt;img src="http://example.org/application/123.gif" />
+    &lt;img about="_:b1" typeof="Link"
+      property="mediaType" content="image/png" lang=""
+      rel="thumbnail" src="http://example.org/application/123.png" />
+  &lt;/span>
 &lt;/div></pre></div>
   <div id="ex15-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -1895,7 +1916,7 @@ _:b0 a as:Object ;
   &lt;/div>
   created
   &lt;div property="object" typeof="Note">
-    "&lt;span property="content">This is a simple note&lt;/span>"
+    &lt;span property="content">This is a simple note&lt;/span>
   &lt;/div>
 &lt;/div></pre></div>
   <div id="ex16-microformats" style="display:none;">
@@ -1982,7 +2003,7 @@ _:b0 a as:Create ;
   &lt;/div>
   created
   &lt;div property="object" typeof="Note">
-    "&lt;span property="content">This is a simple note&lt;/span>"
+    &lt;span property="content">This is a simple note&lt;/span>
   &lt;/div>
 &lt;/div></pre></div>
   <div id="ex17-microformats" style="display:none;">
@@ -2195,9 +2216,11 @@ _:b0 a as:Create ;
   &lt;a property="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
   liked
   &lt;a property="object" href="http://example.org/notes/1">
-    "http://example.org/notes/1"
+    http://example.org/notes/1
   &lt;/a>
-  &lt;meta property="published" content="2014-09-30T12:34:56Z" />
+  &lt;time property="published" datatype="xsd:dateTime" datetime="2014-09-30T12:34:56Z">
+    2014-09-30T12:34:56Z
+  &lt;/time>
 &lt;/div></pre></div>
   <div id="ex19-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -2285,9 +2308,11 @@ _:b0 a as:Create ;
   &lt;a property="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
   liked
   &lt;a property="object" href="http://example.org/notes/1">
-    "http://example.org/notes/1"
+    http://example.org/notes/1
   &lt;/a>
-  &lt;meta property="published" content="2014-09-30T12:34:56Z" />
+  &lt;time property="published" datatype="xsd:dateTime" datetime="2014-09-30T12:34:56Z">
+    2014-09-30T12:34:56Z
+  &lt;/time>
 &lt;/div></pre></div>
   <div id="ex20-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -2438,19 +2463,18 @@ _:b0 a as:Create ;
   <div id="ex21-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
-  &lt;meta property="totalItems" content="10" />
-  &lt;meta property="itemsPerPage" content="1" />
+  &lt;p>This collection has
+  &lt;span property="totalItems" datatype="xsd:xsd:nonNegativeInteger">10&lt;/span> items.
+  Displaying &lt;span property="itemsPerPage" datatype="xsd:xsd:nonNegativeInteger">1&lt;/span> item per page.&lt;/p>
   &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a property="self" href="http://example.org/foo?page=1">
-    http://example.org/foo?page=1
-  &lt;\a>
-  &lt;ul>
-    &lt;li property typeof="Create"&lt;
-      &lt;a property="actor" href="http://www.test.example/sally>Sally&lt;/a>
+  &lt;a property="self" href="http://example.org/foo?page=1">http://example.org/foo?page=1&lt;/a>
+  &lt;ol>
+    &lt;li property="items" typeof="Create">
+      &lt;a property="actor" href="http://www.test.example/sally">Sally&lt;/a>
       created
-      &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
-    &lt;/li&lt;
-  &lt;ul>
+      &lt;a property="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li>
+  &lt;ol>
 &lt;/div></pre></div>
   <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -2541,11 +2565,11 @@ _:b0 a as:Collection ;
     http://example.org/foo?page=1
   &lt;/a>
   &lt;ol>
-    &lt;li property typeof="Create"&lt;
-      &lt;a property="actor" href="http://www.test.example/sally>Sally&lt;/a>
+    &lt;li property="items" inlist="" typeof="Create">
+      &lt;a property="actor" href="http://www.test.example/sally">Sally&lt;/a>
       created
-      &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
-    &lt;/li&lt;
+      &lt;a property="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li>
   &lt;ol>
 &lt;/div></pre></div>
   <div id="ex22-microformats" style="display:none;">
@@ -2573,14 +2597,13 @@ _:c14n0 a as:OrderedCollection ;
   as:startIndex "0"^^xsd:nonNegativeInteger ;
   as:next &lt;http://example.org/foo?page=2&gt; ;
   as:self &lt;http://example.org/foo?page=1&gt; ;
-  as:items [
-    rdf:first [
+  as:items (
+    [
       a as:Create;
-        as:actor &lt;http://www.test.example/sallygt; ;
-        as:object &lt;http://example.org/foo&gt;
-    ] ;
-    rdf:rest rdf:nil
-  ] .</pre></div>
+      as:actor &lt;http://www.test.example/sallygt; ;
+      as:object &lt;http://example.org/foo>
+    ]
+  ) .</pre></div>
 </div>
 </figure>
 
@@ -2876,8 +2899,8 @@ _:c14n0 a as:OrderedCollection ;
   <div id="ex23-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Place">
-  &lt;meta property="latitude" content="36.74" />
-  &lt;meta property="longitude" content="-119.77" />
+  &lt;span property="latitude" datatype="xsd:float">36.74&lt;/span>
+  &lt;span property="longitude" datatype="xsd:float">-119.77&lt;/span>
 &lt;/div></pre></div>
   <div id="ex23-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -2939,10 +2962,11 @@ _:c14n0 a as:Place;
   <div id="ex24-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="itemtype="http://www.opengis.net/ont/geosparql#Geometry"">
+  typeof="http://www.opengis.net/ont/geosparql#Geometry">
   &lt;meta
     property="http://www.opengis.net/ont/geosparql#asWKT"
-    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
+    content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
+    datatype="http://www.opengis.net/ont/geosparql#wktLiteral" />
 &lt;/div></pre></div>
   <div id="ex24-microformats" style="display:none;">
 <pre class="example highlight html"
@@ -3236,10 +3260,20 @@ _:c14n0 a gsp:Geometry ;
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
-<pre class="example highlight json">{
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex25-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex25-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex25-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex25-jsonld" style="display: block;">
+<pre class="example highlight json"
+>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
-  "content": "Thank you <a href="http://sally.example.org">@sally</a> for all your hard work! <a href="http://example.org/tags/givingthanks">#givingthanks</a>",
+  "content": "Thank you &lt;a href=\"http://sally.example.org\">@sally&lt;/a>
+              for all your hard work!
+              &lt;a href=\"http://example.org/tags/givingthanks\">#givingthanks&lt;/a>",
   "to": {
     "@type": "Person",
     "@id": "http://sally.example.org",
@@ -3249,7 +3283,47 @@ _:c14n0 a gsp:Geometry ;
     "@id": "http://example.org/tags/givingthanks",
     "alias": "#givingthanks"
   }
-}</pre></figure>
+}</pre></div>
+  <div id="ex25-rdfa" style="display: block;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
+  &lt;p property="content" datatype="rdf:HTML">Thank you
+    &lt;a rel="to" typeof="Person" href="http://sally.example.org">
+      &lt;span property="alias" lang="">@sally&lt;/span>
+    &lt;/a>
+    for all your hard work!
+    &lt;a rel="tag" href="http://example.org/tags/givingthanks">
+      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+    &lt;/a>
+  &lt;/p>
+&lt;/div>
+</pre></div>
+  <div id="ex25-turtle" style="display: block;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b1
+  a as:Note ;
+  as:conntent """Thank you
+  &lt;a rel="to" typeof="Person" href="http://sally.example.org">
+    &lt;span property="alias" lang="">@sally&lt;/span>
+  &lt;/a>
+  for all your hard work!
+  &lt;a rel="tag" href="http://example.org/tags/givingthanks">
+    &lt;span property="alias" lang="">#givingthanks&lt;/span>
+  &lt;/a>
+  """^^rdf:HTML ;
+  as:to &lt;http://sally.example.org> ;
+  as:tag &lt;http://example.org/tags/givingthanks> .
+
+&lt;http://sally.example.org>
+  a as:Person ;
+  as:alias "@sally" .
+
+&lt;http://example.org/tags/givingthanks>
+  as:alias "#givingthanks" .
+</pre></div>
+</div></figure>
 
     <p>
       The <code>to</code> property indicates that the user "@sally" is
@@ -3272,22 +3346,65 @@ _:c14n0 a gsp:Geometry ;
     </p>
 
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
-<pre class="example highlight json">{
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex26-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex26-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex26-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex26-jsonld" style="display: block;">
+<pre class="example highlight json"
+>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Note",
   "content": "Thank you @sally for all your hard work! #givingthanks",
   "tag": [
     {
-      "@id": "http://example.org/tags/givingthanks",
-      "alias": "#givingthanks"
-    },
-    {
       "@type": "Mention",
       "href": "http://example.org/people/sally",
       "displayName": "@sally"
+    },
+    {
+      "@id": "http://example.org/tags/givingthanks",
+      "alias": "#givingthanks"
     }
   ]
-}</pre></figure>
+}</pre></div>
+  <div id="ex26-rdfa" style="display: block;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
+  &lt;p property="content">Thank you
+    &lt;span property="tag" typeof="Mention">
+      &lt;a property="displayName" lang=""
+        rel="href" href="http://sally.example.org">
+        @sally
+      &lt;/a>
+    &lt;/span>
+    for all your hard work!
+    &lt;a rel="tag" href="http://example.org/tags/givingthanks">
+      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+    &lt;/a>
+  &lt;/p>
+&lt;/div>
+</pre></div>
+  <div id="ex26-turtle" style="display: block;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b1
+  a as:Note ;
+  as:content """Thank you @sally for all your hard work! #givingthanks""";
+  as:tag [
+    a as:Mention ;
+    as:href &lt;http://example.org/people/sally> ;
+    as:displayName "@sally"
+  ] ;
+  as:tag &lt;http://example.org/tags/givingthanks> .
+
+&lt;http://example.org/tags/givingthanks>
+  as:alias "#givingthanks" .
+</pre></div>
+</div></figure>
 
   </section>
 
