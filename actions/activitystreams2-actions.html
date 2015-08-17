@@ -15,7 +15,7 @@
         url: "http://chmod777self.com",
         company: "IBM",
         companyUrl: "http://ibm.com"
-      }  
+      }
     ],
     authors: [
       {
@@ -58,9 +58,9 @@
     }
     table, td, th { border: 1px solid gray }
     table { width: 100% ;}
-    td { 
+    td {
       vertical-align: top;
-      padding: 5px; 
+      padding: 5px;
     }
 
 
@@ -126,7 +126,7 @@
     <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
 
     <p>
-    Classes: 
+    Classes:
       <code><a>ActivityHandler</a></code> |
       <code><a>BrowserView</a></code> |
       <code><a>EmbeddedView</a></code> |
@@ -199,9 +199,9 @@ _:c14n0 a as:Note ;
           <td>
             Describes a way of carrying out an Activity. The <code>ActivityHandler</code>
             class is the base class for all types of Activity Handlers, including
-            <code><a>BrowserView</a></code>, <code><a>HttpRequest</a></code>, and 
+            <code><a>BrowserView</a></code>, <code><a>HttpRequest</a></code>, and
             <code><a>EmbeddedView</a></code>. Implementations are not expected to use
-            the <code>ActivityHandler</code> class directly but rather any of it's 
+            the <code>ActivityHandler</code> class directly but rather any of it's
             specific subclasses.
           </td>
         </tr>
@@ -271,7 +271,7 @@ _:c14n0 a as:Note ;
         <tr>
           <td >Notes:</td>
           <td>
-            <p>An <code><a>ActivityHandler</a></code> that describes an HTTP request to load 
+            <p>An <code><a>ActivityHandler</a></code> that describes an HTTP request to load
             content within a Web Browser view. This handler type roughly corresponds
             to invoking a link or HTML form post. The <code><a>method</a></code>
             property indicates the HTTP method to be used. The <code><a>method</a></code> value
@@ -282,21 +282,21 @@ _:c14n0 a as:Note ;
             as defined in [[HTML5]].</p>
 
             <p>The <code><a>sandbox</a></code> property specifies the [[HTML5]]
-            <a href="http://www.w3.org/TR/html5/browsers.html#sandboxing">Sandboxing</a> policy 
+            <a href="http://www.w3.org/TR/html5/browsers.html#sandboxing">Sandboxing</a> policy
             to be applied to the Browser Context.</p>
 
-            <p>The <code>BrowserView</code> class inherits the properties of the 
+            <p>The <code>BrowserView</code> class inherits the properties of the
             <code><a href="activitystreams2-vocabulary.html#def-link">Link</a></code>
-            class. Accordingly, the <code><a href="activitystreams2-vocabulary.html#def-href">href</a></code> 
-            property specifies the target URL for the HTTP request. Alternatively, the 
-            <code><a>hreftemplate</a></code> property can be used to describe an [[!RFC6570]] 
+            class. Accordingly, the <code><a href="activitystreams2-vocabulary.html#def-href">href</a></code>
+            property specifies the target URL for the HTTP request. Alternatively, the
+            <code><a>hreftemplate</a></code> property can be used to describe an [[!RFC6570]]
             URL Template an implementation can use to construct the target URL for the HTTP request.</p>
           </td>
         </tr>
         <tr>
           <td >Type Of:</td>
           <td >
-            <code><a>ActivityHandler</a></code> AND 
+            <code><a>ActivityHandler</a></code> AND
             <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>
           </td>
         </tr>
@@ -305,12 +305,12 @@ _:c14n0 a as:Note ;
           <td>
             <p>
               <code><a>browserContext</a></code> |
-              <code><a>hreftemplate</a></code> | 
+              <code><a>hreftemplate</a></code> |
               <code><a>method</a></code> |
               <code><a>sandbox</a></code>
             </p>
 
-            <p>Inherits all properties from <code><a>ActivityHandler</a></code> and 
+            <p>Inherits all properties from <code><a>ActivityHandler</a></code> and
             <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code>.</p>
           </td>
         </tr>
@@ -367,44 +367,44 @@ _:c14n0 a as:Note ;
         <tr>
           <td >Notes:</td>
           <td>
-            <p>An <code><a>ActivityHandler</a></code> that describes embedded 
-            content used to carry out an Activity. This handler is intended to 
-            be roughly equivalent to 
+            <p>An <code><a>ActivityHandler</a></code> that describes embedded
+            content used to carry out an Activity. This handler is intended to
+            be roughly equivalent to
             <a href="http://www.w3.org/TR/html5/dom.html#embedded-content">Embedded Content</a>
-            in HTML5.</p> 
+            in HTML5.</p>
 
-            <p>The MIME media type of the embedded content is specified using the 
+            <p>The MIME media type of the embedded content is specified using the
             <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> property.</p>
 
-            <p>If an implementation chooses to display the embedded content within a 
-            browser context as defined by [[!HTML5]], the <code><a>sandbox</a></code> property 
-            specifies the <a href="http://www.w3.org/TR/html5/browsers.html#sandboxing">Sandboxing</a> 
+            <p>If an implementation chooses to display the embedded content within a
+            browser context as defined by [[!HTML5]], the <code><a>sandbox</a></code> property
+            specifies the <a href="http://www.w3.org/TR/html5/browsers.html#sandboxing">Sandboxing</a>
             policy to be applied to that browser context.</p>
 
-            <p>Determining the exact content to embed and how is largely dependent on the 
-            specified MIME media type that is specified. If the 
-            <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> 
-            property specifies text or HTML based content (e.g. using any variant of 
+            <p>Determining the exact content to embed and how is largely dependent on the
+            specified MIME media type that is specified. If the
+            <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code>
+            property specifies text or HTML based content (e.g. using any variant of
             "<code>text/*</code>", "<code>application/html</code>" or, "<code>application/xhtml</code>", etc),
-            then the content to display MAY be specified using either the 
-            <code><a href="activitystreams2-vocabulary.html#def-content-term">content</a></code> or 
+            then the content to display MAY be specified using either the
+            <code><a href="activitystreams2-vocabulary.html#def-content-term">content</a></code> or
             <code><a href="activitystreams2-vocabulary.html#def-summary">summary</a></code> properties with <code>content</code> being the preferred
             means of specifying the full content to display and <code>summary</code> optionally providing
-            a shortened or summarized version. The 
-            <code><a href="activitystreams2-vocabulary.html#def-displayname">displayName</a></code> 
+            a shortened or summarized version. The
+            <code><a href="activitystreams2-vocabulary.html#def-displayname">displayName</a></code>
             and <code><a href="activitystreams2-vocabulary.html#def-title">title</a></code>
             properties can be used to provide captioning information for the embedded content.
-            The <code>content</code> and <code>summary</code> properties MUST NOT 
-            be used for any type of content not intended to be directly viewable by a 
+            The <code>content</code> and <code>summary</code> properties MUST NOT
+            be used for any type of content not intended to be directly viewable by a
             user either as plain text or processed as markup.</p>
 
-            <p>Alternatively, the <code><a href="activitystreams2-vocabulary.html#def-url">url</a></code> 
+            <p>Alternatively, the <code><a href="activitystreams2-vocabulary.html#def-url">url</a></code>
             property can be used to provide the URL location where the embedded content can be retrieved.</p>
           </td>
         </tr>
         <tr>
           <td >Type Of:</td>
-          <td ><code><a>ActivityHandler</a></code> AND 
+          <td ><code><a>ActivityHandler</a></code> AND
             <code><a href="activitystreams2-vocabulary.html#dfn-content">Content</a></code>
           </td>
         </tr>
@@ -412,12 +412,12 @@ _:c14n0 a as:Note ;
           <td>Properties:</td>
           <td>
             <p>
-              <code><a>sandbox</a></code> | 
+              <code><a>sandbox</a></code> |
               <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code>
             </p>
 
             <p>
-              Inherits all properties from <code><a>ActivityHandler</a></code> and 
+              Inherits all properties from <code><a>ActivityHandler</a></code> and
               <code><a href="activitystreams2-vocabulary.html#dfn-content">Content</a></code>.
             </p>
           </td>
@@ -504,10 +504,10 @@ _:c14n0 a as:Note ;
           <td >Notes:</td>
           <td>
             <p>Provides a declarative description of an HTML Form. Instances of this class
-            are intended to be used with the <code><a>hasExpectedInput</a></code> 
+            are intended to be used with the <code><a>hasExpectedInput</a></code>
             property to describe the input to either a <code><a>BrowserView</a></code> or
             <code><a>HttpRequest</a></code> activity handler. The intent of the class is
-            to roughly describe the parameters of an HTML form without providing any 
+            to roughly describe the parameters of an HTML form without providing any
             detail as to the actual HTML markup used to render the form.</p>
           </td>
         </tr>
@@ -571,7 +571,7 @@ _:c14n0 a as:Note ;
             a as:HttpHeader ;
               as:name "x-request-num" ;
               as:shape &lt;xsd:nonNegativeInteger&gt; .
-          ] . 
+          ] .
       ] .
   ] . </pre>
   </div>
@@ -583,8 +583,8 @@ _:c14n0 a as:Note ;
           <td >Notes:</td>
           <td>
             <p>Describes an HTTP Header. Instances of this class
-            are intended to be used with the <code><a>hasExpectedInput</a></code> 
-            and <code><a>hasPotentialResult</a></code> properties to describe the input 
+            are intended to be used with the <code><a>hasExpectedInput</a></code>
+            and <code><a>hasPotentialResult</a></code> properties to describe the input
             or output of either a <code><a>BrowserView</a></code> or
             <code><a>HttpRequest</a></code> activity handler.</p>
           </td>
@@ -650,27 +650,27 @@ _:c14n0 a as:Note ;
         <tr>
           <td >Notes:</td>
           <td>
-            An <a>ActivityHandler</a> that describes an HTTP request/response 
+            An <a>ActivityHandler</a> that describes an HTTP request/response
             flow used to carry out an Activity.
 
             <p>An <code><a>ActivityHandler</a></code> that describes an HTTP request/response
             used to carry out an Activity. This handler type roughly corresponds
-            to using Javascript mechanisms within an HTML page to invoke an HTTP request. 
-            The <code><a>method</a></code> property indicates the HTTP method to be used. 
+            to using Javascript mechanisms within an HTML page to invoke an HTTP request.
+            The <code><a>method</a></code> property indicates the HTTP method to be used.
             Unlike <code><a>BrowserView</a></code>, the <code><a>method</a></code> value
             can be any valid HTTP method.</p>
 
-            <p>The <code>HttpRequest</code> class inherits the properties of the 
+            <p>The <code>HttpRequest</code> class inherits the properties of the
             <code><a href="activitystreams2-vocabulary.html#def-link">Link</a></code>
-            class. Accordingly, the 
-            <code><a href="activitystreams2-vocabulary.html#def-href">href</a></code> property 
-            specifies the target URL for the HTTP request. Alternatively, 
-            the <code><a>hreftemplate</a></code> property can be used to describe an [[!RFC6570]] 
+            class. Accordingly, the
+            <code><a href="activitystreams2-vocabulary.html#def-href">href</a></code> property
+            specifies the target URL for the HTTP request. Alternatively,
+            the <code><a>hreftemplate</a></code> property can be used to describe an [[!RFC6570]]
             URL Template an implementation can use to construct the target URL for the HTTP request.</p>
 
             <p>Unlike <code><a>BrowserView</a></code>, the <code><a>HttpRequest</a></code> handler
             is invoked independently of any user interface element. Implementations must determine
-            on their own whether and how to process or display any payload returned in response 
+            on their own whether and how to process or display any payload returned in response
             to the HTTP request.</p>
 
           </td>
@@ -678,7 +678,7 @@ _:c14n0 a as:Note ;
         <tr>
           <td >Type Of:</td>
           <td >
-            <code><a>ActivityHandler</a></code> AND 
+            <code><a>ActivityHandler</a></code> AND
             <code><a href="activitystreams2-vocabulary.html#dfn-link">Link</a></code></td>
         </tr>
         <tr>
@@ -766,7 +766,7 @@ _:c14n0 a as:Note ;
         <tr>
           <td >Notes:</td>
           <td>
-            Instances of this class are used to describe the parameters used in 
+            Instances of this class are used to describe the parameters used in
             both <code><a>UrlTemplate</a></code> and <code><a>HtmlForm</a></code>.
           </td>
         </tr>
@@ -777,7 +777,7 @@ _:c14n0 a as:Note ;
               <code><a>name</a></code> |
               <code><a>optional</a></code> |
               <code><a>role</a></code> |
-              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code> 
+              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code>
             </p>
           </td>
         </tr>
@@ -865,8 +865,8 @@ _:c14n0 a as:Note ;
             Instances of this class are intended to be used with the <code><a>hasExpectedInput</a></code>
             and <code><a>hasPotentialResult</a></code> properties to describe the expected
             type of payload.</p>
-            <p>The <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> property identifies the expected MIME 
-            media type while the <code><a href="activitystreams2-vocabulary.html#def-shape">shape</a></code> property optionally provides additional 
+            <p>The <code><a href="activitystreams2-vocabulary.html#def-mediatype">mediaType</a></code> property identifies the expected MIME
+            media type while the <code><a href="activitystreams2-vocabulary.html#def-shape">shape</a></code> property optionally provides additional
             information describing the actual serialization of the payload.
           </td>
         </tr>
@@ -875,8 +875,8 @@ _:c14n0 a as:Note ;
           <td >
             <p>
               <code><a href="activitystreams2-vocabulary.html#dfn-mediatype">mediaType</a></code> |
-              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code> 
-            </p>   
+              <code><a href="activitystreams2-vocabulary.html#dfn-shape">shape</a></code>
+            </p>
           </td>
         </tr>
       </tbody>
@@ -950,7 +950,7 @@ _:c14n0 a as:Note ;
           <td >Notes:</td>
           <td>
             Describes an [[!RFC6570]] URL Template used to construct
-            the Request URI for a <code><a>HttpRequest</a></code> or 
+            the Request URI for a <code><a>HttpRequest</a></code> or
             <code><a>BrowserView</a></code>.
           </td>
         </tr>
@@ -974,7 +974,7 @@ _:c14n0 a as:Note ;
 
     <p>Base URI: <code>http://www.w3.org/ns/activitystreams#</code>.</p>
 
-    <p>Properties: 
+    <p>Properties:
       <code><a>action</a></code> |
       <code><a>handlerFor</a></code> |
       <code><a>hasExpectedInput</a></code> |
@@ -990,7 +990,7 @@ _:c14n0 a as:Note ;
       <code><a>name</a></code> |
       <code><a>optional</a></code> |
       <code><a>role</a></code> |
-      <code><a>sandbox</a></code> | 
+      <code><a>sandbox</a></code> |
       <code><a>template</a></code>
     </p>
 
@@ -1081,13 +1081,13 @@ _:c14n0 a as:Note ;
             <td>
               <p>Describes one or more Activities that can be carried out with the
               containing object. The identification of the Activity can be qualified
-              or unqualified as illustrated in the examples. In the unqualified 
+              or unqualified as illustrated in the examples. In the unqualified
               form, the identifier of the Activity is provided directly and it is
               up to the implementation to determine exactly how the Activity is to
               be carried out. In the qualified form, the value is specified as an
               object whose <code>@type</code> provides the identity of the Activity
               type and the <code><a>using</a></code> property specifies one or more
-              <code><a>ActivityHandler</a></code> instances that describe how the 
+              <code><a>ActivityHandler</a></code> instances that describe how the
               Activity can be carried out.</p>
 
               <p>Implementations are free to ignore any Activity or ActivityHandler
@@ -1143,7 +1143,7 @@ _:c14n0 a as:HttpRequest ;
           <tr>
             <td >Notes:</td>
             <td >
-              Identifies the <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code> 
+              Identifies the <code><a href="activitystreams2-vocabulary.html#dfn-activity">Activity</a></code>
               an <code><a>ActivityHandler</a></code> can be used to carry out.
             </td>
           </tr>
@@ -1161,7 +1161,7 @@ _:c14n0 a as:HttpRequest ;
             <td >Inverse Of:</td>
             <td ><code><a>using</a></code></td>
           </tr>
-        </tbody> 
+        </tbody>
 
         <tbody>
           <tr>
@@ -1256,7 +1256,7 @@ _:c14n0 a as:Note ;
               <code>any</code>
             </td>
           </tr>
-        </tbody> 
+        </tbody>
 
         <tbody>
           <tr>
@@ -1373,7 +1373,7 @@ _:c14n0 a as:Note ;
       "@type": "HttpRequest",
       "href": "http://api.example.org/like?id=123",
       "method": "POST",
-      <b>"hasPreference"</b>: 
+      <b>"hasPreference"</b>:
         ["urn:example:preferences:minimal-response"]
     }
   }
@@ -1395,7 +1395,7 @@ _:c14n0 a as:Note ;
           as:method "POST" ;
           as:hasPreference (
             &lt;urn:example:preferences:minimal-response&gt;
-          ) . 
+          ) .
       ] .
   ] . </pre>
   </div>
@@ -1405,9 +1405,9 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Notes:</td>
             <td >
-              Describes a preference of an <code><a>ActivityHandler</a></code>. A preference 
-              is some feature, capability or behavior that can be optionally but preferably 
-              supported by an implementation. If an implementation supports the preference, 
+              Describes a preference of an <code><a>ActivityHandler</a></code>. A preference
+              is some feature, capability or behavior that can be optionally but preferably
+              supported by an implementation. If an implementation supports the preference,
               then it SHOULD use it when using the Activity Handler, otherwise the preference
               can be ignored. Specific preferences vary based on the type of Activity Handler
               and specific implementation.
@@ -1448,7 +1448,7 @@ _:c14n0 a as:Note ;
       "@type": "HttpRequest",
       "href": "http://api.example.org/like?id=123",
       "method": "POST",
-      <b>"hasRequirement"</b>: 
+      <b>"hasRequirement"</b>:
         ["urn:example:requirement"]
     }
   }
@@ -1470,7 +1470,7 @@ _:c14n0 a as:Note ;
           as:method "POST" ;
           as:hasRequirement (
             &lt;urn:example:requirement&gt;
-          ) . 
+          ) .
       ] .
   ] . </pre>
   </div>
@@ -1480,10 +1480,10 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Notes:</td>
             <td >
-              Describes a requirement of an <code><a>ActivityHandler</a></code>. A requirement 
+              Describes a requirement of an <code><a>ActivityHandler</a></code>. A requirement
               is some feature, capability or behavior that MUST be supported by an implementation
               in order for the Activity Handler to be used. If an implementation does not support
-              any given requirement, then the Activity Handler MUST be ignored. Specific requirements 
+              any given requirement, then the Activity Handler MUST be ignored. Specific requirements
               vary based on the type of Activity Handler and specific implementation.
             </td>
           </tr>
@@ -1567,9 +1567,9 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Notes:</td>
             <td >
-              Specifies a <code><a>UrlTemplate</a></code> associated with a 
+              Specifies a <code><a>UrlTemplate</a></code> associated with a
               <code><a>BrowserView</a></code> or <code><a>HttpRequest</a></code>.
-              This is intended as an alternative to using 
+              This is intended as an alternative to using
               <code><a href="activitystreams2-vocabulary.html#dfn-href">href</a></code>
               property as is typical for <code>Link</code> objects. If <code>hreftemplate</code>
               is used, <code>href</code> MUST NOT be used.
@@ -1578,7 +1578,7 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Domain:</td>
             <td >
-              <code><a>BrowserView</a></code> | 
+              <code><a>BrowserView</a></code> |
               <code><a>HttpRequest</a></code>
             </td>
           </tr>
@@ -1673,7 +1673,7 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Domain:</td>
             <td >
-              <code><a>HtmlForm</a></code> | 
+              <code><a>HtmlForm</a></code> |
               <code><a>UrlTemplate</a></code></td>
           </tr>
           <tr>
@@ -1830,7 +1830,7 @@ _:c14n0 a as:Note ;
             <td>Functional:</td>
             <td>True</td>
           </tr>
-        </tbody> 
+        </tbody>
 
         <tbody>
           <tr>
@@ -2049,7 +2049,7 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Notes:</td>
             <td >
-              Specifies the name of a <code><a>Parameter</a></code> or 
+              Specifies the name of a <code><a>Parameter</a></code> or
               <code><a>HttpHeader</a></code>.
             </td>
           </tr>
@@ -2249,8 +2249,8 @@ _:c14n0 a as:Note ;
           <tr>
             <td >Notes:</td>
             <td >
-              Identifies the semantic role of a <code><a>Parameter</a></code>. The 
-              semantic role is an implementation specific identifier that instructs 
+              Identifies the semantic role of a <code><a>Parameter</a></code>. The
+              semantic role is an implementation specific identifier that instructs
               the implementation on the parameter's purpose.
             </td>
           </tr>
@@ -2437,7 +2437,7 @@ _:c14n0 a as:Note ;
   <section>
     <h2>Using External Vocabularies as Activity Handlers</h2>
 
-<figure><figcaption>Using a schema.org 
+<figure><figcaption>Using a schema.org
 <code><a href="http://schema.org/WatchAction">WatchAction</a></code> as a potential Activity</figcaption>
 <div class="nanotabs">
   <ul>
