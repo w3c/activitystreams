@@ -209,7 +209,7 @@
       </p>
 
       <p>
-        An <dfn title="Activity Streams Document">Activity Streams
+        An <dfn data-lt="Activity Streams Document">Activity Streams
         Document</dfn> is a JSON-LD document whose root value is an
         Activity Streams <a>Object</a> of any type and whose MIME media
         type is "<code>application/activity+json</code>".
@@ -823,7 +823,7 @@ _:b0 a as:Collection ;
     </p>
 
     <section id="object">
-      <h2><dfn title="Object" id="asobject">Object</dfn></h2>
+      <h2><dfn data-lt="Object" id="asobject">Object</dfn></h2>
 
       <p>
         The <code><a href="../activitystreams-vocabulary/#dfn-object">Object</a></code>
@@ -1717,7 +1717,7 @@ _:b0 a as:Object ;
     </section>
 
     <section id="link">
-      <h2><dfn title="Link">Link</dfn></h2>
+      <h2><dfn data-lt="Link">Link</dfn></h2>
 
       <p>
         A <code>Link</code> describes a qualified, indirect reference to another
@@ -1744,7 +1744,7 @@ _:b0 a as:Object ;
       </p>
 
       <p>
-        For example, all <a title="Object">Objects</a> can contain an
+        For example, all <a data-lt="Object">Objects</a> can contain an
         <code><a href="../activitystreams-vocabulary/#dfn-image-term">image</a></code>
         property whose value describes a graphical representation of the
         containing object.  This property will typically be used to provide the
@@ -2088,7 +2088,7 @@ _:b0 a as:Object ;
     </section>
 
     <section id="actors">
-      <h2><dfn title="Actor" id="actor">Actor</dfn></h2>
+      <h2><dfn data-lt="Actor" id="actor">Actor</dfn></h2>
 
       <p>
         Actor objects are specializations of the base <a>Object</a>
@@ -2400,7 +2400,7 @@ _:b0 a as:Create ;
     </section>
 
     <section id="activities">
-      <h2><dfn title="Activity" id="activity">Activity</dfn></h2>
+      <h2><dfn data-lt="Activity" id="activity">Activity</dfn></h2>
 
       <p>
         Activity objects are specializations of the base <a>Object</a>
@@ -2604,11 +2604,11 @@ _:b0 a as:Create ;
     </section>
 
     <section id="collections">
-      <h2><dfn title="Collection" id="collection">Collection</dfn></h2>
+      <h2><dfn data-lt="Collection" id="collection">Collection</dfn></h2>
 
       <p>
         Collection objects are a specialization of the base <code><a>Object</a></code>
-        that contain a list of other <a title="Object">Objects</a> or <a title="Link">Links</a>.
+        that contain a list of other <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>.
         The Collection object is used primarily as the root of an
         <a>Activity Streams Document</a>, but can also be used as the
         value of object properties.
@@ -2620,7 +2620,7 @@ _:b0 a as:Create ;
         in [[RFC5005]], Section 1.2. Specifically, collections have both a logical model
         and a physical serialization. While the logical model of a collection might
         contain a large number of member objects, any single serialized representation
-        might include only a subset of those objects, with "paging" <a title="Link">Links</a>
+        might include only a subset of those objects, with "paging" <a data-lt="Link">Links</a>
         used to reference additional serialized representations that include
         other subsets.  Such representations are known as "multi-page
         collections", with each serialized subset representing a single
@@ -3035,7 +3035,7 @@ _:c14n0 a as:OrderedCollection ;
     <li>
       This document redefines a large number of common properties
       defined originally as Objects in 1.0 as either
-      <a title="Object">Objects</a> or <a title="Link">Links</a>. The JSON-LD
+      <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>. The JSON-LD
       serialization allows such property values to be expressed as either an
       IRI String, an JSON object, or an Array of IRI Strings and JSON objects.
       Because the 1.0 values are a valid subset allowed by this specification,
@@ -3722,7 +3722,7 @@ _:b1
       <h2>The <code>application/activity+json</code> Media Type</h2>
 
       <p>
-        This specification registers the <code><dfn title="application/activity+json">application/activity+json</dfn></code> MIME Media Type specifically for identifying documents
+        This specification registers the <code><dfn data-lt="application/activity+json">application/activity+json</dfn></code> MIME Media Type specifically for identifying documents
         conforming to the Activity Streams 2.0 format.
       </p>
 
@@ -3782,7 +3782,7 @@ profile-URI   = URI</pre>
       <h2>The <code>application/stream+json</code> Media Type</h2>
 
       <p>
-        This specification registers the <code><dfn title="application/stream+json">application/stream+json</dfn></code>
+        This specification registers the <code><dfn data-lt="application/stream+json">application/stream+json</dfn></code>
         MIME Media Type specifically for identifying documents
         conforming to the JSON Activity Streams 1.0 [[!AS1]] format.
       </p>

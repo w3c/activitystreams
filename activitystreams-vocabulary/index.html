@@ -313,13 +313,13 @@
               <code><a>alias</a></code> |
               <code><a>attachment</a></code> |
               <code><a>attributedTo</a></code> |
-              <code><a title="content-term">content</a></code> |
+              <code><a data-lt="content-term">content</a></code> |
               <code><a>context</a></code> |
               <code><a>displayName</a></code> |
               <code><a>endTime</a></code> |
               <code><a>generator</a></code> |
               <code><a>icon</a></code> |
-              <code><a title="image-term">image</a></code> |
+              <code><a data-lt="image-term">image</a></code> |
               <code><a>inReplyTo</a></code> |
               <code><a>location</a></code> |
               <code><a>preview</a></code> |
@@ -328,7 +328,7 @@
               <code><a>scope</a></code> |
               <code><a>startTime</a></code> |
               <code><a>summary</a></code> |
-              <code><a title="tag-term">tag</a></code> |
+              <code><a data-lt="tag-term">tag</a></code> |
               <code><a>title</a></code> |
               <code><a>updated</a></code> |
               <code><a>url</a></code> |
@@ -550,8 +550,8 @@ _:b0 a as:Activity ;
           <td>Properties:</td>
           <td>
             <p>
-              <code><a title="actor-term">actor</a></code> |
-              <code><a title="object-term">object</a></code> |
+              <code><a data-lt="actor-term">actor</a></code> |
+              <code><a data-lt="object-term">object</a></code> |
               <code><a>target</a></code> |
               <code><a>result</a></code> |
               <code><a>origin</a></code> |
@@ -4598,7 +4598,7 @@ _:b0 a as:Dislike ;
       <p>
         All Actor Types inherit the properties of the base <a>Actor</a> class.
         Actors are objects that are capable of performing activities. The
-        value of the <a title="actor-term">actor</a> property MUST be a type
+        value of the <a data-lt="actor-term">actor</a> property MUST be a type
         of Actor.
       </p>
 
@@ -5147,8 +5147,8 @@ _:b0 a as:Relationship ;
             <td>
               <p>
                 Describes a relationship between two individuals.
-                The <code><a title="subject">subject</a></code> and
-                <code><a title="object-term">object</a></code> properties are
+                The <code><a data-lt="subject">subject</a></code> and
+                <code><a data-lt="object-term">object</a></code> properties are
                 used to identify the connected individuals.
               </p>
               <p>
@@ -5163,9 +5163,9 @@ _:b0 a as:Relationship ;
           <tr>
             <td>Properties:</td>
             <td>
-              <p><code><a title="subject">subject</a></code> |
-              <code><a title="object-term">object</a></code> |
-              <code><a title="relationship-term">relationship</a></code></p>
+              <p><code><a data-lt="subject">subject</a></code> |
+              <code><a data-lt="object-term">object</a></code> |
+              <code><a data-lt="relationship-term">relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
@@ -5749,7 +5749,7 @@ _:b0 a as:Folder ;
             <td>Notes:</td>
             <td>
               A type of <code><a>Collection</a></code> typically used to organize
-              objects such as <a title="Document">Documents</a>.
+              objects such as <a data-lt="Document">Documents</a>.
             </td>
           </tr>
           <tr>
@@ -5926,8 +5926,8 @@ _:b0 a as:Story ;
           <tr>
             <td>Notes:</td>
             <td>
-              A type of <a title="OrderedCollection">Ordered Collection</a>
-              usually containing <a title="Content">Content Items</a>
+              A type of <a data-lt="OrderedCollection">Ordered Collection</a>
+              usually containing <a data-lt="Content">Content Items</a>
               organized to "tell a story".
             </td>
           </tr>
@@ -7092,17 +7092,17 @@ _:b0 a as:Profile ;
         </div>
 
         <p>
-          The <code><a title="relationship-term">relationship</a></code>
+          The <code><a data-lt="relationship-term">relationship</a></code>
           property specifies the kind of relationship that exists between the
           two individuals identified by the
-          <code><a title="subject">subject</a></code> and
-          <code><a title="object">object</a></code> properties. Used together,
+          <code><a data-lt="subject">subject</a></code> and
+          <code><a data-lt="object">object</a></code> properties. Used together,
           these three properties form what is commonly known as a
           "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
-          where <code><a title="subject">subject</a></code> identifies the
-          subject, <code><a title="relationship-term">relationship</a></code>
+          where <code><a data-lt="subject">subject</a></code> identifies the
+          subject, <code><a data-lt="relationship-term">relationship</a></code>
           identifies the predicate, and
-          <code><a title="object-term">object</a></code> identifies the
+          <code><a data-lt="object-term">object</a></code> identifies the
           object.
         </p>
 
@@ -7142,7 +7142,7 @@ _:b0 a as:Profile ;
         <p>
           The Activity Streams vocabulary does not define normative values
           for use with the
-          <code><a title="relationship-term">relationship</a></code> property.
+          <code><a data-lt="relationship-term">relationship</a></code> property.
           It is expected that implementations will make use of several
           existing vocabularies that have been developed for the purpose
           of describing relationships. Examples of such vocabularies include
@@ -7386,7 +7386,7 @@ _:b0 a as:Profile ;
       <code><a>replies</a></code> |
       <code><a>scope</a></code> |
       <code><a>self</a></code> |
-      <code><a title="tag-term">tag</a></code> |
+      <code><a data-lt="tag-term">tag</a></code> |
       <code><a>target</a></code> |
       <code><a>to</a></code> |
       <code><a>url</a></code> |
@@ -7417,7 +7417,7 @@ _:b0 a as:Profile ;
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
       <code><a>subject</a></code> |
-      <code><a title="relationship-term">relationship</a></code> |
+      <code><a data-lt="relationship-term">relationship</a></code> |
       <code><a>describes</a></code>
     </p>
 
@@ -7444,7 +7444,7 @@ _:b0 a as:Profile ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="actor-term">actor</dfn></td>
+          <td rowspan="5" ><dfn data-lt="actor-term">actor</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#actor</code></td>
           <td rowspan="5">
@@ -9498,7 +9498,7 @@ _:b0 a as:Note ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="image-term">image</dfn></td>
+          <td rowspan="4" ><dfn data-lt="image-term">image</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#image</code></td>
           <td rowspan="4">
@@ -11314,7 +11314,7 @@ _:b0 a as:Collection ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="object-term">object</dfn></td>
+          <td rowspan="4" ><dfn data-lt="object-term">object</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#object</code></td>
           <td rowspan="4">
@@ -12656,7 +12656,7 @@ _:b0 a as:Collection ;
       </tbody>
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="tag-term">tag</dfn></td>
+          <td rowspan="4" ><dfn data-lt="tag-term">tag</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#tag</code></td>
           <td rowspan="4">
@@ -13676,7 +13676,7 @@ _:b0 a as:Place ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="content-term">content</dfn></td>
+          <td rowspan="4" ><dfn data-lt="content-term">content</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#content</code></td>
           <td rowspan="4">
@@ -14320,7 +14320,7 @@ _:b0 a as:Link ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;abbr property="hreflang" lang="" title="English">en&lt;/abbr> -
+  &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
 &lt;/span></pre>
   </div>
@@ -14815,7 +14815,7 @@ _:b0 a as:Place ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;abbr property="hreflang" lang="" title="English">en&lt;/abbr> -
+  &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
 &lt;/span></pre>
   </div>
@@ -15512,7 +15512,7 @@ _:b0 a as:Place ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;abbr property="hreflang" lang="" title="English">en&lt;/abbr> -
+  &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
   &lt;span property="rel" lang="">canonical&lt;/span>
   &lt;span property="rel" lang="">preview&lt;/span>
@@ -16571,7 +16571,7 @@ _:b0 a as:Relationship ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="relationship-term">relationship</dfn></td>
+          <td rowspan="4" ><dfn data-lt="relationship-term">relationship</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td>
             <code>http://www.w3.org/ns/activitystreams#relationship</code>
@@ -16667,8 +16667,8 @@ _:b0 a as:Relationship ;
             On a <code><a>Relationship</a></code> object, the
             <code>relationship</code> property identifies the kind of
             relationship that exists between
-            <code><a title="subject">subject</a></code> and
-            <code><a title="object-term">object</a></code>.
+            <code><a data-lt="subject">subject</a></code> and
+            <code><a data-lt="object-term">object</a></code>.
 
           </td>
         </tr>
@@ -16685,7 +16685,7 @@ _:b0 a as:Relationship ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn title="describes">describes</dfn></td>
+          <td rowspan="5" ><dfn data-lt="describes">describes</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td>
             <code>http://www.w3.org/ns/activitystreams#describes</code>
@@ -16846,7 +16846,7 @@ _:b0 a as:Profile ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="verb-term">verb</dfn></td>
+          <td rowspan="4" ><dfn data-lt="verb-term">verb</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#verb</code></td>
         </tr>
@@ -16869,7 +16869,7 @@ _:b0 a as:Profile ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn title="objectType-term">objectType</dfn></td>
+          <td rowspan="4" ><dfn data-lt="objectType-term">objectType</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#objectType</code></td>
         </tr>
@@ -16998,7 +16998,7 @@ _:b0 a as:Profile ;
         </tr>
         <tr>
           <td>Equivalent To:</td>
-          <td><code><a title="tag-term">tag</a></code></td>
+          <td><code><a data-lt="tag-term">tag</a></code></td>
         </tr>
       </tbody>
 
