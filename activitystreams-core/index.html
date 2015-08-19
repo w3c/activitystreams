@@ -1192,7 +1192,6 @@ _:b0 a as:Place, gr:Location ;
   "@graph": [
     {
       "@id": "http://example.org/#eric",
-      "@type": "as:Person",
       "as:displayName": {
         "@value": "Eric",
         "@language": "en"
@@ -1213,6 +1212,10 @@ _:b0 a as:Place, gr:Location ;
       },
       "as:object": {
         "@id": "entry:20150101000000"
+      },
+      "as:published": {
+        "@value": "2015-01-01T00:00:00Z",
+        "@type": "xsd:dateTime"
       }
     },
     {
@@ -1261,6 +1264,10 @@ _:b0 a as:Place, gr:Location ;
       },
       "as:object": {
         "@id": "entry:20150101000059"
+      },
+      "as:published": {
+        "@value": "2015-01-01T01:01:01Z",
+        "@type": "xsd:dateTime"
       }
     },
     {
@@ -1275,10 +1282,6 @@ _:b0 a as:Place, gr:Location ;
       "as:content": {
         "@value": "Remember... all I'm offering is the trooth. Nothing more.",
         "@language": "en"
-      },
-      "as:published": {
-        "@value": "2015-01-01T00:00:00Z",
-        "@type": "xsd:dateTime"
       }
     },
     {
@@ -1290,6 +1293,9 @@ _:b0 a as:Place, gr:Location ;
       "as:content": {
         "@value": "Remember... all I'm offering is the truth. Nothing more.",
         "@language": "en"
+      },
+      "prov:wasAttributedTo": {
+        "@id": "http://example.org/#eric"
       },
       "prov:wasRevisionOf": {
         "@id": "entry:20150101000000"
@@ -1304,24 +1310,27 @@ _:b0 a as:Place, gr:Location ;
   prefix="prov: http://www.w3.org/ns/prov# oa: http://www.w3.org/ns/oa#
   activity: http://example.org/activity/ entry: http://example.org/entry/">
   &lt;details>
-    &lt;summary about="[activity:20150101000000]" typeof="Create prov:Activity"
-      property="displayName">
-      &lt;a property="actor" href="http://example.org/#eric">Eric&lt;/a>
-        wrote a
-      &lt;a property="object" href="http://example.org/entry/20150101000000">note&lt;/a>.
-    &lt;/summary>
-    &lt;div about="[entry:20150101000000]" typeof="Note prov:Entity">
-      &lt;p property="content">Remember...
-        all I'm offering is the trooth. Nothing more.&lt;/p>
-      -- &lt;a property="attributedTo" href="http://example.org/#eric">Eric&lt;/a>
+    &lt;summary about="[activity:20150101000000]" typeof="Create prov:Activity">
       [&lt;time property="published" datatype="xsd:dateTime"
         datetime="2015-01-01T00:00:00Z">2015-01-01T00:00:00Z&lt;/time>]
+      &lt;span property="displayName">
+        &lt;a property="actor" href="http://example.org/#eric">Eric&lt;/a>
+          wrote a
+        &lt;a property="object" href="http://example.org/entry/20150101000000">note&lt;/a>.
+      &lt;/span>
+    &lt;/summary>
+    &lt;div about="[entry:20150101000000]" typeof="Note prov:Entity">
+      &lt;q property="content">Remember...
+        all I'm offering is the trooth. Nothing more.&lt;/q>
+      -- &lt;cite>&lt;a property="attributedTo" href="http://example.org/#eric">Eric&lt;/a>&lt;/cite>
     &lt;/div>
   &lt;/details>
 
   &lt;details>
     &lt;summary about="[activity:20150101000059]"
       typeof="Update prov:Activity oa:Annotate">
+      [&lt;time property="oa:annotatedAt" datatype="xsd:dateTime"
+        datetime="2015-01-01T00:00:59Z">2015-01-01T00:00:59Z&lt;/time>]
       &lt;span property="displayName">
         &lt;a rel="oa:annotatedBy"
           href="http://example.org/#eric">
@@ -1330,31 +1339,33 @@ _:b0 a as:Place, gr:Location ;
           href="http://example.org/entry/20150101000000">
           &lt;span rel="oa:motivatedBy" resource="oa:editing">
             edited&lt;/span>
-        &lt;/a>
+        &lt;/a> a
         &lt;a property="prov:generated oa:hasBody"
-          href="http://example.org/entry/20150101000059">note&lt;/a>
+          href="http://example.org/entry/20150101000059">note&lt;/a>.
       &lt;/span>
-      [&lt;time property="oa:annotatedAt" datatype="xsd:dateTime"
-       datetime="2015-01-01T00:00:59Z">2015-01-01T00:00:59Z&lt;/time>]
+      [&lt;a property="prov:wasInformedBy"
+        href="http://example.org/activity/20150101000000">was informed by&lt;/a>]
     &lt;/summary>
     &lt;div about="[entry:20150101000059]" typeof="Note prov:Entity">
-      &lt;p property="content">Remember...
-        all I'm offering is the truth. Nothing more.&lt;/p>
+      &lt;q property="content">Remember...
+        all I'm offering is the truth. Nothing more.&lt;/q>
+      -- &lt;cite>&lt;a property="prov:wasAttributedTo" href="http://example.org/#eric">Eric&lt;/a>&lt;/cite>
       [&lt;a property="prov:wasRevisionOf"
-        href="http://example.org/entry/20150101000000">was revision of&lt;/a>,
-       &lt;a property="prov:wasInformedBy"
-        href="http://example.org/activity/20150101000000">was informed by&lt;/a>]
+        href="http://example.org/entry/20150101000000">was revision of&lt;/a>]
     &lt;/div>
   &lt;/details>
 
   &lt;details>
-    &lt;summary about="[activity:20150101010101]" typeof="Delete prov:Activity"
-      property="displayName">
-      &lt;a property="actor"
-        href="http://example.org/#eric">Eric&lt;/a>
-      deleted a
-      &lt;a property="object"
-        href="http://example.org/entry/20150101000059">note&lt;/a>.
+    &lt;summary about="[activity:20150101010101]" typeof="Delete prov:Activity">
+      [&lt;time property="published" datatype="xsd:dateTime"
+        datetime="2015-01-01T01:01:01Z">2015-01-01T01:01:01Z&lt;/time>]
+      &lt;span property="displayName">
+        &lt;a property="actor"
+          href="http://example.org/#eric">Eric&lt;/a>
+        deleted a
+        &lt;a property="object"
+          href="http://example.org/entry/20150101000059">note&lt;/a>.
+      &lt;/span>
     &lt;/summary>
   &lt;/details>
 &lt;/div></pre></div>
@@ -1372,13 +1383,13 @@ activity:20150101000000
   a as:Create , prov:Activity ;
   as:displayName "Eric wrote a note."@en ;
   as:actor &lt;http://example.org/#eric> ;
-  as:object entry:20150101000000 .
+  as:object entry:20150101000000 ;
+  as:published "2015-01-01T00:00:00Z"^^xsd:dateTime .
 
 #The new note
 entry:20150101000000
-  a as:Note , oa:Annotate , prov:Entity ;
+  a as:Note , prov:Entity ;
   as:content "Remember... all I'm offering is the trooth. Nothing more."@en ;
-  as:published "2015-01-01T00:00:00Z"^^xsd:dateTime ;
   as:attributedTo &lt;http://example.org/#eric> .
 
 #The activity of editing a note because of spelling error
@@ -1397,17 +1408,18 @@ activity:20150101000059
 entry:20150101000059
   a as:Note , prov:Entity ;
   as:content "Remember... all I'm offering is the truth. Nothing more."@en ;
+  prov:wasAttributedTo &lt;http://example.org/#eric> ;
   prov:wasRevisionOf entry:20150101000000 .
 
 #An activity indicating the deletion of a note
 activity:20150101010101
   a as:Delete , prov:Activity ;
   as:displayName "Eric deleted a note."@en ;
+  as:published "2015-01-01T01:01:01Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/#eric> ;
   as:object entry:20150101000059 .
 
 &lt;http://example.org/#eric>
-  a as:Person ;
   as:displayName "Eric"@en .</pre></div>
 </div>
 </figure>
