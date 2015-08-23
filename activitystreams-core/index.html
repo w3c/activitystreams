@@ -1162,6 +1162,221 @@ _:b0 a as:Place, gr:Location ;
        favor the use of properties defined by the Activity Vocabulary.
      </p>
 
+     <p>
+        Similarly, it is possible use multiple vocabularies to cover particular
+        characteristics of the activities like data provenance and annotations,
+        which can compliment the Activity Vocabulary. For example: Eric writes a
+        short note to be shared with his followers. After posting the note, he
+        notices a spelling error. He edits the note and re-posts it. Later, Eric
+        decides that the information in the note is incorrect. He deletes the
+        note.
+    </p>
+
+     <figure><figcaption>A series of activities; creating, editing, and deleting a note.</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex7-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams#",
+    {
+      "oa": "http://www.w3.org/ns/oa#",
+      "prov": "http://www.w3.org/ns/prov#"
+    }
+  ],
+  "@type": "Collection",
+  "items": [
+    {
+      "@id": "http://example.org/activity/20150101000000",
+      "@type": [ "Create", "prov:Activity" ],
+      "actor": {
+        "@id": "http://example.org/#eric",
+        "displayName": "Eric"
+      },
+      "displayName": "Eric wrote a note.",
+      "object": {
+        "@id": "http://example.org/entry/20150101000000",
+        "@type": [ "Note", "prov:Entity" ],
+        "attributedTo": "http://example.org/#eric",
+        "content": "Remember... all I'm offering is the trooth. Nothing more."
+      },
+      "published": {
+        "@value": "2015-01-01T00:00:00Z",
+        "@type": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "http://example.org/activity/20150101000059",
+      "@type": [ "Update", "prov:Activity", "oa:Annotate" ],
+      "displayName": "Eric edited a note.",
+      "oa:annotatedAt": {
+        "@value": "2015-01-01T00:00:59Z",
+        "@type": "xsd:dateTime"
+      },
+      "oa:annotatedBy": "http://example.org/#eric",
+      "oa:hasBody": {
+        "@id": "http://example.org/entry/20150101000059",
+        "@type": [ "Note", "prov:Entity" ],
+        "content": "Remember... all I'm offering is the truth. Nothing more.",
+        "prov:wasAttributedTo": "http://example.org/#eric",
+        "prov:wasRevisionOf": "http://example.org/entry/20150101000000"
+      },
+      "oa:hasTarget": "http://example.org/entry/20150101000000",
+      "oa:motivatedBy": "oa:editing",
+      "prov:generated": "http://example.org/entry/20150101000059",
+      "prov:wasInformedBy": "http://example.org/activity/20150101000000"
+    },
+    {
+      "@id": "http://example.org/activity/20150101010101",
+      "@type": [ "Delete", "prov:Activity" ],
+      "actor": "http://example.org/#eric",
+      "displayName": "Eric deleted a note.",
+      "object": "http://example.org/entry/20150101000059",
+      "published": {
+        "@value": "2015-01-01T01:01:01Z",
+        "@type": "xsd:dateTime"
+      }
+    }
+  ]
+}</pre>
+  </div>
+  <div id="ex7-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  prefix="prov: http://www.w3.org/ns/prov# oa: http://www.w3.org/ns/oa#
+  activity: http://example.org/activity/ entry: http://example.org/entry/"
+  typeof="Collection">
+  &lt;ul rel="items">
+    &lt;li>&lt;a href="http://example.org/activity/20150101000000">20150101000000&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="http://example.org/activity/20150101000059">20150101000059&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="http://example.org/activity/20150101010101">20150101010101&lt;/a>&lt;/li>
+  &lt;/ul>
+  &lt;details>
+    &lt;summary about="[activity:20150101000000]" typeof="Create prov:Activity">
+      [&lt;time property="published" datatype="xsd:dateTime"
+        datetime="2015-01-01T00:00:00Z">2015-01-01T00:00:00Z&lt;/time>]
+      &lt;span property="displayName">
+        &lt;a property="actor" href="http://example.org/#eric">Eric&lt;/a>
+          wrote a
+        &lt;a property="object" href="http://example.org/entry/20150101000000">note&lt;/a>.
+      &lt;/span>
+    &lt;/summary>
+    &lt;div about="[entry:20150101000000]" typeof="Note prov:Entity">
+      &lt;q property="content">Remember...
+        all I'm offering is the trooth. Nothing more.&lt;/q>
+      -- &lt;cite>&lt;a property="attributedTo" href="http://example.org/#eric">Eric&lt;/a>&lt;/cite>
+    &lt;/div>
+  &lt;/details>
+
+  &lt;details>
+    &lt;summary about="[activity:20150101000059]"
+      typeof="Update prov:Activity oa:Annotate">
+      [&lt;time property="oa:annotatedAt" datatype="xsd:dateTime"
+        datetime="2015-01-01T00:00:59Z">2015-01-01T00:00:59Z&lt;/time>]
+      &lt;span property="displayName">
+        &lt;a rel="oa:annotatedBy"
+          href="http://example.org/#eric">
+          &lt;span property="displayName">Eric&lt;/span>&lt;/a>
+        &lt;a property="oa:hasTarget"
+          href="http://example.org/entry/20150101000000">
+          &lt;span rel="oa:motivatedBy" resource="oa:editing">
+            edited&lt;/span>
+        &lt;/a> a
+        &lt;a property="prov:generated oa:hasBody"
+          href="http://example.org/entry/20150101000059">note&lt;/a>.
+      &lt;/span>
+      [&lt;a property="prov:wasInformedBy"
+        href="http://example.org/activity/20150101000000">was informed by&lt;/a>]
+    &lt;/summary>
+    &lt;div about="[entry:20150101000059]" typeof="Note prov:Entity">
+      &lt;q property="content">Remember...
+        all I'm offering is the truth. Nothing more.&lt;/q>
+      -- &lt;cite>&lt;a property="prov:wasAttributedTo" href="http://example.org/#eric">Eric&lt;/a>&lt;/cite>
+      [&lt;a property="prov:wasRevisionOf"
+        href="http://example.org/entry/20150101000000">was revision of&lt;/a>]
+    &lt;/div>
+  &lt;/details>
+
+  &lt;details>
+    &lt;summary about="[activity:20150101010101]" typeof="Delete prov:Activity">
+      [&lt;time property="published" datatype="xsd:dateTime"
+        datetime="2015-01-01T01:01:01Z">2015-01-01T01:01:01Z&lt;/time>]
+      &lt;span property="displayName">
+        &lt;a property="actor"
+          href="http://example.org/#eric">Eric&lt;/a>
+        deleted a
+        &lt;a property="object"
+          href="http://example.org/entry/20150101000059">note&lt;/a>.
+      &lt;/span>
+    &lt;/summary>
+  &lt;/details>
+&lt;/div></pre></div>
+  <div id="ex7-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#> .
+@prefix prov: &lt;http://www.w3.org/ns/prov#> .
+@prefix oa: &lt;http://www.w3.org/ns/oa#> .
+@prefix activity: &lt;http://example.org/activity/> .
+@prefix entry: &lt;http://example.org/entry/> .
+
+[
+  a as:Collection ;
+  as:items
+    activity:20150101000000 ,
+    activity:20150101000059 ,
+    activity:20150101010101
+] .
+
+#An activity which creates a note
+activity:20150101000000
+  a as:Create , prov:Activity ;
+  as:displayName "Eric wrote a note." ;
+  as:actor &lt;http://example.org/#eric> ;
+  as:object entry:20150101000000 ;
+  as:published "2015-01-01T00:00:00Z"^^xsd:dateTime .
+
+#The new note
+entry:20150101000000
+  a as:Note , prov:Entity ;
+  as:content "Remember... all I'm offering is the trooth. Nothing more." ;
+  as:attributedTo &lt;http://example.org/#eric> .
+
+#The activity of editing a note because of spelling error
+activity:20150101000059
+  a as:Update , prov:Activity , oa:Annotate ;
+  as:displayName "Eric edited a note." ;
+  prov:wasInformedBy activity:20150101000000 ;
+  prov:generated entry:20150101000059 ;
+  oa:annotatedAt "2015-01-01T00:00:59Z"^^xsd:dateTime ;
+  oa:annotatedBy &lt;http://example.org/#eric> ;
+  oa:hasBody entry:20150101000059 ;
+  oa:hasTarget entry:20150101000000 ;
+  oa:motivatedBy oa:editing .
+
+#The updated note
+entry:20150101000059
+  a as:Note , prov:Entity ;
+  as:content "Remember... all I'm offering is the truth. Nothing more." ;
+  prov:wasAttributedTo &lt;http://example.org/#eric> ;
+  prov:wasRevisionOf entry:20150101000000 .
+
+#An activity indicating the deletion of a note
+activity:20150101010101
+  a as:Delete , prov:Activity ;
+  as:displayName "Eric deleted a note." ;
+  as:published "2015-01-01T01:01:01Z"^^xsd:dateTime ;
+  as:actor &lt;http://example.org/#eric> ;
+  as:object entry:20150101000059 .
+
+&lt;http://example.org/#eric>
+  as:displayName "Eric" .</pre></div>
+</div>
+</figure>
+
    </section>
 
     <section id="naturalLanguageValues">
@@ -1189,35 +1404,35 @@ _:b0 a as:Place, gr:Location ;
         <figcaption>A single displayName String value without language information:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex7-jsonld" style="display: block;">
+  <div id="ex8-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Object",
   <b>"displayName": "This is the title"</b>
 }</pre>
 </div>
-  <div id="ex7-microdata" style="display:none;">
+  <div id="ex8-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
   &lt;div itemprop="displayName">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex7-rdfa" style="display:none;">
+  <div id="ex8-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
   &lt;div property="displayName">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex7-microformats" style="display:none;">
+  <div id="ex8-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;div class="p-name">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex7-turtle" style="display:none;">
+  <div id="ex8-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1230,13 +1445,13 @@ _:b0 a as:Object ;
         <figcaption>Multiple, language-specific values:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex8-jsonld" style="display: block;">
+  <div id="ex9-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Object",
@@ -1247,28 +1462,28 @@ _:b0 a as:Object ;
   }</b>
 }</pre>
 </div>
-  <div id="ex8-microdata" style="display:none;">
+  <div id="ex9-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
   &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
   &lt;div itemprop="displayName" lang="fr">C'est le titre&lt;/div>
   &lt;div itemprop="displayName" lang="sp">Este es el titulo&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex8-rdfa" style="display:none;">
+  <div id="ex9-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
   &lt;div property="displayName" lang="en">This is the title&lt;/div>
   &lt;div property="displayName" lang="fr">C'est le titre&lt;/div>
   &lt;div property="displayName" lang="sp">Este es el titulo&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex8-microformats" style="display:none;">
+  <div id="ex9-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;div class="p-name" lang="en">This is the title&lt;/div>
   &lt;div class="p-name" lang="fr">C'est le titre&lt;/div>
   &lt;div class="p-name" lang="sp">Este es el titulo&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex8-turtle" style="display:none;">
+  <div id="ex9-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1312,13 +1527,13 @@ _:b0 a as:Object ;
         <figcaption>Establishing a default language context:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex10-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex10-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex10-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex9-jsonld" style="display: block;">
+  <div id="ex10-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
@@ -1328,22 +1543,22 @@ _:b0 a as:Object ;
   <b>"displayName": "This is the title"</b>
 }</pre>
 </div>
-  <div id="ex9-microdata" style="display:none;">
+  <div id="ex10-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
   &lt;div itemprop="displayName">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex9-rdfa" style="display:none;">
+  <div id="ex10-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
   &lt;div property="displayName">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex9-microformats" style="display:none;">
+  <div id="ex10-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry" lang="en">
   &lt;div class="p-name">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex9-turtle" style="display:none;">
+  <div id="ex10-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1362,13 +1577,13 @@ _:b0 a as:Object ;
         <figcaption>Specifying language in a JSON-LD value object:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex10-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex10-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex10-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex11-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex11-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex11-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex10-jsonld" style="display: block;">
+  <div id="ex11-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Object",
@@ -1378,22 +1593,22 @@ _:b0 a as:Object ;
   }</b>
 }</pre>
 </div>
-  <div id="ex10-microdata" style="display:none;">
+  <div id="ex11-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
   &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex10-rdfa" style="display:none;">
+  <div id="ex11-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
   &lt;div property="displayName" lang="en">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex10-microformats" style="display:none;">
+  <div id="ex11-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;div class="p-name" lang="en">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex10-turtle" style="display:none;">
+  <div id="ex11-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1415,13 +1630,13 @@ _:b0 a as:Object ;
         <figcaption>Excluding a natural language property from the language context:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex11-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex11-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex11-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex12-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex12-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex12-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex12-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex11-jsonld" style="display: block;">
+  <div id="ex12-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
@@ -1433,22 +1648,22 @@ _:b0 a as:Object ;
   }
 }</pre>
 </div>
-  <div id="ex11-microdata" style="display:none;">
+  <div id="ex12-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
   &lt;div itemprop="displayName" lang="">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex11-rdfa" style="display:none;">
+  <div id="ex12-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
   &lt;div property="displayName" lang="">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex11-microformats" style="display:none;">
+  <div id="ex12-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry" lang="en">
   &lt;div class="p-name" lang="">This is the title&lt;/div>
 &lt;/div></pre></div>
-  <div id="ex11-turtle" style="display:none;">
+  <div id="ex12-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1510,13 +1725,13 @@ _:b0 a as:Object ;
       containing an absolute or relative IRI.</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex12-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex12-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex12-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex12-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex13-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex13-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex13-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex13-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex13-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex12-jsonld" style="display: block;">
+  <div id="ex13-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Application",
@@ -1525,7 +1740,7 @@ _:b0 a as:Object ;
   <b>"image": "http://example.org/application/123.png"</b>
 }</pre>
 </div>
-  <div id="ex12-microdata" style="display:none;">
+  <div id="ex13-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
   itemid="http://example.org/application/123">
@@ -1533,7 +1748,7 @@ _:b0 a as:Object ;
   &lt;img itemprop="image"
        src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex12-rdfa" style="display:none;">
+  <div id="ex13-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
@@ -1541,14 +1756,14 @@ _:b0 a as:Object ;
   &lt;img rel="image"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex12-microformats" style="display:none;">
+  <div id="ex13-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-card">
   &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
   &lt;img class="u-photo"
        src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex12-turtle" style="display:none;">
+  <div id="ex13-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1564,13 +1779,13 @@ _:b0 a as:Object ;
       </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex13-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex13-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex13-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex13-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex13-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex14-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex14-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex14-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex14-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex13-jsonld" style="display: block;">
+  <div id="ex14-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Application",
@@ -1583,7 +1798,7 @@ _:b0 a as:Object ;
   }</b>
 }</pre>
 </div>
-  <div id="ex13-microdata" style="display:none;">
+  <div id="ex14-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
   itemid="http://example.org/application/123">
@@ -1593,7 +1808,7 @@ _:b0 a as:Object ;
     type="image/png"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex13-rdfa" style="display:none;">
+  <div id="ex14-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
@@ -1603,7 +1818,7 @@ _:b0 a as:Object ;
       rel="href" src="http://example.org/application/123.png" />
   &lt;/span>
 &lt;/div></pre></div>
-  <div id="ex13-microformats" style="display:none;">
+  <div id="ex14-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-card">
   &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
@@ -1611,7 +1826,7 @@ _:b0 a as:Object ;
     type="image/png"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex13-turtle" style="display:none;">
+  <div id="ex14-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1643,13 +1858,13 @@ _:b0 a as:Object ;
       </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex14-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex14-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex14-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex14-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex15-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex15-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex15-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex15-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex15-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex14-jsonld" style="display: block;">
+  <div id="ex15-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Application",
@@ -1665,7 +1880,7 @@ _:b0 a as:Object ;
   ]</b>
 }</pre>
 </div>
-  <div id="ex14-microdata" style="display:none;">
+  <div id="ex15-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
   itemid="http://example.org/application/123">
@@ -1677,7 +1892,7 @@ _:b0 a as:Object ;
     type="image/png"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex14-rdfa" style="display:none;">
+  <div id="ex15-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
@@ -1689,7 +1904,7 @@ _:b0 a as:Object ;
       rel="href" src="http://example.org/application/123.png" />
   &lt;/span>
 &lt;/div></pre></div>
-  <div id="ex14-microformats" style="display:none;">
+  <div id="ex15-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-card">
   &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
@@ -1699,7 +1914,7 @@ _:b0 a as:Object ;
     type="image/png"
     src="http://example.org/application/123.png" />
 &lt;/div></pre></div>
-  <div id="ex14-turtle" style="display:none;">
+  <div id="ex15-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1742,13 +1957,13 @@ _:b0 a as:Object ;
       <figure><figcaption></figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex15-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex15-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex15-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex15-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex15-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex16-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex16-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex16-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex16-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex16-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex15-jsonld" style="display: block;">
+  <div id="ex16-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Application",
@@ -1765,7 +1980,7 @@ _:b0 a as:Object ;
   ]
 }</pre>
 </div>
-  <div id="ex15-microdata" style="display:none;">
+  <div id="ex16-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Application"
   itemid="http://example.org/application/123">
@@ -1778,7 +1993,7 @@ _:b0 a as:Object ;
     src="http://example.org/application/123.png"
     rel="thumbnail" />
 &lt;/div></pre></div>
-  <div id="ex15-rdfa" style="display:none;">
+  <div id="ex16-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Application"
   resource="http://example.org/application/123">
@@ -1790,7 +2005,7 @@ _:b0 a as:Object ;
       rel="thumbnail" src="http://example.org/application/123.png" />
   &lt;/span>
 &lt;/div></pre></div>
-  <div id="ex15-microformats" style="display:none;">
+  <div id="ex16-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-card">
   &lt;a class="u-url p-name" href="http://example.org/application/123">My Application&lt;/a>
@@ -1800,7 +2015,7 @@ _:b0 a as:Object ;
        src="http://example.org/application/123.png"
        rel="thumbnail" />
 &lt;/div></pre></div>
-  <div id="ex15-turtle" style="display:none;">
+  <div id="ex16-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -1872,13 +2087,13 @@ _:b0 a as:Object ;
       <figure><figcaption>An Activity with a Person actor:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex16-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex16-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex16-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex16-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex16-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex17-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex17-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex17-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex17-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex17-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex16-jsonld" style="display: block;">
+  <div id="ex17-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Create",
@@ -1893,7 +2108,7 @@ _:b0 a as:Object ;
   }
 }</pre>
 </div>
-  <div id="ex16-microdata" style="display:none;">
+  <div id="ex17-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Create">
   &lt;div itemprop="actor" itemscope
@@ -1907,7 +2122,7 @@ _:b0 a as:Object ;
     "&lt;span itemprop="content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex16-rdfa" style="display:none;">
+  <div id="ex17-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;div property="actor" typeof="Person"
@@ -1919,7 +2134,7 @@ _:b0 a as:Object ;
     &lt;span property="content">This is a simple note&lt;/span>
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex16-microformats" style="display:none;">
+  <div id="ex17-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;span class="p-author h-card">
@@ -1932,7 +2147,7 @@ _:b0 a as:Object ;
     This is a simple note
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex16-turtle" style="display:none;">
+  <div id="ex17-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
   &lt;http://sally.example.org&gt; a as:Person ;
@@ -1950,13 +2165,13 @@ _:b0 a as:Create ;
       <figure><figcaption>An Activity with a Person actor extended with VCard properties:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex17-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex17-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex17-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex17-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex17-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex18-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex18-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex18-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex18-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex17-jsonld" style="display: block;">
+  <div id="ex18-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
@@ -1976,7 +2191,7 @@ _:b0 a as:Create ;
   }
 }</pre>
 </div>
-  <div id="ex17-microdata" style="display:none;">
+  <div id="ex18-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Create">
   &lt;div itemprop="actor" itemscope
@@ -1993,7 +2208,7 @@ _:b0 a as:Create ;
     "&lt;span itemprop="content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex17-rdfa" style="display:none;">
+  <div id="ex18-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;div property="actor" typeof="Person"
@@ -2006,7 +2221,7 @@ _:b0 a as:Create ;
     &lt;span property="content">This is a simple note&lt;/span>
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex17-microformats" style="display:none;">
+  <div id="ex18-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;div class="p-author h-card">
@@ -2019,7 +2234,7 @@ _:b0 a as:Create ;
     This is a simple note
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex17-turtle" style="display:none;">
+  <div id="ex18-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
@@ -2055,13 +2270,13 @@ _:c14n0 a as:Create ;
 <code>vcard:Individual</code>:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex18-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex18-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex18-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex18-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex19-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex19-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex19-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex19-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex19-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex18-jsonld" style="display: block;">
+  <div id="ex19-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
@@ -2081,7 +2296,7 @@ _:c14n0 a as:Create ;
   }
 }</pre>
 </div>
-  <div id="ex18-microdata" style="display:none;">
+  <div id="ex19-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Create">
@@ -2101,7 +2316,7 @@ _:c14n0 a as:Create ;
     "&lt;span itemprop="content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex18-rdfa" style="display:none;">
+  <div id="ex19-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
   &lt;div property="actor" typeof="Person http://www.w3.org/2006/vcard/ns#Individual"
@@ -2114,7 +2329,7 @@ _:c14n0 a as:Create ;
     "&lt;span property="content">This is a simple note&lt;/span>"
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex18-microformats" style="display:none;">
+  <div id="ex19-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;div class="u-author h-card p-vcard-individual">
@@ -2128,7 +2343,7 @@ _:c14n0 a as:Create ;
     This is a simple note
   &lt;/div>
 &lt;/div></pre></div>
-  <div id="ex18-turtle" style="display:none;">
+  <div id="ex19-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
@@ -2183,13 +2398,13 @@ _:b0 a as:Create ;
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex19-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex19-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex19-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex19-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex19-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex20-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex20-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex20-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex20-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex19-jsonld" style="display: block;">
+  <div id="ex20-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Like",
@@ -2200,7 +2415,7 @@ _:b0 a as:Create ;
 }
 </code></pre>
 </div>
-  <div id="ex19-microdata" style="display:none;">
+  <div id="ex20-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Like">
   &lt;a itemprop="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
@@ -2210,7 +2425,7 @@ _:b0 a as:Create ;
   &lt;/a>
   &lt;meta itemprop="published" content="2014-09-30T12:34:56Z" />
 &lt;/div></pre></div>
-  <div id="ex19-rdfa" style="display:none;">
+  <div id="ex20-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Like">
   &lt;a property="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
@@ -2222,7 +2437,7 @@ _:b0 a as:Create ;
     2014-09-30T12:34:56Z
   &lt;/time>
 &lt;/div></pre></div>
-  <div id="ex19-microformats" style="display:none;">
+  <div id="ex20-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry e-content p-name">
   &lt;a class="h-card u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
@@ -2234,7 +2449,7 @@ _:b0 a as:Create ;
     &lt;time class="dt-published" datetime="2014-09-30T12:34:56Z">September 30th, 2014 at 12:34 PM&lt;/time>
   &lt;/footer>
 &lt;/div></pre></div>
-  <div id="ex19-turtle" style="display:none;">
+  <div id="ex20-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -2275,13 +2490,13 @@ _:b0 a as:Create ;
        a <code>http://schema.org/LikeAction</code>:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex20-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex20-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex20-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex20-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex21-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex21-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex21-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex21-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex20-jsonld" style="display: block;">
+  <div id="ex21-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": ["Like", "http://schema.org/LikeAction"],
@@ -2291,7 +2506,7 @@ _:b0 a as:Create ;
   "published": "2014-09-30T12:34:56Z"
 }</code></pre>
 </div>
-  <div id="ex20-microdata" style="display:none;">
+  <div id="ex21-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Like http://schema.org/LikeAction">
@@ -2302,7 +2517,7 @@ _:b0 a as:Create ;
   &lt;/a>
   &lt;meta itemprop="published" content="2014-09-30T12:34:56Z" />
 &lt;/div></pre></div>
-  <div id="ex20-rdfa" style="display:none;">
+  <div id="ex21-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Like http://schema.org/LikeAction">
   &lt;a property="actor" href="http://example.org/profiles/joe">Joe&lt;/a>
@@ -2314,7 +2529,7 @@ _:b0 a as:Create ;
     2014-09-30T12:34:56Z
   &lt;/time>
 &lt;/div></pre></div>
-  <div id="ex20-microformats" style="display:none;">
+  <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry e-content p-name">
   &lt;a class="h-card u-author" href="http://example.org/profiles/joe">Joe&lt;/a>
@@ -2326,7 +2541,7 @@ _:b0 a as:Create ;
     &lt;time class="dt-published" datetime="2014-09-30T12:34:56Z">September 30th, 2014 at 12:34 PM&lt;/time>
   &lt;/footer>
 &lt;/div></pre></div>
-  <div id="ex20-turtle" style="display:none;">
+  <div id="ex21-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -2420,13 +2635,13 @@ _:b0 a as:Create ;
       <figure><figcaption>The following is a simple unordered collection with paging:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex21-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex21-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex21-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex21-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex21-jsonld" style="display: block;">
+  <div id="ex22-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
@@ -2443,7 +2658,7 @@ _:b0 a as:Create ;
   ]
 }</pre>
 </div>
-  <div id="ex21-microdata" style="display:none;">
+  <div id="ex22-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="10" />
@@ -2460,7 +2675,7 @@ _:b0 a as:Create ;
     &lt;/li&lt;
   &lt;ul>
 &lt;/div></pre></div>
-  <div id="ex21-rdfa" style="display:none;">
+  <div id="ex22-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
   &lt;p>This collection has
@@ -2476,7 +2691,7 @@ _:b0 a as:Create ;
     &lt;/li>
   &lt;ol>
 &lt;/div></pre></div>
-  <div id="ex21-microformats" style="display:none;">
+  <div id="ex22-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-feed">
   &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
@@ -2489,7 +2704,7 @@ _:b0 a as:Create ;
     &lt;/li&lt;
   &lt;ul>
 &lt;/div></pre></div>
-  <div id="ex21-turtle" style="display:none;">
+  <div id="ex22-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -2510,13 +2725,13 @@ _:b0 a as:Collection ;
       <figure><figcaption>The following is a simple ordered collection with paging:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex23-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex23-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex23-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex23-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex22-jsonld" style="display: block;">
+  <div id="ex23-jsonld" style="display: block;">
 <pre class="example highlight json">
 {
   "@context": "http://www.w3.org/ns/activitystreams",
@@ -2536,7 +2751,7 @@ _:b0 a as:Collection ;
 }
 </pre>
 </div>
-  <div id="ex22-microdata" style="display:none;">
+  <div id="ex23-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
   &lt;meta itemprop="totalItems" content="10" />
@@ -2554,7 +2769,7 @@ _:b0 a as:Collection ;
     &lt;/li&lt;
   &lt;ol>
 &lt;/div></pre></div>
-  <div id="ex22-rdfa" style="display:none;">
+  <div id="ex23-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="OrderedCollection">
   &lt;meta property="totalItems" content="10" />
@@ -2572,7 +2787,7 @@ _:b0 a as:Collection ;
     &lt;/li>
   &lt;ol>
 &lt;/div></pre></div>
-  <div id="ex22-microformats" style="display:none;">
+  <div id="ex23-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-feed">
   &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
@@ -2585,7 +2800,7 @@ _:b0 a as:Collection ;
     &lt;/li&lt;
   &lt;ol>
 &lt;/div></pre></div>
-  <div id="ex22-turtle" style="display:none;">
+  <div id="ex23-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
@@ -2876,13 +3091,13 @@ _:c14n0 a as:OrderedCollection ;
         <figure><figcaption>The Equivalent <code>Place</code> alternative:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex23-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex23-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex23-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex23-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex24-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex24-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex24-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex24-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex23-jsonld" style="display: block;">
+  <div id="ex24-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Place",
@@ -2890,25 +3105,25 @@ _:c14n0 a as:OrderedCollection ;
   "longitude": -119.77
 }</pre>
 </div>
-  <div id="ex23-microdata" style="display:none;">
+  <div id="ex24-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;meta itemprop="latitude" content="36.74" />
   &lt;meta itemprop="longitude" content="-119.77" />
 &lt;/div></pre></div>
-  <div id="ex23-rdfa" style="display:none;">
+  <div id="ex24-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Place">
   &lt;span property="latitude" datatype="xsd:float">36.74&lt;/span>
   &lt;span property="longitude" datatype="xsd:float">-119.77&lt;/span>
 &lt;/div></pre></div>
-  <div id="ex23-microformats" style="display:none;">
+  <div id="ex24-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-geo">
   &lt;span class="p-latitude">36.74&lt;/span>
   &lt;span class="p-longitude">-119.77&lt;/span>
 &lt;/div></pre></div>
-  <div id="ex23-turtle" style="display:none;">
+  <div id="ex24-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -2936,13 +3151,13 @@ _:c14n0 a as:Place;
         <figure><figcaption>The Equivalent GeoSparql Well-Known-Text alternative:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex24-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex24-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex24-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex24-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex25-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex25-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex25-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex25-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex25-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex24-jsonld" style="display: block;">
+  <div id="ex25-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
     "http://www.w3.org/ns/activitystreams",
@@ -2952,14 +3167,14 @@ _:c14n0 a as:Place;
   "gsp:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
 }</pre>
 </div>
-  <div id="ex24-microdata" style="display:none;">
+  <div id="ex25-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.opengis.net/ont/geosparql#Geometry">
   &lt;meta
     itemprop="http://www.opengis.net/ont/geosparql#asWKT"
     content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
 &lt;/div></pre></div>
-  <div id="ex24-rdfa" style="display:none;">
+  <div id="ex25-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="http://www.opengis.net/ont/geosparql#Geometry">
@@ -2968,14 +3183,14 @@ _:c14n0 a as:Place;
     content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
     datatype="http://www.opengis.net/ont/geosparql#wktLiteral" />
 &lt;/div></pre></div>
-  <div id="ex24-microformats" style="display:none;">
+  <div id="ex25-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-geo">
   &lt;meta
     name="wkt"
     content="Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))" />
 &lt;/div></pre></div>
-  <div id="ex24-turtle" style="display:none;">
+  <div id="ex25-turtle" style="display:none;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix gsp: &lt;http://www.opengis.net/ont/geosparql#&gt; .
@@ -3262,11 +3477,11 @@ _:c14n0 a gsp:Geometry ;
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex25-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex25-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex25-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex26-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex26-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex26-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex25-jsonld" style="display: block;">
+  <div id="ex26-jsonld" style="display: block;">
 <pre class="example highlight json"
 >{
   "@context": "http://www.w3.org/ns/activitystreams",
@@ -3284,7 +3499,7 @@ _:c14n0 a gsp:Geometry ;
     "alias": "#givingthanks"
   }
 }</pre></div>
-  <div id="ex25-rdfa" style="display: block;">
+  <div id="ex26-rdfa" style="display: block;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
   &lt;p property="content" datatype="rdf:HTML">Thank you
@@ -3298,7 +3513,7 @@ _:c14n0 a gsp:Geometry ;
   &lt;/p>
 &lt;/div>
 </pre></div>
-  <div id="ex25-turtle" style="display: block;">
+  <div id="ex26-turtle" style="display: block;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
@@ -3348,11 +3563,11 @@ _:b1
     <figure><figcaption>Mentions and Tags within an Activity Streams Note</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex26-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex26-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex26-turtle" class="selected">Turtle</a></li>
+    <li><a href="#ex27-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex27-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex27-turtle" class="selected">Turtle</a></li>
   </ul>
-  <div id="ex26-jsonld" style="display: block;">
+  <div id="ex27-jsonld" style="display: block;">
 <pre class="example highlight json"
 >{
   "@context": "http://www.w3.org/ns/activitystreams",
@@ -3370,7 +3585,7 @@ _:b1
     }
   ]
 }</pre></div>
-  <div id="ex26-rdfa" style="display: block;">
+  <div id="ex27-rdfa" style="display: block;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
   &lt;p property="content">Thank you
@@ -3387,7 +3602,7 @@ _:b1
   &lt;/p>
 &lt;/div>
 </pre></div>
-  <div id="ex26-turtle" style="display: block;">
+  <div id="ex27-turtle" style="display: block;">
 <pre class="example highlight turtle"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
