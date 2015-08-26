@@ -117,7 +117,7 @@ as:current a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:Link )
+    owl:unionOf ( as:CollectionPage as:Link )
   ] .
 
 as:first a owl:FunctionalProperty ,
@@ -126,7 +126,7 @@ as:first a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:Link )
+    owl:unionOf ( as:CollectionPage as:Link )
   ] .
 
 as:generator a owl:ObjectProperty ;
@@ -181,7 +181,7 @@ as:last a owl:FunctionalProperty ,
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:Link )
+    owl:unionOf ( as:CollectionPage as:Link )
   ] .
 
 as:location a owl:ObjectProperty ;
@@ -195,10 +195,10 @@ as:location a owl:ObjectProperty ;
 as:next a owl:FunctionalProperty ,
           owl:ObjectProperty ;
   rdfs:label "next"@en ;
-  rdfs:domain as:Collection ;
+  rdfs:domain as:CollectionPage ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:Link )
+    owl:unionOf ( as:CollectionPage as:Link )
   ] .
 
 as:object a owl:ObjectProperty ;
@@ -233,10 +233,10 @@ as:anyOf a owl:ObjectProperty ;
 as:prev a owl:FunctionalProperty ,
           owl:ObjectProperty ;
   rdfs:label "prev"@en ;
-  rdfs:domain as:Collection ;
+  rdfs:domain as:CollectionPage ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Collection as:Link )
+    owl:unionOf ( as:CollectionPage as:Link )
   ] .
 
 as:preview a owl:ObjectProperty ;
@@ -280,10 +280,10 @@ as:scope a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
-as:self a owl:FunctionalProperty ,
-          owl:ObjectProperty ;
-  rdfs:label "self"@en ;
-  rdfs:domain as:Collection ;
+as:partOf a owl:FunctionalProperty ,
+            owl:ObjectProperty ;
+  rdfs:label "partOf"@en ;
+  rdfs:domain as:CollectionPage ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Collection as:Link )
@@ -490,13 +490,6 @@ as:id a owl:DatatypeProperty ,
     owl:unionOf (as:Link as:Object)
   ] .
 
-as:itemsPerPage a owl:DatatypeProperty ,
-          owl:FunctionalProperty ;
-  rdfs:label "itemsPerPage"@en ;
-  rdfs:comment "The maximum number of items per page in a logical Collection"@en ;
-  rdfs:range xsd:nonNegativeInteger ;
-  rdfs:domain as:Collection .
-
 as:latitude a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
   rdfs:label "latitude"@en ;
@@ -583,7 +576,7 @@ as:startIndex a owl:DatatypeProperty ,
   rdfs:label "startIndex"@en ;
   rdfs:comment "In a strictly ordered logical collection, specifies the index position of the first item in the items list"@en ;
   rdfs:range xsd:nonNegativeInteger ;
-  rdfs:domain as:OrderedCollection .
+  rdfs:domain as:OrderedCollectionPage .
 
 as:startTime a owl:DatatypeProperty ,
        owl:FunctionalProperty ;
@@ -745,6 +738,16 @@ as:Collection a owl:Class ;
   rdfs:label "Collection"@en ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "An ordered or unordered collection of Objects or Links"@en .
+
+as:CollectionPage a owl:Class ;
+  rdfs:label "CollectionPage"@en ;
+  rdfs:subClassOf as:Collection ;
+  rdfs:comment "A subset of items from a Collection"@en .
+
+as:OrderedCollectionPage a owl:Class ;
+  rdfs:label "OrderedCollectionPage"@en;
+  rdfs:subClassOf as:OrderedCollection, as:CollectionPage ;
+  rdfs:comment "An ordered subset of items from an OrderedCollection"@en .
 
 as:Relationship a owl:Class, rdf:Statement ;
   rdfs:label "Relationship"@en ;

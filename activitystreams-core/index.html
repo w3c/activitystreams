@@ -807,7 +807,7 @@ _:b0 a as:Collection ;
     <p>
       The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
       defines the abstract model for Activity Streams 2.0. The vocabulary
-      is segmented into a set of seven core classes and an extended set of
+      is segmented into a set of nine core classes and an extended set of
       Activity and Object types common to most social Web applications. The
       core classes include:
         <a>Object</a>,
@@ -815,8 +815,10 @@ _:b0 a as:Collection ;
         <a>Actor</a>,
         <a>Activity</a>,
         <a href="../activitystreams-vocabulary/#dfn-intransitiveactivity">IntransitiveActivity</a>,
-        <a>Collection</a>
-        and <a>OrderedCollection</a>.
+        <a>Collection</a>,
+        <a>OrderedCollection</a>,
+        <a>CollectionPage</a>,
+        and <a>OrderedCollectionPage</a>.
       Each of these classes is described and illustrated below. The extended
       Activity and Object types are defined normatively in the Activity
       Vocabulary specification.
@@ -1850,7 +1852,7 @@ _:b0 a as:Object ;
         <code><a href="../activitystreams-vocabulary/#dfn-application">Application</a>
         </code> |
         <code><a href="../activitystreams-vocabulary/#dfn-group">Group</a></code> |
-        <code><a href="../activitystreams-vocabulary/#dfn-organization">Organization</a></code>
+        <code><a href="../activitystreams-vocabulary/#dfn-organization">Organization</a></code> |
         <code><a href="../activitystreams-vocabulary/#dfn-person">Person</a></code> |
         <code><a href="../activitystreams-vocabulary/#dfn-process">Process</a></code> |
         <code><a href="../activitystreams-vocabulary/#dfn-service">Service</a></code>.
@@ -2357,67 +2359,46 @@ _:b0 a as:Create ;
       <h2><dfn data-lt="Collection" id="collection">Collection</dfn></h2>
 
       <p>
-        Collection objects are a specialization of the base <code><a>Object</a></code>
-        that contain a list of other <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>.
-        The Collection object is used primarily as the root of an
-        <a>Activity Streams Document</a>, but can also be used as the
-        value of object properties.
+        <code>Collection</code> objects are a specialization of the
+        base <code><a>Object</a></code> that act as a container for other
+        <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>.
       </p>
 
       <p>
-        The model for collections within the Activity Vocabulary is designed
-        largely around the abstract model of "logical feeds" and "pages" discussed
-        in [[RFC5005]], Section 1.2. Specifically, collections have both a logical model
-        and a physical serialization. While the logical model of a collection might
-        contain a large number of member objects, any single serialized representation
-        might include only a subset of those objects, with "paging" <a data-lt="Link">Links</a>
-        used to reference additional serialized representations that include
-        other subsets.  Such representations are known as "multi-page
-        collections", with each serialized subset representing a single
-        "page".
-      </p>
-
-      <p>
-        In addition to the common properties shared by all <a>Object</a> instances,
-        <code>Collection</code> objects set of properties defined by the
-        <a href="../activitystreams-vocabulary/">Vocabulary</a>. These include:
+        In addition to the base properties inherited by all
+        <code><a data-lt="Object">Objects</a></code>, all
+        <code><a>Collection</a></code> types contain the additional properties:
         <code>
           <a href="../activitystreams-vocabulary/#dfn-items">items</a> |
           <a href="../activitystreams-vocabulary/#dfn-totalitems">totalItems</a> |
-          <a href="../activitystreams-vocabulary/#dfn-itemsperpage">itemsPerPage</a> |
-          <a href="../activitystreams-vocabulary/#dfn-startindex">startIndex</a> |
-          <a href="../activitystreams-vocabulary/#dfn-current">current</a> |
-          <a href="../activitystreams-vocabulary/#dfn-next">next</a> |
-          <a href="../activitystreams-vocabulary/#dfn-prev">prev</a> |
           <a href="../activitystreams-vocabulary/#dfn-first">first</a> |
           <a href="../activitystreams-vocabulary/#dfn-last">last</a> |
-          <a href="../activitystreams-vocabulary/#dfn-self">self</a>
+          <a href="../activitystreams-vocabulary/#dfn-current">current</a>
         </code>
       </p>
 
       <p>
-        Collections can be ordered or unordered. In the JSON-LD serialization,
-        the unordered members of a Collection are represented using the
-        <code>items</code> property while the ordered members are represented using
-        the <code>orderedItems</code> property. The normative JSON-LD @context
-        definition maps both the <code>items</code> and <code>orderedItems</code>
-        properties to the Activity Vocabulary
-        <code><a href="../activitystreams-vocabulary/#dfn-items">items</a></code>
-        term. However, the <code>orderedItems</code> property is defined in
-        the JSON-LD @context as <code>@container = @list</code>, indicating that the
-        items are strictly ordered.
+        The items within a <code><a>Collection</a></code> can be ordered or
+        unordered. The <code><dfn>OrderedCollection</dfn></code> type can be
+        used to identify a Collection whose items are always ordered. In the
+        JSON-LD serialization, the unordered items of a Collection are
+        represented using the <code>items</code> property while ordered items
+        are represented using the <code>orderedItems</code> property.
       </p>
 
       <p>
-        Note that when using <code>orderedItems</code> within a <code>Collection</code>
-        object, the order imposed on the items applies only to the subset of items
-        directly contained within the one <code>Collection</code> object. Implementations
-        MAY use the <code><a href="../activitystreams-vocabulary/#dfn-orderedcollection"><dfn>OrderedCollection</dfn></a></code>
-        class to identify collections whose entire logical set of members are
-        strictly ordered.
+        The normative JSON-LD @context definition maps each of the
+        <code>items</code> and <code>orderedItems</code> properties to the
+        Activity Vocabulary <code><a href="../activitystreams-vocabulary/#dfn-items">items</a></code>
+        term. The <code>orderedItems</code> term, however, is defined in
+        the JSON-LD @context as <code>@container = @list</code>, indicating
+        that it's members are strictly ordered.
       </p>
 
-      <figure><figcaption>The following is a simple unordered collection with paging:</figcaption>
+      <figure>
+        <figcaption>
+          The following is a simple unordered collection:
+        </figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
@@ -2430,14 +2411,16 @@ _:b0 a as:Create ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
-  "totalItems": 10,
-  "itemsPerPage": 1,
-  "next": "http://example.org/foo?page=2",
-  "self": "http://example.org/foo?page=1",
+  "totalItems": 2,
   "items": [
     {
       "@type": "Create",
-      "actor": "http://www.test.example/sally,
+      "actor": "http://www.test.example/sally",
+      "object": "http://example.org/foo"
+    },
+    {
+      "@type": "Like",
+      "actor": "http://www.test.example/joe",
       "object": "http://example.org/foo"
     }
   ]
@@ -2446,45 +2429,53 @@ _:b0 a as:Create ;
   <div id="ex21-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="10" />
-  &lt;meta itemprop="itemsPerPage" content="1" />
-  &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a itemprop="self" href="http://example.org/foo?page=1" />
-    http://example.org/foo?page=1
-  &lt;/a>
+  &lt;meta itemprop="totalItems" content="2" />
   &lt;ul>
-    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
-      &lt;a itemprop="actor" href="http://www.test.example/sally>Sally&lt;/a>
+    &lt;li itemprop="items" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Create"&gt;
+      &lt;a itemprop="actor" href="http://www.test.example/sally">Sally&lt;/a>
       created
-      &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
-    &lt;/li&lt;
+      &lt;a itemprop="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&gt;
+    &lt;li itemprop="items" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Like"&gt;
+      &lt;a itemprop="actor" href="http://www.test.example/joe">Joe&lt;/a>
+      liked
+      &lt;a itemprop="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&gt;
   &lt;ul>
 &lt;/div></pre></div>
   <div id="ex21-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Collection">
-  &lt;p>This collection has
-  &lt;span property="totalItems" datatype="xsd:xsd:nonNegativeInteger">10&lt;/span> items.
-  Displaying &lt;span property="itemsPerPage" datatype="xsd:xsd:nonNegativeInteger">1&lt;/span> item per page.&lt;/p>
-  &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a property="self" href="http://example.org/foo?page=1">http://example.org/foo?page=1&lt;/a>
-  &lt;ol>
-    &lt;li property="items" typeof="Create">
+  &lt;meta property="totalItems" content="2" />
+  &lt;ul>
+    &lt;li property="items" typeof="Create"&gt;
       &lt;a property="actor" href="http://www.test.example/sally">Sally&lt;/a>
       created
       &lt;a property="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
-    &lt;/li>
-  &lt;ol>
+    &lt;/li&gt;
+    &lt;li property="items" typeof="Like"&gt;
+      &lt;a property="actor" href="http://www.test.example/joe">Joe&lt;/a>
+      created
+      &lt;a property="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&gt;
+  &lt;ul>
 &lt;/div></pre></div>
   <div id="ex21-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-feed">
-  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a class="u-url" href="http://example.org/foo" >This Collection&lt;/a>
   &lt;ul>
     &lt;li class="h-entry">
-      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
+      &lt;a class="h-card u-author" href="http://www.test.example/sally">
+        Sally&lt;/a>
       created
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&lt;
+    &lt;li class="h-entry">
+      &lt;a class="h-card u-author" href="http://www.test.example/joe">
+        Joe&lt;/a>
+      liked
       &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li&lt;
   &lt;ul>
@@ -2495,19 +2486,23 @@ _:b0 a as:Create ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Collection ;
-  as:totalItems "10"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
-  as:next &lt;http://example.org/foo?page=2&gt; ;
-  as:self &lt;http://example.org/foo?page=1&gt; ;
+  as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:items [
-      a as:Create;
-        as:actor &lt;http://www.test.example/sallygt; ;
-        as:object &lt;http://example.org/foo&gt;
-  ] .</pre></div>
+    a as:Create;
+      as:actor &lt;http://www.test.example/sally&gt; ;
+      as:object &lt;http://example.org/foo&gt;
+    ], [
+    a as:Like;
+      as:actor &lt;http://www.test.example/joe&gt; ;
+      as:object &lt;http://example.org/foo&gt;
+    ] .</pre></div>
 </div>
 </figure>
 
-      <figure><figcaption>The following is a simple ordered collection with paging:</figcaption>
+      <figure>
+        <figcaption>
+          The following is a simple ordered collection:
+        </figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
@@ -2521,15 +2516,16 @@ _:b0 a as:Collection ;
 {
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "OrderedCollection",
-  "totalItems": 10,
-  "itemsPerPage": 1,
-  "next": "http://example.org/foo?page=2",
-  "self": "http://example.org/foo?page=1",
-  "startIndex": 0,
+  "totalItems": 2,
   "orderedItems": [
     {
       "@type": "Create",
-      "actor": "http://www.test.example/sally,
+      "actor": "http://www.test.example/sally",
+      "object": "http://example.org/foo"
+    },
+    {
+      "@type": "Like",
+      "actor": "http://www.test.example/joe",
       "object": "http://example.org/foo"
     }
   ]
@@ -2539,35 +2535,33 @@ _:b0 a as:Collection ;
   <div id="ex22-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
-  &lt;meta itemprop="totalItems" content="10" />
-  &lt;meta itemprop="itemsPerPage" content="1" />
-  &lt;meta itemprop="startIndex" content="0" />
-  &lt;a itemprop="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a itemprop="self" href="http://example.org/foo?page=1">
-    http://example.org/foo?page=1
-  &lt;/a>
+  &lt;meta itemprop="totalItems" content="2" />
   &lt;ol>
-    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&lt;
-      &lt;a itemprop="actor" href="http://www.test.example/sally>Sally&lt;/a>
+    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&gt;
+      &lt;a itemprop="actor" href="http://www.test.example/sally">Sally&lt;/a>
       created
-      &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
-    &lt;/li&lt;
+      &lt;a itemprop="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&gt;
+    &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Like"&gt;
+      &lt;a itemprop="actor" href="http://www.test.example/joe">Joe&lt;/a>
+      liked
+      &lt;a itemprop="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&gt;
   &lt;ol>
 &lt;/div></pre></div>
   <div id="ex22-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="OrderedCollection">
-  &lt;meta property="totalItems" content="10" />
-  &lt;meta property="itemsPerPage" content="1" />
-  &lt;meta property="startIndex" content="0" />
-  &lt;a property="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a property="self" href="http://example.org/foo?page=1">
-    http://example.org/foo?page=1
-  &lt;/a>
+  &lt;meta property="totalItems" content="2" />
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Create">
       &lt;a property="actor" href="http://www.test.example/sally">Sally&lt;/a>
       created
+      &lt;a property="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li>
+    &lt;li property="items" inlist="" typeof="Like">
+      &lt;a property="actor" href="http://www.test.example/joe">Joe&lt;/a>
+      liked
       &lt;a property="object" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li>
   &lt;ol>
@@ -2575,12 +2569,17 @@ _:b0 a as:Collection ;
   <div id="ex22-microformats" style="display:none;">
 <pre class="example highlight html"
 >&lt;div class="h-feed">
-  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
-  &lt;a class="u-url" href="http://example.org/foo">This Collection&lt;/a>
   &lt;ol>
     &lt;li class="h-entry"&lt;
-      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
+      &lt;a class="h-card u-author" href="http://www.test.example/sally">
+        Sally&lt;/a>
       created
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&lt;
+    &lt;li class="h-entry"&lt;
+      &lt;a class="h-card u-author" href="http://www.test.example/joe">
+        Joe&lt;/a>
+      liked
       &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
     &lt;/li&lt;
   &lt;ol>
@@ -2592,44 +2591,243 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:c14n0 a as:OrderedCollection ;
-  as:totalItems "10"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
-  as:startIndex "0"^^xsd:nonNegativeInteger ;
-  as:next &lt;http://example.org/foo?page=2&gt; ;
-  as:self &lt;http://example.org/foo?page=1&gt; ;
+  as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:items (
     [
       a as:Create;
-      as:actor &lt;http://www.test.example/sallygt; ;
+      as:actor &lt;http://www.test.example/sally&gt; ;
       as:object &lt;http://example.org/foo>
+    ]
+    [
+      a as:Like;
+      as:actor &lt;http://www.test.example/joe&gt; ;
+      as:object &lt;http://example.org/foo&gt;
     ]
   ) .</pre></div>
 </div>
 </figure>
 
-      <p>
-        In ordered collections that use paging, the
-        <code><a href="../activitystreams-vocabulary/#dfn-startindex">startIndex</a></code>
-        property is used to indicate the relative index position within the
-        logical set of items of the first item contained in the
-        <code>orderedItems</code> list. A <code>startIndex</code> of <code>0</code>
-        indicates the first item in the collection.
-      </p>
+      <section id="paging">
+        <h2>Collection Paging</h2>
+
+        <p>
+          A Collection can contain a large number of items. Often, it becomes
+          impractical for an implementation to serialize every item contained
+          by a Collection using the <code>items</code> (or
+          <code>orderedItems</code>) property alone. In such cases, the items
+          within a Collection can be divided into distinct subsets or "pages".
+          A page is represented using the <code><dfn>CollectionPage</dfn></code>
+          type.
+        </p>
+
+        <p>
+          The <code><a>CollectionPage</a></code> type extends from the base
+          <code><a>Collection</a></code> type and inherits all of it's
+          properties. The following additional properties can also be
+          specified:
+          <code>
+            <a href="../activitystreams-vocabulary/#dfn-partof">partOf</a> |
+            <a href="../activitystreams-vocabulary/#dfn-first">first</a> |
+            <a href="../activitystreams-vocabulary/#dfn-next">next</a> |
+            <a href="../activitystreams-vocabulary/#dfn-prev">prev</a> |
+            <a href="../activitystreams-vocabulary/#dfn-last">last</a> |
+            <a href="../activitystreams-vocabulary/#dfn-current">current</a> |
+          </code>
+        </p>
+
+        <p>
+          The <code>partOf</code> property identifies the
+          <code><a>Collection</a></code> to which the items contained by the
+          <code>CollectionPage</code> belong.
+        </p>
+
+        <p>
+          The <code>first</code>, <code>next</code>, <code>prev</code>,
+          <code>last</code>, and <code>current</code> properties are used
+          to reference other <code><a>CollectionPage</a></code> instances
+          that contain additional subsets of items from the parent collection.
+        </p>
+
+        <p>
+          As with <code>Collection</code> objects, the items within a
+          <code>CollectionPage</code> might be ordered or unordered.
+          The <code><dfn>OrderedCollectionPage</dfn></code> type can be used
+          to identify a page whose items are strictly ordered.
+        </p>
+
+        <p>
+          The <code><a>OrderedCollectionPage</a></code> type extends from
+          both <code><a>CollectionPage</a></code> and
+          <code><a>OrderedCollection</a></code>. In addition to the properties
+          inherited from each of those, the <code>OrderedCollectionPage</code>
+          may contain an additional
+          <code><a href="../activitystreams-vocabulary/#dfn-startindex">startIndex</a></code> property whose value indicates the relative index position
+          of the first item contained by the page within the
+          <code>OrderedCollection</code> to which the page belongs.
+        </p>
+
+        <figure>
+          <figcaption>
+            An illustration of the relationship between <code>Collection</code>,
+            <code>OrderedCollection</code>, <code>CollectionPage</code>, and
+            <code>OrderedCollectionPage</code>:
+          </figcaption>
+          <img src="paging2.png" alt="Collection Class Model" />
+        </figure>
+
+        <p>
+          Whether ordered or not, the pages of a <code>Collection</code> are
+          typically arranged in a sequence (either a singly or doubly-linked
+          list). The <code>first</code> property is used to identify the first
+          page in this sequence, while the <code>last</code> property is used
+          to identify the final page in the sequence. The <code>prev</code> and
+          <code>next</code> properties identify the pages immediately before
+          and immediately following, respectively.
+        </p>
+
+        <figure>
+          <figcaption>
+            A visualization of the Collection paging model:
+          </figcaption>
+          <img src="paging.png" alt="The Paging Model" />
+        </figure>
+
+        <p>
+          The <code>current</code> property identifies a page
+          containing the subset of items in the <code>Collection</code> that
+          have been created or updated most recently.
+        </p>
+
+        <p>
+          The values for the <code>first</code>, <code>last</code>,
+          <code>next</code>, <code>prev</code>, and <code>current</code>
+          properties can be either a single <code><a>CollectionPage</a></code>
+          or a <code><a>Link</a></code> referencing a separate resource
+          containing a <code><a>CollectionPage</a></code>.
+        </p>
+
+      <figure>
+        <figcaption>
+          The following is a simple unordered collection with paging:
+        </figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex21b-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex21b-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex21b-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex21b-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex21b-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex21b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "Collection",
+  "@id": "http://example.org/foo",
+  "totalItems": 10,
+  "first": {
+    "@type": "CollectionPage",
+    "@id": "http://example.org/foo?page=1",
+    "partOf": "http://example.org/foo",
+    "next": "http://example.org/foo?page=2",
+    "items": [
+      {
+        "@type": "Create",
+        "actor": "http://www.test.example/sally",
+        "object": "http://example.org/foo"
+      }
+    ]
+  }
+}</pre>
+</div>
+  <div id="ex21b-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Collection"
+  itemid="http://example.org/foo">
+  &lt;meta itemprop="totalItems" content="10" />
+  &lt;div itemprop="first" itemscope
+    itemtype="http://www.w3.org/ns/activitystreams#CollectionPage"
+    itemid="http://example.org/foo?page=1">
+    &lt;meta itemprop="partOf" itemscope itemid="http://example.org/foo" />
+    &lt;a itemprop="next" href="http://example.org/foo?page=2">
+      Next Page
+    &lt;/a>
+    &lt;ul>
+      &lt;li itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"&gt;
+        &lt;a itemprop="actor" href="http://www.test.example/sally">Sally&lt;/a>
+        created
+        &lt;a itemprop="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+      &lt;/li&gt;
+    &lt;ul>
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex21b-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/nsactivitystreams#"
+  typeof="Collection" resource="http://example.org/foo">
+  &lt;meta property="totalItems" content="10" />
+  &lt;div property="first" typeof="CollectionPage"
+    resource="http://example.org/foo?page=1">
+    &lt;meta property="partOf" resource="http://example.org/foo" />
+    &lt;a property="next" href="http://example.org/foo?page=2">
+      Next Page
+    &lt;/a>
+    &lt;ul>
+      &lt;li typeof="Create"&lt;
+        &lt;a property="actor" href="http://www.test.example/sally>Sally&lt;/a>
+        created
+        &lt;a property="object" href="http://example.org/foo">"http://example.org/foo"&lt;/a>
+      &lt;/li&lt;
+    &lt;ul>
+  &lt;/div>
+&lt;/div></pre></div>
+  <div id="ex21b-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-feed">
+  &lt;a rel="next" href="http://example.org/foo?page=2">Next Page&lt;/a>
+  &lt;ul>
+    &lt;li class="h-entry">
+      &lt;a class="h-card u-author" href="http://sally.example.org/">Sally&lt;/a>
+      created
+      &lt;a class="u-url" href="http://example.org/foo">http://example.org/foo&lt;/a>
+    &lt;/li&lt;
+  &lt;ul>
+&lt;/div></pre></div>
+  <div id="ex21b-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://example.org/foo&gt; a as:Collection ;
+  as:totalItems "10"^^xsd:nonNegativeInteger ;
+  as:first &lt;http://example.org/foo?page=1&gt; .
+
+&lt;http://example.org/foo?page=1&gt; a as:CollectionPage ;
+  as:partOf &lt;http://example.org/foo&gt; ;
+  as:next &lt;http://example.org/foo?page=2&gt; ;
+  as:items [
+    a as:Create ;
+    as:actor &lt;http://www.test.example/sallygt; ;
+    as:object &lt;http://example.org/foo&gt;
+  ] .
+</pre></div>
+</div>
+</figure>
 
       <p>
-        Using paging with an <code>OrderedCollection</code> can be tricky because
-        there is no guarantee that implementations will process the distinct pages
-        in any predictable order. <code>OrderedCollection</code> instances that use paging SHOULD include the
-        <code><a href="../activitystreams-vocabulary/#dfn-first">first</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-next">next</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-prev">prev</a></code> and
-        <code><a href="../activitystreams-vocabulary/#dfn-last">last</a></code>
-        paging properties. Implementations that wish to reconstruct the appropriate
-        complete ordering of member instances in the logical collection would navigate
-        to the <code>OrderedCollection</code> instance identified by the <code>first</code>
-        (or <code>last</code>) link, then recursively follow the <code>next</code>
+        Using paging with an <code>OrderedCollection</code> can be tricky
+        because there are no guarantees that implementations will process the
+        sequence of pages in any predictable order. Implementations that wish
+        to reconstruct the appropriate complete ordering of member items in
+        the logical collection should navigate to the first (or last)
+        page in the sequence then recursively follow the <code>next</code>
         (or <code>prev</code>) link until all pages have been processed.
+        If the pages of an <code>OrderedCollection</code> are not instances
+        of <code>OrderedCollectionPage</code>, an implementation will have
+        no reliable means of reconstructing the appropriate ordering of items.
       </p>
+
+      </section>
 
     </section>
 
@@ -3299,12 +3497,12 @@ _:c14n0 a gsp:Geometry ;
 &lt;/div>
 </pre></div>
   <div id="ex25-turtle" style="display: block;">
-<pre class="example highlight turtle"
+<pre class="example"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b1
   a as:Note ;
-  as:conntent """Thank you
+  as:content """Thank you
   &lt;a rel="to" typeof="Person" href="http://sally.example.org">
     &lt;span property="alias" lang="">@sally&lt;/span>
   &lt;/a>
@@ -3388,7 +3586,7 @@ _:b1
 &lt;/div>
 </pre></div>
   <div id="ex26-turtle" style="display: block;">
-<pre class="example highlight turtle"
+<pre class="example"
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b1

@@ -215,7 +215,9 @@
       <code><a>IntransitiveActivity</a></code> |
       <code><a>Actor</a></code> |
       <code><a>Collection</a></code> |
-      <code><a>OrderedCollection</a></code>
+      <code><a>OrderedCollection</a></code> |
+      <code><a>CollectionPage</a></code> |
+      <code><a>OrderedCollectionPage</a></code>
     </p>
 
     <table>
@@ -766,7 +768,6 @@ _:b0 a as:Actor ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
   "totalItems": 2,
-  "itemsPerPage": 2,
   "items": [
     {
       "@type": "Note",
@@ -784,7 +785,6 @@ _:b0 a as:Actor ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="2" /&lt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -806,7 +806,6 @@ _:b0 a as:Actor ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
       &lt;span property="displayName">
@@ -837,17 +836,14 @@ _:b0 a as:Actor ;
 
 _:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:items (
-    [
+  as:items [
       a as:Note ;
         as:displayName "A Simple Note" .
-    ]
+    ],
     [
       a as:Note ;
         as:displayName "Another Simple Note" .
-    ]
-  ).
+    ] .
 </pre>
   </div>
   </div>
@@ -859,50 +855,12 @@ _:b0 a as:Collection ;
             <p>
               A <code>Collection</code> is a subclass of
               <code><a>Object</a></code> that represents ordered or unordered
-              sets of <code><a>Object</a> or <a>Link</a></code> instances. The
-              model for collections within the Activity Vocabulary is designed
-              largely around the abstract model of "logical feeds" and "pages"
-              discussed in [[RFC5005]], Section 1.2.
+              sets of <code><a>Object</a> or <a>Link</a></code> instances.
             </p>
             <p>
-              Specifically, a "logical collection" is a complete set of
-              <code>Object</code> or <code>Link</code> instances while an
-              individual <code>Collection</code> object may contain only a
-              specific subset of those members. Paging properties such as
-              <code><a>next</a></code>, <code><a>prev</a></code>,
-              <code><a>first</a></code>, and <code><a>last</a></code> are used
-              to connect multiple <code><a>Collection</a></code> objects
-              containing different subsets of member items of a single logical
-              collection together.
-            </p>
-            <p>
-              When multiple, separate <code><a>Collection</a></code> instances
-              share the same identity (represented in the
-              <a href="activitystreams2.html">JSON-LD serialization</a>
-              using the <code>@id</code> property) and each specifies distinct,
-              non-overlapping subsets of member items (using the
-              <code><a>items</a></code> property), the membership
-              of the logical collection is the intersection of each of the
-              subsets. However, when there is overlap in the items contained by
-              multiple <code>Collection</code> instances (e.g. when
-              <code>Object</code> or <code>Link</code> instances with the
-              same identity appear in more than one <code>Collection</code>),
-              member instances with the most recently updated timestamps -- as
-              determined by examining first the <code><a>updated</a></code> and
-              then <code><a>published</a></code> properties -- MUST be
-              considered to be the most current representations. If those
-              members do not have either an <code>updated</code> or
-              <code>published</code> property specified, then the containing
-              <code>Collection</code> object's <code>updated</code>
-              and <code>published</code> properties are used. If no timestamps
-              are available to use for comparison, implementations MAY use
-              other means to determine the precedence of member instance
-              representations.
-            </p>
-            <p>
-              When the members of a <code>Collection</code> are ordered, the
-              ordering imposed applies only to the subset of members contained
-              within that one specific <code>Collection</code> instance.
+              Refer to the
+              <a href="../activitystreams-core/#def-collection">Activity Streams 2.0 Core</a> specification for a complete description of the
+              <code>Collection</code> type.
             </p>
           </td>
         </tr>
@@ -915,13 +873,9 @@ _:b0 a as:Collection ;
           <td>
             <p>
               <code><a>totalItems</a></code> |
-              <code><a>itemsPerPage</a></code> |
               <code><a>current</a></code> |
-              <code><a>next</a></code> |
-              <code><a>prev</a></code> |
               <code><a>first</a></code> |
               <code><a>last</a></code> |
-              <code><a>self</a></code> |
               <code><a>items</a></code>
             </p>
             <p>
@@ -950,8 +904,6 @@ _:b0 a as:Collection ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "OrderedCollection",
   "totalItems": 2,
-  "itemsPerPage": 2,
-  "startIndex": 0,
   "orderedItems": [
     {
       "@type": "Note",
@@ -969,8 +921,6 @@ _:b0 a as:Collection ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
   &lt;meta itemprop="totalItems" content="2" /&lt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
-  &lt;meta itemprop="startIndex" content="0" /&gt;
   &lt;ol>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -992,8 +942,6 @@ _:b0 a as:Collection ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="OrderedCollection">
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="startIndex" content="0" datatype="xsd:nonNegativeInteger" />
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
       &lt;span property="displayName">
@@ -1025,22 +973,16 @@ _:b0 a as:Collection ;
 
 _:b0 a as:OrderedCollection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:startIndex "0"^^xsd:nonNegativeInteger ;
-  as:items [
-    rdf:first [
+  as:items (
+    [
       a as:Note ;
         as:displayName "A Simple Note" .
-    ] ;
-    rdf:rest [
-      rdf:first [
-        a as:Note ;
-          as:displayName "Another Simple Note" .
-      ] ;
-      rdf:rest rdf:nil .
-    ] .
-  ].
-</pre>
+    ]
+    [
+      a as:Note ;
+        as:displayName "Another Simple Note" .
+    ]
+  ) .</pre>
   </div>
 </div>
             </td>
@@ -1053,21 +995,131 @@ _:b0 a as:OrderedCollection ;
                 of the logical collection are assumed to always be strictly
                 ordered.
               </p>
+            </td>
+          </tr>
+          <tr>
+            <td>Extends:</td>
+            <td><code><a>Collection</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>
+            <p>Inherits all properties from <code><a>Collection</a></code>.</p>
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>CollectionPage</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td><code>http://www.w3.org/ns/activitystreams#CollectionPage</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex6b-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex6b-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex6b-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex6b-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex6b-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex6b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "CollectionPage",
+  "@id": "http://example.org/foo?page=1",
+  "partOf": "http://example.org/foo",
+  "items": [
+    {
+      "@type": "Note",
+      "displayName": "A Simple Note"
+    },
+    {
+      "@type": "Note",
+      "displayName": "Another Simple Note"
+    }
+  ]
+}</pre>
+  </div>
+<div id="ex6b-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#CollectionPage"
+  itemid="http://example.org/foo?page=1">
+  &lt;link itemprop="partOf" href="http://example.org/foo" />
+  &lt;ul>
+    &lt;li itemscope itemprop="items"
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+      &lt;span itemprop="displayName">
+        A Simple Note
+      &lt;/span>
+    &lt;/li>
+    &lt;li itemscope itemprop="items"
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+      &lt;span itemprop="displayName">
+        Another Simple Note
+      &lt;/span>
+    &lt;/li>
+  &lt;/ul>
+&lt;/div></pre>
+  </div>
+  <div id="ex6b-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="CollectionPage"
+  resource="http://example.org/foo?page=1">
+  &lt;link property="partOf" href="http://example.org/foo" />
+  &lt;ul>
+    &lt;li property="items" inlist="" typeof="Note">
+      &lt;span property="displayName">
+        A Simple Note
+      &lt;/span>
+    &lt;/li>
+    &lt;li property="items" inlist="" typeof="Note">
+      &lt;span property="displayName">
+        Another Simple Note
+      &lt;/span>
+    &lt;/li>
+  &lt;/ul>
+&lt;/div></pre>
+  </div>
+  <div id="ex6b-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-feed">
+  &lt;ul>
+    &lt;li class="h-entry p-name">A Simple Note&lt;/li>
+    &lt;li class="h-entry p-name">Another Simple Note&lt;/li>
+  &lt;/ul>
+&lt;/div></pre>
+  </div>
+  <div id="ex6b-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+&lt;http://example.org/foo?page=1&gt; a as:CollectionPage ;
+  as:partOf &lt;http://example.org/foo&gt; ;
+  as:items [
+      a as:Note ;
+        as:displayName "A Simple Note" .
+    ],
+    [
+      a as:Note ;
+        as:displayName "Another Simple Note" .
+    ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Notes:</td>
+            <td>
               <p>
-                Using paging with an <code>OrderedCollection</code> can be
-                tricky because there is no guarantee that implementations will
-                process the distinct pages in any predictable order. Therefore,
-                it is strongly recommended that <code>OrderedCollection</code>
-                instances that require paging always include the
-                <code><a>first</a></code>, <code><a>next</a></code>,
-                <code><a>prev</a></code> and <code><a>last</a></code> paging
-                properties. Implementations that wish to reconstruct the
-                appropriate complete ordering of member instances in the logical
-                collection would navigate to the <code>OrderedCollection</code>
-                instance identified by the <code>first</code> (or
-                <code>last</code>) link, then recursively follow the
-                <code>next</code> (or <code>prev</code>) link until all pages
-                have been processed.
+                Used to represent distinct subsets of items from a
+                <code>Collection</code>. Refer to the
+                <a href="../activitystreams-core/#dfn-collectionpage">Activity Streams 2.0 Core</a> for a complete description of the
+                <code>CollectionPage</code> object.
               </p>
             </td>
           </tr>
@@ -1079,10 +1131,150 @@ _:b0 a as:OrderedCollection ;
             <td>Properties:</td>
             <td>
             <p>
-              <code><a>startIndex</a></code>
+              <code><a>partOf</a></code> |
+              <code><a>next</a></code> |
+              <code><a>prev</a></code>
             </p>
 
             <p>Inherits all properties from <code><a>Collection</a></code>.</p>
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>OrderedCollectionPage</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td><code>http://www.w3.org/ns/activitystreams#OrderedCollectionPage</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex6c-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex6c-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex6c-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex6c-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex6c-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex6c-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "@type": "OrderedCollectionPage",
+  "@id": "http://example.org/foo?page=1",
+  "partOf": "http://example.org/foo",
+  "orderedItems": [
+    {
+      "@type": "Note",
+      "displayName": "A Simple Note"
+    },
+    {
+      "@type": "Note",
+      "displayName": "Another Simple Note"
+    }
+  ]
+}</pre>
+  </div>
+<div id="ex6c-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#OrderedCollectionPage"
+  itemid="http://example.org/foo?page=1">
+  &lt;link itemprop="partOf" href="http://example.org/foo" />
+  &lt;ol>
+    &lt;li itemscope itemprop="items"
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+      &lt;span itemprop="displayName">
+        A Simple Note
+      &lt;/span>
+    &lt;/li>
+    &lt;li itemscope itemprop="items"
+    itemtype="http://www.w3.org/ns/activitystreams#Note">
+      &lt;span itemprop="displayName">
+        Another Simple Note
+      &lt;/span>
+    &lt;/li>
+  &lt;/ol>
+&lt;/div></pre>
+  </div>
+  <div id="ex6c-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="OrderedCollectionPage"
+  resource="http://example.org/foo?page=1">
+  &lt;link property="partOf" href="http://example.org/foo" />
+  &lt;ol>
+    &lt;li property="items" inlist="" typeof="Note">
+      &lt;span property="displayName">
+        A Simple Note
+      &lt;/span>
+    &lt;/li>
+    &lt;li property="items" inlist="" typeof="Note">
+      &lt;span property="displayName">
+        Another Simple Note
+      &lt;/span>
+    &lt;/li>
+  &lt;/ol>
+&lt;/div></pre>
+  </div>
+  <div id="ex6c-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-feed">
+  &lt;ol>
+    &lt;li class="h-entry p-name">A Simple Note&lt;/li>
+    &lt;li class="h-entry p-name">Another Simple Note&lt;/li>
+  &lt;/ol>
+&lt;/div></pre>
+  </div>
+  <div id="ex6c-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+&lt;http://example.org/foo?page=1&gt; a as:OrderedCollectionPage ;
+  as:partOf &lt;http://example.org/foo&gt; ;
+  as:items (
+    [
+      a as:Note ;
+        as:displayName "A Simple Note" .
+    ]
+    [
+      a as:Note ;
+        as:displayName "Another Simple Note" .
+    ]
+  ) .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Notes:</td>
+            <td>
+              <p>
+                Used to represent ordered subsets of items from an
+                <code>OrderedCollection</code>. Refer to the
+                <a href="../activitystreams-core/#dfn-orderedcollectionpage">Activity Streams 2.0 Core</a> for a complete description of the
+                <code>OrderedCollectionPage</code> object.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>Extends:</td>
+            <td>
+              <code><a>OrderedCollection</a></code> |
+              <code><a>CollectionPage</a></code>
+            </td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>
+            <p>
+              <code><a>startIndex</a></code>
+            </p>
+
+            <p>
+              Inherits all properties from
+              <code><a>OrderedCollection</a></code> and
+              <code><a>CollectionPage</a></code>.</p>
             </td>
           </tr>
         </tbody>
@@ -5479,7 +5671,7 @@ _:b0 a as:Article ;
 
 _:b0 a as:Album ;
   as:displayName "A Photo Album" ;
-  as:items (
+  as:items
     [
       a as:Image ;
         as:displayName "My Dog" ;
@@ -5488,7 +5680,7 @@ _:b0 a as:Album ;
           as:href &lt;http://example.org/dog.jpeg&gt; ;
           as:mediaType "image/jpeg" ;
         ] .
-    ]
+    ],
     [
       a as:Image ;
         as:displayName "My Cat" ;
@@ -5497,8 +5689,7 @@ _:b0 a as:Album ;
           as:href &lt;http://example.org/cat.jpeg&gt; ;
           as:mediaType "image/jpeg" ;
         ] .
-    ]
-  ) .</pre>
+    ] .</pre>
   </div>
 </div>
 
@@ -5612,8 +5803,8 @@ _:b0 a as:Album ;
 
 _:b0 a as:Album ;
   as:displayName "A Music Playlist" ;
-  as:items [
-    rdf:first [
+  as:items (
+    [
       a as:Audio ;
         as:displayName "Song 1" ;
         as:url [
@@ -5621,20 +5812,17 @@ _:b0 a as:Album ;
           as:href &lt;http://example.org/song1.mp3&gt; ;
           as:mediaType "audio/mp3" .
         ] .
-    ] ;
-    rdf:rest [
-      rdf:first [
-        a as:Audio ;
-        as:displayName "Song 2" ;
-        as:url [
-          a as:Link ;
-          as:href &lt;http://example.org/song2.mpg&gt; ;
-          as:mediaType "audio/mp3" .
-        ]
-      ] ;
-      rdf:rest rdf:nil .
-    ] ;
-  ] .</pre>
+    ]
+    [
+      a as:Audio ;
+      as:displayName "Song 2" ;
+      as:url [
+        a as:Link ;
+        as:href &lt;http://example.org/song2.mpg&gt; ;
+        as:mediaType "audio/mp3" .
+      ]
+    ]
+  ) .</pre>
   </div>
 </div>
             </td>
@@ -5734,13 +5922,11 @@ _:b0 a as:Album ;
 
 _:b0 a as:Folder ;
   as:displayName "Some Documents" ;
-  as:items (
-    [
-      a as:Document;
-      as:displayName "4Q Sales Forecast" ;
-      as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .
-    ]
-  ) .</pre>
+  as:items [
+    a as:Document;
+    as:displayName "4Q Sales Forecast" ;
+    as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .
+  ] .</pre>
   </div>
 </div>
             </td>
@@ -5896,8 +6082,8 @@ _:b0 a as:Folder ;
 
 _:b0 a as:Story ;
   as:displayName "My Vacation" ;
-  as:items [
-    rdf:first [
+  as:items (
+    [
       a as:Image ;
       as:displayName "Visiting The Vatican" ;
       as:url &lt;http://example.org/photo5.jpeg&gt; ;
@@ -5905,20 +6091,17 @@ _:b0 a as:Story ;
         a as:Place ;
         as:displayName "The Vatican" .
       ] .
-    ] ;
-    rdf:rest [
-      rdf:first [
-        a as:Image ;
-        as:displayName "Visiting The Eiffel Tower" ;
-        as:url &lt;http://example.org/photo6.jpeg&gt; ;
-        as:location [
-          a as:Place ;
-            as:displayName "The Eiffel Tower" .
-        ]
-      ] ;
-      rdf:rest rdf:nil .
-    ] ;
-  ] .</pre>
+    ]
+    [
+      a as:Image ;
+      as:displayName "Visiting The Eiffel Tower" ;
+      as:url &lt;http://example.org/photo6.jpeg&gt; ;
+      as:location [
+        a as:Place ;
+          as:displayName "The Eiffel Tower" .
+      ]
+    ]
+  ).</pre>
   </div>
 </div>
             </td>
@@ -7385,7 +7568,6 @@ _:b0 a as:Profile ;
       <code><a>result</a></code> |
       <code><a>replies</a></code> |
       <code><a>scope</a></code> |
-      <code><a>self</a></code> |
       <code><a data-lt="tag-term">tag</a></code> |
       <code><a>target</a></code> |
       <code><a>to</a></code> |
@@ -7399,7 +7581,7 @@ _:b0 a as:Profile ;
       <code><a>height</a></code> |
       <code><a>href</a></code> |
       <code><a>hreflang</a></code> |
-      <code><a>itemsPerPage</a></code> |
+      <code><a>partOf</a></code> |
       <code><a>latitude</a></code> |
       <code><a>longitude</a></code> |
       <code><a>mediaType</a></code> |
@@ -8607,8 +8789,7 @@ _:b2 a as:Like ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
+  "totalItems": 3,
   "current": "http://example.org/collection",
   "items": [
     "http://example.org/posts/1",
@@ -8621,8 +8802,7 @@ _:b2 a as:Like ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  &lt;meta itemprop="totalItems" content="3" />
   &lt;a itemprop="current"
     href="http://example.org/collection">
     Most Recent Items&lt;/a>
@@ -8652,8 +8832,7 @@ _:b2 a as:Like ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;a property="current"
     href="http://example.org/collection">
     Most Recent Items&lt;/a>
@@ -8683,8 +8862,6 @@ _:b2 a as:Like ;
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="h-as-items-page-page" name="itemsPerPage"
     content="3" />
   &lt;a rel="current"
     href="http://example.org/collection">
@@ -8718,7 +8895,6 @@ _:b2 a as:Like ;
 
 _:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:current &lt;http://example.org/collection> ;
   as:items
     &lt;http://example.org/posts/1> ,
@@ -8739,8 +8915,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
+  "totalItems": 3,
   "current": {
     "@type": "Link",
     "displayName": "Most Recent Items",
@@ -8757,8 +8932,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  &lt;meta itemprop="totalItems" content="3" />
   &lt;span itemprop="current" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
     &lt;a itemprop="href" href="http://example.org/collection">
@@ -8791,8 +8965,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;span property="current" typeof="Link">
     &lt;a property="href" href="http://example.org/collection">
       &lt;span property="displayName">Most Recent Items&lt;/span>
@@ -8824,8 +8997,6 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
     content="3" />
   &lt;a rel="current" class="h-entry"
     href="http://example.org/collection">
@@ -8859,8 +9030,7 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+  as:totalItems "3"^^xsd:nonNegativeInteger ;
   as:current [
     a as:Link ;
       as:displayName "Most Recent Items" ;
@@ -8883,11 +9053,11 @@ _:b0 a as:Collection ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
+          <td><code><a>CollectionPage</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Collection</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>CollectionPage</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -8913,108 +9083,38 @@ _:b0 a as:Collection ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
-  "first": "http://example.org/collection",
-  "items": [
-    "http://example.org/posts/1",
-    "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
+  "totalItems": 3,
+  "first": "http://example.org/collection?page=0"
 }</pre>
   </div>
   <div id="ex73-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  &lt;meta itemprop="totalItems" content="3" />
   &lt;a itemprop="first"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=0">
     First Page&lt;/a>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex73-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;a property="first"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=0">
     First Page&lt;/a>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex73-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
     content="3" />
   &lt;a rel="first"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=0">
     First Page&lt;/a>
-  &lt;ul class="p-as-items">
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex73-turtle" style="display: none;">
@@ -9023,13 +9123,8 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:first &lt;http://example.org/collection> ;
-  as:items
-    &lt;http://example.org/posts/1> ,
-    &lt;http://example.org/posts/2> ,
-    &lt;http://example.org/posts/3> .</pre>
+  as:totalItems "3"^^xsd:nonNegativeInteger ;
+  as:first &lt;http://example.org/collection> .</pre>
   </div>
 </div>
 
@@ -9045,118 +9140,48 @@ _:b0 a as:Collection ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
+  "totalItems": 3,
   "first": {
     "@type": "Link",
     "displayName": "First Page",
-    "href": "http://example.org/collection"
-  },
-  "items": [
-    "http://example.org/posts/1",
-    "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
+    "href": "http://example.org/collection?page=0"
+  }
 }</pre>
   </div>
   <div id="ex74-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  &lt;meta itemprop="totalItems" content="3" />
   &lt;span itemprop="first" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
-    &lt;a itemprop="href" href="http://example.org/collection">
+    &lt;a itemprop="href" href="http://example.org/collection?page=0">
       &lt;span itemprop="displayName">First Page&lt;/span>
     &lt;/a>
   &lt;/span>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex74-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;span property="first" typeof="Link">
-    &lt;a property="displayName" rel="href" href="http://example.org/collection">
+    &lt;a property="displayName" rel="href" href="http://example.org/collection?page=0">
       First Page
     &lt;/a>
   &lt;/span>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex74-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
     content="3" />
   &lt;a rel="first" class="h-entry"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=0">
     &lt;span class="p-name">First Page&lt;/span>
   &lt;/a>
-  &lt;ul class="p-as-items">
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex74-turtle" style="display: none;">
@@ -9165,17 +9190,12 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+  as:totalItems "3"^^xsd:nonNegativeInteger ;
   as:first [
     a as:Link ;
     as:displayName "First Page" ;
-    as:href &lt;http://example.org/collection> .
-  ] ;
-  as:items
-    &lt;http://example.org/posts/1> ,
-    &lt;http://example.org/posts/2> ,
-    &lt;http://example.org/posts/3> .</pre>
+    as:href &lt;http://example.org/collection?page=0>
+  ] .</pre>
   </div>
 </div>
           </td>
@@ -9189,11 +9209,11 @@ _:b0 a as:Collection ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
+          <td><code><a>CollectionPage</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Collection</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>CollectionPage</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -9978,14 +9998,8 @@ _:b0 a as:Listen ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
-  "last": "http://example.org/collection",
-  "items": [
-    "http://example.org/posts/1",
-    "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
+  "totalItems": 3,
+  "last": "http://example.org/collection?page=1"
 }</pre>
   </div>
   <div id="ex87-microdata" style="display: none;">
@@ -9993,93 +10007,29 @@ _:b0 a as:Listen ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
   &lt;a itemprop="last"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     Last Page&lt;/a>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex87-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;a property="last"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     Last Page&lt;/a>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex87-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
     content="3" />
   &lt;a rel="last"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     Last Page&lt;/a>
-  &lt;ul class="p-as-items">
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex87-turtle" style="display: none;">
@@ -10089,12 +10039,7 @@ _:b0 a as:Listen ;
 
 _:b0 a as:Collection ;
   as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:last &lt;http://example.org/collection> ;
-  as:items
-    &lt;http://example.org/posts/1> ,
-    &lt;http://example.org/posts/2> ,
-    &lt;http://example.org/posts/3> .</pre>
+  as:last &lt;http://example.org/collection?page=1>.</pre>
   </div>
 </div>
 
@@ -10111,17 +10056,11 @@ _:b0 a as:Collection ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
   "totalItems": 5,
-  "itemsPerPage": 3,
   "last": {
     "@type": "Link",
     "displayName": "Last Page",
-    "href": "http://example.org/collection"
-  },
-  "items": [
-    "http://example.org/posts/1",
-    "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
+    "href": "http://example.org/collection?page=1"
+  }
 }</pre>
   </div>
   <div id="ex88-microdata" style="display: none;">
@@ -10129,33 +10068,12 @@ _:b0 a as:Collection ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
   &lt;span itemprop="last" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
-    &lt;a itemprop="href" href="http://example.org/collection">
+    &lt;a itemprop="href" href="http://example.org/collection?page=1">
       &lt;span itemprop="displayName">Last Page&lt;/span>
     &lt;/a>
   &lt;/span>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex88-rdfa" style="display: none;">
@@ -10163,66 +10081,23 @@ _:b0 a as:Collection ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
   &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;span property="last" typeof="Link">
     &lt;a property="displayName"
-      rel="href" href="http://example.org/collection">
+      rel="href" href="http://example.org/collection?page=1">
         Last Page
     &lt;/a>
   &lt;/span>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex88-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
     content="3" />
   &lt;a rel="last" class="h-entry"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     &lt;span class="p-name">Last Page&lt;/span>
   &lt;/a>
-  &lt;ul class="p-as-items">
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
 &lt;/div></pre>
   </div>
   <div id="ex88-turtle" style="display: none;">
@@ -10231,17 +10106,12 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+  as:totalItems "3"^^xsd:nonNegativeInteger ;
   as:last [
     a as:Link ;
       as:displayName "Last Page" ;
-      as:href &lt;http://example.org/collection>
-  ] ;
-  as:items
-    &lt;http://example.org/posts/1> ,
-    &lt;http://example.org/posts/2> ,
-    &lt;http://example.org/posts/3> .</pre>
+      as:href &lt;http://example.org/collection?page=1>
+  ] .</pre>
   </div>
 </div>
           </td>
@@ -10255,11 +10125,11 @@ _:b0 a as:Collection ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
+          <td><code><a>CollectionPage</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Collection</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>CollectionPage</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -10400,7 +10270,6 @@ _:b0 a as:Person ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
   "totalItems": 2,
-  "itemsPerPage": 2,
   "items": [
     {
       "@type": "Note",
@@ -10418,7 +10287,6 @@ _:b0 a as:Person ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="2" /&lt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -10440,7 +10308,6 @@ _:b0 a as:Person ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
       &lt;span property="displayName">
@@ -10460,8 +10327,6 @@ _:b0 a as:Person ;
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
     content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
   &lt;ul class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
@@ -10479,7 +10344,6 @@ _:b0 a as:Person ;
 
 _:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:items
     [
       a as:Note ;
@@ -10505,8 +10369,6 @@ _:b0 a as:Collection ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "OrderedCollection",
   "totalItems": 2,
-  "itemsPerPage": 2,
-  "startIndex": 0,
   "orderedItems": [
     {
       "@type": "Note",
@@ -10524,8 +10386,6 @@ _:b0 a as:Collection ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
   &lt;meta itemprop="totalItems" content="2" /&lt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
-  &lt;meta itemprop="startIndex" content="0" /&gt;
   &lt;ol>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -10547,8 +10407,6 @@ _:b0 a as:Collection ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="OrderedCollection">
   &lt;meta property="totalItems" content="2"  datatype="xsd:nonNegativeInteger"/>
-  &lt;meta property="itemsPerPage" content="2"  datatype="xsd:nonNegativeInteger"/>
-  &lt;meta property="startIndex" content="0"  datatype="xsd:nonNegativeInteger"/>
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
       &lt;span property="displayName">
@@ -10568,10 +10426,6 @@ _:b0 a as:Collection ;
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
     content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
-  &lt;meta class="p-as-start-index" name="startIndex"
-    content="0" /&gt;
   &lt;ol class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
@@ -10590,8 +10444,6 @@ _:b0 a as:Collection ;
 
 _:b0 a as:OrderedCollection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:startIndex "0"^^xsd:nonNegativeInteger ;
   as:items (
     [
       a as:Note ;
@@ -11023,10 +10875,8 @@ _:b0 a as:Move ;
   <div id="ex96-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
-  "next": "http://example.org/collection",
+  "@type": "CollectionPage",
+  "next": "http://example.org/collection?page=2",
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
@@ -11037,11 +10887,9 @@ _:b0 a as:Move ;
   <div id="ex96-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  itemtype="http://www.w3.org/ns/activitystreams#CollectionPage">
   &lt;a itemprop="next"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=2">
     Next Page&lt;/a>
   &lt;ul>
     &lt;li&gt;
@@ -11068,11 +10916,9 @@ _:b0 a as:Move ;
   <div id="ex96-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="5" />
-  &lt;meta property="itemsPerPage" content="3" />
+  typeof="CollectionPage">
   &lt;a property="next"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=2">
     Next Page&lt;/a>
   &lt;ul>
     &lt;li&gt;
@@ -11099,12 +10945,8 @@ _:b0 a as:Move ;
   <div id="ex96-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="3" />
   &lt;a rel="next"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=2">
     Next Page&lt;/a>
   &lt;ul class="p-as-items">
     &lt;li&gt;
@@ -11133,10 +10975,8 @@ _:b0 a as:Move ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:next &lt;http://example.org/collection> ;
+_:b0 a as:CollectionPage ;
+  as:next &lt;http://example.org/collection?page=2> ;
   as:items
     &lt;http://example.org/posts/1> ,
     &lt;http://example.org/posts/2> ,
@@ -11155,13 +10995,11 @@ _:b0 a as:Collection ;
   <div id="ex97-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
+  "@type": "CollectionPage",
   "next": {
     "@type": "Link",
     "displayName": "Next Page",
-    "href": "http://example.org/collection"
+    "href": "http://example.org/collection?page=2"
   },
   "items": [
     "http://example.org/posts/1",
@@ -11173,12 +11011,10 @@ _:b0 a as:Collection ;
   <div id="ex97-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  itemtype="http://www.w3.org/ns/activitystreams#CollectionPage">
   &lt;span itemprop="next" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
-    &lt;a itemprop="href" href="http://example.org/collection">
+    &lt;a itemprop="href" href="http://example.org/collection?page=2">
       &lt;span itemprop="displayName">Next Page&lt;/span>
     &lt;/a>
   &lt;/span>
@@ -11207,11 +11043,9 @@ _:b0 a as:Collection ;
   <div id="ex97-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  typeof="CollectionPage">
   &lt;span property="next" typeof="Link">
-    &lt;a property="href" href="http://example.org/collection">
+    &lt;a property="href" href="http://example.org/collection?page=2">
       &lt;span property="displayName">Next Page&lt;/span>
     &lt;/a>
   &lt;/span>
@@ -11240,12 +11074,8 @@ _:b0 a as:Collection ;
   <div id="ex97-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="3" />
   &lt;a rel="next"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=2">
     &lt;span class="p-name">Next Page&lt;/span>
   &lt;/a>
   &lt;ul class="p-as-items">
@@ -11275,13 +11105,11 @@ _:b0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+_:b0 a as:CollectionPage ;
   as:next [
     a as:Link ;
     as:displayName "Next Page" ;
-    as:href &lt;http://example.org/collection> .
+    as:href &lt;http://example.org/collection?page=2> .
   ] ;
   as:items
     &lt;http://example.org/posts/1> ,
@@ -11300,11 +11128,11 @@ _:b0 a as:Collection ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
+          <td><code><a>CollectionPage</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>CollectionPage</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -11594,10 +11422,8 @@ _:b0 a as:Like
   <div id="ex104-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
-  "prev": "http://example.org/collection",
+  "@type": "CollectionPage",
+  "prev": "http://example.org/collection?page=1",
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
@@ -11608,11 +11434,9 @@ _:b0 a as:Like
   <div id="ex104-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  itemtype="http://www.w3.org/ns/activitystreams#CollectionPage">
   &lt;a itemprop="prev"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     Previous Page&lt;/a>
   &lt;ul>
     &lt;li&gt;
@@ -11639,11 +11463,9 @@ _:b0 a as:Like
   <div id="ex104-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  typeof="CollectionPage">
   &lt;a property="prev"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     Previous Page&lt;/a>
   &lt;ul>
     &lt;li&gt;
@@ -11670,12 +11492,8 @@ _:b0 a as:Like
   <div id="ex104-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="3" />
   &lt;a rel="prev"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     Previous Page&lt;/a>
   &lt;ul class="p-as-items">
     &lt;li&gt;
@@ -11704,10 +11522,8 @@ _:b0 a as:Like
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:prev &lt;http://example.org/collection> ;
+_:b0 a as:CollectionPage ;
+  as:prev &lt;http://example.org/collection?page=1> ;
   as:items
     &lt;http://example.org/posts/1> ,
     &lt;http://example.org/posts/2> ,
@@ -11726,13 +11542,11 @@ _:b0 a as:Collection ;
   <div id="ex105-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
+  "@type": "CollectionPage",
   "prev": {
     "@type": "Link",
     "displayName": "Previous Page",
-    "href": "http://example.org/collection"
+    "href": "http://example.org/collection?page=1"
   },
   "items": [
     "http://example.org/posts/1",
@@ -11744,12 +11558,10 @@ _:b0 a as:Collection ;
   <div id="ex105-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
+  itemtype="http://www.w3.org/ns/activitystreams#CollectionPage">
   &lt;span itemprop="prev" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
-    &lt;a itemprop="href" href="http://example.org/collection">
+    &lt;a itemprop="href" href="http://example.org/collection?page=1">
       &lt;span itemprop="displayName">Previous Page&lt;/span>
     &lt;/a>
   &lt;/span>
@@ -11778,11 +11590,9 @@ _:b0 a as:Collection ;
   <div id="ex105-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
+  typeof="CollectionPage">
   &lt;span property="prev" typeof="Link">
-    &lt;a property="href" href="http://example.org/collection">
+    &lt;a property="href" href="http://example.org/collection?page=1">
       &lt;span property="displayName">Previous Page&lt;/span>
     &lt;/a>
   &lt;/span>
@@ -11811,12 +11621,8 @@ _:b0 a as:Collection ;
   <div id="ex105-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-entry">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="3" />
   &lt;a rel="prev"
-    href="http://example.org/collection">
+    href="http://example.org/collection?page=1">
     &lt;span class="p-name">Previous Page&lt;/span>
   &lt;/a>
   &lt;ul class="p-as-items">
@@ -11846,13 +11652,11 @@ _:b0 a as:Collection ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-_:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+_:b0 a as:CollectionPage ;
   as:prev [
     a as:Link ;
     as:displayName "Previous Page" ;
-    as:href &lt;http://example.org/collection>
+    as:href &lt;http://example.org/collection?page=1>
   ] ;
   as:items
     &lt;http://example.org/posts/1> ,
@@ -11871,11 +11675,11 @@ _:b0 a as:Collection ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
+          <td><code><a>CollectionPage</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Collection</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>CollectionPage</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -12124,7 +11928,6 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   "replies": {
     "@type": "Collection",
     "totalItems": 1,
-    "itemsPerPage": 1,
     "items": [
       {
         "@type": "Note",
@@ -12146,7 +11949,6 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   &lt;div itemprop="replies" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Collection">
     &lt;meta itemprop="totalItems" content="1" /&gt;
-    &lt;meta itemprop="itemsPerPage" content="1" /&gt;
     &lt;ul>
       &lt;li itemprop="items" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -12170,8 +11972,7 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
     A simple note
   &lt;/div>
   &lt;div property="replies" typeof="Collection">
-    &lt;meta property="totalItems" content="1" datatype="xsd:nonNegativeInteger" />
-    &lt;meta property="itemsPerPage" content="1" datatype="xsd:nonNegativeInteger" />
+    &lt;meta property="totalItems" content="1" datatype="xsd:nonNegativeInteger" /> datatype="xsd:nonNegativeInteger" />
     &lt;ul>
       &lt;li property="items" typeof="Note">
         &lt;span property="content">
@@ -12192,8 +11993,6 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   &lt;div class="e-content">A simple note&lt;/div>
   &lt;div class="p-as-replies h-as-collection">
     &lt;meta class="p-as-total-items" name="totalItems"
-      content="1" /&gt;
-    &lt;meta class="p-as-items-per-page" name="itemsPerPage"
       content="1" /&gt;
     &lt;ul class="p-as-items">
       &lt;li class="h-entry">
@@ -12219,7 +12018,6 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   as:replies [
     a as:Collection ;
     as:totalItems "1"^^xsd:nonNegativeInteger ;
-    as:itemsPerPage "1"^^xsd:nonNegativeInteger ;
     as:items [
       a as:Note ;
       as:content "A response to the note" ;
@@ -12349,311 +12147,6 @@ _:b0 a as:Note ;
         </tr>
       </tbody>
 
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>self</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#self</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex115-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex115-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex115-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex115-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex115-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex115-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
-  "self": "http://example.org/collection",
-  "items": [
-    "http://example.org/posts/1",
-    "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
-}</pre>
-  </div>
-  <div id="ex115-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
-  &lt;a itemprop="self"
-    href="http://example.org/collection">
-    This Page&lt;/a>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
-&lt;/div></pre>
-  </div>
-  <div id="ex115-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
-  &lt;a property="self"
-    href="http://example.org/collection">
-    This Page&lt;/a>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
-&lt;/div></pre>
-  </div>
-  <div id="ex115-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="3" />
-  &lt;a rel="self"
-    href="http://example.org/collection">
-    This Page&lt;/a>
-  &lt;ul class="p-as-items">
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
-&lt;/div></pre>
-  </div>
-  <div id="ex115-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:self &lt;http://example.org/collection> ;
-  as:items
-    &lt;http://example.org/posts/1> ,
-    &lt;http://example.org/posts/2> ,
-    &lt;http://example.org/posts/3 .</pre>
-  </div>
-</div>
-
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex116-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex116-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex116-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex116-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex116-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex116-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 5,
-  "itemsPerPage": 3,
-  "self": {
-    "@type": "Link",
-    "displayName": "This Page",
-    "href": "http://example.org/collection"
-  },
-  "items": [
-    "http://example.org/posts/1",
-    "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
-}</pre>
-  </div>
-  <div id="ex116-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="5" />
-  &lt;meta itemprop="itemsPerPage" content="3" />
-  &lt;span itemprop="self" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Link">
-    &lt;a itemprop="href" href="http://example.org/collection">
-      &lt;span itemprop="displayName">This Page&lt;/span>
-    &lt;/a>
-  &lt;/span>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a itemprop="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
-&lt;/div></pre>
-  </div>
-  <div id="ex116-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="3" datatype="xsd:nonNegativeInteger" />
-  &lt;span property="self" typeof="Link">
-    &lt;a property="displayName" rel="href" href="http://example.org/collection">
-      This Page
-    &lt;/a>
-  &lt;/span>
-  &lt;ul>
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a property="items"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
-&lt;/div></pre>
-  </div>
-  <div id="ex116-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="5" />
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="3" />
-  &lt;a rel="self" class="h-entry"
-    href="http://example.org/collection">
-    &lt;span class="p-name">This Page&lt;/span>
-  &lt;/a>
-  &lt;ul class="p-as-items">
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/2">
-      http://example.org/posts/2
-    &lt;/a>
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;a class="h-entry u-url"
-      href="http://example.org/posts/3">
-      http://example.org/posts/3
-    &lt;/a>
-    &lt;/li&gt;
-  &lt;/ul>
-&lt;/div></pre>
-  </div>
-  <div id="ex116-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-
-_:b0 a as:Collection ;
-  as:totalItems "5"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
-  as:self [
-    a as:Link ;
-    as:displayName "This Page" ;
-    as:href &lt;http://example.org/collection>
-  ] ;
-  as:items
-    &lt;http://example.org/posts/1> ,
-    &lt;http://example.org/posts/2> ,
-    &lt;http://example.org/posts/3> .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            In a paged <code><a>Collection</a></code>, identifies this page of
-            entries.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Collection</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Functional:</td>
-          <td>True</td>
-        </tr>
-      </tbody>
       <tbody>
         <tr>
           <td rowspan="4" ><dfn data-lt="tag-term">tag</dfn></td>
@@ -14368,10 +13861,10 @@ _:b0 a as:Link ;
 
       <tbody>
        <tr>
-          <td rowspan="5" ><dfn>itemsPerPage</dfn></td>
+          <td rowspan="5" ><dfn>partOf</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td>
-            <code>http://www.w3.org/ns/activitystreams#itemsPerPage</code>
+            <code>http://www.w3.org/ns/activitystreams#partOf</code>
           </td>
           <td rowspan="5">
 <div class="nanotabs">
@@ -14385,9 +13878,9 @@ _:b0 a as:Link ;
   <div id="ex139-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "totalItems": 2,
-  "itemsPerPage": 2,
+  "@type": "CollectionPage",
+  "@id": "http://example.org/collection?page=1",
+  "partOf": "http://example.org/collection",
   "items": [
     {
       "@type": "Note",
@@ -14403,9 +13896,9 @@ _:b0 a as:Link ;
   <div id="ex139-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Collection">
-  &lt;meta itemprop="totalItems" content="2" /&lt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
+  itemtype="http://www.w3.org/ns/activitystreams#CollectionPage"
+  itemid="http://example.org/collection?page=1">
+  &lt;link itemprop="partOf" href="http://example.org/collection" />
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -14425,9 +13918,8 @@ _:b0 a as:Link ;
   <div id="ex139-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Collection">
-  &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="2" datatype="xsd:nonNegativeInteger" />
+  typeof="CollectionPage" resource="http://example.org/collection?page=1">
+  &lt;link property="partOf" href="http://example.org/collection" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
       &lt;span property="displayName">
@@ -14445,10 +13937,7 @@ _:b0 a as:Link ;
   <div id="ex139-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
+  &lt;link rel="partOf" href="http://example.org/collection" />
   &lt;ul class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
@@ -14464,14 +13953,13 @@ _:b0 a as:Link ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:b0 a as:Collection ;
-  as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+&lt;http://example.org/collection?page=1&gt; a as:CollectionPage ;
+  as:partOf &lt;http://example.org/collection&gt; ;
   as:items
     [
       a as:Note ;
       as:displayName "A Simple Note"
-    ]
+    ],
     [
       a as:Note ;
       as:displayName "Another Simple Note"
@@ -14483,18 +13971,17 @@ _:b0 a as:Collection ;
         <tr>
           <td>Notes:</td>
           <td>
-            A non-negative integer specifying the maximum number of items that
-            will be included in the value of the <code><a>items</a></code>
-            array.
+            Identifies the <code><a>Collection</a></code> to which a
+            <code><a>CollectionPage</a></code> objects items belong.
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Collection</a></code></td>
+          <td><code><a>CollectionPage</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code>xsd:nonNegativeInteger</code></td>
+          <td><code><a>Link</a></code> | <code><a>Collection</a></code></td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -15579,9 +15066,7 @@ _:b0 a as:Link ;
   <div id="ex150-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "OrderedCollection",
-  "totalItems": 2,
-  "itemsPerPage": 2,
+  "@type": "OrderedCollectionPage",
   "startIndex": 0,
   "orderedItems": [
     {
@@ -15598,9 +15083,7 @@ _:b0 a as:Link ;
 <div id="ex150-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#OrderedCollection">
-  &lt;meta itemprop="totalItems" content="2" /&gt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
+  itemtype="http://www.w3.org/ns/activitystreams#OrderedCollectionPage">
   &lt;meta itemprop="startIndex" content="0" /&gt;
   &lt;ol>
     &lt;li itemscope itemprop="items"
@@ -15621,9 +15104,7 @@ _:b0 a as:Link ;
   <div id="ex150-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="OrderedCollection">
-  &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="2" datatype="xsd:nonNegativeInteger" />
+  typeof="OrderedCollectionPage">
   &lt;meta property="startIndex" content="0" datatype="xsd:nonNegativeInteger" />
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
@@ -15642,10 +15123,6 @@ _:b0 a as:Link ;
   <div id="ex150-microformats" style="display: none;">
 <pre class="example highlight html"
 >&lt;div class="h-as-collection">
-  &lt;meta class="p-as-total-items" name="totalItems"
-    content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
   &lt;meta class="p-as-start-index" name="startIndex"
     content="0" /&gt;
   &lt;ol class="p-as-items">
@@ -15664,9 +15141,7 @@ _:b0 a as:Link ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
-_:b0 a as:OrderedCollection ;
-  as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
+_:b0 a as:OrderedCollectionPage ;
   as:startIndex "0"^^xsd:nonNegativeInteger ;
   as:items (
     [
@@ -15692,7 +15167,7 @@ _:b0 a as:OrderedCollection ;
           </tr>
           <tr>
             <td>Domain:</td>
-            <td><code><a>OrderedCollection</a></code></td>
+            <td><code><a>OrderedCollectionPage</a></code></td>
           </tr>
           <tr>
             <td>Range:</td>
@@ -16008,7 +15483,6 @@ _:b0 a as:Note ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "@type": "Collection",
   "totalItems": 2,
-  "itemsPerPage": 2,
   "items": [
     {
       "@type": "Note",
@@ -16026,7 +15500,6 @@ _:b0 a as:Note ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Collection">
   &lt;meta itemprop="totalItems" content="2" /&gt;
-  &lt;meta itemprop="itemsPerPage" content="2" /&gt;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
@@ -16048,7 +15521,6 @@ _:b0 a as:Note ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Collection">
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="itemsPerPage" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
       &lt;span property="displayName">
@@ -16068,8 +15540,6 @@ _:b0 a as:Note ;
 >&lt;div class="h-as-collection">
   &lt;meta class="p-as-total-items" name="totalItems"
     content="2" /&lt;
-  &lt;meta class="p-as-items-per-page" name="itemsPerPage"
-    content="2" /&gt;
   &lt;ul class="p-as-items">
     &lt;li class="h-entry p-name">
       A Simple Note
@@ -16087,7 +15557,6 @@ _:b0 a as:Note ;
 
 _:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
-  as:itemsPerPage "2"^^xsd:nonNegativeInteger ;
   as:items
     [
       a as:Note ;
