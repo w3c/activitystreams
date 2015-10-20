@@ -439,10 +439,7 @@ as:duration a owl:DatatypeProperty ,
   owl:FunctionalProperty ;
   rdfs:label "duration"@en ;
   rdfs:comment "The duration of the object"@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( xsd:duration xsd:nonNegativeInteger )
-  ];
+  rdfs:range xsd:duration ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf ( as:Content as:Link )
