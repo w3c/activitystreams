@@ -381,8 +381,8 @@
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Link">
-  &lt;span property="hreflang" lang="">en&lt;/span>
-  &lt;span property="mediaType" lang="">text/html&lt;/span>
+  &lt;span property="hreflang">en&lt;/span>
+  &lt;span property="mediaType">text/html&lt;/span>
   &lt;a rel="href" href="http://example.org/abc"
     property="displayName">An example link&lt;/a>
 &lt;/div></pre>
@@ -5629,7 +5629,7 @@ _:b0 a as:Article ;
       My Dog
     &lt;/figcaption>
     &lt;span property="url" typeof="Link">
-      &lt;img property="mediaType" content="image/jpeg" lang=""
+      &lt;img property="mediaType" content="image/jpeg"
         rel="href" src="http://example.org/dog.jpeg" />
     &lt;/span>
   &lt;/figure>
@@ -5638,7 +5638,7 @@ _:b0 a as:Article ;
       My Cat
     &lt;/figcaption>
     &lt;span property="url" typeof="Link">
-      &lt;img property="mediaType" content="image/jpeg" lang=""
+      &lt;img property="mediaType" content="image/jpeg"
         rel="href" src="http://example.org/cat.jpeg" />
     &lt;/span>
   &lt;/figure>
@@ -5763,14 +5763,14 @@ _:b0 a as:Album ;
     &lt;li property="items" inlist="" typeof="Audio">
       &lt;span property="displayName">Song 1&lt;/span> -
       &lt;span property="url" typeof="Link">
-        &lt;a property="mediaType" content="audio/mp3" lang=""
+        &lt;a property="mediaType" content="audio/mp3"
           rel="href" href="http://example.org/song1.mp3">Listen&lt;/a>
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Audio">
       &lt;span property="displayName">Song 2&lt;/span> -
       &lt;span property="url" typeof="Link">
-        &lt;a property="mediaType" content="audio/mp3" lang=""
+        &lt;a property="mediaType" content="audio/mp3"
           rel="href" href="http://example.org/song2.mp3">Listen&lt;/a>
       &lt;/span>
     &lt;/li>
@@ -6242,7 +6242,7 @@ _:b0 a as:Document ;
   typeof="Audio">
   &lt;span property="displayName">A Simple Podcast&lt;/span> -
   &lt;span property="url" typeof="Link">
-    &lt;a property="mediaType" content="audio/mp3" lang=""
+    &lt;a property="mediaType" content="audio/mp3"
       rel="href" href="http://example.org/podcast.mp3">Listen&lt;/a>
     &lt;/span>
   &lt;span>
@@ -6342,11 +6342,11 @@ _:b0 a as:Audio ;
   typeof="Image">
 &lt;span property="displayName">A Simple Image&lt;/span> -
   &lt;span property="url" typeof="Link">
-    &lt;a property="mediaType" content="image/jpeg" lang=""
+    &lt;a property="mediaType" content="image/jpeg"
       rel="href" src="http://example.org/image.jpeg">JPEG&lt;/a>
   &lt;/span> |
   &lt;span property="url" typeof="Link">
-    &lt;a property="mediaType" content="image/jpeg" lang=""
+    &lt;a property="mediaType" content="image/jpeg"
       rel="href" src="http://example.org/image.png">PNG&lt;/a>
   &lt;/span>
 &lt;/div></pre>
@@ -7577,7 +7577,7 @@ _:b0 a as:Profile ;
       <code><a>accuracy</a></code> |
       <code><a>alias</a></code> |
       <code><a>altitude</a></code> |
-      <code><a>content</a></code> |
+      <code><a data-lt="content-term">content</a></code> |
       <code><a>displayName</a></code> |
       <code><a>duration</a></code> |
       <code><a>height</a></code> |
@@ -11747,7 +11747,7 @@ _:b0 a as:CollectionPage ;
   &lt;span property="preview" typeof="Link">
     &lt;a property="displayName"
       rel="href" href="http://example.org/trailer.mkv">Trailer&lt;/a>
-    &lt;span property="mediaType" lang="">video/mkv&lt;/span>
+    &lt;span property="mediaType">video/mkv&lt;/span>
     &lt;span property="duration" content="PT1M" datatype="xsd:duration">(1M)&lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -12753,11 +12753,11 @@ _:b0 a as:Document ;
   typeof="Document">
   &lt;span property="displayName">4Q Sales Forecast&lt;/span> -
     &lt;span property="url" typeof="Link">
-      &lt;a property="mediaType" content="application/pdf" lang=""
+      &lt;a property="mediaType" content="application/pdf"
         rel="href" href="http://example.org/4q-sales-forecast.pdf">PDF&lt;/a> |
     &lt;/span>
     &lt;span property="url" typeof="Link">
-      &lt;a property="mediaType" content="text/html" lang=""
+      &lt;a property="mediaType" content="text/html"
         rel="href" href="http://example.org/4q-sales-forecast.html">HTML&lt;/a>
     &lt;/span>
   &lt;/span>
@@ -13226,69 +13226,6 @@ _:b0 a as:Note ;
   </div>
 </div>
 
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex131-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex131-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex131-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex131-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex131-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex131-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "contentMap": [
-    "en": "A simple note",
-    "sp": "Una simple nota"
-  }
-}</pre>
-</div>
-<div id="ex131-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="content" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span itemprop="content" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex131-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;span property="content" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span property="content" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex131-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="e-content" lang="en">
-    A simple note
-  &lt;/span
-  &lt;span class="e-content" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex131-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Note ;
-  as:content "A simple note"@en ;
-  as:content "Una simple nota"@sp.</pre>
-  </div>
-</div>
           </td>
         </tr>
         <tr>
@@ -13296,7 +13233,6 @@ _:b0 a as:Note ;
           <td>
             A natural language description of the object content. HTML
             markup, including visual elements such as images, MAY be included.
-            The content MAY be expressed using multiple language-tagged values.
           </td>
         </tr>
         <tr>
@@ -13305,7 +13241,7 @@ _:b0 a as:Note ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code>xsd:string</code> | <code>rdf:langString</code></td>
+          <td><code>xsd:string</code></td>
         </tr>
       </tbody>
 
@@ -13365,78 +13301,13 @@ _:b0 a as:Note ;
   as:displayName "A simple note" .</pre>
   </div>
 </div>
-
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex133-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex133-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex133-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex133-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex133-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex133-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "displayNameMap": [
-    "en": "A simple note",
-    "sp": "Una simple nota"
-  }
-}</pre>
-</div>
-<div id="ex133-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="displayName" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span itemprop="displayName" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex133-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;span property="displayName" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span property="displayName" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex133-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-name" lang="en">
-    A simple note
-  &lt;/span
-  &lt;span class="p-name" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex133-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Note ;
-  as:displayName "A simple note"@en ;
-  as:displayName "Una simple nota"@sp .</pre>
-  </div>
-</div>
           </td>
         </tr>
         <tr>
           <td>Notes:</td>
           <td>
             A simple, human-readable, plain-text name for the object. HTML
-            markup MUST NOT be included. The displayName MAY be expressed
-            using multiple language-tagged values.
+            markup MUST NOT be included..
           </td>
         </tr>
         <tr>
@@ -13445,7 +13316,7 @@ _:b0 a as:Note ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code>xsd:string</code> | <code>rdf:langString</code></td>
+          <td><code>xsd:string</code></td>
         </tr>
       </tbody>
 
@@ -13733,7 +13604,7 @@ _:b0 a as:Content ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;span property="mediaType" lang="">text/html&lt;/span>)
+  &lt;span property="mediaType">text/html&lt;/span>)
 &lt;/span></pre>
   </div>
   <div id="ex137-microformats" style="display: none;">
@@ -13815,8 +13686,8 @@ _:b0 a as:Link ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
-  &lt;span property="mediaType" lang="">text/html&lt;/span>)
+  &lt;abbr property="hreflang" data-lt="English">en&lt;/abbr> -
+  &lt;span property="mediaType">text/html&lt;/span>)
 &lt;/span></pre>
   </div>
   <div id="ex138-microformats" style="display: none;">
@@ -14304,8 +14175,8 @@ _:b0 a as:Place ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
-  &lt;span property="mediaType" lang="">text/html&lt;/span>)
+  &lt;abbr property="hreflang" data-lt="English">en&lt;/abbr> -
+  &lt;span property="mediaType">text/html&lt;/span>)
 &lt;/span></pre>
   </div>
   <div id="ex142-microformats" style="display: none;">
@@ -15001,10 +14872,10 @@ _:b0 a as:Place ;
   typeof="Link">
   &lt;a property="displayName"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
-  &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
-  &lt;span property="mediaType" lang="">text/html&lt;/span>)
-  &lt;span property="rel" lang="">canonical&lt;/span>
-  &lt;span property="rel" lang="">preview&lt;/span>
+  &lt;abbr property="hreflang" data-lt="English">en&lt;/abbr> -
+  &lt;span property="mediaType">text/html&lt;/span>)
+  &lt;span property="rel">canonical&lt;/span>
+  &lt;span property="rel">preview&lt;/span>
 &lt;/span></pre>
   </div>
   <div id="ex149-microformats" style="display: none;">
@@ -15237,78 +15108,13 @@ _:b0 a as:Note ;
   as:summary "A simple note".</pre>
   </div>
 </div>
-
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex153-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex153-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex153-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex153-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex153-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex153-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "summaryMap": [
-    "en": "A simple note",
-    "sp": "Una simple nota"
-  }
-}</pre>
-</div>
-<div id="ex153-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="summary" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span itemprop="summary" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex153-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;span property="summary" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span property="summary" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex153-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-summary" lang="en">
-    A simple note
-  &lt;/span
-  &lt;span class="p-summary" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex153-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Note ;
-  as:summary "A simple note"@en ;
-  as:summary "Una simple nota"@sp.</pre>
-  </div>
-</div>
           </td>
         </tr>
         <tr>
           <td>Notes:</td>
           <td>
             A natural language summarization of the object. HTML markup,
-            including visual images such as images, MAY be included. Multiple
-            language tagged summaries MAY be provided.
+            including visual images such as images, MAY be included.
           </td>
         </tr>
         <tr>
@@ -15317,7 +15123,7 @@ _:b0 a as:Note ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code>xsd:string</code> | <code>rdf:langString</code></td>
+          <td><code>xsd:string</code></td>
         </tr>
       </tbody>
 
@@ -15378,70 +15184,6 @@ _:b0 a as:Note ;
   as:title "A simple note".</pre>
   </div>
 </div>
-
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex155-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex155-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex155-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex155-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex155-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex155-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "titleMap": [
-    "en": "A simple note",
-    "sp": "Una simple nota"
-  }
-}</pre>
-</div>
-<div id="ex155-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="title" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span itemprop="title" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex155-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;span property="title" lang="en">
-    A simple note
-  &lt;/span>
-  &lt;span property="title" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex155-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-title" lang="en">
-    A simple note
-  &lt;/span
-  &lt;span class="p-title" lang="sp">
-    Una simple nota
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex155-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Note ;
-  as:title "A simple note"@en ;
-  as:title "Una simple nota"@sp.</pre>
-  </div>
-</div>
           </td>
         </tr>
         <tr>
@@ -15462,7 +15204,7 @@ _:b0 a as:Note ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code>xsd:string</code> | <code>rdf:langString</code></td>
+          <td><code>xsd:string</code></td>
         </tr>
       </tbody>
 
