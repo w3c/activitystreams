@@ -13513,65 +13513,6 @@ _:b0 a as:Video ;
   as:duration "PT2H"^^xsd:duration.</pre>
   </div>
 </div>
-
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex135-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex135-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex135-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex135-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex135-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex135-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Video",
-  "displayName": "A Simple Video",
-  "url": "http://example.org/video.mkv",
-  "duration": 3600
-}</pre>
-</div>
-<div id="ex135-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Video">
-  &lt;span itemprop="displayName">A Simple Video&lt;/span>
-  &lt;meta itemprop="duration" content="3600">(2 hours)&lt;meta> -
-  &lt;a itemprop="url"
-    href="http://example.org/video.mkv">Watch&lt;/a>
-&lt;/div></pre>
-  </div>
-  <div id="ex135-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Video">
-&lt;span property="displayName">A Simple Video&lt;/span>
-  &lt;meta property="duration" content="3600" datatype="xsd:nonNegativeInteger">(2 hours)&lt;meta> -
-  &lt;a property="url"
-    href="http://example.org/video.mkv">Watch&lt;/a>
-&lt;/div></pre>
-  </div>
-  <div id="ex135-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-&lt;span class="p-name">A Simple Video&lt;/span>
-  &lt;meta class="p-as-duration" name="duration"
-    content="3600">(2 hours)&lt;meta> -
-  &lt;a class="u-url"
-    href="http://example.org/video.mkv">Watch&lt;/a>
-&lt;/div></pre>
-  </div>
-<div id="ex135-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Video ;
-  as:displayName "A Simple Video" ;
-  as:url &lt;http://example.org/video.mkv&gt; ;
-  as:duration "3600"^^xsd:nonNegativeInteger.</pre>
-  </div>
-</div>
           </td>
         </tr>
         <tr>
@@ -13579,11 +13520,9 @@ _:b0 a as:Video ;
           <td>
             When the object describes a time-bound resource, such as an audio or
             video, a meeting, etc, the <code><a>duration</a></code> property
-            indicates the object's approximate duration. The value SHOULD
-            be expressed as an [[!RFC3339]] <code>duration</code> (e.g. a
-            period of 5 seconds is represented as "<code>PT5S</code>") but
-            MAY be specified as a non-negative integer specifying the
-            duration as a number of non-fractional seconds.
+            indicates the object's approximate duration. The value MUST
+            be expressed as an [[!RFC3339]] (ISO 8601) <code>duration</code>
+            (e.g. a period of 5 seconds is represented as "<code>PT5S</code>").
           </td>
         </tr>
         <tr>
@@ -13592,7 +13531,7 @@ _:b0 a as:Video ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code>xsd:integer</code> | <code>xsd:duration</code></td>
+          <td><code>xsd:duration</code></td>
         </tr>
         <tr>
           <td>Functional:</td>

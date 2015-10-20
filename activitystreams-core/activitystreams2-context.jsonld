@@ -245,10 +245,6 @@
     "downstreamDuplicates": "as:downStreamDuplicates",
     "duration": {
       "@id": "as:duration",
-      "@type": "xsd:nonNegativeInteger"
-    },
-    "durationIso": {
-      "@id": "as:duration",
       "@type": "xsd:duration"
     },
     "endTime": {
