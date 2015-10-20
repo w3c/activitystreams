@@ -18,7 +18,6 @@
 #
 #################################################################
 
-rdf:langString a rdfs:Datatype .
 xsd:duration a rdfs:Datatype .
 
 #################################################################
@@ -411,19 +410,13 @@ as:altitude a owl:DatatypeProperty ,
 as:content a owl:DatatypeProperty ;
   rdfs:label "content"@en ;
   rdfs:comment "The content of the object."@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( rdf:langString xsd:string )
-  ] ;
+  rdfs:range xsd:string ;
   rdfs:domain as:Object .
 
 as:displayName a owl:DatatypeProperty ;
   rdfs:label "displayName"@en ;
   rdfs:displayName "The default, plain-text display name of the object or link."@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( rdf:langString xsd:string )
-  ] ;
+  rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link)
@@ -588,19 +581,13 @@ as:startTime a owl:DatatypeProperty ,
 as:summary a owl:DatatypeProperty ;
   rdfs:label "summary"@en ;
   rdfs:comment "A short summary of the object"@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( rdf:langString xsd:string )
-  ] ;
+  rdfs:range xsd:string ;
   rdfs:domain as:Object .
 
 as:title a owl:DatatypeProperty ;
   rdfs:label "title"@en ;
   rdfs:comment "The title of the object, HTML markup is permitted."@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( rdf:langString xsd:string )
-  ] ;
+  rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )

@@ -442,7 +442,7 @@ _:b0 a as:Create ;
       Martin Smith
     &lt;/a>
     &lt;span property="image" typeof="Link">
-      &lt;img property="mediaType" content="image/jpeg" lang=""
+      &lt;img property="mediaType" content="image/jpeg"
         rel="href" src="http://example.org/martin/image.jpg" />
     &lt;/span>
   &lt;/span>
@@ -540,10 +540,7 @@ _:b0 a as:Add ;
       "@type": "Add",
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
-      "displayNameMap": {
-        "en": "Martin added a new image to his album.",
-        "ga": "Martin phost le fisean nua a albam."
-      },
+      "displayName": "Martin added a new image to his album.",
       "actor": {
         "@type": "Person",
         "@id": "http://www.test.example/martin",
@@ -581,10 +578,7 @@ _:b0 a as:Add ;
       "target": {
         "@type": "Album",
         "@id": "http://example.org/album/",
-        "displayNameMap": {
-          "en": "Martin's Photo Album",
-          "ga": "Grianghraif Mairtin"
-        },
+        "displayName": "Martin's Photo Album",
         "image": {
           "@type": "Link",
           "href": "http://example.org/album/thumbnail.jpg",
@@ -604,10 +598,7 @@ _:b0 a as:Add ;
     &lt;a itemprop="generator" href="http://example.org/activities-app" />
       http://example.org/activities-app
     &lt;/a>
-    &lt;div itemprop="displayName" lang="en">
-      Martin added a new image to his album.
-    &lt;/div>
-    &lt;div itemprop="displayName" lang="ga">
+    &lt;div itemprop="displayName">
       Martin added a new image to his album.
     &lt;/div>
     &lt;div itemprop="actor" itemscope
@@ -640,11 +631,8 @@ _:b0 a as:Add ;
     &lt;div itemprop="target" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Album"
       itemid="http://example.org/album/">
-      &lt;div itemprop="displayName" lang="en">
+      &lt;div itemprop="displayName">
         Martin's Photo Album
-      &lt;/div>
-      &lt;div itemprop="displayName" lang="ga">
-        Grianghraif Mairtin
       &lt;/div>
       &lt;img itemprop="image" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Link"
@@ -663,11 +651,8 @@ _:b0 a as:Add ;
     &lt;time property="published" datatype="xsd:dateTime" datetime="2011-02-10T15:04:55Z">
       2011-02-10T15:04:55Z
     &lt;/time>
-    &lt;span property="displayName" lang="en">
+    &lt;span property="displayName">
       Martin added a new image to his album.
-    &lt;/span>
-    &lt;span property="displayName" lang="ga">
-      Martin phost le fisean nua a albam.
     &lt;/span>
     &lt;span property="actor" typeof="Person"
       resource="http://www.test.example/martin">
@@ -676,7 +661,7 @@ _:b0 a as:Add ;
           Martin Smith
         &lt;/a>
       &lt;span property="image" typeof="Link">
-        &lt;img property="mediaType" content="image/jpeg" lang=""
+        &lt;img property="mediaType" content="image/jpeg"
           height="250" width="250"
           rel="href" src="http://example.org/martin/image.jpg" />
         (
@@ -689,15 +674,15 @@ _:b0 a as:Add ;
     &lt;span property="object" typeof="Image"
       resource="http://example.org/album/my_fluffy_cat">
       &lt;span property="preview" typeof="Link">
-        &lt;img property="mediaType" content="image/jpeg" lang=""
+        &lt;img property="mediaType" content="image/jpeg"
           rel="href" src="http://example.org/album/my_fluffy_cat_thumb.jpg" />
       &lt;/span>
       &lt;span rel="url">
         &lt;a about="_:b3" typeof="Link"
-          property="mediaType" content="image/jpeg" lang=""
+          property="mediaType" content="image/jpeg"
           rel="href" href="http://example.org/album/my_fluffy_cat.jpg">JPG&lt;/a> |
         &lt;a about="_:b4" typeof="Link"
-          property="mediaType" content="image/png" lang=""
+          property="mediaType" content="image/png"
           rel="href" href="http://example.org/album/my_fluffy_cat.png">PNG&lt;/a>
       &lt;/span>
     &lt;/span>
@@ -708,14 +693,11 @@ _:b0 a as:Add ;
     and placed into
     &lt;span property="target" typeof="Album"
       resource="http://example.org/album/">
-      &lt;span property="displayName" lang="en">
+      &lt;span property="displayName">
         Martin's Photo Album
       &lt;/span>
-      &lt;span property="displayName" lang="ga">
-        Grianghraif Mairtin
-      &lt;/span>
       &lt;span property="image" typeof="Link">
-        &lt;img property="mediaType" content="image/png" lang=""
+        &lt;img property="mediaType" content="image/png"
           rel="href" src="http://example.org/album/thumbnail.jpg" />
       &lt;/span>
     &lt;/span>
@@ -776,8 +758,7 @@ _:b0 a as:Add ;
   ] .
 
 &lt;http://example.org/album/&gt; a as:Album ;
-  as:displayName "Martin's Photo Album"@en ;
-  as:displayName "Grianghraif Mairtin"@ga ;
+  as:displayName "Martin's Photo Album" ;
   as:image [
     a as:Link ;
       as:href &lt;http://example.org/album/thumbnail.jpg&gt; ;
@@ -790,8 +771,7 @@ _:b0 a as:Collection ;
     a as:Add ;
       as:published "2011-02-10T15:04:55Z"^^xsd:dateTime ;
       as:generator &lt;http://example.org/activities-app&gt; ;
-      as:displayName "Martin added a new image to his album."@en ;
-      as:displayName "Martin phost le fisean nua a albam."@ga ;
+      as:displayName "Martin added a new image to his album.";
       as:actor &lt;http://www.test.example/martin&gt; ;
       as:object &lt;http://example.org/album/my_fluffy_cat&gt; ;
       as:target &lt;http://example.org/album/&gt;
@@ -847,9 +827,7 @@ _:b0 a as:Collection ;
           <code><a href="../activitystreams-vocabulary/#dfn-attributedto">attributedTo</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-content-term">content</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-context">context</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-content">contentMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayNameMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-endtime">endTime</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-generator">generator</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-icon">icon</a></code> |
@@ -862,10 +840,8 @@ _:b0 a as:Collection ;
           <code><a href="../activitystreams-vocabulary/#dfn-scope">scope</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-starttime">startTime</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-summary">summaryMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-tag">tag</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-title">titleMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-updated">updated</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-url">url</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-to">to</a></code> |
@@ -884,9 +860,8 @@ _:b0 a as:Collection ;
 
       <p>
         While all properties are optional, all <code>Object</code> instances
-        SHOULD at least contain either the
-        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
-        or <code><a href="../activitystreams-vocabulary/#def-displayname">displayNameMap</a></code>.
+        SHOULD at least contain a
+        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>.
       </p>
 
 <figure><figcaption>Following is an example Object that uses the JSON-LD <code>@id</code> and <code>@type</code>
@@ -1167,308 +1142,6 @@ _:b0 a as:Place, gr:Location ;
 
    </section>
 
-    <section id="naturalLanguageValues">
-
-      <h2>Natural Language Values</h2>
-
-      <p>
-        Several properties defined by the
-        <a href="../activitystreams-vocabulary/">Vocabulary</a> are defined
-        as having natural language values. These are representations of
-        human-readable character sequences using one or more languages.
-        Within the JSON-LD serialization, they are expressed as either (1) a
-        single JSON string or (2) a JSON object mapping [[RFC5646]]
-        Language-Tags to localized, equivalent translations of the same string
-        value. In [[JSON-LD]], such constructs are referred to as "Language
-        Maps". In the serialized JSON-LD, these two forms are differentiated
-        using a simple property naming convention, for instance:
-        "<code>displayName</code>" identifies the JSON string form for the
-        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
-        property while "<code>displayNameMap</code>" represents the Language
-        Map form.
-      </p>
-
-      <figure>
-        <figcaption>A single displayName String value without language information:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex7-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  <b>"displayName": "This is the title"</b>
-}</pre>
-</div>
-  <div id="ex7-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
-  &lt;div itemprop="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex7-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
-  &lt;div property="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex7-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="p-name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex7-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title" .</pre></div>
-</div>
-</figure>
-
-      <figure>
-        <figcaption>Multiple, language-specific values:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex8-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  <b>"displayNameMap": {
-    "en": "This is the title",
-    "fr": "C'est le titre",
-    "sp": "Este es el titulo"
-  }</b>
-}</pre>
-</div>
-  <div id="ex8-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
-  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
-  &lt;div itemprop="displayName" lang="fr">C'est le titre&lt;/div>
-  &lt;div itemprop="displayName" lang="sp">Este es el titulo&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex8-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
-  &lt;div property="displayName" lang="en">This is the title&lt;/div>
-  &lt;div property="displayName" lang="fr">C'est le titre&lt;/div>
-  &lt;div property="displayName" lang="sp">Este es el titulo&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex8-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="p-name" lang="en">This is the title&lt;/div>
-  &lt;div class="p-name" lang="fr">C'est le titre&lt;/div>
-  &lt;div class="p-name" lang="sp">Este es el titulo&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex8-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title"@en ;
-  as:displayName "C'est le titre"@fr ;
-  as:displayName "Este es el titulo"@sp .</pre></div>
-</div>
-</figure>
-
-      <p>
-        Every key in the Language Map form MUST be a valid [[RFC5646]]
-        Language-Tag. The associated values MUST be Strings.
-      </p>
-
-      <p>
-        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
-        defines four specific natural language values:
-        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
-        <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>.
-        Accordingly, the Activity Streams
-        <a href="activitystreams2-context.jsonld">JSON-LD
-        @context</a> definition respectively maps the terms
-        "<code>displayName</code>",
-        "<code>title</code>", "<code>summary</code>", and
-        "<code>content</code>" for representing the JSON string forms and the
-        terms "<code>displayNameMap</code>", "<code>titleMap</code>",
-        "<code>summaryMap</code>", and "<code>contentMap</code>" for
-        representing the Language Map forms.
-      </p>
-
-      <p>
-        The default language for document or an individual object can be
-        established using the JSON-LD <code>@language</code> keyword within a
-        <code>@context</code> definition. For instance:
-      </p>
-
-      <figure>
-        <figcaption>Establishing a default language context:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex9-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    <b>{"@language": "en"}</b>
-  ],
-  "@type": "Object",
-  <b>"displayName": "This is the title"</b>
-}</pre>
-</div>
-  <div id="ex9-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
-  &lt;div itemprop="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
-  &lt;div property="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" lang="en">
-  &lt;div class="p-name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title"@en .</pre></div>
-</div>
-</figure>
-
-      <p>
-        The JSON-LD format generally supports one additional way of associating
-        language tag information with a literal string value using what JSON-LD
-        calls a "value object", as illustrated below:
-      </p>
-
-<figure>
-        <figcaption>Specifying language in a JSON-LD value object:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex10-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex10-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex10-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex10-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  <b>"displayName": {
-    "@value": "This is the title",
-    "@language": "en"
-  }</b>
-}</pre>
-</div>
-  <div id="ex10-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
-  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex10-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
-  &lt;div property="displayName" lang="en">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex10-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="p-name" lang="en">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex10-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title"@en .</pre></div>
-</div>
-</figure>
-
-      <p>
-        Activity Streams 2.0 implementations SHOULD NOT use JSON-LD value
-        objects in this manner. Implementations SHOULD, instead, use the
-        Language Map form. The one situation where use of the value object
-        cannot be avoided is when a default language context has been
-        established and a particular language-sensitive field needs to be
-        explicitly excluded from that context, as in the following example:
-      </p>
-
-<figure>
-        <figcaption>Excluding a natural language property from the language context:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex11-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex11-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex11-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex11-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    <b>{ "@language": "en" }</b>
-  ],
-  "@type": "Object",
-  "displayName": {
-    "@value": "This is the title"
-  }
-}</pre>
-</div>
-  <div id="ex11-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
-  &lt;div itemprop="displayName" lang="">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex11-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
-  &lt;div property="displayName" lang="">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex11-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" lang="en">
-  &lt;div class="p-name" lang="">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex11-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title" .</pre></div>
-</div>
-</figure>
-
-      <p>By explicitly omitting the <code>@language</code> from the value
-      of <code>displayName</code> in the JSON-LD example, the
-      <code>displayName</code> is excluded from the default language context.
-      However, because this mechanism requires specific understanding of JSON-LD
-      algorithms, and makes the publisher's intention less obvious and visible,
-      implementations SHOULD avoid such cases as much as possible.
-
-    </section>
-
     <section id="link">
       <h2><dfn data-lt="Link">Link</dfn></h2>
 
@@ -1485,12 +1158,10 @@ _:b0 a as:Object ;
         following common set of optional properties as normatively defined by
         the <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>:
           <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayNameMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-title">titleMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
@@ -1602,7 +1273,7 @@ _:b0 a as:Object ;
   resource="http://example.org/application/123">
   &lt;div property="displayName">My Application&lt;/div>
   &lt;span property="image" typeof="Link">
-    &lt;img property="mediaType" content="image/png" lang=""
+    &lt;img property="mediaType" content="image/png"
       rel="href" src="http://example.org/application/123.png" />
   &lt;/span>
 &lt;/div></pre></div>
@@ -1688,7 +1359,7 @@ _:b0 a as:Object ;
   &lt;span rel="image">
     &lt;img src="http://example.org/application/123.gif" />
     &lt;img about="_:b1" typeof="Link"
-      property="mediaType" content="image/png" lang=""
+      property="mediaType" content="image/png"
       rel="href" src="http://example.org/application/123.png" />
   &lt;/span>
 &lt;/div></pre></div>
@@ -1789,7 +1460,7 @@ _:b0 a as:Object ;
   &lt;span rel="image">
     &lt;img src="http://example.org/application/123.gif" />
     &lt;img about="_:b1" typeof="Link"
-      property="mediaType" content="image/png" lang=""
+      property="mediaType" content="image/png"
       rel="thumbnail" src="http://example.org/application/123.png" />
   &lt;/span>
 &lt;/div></pre></div>
@@ -2970,18 +2641,6 @@ _:c14n0 a as:OrderedCollection ;
       <code>@type</code> keyword.
     </li>
     <li>
-      This document redefines the <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
-      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
-      <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code> and
-      <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
-      properties as natural language values which means their values can be expressed
-      as either a String or a JSON-LD Language Map. In the 1.0 syntax, these are expressed
-      solely as String values.  Because the 1.0 values are a valid
-      subset allowed by this specification, implementations are not
-      required to take any specific action to continue supporting those
-      values.
-    </li>
-    <li>
       This document redefines a large number of common properties
       defined originally as Objects in 1.0 as either
       <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>. The JSON-LD
@@ -3488,11 +3147,11 @@ _:c14n0 a gsp:Geometry ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
   &lt;p property="content" datatype="rdf:HTML">Thank you
     &lt;a rel="to" typeof="Person" href="http://sally.example.org">
-      &lt;span property="alias" lang="">@sally&lt;/span>
+      &lt;span property="alias">@sally&lt;/span>
     &lt;/a>
     for all your hard work!
     &lt;a rel="tag" href="http://example.org/tags/givingthanks">
-      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+      &lt;span property="alias">#givingthanks&lt;/span>
     &lt;/a>
   &lt;/p>
 &lt;/div>
@@ -3505,11 +3164,11 @@ _:b1
   a as:Note ;
   as:content """Thank you
   &lt;a rel="to" typeof="Person" href="http://sally.example.org">
-    &lt;span property="alias" lang="">@sally&lt;/span>
+    &lt;span property="alias">@sally&lt;/span>
   &lt;/a>
   for all your hard work!
   &lt;a rel="tag" href="http://example.org/tags/givingthanks">
-    &lt;span property="alias" lang="">#givingthanks&lt;/span>
+    &lt;span property="alias">#givingthanks&lt;/span>
   &lt;/a>
   """^^rdf:HTML ;
   as:to &lt;http://sally.example.org> ;
@@ -3574,14 +3233,14 @@ _:b1
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
   &lt;p property="content">Thank you
     &lt;span property="tag" typeof="Mention">
-      &lt;a property="displayName" lang=""
+      &lt;a property="displayName"
         rel="href" href="http://sally.example.org">
         @sally
       &lt;/a>
     &lt;/span>
     for all your hard work!
     &lt;a rel="tag" href="http://example.org/tags/givingthanks">
-      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+      &lt;span property="alias">#givingthanks&lt;/span>
     &lt;/a>
   &lt;/p>
 &lt;/div>
