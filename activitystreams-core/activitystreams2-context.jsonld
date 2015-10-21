@@ -47,7 +47,6 @@
     "Place": "as:Place",
     "Process": "as:Process",
     "Profile": "as:Profile",
-    "Question": "as:Question",
     "Reject": "as:Reject",
     "Remove": "as:Remove",
     "Service": "as:Service",
@@ -158,14 +157,6 @@
     },
     "object": {
       "@id": "as:object",
-      "@type": "@id"
-    },
-    "oneOf": {
-      "@id": "as:oneOf",
-      "@type": "@id"
-    },
-    "anyOf": {
-      "@id": "as:anyOf",
       "@type": "@id"
     },
     "origin": {

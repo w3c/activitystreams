@@ -212,24 +212,6 @@ as:object a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
-as:oneOf a owl:ObjectProperty ;
-  rdfs:label "oneOf"@en ;
-  rdfs:comment "Describes a possible exclusive answer or option for a question."@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:Link )
-  ] ;
-  rdfs:domain as:Question .
-
-as:anyOf a owl:ObjectProperty ;
-  rdfs:label "oneOf"@en ;
-  rdfs:comment "Describes a possible inclusive answer or option for a question."@en ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:Link )
-  ] ;
-  rdfs:domain as:Question .
-
 as:prev a owl:FunctionalProperty ,
           owl:ObjectProperty ;
   rdfs:label "prev"@en ;
@@ -966,11 +948,6 @@ as:Process a owl:Class ;
   rdfs:label "Process"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:comment "Any form of short or long running process"@en .
-
-as:Question a owl:Class ;
-  rdfs:label "Question"@en;
-  rdfs:subClassOf as:Content, as:IntransitiveActivity ;
-  rdfs:comment "A question of any sort."@en .
 
 as:Reject a owl:Class ;
   rdfs:label "Reject"@en ;
