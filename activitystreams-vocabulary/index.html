@@ -247,8 +247,8 @@
   <div id="ex1-jsonld" style="display: block;">
     <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  "@id": "http://www.test.example/object/1",
+  "type": "Object",
+  "id": "http://www.test.example/object/1",
   "displayName": "A Simple, non-specific object"
 }</pre>
   </div>
@@ -361,7 +361,7 @@
   <div id="ex2-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
+  "type": "Link",
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
@@ -465,13 +465,13 @@ _:b0 a as:Link ;
   <div id="ex3-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Activity",
+  "type": "Activity",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Note",
+    "type": "Note",
     "displayName": "A Note"
   }
 }</pre>
@@ -588,13 +588,13 @@ _:b0 a as:Activity ;
   <div id="ex182-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Travel",
+  "type": "Travel",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "target": {
-    "@type": "Place",
+    "type": "Place",
     "displayName": "Work"
   }
 }</pre>
@@ -697,7 +697,7 @@ _:b0 a as:Travel ;
   <div id="ex4-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Actor",
+  "type": "Actor",
   "displayName": "Sally"
 }</pre>
   </div>
@@ -767,15 +767,15 @@ _:b0 a as:Actor ;
   <div id="ex5-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 2,
   "items": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -903,15 +903,15 @@ _:b0 a as:Collection ;
   <div id="ex6-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "OrderedCollection",
+  "type": "OrderedCollection",
   "totalItems": 2,
   "orderedItems": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -1027,16 +1027,16 @@ _:b0 a as:OrderedCollection ;
   <div id="ex6b-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "CollectionPage",
-  "@id": "http://example.org/foo?page=1",
+  "type": "CollectionPage",
+  "id": "http://example.org/foo?page=1",
   "partOf": "http://example.org/foo",
   "items": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -1159,16 +1159,16 @@ _:b0 a as:OrderedCollection ;
   <div id="ex6c-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "OrderedCollectionPage",
-  "@id": "http://example.org/foo?page=1",
+  "type": "OrderedCollectionPage",
+  "id": "http://example.org/foo?page=1",
   "partOf": "http://example.org/foo",
   "orderedItems": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -1379,16 +1379,16 @@ _:b0 a as:OrderedCollection ;
   <div id="ex7-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Accept",
+  "type": "Accept",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Invite",
+    "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
-      "@type": "Event",
+      "type": "Event",
       "displayName": "A Party!"
     }
   }
@@ -1511,16 +1511,16 @@ _:b0 a as:Accept ;
   <div id="ex8-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "TentativeAccept",
+  "type": "TentativeAccept",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Invite",
+    "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
-      "@type": "Event",
+      "type": "Event",
       "displayName": "A Party!"
     }
   }
@@ -1637,9 +1637,9 @@ _:b0 a as:TentativeAccept ;
   <div id="ex9-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Add",
+  "type": "Add",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/abc"
@@ -1708,18 +1708,18 @@ _:b0 a as:Add ;
   <div id="ex10-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Add",
+  "type": "Add",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Image",
+    "type": "Image",
     "displayName": "A picture of my cat",
     "url": "http://example.org/img/cat.png"
   },
   "target": {
-    "@type": "Album",
+    "type": "Album",
     "displayName": "My Cat Pictures"
   }
 }</pre>
@@ -1837,17 +1837,17 @@ _:b0 a as:Add ;
   <div id="ex11-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Arrive",
+  "type": "Arrive",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "location": {
-    "@type": "Place",
+    "type": "Place",
     "displayName": "Work"
   },
   "origin": {
-    "@type": "Place",
+    "type": "Place",
     "displayName": "Home"
   }
 }</pre>
@@ -1963,13 +1963,13 @@ _:b0 a as:Arrive ;
   <div id="ex12-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Create",
+  "type": "Create",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Note",
+    "type": "Note",
     "displayName": "A Simple Note",
     "content": "This is a simple note"
   }
@@ -2068,9 +2068,9 @@ _:b0 a as:Create ;
   <div id="ex13-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Delete",
+  "type": "Delete",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/notes/1"
@@ -2165,13 +2165,13 @@ _:b0 a as:Delete ;
   <div id="ex15-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Follow",
+  "type": "Follow",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "John"
   }
 }</pre>
@@ -2266,9 +2266,9 @@ _:b0 a as:Follow ;
   <div id="ex16-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Ignore",
+  "type": "Ignore",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/notes/1"
@@ -2361,13 +2361,13 @@ _:b0 a as:Ignore ;
   <div id="ex17-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Join",
+  "type": "Join",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Group",
+    "type": "Group",
     "displayName": "A Simple Group"
   }
 }</pre>
@@ -2459,13 +2459,13 @@ _:b0 a as:Join ;
   <div id="ex18-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Leave",
+  "type": "Leave",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Place",
+    "type": "Place",
     "displayName": "Work"
   }
 }</pre>
@@ -2535,13 +2535,13 @@ _:b0 a as:Leave ;
   <div id="ex19-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Leave",
+  "type": "Leave",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Group",
+    "type": "Group",
     "displayName": "A Simple Group"
   }
 }</pre>
@@ -2633,9 +2633,9 @@ _:b0 a as:Leave ;
   <div id="ex20-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Like",
+  "type": "Like",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/notes/1"
@@ -2730,13 +2730,13 @@ _:b0 a as:Like ;
   <div id="ex21-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "http://www.types.example/ProductOffer",
+    "type": "http://www.types.example/ProductOffer",
     "displayName": "50% Off!"
   }
 }</pre>
@@ -2836,22 +2836,22 @@ _:b0 a as:Offer ;
   <div id="ex24-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Invite",
+  "type": "Invite",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Event",
+    "type": "Event",
     "displayName": "A Party"
   },
   "target": [
     {
-      "@type": "Person",
+      "type": "Person",
       "displayName": "John"
     },
     {
-      "@type": "Person",
+      "type": "Person",
       "displayName": "Lisa"
     }
   ]
@@ -2977,16 +2977,16 @@ _:b0 a as:Invite ;
   <div id="ex26-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Reject",
+  "type": "Reject",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Invite",
+    "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
-      "@type": "Event",
+      "type": "Event",
       "displayName": "A Party!"
     }
   }
@@ -3106,16 +3106,16 @@ _:b0 a as:Reject ;
   <div id="ex27-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "TentativeReject",
+  "type": "TentativeReject",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Invite",
+    "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
-      "@type": "Event",
+      "type": "Event",
       "displayName": "A Party!"
     }
   }
@@ -3234,14 +3234,14 @@ _:b0 a as:TentativeReject ;
   <div id="ex28-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Remove",
+  "type": "Remove",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/notes/1",
   "target": {
-    "@type": "Folder",
+    "type": "Folder",
     "displayName": "Notes Folder"
   }
 }</pre>
@@ -3336,17 +3336,17 @@ _:b0 a as:Remove ;
   <div id="ex29-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Remove",
+  "type": "Remove",
   "actor": {
-    "@type": "http://example.org/Role",
+    "type": "http://example.org/Role",
     "displayName": "The Moderator"
   },
   "object": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "origin": {
-    "@type": "Group",
+    "type": "Group",
     "displayName": "A Simple Group"
   }
 }</pre>
@@ -3473,10 +3473,10 @@ _:b0 a as:Remove ;
   <div id="ex32-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Undo",
+  "type": "Undo",
   "actor": "http://sally.example.org",
   "object": {
-    "@type": "Offer",
+    "type": "Offer",
     "actor": "http://sally.example.org",
     "object": "http://example.org/posts/1",
     "target": "http://john.example.org"
@@ -3620,9 +3620,9 @@ _:b0 a as:Undo ;
   <div id="ex33-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Update",
+  "type": "Update",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/notes/1"
@@ -3725,13 +3725,13 @@ _:b0 a as:Update ;
   <div id="ex160-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Experience",
+  "type": "Experience",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Article",
+    "type": "Article",
     "displayName": "An article about Activity Streams"
   }
 }</pre>
@@ -3831,13 +3831,13 @@ _:b0 a as:Experience ;
   <div id="ex161-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "View",
+  "type": "View",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Article",
+    "type": "Article",
     "displayName": "An article about Activity Streams"
   }
 }</pre>
@@ -3939,9 +3939,9 @@ _:b0 a as:View ;
   <div id="ex163-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Listen",
+  "type": "Listen",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/music.mp3"
@@ -4037,9 +4037,9 @@ _:b0 a as:Listen ;
   <div id="ex164-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Read",
+  "type": "Read",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/posts/1"
@@ -4134,18 +4134,18 @@ _:b0 a as:Read ;
   <div id="ex168-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Move",
+  "type": "Move",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/posts/1",
   "target": {
-    "@type": "Collection",
+    "type": "Collection",
     "displayName": "List B"
   },
   "origin": {
-    "@type": "Collection",
+    "type": "Collection",
     "displayName": "List A"
   }
 }</pre>
@@ -4274,17 +4274,17 @@ _:b0 a as:Move ;
   <div id="ex169-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Travel",
+  "type": "Travel",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "target": {
-    "@type": "Place",
+    "type": "Place",
     "displayName": "Home"
   },
   "origin": {
-    "@type": "Place",
+    "type": "Place",
     "displayName": "Work"
   }
 }</pre>
@@ -4402,17 +4402,17 @@ _:b0 a as:Travel ;
   <div id="ex170-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Announce",
+  "type": "Announce",
   "actor": {
-    "@type": "Person",
-    "@id": "http://sally.example.org",
+    "type": "Person",
+    "id": "http://sally.example.org",
     "displayName": "Sally"
   },
   "object": {
-    "@type": "Arrive",
+    "type": "Arrive",
     "actor": "http://sally.example.org",
     "location": {
-      "@type": "Place",
+      "type": "Place",
       "displayName": "Work"
     }
   }
@@ -4528,7 +4528,7 @@ _:b0 a as:Announce ;
   <div id="ex173-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Block",
+  "type": "Block",
   "actor": "http://sally.example.org",
   "object": "http://joe.example.org"
 }</pre>
@@ -4614,10 +4614,10 @@ _:b0 a as:Block ;
   <div id="ex174-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Flag",
+  "type": "Flag",
   "actor": "http://sally.example.org",
   "object": {
-    "@type": "Note",
+    "type": "Note",
     "content": "An inappropriate note"
   }
 }</pre>
@@ -4712,7 +4712,7 @@ _:b0 a as:Flag ;
   <div id="ex175-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Dislike",
+  "type": "Dislike",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1"
 }</pre>
@@ -4830,7 +4830,7 @@ _:b0 a as:Dislike ;
   <div id="ex34-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
+  "type": "Application",
   "displayName": "My Software Application."
 }</pre>
 </div>
@@ -4894,7 +4894,7 @@ _:b0 a as:Application ;
   <div id="ex37-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Group",
+  "type": "Group",
   "displayName": "A Simple Group."
 }</pre>
 </div>
@@ -4959,7 +4959,7 @@ _:b0 a as:Group ;
   <div id="ex186-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Organization",
+  "type": "Organization",
   "displayName": "Example Co."
 }</pre>
 </div>
@@ -5024,7 +5024,7 @@ _:b0 a as:Organization ;
   <div id="ex39-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
+  "type": "Person",
   "displayName": "Sally Smith."
 }</pre>
 </div>
@@ -5088,7 +5088,7 @@ _:b0 a as:Person ;
   <div id="ex40-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Process",
+  "type": "Process",
   "displayName": "A Long Running Process"
 }</pre>
 </div>
@@ -5153,7 +5153,7 @@ _:b0 a as:Process ;
   <div id="ex42-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Service",
+  "type": "Service",
   "displayName": "Acme Web Service"
 }</pre>
 </div>
@@ -5263,14 +5263,14 @@ _:b0 a as:Service ;
   <div id="ex22-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Relationship",
+  "type": "Relationship",
   "subject": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
   "object": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "John"
   }
 }</pre>
@@ -5381,7 +5381,7 @@ _:b0 a as:Relationship ;
   <div id="ex35-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Content",
+  "type": "Content",
   "displayName": "Some generic content",
   "content": "&lt;p>This can be any kind of content&lt;/p>",
   "height": 100,
@@ -5481,7 +5481,7 @@ _:b0 a as:Content ;
   <div id="ex43-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Article",
+  "type": "Article",
   "displayName": "A Blog Post",
   "content": "&lt;div>... a long blog post&lt;/div>",
   "attributedTo": "http://sally.example.org"
@@ -5568,23 +5568,23 @@ _:b0 a as:Article ;
   <div id="ex44-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Album",
+  "type": "Album",
   "displayName": "A Photo Album",
   "items": [
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "My Dog",
       "url": {
-        "@type": "Link",
+        "type": "Link",
         "href": "http://example.org/dog.jpeg",
         "mediaType": "image/jpeg"
       }
     },
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "My Cat",
       "url": {
-        "@type": "Link",
+        "type": "Link",
         "href": "http://example.org/cat.jpeg",
         "mediaType": "image/jpeg"
       }
@@ -5705,23 +5705,23 @@ _:b0 a as:Album ;
   <div id="ex45-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Album",
+  "type": "Album",
   "displayName": "A Music Playlist",
   "orderedItems": [
     {
-      "@type": "Audio",
+      "type": "Audio",
       "displayName": "Song 1",
       "url": {
-        "@type": "Link",
+        "type": "Link",
         "href": "http://example.org/song1.mp3",
         "mediaType": "audio/mp3"
       }
     },
     {
-      "@type": "Audio",
+      "type": "Audio",
       "displayName": "Song 2",
       "url": {
-        "@type": "Link",
+        "type": "Link",
         "href": "http://example.org/song2.mpg",
         "mediaType": "audio/mp3"
       }
@@ -5862,11 +5862,11 @@ _:b0 a as:Album ;
   <div id="ex46-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Folder",
+  "type": "Folder",
   "displayName": "Some Documents",
   "items": [
     {
-      "@type": "Document",
+      "type": "Document",
       "displayName": "4Q Sales Forecast",
       "url": "http://example.org/4q-sales-forecast.pdf"
     }
@@ -5965,25 +5965,25 @@ _:b0 a as:Folder ;
   <div id="ex47-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Story",
+  "type": "Story",
   "displayName": "My Vacation",
   "startIndex": 5,
   "orderedItems": [
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "Visiting the Vatican",
       "url": "http://example.org/photo5.jpeg",
       "location": {
-        "@type": "Place",
+        "type": "Place",
         "displayName": "The Vatican"
       }
     },
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "Visiting the Eiffel Tower",
       "url": "http://example.org/photo6.jpeg",
       "location": {
-        "@type": "Place",
+        "type": "Place",
         "displayName": "The Eiffel Tower"
       }
     }
@@ -6141,7 +6141,7 @@ _:b0 a as:Story ;
   <div id="ex48-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Document",
+  "type": "Document",
   "displayName": "4Q Sales Forecast",
   "url": "http://example.org/4q-sales-forecast.pdf"
 }</pre>
@@ -6216,10 +6216,10 @@ _:b0 a as:Document ;
   <div id="ex49-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Audio",
+  "type": "Audio",
   "displayName": "A Simple Podcast",
   "url": {
-    "@type": "Link",
+    "type": "Link",
     "href": "http://example.org/podcast.mp3",
     "mediaType": "audio/mp3"
   }
@@ -6305,16 +6305,16 @@ _:b0 a as:Audio ;
   <div id="ex50-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
+  "type": "Image",
   "displayName": "A Simple Image",
   "url": [
     {
-      "@type": "Link",
+      "type": "Link",
       "href": "http://example.org/image.jpeg",
       "mediaType": "image/jpeg"
     },
     {
-      "@type": "Link",
+      "type": "Link",
       "href": "http://example.org/image.png",
       "mediaType": "image/png"
     }
@@ -6417,7 +6417,7 @@ _:b0 a as:Image ;
   <div id="ex51-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Video",
+  "type": "Video",
   "displayName": "A Simple Video",
   "url": "http://example.org/video.mkv",
   "duration": "PT2H"
@@ -6499,7 +6499,7 @@ _:b0 a as:Video ;
   <div id="ex52-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "displayName": "A Short Note",
   "content": "This is a short note"
 }</pre>
@@ -6576,7 +6576,7 @@ _:b0 a as:Note ;
   <div id="ex53-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Page",
+  "type": "Page",
   "displayName": "A Webpage",
   "url": "http://example.org/page.html"
 }</pre>
@@ -6649,15 +6649,15 @@ _:b0 a as:Page ;
   <div id="ex55-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Question",
+  "type": "Question",
   "displayName": "What is the answer?",
   "oneOf": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Option A"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Option B"
     }
   ]
@@ -6777,7 +6777,7 @@ _:b0 a as:Question ;
   <div id="ex56-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Event",
+  "type": "Event",
   "displayName": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
@@ -6880,7 +6880,7 @@ _:b0 a as:Event ;
   <div id="ex57-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Work"
 }</pre>
 </div>
@@ -6922,7 +6922,7 @@ _:b0 a as:Place ;
   <div id="ex58-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
@@ -7068,7 +7068,7 @@ _:b0 a as:Place ;
   <div id="ex181-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Mention",
+  "type": "Mention",
   "href": "http://example.org/joe",
   "displayName": "Joe"
 }</pre>
@@ -7142,10 +7142,10 @@ _:b0 a as:Mention ;
   <div id="ex184-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Profile",
+  "type": "Profile",
   "displayName": "Sally's Profile",
   "attributedTo": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally Smith"
   }
 }</pre>
@@ -7246,29 +7246,29 @@ _:b0 a as:Profile ;
         <div id="ex180-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "items": [
     {
-      "@type": "Relationship",
+      "type": "Relationship",
       "subject": {
-        "@type": "Person",
+        "type": "Person",
         "displayName": "Sally"
       },
       "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
       "object": {
-        "@type": "Person",
+        "type": "Person",
         "displayName": "Joe"
       }
     },
     {
-      "@type": "Relationship",
+      "type": "Relationship",
       "subject": {
-        "@type": "Person",
+        "type": "Person",
         "displayName": "Sally"
       },
       "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
       "object": {
-        "@type": "Person",
+        "type": "Person",
         "displayName": "Jane"
       }
     }
@@ -7305,10 +7305,10 @@ _:b0 a as:Profile ;
         <div id="ex181-jsonldb" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Create",
+  "type": "Create",
   "actor": "http://sally.example.org",
   "object": {
-    "@type": "Relationship",
+    "type": "Relationship",
     "subject": "http://sally.example.org",
     "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
     "object": "http://matt.example.org",
@@ -7361,12 +7361,12 @@ _:b0 a as:Profile ;
     "http://www.w3.org/ns/activitystreams",
     {"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
   ],
-  "@id": "http://example.org/connection-requests/123",
-  "@type": "Offer",
+  "id": "http://example.org/connection-requests/123",
+  "type": "Offer",
   "actor": "acct:sally@example.org",
   "object": {
-    "@id": "http://example.org/connections/123",
-    "@type": "Relationship",
+    "id": "http://example.org/connections/123",
+    "type": "Relationship",
     "subject": "acct:sally@example.org",
     "relationship": "colleagueOf",
     "object": "acct:john@example.org"
@@ -7384,11 +7384,11 @@ _:b0 a as:Profile ;
           <div id="ex188-jsonld" style="display: block;">
   <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "items": [
     {
-      "@id": "http://example.org/activities/122",
-      "@type": "Accept",
+      "id": "http://example.org/activities/122",
+      "type": "Accept",
       "actor": "acct:john@example.org",
       "object": "http://example.org/connection-requests/123",
       "inReplyTo": "http://example.org/connection-requests/123",
@@ -7401,37 +7401,37 @@ _:b0 a as:Profile ;
       ]
     },
     {
-      "@id": "http://example.org/activities/123",
-      "@type": "Follow",
+      "id": "http://example.org/activities/123",
+      "type": "Follow",
       "actor": "acct:john@example.org",
       "object": "acct:sally@example.org",
       "context": "http://example.org/connections/123",
     },
     {
-      "@id": "http://example.org/activities/124",
-      "@type": "Follow",
+      "id": "http://example.org/activities/124",
+      "type": "Follow",
       "actor": "acct:sally@example.org",
       "object": "acct:john@example.org",
       "context": "http://example.org/connections/123",
     },
     {
-      "@id": "http://example.org/activities/125",
-      "@type": "Add",
+      "id": "http://example.org/activities/125",
+      "type": "Add",
       "actor": "acct:john@example.org",
       "object": "http://example.org/connections/123",
       "target": {
-        "@type": "Collection",
+        "type": "Collection",
         "displayName": "John's Connections"
       },
       "context": "http://example.org/connections/123",
     },
     {
-      "@id": "http://example.org/activities/126",
-      "@type": "Add",
+      "id": "http://example.org/activities/126",
+      "type": "Add",
       "actor": "acct:sally@example.org",
       "object": "http://example.org/connections/123",
       "target": {
-        "@type": "Collection",
+        "type": "Collection",
         "displayName": "Sally's Connections"
       },
       "context": "http://example.org/connections/123",
@@ -7495,7 +7495,7 @@ _:b0 a as:Profile ;
         <div id="ex182-jsonldb" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "San Francisco, CA"
 }</pre>
         </div>
@@ -7507,7 +7507,7 @@ _:b0 a as:Profile ;
         <div id="ex183-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "San Francisco, CA",
   "longitude": "122.4167",
   "latitude": "37.7833"
@@ -7643,7 +7643,7 @@ _:b0 a as:Profile ;
   <div id="ex59-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/foo"
 }</pre>
@@ -7709,10 +7709,10 @@ _:b0 a as:Offer ;
   <div id="ex60-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": {
-    "@type": "Person",
-    "@id": "http://sally.example.org",
+    "type": "Person",
+    "id": "http://sally.example.org",
     "displayName": "Sally"
   },
   "object": "http://example.org/foo"
@@ -7784,12 +7784,12 @@ _:b0 a as:Offer ;
   <div id="ex61-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": [
     "http://joe.example.org",
     {
-      "@type": "Person",
-      "@id": "http://sally.example.org",
+      "type": "Person",
+      "id": "http://sally.example.org",
       "displayName": "Sally"
     }
   ],
@@ -7907,11 +7907,11 @@ _:b0 a as:Offer ;
   <div id="ex64-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "displayName": "A Simple Note",
   "attachment": [
     {
-      "@type": "Image",
+      "type": "Image",
       "content": "A simple Image",
       "url": "http://example.org/cat.jpeg"
     }
@@ -8028,12 +8028,12 @@ _:b0 a as:Note ;
   <div id="ex65-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
+  "type": "Image",
   "displayName": "A Simple Image",
   "url": "http://example.org/cat.jpeg",
   "attributedTo": [
     {
-      "@type": "Person",
+      "type": "Person",
       "displayName": "Sally"
     }
   ]
@@ -8098,13 +8098,13 @@ _:b0 a as:Image ;
   <div id="ex66-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
+  "type": "Image",
   "displayName": "A Simple Image",
   "url": "http://example.org/cat.jpeg",
   "attributedTo": [
     "http://joe.example.org",
     {
-      "@type": "Person",
+      "type": "Person",
       "displayName": "Sally"
     }
   ]
@@ -8203,7 +8203,7 @@ _:b0 a as:Image ;
   <div id="ex68-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": "http://john.example.org",
@@ -8327,7 +8327,7 @@ _:b0 a as:Offer ;
   <div id="ex69-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": "http://john.example.org",
@@ -8453,7 +8453,7 @@ _:b0 a as:Offer ;
   <div id="ex70-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": "http://john.example.org",
@@ -8579,17 +8579,17 @@ _:b0 a as:Offer ;
   <div id="ex171-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "items": [
     {
-      "@type": "Offer",
+      "type": "Offer",
       "actor": "http://sally.example.org",
       "object": "http://example.org/posts/1",
       "target": "http://john.example.org",
       "context": "http://example.org/contexts/1"
     },
     {
-      "@type": "Like",
+      "type": "Like",
       "actor": "http://joe.example.org",
       "object": "http://example.org/posts/2",
       "context": "http://example.org/contexts/1"
@@ -8790,7 +8790,7 @@ _:b2 a as:Like ;
   <div id="ex71-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 3,
   "current": "http://example.org/collection",
   "items": [
@@ -8916,10 +8916,10 @@ _:b0 a as:Collection ;
   <div id="ex72-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 3,
   "current": {
-    "@type": "Link",
+    "type": "Link",
     "displayName": "Most Recent Items",
     "href": "http://example.org/collection"
   },
@@ -9084,7 +9084,7 @@ _:b0 a as:Collection ;
   <div id="ex73-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 3,
   "first": "http://example.org/collection?page=0"
 }</pre>
@@ -9141,10 +9141,10 @@ _:b0 a as:Collection ;
   <div id="ex74-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 3,
   "first": {
-    "@type": "Link",
+    "type": "Link",
     "displayName": "First Page",
     "href": "http://example.org/collection?page=0"
   }
@@ -9240,10 +9240,10 @@ _:b0 a as:Collection ;
   <div id="ex75-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note",
   "generator": {
-    "@type": "Application",
+    "type": "Application",
     "displayName": "My Note Application"
   }
 }</pre>
@@ -9332,10 +9332,10 @@ _:b0 a as:Note ;
   <div id="ex77-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A Simple note",
   "icon": {
-    "@type": "Image",
+    "type": "Image",
     "displayName": "Note",
     "url": "http://example.org/note.png",
     "width": 16,
@@ -9407,18 +9407,18 @@ _:b0 a as:Note ;
   <div id="ex78-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A Simple note",
   "icon": [
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "Note (16x16)",
       "url": "http://example.org/note1.png",
       "width": 16,
       "height": 16
     },
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "Note (32x32)",
       "url": "http://example.org/note2.png",
       "width": 32,
@@ -9535,10 +9535,10 @@ _:b0 a as:Note ;
   <div id="ex80-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A Simple note",
   "image": {
-    "@type": "Image",
+    "type": "Image",
     "displayName": "A Cat",
     "url": "http://example.org/cat.png"
   }
@@ -9606,16 +9606,16 @@ _:b0 a as:Note ;
   <div id="ex81-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A Simple note",
   "image": [
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "Cat 1",
       "url": "http://example.org/cat1.png"
     },
     {
-      "@type": "Image",
+      "type": "Image",
       "displayName": "Cat 2",
       "url": "http://example.org/cat2.png"
     }
@@ -9732,10 +9732,10 @@ _:b0 a as:Note ;
   <div id="ex83-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note",
   "inReplyTo": {
-    "@type": "Note",
+    "type": "Note",
     "content": "Another note"
   }
 }</pre>
@@ -9797,7 +9797,7 @@ _:b0 a as:Note ;
   <div id="ex84-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note",
   "inReplyTo": "http://example.org/posts/1"
 }</pre>
@@ -9884,14 +9884,14 @@ _:b0 a as:Note ;
   <div id="ex101-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Listen",
+  "type": "Listen",
   "actor": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "object": "http://example.org/foo.mp3",
   "instrument": {
-    "@type": "Service",
+    "type": "Service",
     "displayName": "Acme Music Service"
   }
 }</pre>
@@ -9999,7 +9999,7 @@ _:b0 a as:Listen ;
   <div id="ex87-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 3,
   "last": "http://example.org/collection?page=1"
 }</pre>
@@ -10056,10 +10056,10 @@ _:b0 a as:Collection ;
   <div id="ex88-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 5,
   "last": {
-    "@type": "Link",
+    "type": "Link",
     "displayName": "Last Page",
     "href": "http://example.org/collection?page=1"
   }
@@ -10156,10 +10156,10 @@ _:b0 a as:Collection ;
   <div id="ex89-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Person",
+  "type": "Person",
   "displayName": "Sally",
   "location": {
-    "@type": "Place",
+    "type": "Place",
     "longitude": 12.34,
     "latitude": 56.78,
     "altitude": 90,
@@ -10270,15 +10270,15 @@ _:b0 a as:Person ;
   <div id="ex91-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 2,
   "items": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -10369,15 +10369,15 @@ _:b0 a as:Collection ;
   <div id="ex92-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "OrderedCollection",
+  "type": "OrderedCollection",
   "totalItems": 2,
   "orderedItems": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -10497,15 +10497,15 @@ _:b0 a as:OrderedCollection ;
   <div id="ex93-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Question",
+  "type": "Question",
   "displayName": "What is the answer?",
   "oneOf": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Option A"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Option B"
     }
   ]
@@ -10618,15 +10618,15 @@ _:b0 a as:Question ;
   <div id="ex94-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Question",
+  "type": "Question",
   "displayName": "What is the answer?",
   "anyOf": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Option A",
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Option B"
     }
   ]
@@ -10739,15 +10739,15 @@ _:b0 a as:Question ;
   <div id="ex166-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Move",
+  "type": "Move",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": {
-    "@type": "Collection",
+    "type": "Collection",
     "displayName": "List B"
   },
   "origin": {
-    "@type": "Collection",
+    "type": "Collection",
     "displayName": "List A"
   }
 }</pre>
@@ -10877,7 +10877,7 @@ _:b0 a as:Move ;
   <div id="ex96-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "CollectionPage",
+  "type": "CollectionPage",
   "next": "http://example.org/collection?page=2",
   "items": [
     "http://example.org/posts/1",
@@ -10997,9 +10997,9 @@ _:b0 a as:CollectionPage ;
   <div id="ex97-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "CollectionPage",
+  "type": "CollectionPage",
   "next": {
-    "@type": "Link",
+    "type": "Link",
     "displayName": "Next Page",
     "href": "http://example.org/collection?page=2"
   },
@@ -11159,7 +11159,7 @@ _:b0 a as:CollectionPage ;
   <div id="ex98-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Like",
+  "type": "Like",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1"
 }</pre>
@@ -11223,10 +11223,10 @@ _:b0 a as:Like
   <div id="ex99-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Like",
+  "type": "Like",
   "actor": "http://sally.example.org",
   "object": {
-    "@type": "Note",
+    "type": "Note",
     "content": "A simple note"
   }
 }</pre>
@@ -11297,12 +11297,12 @@ _:b0 a as:Like
   <div id="ex100-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Like",
+  "type": "Like",
   "actor": "http://sally.example.org",
   "object": [
     "http://example.org/posts/1",
     {
-      "@type": "Note",
+      "type": "Note",
       "content": "A simple note"
     }
   ]
@@ -11424,7 +11424,7 @@ _:b0 a as:Like
   <div id="ex104-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "CollectionPage",
+  "type": "CollectionPage",
   "prev": "http://example.org/collection?page=1",
   "items": [
     "http://example.org/posts/1",
@@ -11544,9 +11544,9 @@ _:b0 a as:CollectionPage ;
   <div id="ex105-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "CollectionPage",
+  "type": "CollectionPage",
   "prev": {
-    "@type": "Link",
+    "type": "Link",
     "displayName": "Previous Page",
     "href": "http://example.org/collection?page=1"
   },
@@ -11706,11 +11706,11 @@ _:b0 a as:CollectionPage ;
   <div id="ex106-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Video",
+  "type": "Video",
   "displayName": "Cool New Movie",
   "duration": "PT2H30M",
   "preview": {
-    "@type": "Link",
+    "type": "Link",
     "displayName": "Trailer",
     "href": "http://example.org/trailer.mkv",
     "mediaType": "video/mkv",
@@ -11820,11 +11820,11 @@ _:b0 a as:Video ;
   <div id="ex108-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": ["Activity", "http://www.verbs.example/Check"],
+  "type": ["Activity", "http://www.verbs.example/Check"],
   "actor": "http://sally.example.org",
   "object": "http://example.org/flights/1",
   "result": {
-    "@type": "http://www.types.example/flightstatus",
+    "type": "http://www.types.example/flightstatus",
     "displayName": "On Time"
   }
 }</pre>
@@ -11924,15 +11924,15 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   <div id="ex112-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
-  "@id": "http://www.test.example/notes/1",
+  "type": "Note",
+  "id": "http://www.test.example/notes/1",
   "content": "A simple note",
   "replies": {
-    "@type": "Collection",
+    "type": "Collection",
     "totalItems": 1,
     "items": [
       {
-        "@type": "Note",
+        "type": "Note",
         "content": "A response to the note",
         "inReplyTo": "http://www.test.example/notes/1"
       }
@@ -12068,10 +12068,10 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   <div id="ex113-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note",
   "scope": {
-    "@type": "http://example.org/Organization",
+    "type": "http://example.org/Organization",
     "displayName": "My Organization"
   }
 }</pre>
@@ -12166,13 +12166,13 @@ _:b0 a as:Note ;
   <div id="ex118-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Image",
+  "type": "Image",
   "displayName": "Picture of Sally",
   "url": "http://example.org/sally.jpg",
   "tag": [
     {
-      "@type": "Person",
-      "@id": "http://sally.example.org",
+      "type": "Person",
+      "id": "http://sally.example.org",
       "displayName": "Sally"
     }
   ]
@@ -12273,7 +12273,7 @@ _:b0 a as:Image ;
   <div id="ex120-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": "http://john.example.org"
@@ -12361,11 +12361,11 @@ _:b0 a as:Offer ;
   <div id="ex121-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "John"
   }
 }</pre>
@@ -12480,7 +12480,7 @@ _:b0 a as:Offer ;
   <div id="ex123-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": "http://john.example.org",
@@ -12604,7 +12604,7 @@ _:b0 a as:Offer ;
   <div id="ex124-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Document",
+  "type": "Document",
   "displayName": "4Q Sales Forecast",
   "url": "http://example.org/4q-sales-forecast.pdf"
 }</pre>
@@ -12657,10 +12657,10 @@ _:b0 a as:Document ;
   <div id="ex125-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Document",
+  "type": "Document",
   "displayName": "4Q Sales Forecast",
   "url": {
-    "@type": "Link",
+    "type": "Link",
     "href": "http://example.org/4q-sales-forecast.pdf"
   }
 }</pre>
@@ -12716,16 +12716,16 @@ _:b0 a as:Document ;
   <div id="ex126-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Document",
+  "type": "Document",
   "displayName": "4Q Sales Forecast",
   "url": [
     {
-      "@type": "Link",
+      "type": "Link",
       "href": "http://example.org/4q-sales-forecast.pdf",
       "mediaType": "application/pdf"
     },
     {
-      "@type": "Link",
+      "type": "Link",
       "href": "http://example.org/4q-sales-forecase.html",
       "mediaType": "text/html"
     }
@@ -12830,7 +12830,7 @@ _:b0 a as:Document ;
   <div id="ex127-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "latitude": 36.75,
   "longitude": 119.7667,
   "accuracy": 94.5
@@ -12941,7 +12941,7 @@ _:b0 a as:Place ;
   <div id="ex128-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Home",
   "alias": "@home"
 }</pre>
@@ -13002,7 +13002,7 @@ _:b0 a as:Place ;
           <td>Notes:</td>
           <td>
             <p>Provides a contextually meaningful alternative label for the
-            object in addition to the <code><a>id</a></code>. For instance,
+            object in addition to the <code>id</code>. For instance,
             within some systems, groups can be identified by both a unique
             global identifier and a more "human-friendly" label such as
             "<code>@friends</code>" or "<code>@network</code>". The value of
@@ -13046,7 +13046,7 @@ _:b0 a as:Place ;
   <div id="ex129-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Fresno Area",
   "altitude": 15.0,
   "latitude": 36.75,
@@ -13186,7 +13186,7 @@ _:b0 a as:Place ;
   <div id="ex130-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note"
 }</pre>
 </div>
@@ -13237,7 +13237,7 @@ _:b0 a as:Note ;
   <div id="ex131-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "contentMap": [
     "en": "A simple note",
     "sp": "Una simple nota"
@@ -13326,7 +13326,7 @@ _:b0 a as:Note ;
   <div id="ex132-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "displayName": "A simple note"
 }</pre>
 </div>
@@ -13377,7 +13377,7 @@ _:b0 a as:Note ;
   <div id="ex133-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "displayNameMap": [
     "en": "A simple note",
     "sp": "Una simple nota"
@@ -13466,7 +13466,7 @@ _:b0 a as:Note ;
   <div id="ex134-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Video",
+  "type": "Video",
   "displayName": "A Simple Video",
   "url": "http://example.org/video.mkv",
   "duration": "PT2H"
@@ -13556,7 +13556,7 @@ _:b0 a as:Video ;
   <div id="ex136-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Content",
+  "type": "Content",
   "displayName": "Some generic content",
   "content": "&lt;p>This can be any kind of content&lt;/p>",
   "height": 100,
@@ -13651,7 +13651,7 @@ _:b0 a as:Content ;
   <div id="ex137-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
+  "type": "Link",
   "href": "http://example.org/abc",
   "mediaType": "text/html",
   "displayName": "An example link"
@@ -13732,7 +13732,7 @@ _:b0 a as:Link ;
   <div id="ex138-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
+  "type": "Link",
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
@@ -13819,16 +13819,16 @@ _:b0 a as:Link ;
   <div id="ex139-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "CollectionPage",
-  "@id": "http://example.org/collection?page=1",
+  "type": "CollectionPage",
+  "id": "http://example.org/collection?page=1",
   "partOf": "http://example.org/collection",
   "items": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -13947,7 +13947,7 @@ _:b0 a as:Link ;
   <div id="ex140-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
@@ -14084,7 +14084,7 @@ _:b0 a as:Place ;
   <div id="ex141-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
@@ -14221,7 +14221,7 @@ _:b0 a as:Place ;
   <div id="ex142-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
+  "type": "Link",
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
@@ -14306,7 +14306,7 @@ _:b0 a as:Link ;
   <div id="ex143-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Offer",
+  "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",
   "target": "http://john.example.org",
@@ -14468,7 +14468,7 @@ _:b0 a as:Offer ;
   <div id="ex144-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Event",
+  "type": "Event",
   "displayName": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
@@ -14579,7 +14579,7 @@ _:b0 a as:Event ;
   <div id="ex145-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note",
   "published": "2014-12-12T12:12:12Z"
 }</pre>
@@ -14665,7 +14665,7 @@ _:b0 a as:Note ;
   <div id="ex146-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Event",
+  "type": "Event",
   "displayName": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
@@ -14776,7 +14776,7 @@ _:b0 a as:Event ;
   <div id="ex147-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
@@ -14916,7 +14916,7 @@ _:b0 a as:Place ;
   <div id="ex149-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Link",
+  "type": "Link",
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
@@ -15007,15 +15007,15 @@ _:b0 a as:Link ;
   <div id="ex150-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "OrderedCollectionPage",
+  "type": "OrderedCollectionPage",
   "startIndex": 0,
   "orderedItems": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -15137,7 +15137,7 @@ _:b0 a as:OrderedCollectionPage ;
   <div id="ex152-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "summary": "A simple note"
 }</pre>
 </div>
@@ -15188,7 +15188,7 @@ _:b0 a as:Note ;
   <div id="ex153-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "summaryMap": [
     "en": "A simple note",
     "sp": "Una simple nota"
@@ -15278,7 +15278,7 @@ _:b0 a as:Note ;
   <div id="ex154-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "title": "A simple note"
 }</pre>
 </div>
@@ -15329,7 +15329,7 @@ _:b0 a as:Note ;
   <div id="ex155-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "titleMap": [
     "en": "A simple note",
     "sp": "Una simple nota"
@@ -15422,15 +15422,15 @@ _:b0 a as:Note ;
   <div id="ex156-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 2,
   "items": [
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "A Simple Note"
     },
     {
-      "@type": "Note",
+      "type": "Note",
       "displayName": "Another Simple Note"
     }
   ]
@@ -15551,7 +15551,7 @@ _:b0 a as:Collection ;
   <div id="ex157-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "displayName": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
@@ -15700,7 +15700,7 @@ _:b0 a as:Place ;
   <div id="ex158-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "A simple note",
   "updated": "2014-12-12T12:12:12Z"
 }</pre>
@@ -15787,7 +15787,7 @@ _:b0 a as:Note ;
   <div id="ex159-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Content",
+  "type": "Content",
   "displayName": "Some generic content",
   "content": "&lt;p>This can be any kind of content&lt;/p>",
   "height": 100,
@@ -15882,14 +15882,14 @@ _:b0 a as:Content ;
               <div id="ex22a-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Relationship",
+  "type": "Relationship",
   "subject": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
   "object": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "John"
   }
 }</pre>
@@ -15998,14 +15998,14 @@ _:b0 a as:Relationship ;
               <div id="ex22c-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Relationship",
+  "type": "Relationship",
   "subject": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
   "object": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "John"
   }
 }</pre>
@@ -16112,9 +16112,9 @@ _:b0 a as:Relationship ;
               <div id="ex185-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Profile",
+  "type": "Profile",
   "describes": {
-    "@type": "Person",
+    "type": "Person",
     "displayName": "Sally"
   },
   "url": "http://sally.example.org"
@@ -16184,289 +16184,6 @@ _:b0 a as:Profile ;
           <td>True</td>
         </tr>
       </tbody>
-    </table>
-
-  </section>
-
-  <section id="as1properties">
-    <h2>Activity Streams 1.0 Properties</h2>
-
-    <p>
-      While the following properties are defined within the
-      <code>http://www.w3.org/ns/activitystreams#</code> namespace URI,
-      their use SHOULD be considered deprecated within Activity Streams
-      2.0 implementations. They are included specifically for
-      interoperability purposes with Activity Streams 1.0.
-    </p>
-
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 15%">Term</th>
-          <th colspan="2">Description</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>author</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#author</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the author of an object (replaced by
-            <code><a>attributedTo</a></code>).
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code>
-        </tr>
-        <tr>
-          <td>Equivalent To:</td>
-          <td><code><a>attributedTo</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>id</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#id</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Provides a permanent, universally unique identifier for the object
-            in the form of an absolute IRI [[RFC3987]]. Replaced in Activity
-            Streams 2.0 by the <code>@id</code> keyword.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code>
-        </tr>
-        <tr>
-          <td>Equivalent To:</td>
-          <td>[[!JSON-LD]] "@id"</td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn data-lt="verb-term">verb</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#verb</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the type of action represented in the Activity. Replaced
-            in Activity Streams 2.0 by the JSON-LD <code>@type</code> keyword.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Activity</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code>xsd:anyURI</code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn data-lt="objectType-term">objectType</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#objectType</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the type of object. Replaced in Activity Streams 2.0 by
-            the JSON-LD <code>@type</code> keyword.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code>xsd:anyURI</code></td>
-        </tr>
-        <tr>
-          <td>Equivalent To:</td>
-          <td>[[!JSON-LD]] <code>@type</code></td>
-        </tr>
-      </tbody>
-
-
-      <tbody>
-         <tr>
-            <td rowspan="4" ><dfn>downstreamDuplicates</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td>
-              <code>http://www.w3.org/ns/activitystreams#downstreamDuplicates</code>
-            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              The downstreamDuplicates property is used when
-              there are known objects, possibly in a different system, that
-              duplicate the content in this object. This would be used as a
-              hint for consumers to use when resolving duplicates between
-              objects received from different sources. In Activity Streams 2.0,
-              the downstreamDuplicates property is deprecated and SHOULD NOT be
-              used.
-            </td>
-          </tr>
-          <tr>
-            <td>Domain:</td>
-            <td><code><a>Object</a></code></td>
-          </tr>
-          <tr>
-            <td>Range:</td>
-            <td><code>xsd:anyURI</code></td>
-          </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>provider</dfn></td>
-          <td style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#provider</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies the entity (e.g. an application) that published the
-            object. Note that this is not necessarily the same entity that
-            generated the object.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>upstreamDuplicates</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td>
-            <code>http://www.w3.org/ns/activitystreams#upstreamDuplicates</code>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            The upstreamDuplicates property is used when
-            there are known objects, possibly in a different system, that
-            duplicate the content in this object. This would be used as a hint
-            for consumers to use when resolving duplicates between objects
-            received from different sources. In Activity Streams 2.0, the
-            upstreamDuplicates property is deprecated and SHOULD NOT be used.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code>xsd:anyURI</code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>tags</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#tags</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            In the Activity Streams 2.0 vocabulary, <code>tags</code>
-            is renamed to the singular form <code>tag</code> for
-            consistency.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Object</a><code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Equivalent To:</td>
-          <td><code><a data-lt="tag-term">tag</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>attachments</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#attachments</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            In the Activity Streams 2.0 vocabulary, <code>attachments</code>
-            is renamed to the singular form <code>attachment</code> for
-            consistency.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-        <tr>
-          <td>Equivalent To:</td>
-          <td><code><a>attachment</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>rating</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#rating</code></td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            A quality rating expressed as a non-negative decimal number between
-            0.0 and 5.0 (inclusive) with one decimal place of precision.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code>xsd:decimal</code> [&gt;= 0.0f, &lt;=5.0f]</td>
-        </tr>
-        <tr>
-          <td>Functional:</td>
-          <td>True</td>
-        </tr>
-      </tbody>
-
     </table>
 
   </section>
