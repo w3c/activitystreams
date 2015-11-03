@@ -5276,7 +5276,8 @@ _:b0 a as:Content ;
             <p>
               <code><a>duration</a></code> |
               <code><a>height</a></code> |
-              <code><a>width</a></code>
+              <code><a>width</a></code> |
+              <code><a>mediaType</a></code>
             </p>
 
             <p>
@@ -13985,13 +13986,21 @@ _:b0 a as:Link ;
         <tr>
           <td>Notes:</td>
           <td>
-            When used on a <a>Link</a>, identifies the MIME media type of the
-            referenced resource.
+            <p>
+              When used on a <a>Link</a>, identifies the MIME media type of the
+              referenced resource.
+            </p>
+            <p>
+              When used on a <a>Content</a> object, identifies the MIME media
+              type of the value of the <code><a>content</a></code> property.
+              If not specified, the <code><a>content</a></code> property is
+              assumed to contain <code>text/html</code> content.
+            </p>
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Link</a></code></td>
+          <td><code><a>Link</a></code> | <code><a>Content</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>

@@ -499,7 +499,10 @@ as:mediaType a owl:DatatypeProperty ,
   rdfs:label "mediaType"@en ;
   rdfs:comment "The MIME Media Type"@en ;
   rdfs:range xsd:string ;
-  rdfs:domain as:Link .
+  rdfs:domain [
+    a owl:Class ;
+    owl:unionOf (as:Link as:Content)
+  ] .
 
 as:objectType a owl:DatatypeProperty ,
         owl:FunctionalProperty,
