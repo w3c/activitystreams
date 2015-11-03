@@ -256,7 +256,6 @@
       "@type": "@id"
     },
     "hreflang": "as:hreflang",
-    "id": "as:id",
     "latitude": {
       "@id": "as:latitude",
       "@type": "xsd:float"
@@ -266,7 +265,6 @@
       "@type": "xsd:float"
     },
     "mediaType": "as:mediaType",
-    "objectType": "as:objectType",
     "published": {
       "@id": "as:published",
       "@type": "xsd:dateTime"
