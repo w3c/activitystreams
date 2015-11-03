@@ -811,24 +811,19 @@ as:Like a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Like Something"@en .
 
-as:Experience a owl:Class;
-  rdfs:label "Experience"@en ;
-  rdfs:subClassOf as:Activity ;
-  rdfs:comment "The actor experienced the object"@en .
-
 as:View a owl:Class ;
   rdfs:label "View"@en ;
-  rdfs:subClassOf as:Experience ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "The actor viewed the object"@en .
 
 as:Listen a owl:Class ;
   rdfs:label "Listen"@en ;
-  rdfs:subClassOf as:Experience ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "The actor listened to the object"@en .
 
 as:Read a owl:Class ;
   rdfs:label "Read"@en ;
-  rdfs:subClassOf as:Experience ;
+  rdfs:subClassOf as:Activity ;
   rdfs:comment "The actor read the object"@en .
 
 as:Move a owl:Class ;
