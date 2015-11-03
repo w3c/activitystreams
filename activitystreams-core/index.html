@@ -3175,6 +3175,20 @@ profile-URI   = URI</pre>
         </tr>
         </table>
 
+        <p>
+          Note that while the Activity Streams 2.0 format is derived from the
+          JSON-LD format, there are a number of constraints and additional
+          requirements for Activity Streams 2.0 implementations that justify
+          the use of a specific media type.
+        </p>
+
+        <p>
+          Because Activity Streams 2.0 can be considered a restricted profile
+          of JSON-LD, Implementations SHOULD consider the
+          `application/ld+json; profile="http://www.w3.org/ns/activitystreams"`
+          media type as being equivalent to `application/activity+json`.
+        </p>
+
     </section>
 
   </section>
