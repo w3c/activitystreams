@@ -934,11 +934,6 @@ as:Place a owl:Class ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "A physical or logical location"@en .
 
-as:Process a owl:Class ;
-  rdfs:label "Process"@en ;
-  rdfs:subClassOf as:Actor ;
-  rdfs:comment "Any form of short or long running process"@en .
-
 as:Question a owl:Class ;
   rdfs:label "Question"@en;
   rdfs:subClassOf as:Content, as:IntransitiveActivity ;
