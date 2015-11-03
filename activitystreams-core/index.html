@@ -148,22 +148,6 @@
         ongoing work from a variety of other communities.
       </p>
 
-      <p>
-        While the syntax defined by this specification diverges from
-        that defined by JSON Activity Streams 1.0, the fundamental model
-        defined by that original specification remains intact. Specific
-        <a href="#deprecated-syntax">processing rules</a> are defined by
-        this specification that allow existing Activity Streams 1.0
-        documents to be mapped to and processed as an Activity Streams 2.0
-        document.
-      </p>
-
-      <p>
-        This specification incorporates several existing extensions to the
-        1.0 syntax directly into the 2.0 model.  These include portions of
-        the Activity Streams 1.0 Base Schema, Audience
-        Targeting, Responses, and Priority extensions.
-      </p>
     </section>
 
     <section id="syntaxconventions">
@@ -174,15 +158,14 @@
         This specification describes a JSON-based [[!RFC7159]] serialization
         syntax for the <a href="../activitystreams-vocabulary/">Activity
         Vocabulary</a> that follows the conventions defined by the
-        [[!JSON-LD]] specification. While serialization forms other than
-        JSON-LD are possible, alternatives are not discussed by this
-        document.
+        [[!JSON-LD]] specification. While other serialization forms are
+        possible, such alternatives are not discussed by this document.
       </p>
 
       <p>
         When serialized, absent properties are represented by either (a)
         setting the property value to null, or (b) by omitting the property
-        declaration altogether at the option of the publisher; these
+        declaration altogether at the option of the publisher. These
         representations are semantically equivalent.  If a property has an
         array value, the absence of any items in that array MUST be
         represented by omitting the property entirely or by setting the value
@@ -198,6 +181,13 @@
         given for dereferencing, it MUST be mapped to a URI using the steps in
         Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
         value, it MUST NOT be so mapped.
+      </p>
+      
+      <p>
+        Relative IRI (and URL) references SHOULD NOT be used within an
+        Activity Streams 2.0 document due to the fact that many JSON
+        parser implementations are not capable of reliably preserving the base
+        context necessary to properly resolve relative references.
       </p>
 
       <p>
@@ -229,11 +219,10 @@
         provided <a href="activitystreams2-context.jsonld">here</a>.
         Implementations MAY augment the provided @context with additional
         @context definitions but MUST NOT override or change the normative
-        context. Implementations MAY also include in the serialized JSON
-        document additional properties and values not defined in the JSON-LD
-        @context with the understanding that any such properties will likely be
-        unsupported and ignored by consuming implementations that use the
-        standard JSON-LD algorithms. See the
+        context. Implementations MAY also use additional properties and values
+        not defined in the JSON-LD @context with the understanding that any
+        such properties will likely be unsupported and ignored by consuming
+        implementations that use the standard JSON-LD algorithms. See the
         <a href="#extensibility">Extensibility</a> section for more information
         on handling extensions within Activity Streams 2.0 documents.
       </p>
@@ -247,19 +236,6 @@
 
     <p>
       Following are three examples of activities with varying degrees of detail.
-      Each of the examples uses an implied JSON-LD @context equal to that
-      provided <a href="activitystreams2-context.jsonld">here</a>.
-    </p>
-
-    <p>
-      Note that the Activity Streams JSON-LD @context maps the prefix
-      "<code>as:</code>" to the base URI
-      "<code>http://www.w3.org/ns/activitystreams#</code>". This means that
-      terms such as "<code>as:Activity</code>" are equivalent to the expanded
-      form "<code>http://www.w3.org/ns/activitystreams#Activity</code>". In
-      order to best illustrate that implementors MUST support both forms, both
-      the compact and expanded forms are used interchangeably by the examples
-      in this document.
     </p>
 
     <p>
@@ -277,12 +253,6 @@
           format. These alternate serializations may be removed from future
           iterations of this document and moved to a separate informative WG
           Note.</mark></p>
-
-        <p><mark>The examples included in this document all use HTTP URLs for
-          @id values.  These values are not limited to URLs and it is perfectly
-          legal to use HTTPS URLs or any URI, URN, or IRI value for the @id.
-          </mark></p>
-
         </section>
 
     <section id="example-1">
@@ -304,7 +274,7 @@
   <div id="ex1-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Create",
+  "type": "Create",
   "actor": "http://www.test.example/martin",
   "object": "http://example.org/foo.jpg"
 }</pre>
@@ -373,28 +343,28 @@ _:b0 a as:Create ;
   <div id="ex2-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Add",
+  "type": "Add",
   "published": "2015-02-10T15:04:55Z",
   "actor": {
-   "@type": "Person",
-   "@id": "http://www.test.example/martin",
+   "type": "Person",
+   "id": "http://www.test.example/martin",
    "displayName": "Martin Smith",
    "url": "http://example.org/martin",
    "image": {
-     "@type": "Link",
+     "type": "Link",
      "href": "http://example.org/martin/image.jpg",
      "mediaType": "image/jpeg"
    }
   },
   "object" : {
-   "@id": "http://www.test.example/blog/abc123/xyz",
-   "@type": "Article",
+   "id": "http://www.test.example/blog/abc123/xyz",
+   "type": "Article",
    "url": "http://example.org/blog/2011/02/entry",
    "displayName": "Why I love Activity Streams"
   },
   "target" : {
-   "@id": "http://example.org/blog/",
-   "@type": "OrderedCollection",
+   "id": "http://example.org/blog/",
+   "type": "OrderedCollection",
    "displayName": "Martin's Blog"
   }
 }</pre>
@@ -533,11 +503,11 @@ _:b0 a as:Add ;
   <div id="ex3-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 1,
   "items" : [
     {
-      "@type": "Add",
+      "type": "Add",
       "published": "2011-02-10T15:04:55Z",
       "generator": "http://example.org/activities-app",
       "displayNameMap": {
@@ -545,12 +515,12 @@ _:b0 a as:Add ;
         "ga": "Martin phost le fisean nua a albam."
       },
       "actor": {
-        "@type": "Person",
-        "@id": "http://www.test.example/martin",
+        "type": "Person",
+        "id": "http://www.test.example/martin",
         "displayName": "Martin Smith",
         "url": "http://example.org/martin",
         "image": {
-          "@type": "Link",
+          "type": "Link",
           "href": "http://example.org/martin/image",
           "mediaType": "image/jpeg",
           "width": 250,
@@ -558,35 +528,35 @@ _:b0 a as:Add ;
         }
       },
       "object" : {
-        "@type": "Image",
-        "@id": "http://example.org/album/my_fluffy_cat",
+        "type": "Image",
+        "id": "http://example.org/album/my_fluffy_cat",
         "preview": {
-          "@type": "Link",
+          "type": "Link",
           "href": "http://example.org/album/my_fluffy_cat_thumb.jpg",
           "mediaType": "image/jpeg"
         },
         "url": [
           {
-            "@type": "Link",
+            "type": "Link",
             "href": "http://example.org/album/my_fluffy_cat.jpg",
             "mediaType": "image/jpeg"
           },
           {
-            "@type": "Link",
+            "type": "Link",
             "href": "http://example.org/album/my_fluffy_cat.png",
             "mediaType": "image/png"
           }
         ]
       },
       "target": {
-        "@type": "Album",
-        "@id": "http://example.org/album/",
+        "type": "Album",
+        "id": "http://example.org/album/",
         "displayNameMap": {
           "en": "Martin's Photo Album",
           "ga": "Grianghraif Mairtin"
         },
         "image": {
-          "@type": "Link",
+          "type": "Link",
           "href": "http://example.org/album/thumbnail.jpg",
           "mediaType": "image/jpeg"
         }
@@ -807,10 +777,13 @@ _:b0 a as:Collection ;
 
     <p>
       The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
-      defines the abstract model for Activity Streams 2.0. The vocabulary
-      is segmented into a set of nine core classes and an extended set of
-      Activity and Object types common to most social Web applications. The
-      core classes include:
+      normatively defines the core object types and properties for Activity
+      Streams 2.0.
+    </p>
+    <p>
+      The object types defined by the vocabulary are segmented into a set of
+      nine core types and an extended set of Activity and Object types common
+      to many social Web applications. The core classes include:
         <a>Object</a>,
         <a>Link</a>,
         <a>Actor</a>,
@@ -820,9 +793,6 @@ _:b0 a as:Collection ;
         <a>OrderedCollection</a>,
         <a>CollectionPage</a>,
         and <a>OrderedCollectionPage</a>.
-      Each of these classes is described and illustrated below. The extended
-      Activity and Object types are defined normatively in the Activity
-      Vocabulary specification.
     </p>
 
     <section id="object">
@@ -830,15 +800,15 @@ _:b0 a as:Collection ;
 
       <p>
         The <code><a href="../activitystreams-vocabulary/#dfn-object">Object</a></code>
-        class is the primary base class for the Activity Streams vocabulary.
+        is the primary base type for the Activity Streams vocabulary.
       </p>
 
       <p>
-        In addition to having a global identifier (expressed as an absolute IRI
-        using the JSON-LD <code>@id</code> keyword) and an "object type"
-        (expressed using the JSON-LD <code>@type</code> keyword), all instances
-        of the <code>Object</code> class share a common set of properties
-        normatively defined by the
+        In addition to having a global identifier (expressed as an
+        absolute IRI using the JSON-LD <code>id</code> property) and an
+        "object type" (expressed using the JSON-LD <code>type</code>
+        property), all instances of the <code>Object</code> class share a
+        common set of properties normatively defined by the
         <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>.
         These include:
         <code>
@@ -876,21 +846,14 @@ _:b0 a as:Collection ;
       </p>
 
       <p>
-        Previous versions of the Activity Streams format used the
-        <code>objectType</code> property to identify the object type. The
-        <code>objectType</code> property MUST NOT be used within an Activity
-        Streams 2.0 document to represent object type.
+        While all properties are optional (including the <code>id</code> and
+        <code>type</code>), all <code>Object</code> instances SHOULD at least
+        contain a <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code> (or equivalent
+        <code><a href="#naturalLanguageValues">displayNameMap</a></code>).
       </p>
 
-      <p>
-        While all properties are optional, all <code>Object</code> instances
-        SHOULD at least contain either the
-        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
-        or <code><a href="../activitystreams-vocabulary/#def-displayname">displayNameMap</a></code>.
-      </p>
-
-<figure><figcaption>Following is an example Object that uses the JSON-LD <code>@id</code> and <code>@type</code>
-keywords to express the global identifier and object type:</figcaption>
+<figure><figcaption>Following is an example Object that uses the JSON-LD <code>id</code> and <code>type</code>
+properties to express the global identifier and object type:</figcaption>
 
 <div class="nanotabs">
   <ul>
@@ -903,12 +866,12 @@ keywords to express the global identifier and object type:</figcaption>
   <div id="ex4-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@id": "http://example.org/foo",
-  "@type": "Note",
+  "id": "http://example.org/foo",
+  "type": "Note",
   "displayName": "This is a note",
   "attributedTo": {
-    "@id": "http://joe.website.example/",
-    "@type": "Person",
+    "id": "http://joe.website.example/",
+    "type": "Person",
     "displayName": "Joe Smith"
   },
   "published": "2014-08-21T12:34:56Z"
@@ -971,96 +934,6 @@ keywords to express the global identifier and object type:</figcaption>
         <a>Link</a>.
       </p>
 
-<figure><figcaption>For instance, in the following example, the value of
-the <code><a href="../activitystreams-vocabulary/#dfn-actor-term">actor</a></code>
-property is considered to be an instance of the <a>Object</a> class while the value of the <code><a href="../activitystreams-vocabulary/#dfn-object-term">object</a></code> property is
-not:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex5-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex5-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex5-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex5-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex5-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex5-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@id": "http://example.org/foo",
-  "@type": "Create",
-  "displayName": "A Test",
-  "actor": {
-    "@type": "Person",
-    "@id": "http://example.org/~sally",
-    "displayName": "Sally"
-  },
-  "object": {
-    "@type": "Link",
-    "href": "http://example.org/posts/1"
-  }
-}</pre>
-  </div>
-  <div id="ex5-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Create"
-  itemid="http://example.org/foo">
-  &lt;div itemprop="displayName">A Test&lt;/div>
-  &lt;div itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person"
-    itemid="http://example.org/~sally">
-    &lt;span itemprop="displayName">Sally&lt;/span>
-  &lt;/div>
-  &lt;a itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Link"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
-&lt;/div></pre></div>
-  <div id="ex5-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create"
-  resource="http://example.org/foo">
-  &lt;p property="displayName">A Test&lt;/p>
-  &lt;p property="actor" typeof="Person" resource="http://example.org/~sally">
-    &lt;span property="displayName">Sally&lt;/span>
-  &lt;/p>
-  &lt;span property="object" typeof="Link">
-    &lt;a property="href" href="http://example.org/posts/1">
-      http://example.org/posts/1
-    &lt;/a>
-  &lt;/span>
-&lt;/div></pre></div>
-  <div id="ex5-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;a class="u-url" href="http://example.org/foo">Permalink&lt;/a>
-  &lt;div class="p-name">A Test&lt;/div>
-  &lt;div class="p-author h-card"
-    &lt;a class="u-url p-name" href="http://example.org/~sally">Sally&lt;/a>
-  &lt;/div>
-  &lt;a class="h-cite u-url"
-    href="http://example.org/posts/1">
-    http://example.org/posts/1
-  &lt;/a>
-&lt;/div></pre></div>
-  <div id="ex5-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-&lt;http://example.org/~sally&gt; a as:Person ;
-  as:displayName "Sally" .
-
-&lt;http://example.org/foo&gt; a as:Create ;
-  as:displayName "A Test" ;
-  as:actor &lt;http://example.org/~sally&gt; ;
-  as:object [
-    a as:Link ;
-      as:href &lt;http://example.org/posts/1&gt;
-  ] .</pre></div>
-</div>
-</figure>
-
      <p>
        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
        defines a broad range of <code>Object</code> types that are common to
@@ -1080,7 +953,7 @@ not:</figcaption>
       classes for describing locations. An implementation that wishes, for
       example, to use a
   <code><a href="http://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
-      as an object type SHOULD also identify the object as being both a
+      as an object type SHOULD identify the object as being both a
       <code><a href="../activitystreams-vocabulary/#dfn-place">Place</a></code> and an
       <code>http://purl.org/goodrelations/v1#Location</code>, as
       illustrated in the following:
@@ -1103,7 +976,7 @@ not:</figcaption>
       "gr": "http://purl.org/goodrelations/v1#"
     }
   ],
-  "@type": ["Place", "gr:Location"],
+  "type": ["Place", "gr:Location"],
   "displayName": "Sally's Restaurant",
   "longitude": 12.34,
   "latitude": 56.78,
@@ -1161,313 +1034,11 @@ _:b0 a as:Place, gr:Location ;
      <p>
        Certain properties defined by some External Vocabularies can overlap or
        duplicate those defined by the Activity Vocabulary. Where such overlap
-       exists, for the sake of consistent interoperability, implementers MUST
-       favor the use of properties defined by the Activity Vocabulary.
+       exists, for the sake of consistent interoperability, implementations
+       MUST favor the use of properties defined by the Activity Vocabulary.
      </p>
 
    </section>
-
-    <section id="naturalLanguageValues">
-
-      <h2>Natural Language Values</h2>
-
-      <p>
-        Several properties defined by the
-        <a href="../activitystreams-vocabulary/">Vocabulary</a> are defined
-        as having natural language values. These are representations of
-        human-readable character sequences using one or more languages.
-        Within the JSON-LD serialization, they are expressed as either (1) a
-        single JSON string or (2) a JSON object mapping [[RFC5646]]
-        Language-Tags to localized, equivalent translations of the same string
-        value. In [[JSON-LD]], such constructs are referred to as "Language
-        Maps". In the serialized JSON-LD, these two forms are differentiated
-        using a simple property naming convention, for instance:
-        "<code>displayName</code>" identifies the JSON string form for the
-        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
-        property while "<code>displayNameMap</code>" represents the Language
-        Map form.
-      </p>
-
-      <figure>
-        <figcaption>A single displayName String value without language information:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex7-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  <b>"displayName": "This is the title"</b>
-}</pre>
-</div>
-  <div id="ex7-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
-  &lt;div itemprop="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex7-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
-  &lt;div property="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex7-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="p-name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex7-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title" .</pre></div>
-</div>
-</figure>
-
-      <figure>
-        <figcaption>Multiple, language-specific values:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex8-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  <b>"displayNameMap": {
-    "en": "This is the title",
-    "fr": "C'est le titre",
-    "sp": "Este es el titulo"
-  }</b>
-}</pre>
-</div>
-  <div id="ex8-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
-  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
-  &lt;div itemprop="displayName" lang="fr">C'est le titre&lt;/div>
-  &lt;div itemprop="displayName" lang="sp">Este es el titulo&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex8-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
-  &lt;div property="displayName" lang="en">This is the title&lt;/div>
-  &lt;div property="displayName" lang="fr">C'est le titre&lt;/div>
-  &lt;div property="displayName" lang="sp">Este es el titulo&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex8-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="p-name" lang="en">This is the title&lt;/div>
-  &lt;div class="p-name" lang="fr">C'est le titre&lt;/div>
-  &lt;div class="p-name" lang="sp">Este es el titulo&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex8-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title"@en ;
-  as:displayName "C'est le titre"@fr ;
-  as:displayName "Este es el titulo"@sp .</pre></div>
-</div>
-</figure>
-
-      <p>
-        Every key in the Language Map form MUST be a valid [[RFC5646]]
-        Language-Tag. The associated values MUST be Strings.
-      </p>
-
-      <p>
-        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
-        defines four specific natural language values:
-        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
-        <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>.
-        Accordingly, the Activity Streams
-        <a href="activitystreams2-context.jsonld">JSON-LD
-        @context</a> definition respectively maps the terms
-        "<code>displayName</code>",
-        "<code>title</code>", "<code>summary</code>", and
-        "<code>content</code>" for representing the JSON string forms and the
-        terms "<code>displayNameMap</code>", "<code>titleMap</code>",
-        "<code>summaryMap</code>", and "<code>contentMap</code>" for
-        representing the Language Map forms.
-      </p>
-
-      <p>
-        The default language for document or an individual object can be
-        established using the JSON-LD <code>@language</code> keyword within a
-        <code>@context</code> definition. For instance:
-      </p>
-
-      <figure>
-        <figcaption>Establishing a default language context:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex9-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    <b>{"@language": "en"}</b>
-  ],
-  "@type": "Object",
-  <b>"displayName": "This is the title"</b>
-}</pre>
-</div>
-  <div id="ex9-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
-  &lt;div itemprop="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
-  &lt;div property="displayName">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" lang="en">
-  &lt;div class="p-name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title"@en .</pre></div>
-</div>
-</figure>
-
-      <p>
-        The JSON-LD format generally supports one additional way of associating
-        language tag information with a literal string value using what JSON-LD
-        calls a "value object", as illustrated below:
-      </p>
-
-<figure>
-        <figcaption>Specifying language in a JSON-LD value object:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex10-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex10-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex10-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex10-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex10-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex10-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Object",
-  <b>"displayName": {
-    "@value": "This is the title",
-    "@language": "en"
-  }</b>
-}</pre>
-</div>
-  <div id="ex10-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
-  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex10-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
-  &lt;div property="displayName" lang="en">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex10-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="p-name" lang="en">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex10-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title"@en .</pre></div>
-</div>
-</figure>
-
-      <p>
-        Activity Streams 2.0 implementations SHOULD NOT use JSON-LD value
-        objects in this manner. Implementations SHOULD, instead, use the
-        Language Map form. The one situation where use of the value object
-        cannot be avoided is when a default language context has been
-        established and a particular language-sensitive field needs to be
-        explicitly excluded from that context, as in the following example:
-      </p>
-
-<figure>
-        <figcaption>Excluding a natural language property from the language context:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex11-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex11-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex11-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex11-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex11-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex11-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    <b>{ "@language": "en" }</b>
-  ],
-  "@type": "Object",
-  "displayName": {
-    "@value": "This is the title"
-  }
-}</pre>
-</div>
-  <div id="ex11-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
-  &lt;div itemprop="displayName" lang="">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex11-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
-  &lt;div property="displayName" lang="">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex11-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" lang="en">
-  &lt;div class="p-name" lang="">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex11-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Object ;
-  as:displayName "This is the title" .</pre></div>
-</div>
-</figure>
-
-      <p>By explicitly omitting the <code>@language</code> from the value
-      of <code>displayName</code> in the JSON-LD example, the
-      <code>displayName</code> is excluded from the default language context.
-      However, because this mechanism requires specific understanding of JSON-LD
-      algorithms, and makes the publisher's intention less obvious and visible,
-      implementations SHOULD avoid such cases as much as possible.
-
-    </section>
 
     <section id="link">
       <h2><dfn data-lt="Link">Link</dfn></h2>
@@ -1481,16 +1052,14 @@ _:b0 a as:Object ;
       <p>
         The target URI of the Link is expressed using the required
         <code><a href="../activitystreams-vocabulary/#dfn-href">href</a></code>
-        keyword. In addition, all <code>Link</code> instances share the
+        property. In addition, all <code>Link</code> instances share the
         following common set of optional properties as normatively defined by
         the <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>:
           <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayNameMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-title">titleMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
@@ -1510,7 +1079,7 @@ _:b0 a as:Object ;
 
       <figure><figcaption>To reference a single image without any additional
       metadata, a direct association can be expressed as a JSON string
-      containing an absolute or relative IRI.</figcaption>
+      containing an absolute IRI.</figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
@@ -1522,8 +1091,8 @@ _:b0 a as:Object ;
   <div id="ex12-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
-  "@id": "http://example.org/application/123",
+  "type": "Application",
+  "id": "http://example.org/application/123",
   "displayName": "My Application",
   <b>"image": "http://example.org/application/123.png"</b>
 }</pre>
@@ -1576,11 +1145,11 @@ _:b0 a as:Object ;
   <div id="ex13-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
-  "@id": "http://example.org/application/123",
+  "type": "Application",
+  "id": "http://example.org/application/123",
   "displayName": "My Application",
   <b>"image": {
-    "@type": "Link",
+    "type": "Link",
     "href": "http://example.org/application/123.png",
     "mediaType": "image/png"
   }</b>
@@ -1636,7 +1205,7 @@ _:b0 a as:Object ;
         relationship to be specified. Such properties (e.g. <code>mediaType</code>,
         <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a>
         itself as opposed to describing the referenced resource. For many
-        practical applications, this distinction will likely be fairly
+        practical applications, this distinction will likely be
         insignificant but it is still worth keeping in mind.
       </p>
 
@@ -1655,13 +1224,13 @@ _:b0 a as:Object ;
   <div id="ex14-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
-  "@id": "http://example.org/application/123",
+  "type": "Application",
+  "id": "http://example.org/application/123",
   "displayName": "My Application",
   <b>"image": [
     "http://example.org/application/abc.gif",
     {
-      "@type": "Link",
+      "type": "Link",
       "href": "http://example.org/application/123.png",
       "mediaType": "image/png"
     }
@@ -1720,8 +1289,8 @@ _:b0 a as:Object ;
 </figure>
 
       <p>
-        Individual items contained in such an array are independent of the
-        others and no significance is given to the ordering.
+        Individual items contained in such an array are independent of one
+        another and no significance is given to the ordering.
       </p>
 
       <p>
@@ -1754,13 +1323,13 @@ _:b0 a as:Object ;
   <div id="ex15-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Application",
-  "@id": "http://example.org/application/123",
+  "type": "Application",
+  "id": "http://example.org/application/123",
   "displayName": "My Application",
   "image": [
     "http://example.org/application/abc.gif",
     {
-      "@type": "Link",
+      "type": "Link",
       "href": "http://example.org/application/123.png",
       "mediaType": "image/png",
       "rel": "thumbnail"
@@ -1872,84 +1441,6 @@ _:b0 a as:Object ;
         and <a href="../activitystreams-vocabulary/#dfn-organization">Organization</a> instances.
       </p>
 
-      <figure><figcaption>An Activity with a Person actor:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex16-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex16-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex16-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex16-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex16-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex16-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Create",
-  "actor": {
-    "@type": "Person",
-    "@id": "http://sally.example.org",
-    "displayName": "Sally Smith"
-  },
-  "object": {
-    "@type": "Note",
-    "content": "This is a simple note"
-  }
-}</pre>
-</div>
-  <div id="ex16-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Create">
-  &lt;div itemprop="actor" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person"
-    itemid="http://sally.example.org">
-    &lt;span itemprop="displayName">Sally Smith&lt;/span>
-  &lt;/div>
-  created
-  &lt;div itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    "&lt;span itemprop="content">This is a simple note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre></div>
-  <div id="ex16-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
-  &lt;div property="actor" typeof="Person"
-    resource="http://sally.example.org">
-    &lt;span property="displayName">Sally Smith&lt;/span>
-  &lt;/div>
-  created
-  &lt;div property="object" typeof="Note">
-    &lt;span property="content">This is a simple note&lt;/span>
-  &lt;/div>
-&lt;/div></pre></div>
-  <div id="ex16-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="p-author h-card">
-    &lt;a class="u-url p-name" href="http://sally.example.org/">
-      Sally Smith
-    &lt;/a>
-  &lt;/span>
-  created
-  &lt;div class="e-content">
-    This is a simple note
-  &lt;/div>
-&lt;/div></pre></div>
-  <div id="ex16-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-  &lt;http://sally.example.org&gt; a as:Person ;
-  as:displayName "Sally Smith" .
-
-_:b0 a as:Create ;
-  as:actor &lt;http://sally.example.org&gt; ;
-  as:object [
-    a as:Note ;
-      as:content "This is a simple note"
-  ] .</pre></div>
-</div>
-</figure>
-
       <figure><figcaption>An Activity with a Person actor extended with VCard properties:</figcaption>
 <div class="nanotabs">
   <ul>
@@ -1965,16 +1456,16 @@ _:b0 a as:Create ;
     "http://www.w3.org/ns/activitystreams",
     {"vcard": "http://www.w3.org/2006/vcard/ns#"}
   ],
-  "@type": "Create",
+  "type": "Create",
   "actor": {
-    "@type": "Person",
-    "@id": "http://sally.example.org",
+    "type": ["Person", "vcard:Individual"],
+    "id": "http://sally.example.org",
     "displayName": "Sally Smith",
     "vcard:given-name": "Sally",
     "vcard:family-name": "Smith"
   },
   "object": {
-    "@type": "Note",
+    "type": "Note",
     "content": "This is a simple note"
   }
 }</pre>
@@ -2051,105 +1542,10 @@ _:c14n0 a as:Create ;
         people. An implementation that wishes, for example, to use a
         <code>vcard:Individual</code> as an Actor SHOULD identify that Actor as
         being <em>both</em> a <code><a href="../activitystreams-vocabulary/#dfn-person">Person</a></code>
-        and an <code>vcard:Individual</code>, as illustrated in the following:
+        and an <code>vcard:Individual</code>, as illustrated in the previous
+        example.
       </p>
-
-      <figure><figcaption>An Actor that is both a <code>Person</code> and a
-<code>vcard:Individual</code>:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex18-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex18-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex18-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex18-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex18-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex18-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    {"vcard": "http://www.w3.org/2006/vcard/ns#"}
-  ],
-  "@type": "Create",
-  "actor": {
-    "@type": ["Person", "vcard:Individual"],
-    "@id": "http://sally.example.org",
-    "displayName": "Sally Smith",
-    "vcard:given-name": "Sally",
-    "vcard:family-name": "Smith"
-  },
-  "object": {
-    "@type": "Note",
-    "content": "This is a simple note"
-  }
-}</pre>
-</div>
-  <div id="ex18-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Create">
-  &lt;div itemprop="actor" itemscope
-    itemtype="
-      http://www.w3.org/ns/activitystreams#Person
-      http://www.w3.org/2006/vcard/ns#Individual"
-    itemid="http://sally.example.org">
-    &lt;span itemprop="displayName">
-      &lt;span itemprop="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span>
-      &lt;span itemprop="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
-    &lt;/span>
-  &lt;/div>
-  created
-  &lt;div itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Note">
-    "&lt;span itemprop="content">This is a simple note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre></div>
-  <div id="ex18-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Create">
-  &lt;div property="actor" typeof="Person http://www.w3.org/2006/vcard/ns#Individual"
-    resource="http://sally.example.org">
-      &lt;span property="http://www.w3.org/2006/vcard/ns#given-name">Sally&lt;/span>
-      &lt;span property="http://www.w3.org/2006/vcard/ns#family-name">Smith&lt;/span>
-  &lt;/div>
-  created
-  &lt;div property="object" typeof="Note">
-    "&lt;span property="content">This is a simple note&lt;/span>"
-  &lt;/div>
-&lt;/div></pre></div>
-  <div id="ex18-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="u-author h-card p-vcard-individual">
-    &lt;a class="u-url p-name" href="http://sally.example.org">
-      &lt;span class="p-given-name">Sally&lt;/span>
-      &lt;span class="p-family-name">Smith&lt;/span>
-    &lt;/a>
-  &lt;/div>
-  created
-  &lt;div class="e-content">
-    This is a simple note
-  &lt;/div>
-&lt;/div></pre></div>
-  <div id="ex18-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt; .
-
-&lt;http://sally.example.org&gt; a as:Person, vcard:Individual ;
-  as:displayName "Sally Smith" ;
-  vcard:given-name "Sally" ;
-  vcard:family-name "Smith" .
-
-_:b0 a as:Create ;
-  as:actor &lt;http://sally.example.org&gt; ;
-  as:object [
-    a as:Note ;
-      as:content "This is a simple note"
-  ] .</pre></div>
-</div>
-</figure>
-
+      
     </section>
 
     <section id="activities">
@@ -2164,8 +1560,9 @@ _:b0 a as:Create ;
 
       <p>
         In addition to common properties supported by all <a>Object</a>
-        instances, <code>Activity</code> objects support the following additional
-        properties defined by the <a href="../activitystreams-vocabulary/">Vocabulary</a>:
+        instances, <code>Activity</code> objects support the following
+        additional properties defined by the
+        <a href="../activitystreams-vocabulary/">Vocabulary</a>:
           <code><a href="../activitystreams-vocabulary/#dfn-actor">actor</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-object-term">object</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-target">target</a></code> |
@@ -2176,11 +1573,8 @@ _:b0 a as:Create ;
       </p>
 
       <p>
-        The JSON-LD <code>@type</code> keyword is used to identify the type
-        of action the Activity Statement represents. Previous versions of the
-        Activity Streams format used the <code>verb</code> property to identify
-        the action type. The <code>verb</code> MUST NOT be used within an
-        Activity Streams 2.0 Activity to represent the action type.
+        The JSON-LD <code>type</code> property is used to identify the type
+        of action the Activity Statement represents.
       </p>
 
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
@@ -2195,8 +1589,8 @@ _:b0 a as:Create ;
   <div id="ex19-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Like",
-  "@id": "http://www.test.example/activiy/1",
+  "type": "Like",
+  "id": "http://www.test.example/activiy/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -2251,8 +1645,8 @@ _:b0 a as:Create ;
 
       <p>
         The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
-        defines a broad range of <code>Activity</code> types that are common to
-        many social Web applications. This specification stops short of
+        defines a small number of <code>Activity</code> types that are common
+        to many social Web applications. This specification stops short of
         defining semantically specific properties for most of these activities.
         External vocabularies can be used to express additional detail not
         covered by the Activity Vocabulary.
@@ -2274,8 +1668,8 @@ _:b0 a as:Create ;
       </p>
 
        <figure><figcaption>An Activity that is both a
-       <code><a href="../activitystreams-vocabulary/#dfn-like">Like</a></code> and
-       a <code>http://schema.org/LikeAction</code>:</figcaption>
+       <code><a href="../activitystreams-vocabulary/#dfn-like">Like</a></code>
+       and a <code>http://schema.org/LikeAction</code>:</figcaption>
 <div class="nanotabs">
   <ul>
     <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
@@ -2287,8 +1681,8 @@ _:b0 a as:Create ;
   <div id="ex20-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": ["Like", "http://schema.org/LikeAction"],
-  "@id": "http://www.test.example/activiy/1",
+  "type": ["Like", "http://schema.org/LikeAction"],
+  "id": "http://www.test.example/activiy/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -2349,8 +1743,8 @@ _:b0 a as:Create ;
         an application to modify state in some manner consistent with the
         action being described. However, because this specification does not
         define a normative processing model that constrains how applications
-        make use of the format, the distinction been whether an Activity
-        statement is intended to be interpreted as a passive notification or as
+        make use of the format, the distinction about whether an Activity
+        statement is to be interpreted as a passive notification or as
         an imperative command can vary across implementations.
       </p>
 
@@ -2361,7 +1755,7 @@ _:b0 a as:Create ;
 
       <p>
         <code>Collection</code> objects are a specialization of the
-        base <code><a>Object</a></code> that act as a container for other
+        base <code><a>Object</a></code> that serve as a container for other
         <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>.
       </p>
 
@@ -2411,16 +1805,16 @@ _:b0 a as:Create ;
   <div id="ex21-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
+  "type": "Collection",
   "totalItems": 2,
   "items": [
     {
-      "@type": "Create",
+      "type": "Create",
       "actor": "http://www.test.example/sally",
       "object": "http://example.org/foo"
     },
     {
-      "@type": "Like",
+      "type": "Like",
       "actor": "http://www.test.example/joe",
       "object": "http://example.org/foo"
     }
@@ -2516,16 +1910,16 @@ _:b0 a as:Collection ;
 <pre class="example highlight json">
 {
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "OrderedCollection",
+  "type": "OrderedCollection",
   "totalItems": 2,
   "orderedItems": [
     {
-      "@type": "Create",
+      "type": "Create",
       "actor": "http://www.test.example/sally",
       "object": "http://example.org/foo"
     },
     {
-      "@type": "Like",
+      "type": "Like",
       "actor": "http://www.test.example/joe",
       "object": "http://example.org/foo"
     }
@@ -2617,7 +2011,7 @@ _:c14n0 a as:OrderedCollection ;
           by a Collection using the <code>items</code> (or
           <code>orderedItems</code>) property alone. In such cases, the items
           within a Collection can be divided into distinct subsets or "pages".
-          A page is represented using the <code><dfn>CollectionPage</dfn></code>
+          A page is identified using the <code><dfn>CollectionPage</dfn></code>
           type.
         </p>
 
@@ -2722,17 +2116,17 @@ _:c14n0 a as:OrderedCollection ;
   <div id="ex21b-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "@id": "http://example.org/foo",
+  "type": "Collection",
+  "id": "http://example.org/foo",
   "totalItems": 10,
   "first": {
-    "@type": "CollectionPage",
-    "@id": "http://example.org/foo?page=1",
+    "type": "CollectionPage",
+    "id": "http://example.org/foo?page=1",
     "partOf": "http://example.org/foo",
     "next": "http://example.org/foo?page=2",
     "items": [
       {
-        "@type": "Create",
+        "type": "Create",
         "actor": "http://www.test.example/sally",
         "object": "http://example.org/foo"
       }
@@ -2832,6 +2226,248 @@ _:c14n0 a as:OrderedCollection ;
 
     </section>
 
+    <section id="naturalLanguageValues">
+
+      <h2>Natural Language Values</h2>
+
+      <p>
+        Several properties defined by the
+        <a href="../activitystreams-vocabulary/">Vocabulary</a> are defined
+        as having natural language values. These are human-readable strings using one or more languages. Within the JSON-LD serialization, they are
+        expressed as either (1) a single JSON string or (2) a JSON object
+        mapping well-formed [[RFC5646]] Language-Tags to localized, equivalent
+        translations of the same string value. In [[JSON-LD]], such constructs
+        are referred to as "Language Maps". In the serialized JSON-LD, these
+        two forms are differentiated using a simple property naming convention,
+        for instance: "<code>displayName</code>" identifies the JSON string
+        form for the <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>
+        property while "<code>displayNameMap</code>" represents the Language
+        Map form.
+      </p>
+
+      <figure>
+        <figcaption>A single displayName String value without language information:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex7-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex7-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Object",
+  <b>"displayName": "This is the title"</b>
+}</pre>
+</div>
+  <div id="ex7-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
+  &lt;div itemprop="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex7-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
+  &lt;div property="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex7-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex7-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Object ;
+  as:displayName "This is the title" .</pre></div>
+</div>
+</figure>
+
+      <figure>
+        <figcaption>Multiple, language-specific values:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex8-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex8-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Object",
+  <b>"displayNameMap": {
+    "en": "This is the title",
+    "fr": "C'est le titre",
+    "sp": "Este es el titulo"
+  }</b>
+}</pre>
+</div>
+  <div id="ex8-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
+  &lt;div itemprop="displayName" lang="en">This is the title&lt;/div>
+  &lt;div itemprop="displayName" lang="fr">C'est le titre&lt;/div>
+  &lt;div itemprop="displayName" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
+  &lt;div property="displayName" lang="en">This is the title&lt;/div>
+  &lt;div property="displayName" lang="fr">C'est le titre&lt;/div>
+  &lt;div property="displayName" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="p-name" lang="en">This is the title&lt;/div>
+  &lt;div class="p-name" lang="fr">C'est le titre&lt;/div>
+  &lt;div class="p-name" lang="sp">Este es el titulo&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex8-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Object ;
+  as:displayName "This is the title"@en ;
+  as:displayName "C'est le titre"@fr ;
+  as:displayName "Este es el titulo"@sp .</pre></div>
+</div>
+</figure>
+
+      <p>
+        Every key in the Language Map form MUST be a well-formed [[RFC5646]]
+        Language-Tag. The associated values MUST be strings.
+      </p>
+
+      <p>
+        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
+        defines four properties that use natural language values:
+        <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
+        <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
+        <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
+        <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>.
+        Accordingly, the Activity Streams
+        <a href="activitystreams2-context.jsonld">JSON-LD
+        @context</a> definition respectively maps the terms
+        "<code>displayName</code>",
+        "<code>title</code>", "<code>summary</code>", and
+        "<code>content</code>" for representing the JSON string forms; and the
+        terms "<code>displayNameMap</code>", "<code>titleMap</code>",
+        "<code>summaryMap</code>", and "<code>contentMap</code>" for
+        representing the Language Map forms.
+      </p>
+      
+      <p>
+        The special language tag <code>"und"</code> can be used within the
+        Language Map form to explicitly identify a value whose
+        language is unknown or undetermined.
+      </p>
+
+      <figure>
+        <figcaption>Using the <code>"und"</code> language tag:</figcaption>
+      <div class="nanotabs">
+        <ul>
+          <li><a href="#ex11b-jsonld" class="selected">JSON-LD</a></li>
+          <li><a href="#ex11b-microdata" class="selected">Microdata</a></li>
+          <li><a href="#ex11b-rdfa" class="selected">RDFa</a></li>
+          <li><a href="#ex11b-microformats" class="selected">Microformats</a></li>
+          <li><a href="#ex11b-turtle" class="selected">Turtle</a></li>
+        </ul>
+        <div id="ex11b-jsonld" style="display: block;">
+      <pre class="example highlight json">{
+        "@context": "http://www.w3.org/ns/activitystreams",
+        "type": "Object",
+        "displayNameMap": {
+          "und": "This is the title"
+        }
+      }</pre>
+      </div>
+        <div id="ex11b-microdata" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object">
+        &lt;div itemprop="displayName" lang="und">This is the title&lt;/div>
+      &lt;/div></pre></div>
+        <div id="ex11b-rdfa" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object">
+        &lt;div property="displayName" lang="und">This is the title&lt;/div>
+      &lt;/div></pre></div>
+        <div id="ex11b-microformats" style="display:none;">
+      <pre class="example highlight html"
+      >&lt;div class="h-entry">
+        &lt;div class="p-name" lang="und">This is the title&lt;/div>
+      &lt;/div></pre></div>
+        <div id="ex11b-turtle" style="display:none;">
+      <pre class="example highlight turtle"
+      >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+      _:b0 a as:Object ;
+        as:displayName "This is the title"@und .</pre></div>
+      </div>
+    </figure>
+      
+      <section id="defaultlangcontext">
+        <h3>Default Language Context</h3>
+      
+      <p>
+        The default language for document or an individual object can be
+        established using the JSON-LD <code>@language</code> property within a
+        <code>@context</code> definition. For instance:
+      </p>
+
+      <figure>
+        <figcaption>Establishing a default language context:</figcaption>
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex9-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    <b>{"@language": "en"}</b>
+  ],
+  "type": "Object",
+  <b>"displayName": "This is the title"</b>
+}</pre>
+</div>
+  <div id="ex9-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
+  &lt;div itemprop="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
+  &lt;div property="displayName">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry" lang="en">
+  &lt;div class="p-name">This is the title&lt;/div>
+&lt;/div></pre></div>
+  <div id="ex9-turtle" style="display:none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Object ;
+  as:displayName "This is the title"@en .</pre></div>
+</div>
+</figure>
+    
+    </section>
+    
+    </section>
+
   </section>
 
   <section id="audienceTargeting">
@@ -2919,109 +2555,71 @@ _:c14n0 a as:OrderedCollection ;
 
   </section>
 
-  <section id="deprecated-syntax">
-    <h2>Deprecated Activity Streams 1.0 Syntax</h2>
+  <section id="curie">
+    <h2>Support for Compact URIs</h2>
+    
+    <p>
+      The JSON-LD syntax supports the use of "Compact URIs" (or CURIE's for
+      short) [[!curie]]. A "Compact URI" is an alternative encoding of a URI that uses
+      a defined prefix to simplify serialization. For instance, the URI
+      <code>http://www.w3.org/ns/activitystreams#Create</code> can be
+      represented as <code>as:Create</code> by assigning the <code>as:</code>
+      prefix the value of <code>http://www.w3.org/ns/activitystreams#</code>
+    </p>
+    
+    <p>
+      Within JSON-LD, Compact URI prefixes are defined within the JSON-LD
+      <code>@context</code> definition. For example:
+    </p>
+    
+    <figure><figcaption>A JSON-LD Compact URI definition</figcaption>
+<pre class="example highlight json">{
+"@context": {
+  "ex": "http://example.org/",
+  "term": {
+    "@type": "id",
+    "@id": "ex:term"
+  }
+},
+"term": "ex:Foo"
+}</pre></figure>
 
     <p>
-      The JSON syntax defined by this specification differs somewhat from
-      that defined in the original JSON Activity Streams 1.0
-      [[!AS1]] specification in ways that are not backwards
-      compatible.  Implementations can choose to continue supporting the
-      JSON Activity Streams 1.0 syntax but SHOULD consider it to be
-      deprecated.  This means that while implementations MAY continue to
-      consume the 1.0 syntax, they SHOULD NOT output the 1.0 syntax unless
-      specifically interacting with older non-2.0 compliant
-      implementations.
+      In this example, both the property name <code>term</code> and the value
+      <code>ex:Foo</code> are Compact URIs. The property name <code>term</code>
+      expands to <code>http://example.org/term</code> and the value
+      <code>ex:Foo</code> expands to <code>http://example.org/Foo</code>
     </p>
-
+    
     <p>
-      Specifically:
+      In JSON-LD, Compact URI expansion of <em>values</em> applies to
+      properties explicitly defined as <code>"type": "id"</code> in the
+      <code>@context</code> definition. Specifically, Compact URIs can be used
+      anywhere an IRI (or URI) value is expected.
     </p>
-
-    <ol>
-    <li>
-      Implementations MUST use the "<code>application/stream+json</code>" MIME media
-      type when producing a JSON serialization using the Activity Streams 1.0
-      syntax, and "<code>application/activity+json</code>"
-      when producing a serialization conforming to the 2.0 syntax.
-    </li>
-    <li>
-      Implementations that process serializations identified using either
-      the "<code>application/stream+json</code>" or the more
-      generic "<code>application/json</code>" MIME media type MUST follow
-      the syntax and processing rules set by [[!AS1]].  The 2.0
-      syntax and processing rules apply only when handling
-      serializations using the "<code>application/activity+json</code>" media
-      type.
-    </li>
-    <li>
-      When processing Activity Streams 1.0 documents using a JSON-LD processing
-      model, implementations MUST use the special AS 1.0 to AS 2.0 expansion
-      @context definition provided <a href="activitystreams1-context.jsonld">here</a> to produce
-      the JSON-LD expanded representation. Refer to the
-      <a href="http://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD
-      Processing Algorithms and API</a> for details.
-    </li>
-    <li>
-      When processing Activity Streams 1.0 documents and converting those to
-      2.0, implementations MUST treat <code>id</code> as an alias for the
-      JSON-LD <code>@id</code> key word; and the <code>objectType</code> and
-      <code>verb</code> properties as aliases for the JSON-LD
-      <code>@type</code> keyword.
-    </li>
-    <li>
-      This document redefines the <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
-      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
-      <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code> and
-      <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
-      properties as natural language values which means their values can be expressed
-      as either a String or a JSON-LD Language Map. In the 1.0 syntax, these are expressed
-      solely as String values.  Because the 1.0 values are a valid
-      subset allowed by this specification, implementations are not
-      required to take any specific action to continue supporting those
-      values.
-    </li>
-    <li>
-      This document redefines a large number of common properties
-      defined originally as Objects in 1.0 as either
-      <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>. The JSON-LD
-      serialization allows such property values to be expressed as either an
-      IRI String, an JSON object, or an Array of IRI Strings and JSON objects.
-      Because the 1.0 values are a valid subset allowed by this specification,
-      existing implementations are not required to take any specific action to
-      continue supporting those values.
-    </li>
-    <li>
-      This specification deprecates the <code>upstreamDuplicates</code> and
-      <code>downstreamDuplicates</code> properties defined by Activity Streams
-      1.0 and does not provide a replacement. This is due largely to lack of any
-      reasonable implementation evidence. While the
-      <code>upstreamDuplicates</code> and <code>downstreamDuplicates</code>
-      properties MAY continue to be used, implementations SHOULD avoid them.
-    </li>
-    <li>
-      In Activity Streams 1.0, the "<code>post</code>" verb was defined to
-      describe the action of both creating an object and "posting" or uploading
-      it to a service. This specification replaces the "<code>post</code>" verb
-      with separate
-      <code><a href="../activitystreams-vocabulary/#dfn-create">Create</a></code> and
-      <code><a href="../activitystreams-vocabulary/#dfn-add">Add</a></code>
-      Activity types. When processing Activity Streams 1.0 documents and
-      converting those into 2.0, implementations SHOULD treat instances of the
-      "<code>post</code>" verb as equivalent to
-      <code><a href="../activitystreams-vocabulary/#dfn-create">Create</a></code>
-      <i>if there is no <code>target</code> property specified</i>; and
-      equivalent to
-      <code><a href="../activitystreams-vocabulary/#dfn-add">Add</a></code>
-      <i>if there is a <code>target</code> property specified</i>.
-    </li>
-    </ol>
-
+    
     <p>
-      By following these requirements, all JSON Activity Streams 1.0
-      serializations can be processed successfully by 2.0 implementations.
+      Activity Streams 2.0 implementations MUST support Compact URI
+      expansion as defined by the JSON-LD specification. Such expansion applies
+      to all property names as well as all property values explicitly defined
+      as type <code>id</code> in the normative
+      <a href="activitystreams2-context.jsonld">JSON-LD @context</a>.
     </p>
-
+    
+    <p>
+      For example, in the JSON-LD serialization, the property name
+      <code>displayName</code> expands, and is equivalent, to
+      <code>http://www.w3.org/ns/activitystreams#displayName</code>.
+    </p>
+    
+    <p>
+      While support for Compact URI's is required, over reliance on the
+      compact form can lead to ambiguity and interoperability issues between
+      implementations. Therefore, Compact URI use SHOULD be avoided
+      in all cases other than property names and the value(s) of the
+      <code>type</code> property.
+    </p>
+    
   </section>
 
   <section id="extensibility">
@@ -3084,7 +2682,7 @@ _:c14n0 a as:OrderedCollection ;
   <div id="ex23-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Place",
+  "type": "Place",
   "latitude": 36.74,
   "longitude": -119.77
 }</pre>
@@ -3147,7 +2745,7 @@ _:c14n0 a as:Place;
     "http://www.w3.org/ns/activitystreams",
     {"gsp": "http://www.opengis.net/ont/geosparql"}
   ],
-  "@type": "gsp:Geometry",
+  "type": "gsp:Geometry",
   "gsp:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
 }</pre>
 </div>
@@ -3209,7 +2807,7 @@ _:c14n0 a gsp:Geometry ;
     "http://www.w3.org/ns/activitystreams",
     {"foo": "http://example.org/foo"}
   ],
-  "@type": "Note",
+  "type": "Note",
   "content": "This is a simple note",
   "foo": 123,
   "bar": 321
@@ -3233,169 +2831,28 @@ _:c14n0 a gsp:Geometry ;
         However, if the implementation chooses to use the JSON-LD expansion
         algorithm, the <code>@context</code> will be removed from the expanded
         result and the <code>bar</code> property will be mapped to the
-        "blank node" <code>_:bar</code>.
-      </p>
-
-      <figure><figcaption>The JSON-LD Expanded version of the previous object:</figcaption>
-<pre class="example highlight json">[
-  {
-    "@type": ["http://www.w3.org/ns/activitystreams#Note"],
-    "http://www.w3.org/ns/activitystreams#content": [
-      {
-        "@value": "This is a simple note"
-      }
-    ],
-    "http://example.org/foo": [
-      {
-        "@value": 123,
-        "@type": "http://www.w3.org/2001/XMLSchema#integer"
-      }
-    ],
-    "_:bar": [
-      {
-        "@value": "321"
-      }
-    ]
-  }
-]</pre></figure>
-
-      <p>
-        If this document is then reserialized using only the normative
-        Activity Streams 2.0 context, the JSON-LD compacted form would
-        be:
+        "blank node" <code>_:bar</code>. If this document is then reserialized
+        using the normative Activity Streams 2.0 context, the JSON-LD
+        compacted form would be:
       </p>
 
       <figure><figcaption>The reserialized compacted form:</figcaption>
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "This is a simple note",
   "http://example.org/foo": 123,
   "bar": 321
 }</pre></figure>
 
       <p>
-        While this is close, the use of fully expanded URI label for the
-        <code>foo</code> property is not ideal. To ensure that the reserialized
-        object is serialized correctly, implementations that perform JSON-LD
-        expansion of received documents SHOULD, as much as possible, preserve
-        the original <code>@context</code> used when performing the JSON-LD
+        While this is close to the original, the use of fully expanded URI
+        label for the <code>foo</code> property is not ideal. To ensure that
+        the reserialized object is serialized correctly, implementations that
+        perform JSON-LD expansion of received documents SHOULD preserve the
+        original <code>@context</code> used when performing the JSON-LD
         expansion, then reuse that when reserializing the object into the
         JSON-LD compacted form.
-      </p>
-
-      <figure><figcaption>The reserialized compacted form using the original <code>@context</code></figcaption>
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    {"foo": "http://example.org/foo"}
-  ],
-  "@type": "Note",
-  "content": "This is a simple note",
-  "foo": 123,
-  "bar": 321
-}</pre></figure>
-
-    </section>
-
-    <section id="aggregation-of-extensions">
-
-      <h2>Aggregation of Extensions</h2>
-
-      <p>
-        Implementations that collect and aggregate Activity Streams objects
-        from multiple sources may often need to deal with conflicting or
-        incompatible extensions.
-      </p>
-
-      <p>
-        For instance, an implementation could receive both of the following
-        objects from clients. In each, a <code>foo</code> extension property
-        is defined and used but the definition of each are incompatible:
-      </p>
-
-      <figure><figcaption><code>foo</code> as an integer</figcaption>
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    {
-      "foo": {
-        "@id": "http://example.org/foo",
-        "@type": "xsd:integer"
-      }
-    }
-  ],
-  "@type": "Note",
-  "content": "This is a simple note",
-  "foo": 123
-}</pre></figure>
-
-<figure><figcaption><code>foo</code> as a date-time</figcaption>
-<pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    {
-      "foo": {
-        "@id": "http://example.net/fooDate",
-        "@type": "xsd:dateTime"
-      }
-    }
-  ],
-  "@type": "Note",
-  "content": "This is another note",
-  "foo": "2015-12-11T12:34:56Z"
-}</pre></figure>
-
-      <p>
-        An implementation that wishes to include both objects within a
-        Collection serialized into JSON-LD compacted form would face a
-        number of issues due to the conflicting definitions of the
-        <code>foo</code> property. To serialize correctly, the
-        implementation SHOULD preserve the <code>@context</code> property
-        for each of the original objects and include those directly within
-        the serialized result:
-      </p>
-
-      <figure><figcaption>A <code>Collection</code> containing both objects:</figcaption>
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Collection",
-  "items": [
-    {
-      "@context": [
-        "http://www.w3.org/ns/activitystreams",
-        {
-          "foo": {
-            "@id": "http://example.org/foo",
-            "@type": "xsd:integer"
-          }
-        }
-      ],
-      "@type": "Note",
-      "content": "This is a simple note",
-      "foo": 123
-    },
-    {
-      "@context": [
-        "http://www.w3.org/ns/activitystreams",
-        {
-          "foo": {
-            "@id": "http://example.net/fooDate",
-            "@type": "xsd:dateTime"
-          }
-        }
-      ],
-      "@type": "Note",
-      "content": "This is another note",
-      "foo": "2015-12-11T12:34:56Z"
-    }
-  ]
-}</pre></figure>
-
-      <p>
-        While the serialized result is verbose, the use of the localized
-        <code>@context</code> definitions ensures that the conflicting
-        extension properties will be serialized appropriately.
       </p>
 
     </section>
@@ -3469,17 +2926,17 @@ _:c14n0 a gsp:Geometry ;
 <pre class="example highlight json"
 >{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "Thank you &lt;a href=\"http://sally.example.org\">@sally&lt;/a>
               for all your hard work!
               &lt;a href=\"http://example.org/tags/givingthanks\">#givingthanks&lt;/a>",
   "to": {
-    "@type": "Person",
-    "@id": "http://sally.example.org",
+    "type": "Person",
+    "id": "http://sally.example.org",
     "alias": "@sally"
   },
   "tag": {
-    "@id": "http://example.org/tags/givingthanks",
+    "id": "http://example.org/tags/givingthanks",
     "alias": "#givingthanks"
   }
 }</pre></div>
@@ -3555,16 +3012,16 @@ _:b1
 <pre class="example highlight json"
 >{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "@type": "Note",
+  "type": "Note",
   "content": "Thank you @sally for all your hard work! #givingthanks",
   "tag": [
     {
-      "@type": "Mention",
+      "type": "Mention",
       "href": "http://example.org/people/sally",
       "displayName": "@sally"
     },
     {
-      "@id": "http://example.org/tags/givingthanks",
+      "id": "http://example.org/tags/givingthanks",
       "alias": "#givingthanks"
     }
   ]
@@ -3727,65 +3184,6 @@ profile-URI   = URI</pre>
 
     </section>
 
-   <section id="media-type2">
-      <h2>The <code>application/stream+json</code> Media Type</h2>
-
-      <p>
-        This specification registers the <code><dfn data-lt="application/stream+json">application/stream+json</dfn></code>
-        MIME Media Type specifically for identifying documents
-        conforming to the JSON Activity Streams 1.0 [[!AS1]] format.
-      </p>
-
-      <table>
-        <tr>
-          <td>Type name: </td>
-          <td>application</td>
-        </tr>
-        <tr>
-          <td>Subtype name: </td>
-          <td>stream+json</td>
-        </tr>
-        <tr>
-          <td>Required parameters: </td>
-          <td>None</td>
-        </tr>
-        <tr>
-          <td>Optional parameters: </td>
-          <td>
-            profile: The profile parameter for the application/stream+json
-            media type allows one or more profile URIs to be specified.  These
-            profile URIs have the identifier semantics defined in [[!RFC6906]].
-            The "profile" media type parameter MUST be quoted. It contains a
-            non-empty list of space-separated URIs (the profile URIs).
-   <pre>profile-param = "profile=" profile-value
-profile-value = <"> profile-URI 0*( 1*SP profile-URI ) <">
-profile-URI   = URI</pre>
-            The "URI" in the above grammar refers to the "URI" as defined in
-            Section 3 of [[!RFC3986]].
-          </td>
-        </tr>
-        <tr>
-          <td>Encoding considerations: </td>
-          <td>
-            Resources that use the "<code>application/stream+json</code>"
-            Media Type are required to conform to all of the requirements
-            for the "<code>application/json</code>" Media Type and are
-            therefore subject to the same encoding considerations specified
-            in Section 11 of [[!RFC7159]].
-          </td>
-        </tr>
-        <tr>
-          <td>Security considerations: </td>
-          <td>As defined in [[!AS1]]</td>
-        </tr>
-        <tr>
-          <td>Contact: </td>
-          <td>James M Snell &lt;<a href="mailto:jasnell@gmail.com">jasnell@gmail.com</a>&gt;</td>
-        </tr>
-        </table>
-
-    </section>
-
   </section>
 
   <section class="appendix">
@@ -3869,33 +3267,33 @@ profile-URI   = URI</pre>
       }
     }
   ],
-  "@type": "Collection",
+  "type": "Collection",
   "items": [
     {
-      "@id": "http://example.org/activity/20150101000000",
-      "@type": [ "Create", "prov:Activity" ],
+      "id": "http://example.org/activity/20150101000000",
+      "type": [ "Create", "prov:Activity" ],
       "actor": {
-        "@id": "http://example.org/#eric",
+        "id": "http://example.org/#eric",
         "displayName": "Eric"
       },
       "displayName": "Eric wrote a note.",
       "object": {
-        "@id": "http://example.org/entry/20150101000000",
-        "@type": [ "Note", "prov:Entity" ],
+        "id": "http://example.org/entry/20150101000000",
+        "type": [ "Note", "prov:Entity" ],
         "attributedTo": "http://example.org/#eric",
         "content": "Remember... all I'm offering is the trooth. Nothing more."
       },
       "published": "2015-01-01T00:00:00Z"
     },
     {
-      "@id": "http://example.org/activity/20150101000059",
-      "@type": [ "Update", "prov:Activity", "oa:Annotate" ],
+      "id": "http://example.org/activity/20150101000059",
+      "type": [ "Update", "prov:Activity", "oa:Annotate" ],
       "displayName": "Eric edited a note.",
       "oa:created": "2015-01-01T00:00:59Z",
       "oa:creator": "http://example.org/#eric",
       "oa:hasBody": {
-        "@id": "http://example.org/entry/20150101000059",
-        "@type": [ "Note", "prov:Entity" ],
+        "id": "http://example.org/entry/20150101000059",
+        "type": [ "Note", "prov:Entity" ],
         "content": "Remember... all I'm offering is the truth. Nothing more.",
         "prov:wasAttributedTo": "http://example.org/#eric",
         "prov:wasRevisionOf": "http://example.org/entry/20150101000000"
@@ -3906,8 +3304,8 @@ profile-URI   = URI</pre>
       "prov:wasInformedBy": "http://example.org/activity/20150101000000"
     },
     {
-      "@id": "http://example.org/activity/20150101010101",
-      "@type": [ "Delete", "prov:Activity" ],
+      "id": "http://example.org/activity/20150101010101",
+      "type": [ "Delete", "prov:Activity" ],
       "actor": "http://example.org/#eric",
       "displayName": "Eric deleted a note.",
       "object": "http://example.org/entry/20150101000059",
@@ -4048,69 +3446,6 @@ activity:20150101010101
   as:displayName "Eric" .</pre></div>
 </div>
 </figure>
-  </section>
-
-  <section>
-    <h2>Summary of Changes</h2>
-    <h3>2015-01-16</h3>
-      <ul>
-      <li>Include Extended Vocabulary
-        <ul>
-          <li>Add <code>Actor</code>, <code>OrderedCollection</code></li>
-        </ul>
-      </li>
-      <li>Include discussion about Mentions and Tags</li>
-      <li>Expanded Examples</li>
-      </ul>
-    <h3>2014-11-06</h3>
-      <ul>
-      <li>Refactor's Natural Language Context to address JSON-LD
-      compatibility and serialization concerns. For instance, rather than
-      "displayName" having a value that is *either* a string or a Language
-      Map, this creates a separate "displayNameMap" for the Language Map
-      case and keeps "displayName" as a String only. The JSON-LD processing
-      algorithms handle this just fine and non-JSON-LD implementations end
-      up with a more predictable, consistent target.</li>
-      <li>Remove the "language" property</li>
-      <li>Refactor as:Link, add as:href to indicate the target of the Link,
-      move away from overloading @id. This ought to resolve the modeling
-      issues that have been discussed.</li>
-      <li>Deprecate the "verb" property in AS 2.0, use @type instead to
-      represent the Activity Type. Provide clear guidelines for handling the
-      "verb" property when moving from AS 1.0 to AS 2.0.</li>
-      <li>Require JSON-LD compacted form using a <i>normative</i> JSON-LD @context
-      definition. Forbid implementations from altering the normative JSON-LD
-      @context. This will ensure that the serialized JSON will remain
-      consistent for the key properties, making it easier for
-      implementations that choose not to use the JSON-LD standard
-      algorithms.</li>
-      <li>Strengthen the MUST IGNORE requirement for extensions. Make it
-      clear that implementations SHOULD define extension properties using an
-      @context and spell out the consequences if they do not. Make it clear
-      that there are some valid JSON constructs (arrays of arrays) that are
-      not supported in JSON-LD and show an example using the one significant
-      case we are currently aware of (GeoJSON).</li>
-      <li>Provide a AS1-to-AS2 specific @context definition that is
-      specifically for processing AS1 documents using AS2 semantics.</li>
-      <li>Remove the Verb and ObjectType abstract classes. Verb is no longer
-      needed with the move to @type. Verbs just become subclasses of
-      as:Activity. The ObjectType definition can be handled better using
-      other constructs. Overall, this simplifies our vocabulary, which is
-      good.</li>
-      <li>Add iCal to the JSON-LD initial context</li>
-      </ul>
-
-    <h3>2014-09-30</h3>
-    <ul>
-      <li>Rework serialization model to be based on JSON-LD.</li>
-      <li>Updated <a href="../activitystreams-vocabulary/">vocabulary model</a>.</li>
-      <li>Remove notion of "Type Values".</li>
-      <li>Redefine "Link Values" as "Link".</li>
-      <li>Removed the "duplicates" property introduced in earlier AS2 drafts due to lack of any implementation evidence.</li>
-      <li>Vocabulary: rename "attachments" to "attachment" and "tags" to "tag", deprecate the old names.</li>
-      <li>Vocabulary: define "url", "image" and "icon" as having <a>Link</a> values. The clean up here ought to resolve the confusion over the relationship between <code>@id</code>, <code>url</code>, <code>self</code>, etc.</li>
-      <li>Vocabulary: The <code>mediaType</code> and <code>rel</code> properties are defined on <a>Link</a> and not <a>Object</a>.</li>
-    </ul>
   </section>
 
   <section id="tof"></section>
