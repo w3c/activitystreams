@@ -515,19 +515,6 @@ as:objectType a owl:DatatypeProperty ,
   rdfs:range xsd:anyURI ;
   rdfs:domain as:Object .
 
-as:priority a owl:DatatypeProperty ,
-      owl:FunctionalProperty ;
-  rdfs:label "priority"@en ;
-  rdfs:comment "Specifies the relative priority of the Activity"@en ;
-  rdfs:domain as:Activity ;
-  rdfs:range [
-    a rdfs:Datatype ;
-    owl:onDatatype xsd:float ;
-    owl:withRestrictions (
-      [ xsd:minInclusive "0.0"^^xsd:float ]
-      [ xsd:maxInclusive "1.0"^^xsd:float ]
-    )] .
-
 as:published a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
   rdfs:label "published"@en ;

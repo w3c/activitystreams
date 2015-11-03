@@ -273,10 +273,6 @@
     },
     "mediaType": "as:mediaType",
     "objectType": "as:objectType",
-    "priority": {
-      "@id": "as:priority",
-      "@type": "xsd:float"
-    },
     "published": {
       "@id": "as:published",
       "@type": "xsd:dateTime"
