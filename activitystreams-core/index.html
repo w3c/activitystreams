@@ -812,7 +812,6 @@ _:b0 a as:Collection ;
         <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>.
         These include:
         <code>
-          <code><a href="../activitystreams-vocabulary/#dfn-alias">alias</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-attachment">attachment</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-attributedto">attributedTo</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-content-term">content</a></code> |
@@ -2931,24 +2930,21 @@ _:c14n0 a gsp:Geometry ;
               &lt;a href=\"http://example.org/tags/givingthanks\">#givingthanks&lt;/a>",
   "to": {
     "type": "Person",
-    "id": "http://sally.example.org",
-    "alias": "@sally"
+    "id": "http://sally.example.org"
   },
   "tag": {
     "id": "http://example.org/tags/givingthanks",
-    "alias": "#givingthanks"
+    "displayName": "#givingthanks"
   }
 }</pre></div>
   <div id="ex25-rdfa" style="display: block;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Note">
   &lt;p property="content" datatype="rdf:HTML">Thank you
-    &lt;a rel="to" typeof="Person" href="http://sally.example.org">
-      &lt;span property="alias" lang="">@sally&lt;/span>
-    &lt;/a>
+    &lt;a rel="to" typeof="Person" href="http://sally.example.org">@sally&lt;/a>
     for all your hard work!
     &lt;a rel="tag" href="http://example.org/tags/givingthanks">
-      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+      #givingthanks
     &lt;/a>
   &lt;/p>
 &lt;/div>
@@ -2961,22 +2957,21 @@ _:b1
   a as:Note ;
   as:content """Thank you
   &lt;a rel="to" typeof="Person" href="http://sally.example.org">
-    &lt;span property="alias" lang="">@sally&lt;/span>
+    @sally
   &lt;/a>
   for all your hard work!
   &lt;a rel="tag" href="http://example.org/tags/givingthanks">
-    &lt;span property="alias" lang="">#givingthanks&lt;/span>
+    #givingthanks
   &lt;/a>
   """^^rdf:HTML ;
   as:to &lt;http://sally.example.org> ;
   as:tag &lt;http://example.org/tags/givingthanks> .
 
 &lt;http://sally.example.org>
-  a as:Person ;
-  as:alias "@sally" .
+  a as:Person .
 
 &lt;http://example.org/tags/givingthanks>
-  as:alias "#givingthanks" .
+  as:displayName "#givingthanks" .
 </pre></div>
 </div></figure>
 
@@ -3021,7 +3016,7 @@ _:b1
     },
     {
       "id": "http://example.org/tags/givingthanks",
-      "alias": "#givingthanks"
+      "displayName": "#givingthanks"
     }
   ]
 }</pre></div>
@@ -3037,7 +3032,7 @@ _:b1
     &lt;/span>
     for all your hard work!
     &lt;a rel="tag" href="http://example.org/tags/givingthanks">
-      &lt;span property="alias" lang="">#givingthanks&lt;/span>
+      #givingthanks
     &lt;/a>
   &lt;/p>
 &lt;/div>
@@ -3057,7 +3052,7 @@ _:b1
   as:tag &lt;http://example.org/tags/givingthanks> .
 
 &lt;http://example.org/tags/givingthanks>
-  as:alias "#givingthanks" .
+  as:displayName "#givingthanks" .
 </pre></div>
 </div></figure>
 

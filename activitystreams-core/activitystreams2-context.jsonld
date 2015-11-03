@@ -226,10 +226,6 @@
       "@id": "as:url",
       "@type": "@id"
     },
-    "alias": {
-      "@id": "as:alias",
-      "@type": "@id"
-    },
     "altitude": {
       "@id": "as:altitude",
       "@type": "xsd:float"

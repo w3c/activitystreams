@@ -394,13 +394,6 @@ as:accuracy a owl:DatatypeProperty ,
     )
   ] .
 
-as:alias a owl:DatatypeProperty ,
-           owl:FunctionalProperty ;
-  rdfs:label "alias"@en ;
-  rdfs:comment "An alternative, domain specific alias for an object"@en ;
-  rdfs:range xsd:anyURI ;
-  rdfs:domain as:Object .
-
 as:altitude a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
   rdfs:label "altitude"@en ;

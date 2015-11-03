@@ -313,7 +313,6 @@
           <td>Properties:</td>
           <td>
             <p>
-              <code><a>alias</a></code> |
               <code><a>attachment</a></code> |
               <code><a>attributedTo</a></code> |
               <code><a data-lt="content-term">content</a></code> |
@@ -7574,7 +7573,6 @@ _:b0 a as:Profile ;
       <code><a>to</a></code> |
       <code><a>url</a></code> |
       <code><a>accuracy</a></code> |
-      <code><a>alias</a></code> |
       <code><a>altitude</a></code> |
       <code><a>content</a></code> |
       <code><a>displayName</a></code> |
@@ -12915,111 +12913,6 @@ _:b0 a as:Place ;
         <tr>
           <td>Range:</td>
           <td><code>xsd:float</code> [&gt;= 0.0f, &lt;= 100.0f]</td>
-        </tr>
-        <tr>
-          <td>Functional:</td>
-          <td>True</td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="5" ><dfn>alias</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#alias</code></td>
-          <td rowspan="5">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex128-jsonld" class="selected">JSON-LD</a></li>
-    <li><a href="#ex128-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex128-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex128-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex128-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex128-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Place",
-  "displayName": "Home",
-  "alias": "@home"
-}</pre>
-</div>
-<div id="ex128-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;table itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Place">
-  &lt;tr>
-    &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Home&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>Alias&lt;/td>
-    &lt;td itemprop="alias">@home&lt;/td>
-  &lt;/tr>
-&lt;/table></pre>
-  </div>
-  <div id="ex128-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;table vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Place">
-  &lt;tr>
-    &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Home&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>Alias&lt;/td>
-    &lt;td property="alias">@home&lt;/td>
-  &lt;/tr>
-&lt;/table></pre>
-  </div>
-  <div id="ex128-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;table class="h-entry">
-  &lt;tr>
-    &lt;td>Name&lt;/td>
-    &lt;td class="p-name">Home&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>Alias&lt;/td>
-    &lt;td class="p-as-alias">@home&lt;/td>
-  &lt;/tr>
-&lt;/table></pre>
-  </div>
-<div id="ex128-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Place ;
-  as:displayName "Home" ;
-  as:alias &lt;@home&gt; .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            <p>Provides a contextually meaningful alternative label for the
-            object in addition to the <code>id</code>. For instance,
-            within some systems, groups can be identified by both a unique
-            global identifier and a more "human-friendly" label such as
-            "<code>@friends</code>" or "<code>@network</code>". The value of
-            the <code><a>alias</a></code> property MUST match either the
-            <code>isegment-nz-nc</code> or <code>IRI</code> productions in
-            [[RFC3987]]. The use of a relative reference other than a simple
-            name is not allowed.</p>
-            <p>It is important to note that the meaning of the
-            <code>alias</code> value is implementation and context
-            dependent.</p>
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code>xsd:anyURI</code></td>
         </tr>
         <tr>
           <td>Functional:</td>
