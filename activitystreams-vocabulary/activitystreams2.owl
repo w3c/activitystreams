@@ -501,7 +501,7 @@ as:mediaType a owl:DatatypeProperty ,
   rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
-    owl:unionOf (as:Link as:Content)
+    owl:unionOf (as:Link as:Object)
   ] .
 
 as:objectType a owl:DatatypeProperty ,
