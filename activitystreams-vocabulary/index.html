@@ -6559,11 +6559,20 @@ _:b0 a as:Question ;
           <tr>
             <td>Notes:</td>
             <td>
-              Represents a question being asked. Question objects are unique
-              in that they are an extension of both <code><a>Content</a></code>
-              and <code><a>IntransitiveActivity</a></code>. That is, the
-              Question object is an Activity but the direct object is the
-              question itself.
+              <p>
+                Represents a question being asked. Question objects are unique
+                in that they are an extension of both
+                <code><a>Content</a></code> and
+                <code><a>IntransitiveActivity</a></code>. That is, the
+                Question object is an Activity but the direct object is the
+                question itself.
+              </p>
+              <p>
+                Either of the <code><a>anyOf</a></code> and
+                <code><a>oneOf</a></code> properties MAY be used to express
+                possible answers, but a Question object MUST NOT have
+                both properties.
+              </p>
             </td>
           </tr>
           <tr>
