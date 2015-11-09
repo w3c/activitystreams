@@ -291,11 +291,6 @@
       "@id": "as:summary",
       "@container": "@language"
     },
-    "title": "as:title",
-    "titleMap": {
-      "@id": "as:title",
-      "@container": "@language"
-    },
     "totalItems": {
       "@id": "as:totalItems",
       "@type": "xsd:nonNegativeInteger"
