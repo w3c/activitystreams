@@ -15324,8 +15324,156 @@ _:b0 a as:Profile ;
 
   </section>
 
+  <section id="notes">
+    <h2>Implementation Notes</h2>
+
+  <section id="audienceTargeting">
+
+    <h3>Audience Targeting</h3>
+
+    <p>
+      Conceptually, every Object has both a Primary and Secondary audience.
+      The Primary audience consists of those entities directly involved or
+      owning the object. The Secondary audience consists of the collection of
+      entities sharing an interest in the object but who might not be directly
+      involved (e.g."followers").
+    </p>
+
+    <p>
+      For instance, suppose a social network of three individuals: Bob, Joe
+      and Jane.  Bob and Joe are each friends with Jane but are not friends
+      with one another.  Bob has chosen to "follow" activities for which
+      Jane is directly involved.  Jane shares a file with Joe.
+    </p>
+
+    <p>
+      In this example, Jane and Joe are each directly involved in the file
+      sharing activity and together make up the Primary Audience for that
+      event.  Bob, having an interest in activities involving Jane, is the
+      Secondary Audience.  Knowing this, a system that produces or consumes
+      the activity can intelligently notify each person of the event.
+    </p>
+
+    <p>
+      While there are means (based on the action type, actor, object and
+      target of the activity) to infer the primary audience for many types of
+      activities, heuristics do not work in every case and do not provide a
+      means of identifying the secondary audience.  The
+      <code><a>to</a></code>, <code><a>cc</a></code>, <code><a>bto</a></code>
+      and <code><a>bcc</a></code> properties MAY be used within an Object to
+      explicitly identify the Primary and Secondary audiences.
+    </p>
+
+    <p>
+      The prototypical use case for an Object containing these properties
+      is the publication and redistribution of objects through an
+      intermediary.  That is, an event source generates the object and
+      publishes it to the intermediary which determines a subset of items
+      to display to specific individual users or groups.  Such a
+      determination can be made, in part, by identifying the Primary and
+      Secondary Audiences for each object.
+    </p>
+
+    <p>
+      When the event source generates the object and specifies values for
+      the <code>to</code> and <code>cc</code> fields, the intermediary SHOULD
+      redistribute that object with the values of those fields intact, allowing
+      any processor to see who the object has been targeted to.  This is
+      precisely the same model used by the <code>to</code> and <code>cc</code>
+      fields in email systems.
+    </p>
+
+    <p>
+      There are situations, however, in which disclosing the identity of
+      specific members of the audience may be inappropriate.  For instance,
+      a user may not wish to let other users know that they are interested
+      in various topics, individuals or types of events.  To support this
+      option, an implementation generating an object MAY use the
+      <code>bto</code> and <code>bcc</code> properties to list
+      entities to whom the object should be privately targeted.  When an
+      intermediary receives an object containing these properties, it
+      MUST remove those values prior to redistributing the object.  The
+      intent is that systems MUST consider entities listed within the
+      <code>bto</code> and <code>bcc</code> properties as
+      part of the Primary and Secondary audience but MUST NOT disclose that
+      fact to any other party.
+    </p>
+
+    <p>
+      Audience targeting information included within an Object only
+      describes the intent of the object creator.  With clear exception
+      given to the appropriate handling of <code>bto</code> and
+      <code>bcc</code>, this specification leaves it up to implementations
+      to determine how the audience targeting information is used.
+    </p>
+
+    <section class="informative">
+      <h4>Scope and Context</h4>
+
+      <p>
+        Activities are rarely isolated events. Often, multiple individual
+        activities will be performed around a similar context or scope.
+        For instance, a collaborators working on a shared project might
+        perform multiple related activities in the process of achieving
+        some goal. Such activities can be logically grouped together
+        using the <code><a>context</a></code> property, and scoped to a
+        particular audience using the <code><a>scope</a></code> property.
+      </p>
+
+      <p>
+        For instance, the following shows two related activities that share
+        a common <code>context</code> and <code>scope</code>:
+      </p>
+
+      <div id="ex194-jsonld" style="display:block;">
+<pre class="example highlight json">{
+ "@context": "http://www.w3.org/ns/activitystreams",
+ "type": "Collection",
+ "items": [
+   {
+     "type": "Create",
+     "id": "http://activities.example.com/1",
+     "actor": "http://sally.example.org",
+     "object": {
+       "type": "Note",
+       "id": "http://notes.example.com/1",
+       "content": "A note"
+     },
+     "context": {
+       "type": "http://example.org/Project",
+       "name": "Project XYZ"
+     },
+     "scope": {
+       "type": "Group",
+       "name": "Project XYZ Working Group"
+     },
+     "to": "http://john.example.org"
+   },
+   {
+     "type": "Like",
+     "id": "http://activities.example.com/1",
+     "actor": "http://john.example.org",
+     "object": "http://notes.example.com/1",
+     "context": {
+       "type": "http://example.org/Project",
+       "name": "Project XYZ"
+     },
+     "scope": {
+       "type": "Group",
+       "name": "Project XYZ Working Group"
+     },
+     "to": "http://sally.example.org"
+   }
+ ]
+}</pre>
+    </div>
+
+    </section>
+
+  </section>
+
   <section id="connections">
-   <h2>Representing Relationships Between Entities</h2>
+   <h3>Representing Relationships Between Entities</h3>
 
    <p>
      The <code><a>Relationship</a></code> object is used to represent
@@ -15445,7 +15593,7 @@ _:b0 a as:Profile ;
 
    <section class="informative">
 
-     <h2>Modeling "friend requests"</h2>
+     <h4>Modeling "friend requests"</h4>
 
      <p>
        One common use case for many social platforms is the establishment
@@ -15580,7 +15728,7 @@ _:b0 a as:Profile ;
  </section>
 
  <section id="places" class="informative">
-   <h2>Representing Places</h2>
+   <h3>Representing Places</h3>
 
    <p>
      The <code><a>Place</a></code> object is used to represent both
@@ -15639,7 +15787,7 @@ _:b0 a as:Profile ;
  </section>
 
  <section id="questions" class="informative">
-   <h2>Representing Questions</h2>
+   <h3>Representing Questions</h3>
 
    <p>
      The <code><a>Question</a></code> object can be used to express various
@@ -15741,7 +15889,7 @@ _:b0 a as:Profile ;
  </section>
 
  <section id="inverse" class="informative">
-   <h2>Inverse Activities and "Undo"</h2>
+   <h3>Inverse Activities and "Undo"</h3>
 
    <p>
      Several of the core <a href="#activity-types">Activity types</a> are
@@ -15842,6 +15990,166 @@ _:b0 a as:Profile ;
     changed her opinion about John's note and now dislikes it, while in the
     latter example she currently neither likes or dislikes it.
   </p>
+
+</section>
+
+<section id="microsyntaxes" class="informative">
+  <h2>Mentions, Tags and Other Common Social Microsyntaxes</h2>
+
+  <p>
+    Many social software systems use special text-based microsyntaxes
+    that allow users to define special addressing for notifications,
+    linking, or categorization within objects. For example, including
+    text such as "<code>@username</code>" within an object's content
+    will often route the object to a special "mentions" or "inbox"
+    stream for a particular user. Likewise, including text such as
+    "<code>#topic</code>" within the object's content will often mark
+    the object as being related to the topic "<code>topic</code>".
+    Such mechanisms are commonly referred to as "mentions" and "hashtags",
+    respectively.
+  </p>
+
+  <p>
+    While such microsyntaxes MAY be used within the values of the
+    <code><a data-lt="content-term">content</a></code>,
+    <code><a>name</a></code>, and <code><a>summary</a></code>
+    properties on an Activity Streams <code><a>Object</a></code>,
+    implementations SHOULD NOT be required to parse the values of those
+    properties in order to determine the appropriate routing of
+    notifications, categorization or linking between objects. Instead,
+    publishers SHOULD make appropriate use of the vocabulary
+    terms provided specifically for these purposes.
+  </p>
+
+  <p>
+    For example, suppose that an author wishes to send a note of thanks to
+    another user named "@sally" with a hashtag of "#givingthanks". A typical
+    way this message would appear within the content of a note is shown
+    below:
+  </p>
+
+  <figure><figcaption>A simple note with a mention an a hashtag:</figcaption>
+<pre> "Thank you @sally for all your hard work! #givingthanks" </pre></figure>
+
+  <p>
+    A typical social software implementation would typically render such a
+    content such that "<code>@sally</code>" is replaced with a hyperlink to
+    "@sally"'s social profile page and "<code>#givingthanks</code>" is
+    replaced with a hyperlink to a listing of other notes that have been
+    "tagged" with the same topic. Most implementations would also send a
+    special notification to sally letting her know that a note mentioning her
+    has been created.
+  </p>
+
+  <p>
+    The following illustrates an equivalent Activity Streams
+    <code><a>Note</a></code> object:
+  </p>
+
+<div id="ex196-jsonld" style="display: block;">
+<pre class="example highlight json"
+>{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "content": "Thank you &lt;a href=\"http://sally.example.org\">@sally&lt;/a>
+      for all your hard work!
+      &lt;a href=\"http://example.org/tags/givingthanks\">#givingthanks&lt;/a>",
+  "to": {
+    "type": "Person",
+    "id": "http://sally.example.org"
+  },
+  "tag": {
+    "id": "http://example.org/tags/givingthanks",
+    "name": "#givingthanks"
+  }
+}</pre></div>
+
+  <p>
+    The <code>to</code> property indicates that the user "@sally" is
+    to be considered part of the <a href="#audienceTargeting">primary
+    audience</a> of the note and should therefore receive notification. The
+    <code>tag</code> property associates the Note with a reference to
+    "<code>http://example.org/tags/givingthanks</code>". Note that the
+    <code>content</code> still includes the "<code>@sally</code>" and
+    "<code>#givingthanks</code>" microsyntaxes but that consuming
+    implementations are not required to parse those in order to make the
+    appropriate associations.
+  </p>
+
+  <p>
+    In the case a publisher wishes to indicate a mention without an associated
+    notification, the publisher can use the <code><a>Mention</a></code> object
+    type as a value of the <code><a>tag</a></code> property.
+  </p>
+
+<div id="ex197-jsonld" style="display: block;">
+<pre class="example highlight json"
+>{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "content": "Thank you @sally for all your hard work! #givingthanks",
+  "tag": [
+    {
+      "type": "Mention",
+      "href": "http://example.org/people/sally",
+      "name": "@sally"
+    },
+    {
+      "id": "http://example.org/tags/givingthanks",
+      "name": "#givingthanks"
+    }
+  ]
+}</pre></div>
+
+</section>
+
+<section id="origin-target">
+  <h3>Origin and Target</h3>
+
+  <p>
+    The <code><a>origin</a></code> and <code><a>target</a></code> properties
+    of an Activity respectively identify the entities <em>from</em> which and
+    <em>to</em> which the action is directed. For instance, in the English
+    statement, "Sally moved the file from Folder A to Folder B", the
+    <code>origin</code> is "Folder A" and the <code>target</code> is
+    "Folder B". This activity is illustrated in the example below:
+  </p>
+
+  <div id="ex198-jsonld" style="display: block;">
+  <pre class="example highlight json"
+  >{
+    "@context": "http://www.w3.org/ns/activitystreams",
+    "type": "Move",
+    "actor": "http://sally.example.org",
+    "object": {
+      "type": "Document",
+      "name": "sales figures"
+    },
+    "origin": {
+      "type": "Folder",
+      "name": "Folder A"
+    },
+    "target": {
+      "type": "Folder",
+      "name": "Folder B"
+    }
+  }</pre></div>
+
+  <p>
+    The <code>origin</code> property is applicable to any type of activity
+    for which the English preposition "from" can be considered applicable
+    in the sense of identifying the origin, source or provenance of the
+    activity's <code>object</code>.
+  </p>
+
+  <p>
+    The <code>target</code> property is applicable to any type of activity
+    for which the English preposition "to" can be considered applicable
+    in the sense of identifying the indirect object or destination of the
+    activity's <code>object</code>.
+  </p>
+
+</section>
 
 </section>
 
