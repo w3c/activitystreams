@@ -7046,321 +7046,6 @@ _:b0 a as:Profile ;
 
       </table>
 
-      <section id="connections">
-        <h2>Representing Relationships Between Entities</h2>
-
-        <p>
-          The <code><a>Relationship</a></code> object is used to represent
-          relationships between individuals. It can be used, for instance,
-          to describe that one person is a friend of another, or that one
-          person is a member of a particular organization. The intent of
-          modeling Relationship in this way is to allow descriptions of
-          activities that operate on the relationships in general, and
-          to allow representation of Collections of relationships.
-        </p>
-
-        <p>
-          For instance, many social systems have a notion of a "friends list".
-          These are the collection of individuals that are directly connected
-          within a person's social graph. Suppose we have a user, Sally,
-          with direct relationships to users Joe and Jane. Sally considers Joe
-          to be a close friend while Jane is just an acquaintance.
-        </p>
-
-        <p>
-          Using the <code><a>Relationship</a></code> object, we can model
-          these relationships as:
-        </p>
-
-        <div id="ex180-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Collection",
-  "items": [
-    {
-      "type": "Relationship",
-      "subject": {
-        "type": "Person",
-        "name": "Sally"
-      },
-      "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-      "object": {
-        "type": "Person",
-        "name": "Joe"
-      }
-    },
-    {
-      "type": "Relationship",
-      "subject": {
-        "type": "Person",
-        "name": "Sally"
-      },
-      "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
-      "object": {
-        "type": "Person",
-        "name": "Jane"
-      }
-    }
-  ]
-}</pre>
-        </div>
-
-        <p>
-          The <code><a data-lt="relationship-term">relationship</a></code>
-          property specifies the kind of relationship that exists between the
-          two individuals identified by the
-          <code><a data-lt="subject">subject</a></code> and
-          <code><a data-lt="object">object</a></code> properties. Used together,
-          these three properties form what is commonly known as a
-          "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
-          where <code><a data-lt="subject">subject</a></code> identifies the
-          subject, <code><a data-lt="relationship-term">relationship</a></code>
-          identifies the predicate, and
-          <code><a data-lt="object-term">object</a></code> identifies the
-          object.
-        </p>
-
-        <p>
-          While use of reified statements can be problematic and confusing
-          in certain situations, their use within the Activity Streams
-          vocabulary to describe relationships provides a straightforward
-          mechanism of describing changes to an individual's social graph.
-          For instance, to indicate that Sally has created a
-          new relationship to user Matt, an implementer can use the
-          <code><a>Relationship</a></code> object together with the
-          <code><a>Create</a></code> activity:
-        </p>
-
-        <div id="ex181-jsonldb" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Create",
-  "actor": "http://sally.example.org",
-  "object": {
-    "type": "Relationship",
-    "subject": "http://sally.example.org",
-    "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-    "object": "http://matt.example.org",
-    "startTime": "2015-04-21T12:34:56"
-  }
-}</pre>
-        </div>
-
-        <p>
-          Additionally, modeling the relationship in this way allows
-          implementers to articulate additional properties of the relationship
-          itself. For instance, the date and time at which the relationship
-          began or ended.
-        </p>
-
-        <p>
-          The Activity Streams vocabulary does not define normative values
-          for use with the
-          <code><a data-lt="relationship-term">relationship</a></code> property.
-          It is expected that implementations will make use of several
-          existing vocabularies that have been developed for the purpose
-          of describing relationships. Examples of such vocabularies include
-          the "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>"
-          and "<a href="http://vocab.org/relationship/.html">Relationship</a>"
-          vocabularies.
-        </p>
-
-        <section class="informative">
-
-          <h2>Modeling "friend requests"</h2>
-
-          <p>
-            One common use case for many social platforms is the establishment
-            of symmetrical "friend" relationships, in which one user initially
-            extends a request to another user to establish a new connection.
-            Once the connection is made, both users automatically begin
-            receiving notifications about activities performed by the other,
-            and the established relationship becomes visible in either user's
-            "friends list".
-          </p>
-          <p>
-            The initial "friend request" can be modeled by composing the
-            <code><a>Offer</a></code> and <code><a>Relationship</a></code>
-            object types as in the following example:
-          </p>
-
-          <div id="ex187-jsonld" style="display: block;">
-  <pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    {"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
-  ],
-  "id": "http://example.org/connection-requests/123",
-  "type": "Offer",
-  "actor": "acct:sally@example.org",
-  "object": {
-    "id": "http://example.org/connections/123",
-    "type": "Relationship",
-    "subject": "acct:sally@example.org",
-    "relationship": "colleagueOf",
-    "object": "acct:john@example.org"
-  },
-  "target": "acct:john@example.org"
-}</pre>
-          </div>
-
-          <p>
-            Assuming the "friend request" is accepted, the remaining steps
-            in this common application scenario can be represented as a
-            set of distinct activities:
-          </p>
-
-          <div id="ex188-jsonld" style="display: block;">
-  <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Collection",
-  "items": [
-    {
-      "id": "http://example.org/activities/122",
-      "type": "Accept",
-      "actor": "acct:john@example.org",
-      "object": "http://example.org/connection-requests/123",
-      "inReplyTo": "http://example.org/connection-requests/123",
-      "context": "http://example.org/connections/123",
-      "result": [
-        "http://example.org/activities/123",
-        "http://example.org/activities/124",
-        "http://example.org/activities/125",
-        "http://example.org/activities/126"
-      ]
-    },
-    {
-      "id": "http://example.org/activities/123",
-      "type": "Follow",
-      "actor": "acct:john@example.org",
-      "object": "acct:sally@example.org",
-      "context": "http://example.org/connections/123",
-    },
-    {
-      "id": "http://example.org/activities/124",
-      "type": "Follow",
-      "actor": "acct:sally@example.org",
-      "object": "acct:john@example.org",
-      "context": "http://example.org/connections/123",
-    },
-    {
-      "id": "http://example.org/activities/125",
-      "type": "Add",
-      "actor": "acct:john@example.org",
-      "object": "http://example.org/connections/123",
-      "target": {
-        "type": "Collection",
-        "name": "John's Connections"
-      },
-      "context": "http://example.org/connections/123",
-    },
-    {
-      "id": "http://example.org/activities/126",
-      "type": "Add",
-      "actor": "acct:sally@example.org",
-      "object": "http://example.org/connections/123",
-      "target": {
-        "type": "Collection",
-        "name": "Sally's Connections"
-      },
-      "context": "http://example.org/connections/123",
-    }
-  ]
-}</pre>
-          </div>
-
-          <p>
-            As illustrated in this example, accepting the "friend request"
-            results in four additional activities including: John following
-            Sally, Sally following John, John adding the relationship with
-            Sally to his collection of Connections, and Sally adding the
-            relationship with John to her collection of Connections.
-          </p>
-
-          <p>
-            In this example,
-            <ol>
-              <li>
-                The optional <code><a>result</a></code> property is used
-                within the <code>Accept</code> activity to identify the
-                additional activities that occurred as a result of the
-                accept.
-              </li>
-              <li>
-                The optional <code><a>context</a></code> property is used
-                to relate the various activities back to a common reference
-                point, which in this example is the relationship being
-                established. The <code>context</code> allows an implementation
-                to efficiently group related activities together for
-                display or analytic purposes.
-              </li>
-            </ol>
-          </p>
-
-        </section>
-
-      </section>
-
-      <section id="places">
-        <h2>Representing Places</h2>
-
-        <p>
-          The <code><a>Place</a></code> object is used to represent both
-          physical and logical locations. While numerous existing vocabularies
-          exist for describing locations in a variety of ways, inconsistencies
-          and incompatibilities between those vocabularies make it difficult
-          to achieve appropriate interoperability between implementations.
-          The <code>Place</code> object is included within the Activity
-          vocabulary to provide a minimal, interoperable starting point for
-          describing locations consistently across Activity Streams 2.0
-          implementations.
-        </p>
-
-        <p>
-          The <code>Place</code> object is intentionally flexible. It can,
-          for instance, be used to identify a location simply by name:
-        </p>
-
-        <div id="ex182-jsonldb" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Place",
-  "name": "San Francisco, CA"
-}</pre>
-        </div>
-
-        <p>
-          Or, by <code><a>longitude</a></code> and <code><a>latitude</a></code>:
-        </p>
-
-        <div id="ex183-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Place",
-  "name": "San Francisco, CA",
-  "longitude": "122.4167",
-  "latitude": "37.7833"
-}</pre>
-        </div>
-
-        <p>
-          The <code>Place</code> object can also describe an area around a
-          given point using the <code><a>radius</a></code> property, the
-          <code><a>altitude</a></code> of the location, and a degree of
-          <code><a>accuracy</a></code>.
-        </p>
-
-        <p>
-          While publishers are not required to use these specific
-          properties and MAY make use of other mechanisms for describing
-          locations, consuming implementations that support the
-          <code><a>Place</a></code> object MUST support the use of
-          these properties.
-        </p>
-
-      </section>
-
-
     </section>
 
   </section>
@@ -15638,6 +15323,527 @@ _:b0 a as:Profile ;
     </table>
 
   </section>
+  
+  <section id="connections">
+   <h2>Representing Relationships Between Entities</h2>
+
+   <p>
+     The <code><a>Relationship</a></code> object is used to represent
+     relationships between individuals. It can be used, for instance,
+     to describe that one person is a friend of another, or that one
+     person is a member of a particular organization. The intent of
+     modeling Relationship in this way is to allow descriptions of
+     activities that operate on the relationships in general, and
+     to allow representation of Collections of relationships.
+   </p>
+
+   <p>
+     For instance, many social systems have a notion of a "friends list".
+     These are the collection of individuals that are directly connected
+     within a person's social graph. Suppose we have a user, Sally,
+     with direct relationships to users Joe and Jane. Sally considers Joe
+     to be a close friend while Jane is just an acquaintance.
+   </p>
+
+   <p>
+     Using the <code><a>Relationship</a></code> object, we can model
+     these relationships as:
+   </p>
+
+   <div id="ex180-jsonld" style="display: block;">
+<pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Collection",
+"items": [
+{
+ "type": "Relationship",
+ "subject": {
+   "type": "Person",
+   "name": "Sally"
+ },
+ "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+ "object": {
+   "type": "Person",
+   "name": "Joe"
+ }
+},
+{
+ "type": "Relationship",
+ "subject": {
+   "type": "Person",
+   "name": "Sally"
+ },
+ "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
+ "object": {
+   "type": "Person",
+   "name": "Jane"
+ }
+}
+]
+}</pre>
+   </div>
+
+   <p>
+     The <code><a data-lt="relationship-term">relationship</a></code>
+     property specifies the kind of relationship that exists between the
+     two individuals identified by the
+     <code><a data-lt="subject">subject</a></code> and
+     <code><a data-lt="object">object</a></code> properties. Used together,
+     these three properties form what is commonly known as a
+     "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
+     where <code><a data-lt="subject">subject</a></code> identifies the
+     subject, <code><a data-lt="relationship-term">relationship</a></code>
+     identifies the predicate, and
+     <code><a data-lt="object-term">object</a></code> identifies the
+     object.
+   </p>
+
+   <p>
+     While use of reified statements can be problematic and confusing
+     in certain situations, their use within the Activity Streams
+     vocabulary to describe relationships provides a straightforward
+     mechanism of describing changes to an individual's social graph.
+     For instance, to indicate that Sally has created a
+     new relationship to user Matt, an implementer can use the
+     <code><a>Relationship</a></code> object together with the
+     <code><a>Create</a></code> activity:
+   </p>
+
+   <div id="ex181-jsonldb" style="display: block;">
+<pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Create",
+"actor": "http://sally.example.org",
+"object": {
+"type": "Relationship",
+"subject": "http://sally.example.org",
+"relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+"object": "http://matt.example.org",
+"startTime": "2015-04-21T12:34:56"
+}
+}</pre>
+   </div>
+
+   <p>
+     Additionally, modeling the relationship in this way allows
+     implementers to articulate additional properties of the relationship
+     itself. For instance, the date and time at which the relationship
+     began or ended.
+   </p>
+
+   <p>
+     The Activity Streams vocabulary does not define normative values
+     for use with the
+     <code><a data-lt="relationship-term">relationship</a></code> property.
+     It is expected that implementations will make use of several
+     existing vocabularies that have been developed for the purpose
+     of describing relationships. Examples of such vocabularies include
+     the "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>"
+     and "<a href="http://vocab.org/relationship/.html">Relationship</a>"
+     vocabularies.
+   </p>
+
+   <section class="informative">
+
+     <h2>Modeling "friend requests"</h2>
+
+     <p>
+       One common use case for many social platforms is the establishment
+       of symmetrical "friend" relationships, in which one user initially
+       extends a request to another user to establish a new connection.
+       Once the connection is made, both users automatically begin
+       receiving notifications about activities performed by the other,
+       and the established relationship becomes visible in either user's
+       "friends list".
+     </p>
+     <p>
+       The initial "friend request" can be modeled by composing the
+       <code><a>Offer</a></code> and <code><a>Relationship</a></code>
+       object types as in the following example:
+     </p>
+
+     <div id="ex187-jsonld" style="display: block;">
+<pre class="example highlight json">{
+"@context": [
+"http://www.w3.org/ns/activitystreams",
+{"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
+],
+"id": "http://example.org/connection-requests/123",
+"type": "Offer",
+"actor": "acct:sally@example.org",
+"object": {
+"id": "http://example.org/connections/123",
+"type": "Relationship",
+"subject": "acct:sally@example.org",
+"relationship": "colleagueOf",
+"object": "acct:john@example.org"
+},
+"target": "acct:john@example.org"
+}</pre>
+     </div>
+
+     <p>
+       Assuming the "friend request" is accepted, the remaining steps
+       in this common application scenario can be represented as a
+       set of distinct activities:
+     </p>
+
+     <div id="ex188-jsonld" style="display: block;">
+<pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Collection",
+"items": [
+{
+ "id": "http://example.org/activities/122",
+ "type": "Accept",
+ "actor": "acct:john@example.org",
+ "object": "http://example.org/connection-requests/123",
+ "inReplyTo": "http://example.org/connection-requests/123",
+ "context": "http://example.org/connections/123",
+ "result": [
+   "http://example.org/activities/123",
+   "http://example.org/activities/124",
+   "http://example.org/activities/125",
+   "http://example.org/activities/126"
+ ]
+},
+{
+ "id": "http://example.org/activities/123",
+ "type": "Follow",
+ "actor": "acct:john@example.org",
+ "object": "acct:sally@example.org",
+ "context": "http://example.org/connections/123",
+},
+{
+ "id": "http://example.org/activities/124",
+ "type": "Follow",
+ "actor": "acct:sally@example.org",
+ "object": "acct:john@example.org",
+ "context": "http://example.org/connections/123",
+},
+{
+ "id": "http://example.org/activities/125",
+ "type": "Add",
+ "actor": "acct:john@example.org",
+ "object": "http://example.org/connections/123",
+ "target": {
+   "type": "Collection",
+   "name": "John's Connections"
+ },
+ "context": "http://example.org/connections/123",
+},
+{
+ "id": "http://example.org/activities/126",
+ "type": "Add",
+ "actor": "acct:sally@example.org",
+ "object": "http://example.org/connections/123",
+ "target": {
+   "type": "Collection",
+   "name": "Sally's Connections"
+ },
+ "context": "http://example.org/connections/123",
+}
+]
+}</pre>
+     </div>
+
+     <p>
+       As illustrated in this example, accepting the "friend request"
+       results in four additional activities including: John following
+       Sally, Sally following John, John adding the relationship with
+       Sally to his collection of Connections, and Sally adding the
+       relationship with John to her collection of Connections.
+     </p>
+
+     <p>
+       In this example,
+       <ol>
+         <li>
+           The optional <code><a>result</a></code> property is used
+           within the <code>Accept</code> activity to identify the
+           additional activities that occurred as a result of the
+           accept.
+         </li>
+         <li>
+           The optional <code><a>context</a></code> property is used
+           to relate the various activities back to a common reference
+           point, which in this example is the relationship being
+           established. The <code>context</code> allows an implementation
+           to efficiently group related activities together for
+           display or analytic purposes.
+         </li>
+       </ol>
+     </p>
+
+   </section>
+
+ </section>
+
+ <section id="places" class="informative">
+   <h2>Representing Places</h2>
+
+   <p>
+     The <code><a>Place</a></code> object is used to represent both
+     physical and logical locations. While numerous existing vocabularies
+     exist for describing locations in a variety of ways, inconsistencies
+     and incompatibilities between those vocabularies make it difficult
+     to achieve appropriate interoperability between implementations.
+     The <code>Place</code> object is included within the Activity
+     vocabulary to provide a minimal, interoperable starting point for
+     describing locations consistently across Activity Streams 2.0
+     implementations.
+   </p>
+
+   <p>
+     The <code>Place</code> object is intentionally flexible. It can,
+     for instance, be used to identify a location simply by name:
+   </p>
+
+   <div id="ex182-jsonldb" style="display: block;">
+<pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Place",
+"name": "San Francisco, CA"
+}</pre>
+   </div>
+
+   <p>
+     Or, by <code><a>longitude</a></code> and <code><a>latitude</a></code>:
+   </p>
+
+   <div id="ex183-jsonld" style="display: block;">
+<pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Place",
+"name": "San Francisco, CA",
+"longitude": "122.4167",
+"latitude": "37.7833"
+}</pre>
+   </div>
+
+   <p>
+     The <code>Place</code> object can also describe an area around a
+     given point using the <code><a>radius</a></code> property, the
+     <code><a>altitude</a></code> of the location, and a degree of
+     <code><a>accuracy</a></code>.
+   </p>
+
+   <p>
+     While publishers are not required to use these specific
+     properties and MAY make use of other mechanisms for describing
+     locations, consuming implementations that support the
+     <code><a>Place</a></code> object MUST support the use of
+     these properties.
+   </p>
+
+ </section>
+
+ <section id="questions" class="informative">
+   <h2>Representing Questions</h2>
+   
+   <p>
+     The <code><a>Question</a></code> object can be used to express various
+     types of inquiries.
+   </p>
+   
+   <p>
+     For instance, simple open-ended questions similar to those posted to
+     crowd-sourced question and answer websites:
+   </p>
+   
+   <div id="ex189-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "id": "http://help.example.org/question/1",
+  "type": "Question",
+  "content": "I'd like to build a robot to feed my cat. Should I use Arduino or Raspberry Pi?"
+}</pre>
+   </div>
+   
+   <p>
+     Multiple-choice questions or "polls" are also supported using either the
+     <code><a>oneOf</a></code> or <code><a>anyOf</a></code> properties:
+   </p>
+   
+   <div id="ex190-jsonld" style="display:block;">
+ <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "id": "http://polls.example.org/question/1",
+  "type": "Question",
+   "content": "I'd like to build a robot to feed my cat. Which platform is best?",
+   "oneOf": [
+     {"name": "arduino"},
+     {"name": "raspberry pi"}
+   ]
+ }</pre>
+</div>
+
+  <p>
+    Responses to questions are expressed as
+    <code><a data-lt="Object">Objects</a></code> containing an
+    <code><a>inReplyto</a></code> property referencing the Question.
+  </p>
+  
+  <div id="ex191-jsonld" style="display:block;">
+<pre class="example highlight json">{
+ "@context": "http://www.w3.org/ns/activitystreams",
+ "attributedTo": "http://sally.example.org",
+ "inReplyTo": "http://polls.example.org/question/1",
+ "name": "arduino"
+}</pre>
+</div>
+   
+   <p>
+     Because <code><a>Question</a></code> objects are also instances of
+     <code><a>Activity</a></code>, the <code><a>result</a></code> property
+     can be used to express the results or outcome of the Question (as
+     appropriate):
+   </p>
+   
+   <div id="ex192-jsonld" style="display:block;">
+ <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "id": "http://polls.example.org/question/1",
+  "type": "Question",
+   "content": "I'd like to build a robot to feed my cat. Which platform is best?",
+   "oneOf": [
+     {"name": "arduino"},
+     {"name": "raspberry pi"}
+   ],
+   "replies": {
+     "type": "Collection",
+     "totalItems": 3,
+     "items": [
+       {
+         "attributedTo": "http://sally.example.org",
+         "inReplyTo": "http://polls.example.org/question/1",
+         "name": "arduino"
+       },
+       {
+         "attributedTo": "http://joe.example.org",
+         "inReplyTo": "http://polls.example.org/question/1",
+         "name": "arduino"
+       },
+       {
+         "attributedTo": "http://john.example.org",
+         "inReplyTo": "http://polls.example.org/question/1",
+         "name": "raspberry pi"
+       }
+     ]
+   },
+   "result": {
+     "type": "Note",
+     "content": "Users are favoriting &amp;quot;arduino&amp;quot; by a 33% margin."
+   }
+ }</pre>
+</div>
+   
+ </section>
+ 
+ <section id="inverse" class="informative">
+   <h2>Inverse Activities and "Undo"</h2>
+   
+   <p>
+     Several of the core <a href="#activity-types">Activity types</a> are
+     defined as natural inversions of one another. These include:
+   </p>
+   
+   <ul>
+     <li><code><a>Accept</a></code> and <code><a>Reject</a></code>,</li>
+     <li><code><a>Arrive</a></code> and <code><a>Leave</a></code>,</li>
+     <li><code><a>Join</a></code> and <code><a>Leave</a></code>,</li>
+     <li><code><a>Create</a></code> and <code><a>Delete</a></code>,</li>
+     <li><code><a>Like</a></code> and <code><a>Dislike</a></code></li>
+   </ul>
+   
+   <p>
+      It is important to note that these types of activities are semantically
+      distinct from one another and have no direct relationship on the
+      other. That is, for example, if an actor "likes" a note at one point in
+      time then later "dislikes" it, the "dislike" activity does not "undo" or
+      negate out the prior "like".
+   </p>
+   
+   <p>
+     The appropriate interpretation for the following is that Sally first
+     liked, then later disliked John's note:
+   </p>
+   
+   <div id="ex193-jsonld" style="display:block;">
+ <pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Collection",
+  "items": [
+    {
+      "type": "Like",
+      "actor": "http://sally.example.org",
+      "id": "http://activities.example.com/1",
+      "published": "2015-11-12T12:34:56Z",
+      "object": {
+        "type": "Note",
+        "id": "http://notes.example.com/1",
+        "attributedTo": "http://john.example.org",
+        "content": "My note"
+      }
+    },
+    {
+      "type": "Dislike",
+      "actor": "http://sally.example.org",
+      "id": "http://activities.example.com/2",
+      "published": "2015-12-11T21:43:56Z",
+      "object": {
+        "type": "Note",
+        "id": "http://notes.example.com/1",
+        "attributedTo": "http://john.example.org",
+        "content": "My note"
+      }
+    }
+  ]
+ }</pre>
+ </div>
+  
+  <p>
+    The <code><a>Undo</a></code> activity type is defined to provide the
+    specific ability to undo or cancel out a prior activity. The appropriate
+    interpretation for the following, then, is that Sally liked John's note
+    at one point but has explicitly redacted that like later on.
+  </p>
+   
+  <div id="ex193-jsonld" style="display:block;">
+<pre class="example highlight json">{
+ "@context": "http://www.w3.org/ns/activitystreams",
+ "type": "Collection",
+ "items": [
+   {
+     "type": "Like",
+     "id": "http://activities.example.com/1",
+     "actor": "http://sally.example.org",
+     "published": "2015-11-12T12:34:56Z",
+     "object": {
+       "type": "Note",
+       "id": "http://notes.example.com/1",
+       "attributedTo": "http://john.example.org",
+       "content": "My note"
+     }
+   },
+   {
+     "type": "Undo",
+     "id": "http://activities.example.com/2",
+     "actor": "http://sally.example.org",
+     "published": "2015-12-11T21:43:56Z",
+     "object": "http://activities.example.com/1"
+   }
+ ]
+}</pre>
+</div>
+
+  <p>
+    The end result of the former example is that Sally has indicated that she
+    changed her opinion about John's note and now dislikes it, while in the
+    latter example she currently neither likes or dislikes it.
+  </p>
+   
+</section>
 
   <section class="appendix informative">
     <h2>Non-normative Ontology Definition</h2>
