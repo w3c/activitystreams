@@ -249,7 +249,7 @@
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Object",
   "id": "http://www.test.example/object/1",
-  "displayName": "A Simple, non-specific object"
+  "name": "A Simple, non-specific object"
 }</pre>
   </div>
   <div id="ex1-microdata" style="display: none;">
@@ -257,7 +257,7 @@
 >&lt;div itemscope
   itemid="http://www.test.example/object/1"
   itemtype="http://www.w3.org/ns/activitystreams#Object"&gt;
-  &lt;span itemprop="displayName"&gt;
+  &lt;span itemprop="name"&gt;
     A Simple, non-specific object
   &lt;/span&gt;
 &lt;/div&gt;</pre>
@@ -267,7 +267,7 @@
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   resource="http://www.test.example/object/1"
   typeof="Object"&gt;
-  &lt;span property="displayName"&gt;
+  &lt;span property="name"&gt;
     A Simple, non-specific object
   &lt;/span&gt;
 &lt;/div&gt;</pre>
@@ -286,7 +286,7 @@
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
 &lt;http://www.test.example/object/1&gt; a as:Object ;
-  as:displayName "A Simple, non-specific object" .</pre>
+  as:name "A Simple, non-specific object" .</pre>
   </div>
 </div>
 
@@ -317,7 +317,7 @@
               <code><a>attributedTo</a></code> |
               <code><a data-lt="content-term">content</a></code> |
               <code><a>context</a></code> |
-              <code><a>displayName</a></code> |
+              <code><a>name</a></code> |
               <code><a>endTime</a></code> |
               <code><a>generator</a></code> |
               <code><a>icon</a></code> |
@@ -364,7 +364,7 @@
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "displayName": "An example link"
+  "name": "An example link"
 }</pre>
   </div>
   <div id="ex2-microdata" style="display: none;">
@@ -374,7 +374,7 @@
     href="http://example.org/abc"
     hreflang="en"
     type="text/html"
-    itemprop="displayName">An example link&lt;/a></pre>
+    itemprop="name">An example link&lt;/a></pre>
   </div>
   <div id="ex2-rdfa" style="display: none;">
 <pre class="example highlight html"
@@ -383,7 +383,7 @@
   &lt;span property="hreflang" lang="">en&lt;/span>
   &lt;span property="mediaType" lang="">text/html&lt;/span>
   &lt;a rel="href" href="http://example.org/abc"
-    property="displayName">An example link&lt;/a>
+    property="name">An example link&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex2-microformats" style="display: none;">
@@ -403,7 +403,7 @@
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Link ;
-  as:displayName "An example link" ;
+  as:name "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
   as:mediaType "text/html" .</pre>
@@ -436,7 +436,7 @@ _:b0 a as:Link ;
               <code><a>href</a></code> |
               <code><a>rel</a></code> |
               <code><a>mediaType</a></code> |
-              <code><a>displayName</a></code> |
+              <code><a>name</a></code> |
               <code><a>title</a></code> |
               <code><a>hreflang</a></code> |
               <code><a>height</a></code> |
@@ -467,11 +467,11 @@ _:b0 a as:Link ;
   "type": "Activity",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Note",
-    "displayName": "A Note"
+    "name": "A Note"
   }
 }</pre>
   </div>
@@ -482,13 +482,13 @@ _:b0 a as:Link ;
   &lt;span itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemprop="actor">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   did something to
   &lt;span itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Note"
     itemprop="object">
-    &lt;span itemprop="displayName">A Note&lt;/span>
+    &lt;span itemprop="name">A Note&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -497,11 +497,11 @@ _:b0 a as:Link ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Activity">
   &lt;span typeof="Person" property="actor">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   did something to
   &lt;span typeof="Note" property="object">
-    &lt;span property="displayName">A Note&lt;/span>
+    &lt;span property="name">A Note&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -522,11 +522,11 @@ _:b0 a as:Link ;
 _:b0 a as:Activity ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Note ;
-    as:displayName "A Note" .
+    as:name "A Note" .
   ] .</pre>
   </div>
 </div>
@@ -589,11 +589,11 @@ _:b0 a as:Activity ;
   "type": "Travel",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "target": {
     "type": "Place",
-    "displayName": "Work"
+    "name": "Work"
   }
 }</pre>
   </div>
@@ -604,13 +604,13 @@ _:b0 a as:Activity ;
   &lt;meta itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemprop="actor">
-    &lt;meta itemprop="displayName">Sally&lt;/meta>
+    &lt;meta itemprop="name">Sally&lt;/meta>
   &lt;/meta>
   is traveling to
   &lt;meta itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place"
     itemprop="target">
-    &lt;meta itemprop="displayName">Work&lt;/meta>
+    &lt;meta itemprop="name">Work&lt;/meta>
   &lt;/meta>
 &lt;/div></pre>
   </div>
@@ -619,11 +619,11 @@ _:b0 a as:Activity ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Travel">
   &lt;meta typeof="Person" property="actor">
-    &lt;meta property="displayName">Sally&lt;/meta>
+    &lt;meta property="name">Sally&lt;/meta>
   &lt;/meta>
   is traveling to
   &lt;meta typeof="Place" property="target">
-    &lt;meta property="displayName">Work&lt;/meta>
+    &lt;meta property="name">Work&lt;/meta>
   &lt;/meta>
 &lt;/div></pre>
   </div>
@@ -644,11 +644,11 @@ _:b0 a as:Activity ;
 _:b0 a as:Travel ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:target [
     a as:Place ;
-    as:displayName "Work" .
+    as:name "Work" .
   ] .</pre>
   </div>
 </div>
@@ -660,7 +660,7 @@ _:b0 a as:Travel ;
             Instances of <code>IntransitiveActivity</code> are a subclass of
             <code>Activity</code> whose <code><a>actor</a></code> property
             identifies the direct object of the action as opposed to using
-            the <code><a>object</a></code> property.
+            the <code><a data-lt="object-term">object</a></code> property.
           </td>
         </tr>
         <tr>
@@ -696,20 +696,20 @@ _:b0 a as:Travel ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Actor",
-  "displayName": "Sally"
+  "name": "Sally"
 }</pre>
   </div>
   <div id="ex4-microdata" style="display: none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype=http://www.w3.org/ns/activitystreams#Actor"
-  itemprop="displayName">Sally&lt;/div></pre>
+  itemprop="name">Sally&lt;/div></pre>
   </div>
   <div id="ex4-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Actor"
-  property="displayName">Sally&lt;/div></pre>
+  property="name">Sally&lt;/div></pre>
   </div>
   <div id="ex4-microformats" style="display: none;">
 <pre class="example highlight html"
@@ -722,7 +722,7 @@ _:b0 a as:Travel ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
 
 _:b0 a as:Actor ;
-  as:displayName "Sally" .</pre>
+  as:name "Sally" .</pre>
   </div>
   </div>
           </td>
@@ -770,11 +770,11 @@ _:b0 a as:Actor ;
   "items": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -787,13 +787,13 @@ _:b0 a as:Actor ;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -807,12 +807,12 @@ _:b0 a as:Actor ;
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -837,11 +837,11 @@ _:b0 a as:Collection ;
   as:totalItems "2"^^xsd:nonNegativeInteger ;
   as:items [
       a as:Note ;
-        as:displayName "A Simple Note" .
+        as:name "A Simple Note" .
     ],
     [
       a as:Note ;
-        as:displayName "Another Simple Note" .
+        as:name "Another Simple Note" .
     ] .
 </pre>
   </div>
@@ -906,11 +906,11 @@ _:b0 a as:Collection ;
   "orderedItems": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -923,13 +923,13 @@ _:b0 a as:Collection ;
   &lt;ol>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -943,12 +943,12 @@ _:b0 a as:Collection ;
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -975,11 +975,11 @@ _:b0 a as:OrderedCollection ;
   as:items (
     [
       a as:Note ;
-        as:displayName "A Simple Note" .
+        as:name "A Simple Note" .
     ]
     [
       a as:Note ;
-        as:displayName "Another Simple Note" .
+        as:name "Another Simple Note" .
     ]
   ) .</pre>
   </div>
@@ -1031,11 +1031,11 @@ _:b0 a as:OrderedCollection ;
   "items": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -1049,13 +1049,13 @@ _:b0 a as:OrderedCollection ;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -1070,12 +1070,12 @@ _:b0 a as:OrderedCollection ;
   &lt;link property="partOf" href="http://example.org/foo" />
   &lt;ul>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -1101,11 +1101,11 @@ _:b0 a as:OrderedCollection ;
   as:partOf &lt;http://example.org/foo&gt; ;
   as:items [
       a as:Note ;
-        as:displayName "A Simple Note" .
+        as:name "A Simple Note" .
     ],
     [
       a as:Note ;
-        as:displayName "Another Simple Note" .
+        as:name "Another Simple Note" .
     ] .</pre>
   </div>
 </div>
@@ -1163,11 +1163,11 @@ _:b0 a as:OrderedCollection ;
   "orderedItems": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -1181,13 +1181,13 @@ _:b0 a as:OrderedCollection ;
   &lt;ol>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -1202,12 +1202,12 @@ _:b0 a as:OrderedCollection ;
   &lt;link property="partOf" href="http://example.org/foo" />
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -1234,11 +1234,11 @@ _:b0 a as:OrderedCollection ;
   as:items (
     [
       a as:Note ;
-        as:displayName "A Simple Note" .
+        as:name "A Simple Note" .
     ]
     [
       a as:Note ;
-        as:displayName "Another Simple Note" .
+        as:name "Another Simple Note" .
     ]
   ) .</pre>
   </div>
@@ -1379,14 +1379,14 @@ _:b0 a as:OrderedCollection ;
   "type": "Accept",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "displayName": "A Party!"
+      "name": "A Party!"
     }
   }
 }</pre>
@@ -1397,7 +1397,7 @@ _:b0 a as:OrderedCollection ;
   itemtype="http://www.w3.org/ns/activitystreams#Accept">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Sally
     &lt;/span>
   &lt;span>
@@ -1409,7 +1409,7 @@ _:b0 a as:OrderedCollection ;
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -1421,7 +1421,7 @@ _:b0 a as:OrderedCollection ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Accept">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Sally
     &lt;/span>
   &lt;/span>
@@ -1431,7 +1431,7 @@ _:b0 a as:OrderedCollection ;
       href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -1456,14 +1456,14 @@ _:b0 a as:OrderedCollection ;
 _:b0 a as:Accept ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a as:Invite ;
       as:actor &lt;http://john.example.org> ;
       as:object [
         a as:Event ;
-        as:displayName "A Party!"
+        as:name "A Party!"
       ]
   ] .
 </pre>
@@ -1511,14 +1511,14 @@ _:b0 a as:Accept ;
   "type": "TentativeAccept",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "displayName": "A Party!"
+      "name": "A Party!"
     }
   }
 }</pre>
@@ -1529,7 +1529,7 @@ _:b0 a as:Accept ;
   itemtype="http://www.w3.org/ns/activitystreams#TentativeAccept">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Sally
     &lt;/span>
   &lt;span>
@@ -1541,7 +1541,7 @@ _:b0 a as:Accept ;
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -1553,7 +1553,7 @@ _:b0 a as:Accept ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="TentativeAccept">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Sally
     &lt;/span>
   &lt;span>
@@ -1563,7 +1563,7 @@ _:b0 a as:Accept ;
       href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -1587,14 +1587,14 @@ _:b0 a as:Accept ;
 _:b0 a as:TentativeAccept ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a as:Invite ;
       as:actor &lt;http://john.example.org&gt; ;
       as:object [
         a as:Event ;
-          as:displayName "A Party!" .
+          as:name "A Party!" .
       ] .
   ] .</pre>
   </div>
@@ -1637,7 +1637,7 @@ _:b0 a as:TentativeAccept ;
   "type": "Add",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/abc"
 }</pre>
@@ -1648,7 +1648,7 @@ _:b0 a as:TentativeAccept ;
   itemtype="http://www.w3.org/ns/activitystreams#Add">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   added
   &lt;a itemprop="object"
@@ -1661,7 +1661,7 @@ _:b0 a as:TentativeAccept ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Add">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   added
   &lt;a property="object"
@@ -1688,7 +1688,7 @@ _:b0 a as:TentativeAccept ;
 _:b0 a as:Add ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/abc&gt; .</pre>
   </div>
@@ -1708,16 +1708,16 @@ _:b0 a as:Add ;
   "type": "Add",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Image",
-    "displayName": "A picture of my cat",
+    "name": "A picture of my cat",
     "url": "http://example.org/img/cat.png"
   },
   "target": {
     "type": "Album",
-    "displayName": "My Cat Pictures"
+    "name": "My Cat Pictures"
   }
 }</pre>
   </div>
@@ -1727,7 +1727,7 @@ _:b0 a as:Add ;
   itemtype="http://www.w3.org/ns/activitystreams#Add">
   &lt;span itemprop="actor"
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   added
   &lt;a itemprop="object"
@@ -1736,7 +1736,7 @@ _:b0 a as:Add ;
   to
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Album">
-    "&lt;span itemprop="displayName">My Cat Pictures&lt;/span>"
+    "&lt;span itemprop="name">My Cat Pictures&lt;/span>"
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -1745,18 +1745,18 @@ _:b0 a as:Add ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Add">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   added
   &lt;span property="object" typeof="Image">
-    &lt;a property="displayName" rel="url"
+    &lt;a property="name" rel="url"
     href="http://example.org/abc">
     A picture of my cat&lt;/a>
   &lt;/span>
   to
   &lt;span property="target"
     typeof="Album">
-    &lt;span property="displayName">My Cat Pictures&lt;/span>
+    &lt;span property="name">My Cat Pictures&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -1782,16 +1782,16 @@ _:b0 a as:Add ;
 _:b0 a as:Add ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a as:Image ;
-    as:displayName "A picture of my cat" ;
+    as:name "A picture of my cat" ;
     as:url &lt;http://example.org/abc>
   ] ;
   as:target [
     a as:Album ;
-    as:displayName "My Cat Pictures"
+    as:name "My Cat Pictures"
   ] .</pre>
   </div>
 </div>
@@ -1837,15 +1837,15 @@ _:b0 a as:Add ;
   "type": "Arrive",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "location": {
     "type": "Place",
-    "displayName": "Work"
+    "name": "Work"
   },
   "origin": {
     "type": "Place",
-    "displayName": "Home"
+    "name": "Home"
   }
 }</pre>
   </div>
@@ -1855,17 +1855,17 @@ _:b0 a as:Add ;
   itemtype="http://www.w3.org/ns/activitystreams#Arrive">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   arrived at
   &lt;span itemprop="location" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">Work&lt;/span>
+    &lt;span itemprop="name">Work&lt;/span>
   &lt;/span>
   from
   &lt;span itemprop="origin" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">Home&lt;/span>
+    &lt;span itemprop="name">Home&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -1874,15 +1874,15 @@ _:b0 a as:Add ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Arrive">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   arrived at
   &lt;span property="location" typeof="Place">
-    &lt;span property="displayName">Work&lt;/span>
+    &lt;span property="name">Work&lt;/span>
   &lt;/span>
   from
   &lt;span property="origin" typeof="Place">
-    &lt;span property="displayName">Home&lt;/span>
+    &lt;span property="name">Home&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -1907,15 +1907,15 @@ _:b0 a as:Add ;
 _:b0 a as:Arrive ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:location [
     a as:Place ;
-      as:displayName "Work" .
+      as:name "Work" .
   ] ;
   as:origin [
     a as:Place ;
-      as:displayName "Home" .
+      as:name "Home" .
   ] .</pre>
   </div>
 </div>
@@ -1963,11 +1963,11 @@ _:b0 a as:Arrive ;
   "type": "Create",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Note",
-    "displayName": "A Simple Note",
+    "name": "A Simple Note",
     "content": "This is a simple note"
   }
 }</pre>
@@ -1978,13 +1978,13 @@ _:b0 a as:Arrive ;
   itemtype="http://www.w3.org/ns/activitystreams#Create">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   created
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Note">
     a note titled
-    "&lt;span itemprop="displayName">A Simple Note&lt;/span>"
+    "&lt;span itemprop="name">A Simple Note&lt;/span>"
     with content
     "&lt;span itemprop="content">This is a simple note&lt;/span>"
   &lt;/span>
@@ -1995,12 +1995,12 @@ _:b0 a as:Arrive ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Create">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   created
   &lt;span property="object" typeof="Note">
     a note titled
-    "&lt;span property="displayName">A Simple Note&lt;/span>"
+    "&lt;span property="name">A Simple Note&lt;/span>"
     with content
     "&lt;span property="content">This is a simple note&lt;/span>"
   &lt;/span>
@@ -2021,11 +2021,11 @@ _:b0 a as:Arrive ;
 _:b0 a as:Create ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a as:Note ;
-      as:displayName "A Simple Note" ;
+      as:name "A Simple Note" ;
       as:content "This is a simple note" .
   ] .</pre>
   </div>
@@ -2068,7 +2068,7 @@ _:b0 a as:Create ;
   "type": "Delete",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/notes/1"
 }</pre>
@@ -2079,7 +2079,7 @@ _:b0 a as:Create ;
   itemtype="http://www.w3.org/ns/activitystreams#Delete">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   deleted
   &lt;a itemprop="object"
@@ -2093,7 +2093,7 @@ _:b0 a as:Create ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Delete">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   deleted
   &lt;a property="object"
@@ -2120,7 +2120,7 @@ _:b0 a as:Create ;
 _:b0 a as:Delete ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/notes/1&gt; .</pre>
   </div>
@@ -2165,11 +2165,11 @@ _:b0 a as:Delete ;
   "type": "Follow",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Person",
-    "displayName": "John"
+    "name": "John"
   }
 }</pre>
 </div>
@@ -2179,12 +2179,12 @@ _:b0 a as:Delete ;
   itemtype="http://www.w3.org/ns/activitystreams#Follow">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   followed
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2193,11 +2193,11 @@ _:b0 a as:Delete ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Follow">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   followed
   &lt;span property="object" typeof="Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2216,11 +2216,11 @@ _:b0 a as:Delete ;
 _:b0 a as:Follow ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Person ;
-    as:displayName "John" .
+    as:name "John" .
   ] .</pre>
   </div>
 </div>
@@ -2266,7 +2266,7 @@ _:b0 a as:Follow ;
   "type": "Ignore",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/notes/1"
 }</pre>
@@ -2277,7 +2277,7 @@ _:b0 a as:Follow ;
   itemtype="http://www.w3.org/ns/activitystreams#Ignore">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   is ignoring
   &lt;a itemprop="object"
@@ -2291,7 +2291,7 @@ _:b0 a as:Follow ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Ignore">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   is ignoring
   &lt;a property="object"
@@ -2317,7 +2317,7 @@ _:b0 a as:Follow ;
 _:b0 a as:Ignore ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/notes/1&gt; .</pre>
   </div>
@@ -2361,11 +2361,11 @@ _:b0 a as:Ignore ;
   "type": "Join",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Group",
-    "displayName": "A Simple Group"
+    "name": "A Simple Group"
   }
 }</pre>
 </div>
@@ -2375,12 +2375,12 @@ _:b0 a as:Ignore ;
   itemtype="http://www.w3.org/ns/activitystreams#Join">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   joined
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Group">
-    &lt;span itemprop="displayName">A Simple Group&lt;/span>
+    &lt;span itemprop="name">A Simple Group&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2389,11 +2389,11 @@ _:b0 a as:Ignore ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Join">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   joined
   &lt;span property="object" typeof="Group">
-    &lt;span property="displayName">A Simple Group&lt;/span>
+    &lt;span property="name">A Simple Group&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2412,11 +2412,11 @@ _:b0 a as:Ignore ;
 _:b0 a as:Join ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Group ;
-    as:displayName "A Simple Group" .
+    as:name "A Simple Group" .
   ] .</pre>
   </div>
 </div>
@@ -2459,11 +2459,11 @@ _:b0 a as:Join ;
   "type": "Leave",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Place",
-    "displayName": "Work"
+    "name": "Work"
   }
 }</pre>
 </div>
@@ -2473,12 +2473,12 @@ _:b0 a as:Join ;
   itemtype="http://www.w3.org/ns/activitystreams#Leave">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   left
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">Work&lt;/span>
+    &lt;span itemprop="name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2487,11 +2487,11 @@ _:b0 a as:Join ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Leave">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   left
   &lt;span property="object" typeof="Place">
-    &lt;span property="displayName">Work&lt;/span>
+    &lt;span property="name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2512,11 +2512,11 @@ _:b0 a as:Join ;
 _:b0 a as:Leave ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Place ;
-    as:displayName "Work" .
+    as:name "Work" .
   ] .</pre>
   </div>
 </div>
@@ -2535,11 +2535,11 @@ _:b0 a as:Leave ;
   "type": "Leave",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Group",
-    "displayName": "A Simple Group"
+    "name": "A Simple Group"
   }
 }</pre>
 </div>
@@ -2549,12 +2549,12 @@ _:b0 a as:Leave ;
   itemtype="http://www.w3.org/ns/activitystreams#Leave">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   left
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Group">
-    &lt;span itemprop="displayName">A Simple Group&lt;/span>
+    &lt;span itemprop="name">A Simple Group&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2563,11 +2563,11 @@ _:b0 a as:Leave ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Leave">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   left
   &lt;span property="object" typeof="Group">
-    &lt;span property="displayName">A Simple Group&lt;/span>
+    &lt;span property="name">A Simple Group&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2586,11 +2586,11 @@ _:b0 a as:Leave ;
 _:b0 a as:Leave ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Group ;
-    as:displayName "A Simple Group" .
+    as:name "A Simple Group" .
   ] .</pre>
   </div>
 </div>
@@ -2633,7 +2633,7 @@ _:b0 a as:Leave ;
   "type": "Like",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/notes/1"
 }</pre>
@@ -2644,7 +2644,7 @@ _:b0 a as:Leave ;
   itemtype="http://www.w3.org/ns/activitystreams#Like">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   liked
   &lt;a itemprop="object"
@@ -2658,7 +2658,7 @@ _:b0 a as:Leave ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Like">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   liked
   &lt;a property="object"
@@ -2685,7 +2685,7 @@ _:b0 a as:Leave ;
 _:b0 a as:Like ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/notes/1&gt; .</pre>
   </div>
@@ -2730,11 +2730,11 @@ _:b0 a as:Like ;
   "type": "Offer",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "http://www.types.example/ProductOffer",
-    "displayName": "50% Off!"
+    "name": "50% Off!"
   }
 }</pre>
 </div>
@@ -2744,12 +2744,12 @@ _:b0 a as:Like ;
   itemtype="http://www.w3.org/ns/activitystreams#Offer">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   is offering
   &lt;span itemprop="object" itemscope
     itemtype="http://www.types.example/ProductOffer">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       50% Off!
     &lt;/span>
   &lt;/span>
@@ -2760,12 +2760,12 @@ _:b0 a as:Like ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Offer">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   is offering
   &lt;span property="object"
     typeof="http://www.types.example/ProductOffer">
-    &lt;span property="displayName">
+    &lt;span property="name">
       50% Off!
     &lt;/span>
   &lt;/span>
@@ -2788,11 +2788,11 @@ _:b0 a as:Like ;
 _:b0 a as:Offer ;
   as:actor [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a &lt;http://www.types.example/ProductOffer&gt; ;
-    as:displayName "50% Off!" .
+    as:name "50% Off!" .
   ] .</pre>
   </div>
 </div>
@@ -2836,20 +2836,20 @@ _:b0 a as:Offer ;
   "type": "Invite",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Event",
-    "displayName": "A Party"
+    "name": "A Party"
   },
   "target": [
     {
       "type": "Person",
-      "displayName": "John"
+      "name": "John"
     },
     {
       "type": "Person",
-      "displayName": "Lisa"
+      "name": "Lisa"
     }
   ]
 }</pre>
@@ -2860,22 +2860,22 @@ _:b0 a as:Offer ;
   itemtype="http://www.w3.org/ns/activitystreams#Invite">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   invited
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
   and
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Lisa&lt;/span>
+    &lt;span itemprop="name">Lisa&lt;/span>
   &lt;/span>
   to
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Event">
-    &lt;span itemprop="displayName">A Party&lt;/span>
+    &lt;span itemprop="name">A Party&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2884,19 +2884,19 @@ _:b0 a as:Offer ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Invite">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   invited
   &lt;span property="target" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
+    &lt;span property="name">John&lt;/span>
   &lt;/span>
   and
   &lt;span property="target" typeof="Person">
-    &lt;span property="displayName">Lisa&lt;/span>
+    &lt;span property="name">Lisa&lt;/span>
   &lt;/span>
   to
   &lt;span property="object" typeof="Event">
-    &lt;span property="displayName">A Party&lt;/span>
+    &lt;span property="name">A Party&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -2919,20 +2919,20 @@ _:b0 a as:Offer ;
 _:b0 a as:Invite ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Event ;
-    as:displayName "A Party" .
+    as:name "A Party" .
   ] ;
   as:target (
     [
       a as:Person ;
-      as:displayName "John" .
+      as:name "John" .
     ]
     [
       a as:Person ;
-      as:displayName "Lisa" .
+      as:name "Lisa" .
     ]
   ) .</pre>
   </div>
@@ -2977,14 +2977,14 @@ _:b0 a as:Invite ;
   "type": "Reject",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "displayName": "A Party!"
+      "name": "A Party!"
     }
   }
 }</pre>
@@ -2995,7 +2995,7 @@ _:b0 a as:Invite ;
   itemtype="http://www.w3.org/ns/activitystreams#Reject">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Sally
     &lt;/span>
   &lt;span>
@@ -3007,7 +3007,7 @@ _:b0 a as:Invite ;
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -3019,7 +3019,7 @@ _:b0 a as:Invite ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Reject">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Sally
     &lt;/span>
   &lt;/span>
@@ -3029,7 +3029,7 @@ _:b0 a as:Invite ;
       href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -3054,14 +3054,14 @@ _:b0 a as:Invite ;
 _:b0 a as:Reject ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Invite ;
     as:actor &lt;http://john.example.org&gt; ;
     as:object [
       a as:Event ;
-      as:displayName "A Party!" .
+      as:name "A Party!" .
     ] .
   ] .
 </pre>
@@ -3106,14 +3106,14 @@ _:b0 a as:Reject ;
   "type": "TentativeReject",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Invite",
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "displayName": "A Party!"
+      "name": "A Party!"
     }
   }
 }</pre>
@@ -3124,7 +3124,7 @@ _:b0 a as:Reject ;
   itemtype="http://www.w3.org/ns/activitystreams#TentativeReject">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Sally
     &lt;/span>
   &lt;/span>
@@ -3136,7 +3136,7 @@ _:b0 a as:Reject ;
       invitation to
     &lt;span itemprop="object" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Event">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -3148,7 +3148,7 @@ _:b0 a as:Reject ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="TentativeReject">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Sally
     &lt;/span>
   &lt;span>
@@ -3158,7 +3158,7 @@ _:b0 a as:Reject ;
       href="http://john.example.org">John's&lt;/a>
       invitation to
     &lt;span property="object" typeof="Event">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Party!
       &lt;/span>
     &lt;/span>
@@ -3183,14 +3183,14 @@ _:b0 a as:Reject ;
 _:b0 a as:TentativeReject ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Invite ;
     as:actor &lt;http://john.example.org&gt; ;
     as:object [
       a as:Event ;
-      as:displayName "A Party!" .
+      as:name "A Party!" .
     ] .
   ] .
 </pre>
@@ -3234,12 +3234,12 @@ _:b0 a as:TentativeReject ;
   "type": "Remove",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/notes/1",
   "target": {
     "type": "Folder",
-    "displayName": "Notes Folder"
+    "name": "Notes Folder"
   }
 }</pre>
   </div>
@@ -3249,7 +3249,7 @@ _:b0 a as:TentativeReject ;
   itemtype="http://www.w3.org/ns/activitystreams#Remove">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Sally
     &lt;/span>
   &lt;span>
@@ -3261,7 +3261,7 @@ _:b0 a as:TentativeReject ;
   from
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Folder">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Notes Folder
     &lt;/span>
   &lt;span>
@@ -3272,7 +3272,7 @@ _:b0 a as:TentativeReject ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Remove">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Sally
     &lt;/span>
   &lt;/span>
@@ -3283,7 +3283,7 @@ _:b0 a as:TentativeReject ;
   &lt;/a>
   from
   &lt;span property="target" typeof="Folder">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Notes Folder
     &lt;/span>
   &lt;/span>
@@ -3311,12 +3311,12 @@ _:b0 a as:TentativeReject ;
 _:b0 a as:Remove ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/notes/1&gt; ;
   as:target [
     a as:Folder ;
-    as:displayName "Notes Folder" .
+    as:name "Notes Folder" .
   ] .
 </pre>
   </div>
@@ -3336,15 +3336,15 @@ _:b0 a as:Remove ;
   "type": "Remove",
   "actor": {
     "type": "http://example.org/Role",
-    "displayName": "The Moderator"
+    "name": "The Moderator"
   },
   "object": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "origin": {
     "type": "Group",
-    "displayName": "A Simple Group"
+    "name": "A Simple Group"
   }
 }</pre>
   </div>
@@ -3354,21 +3354,21 @@ _:b0 a as:Remove ;
   itemtype="http://www.w3.org/ns/activitystreams#Remove">
   &lt;span itemprop="actor" itemscope
     itemtype="http://example.org/Role">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       The Moderator
     &lt;/span>
   &lt;span>
   removed
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Sally
     &lt;/span>
   &lt;span>
   from
   &lt;span itemprop="origin" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Group">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       A Simple Group
     &lt;/span>
   &lt;span>
@@ -3379,19 +3379,19 @@ _:b0 a as:Remove ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Remove">
   &lt;span property="actor" typeof="http://example.org/Role">
-    &lt;span property="displayName">
+    &lt;span property="name">
       The Moderator
     &lt;/span>
   &lt;/span>
   removed
   &lt;span property="object" typeof="Person">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Sally
     &lt;/span>
   &lt;/span>
   from
   &lt;span property="origin" typeof="Group">
-    &lt;span property="displayName">
+    &lt;span property="name">
       A Simple Group
     &lt;/span>
   &lt;/span>
@@ -3419,15 +3419,15 @@ _:b0 a as:Remove ;
 _:b0 a as:Remove ;
   as:actor [
     a ex:Role ;
-    as:displayName "The Moderator" ;
+    as:name "The Moderator" ;
   ] ;
   as:object [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:origin [
     a as:Group ;
-    as:displayName "A Simple Group" .
+    as:name "A Simple Group" .
   ] .
 </pre>
   </div>
@@ -3620,7 +3620,7 @@ _:b0 a as:Undo ;
   "type": "Update",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/notes/1"
 }</pre>
@@ -3631,7 +3631,7 @@ _:b0 a as:Undo ;
   itemtype="http://www.w3.org/ns/activitystreams#Update">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   updated
   &lt;a itemprop="object"
@@ -3645,7 +3645,7 @@ _:b0 a as:Undo ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Update">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   updated
   &lt;a property="object"
@@ -3672,7 +3672,7 @@ _:b0 a as:Undo ;
 _:b0 a as:Update ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] ;
   as:object &lt;http://example.org/notes/1&gt; .</pre>
   </div>
@@ -3724,11 +3724,11 @@ _:b0 a as:Update ;
   "type": "View",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Article",
-    "displayName": "An article about Activity Streams"
+    "name": "An article about Activity Streams"
   }
 }</pre>
 </div>
@@ -3738,12 +3738,12 @@ _:b0 a as:Update ;
   itemtype="http://www.w3.org/ns/activitystreams#View">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   viewed
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Article">
-    "&lt;span itemprop="displayName">
+    "&lt;span itemprop="name">
       An article about Activity Streams
     &lt;span>"
   &lt;/span>
@@ -3754,11 +3754,11 @@ _:b0 a as:Update ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="View">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   viewed
   &lt;span property="object" typeof="Article">
-    "&lt;span property="displayName">
+    "&lt;span property="name">
       An article about Activity Streams
     &lt;/span>"
   &lt;/span>
@@ -3783,11 +3783,11 @@ _:b0 a as:Update ;
 _:b0 a as:View ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object [
     a as:Article ;
-    as:displayName "An article about Activity Streams" .
+    as:name "An article about Activity Streams" .
   ] .</pre>
   </div>
 </div>
@@ -3831,7 +3831,7 @@ _:b0 a as:View ;
   "type": "Listen",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/music.mp3"
 }</pre>
@@ -3842,7 +3842,7 @@ _:b0 a as:View ;
   itemtype="http://www.w3.org/ns/activitystreams#Listen">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   listened to
   &lt;a itemprop="object"
@@ -3856,7 +3856,7 @@ _:b0 a as:View ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Listen">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   listened to
   &lt;a property="object"
@@ -3882,7 +3882,7 @@ _:b0 a as:View ;
 _:b0 a as:Listen ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/music.mp3&gt; .</pre>
   </div>
@@ -3928,7 +3928,7 @@ _:b0 a as:Listen ;
   "type": "Read",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/posts/1"
 }</pre>
@@ -3939,7 +3939,7 @@ _:b0 a as:Listen ;
   itemtype="http://www.w3.org/ns/activitystreams#Read">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   read
   &lt;a itemprop="object"
@@ -3953,7 +3953,7 @@ _:b0 a as:Listen ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Read">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   read
   &lt;a property="object"
@@ -3979,7 +3979,7 @@ _:b0 a as:Listen ;
 _:b0 a as:Read ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally" .
+    as:name "Sally" .
   ] ;
   as:object &lt;http://example.org/posts/1&gt; .</pre>
   </div>
@@ -4024,16 +4024,16 @@ _:b0 a as:Read ;
   "type": "Move",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/posts/1",
   "target": {
     "type": "Collection",
-    "displayName": "List B"
+    "name": "List B"
   },
   "origin": {
     "type": "Collection",
-    "displayName": "List A"
+    "name": "List A"
   }
 }</pre>
 </div>
@@ -4043,7 +4043,7 @@ _:b0 a as:Read ;
   itemtype="http://www.w3.org/ns/activitystreams#Move">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   moved to
   &lt;a itemprop="object"
@@ -4053,12 +4053,12 @@ _:b0 a as:Read ;
   from
   &lt;span itemprop="origin" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Collection">
-    &lt;span itemprop="displayName">List A&lt;/span>
+    &lt;span itemprop="name">List A&lt;/span>
   &lt;/span>
   to
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Collection">
-    &lt;span itemprop="displayName">List B&lt;/span>
+    &lt;span itemprop="name">List B&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -4067,7 +4067,7 @@ _:b0 a as:Read ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Move">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   moved
   &lt;a property="object"
@@ -4076,11 +4076,11 @@ _:b0 a as:Read ;
   &lt;/a>
     from
   &lt;span property="origin" typeof="Collection">
-    &lt;span property="displayName">List A&lt;/span>
+    &lt;span property="name">List A&lt;/span>
   &lt;/span>
   to
   &lt;span property="target" typeof="Collection">
-    &lt;span property="displayName">List B&lt;/span>
+    &lt;span property="name">List B&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -4109,16 +4109,16 @@ _:b0 a as:Read ;
 _:b0 a as:Move ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target [
     a as:Collection ;
-    as:displayName "List B"
+    as:name "List B"
   ] ;
   as:origin [
     a as:Collection ;
-    as:displayName "List A"
+    as:name "List A"
   ]. </pre>
   </div>
 </div>
@@ -4164,15 +4164,15 @@ _:b0 a as:Move ;
   "type": "Travel",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "target": {
     "type": "Place",
-    "displayName": "Home"
+    "name": "Home"
   },
   "origin": {
     "type": "Place",
-    "displayName": "Work"
+    "name": "Work"
   }
 }</pre>
 </div>
@@ -4182,17 +4182,17 @@ _:b0 a as:Move ;
   itemtype="http://www.w3.org/ns/activitystreams#Travel">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   is traveling to
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">Home&lt;/span>
+    &lt;span itemprop="name">Home&lt;/span>
   &lt;/span>
   from
   &lt;span itemprop="origin" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
-    &lt;span itemprop="displayName">Work&lt;/span>
+    &lt;span itemprop="name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -4201,15 +4201,15 @@ _:b0 a as:Move ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Travel">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   is traveling to
   &lt;span property="target" typeof="Place">
-    &lt;span property="displayName">Home&lt;/span>
+    &lt;span property="name">Home&lt;/span>
   &lt;/span>
   from
   &lt;span property="origin" typeof="Place">
-    &lt;span property="displayName">Work&lt;/span>
+    &lt;span property="name">Work&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -4234,15 +4234,15 @@ _:b0 a as:Move ;
 _:b0 a as:Travel ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] ;
   as:target [
     a as:Place ;
-    as:displayName "Home"
+    as:name "Home"
   ] ;
   as:origin [
     a as:Place ;
-    as:displayName "Work"
+    as:name "Work"
   ] .</pre>
   </div>
 </div>
@@ -4293,14 +4293,14 @@ _:b0 a as:Travel ;
   "actor": {
     "type": "Person",
     "id": "http://sally.example.org",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": {
     "type": "Arrive",
     "actor": "http://sally.example.org",
     "location": {
       "type": "Place",
-      "displayName": "Work"
+      "name": "Work"
     }
   }
 }</pre>
@@ -4312,7 +4312,7 @@ _:b0 a as:Travel ;
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemid="http://sally.example.org">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   announced
   &lt;span itemprop="object" itemscope
@@ -4321,7 +4321,7 @@ _:b0 a as:Travel ;
       itemid="http://sally.example.org">her&lt;/span>
     &lt;span itemprop="location" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Place">
-      at &lt;span itemprop="displayName">Work&lt;/span>
+      at &lt;span itemprop="name">Work&lt;/span>
     &lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -4332,14 +4332,14 @@ _:b0 a as:Travel ;
   typeof="Announce">
   &lt;span property="actor" typeof="Person"
     resource="http://sally.example.org">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   announced
   &lt;span property="object" typeof="Arrive">
     &lt;span property="actor" typeof="Person"
       resource="http://sally.example.org">her&lt;/span>
     &lt;span property="location" typeof="Place">
-      at &lt;span property="displayName">Work&lt;/span>
+      at &lt;span property="name">Work&lt;/span>
     &lt;/span>
   &lt;/span>
 &lt;/div></pre>
@@ -4360,7 +4360,7 @@ _:b0 a as:Travel ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 &lt;http://sally.example.org&gt; a as:Person ;
-  as:displayName "Sally" .
+  as:name "Sally" .
 
 _:b0 a as:Announce ;
   as:actor &lt;http://sally.example.org> ;
@@ -4369,7 +4369,7 @@ _:b0 a as:Announce ;
     as:actor &lt;http://sally.example.org> ;
     as:location [
       a as:Place ;
-      as:displayName "Work"
+      as:name "Work"
     ]
   ] .</pre>
   </div>
@@ -4717,21 +4717,21 @@ _:b0 a as:Dislike ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Application",
-  "displayName": "My Software Application."
+  "name": "My Software Application."
 }</pre>
 </div>
 <div id="ex34-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Application">
-  &lt;span itemprop="displayName">My Software Application&lt;/span>
+  &lt;span itemprop="name">My Software Application&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex34-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Application">
-  &lt;span property="displayName">My Software Application&lt;/span>
+  &lt;span property="name">My Software Application&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex34-microformats" style="display:none;">
@@ -4743,7 +4743,7 @@ _:b0 a as:Dislike ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Application ;
-  as:displayName "My Software Application" .</pre>
+  as:name "My Software Application" .</pre>
   </div>
 </div>
             </td>
@@ -4781,21 +4781,21 @@ _:b0 a as:Application ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Group",
-  "displayName": "A Simple Group."
+  "name": "A Simple Group."
 }</pre>
 </div>
 <div id="ex37-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Group">
-  &lt;span itemprop="displayName">A Simple Group&lt;/span>
+  &lt;span itemprop="name">A Simple Group&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex37-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Group">
-  &lt;span property="displayName">A Simple Group&lt;/span>
+  &lt;span property="name">A Simple Group&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex37-microformats" style="display:none;">
@@ -4807,7 +4807,7 @@ _:b0 a as:Application ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Group ;
-  as:displayName "A Simple Group" .</pre>
+  as:name "A Simple Group" .</pre>
   </div>
 </div>
             </td>
@@ -4846,21 +4846,21 @@ _:b0 a as:Group ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Organization",
-  "displayName": "Example Co."
+  "name": "Example Co."
 }</pre>
 </div>
 <div id="ex186-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Organization">
-  &lt;span itemprop="displayName">Example Co.&lt;/span>
+  &lt;span itemprop="name">Example Co.&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex186-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Organization">
-  &lt;span property="displayName">Example Co.&lt;/span>
+  &lt;span property="name">Example Co.&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex186-microformats" style="display:none;">
@@ -4872,7 +4872,7 @@ _:b0 a as:Group ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Organization ;
-  as:displayName "Example Co.".</pre>
+  as:name "Example Co.".</pre>
   </div>
 </div>
             </td>
@@ -4911,21 +4911,21 @@ _:b0 a as:Organization ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Person",
-  "displayName": "Sally Smith."
+  "name": "Sally Smith."
 }</pre>
 </div>
 <div id="ex39-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;span itemprop="displayName">Sally Smith&lt;/span>
+  &lt;span itemprop="name">Sally Smith&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex39-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Person">
-  &lt;span property="displayName">Sally Smith&lt;/span>
+  &lt;span property="name">Sally Smith&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex39-microformats" style="display:none;">
@@ -4937,7 +4937,7 @@ _:b0 a as:Organization ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Person ;
-  as:displayName "Sally Smith".</pre>
+  as:name "Sally Smith".</pre>
   </div>
 </div>
             </td>
@@ -4975,21 +4975,21 @@ _:b0 a as:Person ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Service",
-  "displayName": "Acme Web Service"
+  "name": "Acme Web Service"
 }</pre>
 </div>
 <div id="ex42-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Service">
-  &lt;span itemprop="displayName">Acme Web Service&lt;/span>
+  &lt;span itemprop="name">Acme Web Service&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex42-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Service">
-  &lt;span property="displayName">Acme Web Service&lt;/span>
+  &lt;span property="name">Acme Web Service&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex42-microformats" style="display:none;">
@@ -5001,7 +5001,7 @@ _:b0 a as:Person ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Service ;
-  as:displayName "Acme Web Service".</pre>
+  as:name "Acme Web Service".</pre>
   </div>
 </div>
             </td>
@@ -5087,12 +5087,12 @@ _:b0 a as:Service ;
   "type": "Relationship",
   "subject": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
   "object": {
     "type": "Person",
-    "displayName": "John"
+    "name": "John"
   }
 }</pre>
 </div>
@@ -5102,7 +5102,7 @@ _:b0 a as:Service ;
   itemtype="http://www.w3.org/ns/activitystreams#Relationship">
   &lt;span itemprop="subject" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   &lt;span itemprop="relationship"
     itemid="http://purl.org/vocab/relationship/closeFriendOf">
@@ -5110,7 +5110,7 @@ _:b0 a as:Service ;
   &lt;/span>
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -5119,14 +5119,14 @@ _:b0 a as:Service ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Relationship">
   &lt;span property="subject" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   &lt;span property="relationship"
     resource="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
   &lt;span property="object" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
+    &lt;span property="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -5147,11 +5147,11 @@ _:b0 a as:Relationship ;
   as:relationship rel:closeFriendOf ;
   as:subject [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a as:Person ;
-      as:displayName "John" .
+      as:name "John" .
   ] .</pre>
   </div>
 </div>            </td>
@@ -5203,7 +5203,7 @@ _:b0 a as:Relationship ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Content",
-  "displayName": "Some generic content",
+  "name": "Some generic content",
   "content": "&lt;p>This can be any kind of content&lt;/p>",
   "height": 100,
   "width": 100
@@ -5214,7 +5214,7 @@ _:b0 a as:Relationship ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Content"
   style="width:100px; height:100px">
-  &lt;div itemprop="displayName">Some generic content&lt;/div>
+  &lt;div itemprop="name">Some generic content&lt;/div>
   &lt;div itemprop="content">
     &lt;p>This can be any kind of content&lt;/p>
   &lt;/div>
@@ -5226,7 +5226,7 @@ _:b0 a as:Relationship ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Content" style="width:100px; height:100px">
-  &lt;div property="displayName">Some generic content&lt;/div>
+  &lt;div property="name">Some generic content&lt;/div>
   &lt;div property="content" datatype="rdf:HTML">
     &lt;p>This can be any kind of content&lt;/p>
   &lt;/div>
@@ -5249,7 +5249,7 @@ _:b0 a as:Relationship ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Content ;
-  as:displayName "Some generic content" ;
+  as:name "Some generic content" ;
   as:content "&lt;p>This can be any kind of content&gt;/p>" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
@@ -5304,7 +5304,7 @@ _:b0 a as:Content ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Article",
-  "displayName": "A Blog Post",
+  "name": "A Blog Post",
   "content": "&lt;div>... a long blog post&lt;/div>",
   "attributedTo": "http://sally.example.org"
 }</pre>
@@ -5313,7 +5313,7 @@ _:b0 a as:Content ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Article">
-  &lt;h2 itemprop="displayName">A Blog Post&lt;/h2>
+  &lt;h2 itemprop="name">A Blog Post&lt;/h2>
   &lt;div>By &lt;a itemprop="attributedTo"
     href="http://sally.example.org">Sally&lt;/a>&lt;/div>
   &lt;section itemprop="content"
@@ -5325,7 +5325,7 @@ _:b0 a as:Content ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Article">
-  &lt;h2 property="displayName">A Blog Post&lt;/h2>
+  &lt;h2 property="name">A Blog Post&lt;/h2>
   &lt;div>By &lt;a property="attributedTo" datatype="rdf:HTML"
     href="http://sally.example.org">Sally&lt;/a>&lt;/div>
   &lt;section property="content">
@@ -5352,7 +5352,7 @@ _:b0 a as:Content ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Article ;
-  as:displayName "A Blog Post" ;
+  as:name "A Blog Post" ;
   as:content "&lt;div>... a long blog post&lt;/div>" ;
   as:attributedTo &lt;http://sally.example.org&gt; .</pre>
   </div>
@@ -5391,11 +5391,11 @@ _:b0 a as:Article ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Album",
-  "displayName": "A Photo Album",
+  "name": "A Photo Album",
   "items": [
     {
       "type": "Image",
-      "displayName": "My Dog",
+      "name": "My Dog",
       "url": {
         "type": "Link",
         "href": "http://example.org/dog.jpeg",
@@ -5404,7 +5404,7 @@ _:b0 a as:Article ;
     },
     {
       "type": "Image",
-      "displayName": "My Cat",
+      "name": "My Cat",
       "url": {
         "type": "Link",
         "href": "http://example.org/cat.jpeg",
@@ -5418,10 +5418,10 @@ _:b0 a as:Article ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Album">
-  &lt;h2 itemprop="displayName">A Photo Album&lt;/h2>
+  &lt;h2 itemprop="name">A Photo Album&lt;/h2>
   &lt;figure itemprop="items" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">
+    &lt;figcaption itemprop="name">
       My Dog
     &lt;/figcaption>
     &lt;img itemprop="url" itemscope
@@ -5431,7 +5431,7 @@ _:b0 a as:Article ;
   &lt;/figure>
   &lt;figure itemprop="items" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">
+    &lt;figcaption itemprop="name">
       My Cat
     &lt;/figcaption>
     &lt;img itemprop="url" itemscope
@@ -5445,9 +5445,9 @@ _:b0 a as:Article ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Album">
-  &lt;h2 property="displayName">A Photo Album&lt;/h2>
+  &lt;h2 property="name">A Photo Album&lt;/h2>
   &lt;figure property="items" typeof="Image">
-    &lt;figcaption property="displayName">
+    &lt;figcaption property="name">
       My Dog
     &lt;/figcaption>
     &lt;span property="url" typeof="Link">
@@ -5456,7 +5456,7 @@ _:b0 a as:Article ;
     &lt;/span>
   &lt;/figure>
   &lt;figure property="items" typeof="Image">
-    &lt;figcaption property="displayName">
+    &lt;figcaption property="name">
       My Cat
     &lt;/figcaption>
     &lt;span property="url" typeof="Link">
@@ -5493,11 +5493,11 @@ _:b0 a as:Article ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Album ;
-  as:displayName "A Photo Album" ;
+  as:name "A Photo Album" ;
   as:items
     [
       a as:Image ;
-        as:displayName "My Dog" ;
+        as:name "My Dog" ;
         as:url [
           a as:Link ;
           as:href &lt;http://example.org/dog.jpeg&gt; ;
@@ -5506,7 +5506,7 @@ _:b0 a as:Album ;
     ],
     [
       a as:Image ;
-        as:displayName "My Cat" ;
+        as:name "My Cat" ;
         as:url [
           a as:Link ;
           as:href &lt;http://example.org/cat.jpeg&gt; ;
@@ -5528,11 +5528,11 @@ _:b0 a as:Album ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Album",
-  "displayName": "A Music Playlist",
+  "name": "A Music Playlist",
   "orderedItems": [
     {
       "type": "Audio",
-      "displayName": "Song 1",
+      "name": "Song 1",
       "url": {
         "type": "Link",
         "href": "http://example.org/song1.mp3",
@@ -5541,7 +5541,7 @@ _:b0 a as:Album ;
     },
     {
       "type": "Audio",
-      "displayName": "Song 2",
+      "name": "Song 2",
       "url": {
         "type": "Link",
         "href": "http://example.org/song2.mpg",
@@ -5555,11 +5555,11 @@ _:b0 a as:Album ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Album">
-  &lt;h2 itemprop="displayName">A Music Playlist&lt;/h2>
+  &lt;h2 itemprop="name">A Music Playlist&lt;/h2>
   &lt;ol&gt;
     &lt;li itemprop="items" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Audio">
-      &lt;span itemprop="displayName">Song 1&lt;/span> -
+      &lt;span itemprop="name">Song 1&lt;/span> -
       &lt;a itemprop="url" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Link"
         href="http://example.org/song1.mp3"
@@ -5567,7 +5567,7 @@ _:b0 a as:Album ;
     &lt;/li>
     &lt;li itemprop="items" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Audio">
-      &lt;span itemprop="displayName">Song 2&lt;/span> -
+      &lt;span itemprop="name">Song 2&lt;/span> -
       &lt;a itemprop="url" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Link"
         href="http://example.org/song2.mp3"
@@ -5580,17 +5580,17 @@ _:b0 a as:Album ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Album">
-  &lt;h2 property="displayName">A Music Playlist&lt;/h2>
+  &lt;h2 property="name">A Music Playlist&lt;/h2>
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Audio">
-      &lt;span property="displayName">Song 1&lt;/span> -
+      &lt;span property="name">Song 1&lt;/span> -
       &lt;span property="url" typeof="Link">
         &lt;a property="mediaType" content="audio/mp3" lang=""
           rel="href" href="http://example.org/song1.mp3">Listen&lt;/a>
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Audio">
-      &lt;span property="displayName">Song 2&lt;/span> -
+      &lt;span property="name">Song 2&lt;/span> -
       &lt;span property="url" typeof="Link">
         &lt;a property="mediaType" content="audio/mp3" lang=""
           rel="href" href="http://example.org/song2.mp3">Listen&lt;/a>
@@ -5625,11 +5625,11 @@ _:b0 a as:Album ;
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 _:b0 a as:Album ;
-  as:displayName "A Music Playlist" ;
+  as:name "A Music Playlist" ;
   as:items (
     [
       a as:Audio ;
-        as:displayName "Song 1" ;
+        as:name "Song 1" ;
         as:url [
           a as:Link ;
           as:href &lt;http://example.org/song1.mp3&gt; ;
@@ -5638,7 +5638,7 @@ _:b0 a as:Album ;
     ]
     [
       a as:Audio ;
-      as:displayName "Song 2" ;
+      as:name "Song 2" ;
       as:url [
         a as:Link ;
         as:href &lt;http://example.org/song2.mpg&gt; ;
@@ -5685,11 +5685,11 @@ _:b0 a as:Album ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Folder",
-  "displayName": "Some Documents",
+  "name": "Some Documents",
   "items": [
     {
       "type": "Document",
-      "displayName": "4Q Sales Forecast",
+      "name": "4Q Sales Forecast",
       "url": "http://example.org/4q-sales-forecast.pdf"
     }
   ]
@@ -5699,11 +5699,11 @@ _:b0 a as:Album ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Folder">
-  &lt;h2 itemprop="displayName">Some Documents&lt;/h2>
+  &lt;h2 itemprop="name">Some Documents&lt;/h2>
   &lt;ul&gt;
     &lt;li itemprop="items" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Document">
-      &lt;span itemprop="displayName">4Q Sales Forecast&lt;/span> -
+      &lt;span itemprop="name">4Q Sales Forecast&lt;/span> -
       &lt;a itemprop="url"
         href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
     &lt;/li>
@@ -5714,10 +5714,10 @@ _:b0 a as:Album ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Folder">
-  &lt;h2 property="displayName">Some Documents&lt;/h2>
+  &lt;h2 property="name">Some Documents&lt;/h2>
   &lt;ul&gt;
     &lt;li property="items" typeof="Document">
-      &lt;span property="displayName">4Q Sales Forecast&lt;/span> -
+      &lt;span property="name">4Q Sales Forecast&lt;/span> -
       &lt;a property="url"
         href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
     &lt;/li>
@@ -5744,10 +5744,10 @@ _:b0 a as:Album ;
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 _:b0 a as:Folder ;
-  as:displayName "Some Documents" ;
+  as:name "Some Documents" ;
   as:items [
     a as:Document;
-    as:displayName "4Q Sales Forecast" ;
+    as:name "4Q Sales Forecast" ;
     as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .
   ] .</pre>
   </div>
@@ -5788,25 +5788,25 @@ _:b0 a as:Folder ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Story",
-  "displayName": "My Vacation",
+  "name": "My Vacation",
   "startIndex": 5,
   "orderedItems": [
     {
       "type": "Image",
-      "displayName": "Visiting the Vatican",
+      "name": "Visiting the Vatican",
       "url": "http://example.org/photo5.jpeg",
       "location": {
         "type": "Place",
-        "displayName": "The Vatican"
+        "name": "The Vatican"
       }
     },
     {
       "type": "Image",
-      "displayName": "Visiting the Eiffel Tower",
+      "name": "Visiting the Eiffel Tower",
       "url": "http://example.org/photo6.jpeg",
       "location": {
         "type": "Place",
-        "displayName": "The Eiffel Tower"
+        "name": "The Eiffel Tower"
       }
     }
   ]
@@ -5816,14 +5816,14 @@ _:b0 a as:Folder ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Story">
-  &lt;h2 itemprop="displayName">My Vacation&lt;/h2>
+  &lt;h2 itemprop="name">My Vacation&lt;/h2>
   &lt;figure itemprop="items" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName"&gt;
+    &lt;figcaption itemprop="name"&gt;
       Visiting the
       &lt;span itemprop="location" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Place">
-          &lt;span itemprop="displayName">
+          &lt;span itemprop="name">
             Vatican
           &lt;/span>
       &lt;/span>
@@ -5833,11 +5833,11 @@ _:b0 a as:Folder ;
   &lt;/figure>
   &lt;figure itemprop="items" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName"&gt;
+    &lt;figcaption itemprop="name"&gt;
       Visiting the
       &lt;span itemprop="location" itemscope
         itemtype="http://www.w3.org/ns/activitystreams#Place">
-          &lt;span itemprop="displayName">
+          &lt;span itemprop="name">
             Eiffel Tower
           &lt;/span>
       &lt;/span>
@@ -5851,12 +5851,12 @@ _:b0 a as:Folder ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Story">
-  &lt;h2 property="displayName">My Vacation&lt;/h2>
+  &lt;h2 property="name">My Vacation&lt;/h2>
   &lt;figure property="items" inlist="" typeof="Image">
-    &lt;figcaption property="displayName"&gt;
+    &lt;figcaption property="name"&gt;
       Visiting the
       &lt;span property="location" typeof="Place">
-          &lt;span property="displayName">
+          &lt;span property="name">
             Vatican
           &lt;/span>
       &lt;/span>
@@ -5865,10 +5865,10 @@ _:b0 a as:Folder ;
       href="http://example.org/photo5.jpeg" />
   &lt;/figure>
   &lt;figure property="items" inlist="" typeof="Image">
-    &lt;figcaption property="displayName"&gt;
+    &lt;figcaption property="name"&gt;
       Visiting the
       &lt;span property="location" typeof="Place">
-          &lt;span property="displayName">
+          &lt;span property="name">
             Eiffel Tower
           &lt;/span>
       &lt;/span>
@@ -5904,24 +5904,24 @@ _:b0 a as:Folder ;
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 _:b0 a as:Story ;
-  as:displayName "My Vacation" ;
+  as:name "My Vacation" ;
   as:items (
     [
       a as:Image ;
-      as:displayName "Visiting The Vatican" ;
+      as:name "Visiting The Vatican" ;
       as:url &lt;http://example.org/photo5.jpeg&gt; ;
       as:location [
         a as:Place ;
-        as:displayName "The Vatican" .
+        as:name "The Vatican" .
       ] .
     ]
     [
       a as:Image ;
-      as:displayName "Visiting The Eiffel Tower" ;
+      as:name "Visiting The Eiffel Tower" ;
       as:url &lt;http://example.org/photo6.jpeg&gt; ;
       as:location [
         a as:Place ;
-          as:displayName "The Eiffel Tower" .
+          as:name "The Eiffel Tower" .
       ]
     ]
   ).</pre>
@@ -5964,7 +5964,7 @@ _:b0 a as:Story ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Document",
-  "displayName": "4Q Sales Forecast",
+  "name": "4Q Sales Forecast",
   "url": "http://example.org/4q-sales-forecast.pdf"
 }</pre>
 </div>
@@ -5972,7 +5972,7 @@ _:b0 a as:Story ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Document">
-  &lt;span itemprop="displayName">4Q Sales Forecast&lt;/span> -
+  &lt;span itemprop="name">4Q Sales Forecast&lt;/span> -
   &lt;a itemprop="url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
 &lt;/div></pre>
@@ -5981,7 +5981,7 @@ _:b0 a as:Story ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Document">
-&lt;span property="displayName">4Q Sales Forecast&lt;/span> -
+&lt;span property="name">4Q Sales Forecast&lt;/span> -
   &lt;a property="url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
 &lt;/div></pre>
@@ -6000,7 +6000,7 @@ _:b0 a as:Story ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Document ;
-  as:displayName "4Q Sales Forecast" ;
+  as:name "4Q Sales Forecast" ;
   as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .</pre>
   </div>
 </div>
@@ -6039,7 +6039,7 @@ _:b0 a as:Document ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Audio",
-  "displayName": "A Simple Podcast",
+  "name": "A Simple Podcast",
   "url": {
     "type": "Link",
     "href": "http://example.org/podcast.mp3",
@@ -6051,7 +6051,7 @@ _:b0 a as:Document ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Audio">
-  &lt;span itemprop="displayName">A Simple Podcast&lt;/span> -
+  &lt;span itemprop="name">A Simple Podcast&lt;/span> -
   &lt;a itemprop="url" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link"
     href="http://example.org/podcast.mp3"
@@ -6062,7 +6062,7 @@ _:b0 a as:Document ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Audio">
-  &lt;span property="displayName">A Simple Podcast&lt;/span> -
+  &lt;span property="name">A Simple Podcast&lt;/span> -
   &lt;span property="url" typeof="Link">
     &lt;a property="mediaType" content="audio/mp3" lang=""
       rel="href" href="http://example.org/podcast.mp3">Listen&lt;/a>
@@ -6085,7 +6085,7 @@ _:b0 a as:Document ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Audio ;
-  as:displayName "A Simple Podcast" ;
+  as:name "A Simple Podcast" ;
   as:url [
     a as:Link ;
     as:href &lt;http://example.org/podcast.mp3&gt; ;
@@ -6128,7 +6128,7 @@ _:b0 a as:Audio ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "displayName": "A Simple Image",
+  "name": "A Simple Image",
   "url": [
     {
       "type": "Link",
@@ -6147,7 +6147,7 @@ _:b0 a as:Audio ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;span itemprop="displayName">A Simple Image&lt;/span> -
+  &lt;span itemprop="name">A Simple Image&lt;/span> -
   &lt;a itemprop="url" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link"
     href="http://example.org/image.jpeg"
@@ -6162,7 +6162,7 @@ _:b0 a as:Audio ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Image">
-&lt;span property="displayName">A Simple Image&lt;/span> -
+&lt;span property="name">A Simple Image&lt;/span> -
   &lt;span property="url" typeof="Link">
     &lt;a property="mediaType" content="image/jpeg" lang=""
       rel="href" src="http://example.org/image.jpeg">JPEG&lt;/a>
@@ -6191,7 +6191,7 @@ _:b0 a as:Audio ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Image ;
-  as:displayName "A Simple Image" ;
+  as:name "A Simple Image" ;
   as:url
     [
       a as:Link ;
@@ -6240,7 +6240,7 @@ _:b0 a as:Image ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Video",
-  "displayName": "A Simple Video",
+  "name": "A Simple Video",
   "url": "http://example.org/video.mkv",
   "duration": "PT2H"
 }</pre>
@@ -6249,7 +6249,7 @@ _:b0 a as:Image ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Video">
-  &lt;span itemprop="displayName">A Simple Video&lt;/span>
+  &lt;span itemprop="name">A Simple Video&lt;/span>
   &lt;meta itemprop="duration" content="PT2H">(2 hours)&lt;meta> -
   &lt;a itemprop="url"
     href="http://example.org/video.mkv">Watch&lt;/a>
@@ -6259,7 +6259,7 @@ _:b0 a as:Image ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Video">
-  &lt;span property="displayName">A Simple Video&lt;/span>
+  &lt;span property="name">A Simple Video&lt;/span>
   &lt;span property="duration" content="PT2H" datatype="xsd:duration">
     (2 hours)&lt;span> -
   &lt;a property="url"
@@ -6282,7 +6282,7 @@ _:b0 a as:Image ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Video ;
-  as:displayName "A Simple Video" ;
+  as:name "A Simple Video" ;
   as:url &lt;http://example.org/video.mkv&gt; ;
   as:duration "PT2H"^^xsd:duration.</pre>
   </div>
@@ -6322,7 +6322,7 @@ _:b0 a as:Video ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "displayName": "A Short Note",
+  "name": "A Short Note",
   "content": "This is a short note"
 }</pre>
 </div>
@@ -6330,7 +6330,7 @@ _:b0 a as:Video ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;h2 itemprop="displayName">A Short Note&lt;/h2>
+  &lt;h2 itemprop="name">A Short Note&lt;/h2>
   &lt;section itemprop="content">
     This is a short note
   &lt;/section>
@@ -6340,7 +6340,7 @@ _:b0 a as:Video ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Note">
-  &lt;h2 property="displayName">A Short Note&lt;/h2>
+  &lt;h2 property="name">A Short Note&lt;/h2>
   &lt;section property="content">
     This is a short note
   &lt;/section>
@@ -6360,7 +6360,7 @@ _:b0 a as:Video ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Note ;
-  as:displayName "A Short Note" ;
+  as:name "A Short Note" ;
   as:content "This is a short note".</pre>
   </div>
 </div>
@@ -6399,7 +6399,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Page",
-  "displayName": "A Webpage",
+  "name": "A Webpage",
   "url": "http://example.org/page.html"
 }</pre>
 </div>
@@ -6409,7 +6409,7 @@ _:b0 a as:Note ;
   itemtype="http://www.w3.org/ns/activitystreams#Page">
   &lt;a itemprop="url"
     href="http://example.org/page.html">
-    &lt;meta itemprop="displayName">A Webpage&lt;/meta>
+    &lt;meta itemprop="name">A Webpage&lt;/meta>
   &lt;/a>
 &lt;/div></pre>
   </div>
@@ -6418,7 +6418,7 @@ _:b0 a as:Note ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Page">
   &lt;a rel="url" href="http://example.org/page.html"
-    property="displayName">A Webpage&lt;/a>
+    property="name">A Webpage&lt;/a>
 &lt;/div></pre>
   </div>
   <div id="ex53-microformats" style="display:none;">
@@ -6433,7 +6433,7 @@ _:b0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Page ;
-  as:displayName "A Webpage" ;
+  as:name "A Webpage" ;
   as:url &lt;http://example.org/page.html&gt;.</pre>
   </div>
 </div>
@@ -6472,15 +6472,15 @@ _:b0 a as:Page ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Question",
-  "displayName": "What is the answer?",
+  "name": "What is the answer?",
   "oneOf": [
     {
       "type": "Note",
-      "displayName": "Option A"
+      "name": "Option A"
     },
     {
       "type": "Note",
-      "displayName": "Option B"
+      "name": "Option B"
     }
   ]
 }</pre>
@@ -6489,17 +6489,17 @@ _:b0 a as:Page ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Question">
-  &lt;h2 itemprop="displayName">
+  &lt;h2 itemprop="name">
     What is the answer?
   &lt;/h2>
   &lt;ul&gt;
     &lt;li itemprop="oneOf" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="displayName">Option A&lt;/span&gt;
+      &lt;span itemprop="name">Option A&lt;/span&gt;
     &lt;/li&gt;
     &lt;li itemprop="oneOf" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="displayName">Option B&lt;/span&gt;
+      &lt;span itemprop="name">Option B&lt;/span&gt;
     &lt;/li&gt;
   &lt;ul&gt;
 &lt;/div></pre>
@@ -6508,15 +6508,15 @@ _:b0 a as:Page ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Question">
-  &lt;h2 property="displayName">What is the answer?&lt;/h2>
+  &lt;h2 property="name">What is the answer?&lt;/h2>
   &lt;ol>
     &lt;li property="oneOf" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Option A
       &lt;/span>
     &lt;/li>
     &lt;li property="oneOf" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Option B
       &lt;/span>
     &lt;/li>
@@ -6544,15 +6544,15 @@ _:b0 a as:Page ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Question ;
-  as:displayName "What is the answer?" ;
+  as:name "What is the answer?" ;
   as:oneOf
     [
       a as:Note ;
-        as:displayName "Option A"
+        as:name "Option A"
     ] ,
     [
       a as:Note ;
-        as:displayName "Option B"
+        as:name "Option B"
     ] .</pre>
   </div>
 </div>
@@ -6600,7 +6600,7 @@ _:b0 a as:Question ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Event",
-  "displayName": "A Party!",
+  "name": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
 }</pre>
@@ -6609,7 +6609,7 @@ _:b0 a as:Question ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Event">
-  &lt;h2 itemprop="displayName">A Party&lt;/h2>
+  &lt;h2 itemprop="name">A Party&lt;/h2>
   &lt;div>Starts:
   &lt;meta itemprop="startTime" content="2014-12-31T23:00:00-08:00">
     11:00 PM on Dec 31, 2014
@@ -6626,7 +6626,7 @@ _:b0 a as:Question ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Event">
-  &lt;h2 property="displayName">A Party&lt;/h2>
+  &lt;h2 property="name">A Party&lt;/h2>
   &lt;div>Starts:
   &lt;time property="startTime" datatype="xsd:dateTime" datetime="2014-12-31T23:00:00-08:00">
     2014-12-31T23:00:00-08:00
@@ -6663,7 +6663,7 @@ _:b0 a as:Question ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Event ;
-  as:displayName "A Party!" ;
+  as:name "A Party!" ;
   as:startTime "2014-12-31T23:00:00-08:00"^^xsd:dateTime ;
   as:endTime "2015-01-01T06:00:00-08:00"^^xsd:dateTime.</pre>
   </div>
@@ -6703,21 +6703,21 @@ _:b0 a as:Event ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Work"
+  "name": "Work"
 }</pre>
 </div>
 <div id="ex57-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Place">
-  &lt;span itemprop="displayName">Work&lt;/span>
+  &lt;span itemprop="name">Work&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex57-rdfa" style="display:none;">
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
-  &lt;span property="displayName">Work&lt;/span>
+  &lt;span property="name">Work&lt;/span>
 &lt;/div></pre>
   </div>
   <div id="ex57-microformats" style="display:none;">
@@ -6729,7 +6729,7 @@ _:b0 a as:Event ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Work" .</pre>
+  as:name "Work" .</pre>
   </div>
 </div>
 
@@ -6745,7 +6745,7 @@ _:b0 a as:Place ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Fresno Area",
+  "name": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
   "radius": 15,
@@ -6758,7 +6758,7 @@ _:b0 a as:Place ;
   itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Fresno Area&lt;/td>
+    &lt;td itemprop="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -6784,7 +6784,7 @@ _:b0 a as:Place ;
   typeof="Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Fresno Area&lt;/td>
+    &lt;td property="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -6835,7 +6835,7 @@ _:b0 a as:Place ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Fresno Area" ;
+  as:name "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:radius "15"^^xsd:float ;
@@ -6892,7 +6892,7 @@ _:b0 a as:Place ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Mention",
   "href": "http://example.org/joe",
-  "displayName": "Joe"
+  "name": "Joe"
 }</pre>
 </div>
 <div id="ex181-microdata" style="display:none;">
@@ -6900,7 +6900,7 @@ _:b0 a as:Place ;
 >&lt;span itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Mention">
   &lt;a itemprop="href" href="http://example.org/joe">
-    @&lt;span itemprop="displayName">Joe&lt;/span>
+    @&lt;span itemprop="name">Joe&lt;/span>
   &lt;/a>
 &lt;/span></pre>
   </div>
@@ -6909,7 +6909,7 @@ _:b0 a as:Place ;
 >&lt;span vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Mention">
   &lt;a property="href" href="http://example.org/joe">
-    @&lt;span property="displayName">Joe&lt;/span>
+    @&lt;span property="name">Joe&lt;/span>
   &lt;/a>
 &lt;/span></pre>
   </div>
@@ -6923,7 +6923,7 @@ _:b0 a as:Place ;
 
 _:b0 a as:Mention ;
   as:href &lt;http://example.org/joe&gt; ;
-  as:displayName "Joe" .</pre>
+  as:name "Joe" .</pre>
   </div>
 </div>
             </td>
@@ -6965,10 +6965,10 @@ _:b0 a as:Mention ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Profile",
-  "displayName": "Sally's Profile",
+  "name": "Sally's Profile",
   "attributedTo": {
     "type": "Person",
-    "displayName": "Sally Smith"
+    "name": "Sally Smith"
   }
 }</pre>
 </div>
@@ -6976,10 +6976,10 @@ _:b0 a as:Mention ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Profile">
-  &lt;h2 itemprop="displayName">Sally's Profile&lt;/h2>
+  &lt;h2 itemprop="name">Sally's Profile&lt;/h2>
   &lt;section itemprop="attributedTo" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally Smith&lt;/span>
+    &lt;span itemprop="name">Sally Smith&lt;/span>
   &lt;/section>
 &lt;/div></pre>
   </div>
@@ -6987,9 +6987,9 @@ _:b0 a as:Mention ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Profile">
-  &lt;h2 property="displayName">Sally's Profile&lt;/h2>
+  &lt;h2 property="name">Sally's Profile&lt;/h2>
   &lt;section property="attributedTo" typeof="Person">
-    &lt;span property="displayName">Sally Smith&lt;/span>
+    &lt;span property="name">Sally Smith&lt;/span>
   &lt;/section>
 &lt;/div></pre>
   </div>
@@ -7005,10 +7005,10 @@ _:b0 a as:Mention ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Profile ;
-  as:displayName "Sally's Profile" ;
+  as:name "Sally's Profile" ;
   as:attributedTo [
     a as:Person ;
-    as:displayName "Sally Smith"
+    as:name "Sally Smith"
   ] .</pre>
   </div>
 </div>
@@ -7074,24 +7074,24 @@ _:b0 a as:Profile ;
       "type": "Relationship",
       "subject": {
         "type": "Person",
-        "displayName": "Sally"
+        "name": "Sally"
       },
       "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
       "object": {
         "type": "Person",
-        "displayName": "Joe"
+        "name": "Joe"
       }
     },
     {
       "type": "Relationship",
       "subject": {
         "type": "Person",
-        "displayName": "Sally"
+        "name": "Sally"
       },
       "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
       "object": {
         "type": "Person",
-        "displayName": "Jane"
+        "name": "Jane"
       }
     }
   ]
@@ -7243,7 +7243,7 @@ _:b0 a as:Profile ;
       "object": "http://example.org/connections/123",
       "target": {
         "type": "Collection",
-        "displayName": "John's Connections"
+        "name": "John's Connections"
       },
       "context": "http://example.org/connections/123",
     },
@@ -7254,7 +7254,7 @@ _:b0 a as:Profile ;
       "object": "http://example.org/connections/123",
       "target": {
         "type": "Collection",
-        "displayName": "Sally's Connections"
+        "name": "Sally's Connections"
       },
       "context": "http://example.org/connections/123",
     }
@@ -7318,7 +7318,7 @@ _:b0 a as:Profile ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "San Francisco, CA"
+  "name": "San Francisco, CA"
 }</pre>
         </div>
 
@@ -7330,7 +7330,7 @@ _:b0 a as:Profile ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "San Francisco, CA",
+  "name": "San Francisco, CA",
   "longitude": "122.4167",
   "latitude": "37.7833"
 }</pre>
@@ -7386,7 +7386,7 @@ _:b0 a as:Profile ;
       <code><a>anyOf</a></code> |
       <code><a>origin</a></code> |
       <code><a>next</a></code> |
-      <code><a>object</a></code> |
+      <code><a data-lt="object-term">object</a></code> |
       <code><a>prev</a></code> |
       <code><a>preview</a></code> |
       <code><a>result</a></code> |
@@ -7399,7 +7399,7 @@ _:b0 a as:Profile ;
       <code><a>accuracy</a></code> |
       <code><a>altitude</a></code> |
       <code><a data-lt="content-term">content</a></code> |
-      <code><a>displayName</a></code> |
+      <code><a>name</a></code> |
       <code><a>duration</a></code> |
       <code><a>height</a></code> |
       <code><a>href</a></code> |
@@ -7533,7 +7533,7 @@ _:b0 a as:Offer ;
   "actor": {
     "type": "Person",
     "id": "http://sally.example.org",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/foo"
 }</pre>
@@ -7545,7 +7545,7 @@ _:b0 a as:Offer ;
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemid="http://sally.example.org">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   offered
   &lt;a itemprop="object"
@@ -7560,7 +7560,7 @@ _:b0 a as:Offer ;
   typeof="Offer">
   &lt;span property="actor" typeof="Person"
     resource="http://sally.example.org">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   offered
   &lt;a property="object"
@@ -7585,7 +7585,7 @@ _:b0 a as:Offer ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 &lt;http://sally.example.org&gt; a as:Person ;
-  as:displayName "Sally" .
+  as:name "Sally" .
 
 _:b0 a as:Offer ;
   as:actor &lt;http://sally.example.org&gt; ;
@@ -7610,7 +7610,7 @@ _:b0 a as:Offer ;
     {
       "type": "Person",
       "id": "http://sally.example.org",
-      "displayName": "Sally"
+      "name": "Sally"
     }
   ],
   "object": "http://example.org/foo"
@@ -7626,7 +7626,7 @@ _:b0 a as:Offer ;
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person"
     itemid="http://sally.example.org">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   offered
   &lt;a itemprop="object"
@@ -7644,7 +7644,7 @@ _:b0 a as:Offer ;
   and
   &lt;span property="actor" typeof="Person"
     resource="http://sally.example.org">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   offered
   &lt;a property="object"
@@ -7675,7 +7675,7 @@ _:b0 a as:Offer ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 &lt;http://sally.example.org&gt; a as:Person ;
-  as:displayName "Sally" .
+  as:name "Sally" .
 
 _:b0 a as:Offer ;
   as:actor
@@ -7728,7 +7728,7 @@ _:b0 a as:Offer ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "displayName": "A Simple Note",
+  "name": "A Simple Note",
   "attachment": [
     {
       "type": "Image",
@@ -7742,13 +7742,13 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="displayName">A Simple Note&lt;/span>
+  &lt;span itemprop="name">A Simple Note&lt;/span>
   Attachments:
   &lt;ul>
   &lt;li itemprop="attachment" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
     &lt;figure>
-      &lt;figcaption itemprop="displayName">
+      &lt;figcaption itemprop="name">
         A Simple Image
       &lt;/figcaption>
       &lt;img itemprop="url"
@@ -7762,12 +7762,12 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Note">
-  &lt;span property="displayName">A Simple Note&lt;/span>
+  &lt;span property="name">A Simple Note&lt;/span>
   Attachments:
   &lt;ul>
     &lt;li property="attachment" typeof="Image">
       &lt;figure>
-        &lt;figcaption property="displayName">
+        &lt;figcaption property="name">
           A Simple Image
         &lt;/figcaption>
         &lt;img property="url"
@@ -7800,10 +7800,10 @@ _:b0 a as:Offer ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Note ;
-  as:displayName "A Simple Note" ;
+  as:name "A Simple Note" ;
   as:attachment [
     a as:Image ;
-    as:displayName "A Simple Image" ;
+    as:name "A Simple Image" ;
     as:url &lt;http://example.org/cat.jpeg&gt;
   ] .</pre>
   </div>
@@ -7849,12 +7849,12 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "displayName": "A Simple Image",
+  "name": "A Simple Image",
   "url": "http://example.org/cat.jpeg",
   "attributedTo": [
     {
       "type": "Person",
-      "displayName": "Sally"
+      "name": "Sally"
     }
   ]
 }</pre>
@@ -7863,12 +7863,12 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;span itemprop="displayName">A Simple Image&lt;/span>
+  &lt;span itemprop="name">A Simple Image&lt;/span>
   &lt;img itemprop="url" src="http://example.org/cat.jpeg"/>
   &lt;div itemprop="attributedTo" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
     Attributed To:
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/div>
 &lt;/div></pre>
   </div>
@@ -7876,11 +7876,11 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Image">
-  &lt;span property="displayName">A Simple Image&lt;/span>
+  &lt;span property="name">A Simple Image&lt;/span>
   &lt;img property="url" src="http://example.org/cat.jpeg"/>
   &lt;div property="attributedTo" typeof="Note">
     Attributed To:
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/div>
 &lt;/div></pre>
   </div>
@@ -7898,11 +7898,11 @@ _:b0 a as:Note ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Image ;
-  as:displayName "A Simple Image" ;
+  as:name "A Simple Image" ;
   as:url &lt;http://example.org/cat.jpeg&gt; ;
   as:attributedTo [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] .</pre>
   </div>
 </div>
@@ -7919,13 +7919,13 @@ _:b0 a as:Image ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "displayName": "A Simple Image",
+  "name": "A Simple Image",
   "url": "http://example.org/cat.jpeg",
   "attributedTo": [
     "http://joe.example.org",
     {
       "type": "Person",
-      "displayName": "Sally"
+      "name": "Sally"
     }
   ]
 }</pre>
@@ -7934,12 +7934,12 @@ _:b0 a as:Image ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;span itemprop="displayName">A Simple Image&lt;/span>
+  &lt;span itemprop="name">A Simple Image&lt;/span>
   &lt;img itemprop="url" src="http://example.org/cat.jpeg"/>
   Attributed To:
   &lt;span itemprop="attributedTo" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span> and
   &lt;a itemprop="attributedTo"
     href="http://joe.example.org">Joe&lt;/a>
@@ -7949,11 +7949,11 @@ _:b0 a as:Image ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Image">
-  &lt;span property="displayName">A Simple Image&lt;/span>
+  &lt;span property="name">A Simple Image&lt;/span>
   &lt;img property="url" src="http://example.org/cat.jpeg"/>
   Attributed To:
   &lt;span property="attributedTo" typeof="Note">
-    &lt;span property="displayName">Sally&lt;/span>"
+    &lt;span property="name">Sally&lt;/span>"
   &lt;/span> and
   &lt;a property="attributedTo"
     href="http://joe.example.org">Joe&lt;/a>
@@ -7976,13 +7976,13 @@ _:b0 a as:Image ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Image ;
-  as:displayName "A Simple Image" ;
+  as:name "A Simple Image" ;
   as:url &lt;http://example.org/cat.jpeg&gt; ;
   as:attributedTo
     &lt;http://joe.example.org&gt; ,
     [
       a as:Person ;
-      as:displayName "Sally"
+      as:name "Sally"
     ] .</pre>
   </div>
 </div>
@@ -8740,7 +8740,7 @@ _:b0 a as:Collection ;
   "totalItems": 3,
   "current": {
     "type": "Link",
-    "displayName": "Most Recent Items",
+    "name": "Most Recent Items",
     "href": "http://example.org/collection"
   },
   "items": [
@@ -8758,7 +8758,7 @@ _:b0 a as:Collection ;
   &lt;span itemprop="current" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
     &lt;a itemprop="href" href="http://example.org/collection">
-      &lt;span itemprop="displayName">Most Recent Items&lt;/span>
+      &lt;span itemprop="name">Most Recent Items&lt;/span>
     &lt;/a>
   &lt;/span>
   &lt;ul>
@@ -8790,7 +8790,7 @@ _:b0 a as:Collection ;
   &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;span property="current" typeof="Link">
     &lt;a property="href" href="http://example.org/collection">
-      &lt;span property="displayName">Most Recent Items&lt;/span>
+      &lt;span property="name">Most Recent Items&lt;/span>
     &lt;/a>
   &lt;/span>
   &lt;ul>
@@ -8855,7 +8855,7 @@ _:b0 a as:Collection ;
   as:totalItems "3"^^xsd:nonNegativeInteger ;
   as:current [
     a as:Link ;
-      as:displayName "Most Recent Items" ;
+      as:name "Most Recent Items" ;
       as:href &lt;http://example.org/collection>
   ] ;
   as:items
@@ -8965,7 +8965,7 @@ _:b0 a as:Collection ;
   "totalItems": 3,
   "first": {
     "type": "Link",
-    "displayName": "First Page",
+    "name": "First Page",
     "href": "http://example.org/collection?page=0"
   }
 }</pre>
@@ -8978,7 +8978,7 @@ _:b0 a as:Collection ;
   &lt;span itemprop="first" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
     &lt;a itemprop="href" href="http://example.org/collection?page=0">
-      &lt;span itemprop="displayName">First Page&lt;/span>
+      &lt;span itemprop="name">First Page&lt;/span>
     &lt;/a>
   &lt;/span>
 &lt;/div></pre>
@@ -8989,7 +8989,7 @@ _:b0 a as:Collection ;
   typeof="Collection">
   &lt;meta property="totalItems" content="3" datatype="xsd:nonNegativeInteger" />
   &lt;span property="first" typeof="Link">
-    &lt;a property="displayName" rel="href" href="http://example.org/collection?page=0">
+    &lt;a property="name" rel="href" href="http://example.org/collection?page=0">
       First Page
     &lt;/a>
   &lt;/span>
@@ -9015,7 +9015,7 @@ _:b0 a as:Collection ;
   as:totalItems "3"^^xsd:nonNegativeInteger ;
   as:first [
     a as:Link ;
-    as:displayName "First Page" ;
+    as:name "First Page" ;
     as:href &lt;http://example.org/collection?page=0>
   ] .</pre>
   </div>
@@ -9064,7 +9064,7 @@ _:b0 a as:Collection ;
   "content": "A simple note",
   "generator": {
     "type": "Application",
-    "displayName": "My Note Application"
+    "name": "My Note Application"
   }
 }</pre>
   </div>
@@ -9077,7 +9077,7 @@ _:b0 a as:Collection ;
   &lt;/span>
   (&lt;span itemprop="generator" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Application">
-     &lt;span itemprop="displayName">My Note Application&lt;/span>
+     &lt;span itemprop="name">My Note Application&lt;/span>
    &lt;/span>)
 &lt;/div></pre>
   </div>
@@ -9089,7 +9089,7 @@ _:b0 a as:Collection ;
     A Simple Note
   &lt;/span>
   (&lt;span property="generator" typeof="Application">
-     &lt;span property="displayName">My Note Application&lt;/span>
+     &lt;span property="name">My Note Application&lt;/span>
    &lt;/span>)
 &lt;/div></pre>
   </div>
@@ -9112,7 +9112,7 @@ _:b0 a as:Note ;
   as:content "A Simple Note" ;
   as:generator [
     a as:Application ;
-    as:displayName "My Note Application"
+    as:name "My Note Application"
   ] .</pre>
   </div>
 </div>
@@ -9156,7 +9156,7 @@ _:b0 a as:Note ;
   "content": "A Simple note",
   "icon": {
     "type": "Image",
-    "displayName": "Note",
+    "name": "Note",
     "url": "http://example.org/note.png",
     "width": 16,
     "height": 16
@@ -9182,7 +9182,7 @@ _:b0 a as:Note ;
   &lt;span property="content">A Simple Note&lt;/span>
   &lt;span property="icon" typeof="Image">
     &lt;img rel="url" src="http://www.example.org/note.png"
-      property="displayName" content="Note" alt="Note"
+      property="name" content="Note" alt="Note"
       width="16" height="16" />
     &lt;span property="width" datatype="xsd:nonNegativeInteger">16&lt;/span>x
     &lt;span property="height" datatype="xsd:nonNegativeInteger">16&lt;/span>
@@ -9209,7 +9209,7 @@ _:b0 a as:Note ;
   as:icon [
     a as:Image ;
     as:url &lt;http://www.example.org/note.png> ;
-    as:displayName "Note" ;
+    as:name "Note" ;
     as:width "16"^^xsd:nonNegativeInteger ;
     as:height "16"^^xsd:nonNegativeInteger
   ] .</pre>
@@ -9232,14 +9232,14 @@ _:b0 a as:Note ;
   "icon": [
     {
       "type": "Image",
-      "displayName": "Note (16x16)",
+      "name": "Note (16x16)",
       "url": "http://example.org/note1.png",
       "width": 16,
       "height": 16
     },
     {
       "type": "Image",
-      "displayName": "Note (32x32)",
+      "name": "Note (32x32)",
       "url": "http://example.org/note2.png",
       "width": 32,
       "height": 32
@@ -9267,14 +9267,14 @@ _:b0 a as:Note ;
   &lt;span property="content">A Simple Note&lt;/span>
   &lt;span property="icon" typeof="Image">
     &lt;img rel="url" src="http://www.example.org/note1.png"
-      property="displayName" content="Note (16x16)" alt="Note (16x16)"
+      property="name" content="Note (16x16)" alt="Note (16x16)"
       width="16" height="16" />
     &lt;span property="width" datatype="xsd:nonNegativeInteger">16&lt;/span>x
     &lt;span property="height" datatype="xsd:nonNegativeInteger">16&lt;/span>
   &lt;/span>
   &lt;span property="icon" typeof="Image">
     &lt;img rel="url" src="http://www.example.org/note2.png"
-      property="displayName" content="Note (32x32)" alt="Note (32x32)"
+      property="name" content="Note (32x32)" alt="Note (32x32)"
       width="32" height="32" />
     &lt;span property="width" datatype="xsd:nonNegativeInteger">32&lt;/span>x
     &lt;span property="height" datatype="xsd:nonNegativeInteger">32&lt;/span>
@@ -9304,14 +9304,14 @@ _:b0 a as:Note ;
     [
       a as:Image ;
       as:url &lt;http://www.example.org/note1.png> ;
-      as:displayName "Note (16x16)" ;
+      as:name "Note (16x16)" ;
       as:width "16"^^xsd:nonNegativeInteger ;
       as:height "16"^^xsd:nonNegativeInteger
     ]
     [
       a as:Image ;
       as:url &lt;http://www.example.org/note2.png> ;
-      as:displayName "Note (32x32)" ;
+      as:name "Note (32x32)" ;
       as:width "32"^^xsd:nonNegativeInteger ;
       as:height "32"^^xsd:nonNegativeInteger
     ] .</pre>
@@ -9359,7 +9359,7 @@ _:b0 a as:Note ;
   "content": "A Simple note",
   "image": {
     "type": "Image",
-    "displayName": "A Cat",
+    "name": "A Cat",
     "url": "http://example.org/cat.png"
   }
 }</pre>
@@ -9371,7 +9371,7 @@ _:b0 a as:Note ;
   &lt;span itemprop="content">A Simple Note&lt;/span>
   &lt;figure itemprop="image" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">A Cat&lt;figcaption>
+    &lt;figcaption itemprop="name">A Cat&lt;figcaption>
     &lt;img itemprop="url"
       src="http://www.example.org/cat.png" />
   &lt;/figure>
@@ -9383,7 +9383,7 @@ _:b0 a as:Note ;
   typeof="Note">
   &lt;span property="content">A Simple Note&lt;/span>
   &lt;figure property="image" typeof="Image">
-    &lt;figcaption property="displayName">A Cat&lt;figcaption>
+    &lt;figcaption property="name">A Cat&lt;figcaption>
     &lt;img property="url"
       src="http://www.example.org/cat.png" />
   &lt;/figure>
@@ -9410,7 +9410,7 @@ _:b0 a as:Note ;
   as:image [
     a as:Image ;
     as:url &lt;http://www.example.org/cat.png> ;
-    as:displayName "Note"
+    as:name "Note"
   ] .</pre>
   </div>
 </div>
@@ -9431,12 +9431,12 @@ _:b0 a as:Note ;
   "image": [
     {
       "type": "Image",
-      "displayName": "Cat 1",
+      "name": "Cat 1",
       "url": "http://example.org/cat1.png"
     },
     {
       "type": "Image",
-      "displayName": "Cat 2",
+      "name": "Cat 2",
       "url": "http://example.org/cat2.png"
     }
   ]
@@ -9449,13 +9449,13 @@ _:b0 a as:Note ;
   &lt;span itemprop="content">A Simple Note&lt;/span>
   &lt;figure itemprop="image" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">Cat 1&lt;figcaption>
+    &lt;figcaption itemprop="name">Cat 1&lt;figcaption>
     &lt;img itemprop="url"
       src="http://www.example.org/cat1.png" />
   &lt;/figure>
   &lt;figure itemprop="image" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Image">
-    &lt;figcaption itemprop="displayName">Cat 2&lt;figcaption>
+    &lt;figcaption itemprop="name">Cat 2&lt;figcaption>
     &lt;img itemprop="url"
       src="http://www.example.org/cat2.png" />
   &lt;/figure>
@@ -9467,12 +9467,12 @@ _:b0 a as:Note ;
   typeof="Note">
   &lt;span property="content">A Simple Note&lt;/span>
   &lt;figure property="image" typeof="Image">
-    &lt;figcaption property="displayName">Cat 1&lt;figcaption>
+    &lt;figcaption property="name">Cat 1&lt;figcaption>
     &lt;img property="url"
       src="http://www.example.org/cat1.png" />
   &lt;/figure>
   &lt;figure property="image" typeof="Image">
-    &lt;figcaption property="displayName">Cat 2&lt;figcaption>
+    &lt;figcaption property="name">Cat 2&lt;figcaption>
     &lt;img property="url"
       src="http://www.example.org/cat2.png" />
   &lt;/figure>
@@ -9505,12 +9505,12 @@ _:b0 a as:Note ;
     [
       a as:Image ;
       as:url &lt;http://www.example.org/cat1.png> ;
-      as:displayName "Cat 1"
+      as:name "Cat 1"
     ] ,
     [
       a as:Image ;
       as:url &lt;http://www.example.org/cat2.png> ;
-      as:displayName "Cat 2"
+      as:name "Cat 2"
     ] .
 </pre>
   </div>
@@ -9707,12 +9707,12 @@ _:b0 a as:Note ;
   "type": "Listen",
   "actor": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "object": "http://example.org/foo.mp3",
   "instrument": {
     "type": "Service",
-    "displayName": "Acme Music Service"
+    "name": "Acme Music Service"
   }
 }</pre>
   </div>
@@ -9722,14 +9722,14 @@ _:b0 a as:Note ;
   itemtype="http://www.w3.org/ns/activitystreams#Listen">
   &lt;span itemprop="actor" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   listened to
   &lt;a itemprop="object" href="http://example.org/foo.mp3" />
   using
   &lt;span itemprop="instrument" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Service">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       Acme Music Service
     &lt;/span>
   &lt;/span>
@@ -9740,7 +9740,7 @@ _:b0 a as:Note ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Listen">
   &lt;span property="actor" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   listened to
   &lt;a property="object" href="http://example.org/foo.mp3">
@@ -9748,7 +9748,7 @@ _:b0 a as:Note ;
   &gt;
   using
   &lt;span property="instrument" typeof="Service">
-    &lt;span property="displayName">
+    &lt;span property="name">
       Acme Music Service
     &lt;/span>
   &lt;/span>
@@ -9774,12 +9774,12 @@ _:b0 a as:Note ;
 _:b0 a as:Listen ;
   as:actor [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] ;
   as:object &lt;http://example.org/foo.mp3> ;
   as:instrument [
     a as:Service ;
-    as:displayName "Acme Music Service"
+    as:name "Acme Music Service"
   ] .</pre>
   </div>
 </div>
@@ -9880,7 +9880,7 @@ _:b0 a as:Collection ;
   "totalItems": 5,
   "last": {
     "type": "Link",
-    "displayName": "Last Page",
+    "name": "Last Page",
     "href": "http://example.org/collection?page=1"
   }
 }</pre>
@@ -9893,7 +9893,7 @@ _:b0 a as:Collection ;
   &lt;span itemprop="last" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
     &lt;a itemprop="href" href="http://example.org/collection?page=1">
-      &lt;span itemprop="displayName">Last Page&lt;/span>
+      &lt;span itemprop="name">Last Page&lt;/span>
     &lt;/a>
   &lt;/span>
 &lt;/div></pre>
@@ -9904,7 +9904,7 @@ _:b0 a as:Collection ;
   typeof="Collection">
   &lt;meta property="totalItems" content="5" datatype="xsd:nonNegativeInteger" />
   &lt;span property="last" typeof="Link">
-    &lt;a property="displayName"
+    &lt;a property="name"
       rel="href" href="http://example.org/collection?page=1">
         Last Page
     &lt;/a>
@@ -9931,7 +9931,7 @@ _:b0 a as:Collection ;
   as:totalItems "3"^^xsd:nonNegativeInteger ;
   as:last [
     a as:Link ;
-      as:displayName "Last Page" ;
+      as:name "Last Page" ;
       as:href &lt;http://example.org/collection?page=1>
   ] .</pre>
   </div>
@@ -9977,7 +9977,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Person",
-  "displayName": "Sally",
+  "name": "Sally",
   "location": {
     "type": "Place",
     "longitude": 12.34,
@@ -9991,7 +9991,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Person">
-  &lt;span itemprop="displayName">Sally&lt;/span>
+  &lt;span itemprop="name">Sally&lt;/span>
   is at
   &lt;span itemprop="location" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Place">
@@ -10009,7 +10009,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Person">
-  &lt;span property="displayName">Sally&lt;/span>
+  &lt;span property="name">Sally&lt;/span>
   is at
   &lt;span property="location" typeof="Place">
     Latitude
@@ -10044,7 +10044,7 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Person ;
-  as:displayName "Sally" ;
+  as:name "Sally" ;
   as:location [
     a as:Place ;
     as:latitude "56.78"^^xsd:float ;
@@ -10095,11 +10095,11 @@ _:b0 a as:Person ;
   "items": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -10112,13 +10112,13 @@ _:b0 a as:Person ;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -10132,12 +10132,12 @@ _:b0 a as:Person ;
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -10169,11 +10169,11 @@ _:b0 a as:Collection ;
   as:items
     [
       a as:Note ;
-      as:displayName "A Simple Note"
+      as:name "A Simple Note"
     ] ,
     [
       a as:Note ;
-      as:displayName "Another Simple Note"
+      as:name "Another Simple Note"
     ] .</pre>
   </div>
   </div>
@@ -10194,11 +10194,11 @@ _:b0 a as:Collection ;
   "orderedItems": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -10211,13 +10211,13 @@ _:b0 a as:Collection ;
   &lt;ol>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -10231,12 +10231,12 @@ _:b0 a as:Collection ;
   &lt;meta property="totalItems" content="2"  datatype="xsd:nonNegativeInteger"/>
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -10269,11 +10269,11 @@ _:b0 a as:OrderedCollection ;
   as:items (
     [
       a as:Note ;
-      as:displayName "A Simple Note"
+      as:name "A Simple Note"
     ]
     [
       a as:Note ;
-      as:displayName "Another Simple Note"
+      as:name "Another Simple Note"
     ]
   ) .</pre>
   </div>
@@ -10318,15 +10318,15 @@ _:b0 a as:OrderedCollection ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Question",
-  "displayName": "What is the answer?",
+  "name": "What is the answer?",
   "oneOf": [
     {
       "type": "Note",
-      "displayName": "Option A"
+      "name": "Option A"
     },
     {
       "type": "Note",
-      "displayName": "Option B"
+      "name": "Option B"
     }
   ]
 }</pre>
@@ -10335,17 +10335,17 @@ _:b0 a as:OrderedCollection ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Question">
-  &lt;h2 itemprop="displayName">
+  &lt;h2 itemprop="name">
     What is the answer?
   &lt;/h2>
   &lt;ul&gt;
     &lt;li itemprop="oneOf" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="displayName">Option A&lt;/span&gt;
+      &lt;span itemprop="name">Option A&lt;/span&gt;
     &lt;/li&gt;
     &lt;li itemprop="oneOf" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="displayName">Option B&lt;/span&gt;
+      &lt;span itemprop="name">Option B&lt;/span&gt;
     &lt;/li&gt;
   &lt;ul&gt;
 &lt;/div></pre>
@@ -10354,15 +10354,15 @@ _:b0 a as:OrderedCollection ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Question">
-  &lt;h2 property="displayName">
+  &lt;h2 property="name">
     What is the answer?
   &lt;/h2>
   &lt;ul>
     &lt;li property="oneOf" typeof="Note">
-      &lt;span property="displayName">Option A&lt;/span>
+      &lt;span property="name">Option A&lt;/span>
     &lt;/li>
     &lt;li property="oneOf" typeof="Note">
-      &lt;span property="displayName">Option B&lt;/span>
+      &lt;span property="name">Option B&lt;/span>
     &lt;/li>
   &lt;ul>
 &lt;/div></pre>
@@ -10388,15 +10388,15 @@ _:b0 a as:OrderedCollection ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Question ;
-  as:displayName "What is the answer?" ;
+  as:name "What is the answer?" ;
   as:oneOf
     [
       a as:Note ;
-        as:displayName "Option A"
+        as:name "Option A"
     ] ,
     [
       a as:Note ;
-        as:displayName "Option B"
+        as:name "Option B"
     ] .</pre>
   </div>
 </div>
@@ -10439,15 +10439,15 @@ _:b0 a as:Question ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Question",
-  "displayName": "What is the answer?",
+  "name": "What is the answer?",
   "anyOf": [
     {
       "type": "Note",
-      "displayName": "Option A",
+      "name": "Option A",
     },
     {
       "type": "Note",
-      "displayName": "Option B"
+      "name": "Option B"
     }
   ]
 }</pre>
@@ -10456,17 +10456,17 @@ _:b0 a as:Question ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Question">
-  &lt;h2 itemprop="displayName">
+  &lt;h2 itemprop="name">
     What is the answer?
   &lt;/h2>
   &lt;ul&gt;
     &lt;li itemprop="anyOf" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="displayName">Option A&lt;/span&gt;
+      &lt;span itemprop="name">Option A&lt;/span&gt;
     &lt;/li&gt;
     &lt;li itemprop="anyOf" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="displayName">Option B&lt;/span&gt;
+      &lt;span itemprop="name">Option B&lt;/span&gt;
     &lt;/li&gt;
   &lt;ul&gt;
 &lt;/div></pre>
@@ -10475,15 +10475,15 @@ _:b0 a as:Question ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Question">
-  &lt;h2 property="displayName">
+  &lt;h2 property="name">
     What is the answer?
   &lt;/h2>
   &lt;ul&gt;
     &lt;li property="anyOf" typeOf="Note">
-      &lt;span property="displayName">Option A&lt;/span>
+      &lt;span property="name">Option A&lt;/span>
     &lt;/li&gt;
     &lt;li property="anyOf" typeof="Note">
-      &lt;span property="displayName">Option B&lt;/span>
+      &lt;span property="name">Option B&lt;/span>
     &lt;/li&gt;
   &lt;ul&gt;
 &lt;/div></pre>
@@ -10509,15 +10509,15 @@ _:b0 a as:Question ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Question ;
-  as:displayName "What is the answer?" ;
+  as:name "What is the answer?" ;
   as:anyOf
     [
       a as:Note ;
-        as:displayName "Option A"
+        as:name "Option A"
     ] ,
     [
       a as:Note ;
-        as:displayName "Option B"
+        as:name "Option B"
     ] .</pre>
   </div>
 </div>
@@ -10564,11 +10564,11 @@ _:b0 a as:Question ;
   "object": "http://example.org/posts/1",
   "target": {
     "type": "Collection",
-    "displayName": "List B"
+    "name": "List B"
   },
   "origin": {
     "type": "Collection",
-    "displayName": "List A"
+    "name": "List A"
   }
 }</pre>
   </div>
@@ -10588,7 +10588,7 @@ _:b0 a as:Question ;
   to
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Collection">
-    &lt;span itemprop="displayName">List B&lt;/span>
+    &lt;span itemprop="name">List B&lt;/span>
   &lt;/span>
   from
   &lt;span itemprop="origin" itemscope
@@ -10612,11 +10612,11 @@ _:b0 a as:Question ;
   &lt;/a>
   to
   &lt;span property="target" typeof="Collection">
-    &lt;span property="displayName">List B&lt;/span>
+    &lt;span property="name">List B&lt;/span>
   &lt;/span>
   from
   &lt;span property="origin" typeof="Collection">
-    &lt;span property="displayName">List A&lt;/span>
+    &lt;span property="name">List A&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -10649,11 +10649,11 @@ _:b0 a as:Move ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target [
     a as:Collection ;
-      as:displayName "List B" .
+      as:name "List B" .
   ] ;
   as:origin [
     a as:Collection ;
-      as:displayName "List A" .
+      as:name "List A" .
   ].
 </pre>
   </div>
@@ -10820,7 +10820,7 @@ _:b0 a as:CollectionPage ;
   "type": "CollectionPage",
   "next": {
     "type": "Link",
-    "displayName": "Next Page",
+    "name": "Next Page",
     "href": "http://example.org/collection?page=2"
   },
   "items": [
@@ -10837,7 +10837,7 @@ _:b0 a as:CollectionPage ;
   &lt;span itemprop="next" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
     &lt;a itemprop="href" href="http://example.org/collection?page=2">
-      &lt;span itemprop="displayName">Next Page&lt;/span>
+      &lt;span itemprop="name">Next Page&lt;/span>
     &lt;/a>
   &lt;/span>
   &lt;ul>
@@ -10868,7 +10868,7 @@ _:b0 a as:CollectionPage ;
   typeof="CollectionPage">
   &lt;span property="next" typeof="Link">
     &lt;a property="href" href="http://example.org/collection?page=2">
-      &lt;span property="displayName">Next Page&lt;/span>
+      &lt;span property="name">Next Page&lt;/span>
     &lt;/a>
   &lt;/span>
   &lt;ul>
@@ -10930,7 +10930,7 @@ _:b0 a as:CollectionPage ;
 _:b0 a as:CollectionPage ;
   as:next [
     a as:Link ;
-    as:displayName "Next Page" ;
+    as:name "Next Page" ;
     as:href &lt;http://example.org/collection?page=2> .
   ] ;
   as:items
@@ -11367,7 +11367,7 @@ _:b0 a as:CollectionPage ;
   "type": "CollectionPage",
   "prev": {
     "type": "Link",
-    "displayName": "Previous Page",
+    "name": "Previous Page",
     "href": "http://example.org/collection?page=1"
   },
   "items": [
@@ -11384,7 +11384,7 @@ _:b0 a as:CollectionPage ;
   &lt;span itemprop="prev" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
     &lt;a itemprop="href" href="http://example.org/collection?page=1">
-      &lt;span itemprop="displayName">Previous Page&lt;/span>
+      &lt;span itemprop="name">Previous Page&lt;/span>
     &lt;/a>
   &lt;/span>
   &lt;ul>
@@ -11415,7 +11415,7 @@ _:b0 a as:CollectionPage ;
   typeof="CollectionPage">
   &lt;span property="prev" typeof="Link">
     &lt;a property="href" href="http://example.org/collection?page=1">
-      &lt;span property="displayName">Previous Page&lt;/span>
+      &lt;span property="name">Previous Page&lt;/span>
     &lt;/a>
   &lt;/span>
   &lt;ul>
@@ -11477,7 +11477,7 @@ _:b0 a as:CollectionPage ;
 _:b0 a as:CollectionPage ;
   as:prev [
     a as:Link ;
-    as:displayName "Previous Page" ;
+    as:name "Previous Page" ;
     as:href &lt;http://example.org/collection?page=1>
   ] ;
   as:items
@@ -11527,11 +11527,11 @@ _:b0 a as:CollectionPage ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Video",
-  "displayName": "Cool New Movie",
+  "name": "Cool New Movie",
   "duration": "PT2H30M",
   "preview": {
     "type": "Link",
-    "displayName": "Trailer",
+    "name": "Trailer",
     "href": "http://example.org/trailer.mkv",
     "mediaType": "video/mkv",
     "duration": "PT1M"
@@ -11542,13 +11542,13 @@ _:b0 a as:CollectionPage ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Video">
-  &lt;span itemprop="displayName">
+  &lt;span itemprop="name">
     Cool New Movie
   &lt;/span>
   &lt;meta itemprop="duration" content="PT2H30M">(2H 30M)&lt;/meta>
   - &lt;span itemprop="preview" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link">
-    &lt;span itemprop="displayName">Trailer&lt;span>
+    &lt;span itemprop="name">Trailer&lt;span>
     &lt;meta itemprop="duration" content="PT1M">(1M)&lt;/meta>
     &lt;a itemprop="href"
       href="http://example.org/trailer.mkv"
@@ -11560,12 +11560,12 @@ _:b0 a as:CollectionPage ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Video">
-  &lt;span property="displayName">
+  &lt;span property="name">
     Cool New Movie
   &lt;/span>
   &lt;span property="duration" content="PT2H30M" datatype="xsd:duration">(2H 30M)&lt;/span> -
   &lt;span property="preview" typeof="Link">
-    &lt;a property="displayName"
+    &lt;a property="name"
       rel="href" href="http://example.org/trailer.mkv">Trailer&lt;/a>
     &lt;span property="mediaType" lang="">video/mkv&lt;/span>
     &lt;span property="duration" content="PT1M" datatype="xsd:duration">(1M)&lt;/span>
@@ -11594,11 +11594,11 @@ _:b0 a as:CollectionPage ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Video ;
-  as:displayName "Cool New Movie" ;
+  as:name "Cool New Movie" ;
   as:duration "PT2H30M"^^xsd:duration ;
   as:preview [
     a as:Link ;
-    as:displayName "Trailer" ;
+    as:name "Trailer" ;
     as:href &lt;http://example.org/trailer.mkv> ;
     as:mediaType "video/mkv" ;
     as:duration "PT1M"^^xsd:duration
@@ -11645,7 +11645,7 @@ _:b0 a as:Video ;
   "object": "http://example.org/flights/1",
   "result": {
     "type": "http://www.types.example/flightstatus",
-    "displayName": "On Time"
+    "name": "On Time"
   }
 }</pre>
 </div>
@@ -11662,7 +11662,7 @@ _:b0 a as:Video ;
   is
   &lt;span itemprop="result" itemscope
     itemtype="http://www.types.example/flightstatus">
-    &lt;span itemprop="displayName">On Time&lt;/span>
+    &lt;span itemprop="name">On Time&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -11677,7 +11677,7 @@ _:b0 a as:Video ;
   is
   &lt;span property="result"
     typeof="http://www.types.example/flightstatus">
-    &lt;span property="displayName">On Time&lt;/span>
+    &lt;span property="name">On Time&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -11703,7 +11703,7 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   as:object &lt;http://example.org/flights/1&gt; ;
   as:result [
     a &lt;http://www.types.example/flightstatus&gt; ;
-    as:displayName "On Time"
+    as:name "On Time"
   ] .</pre>
   </div>
 </div>
@@ -11892,7 +11892,7 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   "content": "A simple note",
   "scope": {
     "type": "http://example.org/Organization",
-    "displayName": "My Organization"
+    "name": "My Organization"
   }
 }</pre>
   </div>
@@ -11905,7 +11905,7 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
   &lt;/div>
   &lt;div itemprop="scope" itemscope
     itemtype="http://example.org/Organization">
-    &lt;span itemprop="displayName">
+    &lt;span itemprop="name">
       My Organization
     &lt;/span>
   &lt;/div>
@@ -11919,7 +11919,7 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
     A simple note
   &lt;/div>
   &lt;div property="scope" typeof="http://example.org/Organization">
-    &lt;span property="displayName">
+    &lt;span property="name">
       My Organization
     &lt;/span>
   &lt;/div>
@@ -11945,7 +11945,7 @@ _:b0 a as:Note ;
   as:content "A simple note" ;
   as:scope [
     a ex:Organization ;
-    as:displayName "My Organization"
+    as:name "My Organization"
   ] .
 </pre>
   </div>
@@ -11987,13 +11987,13 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "displayName": "Picture of Sally",
+  "name": "Picture of Sally",
   "url": "http://example.org/sally.jpg",
   "tag": [
     {
       "type": "Person",
       "id": "http://sally.example.org",
-      "displayName": "Sally"
+      "name": "Sally"
     }
   ]
 }</pre>
@@ -12002,11 +12002,11 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;figure itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Image">
-  &lt;figcaption itemprop="displayName">
+  &lt;figcaption itemprop="name">
     Picture of
     &lt;span itemprop="tag" itemscope
       itemtype="http://www.w3.org/ns/activitystreams#Person">
-      &lt;span itemprop="displayName">Sally&lt;/span>
+      &lt;span itemprop="name">Sally&lt;/span>
     &lt;/span>
   &lt;/figcaption>
   &lt;img itemprop="url"
@@ -12017,10 +12017,10 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;figure vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Image">
-  &lt;figcaption property="displayName">
+  &lt;figcaption property="name">
     Picture of
     &lt;span property="tag" typeof="Person">
-      &lt;span property="displayName">Sally&lt;/span>
+      &lt;span property="name">Sally&lt;/span>
     &lt;/span>
   &lt;/figcaption>
   &lt;img property="url"
@@ -12045,13 +12045,13 @@ _:b0 a as:Note ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Image ;
-  as:displayName "Picture of Sally" ;
+  as:name "Picture of Sally" ;
   as:url &lt;http://example.org/sally.jpg> ;
   as:tag &lt;http://sally.example.org> .
 
 &lt;http://sally.example.org>
     a as:Person ;
-    as:displayName "Sally" .</pre>
+    as:name "Sally" .</pre>
   </div>
 </div>
           </td>
@@ -12186,7 +12186,7 @@ _:b0 a as:Offer ;
   "object": "http://example.org/posts/1",
   "target": {
     "type": "Person",
-    "displayName": "John"
+    "name": "John"
   }
 }</pre>
   </div>
@@ -12206,7 +12206,7 @@ _:b0 a as:Offer ;
   with
   &lt;span itemprop="target" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12225,7 +12225,7 @@ _:b0 a as:Offer ;
   &lt;/a>
   with
   &lt;span property="target" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
+    &lt;span property="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12256,7 +12256,7 @@ _:b0 a as:Offer ;
   as:object &lt;http://example.org/posts/1&gt; ;
   as:target [
     a as:Person ;
-    as:displayName "John"
+    as:name "John"
   ]. </pre>
   </div>
 </div>
@@ -12425,7 +12425,7 @@ _:b0 a as:Offer ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Document",
-  "displayName": "4Q Sales Forecast",
+  "name": "4Q Sales Forecast",
   "url": "http://example.org/4q-sales-forecast.pdf"
 }</pre>
 </div>
@@ -12433,7 +12433,7 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Document">
-  &lt;span itemprop="displayName">4Q Sales Forecast&lt;/span> -
+  &lt;span itemprop="name">4Q Sales Forecast&lt;/span> -
   &lt;a itemprop="url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
 &lt;/div></pre>
@@ -12442,7 +12442,7 @@ _:b0 a as:Offer ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Document">
-&lt;span property="displayName">4Q Sales Forecast&lt;/span> -
+&lt;span property="name">4Q Sales Forecast&lt;/span> -
   &lt;a property="url"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
 &lt;/div></pre>
@@ -12461,7 +12461,7 @@ _:b0 a as:Offer ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Document ;
-  as:displayName "4Q Sales Forecast" ;
+  as:name "4Q Sales Forecast" ;
   as:url &lt;http://example.org/4q-sales-forecast.pdf&gt; .</pre>
   </div>
 </div>
@@ -12478,7 +12478,7 @@ _:b0 a as:Document ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Document",
-  "displayName": "4Q Sales Forecast",
+  "name": "4Q Sales Forecast",
   "url": {
     "type": "Link",
     "href": "http://example.org/4q-sales-forecast.pdf"
@@ -12489,7 +12489,7 @@ _:b0 a as:Document ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Document">
-  &lt;span itemprop="displayName">4Q Sales Forecast&lt;/span> -
+  &lt;span itemprop="name">4Q Sales Forecast&lt;/span> -
   &lt;a itemprop="url" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
@@ -12499,7 +12499,7 @@ _:b0 a as:Document ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Document">
-&lt;span property="displayName">4Q Sales Forecast&lt;/span> -
+&lt;span property="name">4Q Sales Forecast&lt;/span> -
   &lt;a property="url" typeof="Link"
     href="http://example.org/4q-sales-forecast.pdf">Open&lt;/a>
 &lt;/div></pre>
@@ -12517,7 +12517,7 @@ _:b0 a as:Document ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Document ;
-  as:displayName "4Q Sales Forecast" ;
+  as:name "4Q Sales Forecast" ;
   as:url [
     a as:Link ;
     as:href &lt;http://example.org/4q-sales-forecast.pdf>
@@ -12537,7 +12537,7 @@ _:b0 a as:Document ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Document",
-  "displayName": "4Q Sales Forecast",
+  "name": "4Q Sales Forecast",
   "url": [
     {
       "type": "Link",
@@ -12556,7 +12556,7 @@ _:b0 a as:Document ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Document">
-  &lt;span itemprop="displayName">4Q Sales Forecast&lt;/span> -
+  &lt;span itemprop="name">4Q Sales Forecast&lt;/span> -
   &lt;a itemprop="url" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Link"
     href="http://example.org/4q-sales-forecast.pdf"
@@ -12571,7 +12571,7 @@ _:b0 a as:Document ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Document">
-  &lt;span property="displayName">4Q Sales Forecast&lt;/span> -
+  &lt;span property="name">4Q Sales Forecast&lt;/span> -
     &lt;span property="url" typeof="Link">
       &lt;a property="mediaType" content="application/pdf" lang=""
         rel="href" href="http://example.org/4q-sales-forecast.pdf">PDF&lt;/a> |
@@ -12600,7 +12600,7 @@ _:b0 a as:Document ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Document ;
-  as:displayName "4Q Sales Forecast" ;
+  as:name "4Q Sales Forecast" ;
   as:url
     [
       a as:Link ;
@@ -12762,7 +12762,7 @@ _:b0 a as:Place ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Fresno Area",
+  "name": "Fresno Area",
   "altitude": 15.0,
   "latitude": 36.75,
   "longitude": 119.7667,
@@ -12775,7 +12775,7 @@ _:b0 a as:Place ;
   itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Fresno Area&lt;/td>
+    &lt;td itemprop="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -12801,7 +12801,7 @@ _:b0 a as:Place ;
   typeof="Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Fresno Area&lt;/td>
+    &lt;td property="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -12852,7 +12852,7 @@ _:b0 a as:Place ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Fresno Area" ;
+  as:name "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:altitude "15"^^xsd:float ;
@@ -13026,9 +13026,9 @@ _:b0 a as:Note ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn>displayName</dfn></td>
+          <td rowspan="4" ><dfn>name</dfn></td>
           <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#displayName</code></td>
+          <td><code>http://www.w3.org/ns/activitystreams#name</code></td>
           <td rowspan="4">
 <div class="nanotabs">
   <ul>
@@ -13042,14 +13042,14 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "displayName": "A simple note"
+  "name": "A simple note"
 }</pre>
 </div>
 <div id="ex132-microdata" style="display:none;">
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="displayName">
+  &lt;span itemprop="name">
     A simple note
   &lt;/span>
 &lt;/div></pre>
@@ -13058,7 +13058,7 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
-  &lt;span property="displayName">
+  &lt;span property="name">
     A simple note
   &lt;/span>
 &lt;/div></pre>
@@ -13077,7 +13077,7 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Note ;
-  as:displayName "A simple note" .</pre>
+  as:name "A simple note" .</pre>
   </div>
 </div>
 
@@ -13093,7 +13093,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "displayNameMap": [
+  "nameMap": [
     "en": "A simple note",
     "sp": "Una simple nota"
   }
@@ -13103,10 +13103,10 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;span itemprop="displayName" lang="en">
+  &lt;span itemprop="name" lang="en">
     A simple note
   &lt;/span>
-  &lt;span itemprop="displayName" lang="sp">
+  &lt;span itemprop="name" lang="sp">
     Una simple nota
   &lt;/span>
 &lt;/div></pre>
@@ -13115,10 +13115,10 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
-  &lt;span property="displayName" lang="en">
+  &lt;span property="name" lang="en">
     A simple note
   &lt;/span>
-  &lt;span property="displayName" lang="sp">
+  &lt;span property="name" lang="sp">
     Una simple nota
   &lt;/span>
 &lt;/div></pre>
@@ -13140,8 +13140,8 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Note ;
-  as:displayName "A simple note"@en ;
-  as:displayName "Una simple nota"@sp .</pre>
+  as:name "A simple note"@en ;
+  as:name "Una simple nota"@sp .</pre>
   </div>
 </div>
           </td>
@@ -13150,7 +13150,7 @@ _:b0 a as:Note ;
           <td>Notes:</td>
           <td>
             A simple, human-readable, plain-text name for the object. HTML
-            markup MUST NOT be included. The displayName MAY be expressed
+            markup MUST NOT be included. The name MAY be expressed
             using multiple language-tagged values.
           </td>
         </tr>
@@ -13182,7 +13182,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Video",
-  "displayName": "A Simple Video",
+  "name": "A Simple Video",
   "url": "http://example.org/video.mkv",
   "duration": "PT2H"
 }</pre>
@@ -13191,7 +13191,7 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Video">
-  &lt;span itemprop="displayName">A Simple Video&lt;/span>
+  &lt;span itemprop="name">A Simple Video&lt;/span>
   &lt;meta itemprop="duration" content="PT2H">(2 hours)&lt;meta> -
   &lt;a itemprop="url"
     href="http://example.org/video.mkv">Watch&lt;/a>
@@ -13201,7 +13201,7 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Video">
-&lt;span property="displayName">A Simple Video&lt;/span>
+&lt;span property="name">A Simple Video&lt;/span>
   &lt;meta property="duration" content="PT2H" datatype="xsd:duration">(2 hours)&lt;meta> -
   &lt;a property="url"
     href="http://example.org/video.mkv">Watch&lt;/a>
@@ -13223,7 +13223,7 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Video ;
-  as:displayName "A Simple Video" ;
+  as:name "A Simple Video" ;
   as:url &lt;http://example.org/video.mkv&gt; ;
   as:duration "PT2H"^^xsd:duration.</pre>
   </div>
@@ -13272,7 +13272,7 @@ _:b0 a as:Video ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Content",
-  "displayName": "Some generic content",
+  "name": "Some generic content",
   "content": "&lt;p>This can be any kind of content&lt;/p>",
   "height": 100,
   "width": 100
@@ -13283,7 +13283,7 @@ _:b0 a as:Video ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Content"
   style="width:100px; height:100px">
-  &lt;div itemprop="displayName">Some generic content&lt;/div>
+  &lt;div itemprop="name">Some generic content&lt;/div>
   &lt;div itemprop="content">
     &lt;p>This can be any kind of content&lt;/p>
   &lt;/div>
@@ -13295,7 +13295,7 @@ _:b0 a as:Video ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Content">
-  &lt;div property="displayName">Some generic content&lt;/div>
+  &lt;div property="name">Some generic content&lt;/div>
   &lt;div property="content" datatype="rdf:HTML">
     &lt;p>This can be any kind of content&lt;/p>
   &lt;/div>
@@ -13318,7 +13318,7 @@ _:b0 a as:Video ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Content ;
-  as:displayName "Some generic content" ;
+  as:name "Some generic content" ;
   as:content "&lt;p>This can be any kind of content&lt;/p>" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
@@ -13369,7 +13369,7 @@ _:b0 a as:Content ;
   "type": "Link",
   "href": "http://example.org/abc",
   "mediaType": "text/html",
-  "displayName": "An example link"
+  "name": "An example link"
 }</pre>
   </div>
   <div id="ex137-microdata" style="display: none;">
@@ -13379,13 +13379,13 @@ _:b0 a as:Content ;
     href="http://example.org/abc"
     hreflang="en"
     type="text/html"
-    itemprop="displayName">An example link&lt;/a></pre>
+    itemprop="name">An example link&lt;/a></pre>
   </div>
   <div id="ex137-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;span vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Link">
-  &lt;a property="displayName"
+  &lt;a property="name"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
 &lt;/span></pre>
@@ -13403,7 +13403,7 @@ _:b0 a as:Content ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Link ;
-  as:displayName "An example link" ;
+  as:name "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:mediaType "text/html" .</pre>
   </div>
@@ -13451,7 +13451,7 @@ _:b0 a as:Link ;
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "displayName": "An example link"
+  "name": "An example link"
 }</pre>
   </div>
   <div id="ex138-microdata" style="display: none;">
@@ -13461,13 +13461,13 @@ _:b0 a as:Link ;
     href="http://example.org/abc"
     hreflang="en"
     type="text/html"
-    itemprop="displayName">An example link&lt;/a></pre>
+    itemprop="name">An example link&lt;/a></pre>
   </div>
   <div id="ex138-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;span vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Link">
-  &lt;a property="displayName"
+  &lt;a property="name"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
   &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
@@ -13486,7 +13486,7 @@ _:b0 a as:Link ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Link ;
-  as:displayName "An example link" ;
+  as:name "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
   as:mediaType "text/html" .</pre>
@@ -13540,11 +13540,11 @@ _:b0 a as:Link ;
   "items": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -13558,13 +13558,13 @@ _:b0 a as:Link ;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -13578,12 +13578,12 @@ _:b0 a as:Link ;
   &lt;link property="partOf" href="http://example.org/collection" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -13614,11 +13614,11 @@ _:b0 a as:Link ;
   as:items
     [
       a as:Note ;
-      as:displayName "A Simple Note"
+      as:name "A Simple Note"
     ],
     [
       a as:Note ;
-      as:displayName "Another Simple Note"
+      as:name "Another Simple Note"
     ] .</pre>
   </div>
   </div>
@@ -13663,7 +13663,7 @@ _:b0 a as:Link ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Fresno Area",
+  "name": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
   "radius": 15,
@@ -13676,7 +13676,7 @@ _:b0 a as:Link ;
   itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Fresno Area&lt;/td>
+    &lt;td itemprop="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -13702,7 +13702,7 @@ _:b0 a as:Link ;
   typeof="Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Fresno Area&lt;/td>
+    &lt;td property="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -13753,7 +13753,7 @@ _:b0 a as:Link ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Fresno Area" ;
+  as:name "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:radius "15"^^xsd:float ;
@@ -13800,7 +13800,7 @@ _:b0 a as:Place ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Fresno Area",
+  "name": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
   "radius": 15,
@@ -13813,7 +13813,7 @@ _:b0 a as:Place ;
   itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Fresno Area&lt;/td>
+    &lt;td itemprop="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -13839,7 +13839,7 @@ _:b0 a as:Place ;
   typeof="Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Fresno Area&lt;/td>
+    &lt;td property="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -13890,7 +13890,7 @@ _:b0 a as:Place ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Fresno Area" ;
+  as:name "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:radius "15"^^xsd:float ;
@@ -13940,7 +13940,7 @@ _:b0 a as:Place ;
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "displayName": "An example link"
+  "name": "An example link"
 }</pre>
   </div>
   <div id="ex142-microdata" style="display: none;">
@@ -13950,13 +13950,13 @@ _:b0 a as:Place ;
     href="http://example.org/abc"
     hreflang="en"
     type="text/html"
-    itemprop="displayName">An example link&lt;/a></pre>
+    itemprop="name">An example link&lt;/a></pre>
   </div>
   <div id="ex142-rdfa" style="display: none;">
 <pre class="example highlight json"
 >&lt;span vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Link">
-  &lt;a property="displayName"
+  &lt;a property="name"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
   &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
@@ -13975,7 +13975,7 @@ _:b0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Link ;
-  as:displayName "An example link" ;
+  as:name "An example link" ;
   as:href &lt;http://example.org/abc> ;
   as:hreflang "en" ;
   as:mediaType "text/html" .</pre>
@@ -14029,7 +14029,7 @@ _:b0 a as:Link ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Event",
-  "displayName": "A Party!",
+  "name": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
 }</pre>
@@ -14038,7 +14038,7 @@ _:b0 a as:Link ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Event">
-  &lt;h2 itemprop="displayName">A Party&lt;/h2>
+  &lt;h2 itemprop="name">A Party&lt;/h2>
   &lt;div>Starts:
   &lt;meta itemprop="startTime" content="2014-12-31T23:00:00-08:00">
     11:00 PM on Dec 31, 2014
@@ -14055,7 +14055,7 @@ _:b0 a as:Link ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Event">
-  &lt;h2 property="displayName">A Party&lt;/h2>
+  &lt;h2 property="name">A Party&lt;/h2>
   Starts:
   &lt;time property="startTime" content="2014-12-31T23:00:00-08:00" datatype="xsd:dateTime"
     datetime="2014-12-31T23:00:00-08:00">
@@ -14092,7 +14092,7 @@ _:b0 a as:Link ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Event ;
-  as:displayName "A Party!" ;
+  as:name "A Party!" ;
   as:startTime "2014-12-31T23:00:00-08:00"^^xsd:dateTime ;
   as:endTime "2015-01-01T06:00:00-08:00"^^xsd:dateTime .</pre>
   </div>
@@ -14226,7 +14226,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Event",
-  "displayName": "A Party!",
+  "name": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
 }</pre>
@@ -14235,7 +14235,7 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Event">
-  &lt;h2 itemprop="displayName">A Party&lt;/h2>
+  &lt;h2 itemprop="name">A Party&lt;/h2>
   &lt;div>Starts:
   &lt;meta itemprop="startTime" content="2014-12-31T23:00:00-08:00">
     11:00 PM on Dec 31, 2014
@@ -14252,7 +14252,7 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Event">
-  &lt;h2 property="displayName">A Party&lt;/h2>
+  &lt;h2 property="name">A Party&lt;/h2>
   Starts:
   &lt;time property="startTime" content="2014-12-31T23:00:00-08:00" datatype="xsd:dateTime"
     datetime="2014-12-31T23:00:00-08:00">
@@ -14289,7 +14289,7 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
 _:b0 a as:Event ;
-  as:displayName "A Party!" ;
+  as:name "A Party!" ;
   as:startTime "2014-12-31T23:00:00-08:00"^^xsd:dateTime ;
   as:endTime "2015-01-01T06:00:00-08:00"^^xsd:dateTime.</pre>
   </div>
@@ -14337,7 +14337,7 @@ _:b0 a as:Event ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Fresno Area",
+  "name": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
   "radius": 15,
@@ -14350,7 +14350,7 @@ _:b0 a as:Event ;
   itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Fresno Area&lt;/td>
+    &lt;td itemprop="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -14376,7 +14376,7 @@ _:b0 a as:Event ;
   typeof="Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Fresno Area&lt;/td>
+    &lt;td property="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -14427,7 +14427,7 @@ _:b0 a as:Event ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Fresno Area" ;
+  as:name "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:radius "15"^^xsd:float ;
@@ -14480,7 +14480,7 @@ _:b0 a as:Place ;
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "displayName": "An example link",
+  "name": "An example link",
   "rel": ["canonical", "preview"]
 }</pre>
   </div>
@@ -14492,13 +14492,13 @@ _:b0 a as:Place ;
     hreflang="en"
     type="text/html"
     rel="canonical preview"
-    itemprop="displayName">An example link&lt;/a></pre>
+    itemprop="name">An example link&lt;/a></pre>
   </div>
   <div id="ex149-rdfa" style="display: none;">
 <pre class="example highlight html"
 >&lt;span vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Link">
-  &lt;a property="displayName"
+  &lt;a property="name"
     rel="href" href="http://example.org/abc">An example link&lt;/a> (
   &lt;abbr property="hreflang" lang="" data-lt="English">en&lt;/abbr> -
   &lt;span property="mediaType" lang="">text/html&lt;/span>)
@@ -14520,7 +14520,7 @@ _:b0 a as:Place ;
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 
 _:b0 a as:Link ;
-  as:displayName "An example link" ;
+  as:name "An example link" ;
   as:href &lt;http://example.org/abc&gt; ;
   as:hreflang "en" ;
   as:rel "canonical", "preview" ;
@@ -14572,11 +14572,11 @@ _:b0 a as:Link ;
   "orderedItems": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -14589,13 +14589,13 @@ _:b0 a as:Link ;
   &lt;ol>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -14609,12 +14609,12 @@ _:b0 a as:Link ;
   &lt;meta property="startIndex" content="0" datatype="xsd:nonNegativeInteger" />
   &lt;ol>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" inlist="" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -14647,11 +14647,11 @@ _:b0 a as:OrderedCollectionPage ;
   as:items (
     [
       a as:Note ;
-      as:displayName "A Simple Note"
+      as:name "A Simple Note"
     ]
     [
       a as:Note ;
-      as:displayName "Another Simple Note"
+      as:name "Another Simple Note"
     ]
   ) .
 </pre>
@@ -14948,10 +14948,10 @@ _:b0 a as:Note ;
           <td>
             A natural language title of the object. HTML markup,
             including visual images such as images, MAY be included. The
-            <code><a>title</a></code> and <code><a>displayName</a></code>
+            <code><a>title</a></code> and <code><a>name</a></code>
             properties are closely related and overlap in function with the
             key difference being that <code><a>title</a></code> is permitted
-            to contain HTML markup while <code><a>displayName</a></code> is
+            to contain HTML markup while <code><a>name</a></code> is
             not.
           </td>
         </tr>
@@ -14987,11 +14987,11 @@ _:b0 a as:Note ;
   "items": [
     {
       "type": "Note",
-      "displayName": "A Simple Note"
+      "name": "A Simple Note"
     },
     {
       "type": "Note",
-      "displayName": "Another Simple Note"
+      "name": "Another Simple Note"
     }
   ]
 }</pre>
@@ -15004,13 +15004,13 @@ _:b0 a as:Note ;
   &lt;ul>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li itemscope itemprop="items"
     itemtype="http://www.w3.org/ns/activitystreams#Note">
-      &lt;span itemprop="displayName">
+      &lt;span itemprop="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -15024,12 +15024,12 @@ _:b0 a as:Note ;
   &lt;meta property="totalItems" content="2" datatype="xsd:nonNegativeInteger" />
   &lt;ul>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         A Simple Note
       &lt;/span>
     &lt;/li>
     &lt;li property="items" typeof="Note">
-      &lt;span property="displayName">
+      &lt;span property="name">
         Another Simple Note
       &lt;/span>
     &lt;/li>
@@ -15061,11 +15061,11 @@ _:b0 a as:Collection ;
   as:items
     [
       a as:Note ;
-        as:displayName "A Simple Note"
+        as:name "A Simple Note"
     ] ,
     [
       a as:Note ;
-        as:displayName "Another Simple Note"
+        as:name "Another Simple Note"
     ] .</pre>
   </div>
   </div>
@@ -15112,7 +15112,7 @@ _:b0 a as:Collection ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Place",
-  "displayName": "Fresno Area",
+  "name": "Fresno Area",
   "latitude": 36.75,
   "longitude": 119.7667,
   "radius": 15,
@@ -15125,7 +15125,7 @@ _:b0 a as:Collection ;
   itemtype="http://www.w3.org/ns/activitystreams#Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td itemprop="displayName">Fresno Area&lt;/td>
+    &lt;td itemprop="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -15151,7 +15151,7 @@ _:b0 a as:Collection ;
   typeof="Place">
   &lt;tr>
     &lt;td>Name&lt;/td>
-    &lt;td property="displayName">Fresno Area&lt;/td>
+    &lt;td property="name">Fresno Area&lt;/td>
   &lt;/tr>
   &lt;tr>
     &lt;td>Latitude&lt;/td>
@@ -15202,7 +15202,7 @@ _:b0 a as:Collection ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Place ;
-  as:displayName "Fresno Area" ;
+  as:name "Fresno Area" ;
   as:latitude "36.75"^^xsd:float ;
   as:longitude "119.7667"^^xsd:float ;
   as:radius "15"^^xsd:float ;
@@ -15348,7 +15348,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Content",
-  "displayName": "Some generic content",
+  "name": "Some generic content",
   "content": "&lt;p>This can be any kind of content&lt;/p>",
   "height": 100,
   "width": 100
@@ -15359,7 +15359,7 @@ _:b0 a as:Note ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Content"
   style="width:100px; height:100px">
-  &lt;div itemprop="displayName">Some generic content&lt;/div>
+  &lt;div itemprop="name">Some generic content&lt;/div>
   &lt;div itemprop="content">
     &lt;p>This can be any kind of content&lt;/p>
   &lt;/div>
@@ -15371,7 +15371,7 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Content">
-  &lt;div property="displayName">Some generic content&lt;/div>
+  &lt;div property="name">Some generic content&lt;/div>
   &lt;div property="content">
     &lt;p>This can be any kind of content&lt;/p>
   &lt;/div>
@@ -15394,7 +15394,7 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Content ;
-  as:displayName "Some generic content" ;
+  as:name "Some generic content" ;
   as:content "&lt;p>This can be any kind of content&lt;/p>" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
@@ -15445,12 +15445,12 @@ _:b0 a as:Content ;
   "type": "Relationship",
   "subject": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
   "object": {
     "type": "Person",
-    "displayName": "John"
+    "name": "John"
   }
 }</pre>
 </div>
@@ -15460,7 +15460,7 @@ _:b0 a as:Content ;
   itemtype="http://www.w3.org/ns/activitystreams#Relationship">
   &lt;span itemprop="subject" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   &lt;span itemprop="relationship"
     itemid="http://purl.org/vocab/relationship/closeFriendOf">
@@ -15468,7 +15468,7 @@ _:b0 a as:Content ;
   &lt;/span>
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -15477,14 +15477,14 @@ _:b0 a as:Content ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Relationship">
   &lt;span property="subject" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   &lt;span property="relationship"
     resource="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
   &lt;span property="object" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
+    &lt;span property="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -15505,11 +15505,11 @@ _:b0 a as:Relationship ;
   as:relationship rel:closeFriendOf ;
   as:subject [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] ;
   as:object [
     a as:Person ;
-    as:displayName "John"
+    as:name "John"
   ] .</pre>
   </div>
 </div>
@@ -15561,12 +15561,12 @@ _:b0 a as:Relationship ;
   "type": "Relationship",
   "subject": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
   "object": {
     "type": "Person",
-    "displayName": "John"
+    "name": "John"
   }
 }</pre>
 </div>
@@ -15576,7 +15576,7 @@ _:b0 a as:Relationship ;
   itemtype="http://www.w3.org/ns/activitystreams#Relationship">
   &lt;span itemprop="subject" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span>
   &lt;span itemprop="relationship"
     itemid="http://purl.org/vocab/relationship/closeFriendOf">
@@ -15584,7 +15584,7 @@ _:b0 a as:Relationship ;
   &lt;/span>
   &lt;span itemprop="object" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">John&lt;/span>
+    &lt;span itemprop="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -15593,14 +15593,14 @@ _:b0 a as:Relationship ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Relationship">
   &lt;span property="subject" typeof="Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span>
   &lt;span property="relationship"
     resource="http://purl.org/vocab/relationship/closeFriendOf">
     knows
   &lt;/span>
   &lt;span property="object" typeof="Person">
-    &lt;span property="displayName">John&lt;/span>
+    &lt;span property="name">John&lt;/span>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -15621,11 +15621,11 @@ _:b0 a as:Relationship ;
   as:relationship rel:closeFriendOf ;
   as:subject [
     a as:Person ;
-      as:displayName "Sally" .
+      as:name "Sally" .
   ] ;
   as:object [
     a as:Person ;
-      as:displayName "John" .
+      as:name "John" .
   ] .</pre>
   </div>
 </div>
@@ -15675,7 +15675,7 @@ _:b0 a as:Relationship ;
   "type": "Profile",
   "describes": {
     "type": "Person",
-    "displayName": "Sally"
+    "name": "Sally"
   },
   "url": "http://sally.example.org"
 }</pre>
@@ -15686,7 +15686,7 @@ _:b0 a as:Relationship ;
   itemtype="http://www.w3.org/ns/activitystreams#Profile">
   &lt;span itemprop="describes" itemscope
     itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="displayName">Sally&lt;/span>
+    &lt;span itemprop="name">Sally&lt;/span>
   &lt;/span> -
   &lt;a itemprop="url" href="http://sally.example.org">Profile&lt;/a>
 &lt;/div></pre>
@@ -15697,7 +15697,7 @@ _:b0 a as:Relationship ;
   typeof="Profile">
   &lt;span property="describes"
     typeof="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span property="displayName">Sally&lt;/span>
+    &lt;span property="name">Sally&lt;/span>
   &lt;/span> -
   &lt;a property="url" href="http://sally.example.org">Profile&lt;/a>
 &lt;/div></pre>
@@ -15716,7 +15716,7 @@ _:b0 a as:Relationship ;
 _:b0 a as:Profile ;
   as:describes [
     a as:Person ;
-    as:displayName "Sally"
+    as:name "Sally"
   ] ;
   as:url &lt;http://sally.example.org> .</pre>
   </div>

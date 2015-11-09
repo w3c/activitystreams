@@ -233,9 +233,9 @@
       "@id": "as:content",
       "@container": "@language"
     },
-    "displayName": "as:displayName",
-    "displayNameMap": {
-      "@id": "as:displayName",
+    "name": "as:name",
+    "nameMap": {
+      "@id": "as:name",
       "@container": "@language"
     },
     "downstreamDuplicates": "as:downStreamDuplicates",
