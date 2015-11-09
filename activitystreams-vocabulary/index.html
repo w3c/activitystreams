@@ -12899,7 +12899,7 @@ _:b0 a as:Place ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "content": "A simple note"
+  "content": "A &lt;i>simple&lt;/i> note"
 }</pre>
 </div>
 <div id="ex130-microdata" style="display:none;">
@@ -12907,7 +12907,7 @@ _:b0 a as:Place ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
   &lt;span itemprop="content">
-    A simple note
+    A &lt;i>simple&lt;/i> note
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12916,7 +12916,7 @@ _:b0 a as:Place ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
   &lt;span property="content">
-    A simple note
+    A &lt;i>simple&lt;/i> note
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12924,7 +12924,7 @@ _:b0 a as:Place ;
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;span class="e-content">
-    A simple note
+    A &lt;i>simple&lt;/i> note
   &lt;/span
 &lt;/div></pre>
   </div>
@@ -12934,7 +12934,7 @@ _:b0 a as:Place ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Note ;
-  as:content "A simple note".</pre>
+  as:content "A &lt;i>simple&lt;/i> note".</pre>
   </div>
 </div>
 
@@ -12951,8 +12951,8 @@ _:b0 a as:Note ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
   "contentMap": [
-    "en": "A simple note",
-    "sp": "Una simple nota"
+    "en": "A &lt;i>simple&lt;/i> note",
+    "sp": "Una &lt;i>simple&lt;/i> nota"
   }
 }</pre>
 </div>
@@ -12961,10 +12961,10 @@ _:b0 a as:Note ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
   &lt;span itemprop="content" lang="en">
-    A simple note
+    A &lt;i>simple&lt;/i> note
   &lt;/span>
   &lt;span itemprop="content" lang="sp">
-    Una simple nota
+    Una &lt;i>simple&lt;/i> nota
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12973,10 +12973,10 @@ _:b0 a as:Note ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
   &lt;span property="content" lang="en">
-    A simple note
+    A &lt;i>simple&lt;/i> note
   &lt;/span>
   &lt;span property="content" lang="sp">
-    Una simple nota
+    Una &lt;i>simple&lt;/i> nota
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12984,10 +12984,10 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;span class="e-content" lang="en">
-    A simple note
+    A &lt;i>simple&lt;/i> note
   &lt;/span
   &lt;span class="e-content" lang="sp">
-    Una simple nota
+    Una &lt;i>simple&lt;/i> nota
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -12997,8 +12997,32 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Note ;
-  as:content "A simple note"@en ;
+  as:content "A &lt;i>simple&lt;/i> note"@en ;
   as:content "Una simple nota"@sp.</pre>
+  </div>
+</div>
+
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex130b-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex130b-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex130b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "mediaType": "text/markdown",
+  "content": "## A simple note\nA simple markdown `note`"
+}</pre>
+</div>
+<div id="ex130b-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+_:b0 a as:Note ;
+  as:mediaType "text/markdown" ;
+  as:content "## A simple note\nA simple markdown `note`".</pre>
   </div>
 </div>
           </td>
@@ -13006,9 +13030,16 @@ _:b0 a as:Note ;
         <tr>
           <td>Notes:</td>
           <td>
-            The content or textual representation of the Object.
-            Markup, including references to visual elements such as images, MAY be included.
-            The content MAY be expressed using multiple language-tagged values.
+            <p>
+              The content or textual representation of the Object encoded as a
+              JSON string. By default, the value of <code>content</code> is
+              HTML. The <code><a>mediaType</a></code> property can be used in
+              the object to indicate a different content type.
+            </p>
+            <p>
+              The content MAY be expressed using multiple language-tagged
+              values.
+            </p>
           </td>
         </tr>
         <tr>
@@ -14695,7 +14726,7 @@ _:b0 a as:OrderedCollectionPage ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "summary": "A simple note"
+  "summary": "A simple &lt;i>note&lt;/i>"
 }</pre>
 </div>
 <div id="ex152-microdata" style="display:none;">
@@ -14703,7 +14734,7 @@ _:b0 a as:OrderedCollectionPage ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
   &lt;span itemprop="summary">
-    A simple note
+    A simple &lt;i>note&lt;/i>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -14712,7 +14743,7 @@ _:b0 a as:OrderedCollectionPage ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
   &lt;span property="summary">
-    A simple note
+    A simple &lt;i>note&lt;/i>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -14720,7 +14751,7 @@ _:b0 a as:OrderedCollectionPage ;
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;span class="p-summary">
-    A simple note
+    A simple &lt;i>note&lt;/i>
   &lt;/span
 &lt;/div></pre>
   </div>
@@ -14730,7 +14761,7 @@ _:b0 a as:OrderedCollectionPage ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Note ;
-  as:summary "A simple note".</pre>
+  as:summary "A simple &lt;i>note&lt;/i>".</pre>
   </div>
 </div>
 
@@ -14747,8 +14778,8 @@ _:b0 a as:Note ;
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
   "summaryMap": [
-    "en": "A simple note",
-    "sp": "Una simple nota"
+    "en": "A simple &lt;i>note&lt;/i>",
+    "sp": "Una simple &lt;i>nota&lt;/i>"
   }
 }</pre>
 </div>
@@ -14757,10 +14788,10 @@ _:b0 a as:Note ;
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Note">
   &lt;span itemprop="summary" lang="en">
-    A simple note
+    A simple &lt;i>note&lt;/i>
   &lt;/span>
   &lt;span itemprop="summary" lang="sp">
-    Una simple nota
+    Una simple &lt;i>nota&lt;/i>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -14769,10 +14800,10 @@ _:b0 a as:Note ;
 >&lt;div vocab="http://www.w3.org/ns/activitystreams#"
   typeof="Place">
   &lt;span property="summary" lang="en">
-    A simple note
+    A simple &lt;i>note&lt;/i>
   &lt;/span>
   &lt;span property="summary" lang="sp">
-    Una simple nota
+    Una simple &lt;i>nota&lt;/i>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -14780,10 +14811,10 @@ _:b0 a as:Note ;
 <pre class="example highlight html"
 >&lt;div class="h-entry">
   &lt;span class="p-summary" lang="en">
-    A simple note
+    A simple &lt;i>note&lt;/i>
   &lt;/span
   &lt;span class="p-summary" lang="sp">
-    Una simple nota
+    Una simple &lt;i>nota&lt;/i>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -14793,8 +14824,8 @@ _:b0 a as:Note ;
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 _:b0 a as:Note ;
-  as:summary "A simple note"@en ;
-  as:summary "Una simple nota"@sp.</pre>
+  as:summary "A simple &lt;i>note&lt;/i>"@en ;
+  as:summary "Una simple &lt;i>nota&lt;/i>"@sp.</pre>
   </div>
 </div>
           </td>
@@ -14802,9 +14833,8 @@ _:b0 a as:Note ;
         <tr>
           <td>Notes:</td>
           <td>
-            A natural language summarization of the object. HTML markup,
-            including visual images such as images, MAY be included. Multiple
-            language tagged summaries MAY be provided.
+            A natural language summarization of the object encoded as HTML.
+            Multiple language tagged summaries MAY be provided.
           </td>
         </tr>
         <tr>
