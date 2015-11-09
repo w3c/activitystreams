@@ -833,8 +833,6 @@ _:b0 a as:Collection ;
           <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-summary">summaryMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-tag">tag</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-title">titleMap</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-updated">updated</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-url">url</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-to">to</a></code> |
@@ -1058,7 +1056,6 @@ _:b0 a as:Place, gr:Location ;
           <code><a href="../activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
@@ -2343,20 +2340,17 @@ _:b0 a as:Object ;
 
       <p>
         The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
-        defines four properties that use natural language values:
+        defines three properties that use natural language values:
         <code><a href="../activitystreams-vocabulary/#dfn-name">name</a></code>,
-        <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
         <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
         <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>.
         Accordingly, the Activity Streams
         <a href="activitystreams2-context.jsonld">JSON-LD
         @context</a> definition respectively maps the terms
-        "<code>name</code>",
-        "<code>title</code>", "<code>summary</code>", and
-        "<code>content</code>" for representing the JSON string forms; and the
-        terms "<code>nameMap</code>", "<code>titleMap</code>",
-        "<code>summaryMap</code>", and "<code>contentMap</code>" for
-        representing the Language Map forms.
+        "<code>name</code>", "<code>summary</code>", and "<code>content</code>"
+        for representing the JSON string forms; and the terms
+        "<code>nameMap</code>", "<code>summaryMap</code>", and
+        "<code>contentMap</code>" for representing the Language Map forms.
       </p>
 
       <p>
@@ -2876,13 +2870,13 @@ _:c14n0 a gsp:Geometry ;
       While such microsyntaxes MAY be used within the values of the
       <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>,
       <code><a href="../activitystreams-vocabulary/#dfn-name">name</a></code>,
-      <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
-      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code> properties
-      on an Activity Streams <code><a>Object</a></code>, implementations
-      SHOULD NOT be required to parse the values of those properties in order to
-      determine the appropriate routing of notifications, categorization or
-      linking between objects. Instead, publishers SHOULD make appropriate use
-      of the <a href="../activitystreams-vocabulary/">Activity Streams Vocabulary</a>
+      and <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
+      properties on an Activity Streams <code><a>Object</a></code>,
+      implementations SHOULD NOT be required to parse the values of those
+      properties in order to determine the appropriate routing of
+      notifications, categorization or linking between objects. Instead,
+      publishers SHOULD make appropriate use of the
+      <a href="../activitystreams-vocabulary/">Activity Streams Vocabulary</a>
       terms provided specifically for these purposes.
     </p>
 
