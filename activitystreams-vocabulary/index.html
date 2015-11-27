@@ -7227,14 +7227,14 @@ _:b0 a as:Profile ;
       "type": "Follow",
       "actor": "acct:john@example.org",
       "object": "acct:sally@example.org",
-      "context": "http://example.org/connections/123",
+      "context": "http://example.org/connections/123"
     },
     {
       "id": "http://example.org/activities/124",
       "type": "Follow",
       "actor": "acct:sally@example.org",
       "object": "acct:john@example.org",
-      "context": "http://example.org/connections/123",
+      "context": "http://example.org/connections/123"
     },
     {
       "id": "http://example.org/activities/125",
@@ -7245,7 +7245,7 @@ _:b0 a as:Profile ;
         "type": "Collection",
         "displayName": "John's Connections"
       },
-      "context": "http://example.org/connections/123",
+      "context": "http://example.org/connections/123"
     },
     {
       "id": "http://example.org/activities/126",
@@ -7256,7 +7256,7 @@ _:b0 a as:Profile ;
         "type": "Collection",
         "displayName": "Sally's Connections"
       },
-      "context": "http://example.org/connections/123",
+      "context": "http://example.org/connections/123"
     }
   ]
 }</pre>
@@ -8616,8 +8616,7 @@ _:b2 a as:Like ;
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
-    "http://example.org/posts/3",
-  ]
+    "http://example.org/posts/3"  ]
 }</pre>
   </div>
   <div id="ex71-microdata" style="display: none;">
@@ -8746,7 +8745,7 @@ _:b0 a as:Collection ;
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
-    "http://example.org/posts/3",
+    "http://example.org/posts/3"
   ]
 }</pre>
   </div>
@@ -10443,7 +10442,7 @@ _:b0 a as:Question ;
   "anyOf": [
     {
       "type": "Note",
-      "displayName": "Option A",
+      "displayName": "Option A"
     },
     {
       "type": "Note",
@@ -10702,7 +10701,7 @@ _:b0 a as:Move ;
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
-    "http://example.org/posts/3",
+    "http://example.org/posts/3"
   ]
 }</pre>
   </div>
@@ -10826,7 +10825,7 @@ _:b0 a as:CollectionPage ;
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
-    "http://example.org/posts/3",
+    "http://example.org/posts/3"
   ]
 }</pre>
   </div>
@@ -11249,7 +11248,7 @@ _:b0 a as:Like
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
-    "http://example.org/posts/3",
+    "http://example.org/posts/3"
   ]
 }</pre>
   </div>
@@ -11373,7 +11372,7 @@ _:b0 a as:CollectionPage ;
   "items": [
     "http://example.org/posts/1",
     "http://example.org/posts/2",
-    "http://example.org/posts/3",
+    "http://example.org/posts/3"
   ]
 }</pre>
   </div>
@@ -12953,7 +12952,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "contentMap": [
+  "contentMap": {
     "en": "A simple note",
     "sp": "Una simple nota"
   }
@@ -13093,7 +13092,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "displayNameMap": [
+  "displayNameMap": {
     "en": "A simple note",
     "sp": "Una simple nota"
   }
@@ -14749,7 +14748,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "summaryMap": [
+  "summaryMap": {
     "en": "A simple note",
     "sp": "Una simple nota"
   }
@@ -14890,7 +14889,7 @@ _:b0 a as:Note ;
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "titleMap": [
+  "titleMap": {
     "en": "A simple note",
     "sp": "Una simple nota"
   }
