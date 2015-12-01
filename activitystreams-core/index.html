@@ -1422,8 +1422,9 @@ _:b0 a as:Place, gr:Location ;
         that does not contain the "space" U+0020, "tab" (U+0009), "LF" (U+000A),
         "FF" (U+000C), "CR" (U+000D) or "," (U+002C) characters can be used as a
         valid link relation. To promote interoperability, Activity Streams 2.0
-        implementations MUST only use link relations that are valid in terms of
-        both the [[RFC5988]] and [[HTML5]] definitions.
+        implementations MUST only use link relations that are syntactically
+        valid in terms of both the [[RFC5988]] and [[HTML5]] definitions.
+        Implementations MAY use link relation values that are not registered.
       </p>
 
       <p>
