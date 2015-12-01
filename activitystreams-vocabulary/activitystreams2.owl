@@ -672,11 +672,6 @@ as:Add a owl:Class ;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To Add an Object or Link to Something"@en .
 
-as:Album a owl:Class ;
-  rdfs:label "Album"@en ;
-  rdfs:subClassOf as:Collection ;
-  rdfs:comment "An Album.. typically a collection of photos"@en .
-
 as:Announce a owl:Class ;
   rdfs:label "Announce"@en;
   rdfs:subClassOf as:Activity ;
@@ -756,11 +751,6 @@ as:Flag a owl:Class ;
   rdfs:label "Flag"@en;
   rdfs:subClassOf as:Activity ;
   rdfs:comment "To flag something (e.g. flag as inappropriate, flag as spam, etc)"@en .
-
-as:Folder a owl:Class ;
-  rdfs:label "Folder"@en ;
-  rdfs:subClassOf as:Collection ;
-  rdfs:comment "Typically, a collection of files"@en .
 
 as:Follow a owl:Class ;
   rdfs:label "Follow"@en ;
@@ -944,11 +934,6 @@ as:Service a owl:Class ;
   rdfs:label "Service"@en ;
   rdfs:subClassOf as:Actor ;
   rdfs:comment "A service provided by some entity"@en .
-
-as:Story a owl:Class ;
-  rdfs:label "Story"@en ;
-  rdfs:subClassOf as:OrderedCollection ;
-  rdfs:comment "An ordered collection of content sharing a common purpose or characteristic"@en .
 
 as:TentativeAccept a owl:Class ;
   rdfs:label "TentativeAccept"@en ;
