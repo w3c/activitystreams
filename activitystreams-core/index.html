@@ -168,7 +168,7 @@
         [[!JSON-LD]] specification. While other serialization forms are
         possible, such alternatives are not discussed by this document.
       </p>
-
+      
       <p>
         When serialized, absent properties are represented by either (a)
         setting the property value to null, or (b) by omitting the property
@@ -208,7 +208,7 @@
 
       <p>
         An <dfn data-lt="Activity Streams Document">Activity Streams
-        Document</dfn> is a JSON-LD document whose root value is an
+        Document</dfn> is a JSON document whose root value is an
         Activity Streams <a>Object</a> of any type and whose MIME media
         type is "<code>application/activity+json</code>".
       </p>
@@ -233,7 +233,13 @@
         <a href="#extensibility">Extensibility</a> section for more information
         on handling extensions within Activity Streams 2.0 documents.
       </p>
-
+      
+      <p>
+        While [[JSON-LD]] conventions are followed by this specification,
+        implementers are not required to use JSON-LD mechanisms to produce
+        or consume the core Activity Streams 2.0 syntax.
+      </p>
+      
     </section>
 
   </section>
@@ -246,10 +252,10 @@
     </p>
 
     <p>
-      Each example is shown using the normative JSON-LD serialization defined
+      Each example is shown using the normative JSON serialization defined
       by this specification along with generally equivalent, non-normative
       Microdata, RDFa, Microformats, and Turtle serializations. These
-      non-JSON-LD alternatives are included solely for illustrative purposes.
+      non-JSON alternatives are included solely for illustrative purposes.
     </p>
 
         <section id="ednotes" class="informative">
@@ -272,7 +278,7 @@
   </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex1-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex1-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex1-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex1-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex1-microformats" class="selected">Microformats</a></li>
@@ -341,7 +347,7 @@ _:b0 a as:Create ;
       </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex2-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex2-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex2-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex2-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex2-microformats" class="selected">Microformats</a></li>
@@ -501,7 +507,7 @@ _:b0 a as:Add ;
 
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex3-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex3-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex3-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex3-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex3-microformats" class="selected">Microformats</a></li>
@@ -812,8 +818,8 @@ _:b0 a as:Collection ;
 
       <p>
         In addition to having a global identifier (expressed as an
-        absolute IRI using the JSON-LD <code>id</code> property) and an
-        "object type" (expressed using the JSON-LD <code>type</code>
+        absolute IRI using the <code>id</code> property) and an
+        "object type" (expressed using the <code>type</code>
         property), all instances of the <code>Object</code> class share a
         common set of properties normatively defined by the
         <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>.
@@ -856,12 +862,16 @@ _:b0 a as:Collection ;
         <code><a href="#naturalLanguageValues">nameMap</a></code>).
       </p>
 
-<figure><figcaption>Following is an example Object that uses the JSON-LD <code>id</code> and <code>type</code>
-properties to express the global identifier and object type:</figcaption>
+<figure>
+  <figcaption>
+    Following is an example Object that uses the <code>id</code> and
+    <code>type</code> properties to express the global identifier and object
+    type:
+  </figcaption>
 
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex4-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex4-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex4-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex4-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex4-microformats" class="selected">Microformats</a></li>
@@ -966,7 +976,7 @@ properties to express the global identifier and object type:</figcaption>
      <figure><figcaption>An Object that is both a <code>Place</code> and a <code>gr:Location</code>:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex6-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex6-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex6-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex6-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex6-microformats" class="selected">Microformats</a></li>
@@ -1085,7 +1095,7 @@ _:b0 a as:Place, gr:Location ;
       containing an absolute IRI.</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex12-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex12-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex12-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex12-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex12-microformats" class="selected">Microformats</a></li>
@@ -1139,7 +1149,7 @@ _:b0 a as:Place, gr:Location ;
       </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex13-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex13-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex13-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex13-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex13-microformats" class="selected">Microformats</a></li>
@@ -1218,7 +1228,7 @@ _:b0 a as:Place, gr:Location ;
       </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex14-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex14-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex14-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex14-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex14-microformats" class="selected">Microformats</a></li>
@@ -1302,7 +1312,7 @@ _:b0 a as:Place, gr:Location ;
         the <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> property
         provides the link relation value. If no <code>rel</code> property is
         specified, the link relation is considered to be unspecified. Any given
-        Link can have multiple link relation values. In the JSON-LD
+        Link can have multiple link relation values. In the JSON
         serialization, A single link relation is expressed as a single JSON
         string. Multiple link relations are expressed as an array of JSON
         strings.
@@ -1317,7 +1327,7 @@ _:b0 a as:Place, gr:Location ;
       <figure><figcaption></figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex15-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex15-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex15-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex15-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex15-microformats" class="selected">Microformats</a></li>
@@ -1446,7 +1456,7 @@ _:b0 a as:Place, gr:Location ;
       <figure><figcaption>An Activity with a Person actor extended with VCard properties:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex17-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex17-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex17-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex17-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex17-microformats" class="selected">Microformats</a></li>
@@ -1574,14 +1584,14 @@ _:c14n0 a as:Create ;
       </p>
 
       <p>
-        The JSON-LD <code>type</code> property is used to identify the type
+        The <code>type</code> property is used to identify the type
         of action the Activity Statement represents.
       </p>
 
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex19-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex19-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex19-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex19-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex19-microformats" class="selected">Microformats</a></li>
@@ -1673,7 +1683,7 @@ _:c14n0 a as:Create ;
        and a <code>http://schema.org/LikeAction</code>:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex20-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex20-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex20-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex20-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex20-microformats" class="selected">Microformats</a></li>
@@ -1777,18 +1787,9 @@ _:c14n0 a as:Create ;
         The items within a <code><a>Collection</a></code> can be ordered or
         unordered. The <code><dfn>OrderedCollection</dfn></code> type can be
         used to identify a Collection whose items are always ordered. In the
-        JSON-LD serialization, the unordered items of a Collection are
+        JSON serialization, the unordered items of a Collection are
         represented using the <code>items</code> property while ordered items
         are represented using the <code>orderedItems</code> property.
-      </p>
-
-      <p>
-        The normative JSON-LD @context definition maps each of the
-        <code>items</code> and <code>orderedItems</code> properties to the
-        Activity Vocabulary <code><a href="../activitystreams-vocabulary/#dfn-items">items</a></code>
-        term. The <code>orderedItems</code> term, however, is defined in
-        the JSON-LD @context as <code>@container = @list</code>, indicating
-        that it's members are strictly ordered.
       </p>
 
       <figure>
@@ -1797,7 +1798,7 @@ _:c14n0 a as:Create ;
         </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex21-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex21-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex21-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex21-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex21-microformats" class="selected">Microformats</a></li>
@@ -1901,7 +1902,7 @@ _:b0 a as:Collection ;
         </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex22-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex22-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
@@ -2108,7 +2109,7 @@ _:c14n0 a as:OrderedCollection ;
         </figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex21b-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex21b-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex21b-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex21b-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex21b-microformats" class="selected">Microformats</a></li>
@@ -2234,11 +2235,10 @@ _:c14n0 a as:OrderedCollection ;
       <p>
         Several properties defined by the
         <a href="../activitystreams-vocabulary/">Vocabulary</a> are defined
-        as having natural language values. These are human-readable strings using one or more languages. Within the JSON-LD serialization, they are
+        as having natural language values. These are human-readable strings using one or more languages. Within the JSON serialization, they are
         expressed as either (1) a single JSON string or (2) a JSON object
         mapping well-formed [[RFC5646]] Language-Tags to localized, equivalent
-        translations of the same string value. In [[JSON-LD]], such constructs
-        are referred to as "Language Maps". In the serialized JSON-LD, these
+        translations of the same string value. In the serialized JSON, these
         two forms are differentiated using a simple property naming convention,
         for instance: "<code>name</code>" identifies the JSON string
         form for the <code><a href="../activitystreams-vocabulary/#dfn-name">name</a></code>
@@ -2250,7 +2250,7 @@ _:c14n0 a as:OrderedCollection ;
         <figcaption>A single name String value without language information:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex7-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex7-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex7-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex7-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex7-microformats" class="selected">Microformats</a></li>
@@ -2291,7 +2291,7 @@ _:b0 a as:Object ;
         <figcaption>Multiple, language-specific values:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex8-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex8-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex8-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex8-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex8-microformats" class="selected">Microformats</a></li>
@@ -2351,13 +2351,11 @@ _:b0 a as:Object ;
         <code><a href="../activitystreams-vocabulary/#dfn-name">name</a></code>,
         <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
         <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code>.
-        Accordingly, the Activity Streams
-        <a href="activitystreams2-context.jsonld">JSON-LD
-        @context</a> definition respectively maps the terms
+        Accordingly, in the JSON serialization, the terms
         "<code>name</code>", "<code>summary</code>", and "<code>content</code>"
-        for representing the JSON string forms; and the terms
+        represent the JSON string forms; and the terms
         "<code>nameMap</code>", "<code>summaryMap</code>", and
-        "<code>contentMap</code>" for representing the Language Map forms.
+        "<code>contentMap</code>" for representing the object forms.
       </p>
 
       <p>
@@ -2370,7 +2368,7 @@ _:b0 a as:Object ;
         <figcaption>Using the <code>"und"</code> language tag:</figcaption>
       <div class="nanotabs">
         <ul>
-          <li><a href="#ex11b-jsonld" class="selected">JSON-LD</a></li>
+          <li><a href="#ex11b-jsonld" class="selected">JSON</a></li>
           <li><a href="#ex11b-microdata" class="selected">Microdata</a></li>
           <li><a href="#ex11b-rdfa" class="selected">RDFa</a></li>
           <li><a href="#ex11b-microformats" class="selected">Microformats</a></li>
@@ -2414,15 +2412,15 @@ _:b0 a as:Object ;
 
       <p>
         The default language for document or an individual object can be
-        established using the JSON-LD <code>@language</code> property within a
-        <code>@context</code> definition. For instance:
+        established using the [[JSON-LD]] <code>@language</code> property
+        within a <code>@context</code> definition. For instance:
       </p>
 
       <figure>
         <figcaption>Establishing a default language context:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex9-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex9-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
@@ -2468,73 +2466,6 @@ _:b0 a as:Object ;
 
   </section>
 
-  <section id="curie">
-    <h2>Support for Compact URIs</h2>
-
-    <p>
-      The JSON-LD syntax supports the use of "Compact URIs" (or CURIE's for
-      short) [[!curie]]. A "Compact URI" is an alternative encoding of a URI that uses
-      a defined prefix to simplify serialization. For instance, the URI
-      <code>http://www.w3.org/ns/activitystreams#Create</code> can be
-      represented as <code>as:Create</code> by assigning the <code>as:</code>
-      prefix the value of <code>http://www.w3.org/ns/activitystreams#</code>
-    </p>
-
-    <p>
-      Within JSON-LD, Compact URI prefixes are defined within the JSON-LD
-      <code>@context</code> definition. For example:
-    </p>
-
-    <figure><figcaption>A JSON-LD Compact URI definition</figcaption>
-<pre class="example highlight json">{
-"@context": {
-  "ex": "http://example.org/",
-  "term": {
-    "@type": "id",
-    "@id": "ex:term"
-  }
-},
-"term": "ex:Foo"
-}</pre></figure>
-
-    <p>
-      In this example, both the property name <code>term</code> and the value
-      <code>ex:Foo</code> are Compact URIs. The property name <code>term</code>
-      expands to <code>http://example.org/term</code> and the value
-      <code>ex:Foo</code> expands to <code>http://example.org/Foo</code>
-    </p>
-
-    <p>
-      In JSON-LD, Compact URI expansion of <em>values</em> applies to
-      properties explicitly defined as <code>"type": "id"</code> in the
-      <code>@context</code> definition. Specifically, Compact URIs can be used
-      anywhere an IRI (or URI) value is expected.
-    </p>
-
-    <p>
-      Activity Streams 2.0 implementations MUST support Compact URI
-      expansion as defined by the JSON-LD specification. Such expansion applies
-      to all property names as well as all property values explicitly defined
-      as type <code>id</code> in the normative
-      <a href="activitystreams2-context.jsonld">JSON-LD @context</a>.
-    </p>
-
-    <p>
-      For example, in the JSON-LD serialization, the property name
-      <code>name</code> expands, and is equivalent, to
-      <code>http://www.w3.org/ns/activitystreams#name</code>.
-    </p>
-
-    <p>
-      While support for Compact URI's is required, over reliance on the
-      compact form can lead to ambiguity and interoperability issues between
-      implementations. Therefore, Compact URI use SHOULD be avoided
-      in all cases other than property names and the value(s) of the
-      <code>type</code> property.
-    </p>
-
-  </section>
-
   <section id="extensibility">
 
     <h2>Extensibility</h2>
@@ -2551,7 +2482,13 @@ _:b0 a as:Object ;
         the use of extensions may experience reduced interoperability with
         other implementations.
       </p>
-
+      
+      <p>
+        For extensions, [[JSON-LD]] is used as the primary mechanism for
+        defining and disamgiguating extensions. Implementations that wish to
+        fully support extensions SHOULD use [[JSON-LD]] mechanisms.
+      </p>
+      
       <p>
         It is important to note that the JSON-LD Processing Algorithms
         [[JSON-LD-API]], as currently defined, will silently ignore any
@@ -2586,7 +2523,7 @@ _:b0 a as:Object ;
         <figure><figcaption>The Equivalent <code>Place</code> alternative:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex23-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex23-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex23-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex23-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex23-microformats" class="selected">Microformats</a></li>
@@ -2646,7 +2583,7 @@ _:c14n0 a as:Place;
         <figure><figcaption>The Equivalent GeoSparql Well-Known-Text alternative:</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex24-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex24-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex24-microdata" class="selected">Microdata</a></li>
     <li><a href="#ex24-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex24-microformats" class="selected">Microformats</a></li>
@@ -2694,6 +2631,73 @@ _:c14n0 a gsp:Geometry ;
   gsp:asWKT "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"^^gsp:wktLiteral .</pre></div>
 </div>
 </figure>
+
+<section id="curie">
+  <h2>Support for Compact URIs</h2>
+
+  <p>
+    The JSON-LD syntax supports the use of "Compact URIs" (or CURIE's for
+    short) [[!curie]]. A "Compact URI" is an alternative encoding of a URI that uses
+    a defined prefix to simplify serialization. For instance, the URI
+    <code>http://www.w3.org/ns/activitystreams#Create</code> can be
+    represented as <code>as:Create</code> by assigning the <code>as:</code>
+    prefix the value of <code>http://www.w3.org/ns/activitystreams#</code>
+  </p>
+
+  <p>
+    Within JSON-LD, Compact URI prefixes are defined within the JSON-LD
+    <code>@context</code> definition. For example:
+  </p>
+
+  <figure><figcaption>A JSON-LD Compact URI definition</figcaption>
+<pre class="example highlight json">{
+"@context": {
+"ex": "http://example.org/",
+"term": {
+  "@type": "id",
+  "@id": "ex:term"
+}
+},
+"term": "ex:Foo"
+}</pre></figure>
+
+  <p>
+    In this example, both the property name <code>term</code> and the value
+    <code>ex:Foo</code> are Compact URIs. The property name <code>term</code>
+    expands to <code>http://example.org/term</code> and the value
+    <code>ex:Foo</code> expands to <code>http://example.org/Foo</code>
+  </p>
+
+  <p>
+    In JSON-LD, Compact URI expansion of <em>values</em> applies to
+    properties explicitly defined as <code>"type": "id"</code> in the
+    <code>@context</code> definition. Specifically, Compact URIs can be used
+    anywhere an IRI (or URI) value is expected.
+  </p>
+
+  <p>
+    Activity Streams 2.0 implementations MUST support Compact URI
+    expansion as defined by the JSON-LD specification. Such expansion applies
+    to all property names as well as all property values explicitly defined
+    as type <code>id</code> in the normative
+    <a href="activitystreams2-context.jsonld">JSON-LD @context</a>.
+  </p>
+
+  <p>
+    For example, in the JSON-LD serialization, the property name
+    <code>name</code> expands, and is equivalent, to
+    <code>http://www.w3.org/ns/activitystreams#name</code>.
+  </p>
+
+  <p>
+    While support for Compact URI's is required, over reliance on the
+    compact form can lead to ambiguity and interoperability issues between
+    implementations. Therefore, Compact URI use SHOULD be avoided
+    in all cases other than property names and the value(s) of the
+    <code>type</code> property.
+  </p>
+
+</section>
 
     <section id="extension-round-trip">
 
@@ -2891,8 +2895,8 @@ profile-URI   = URI</pre>
         </table>
 
         <p>
-          Note that while the Activity Streams 2.0 format is derived from the
-          JSON-LD format, there are a number of constraints and additional
+          Note that while the Activity Streams 2.0 format uses JSON-LD
+          conventions, there are a number of constraints and additional
           requirements for Activity Streams 2.0 implementations that justify
           the use of a specific media type.
         </p>
@@ -2956,6 +2960,123 @@ profile-URI   = URI</pre>
 
   </section>
 
+  <section id="activitystreams-1.0a" class="appendix informative">
+    
+    <h2>Deprecated Activity Streams 1.0 Syntax</h2>
+
+    <p>
+      While the syntax defined by this specification diverges from
+      that defined by JSON Activity Streams 1.0, the fundamental model
+      defined by that original specification remains intact. Specific
+      <a href="#deprecated-syntax">processing rules</a> are defined by
+      this specification that allow existing Activity Streams 1.0
+      documents to be mapped to and processed as an Activity Streams 2.0
+      document.
+    </p>
+    
+    <p>
+      The JSON syntax defined by this specification differs somewhat from
+      that defined in the original JSON Activity Streams 1.0
+      [[!AS1]] specification in ways that are not backwards
+      compatible.  Implementations can choose to continue supporting the
+      JSON Activity Streams 1.0 syntax but ought consider it to be
+      deprecated.  This means that while implementations can continue to
+      consume the 1.0 syntax, they should not output the 1.0 syntax unless
+      specifically interacting with older non-2.0 compliant
+      implementations.
+    </p>
+
+    <p>
+      Specifically:
+    </p>
+
+    <ol>
+    <li>
+      Implementations can use the "<code>application/stream+json</code>" MIME
+      media type when producing a JSON serialization using the Activity
+      Streams 1.0 syntax, and "<code>application/activity+json</code>"
+      when producing a serialization conforming to the 2.0 syntax.
+    </li>
+    <li>
+      Implementations that process serializations identified using either
+      the "<code>application/stream+json</code>" or the more
+      generic "<code>application/json</code>" MIME media type MUST follow
+      the syntax and processing rules set by [[!AS1]].  The 2.0
+      syntax and processing rules apply only when handling
+      serializations using the "<code>application/activity+json</code>" media
+      type.
+    </li>
+    <li>
+      When processing Activity Streams 1.0 documents using a JSON-LD
+      processing model, implementations can use the special AS 1.0 to AS 2.0
+      expansion @context definition provided
+      <a href="activitystreams1-context.jsonld">here</a> to produce
+      the JSON-LD expanded representation. Refer to the
+      <a href="http://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD
+      Processing Algorithms and API</a> for details.
+    </li>
+    <li>
+      When processing Activity Streams 1.0 documents and converting those to
+      2.0, implementations ought to treat <code>id</code> as an alias for the
+      JSON-LD <code>@id</code> key word; and the <code>objectType</code> and
+      <code>verb</code> properties as aliases for the JSON-LD
+      <code>@type</code> keyword.
+    </li>
+    <li>
+      This document redefines the <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
+      <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code> and
+      <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
+      properties as natural language values which means their values can be expressed
+      as either a String or a JSON-LD Language Map. In the 1.0 syntax, these are expressed
+      solely as String values.  Because the 1.0 values are a valid
+      subset allowed by this specification, implementations are not
+      required to take any specific action to continue supporting those
+      values.
+    </li>
+    <li>
+      This document redefines a large number of common properties
+      defined originally as Objects in 1.0 as either
+      <a data-lt="Object">Objects</a> or <a data-lt="Link">Links</a>. The JSON-LD
+      serialization allows such property values to be expressed as either an
+      IRI String, an JSON object, or an Array of IRI Strings and JSON objects.
+      Because the 1.0 values are a valid subset allowed by this specification,
+      existing implementations are not required to take any specific action to
+      continue supporting those values.
+    </li>
+    <li>
+      This specification deprecates the <code>upstreamDuplicates</code> and
+      <code>downstreamDuplicates</code> properties defined by Activity Streams
+      1.0 and does not provide a replacement. This is due largely to lack of any
+      reasonable implementation evidence. While the
+      <code>upstreamDuplicates</code> and <code>downstreamDuplicates</code>
+      properties MAY continue to be used, implementations SHOULD avoid them.
+    </li>
+    <li>
+      In Activity Streams 1.0, the "<code>post</code>" verb was defined to
+      describe the action of both creating an object and "posting" or uploading
+      it to a service. This specification replaces the "<code>post</code>" verb
+      with separate
+      <code><a href="../activitystreams-vocabulary/#dfn-create">Create</a></code> and
+      <code><a href="../activitystreams-vocabulary/#dfn-add">Add</a></code>
+      Activity types. When processing Activity Streams 1.0 documents and
+      converting those into 2.0, implementations SHOULD treat instances of the
+      "<code>post</code>" verb as equivalent to
+      <code><a href="../activitystreams-vocabulary/#dfn-create">Create</a></code>
+      <i>if there is no <code>target</code> property specified</i>; and
+      equivalent to
+      <code><a href="../activitystreams-vocabulary/#dfn-add">Add</a></code>
+      <i>if there is a <code>target</code> property specified</i>.
+    </li>
+    </ol>
+
+    <p>
+      By following these guidelines, all JSON Activity Streams 1.0
+      serializations can be processed successfully by 2.0 implementations.
+    </p>
+
+  </section>
+
   <section class="appendix informative">
     <h2>Example using Multiple Vocabularies</h2>
 
@@ -2972,7 +3093,7 @@ profile-URI   = URI</pre>
      <figure><figcaption>A series of activities; creating, editing, and deleting a note.</figcaption>
 <div class="nanotabs">
   <ul>
-    <li><a href="#ex27-jsonld" class="selected">JSON-LD</a></li>
+    <li><a href="#ex27-jsonld" class="selected">JSON</a></li>
     <li><a href="#ex27-rdfa" class="selected">RDFa</a></li>
     <li><a href="#ex27-turtle" class="selected">Turtle</a></li>
   </ul>
