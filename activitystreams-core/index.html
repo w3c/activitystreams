@@ -233,7 +233,19 @@
         <a href="#extensibility">Extensibility</a> section for more information
         on handling extensions within Activity Streams 2.0 documents.
       </p>
-      
+
+      <p>
+        JSON-LD uses the special <code>@context</code> property to define the
+        <a href="http://www.w3.org/TR/json-ld/#the-context">processing
+        context</a>. The value of the <code>@context</code> property is defined
+        by the [[JSON-LD]] specification. Implementations producing Activity
+        Streams 2.0 documents SHOULD include a <code>@context</code> property
+        with a value that includes a reference to the normative
+        <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
+        @context definition</a> using the URL
+        "<code>http://www.w3.org/ns/activitystreams</code>".
+      </p>
+
       <p>
         While [[JSON-LD]] conventions are followed by this specification,
         implementers are not required to use JSON-LD mechanisms to produce
@@ -2242,8 +2254,7 @@ _:c14n0 a as:OrderedCollection ;
         two forms are differentiated using a simple property naming convention,
         for instance: "<code>name</code>" identifies the JSON string
         form for the <code><a href="../activitystreams-vocabulary/#dfn-name">name</a></code>
-        property while "<code>nameMap</code>" represents the Language
-        Map form.
+        property while "<code>nameMap</code>" represents the object form.
       </p>
 
       <figure>
@@ -2341,7 +2352,7 @@ _:b0 a as:Object ;
 </figure>
 
       <p>
-        Every key in the Language Map form MUST be a well-formed [[RFC5646]]
+        Every key in the object form MUST be a well-formed [[RFC5646]]
         Language-Tag. The associated values MUST be strings.
       </p>
 
@@ -2360,7 +2371,7 @@ _:b0 a as:Object ;
 
       <p>
         The special language tag <code>"und"</code> can be used within the
-        Language Map form to explicitly identify a value whose
+        object form to explicitly identify a value whose
         language is unknown or undetermined.
       </p>
 
@@ -2414,6 +2425,13 @@ _:b0 a as:Object ;
         The default language for document or an individual object can be
         established using the [[JSON-LD]] <code>@language</code> property
         within a <code>@context</code> definition. For instance:
+      </p>
+      
+      <p>
+        Because using this mechanism to establish the default language context
+        requires the use of [[JSON-LD]] mechanisms, support is optional for
+        implementations. However, no other mechanism for establishing the
+        default language context for the document is defined.
       </p>
 
       <figure>
@@ -2485,7 +2503,7 @@ _:b0 a as:Object ;
       
       <p>
         For extensions, [[JSON-LD]] is used as the primary mechanism for
-        defining and disamgiguating extensions. Implementations that wish to
+        defining and disambiguating extensions. Implementations that wish to
         fully support extensions SHOULD use [[JSON-LD]] mechanisms.
       </p>
       
@@ -2676,10 +2694,10 @@ _:c14n0 a gsp:Geometry ;
   </p>
 
   <p>
-    Activity Streams 2.0 implementations MUST support Compact URI
-    expansion as defined by the JSON-LD specification. Such expansion applies
-    to all property names as well as all property values explicitly defined
-    as type <code>id</code> in the normative
+    Activity Streams 2.0 implementations that wish to fully support extensions
+    MUST support Compact URI expansion as defined by the JSON-LD specification.
+    Such expansion applies to all property names as well as all property values
+    explicitly defined as type <code>id</code> in the normative
     <a href="activitystreams2-context.jsonld">JSON-LD @context</a>.
   </p>
 
@@ -3028,11 +3046,11 @@ profile-URI   = URI</pre>
       <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code> and
       <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
       properties as natural language values which means their values can be expressed
-      as either a String or a JSON-LD Language Map. In the 1.0 syntax, these are expressed
-      solely as String values.  Because the 1.0 values are a valid
-      subset allowed by this specification, implementations are not
-      required to take any specific action to continue supporting those
-      values.
+      as either a string or an object mapping language tags to string values.
+      In the 1.0 syntax, these are expressed solely as String values.  Because
+      the 1.0 values are a valid subset allowed by this specification,
+      implementations are not required to take any specific action to continue
+      supporting those values.
     </li>
     <li>
       This document redefines a large number of common properties
