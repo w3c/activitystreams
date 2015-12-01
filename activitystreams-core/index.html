@@ -872,7 +872,8 @@ _:b0 a as:Collection ;
           <code><a href="../activitystreams-vocabulary/#dfn-to">to</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-bto">bto</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-cc">cc</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-bcc">bcc</a></code>
+          <code><a href="../activitystreams-vocabulary/#dfn-bcc">bcc</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code>
         </code>
       </p>
 
@@ -1100,6 +1101,14 @@ _:b0 a as:Place, gr:Location ;
       </p>
 
       <p>
+        The <code>mediaType</code>, <code>height</code>, <code>width</code>,
+        <code>hreflang</code>, and <code>duration</code> properties are
+        intended as hints to help with the selection and rendering of the
+        linked resource and may not reflect the actual properties of the
+        linked resource.
+      </p>
+
+      <p>
         For example, all <a data-lt="Object">Objects</a> can contain an
         <code><a href="../activitystreams-vocabulary/#dfn-image-term">image</a></code>
         property whose value describes a graphical representation of the
@@ -1236,8 +1245,9 @@ _:b0 a as:Place, gr:Location ;
         direct relationship with the image resource while the
         latter creates a <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified,
         indirect relationship</a> that allows additional properties about the
-        relationship to be specified. Such properties (e.g. <code>mediaType</code>,
-        <code>hreflang</code>, <code>rel</code>, etc) describe the <a>Link</a>
+        relationship to be specified. Such properties
+        (e.g. <code>mediaType</code>, <code>hreflang</code>,
+        <code>rel</code>, etc) describe the <a>Link</a>
         itself as opposed to describing the referenced resource. For many
         practical applications, this distinction will likely be
         insignificant but it is still worth keeping in mind.
