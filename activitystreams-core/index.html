@@ -1083,7 +1083,12 @@ _:b0 a as:Place, gr:Location ;
       <p>
         A <code>Link</code> describes a qualified, indirect reference to another
         resource that is closely related to the conceptual model of Links as
-        established in [[!RFC5988]].
+        established in [[!RFC5988]]. The properties of the Link object are not
+        the properties of the referenced resource, but are provided as hints
+        for rendering agents to understand how to make use of the resource. For
+        example, <code>height</code> and <code>width</code> might represent the
+        desired rendered size of a referenced image, rather than the actual
+        pixel dimensions of the referenced image.
       </p>
 
       <p>
@@ -1099,14 +1104,6 @@ _:b0 a as:Place, gr:Location ;
           <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
-      </p>
-      
-      <p>
-        The <code>mediaType</code>, <code>height</code>, <code>width</code>,
-        <code>hreflang</code>, and <code>duration</code> properties are
-        intended as hints to help with the selection and rendering of the
-        linked resource and may not reflect the actual properties of the
-        linked resource.
       </p>
 
       <p>
@@ -1246,12 +1243,7 @@ _:b0 a as:Place, gr:Location ;
         direct relationship with the image resource while the
         latter creates a <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified,
         indirect relationship</a> that allows additional properties about the
-        relationship to be specified. Such properties
-        (e.g. <code>mediaType</code>, <code>hreflang</code>,
-        <code>rel</code>, etc) describe the <a>Link</a>
-        itself as opposed to describing the referenced resource. For many
-        practical applications, this distinction will likely be
-        insignificant but it is still worth keeping in mind.
+        relationship to be specified.
       </p>
 
       <figure><figcaption>
