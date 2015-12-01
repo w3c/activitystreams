@@ -4,7 +4,8 @@
        "@vocab": "_:",
        "id": "@id",
        "objectType": "@type",
-       "verb": "@type"
+       "verb": "@type",
+       "displayName": "as:name"
     }
   ]
 }

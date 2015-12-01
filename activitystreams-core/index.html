@@ -3042,8 +3042,19 @@ profile-URI   = URI</pre>
       <code>@type</code> keyword.
     </li>
     <li>
-      This document redefines the <code><a href="../activitystreams-vocabulary/#dfn-displayname">displayName</a></code>,
-      <code><a href="../activitystreams-vocabulary/#dfn-title">title</a></code>,
+      Activity Streams 1.0 uses the <code>displayName</code> property which
+      has been renamed to <code>name</code> in Activity Streams 2.0.
+      Implementations ought to treat <code>displayName</code> as an alias
+      for <code>name</code>.
+    </li>
+    <li>
+      Activity Streams 1.0 uses the <code>title</code> property which has
+      been dropped from Activity Streams 2.0. Implementations processing
+      Activity Streams 1.0 documents as Activity Streams 2.0 ought to treat
+      instances of the <code>title</code> property as an extension.
+    </li>
+    <li>
+      This document redefines the
       <code><a href="../activitystreams-vocabulary/#dfn-content">content</a></code> and
       <code><a href="../activitystreams-vocabulary/#dfn-summary">summary</a></code>
       properties as natural language values which means their values can be expressed
