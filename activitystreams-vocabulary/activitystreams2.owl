@@ -71,7 +71,7 @@ as:author a owl:ObjectProperty,
             owl:DeprecatedProperty ;
   rdfs:label "author"@en ;
   rdfs:comment "Identifies the author of an object. Deprecated. Use as:attributedTo instead"@en;
-  rdfs:domain as:Content ;
+  rdfs:domain as:Object ;
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
@@ -433,11 +433,7 @@ as:duration a owl:DatatypeProperty ,
   rdfs:label "duration"@en ;
   rdfs:comment "The duration of the object"@en ;
   rdfs:range xsd:duration ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:Content as:Link )
-  ] .
-
+  rdfs:domain as:Object .
 
 as:endTime a owl:DatatypeProperty ,
     owl:FunctionalProperty ;
@@ -451,10 +447,7 @@ as:height a owl:DatatypeProperty ,
   rdfs:label "height"@en ;
   rdfs:comment "The display height expressed as device independent pixels"@en ;
   rdfs:range xsd:nonNegativeInteger ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:Content as:Link )
-  ] .
+  rdfs:domain as:Link .
 
 as:href a owl:DatatypeProperty ,
   owl:FunctionalProperty ;
@@ -627,10 +620,7 @@ as:width a owl:DatatypeProperty ,
   rdfs:label "width"@en ;
   rdfs:comment "Specifies the preferred display width of the content, expressed in terms of device independent pixels."@en ;
   rdfs:range xsd:nonNegativeInteger ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf ( as:Content as:Link )
-  ] .
+  rdfs:domain as:Link .
 
 #################################################################
 #
@@ -689,7 +679,7 @@ as:Arrive a owl:Class ;
 
 as:Article a owl:Class ;
   rdfs:label "Article"@en ;
-  rdfs:subClassOf as:Content ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A written work. Typically several paragraphs long. For example, a blog post or a news article."@en .
 
 as:Audio a owl:Class ;
@@ -717,11 +707,6 @@ as:Relationship a owl:Class, rdf:Statement ;
   rdfs:subClassOf as:Object ;
   rdfs:comment "Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)"@en .
 
-as:Content a owl:Class ;
-  rdfs:label "Content"@en ;
-  rdfs:subClassOf as:Object ;
-  rdfs:comment "An Object that has content"@en .
-
 as:Create a owl:Class ;
   rdfs:label "Create"@en ;
   rdfs:subClassOf as:Activity ;
@@ -739,7 +724,7 @@ as:Dislike a owl:Class ;
 
 as:Document a owl:Class ;
   rdfs:label "Document"@en ;
-  rdfs:subClassOf as:Content ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "Represents a digital document/file of any sort"@en .
 
 as:Event a owl:Class ;
@@ -829,7 +814,7 @@ as:Mention a owl:Class ;
 
 as:Note a owl:Class ;
   rdfs:label "Note"@en ;
-  rdfs:subClassOf as:Content ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A Short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""@en .
 
 as:Object a owl:Class ;
@@ -892,7 +877,7 @@ as:OrderedItems a owl:Class ;
 
 as:Page a owl:Class ;
   rdfs:label "Page"@en ;
-  rdfs:subClassOf as:Content ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A Web Page"@en .
 
 as:Person a owl:Class ;
@@ -907,7 +892,7 @@ as:Organization a owl:Class ;
 
 as:Profile a owl:Class ;
   rdfs:label "Profile"@en;
-  rdfs:subClassOf as:Content ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A Profile Document"@en .
 
 as:Place a owl:Class ;
@@ -917,7 +902,7 @@ as:Place a owl:Class ;
 
 as:Question a owl:Class ;
   rdfs:label "Question"@en;
-  rdfs:subClassOf as:Content, as:IntransitiveActivity ;
+  rdfs:subClassOf as:IntransitiveActivity ;
   rdfs:comment "A question of any sort."@en .
 
 as:Reject a owl:Class ;

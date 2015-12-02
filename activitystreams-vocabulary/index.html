@@ -346,7 +346,8 @@
               <code><a>bto</a></code> |
               <code><a>cc</a></code> |
               <code><a>bcc</a></code> |
-              <code><a>mediaType</a></code>
+              <code><a>mediaType</a></code> |
+              <code><a>duration</a></code>
             </p>
           </td>
         </tr>
@@ -448,8 +449,7 @@ _:b0 a as:Link ;
               <code><a>name</a></code> |
               <code><a>hreflang</a></code> |
               <code><a>height</a></code> |
-              <code><a>width</a></code> |
-              <code><a>duration</a></code>
+              <code><a>width</a></code>
             </p>
           </td>
         </tr>
@@ -5054,7 +5054,6 @@ _:b0 a as:Service ;
         <ul>
           <li><code><a>Article</a></code></li>
           <li><code><a>Audio</a></code></li>
-          <li><code><a>Content</a></code></li>
           <li><code><a>Document</a></code></li>
           <li><code><a>Event</a></code></li>
           <li><code><a>Image</a></code></li>
@@ -5196,106 +5195,6 @@ _:b0 a as:Relationship ;
           </tr>
         </tbody>
 
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>Content</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#Content</code></td>
-          <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex35-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex35-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex35-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex35-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex35-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex35-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Content",
-  "name": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
-  "height": 100,
-  "width": 100
-}</pre>
-</div>
-<div id="ex35-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="name">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
-  </div>
-  <div id="ex35-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content" style="width:100px; height:100px">
-  &lt;div property="name">Some generic content&lt;/div>
-  &lt;div property="content" datatype="rdf:HTML">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="width" content="100" datatype="xsd:nonNegativeInteger" />
-&lt;/div></pre>
-  </div>
-  <div id="ex35-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div property="p-name">Some generic content&lt;/div>
-  &lt;div property="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-<div id="ex35-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Content ;
-  as:name "Some generic content" ;
-  as:content "&lt;p>This can be any kind of content&gt;/p>" ;
-  as:height "100"^^xsd:nonNegativeInteger ;
-  as:width "100"^^xsd:nonNegativeInteger .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Describes an entity representing any form of content. Examples
-            include documents, images, etc. Content objects
-            typically are not able to perform activities on their own, yet
-            rather are usually the object or target of activities.
-          </td>
-        </tr>
-        <tr>
-          <td>Extends:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Properties:</td>
-          <td>
-            <p>
-              <code><a>duration</a></code> |
-              <code><a>height</a></code> |
-              <code><a>width</a></code>
-            </p>
-
-            <p>
-              Inherits all properties from <code><a>Object</a></code>.
-            </p>
-          </td>
-        </tr>
-</tbody>
         <tbody>
           <tr>
             <td rowspan="4" ><dfn>Article</dfn></td>
@@ -5376,11 +5275,11 @@ _:b0 a as:Article ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Content</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5451,11 +5350,11 @@ _:b0 a as:Document ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Content</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5811,11 +5710,11 @@ _:b0 a as:Note ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Content</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5999,12 +5898,11 @@ _:b0 a as:Question ;
             <td>Notes:</td>
             <td>
               <p>
-                Represents a question being asked. Question objects are unique
-                in that they are an extension of both
-                <code><a>Content</a></code> and
-                <code><a>IntransitiveActivity</a></code>. That is, the
-                Question object is an Activity but the direct object is the
-                question itself.
+                Represents a question being asked. Question objects are an
+                extension of <code><a>IntransitiveActivity</a></code>. That is,
+                the Question object is an Activity, but the direct object is
+                the question itself and therefore it would not contain an
+                <code><a>object</a></code> property.
               </p>
               <p>
                 Either of the <code><a>anyOf</a></code> and
@@ -6016,14 +5914,14 @@ _:b0 a as:Question ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code> AND <code><a>IntransitiveActivity</a></code>.</td>
+            <td><code><a>IntransitiveActivity</a></code>.</td>
           </tr>
           <tr>
             <td>Properties:</td>
             <td>
               <p><code><a>oneOf</a></code> | <code><a>anyOf</a></code></p>
 
-              Inherits all properties from <code><a>Content</a></code> and
+              Inherits all properties from
               <code><a>IntransitiveActivity</a></code>.
             </td>
           </tr>
@@ -6471,13 +6369,13 @@ _:b0 a as:Profile ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
             <td>
               <p><code><a>describes</a></code></p>
-              <p>Inherits all properties from <code><a>Content</a></code>.</p>
+              <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
         </tbody>
@@ -10660,11 +10558,13 @@ _:b0 a as:CollectionPage ;
   "name": "Cool New Movie",
   "duration": "PT2H30M",
   "preview": {
-    "type": "Link",
+    "type": "Video",
     "name": "Trailer",
-    "href": "http://example.org/trailer.mkv",
-    "mediaType": "video/mkv",
-    "duration": "PT1M"
+    "duration": "PT1M",
+    "url": {
+      "href": "http://example.org/trailer.mkv",
+      "mediaType": "video/mkv"
+    }
   }
 }</pre>
 </div>
@@ -10672,15 +10572,13 @@ _:b0 a as:CollectionPage ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Video">
-  &lt;span itemprop="name">
-    Cool New Movie
-  &lt;/span>
+  &lt;span itemprop="name">Cool New Movie&lt;/span>
   &lt;meta itemprop="duration" content="PT2H30M">(2H 30M)&lt;/meta>
   - &lt;span itemprop="preview" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Link">
+      itemtype="http://www.w3.org/ns/activitystreams#Video">
     &lt;span itemprop="name">Trailer&lt;span>
     &lt;meta itemprop="duration" content="PT1M">(1M)&lt;/meta>
-    &lt;a itemprop="href"
+    &lt;a itemprop="url"
       href="http://example.org/trailer.mkv"
       type="video/mkv">Watch&lt;/a>
   &lt;/span>
@@ -10688,17 +10586,16 @@ _:b0 a as:CollectionPage ;
   </div>
   <div id="ex106-rdfa" style="display:none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Video">
-  &lt;span property="name">
-    Cool New Movie
-  &lt;/span>
-  &lt;span property="duration" content="PT2H30M" datatype="xsd:duration">(2H 30M)&lt;/span> -
-  &lt;span property="preview" typeof="Link">
-    &lt;a property="name"
-      rel="href" href="http://example.org/trailer.mkv">Trailer&lt;/a>
-    &lt;span property="mediaType" lang="">video/mkv&lt;/span>
-    &lt;span property="duration" content="PT1M" datatype="xsd:duration">(1M)&lt;/span>
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Video">
+  &lt;span property="name">Cool New Movie&lt;/span>
+  &lt;span property="duration" content="PT2H30M"
+    datatype="xsd:duration">(2H 30M)&lt;/span>
+  - &lt;span property="preview" typeof="Video">
+    &lt;span property="name">Trailer&lt;span>
+    &lt;meta property="duration" content="PT1M">(1M)&lt;/meta>
+    &lt;a property="url"
+      href="http://example.org/trailer.mkv"
+      type="video/mkv">Watch&lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -10727,11 +10624,13 @@ _:b0 a as:Video ;
   as:name "Cool New Movie" ;
   as:duration "PT2H30M"^^xsd:duration ;
   as:preview [
-    a as:Link ;
+    a as:Video ;
     as:name "Trailer" ;
-    as:href &lt;http://example.org/trailer.mkv> ;
-    as:mediaType "video/mkv" ;
-    as:duration "PT1M"^^xsd:duration
+    as:duration "PT1M"^^xsd:duration ;
+    as:url [
+      as:href &lt;http://example.org/trailer.mkv> ;
+      as:mediaType "video/mkv"
+    ]
   ] .</pre>
   </div>
 </div>
@@ -12403,7 +12302,7 @@ _:b0 a as:Video ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Content</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -12432,55 +12331,37 @@ _:b0 a as:Video ;
   <div id="ex136-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Content",
-  "name": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
+  "type": "Link",
+  "href": "http://example.org/image.png",
   "height": 100,
   "width": 100
 }</pre>
 </div>
 <div id="ex136-microdata" style="display:none;">
 <pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="name">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
+>&lt;img itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Link"
+  src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex136-rdfa" style="display:none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content">
-  &lt;div property="name">Some generic content&lt;/div>
-  &lt;div property="content" datatype="rdf:HTML">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" />
-  &lt;meta property="width" content="100" />
-&lt;/div></pre>
+>&lt;img vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Link" src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex136-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div property="p-name">Some generic content&lt;/div>
-  &lt;div property="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
+>&lt;img src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
 <div id="ex136-turtle" style="display: none;">
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:b0 a as:Content ;
-  as:name "Some generic content" ;
-  as:content "&lt;p>This can be any kind of content&lt;/p>" ;
+_:b0 a as:Link ;
+  as:href "http://example.org/image.png" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
   </div>
@@ -12490,15 +12371,14 @@ _:b0 a as:Content ;
         <tr>
           <td>Notes:</td>
           <td>
-            When the object describes a visual resource, such as an image,
-            video or embeddable HTML, the <code><a>height</a></code> property
-            indicates the recommended display height in properties of
-            device-independent pixels.
+            On a <code><a>Link</a></code>, specifies a hint as to the
+            rendering height in device-independent pixels of the linked
+            resource.
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Content</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -14362,55 +14242,37 @@ _:b0 a as:Note ;
   <div id="ex159-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Content",
-  "name": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
+  "type": "Link",
+  "href": "http://example.org/image.png",
   "height": 100,
   "width": 100
 }</pre>
 </div>
 <div id="ex159-microdata" style="display:none;">
 <pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="name">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
+>&lt;img itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Link"
+  src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex159-rdfa" style="display:none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content">
-  &lt;div property="name">Some generic content&lt;/div>
-  &lt;div property="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="width" content="100" datatype="xsd:nonNegativeInteger" />
-&lt;/div></pre>
+>&lt;img vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Link" src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex159-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div class="p-name">Some generic content&lt;/div>
-  &lt;div class="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
+>&lt;img src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
 <div id="ex159-turtle" style="display: none;">
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:b0 a as:Content ;
-  as:name "Some generic content" ;
-  as:content "&lt;p>This can be any kind of content&lt;/p>" ;
+_:b0 a as:Link ;
+  as:href "http://example.org/image.png" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
   </div>
@@ -14420,15 +14282,14 @@ _:b0 a as:Content ;
         <tr>
           <td>Notes:</td>
           <td>
-            When the object describes a visual resource, such as an image,
-            video or embeddable HTML, the <code><a>width</a></code> property
-            indicates the recommended display width in properties of
-            device-independent pixels.
+            On a <code><a>Link</a></code>, specifies a hint as to the
+            rendering width in device-independent pixels of the linked
+            resource.
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Content</a> | <a>Link</a></code></td>
+          <td><code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>

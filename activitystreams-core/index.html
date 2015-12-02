@@ -870,7 +870,8 @@ _:b0 a as:Collection ;
           <code><a href="../activitystreams-vocabulary/#dfn-bto">bto</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-cc">cc</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-bcc">bcc</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code>
+          <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
         </code>
       </p>
 
@@ -1098,8 +1099,7 @@ _:b0 a as:Place, gr:Location ;
           <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
+          <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code>
       </p>
 
       <p>
@@ -1622,7 +1622,7 @@ _:c14n0 a as:Create ;
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Like",
-  "id": "http://www.test.example/activiy/1",
+  "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -1668,7 +1668,7 @@ _:c14n0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;http://www.test.example/activiy/1&gt; a as:Like ;
+&lt;http://www.test.example/activity/1&gt; a as:Like ;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -1714,7 +1714,7 @@ _:c14n0 a as:Create ;
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": ["Like", "http://schema.org/LikeAction"],
-  "id": "http://www.test.example/activiy/1",
+  "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -1760,7 +1760,7 @@ _:c14n0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;http://www.test.example/activiy/1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
+&lt;http://www.test.example/activity/1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
