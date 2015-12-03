@@ -156,16 +156,16 @@
       </p>
 
       <p>
-        The terms <code>displayName</code>, <code>verb</code>, and
-        <code>objectType</code> should be treated as reserved terms that
-        SHOULD NOT be used within Activity Streams 2.0 documents. When
-        encountered in an Activity Streams 2.0 document, they SHOULD be
-        processed in accordance to the guidelines listed in
+        The terms <code>displayName</code>, <code>verb</code>,
+        <code>title</code> and <code>objectType</code> should be treated as
+        reserved terms that SHOULD NOT be used within Activity Streams 2.0
+        documents. When encountered in an Activity Streams 2.0 document, they
+        SHOULD be processed in accordance to the guidelines listed in
         <a href="#activitystreams-1.0a"></a>
       </p>
 
     </section>
-
+  </section>
     <section id="syntaxconventions">
 
       <h2>Serialization</h2>
@@ -192,31 +192,6 @@
       </p>
 
       <p>
-        This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is
-        also an IRI, so a URI may be used wherever an IRI is named.  There are
-        two special considerations: (1) when an IRI that is not also a URI is
-        given for dereferencing, it MUST be mapped to a URI using the steps in
-        Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
-        value, it MUST NOT be so mapped.
-      </p>
-
-      <p>
-        Relative IRI (and URL) references SHOULD NOT be used within an
-        Activity Streams 2.0 document due to the fact that many JSON
-        parser implementations are not capable of reliably preserving the base
-        context necessary to properly resolve relative references.
-      </p>
-
-      <p>
-        Unless otherwise specified, all properties with date and time values
-        MUST conform to the "date-time" production in [[!RFC3339]], with an
-        uppercase "T" character used to separate date and time, and an
-        uppercase "Z" character in the absence of a numeric time zone offset.
-        All such timestamps SHOULD be represented relative to Coordinated
-        Universal Time (UTC).
-      </p>
-
-      <p>
         An <dfn data-lt="Activity Streams Document">Activity Streams
         Document</dfn> is a JSON document whose root value is an
         Activity Streams <a>Object</a> of any type and whose MIME media
@@ -228,37 +203,94 @@
         character encoding.
       </p>
 
-      <p>
-        The serialized JSON form of an Activity Streams 2.0 document MUST
-        be consistent with what would be produced by the standard
-        JSON-LD 1.0 Processing Algorithms and API [[!JSON-LD-API]] Compaction
-        Algorithm using, at least, the normative JSON-LD @context definition
-        provided <a href="activitystreams2-context.jsonld">here</a>.
-        Implementations MAY augment the provided @context with additional
-        @context definitions but MUST NOT override or change the normative
-        context. Implementations MAY also use additional properties and values
-        not defined in the JSON-LD @context with the understanding that any
-        such properties will likely be unsupported and ignored by consuming
-        implementations that use the standard JSON-LD algorithms. See the
-        <a href="#extensibility">Extensibility</a> section for more information
-        on handling extensions within Activity Streams 2.0 documents.
-      </p>
+      <section id="jsonld">
+        <h3>JSON-LD</h3>
 
-      <p>
-        JSON-LD uses the special <code>@context</code> property to define the
-        <a href="http://www.w3.org/TR/json-ld/#the-context">processing
-        context</a>. The value of the <code>@context</code> property is defined
-        by the [[JSON-LD]] specification. Implementations producing Activity
-        Streams 2.0 documents SHOULD include a <code>@context</code> property
-        with a value that includes a reference to the normative
-        <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
-        @context definition</a> using the URL
-        "<code>http://www.w3.org/ns/activitystreams</code>".
-      </p>
+        <p>
+          The serialized JSON form of an Activity Streams 2.0 document MUST
+          be consistent with what would be produced by the standard
+          JSON-LD 1.0 Processing Algorithms and API [[!JSON-LD-API]] Compaction
+          Algorithm using, at least, the normative JSON-LD @context definition
+          provided <a href="activitystreams2-context.jsonld">here</a>.
+          Implementations MAY augment the provided @context with additional
+          @context definitions but MUST NOT override or change the normative
+          context. Implementations MAY also use additional properties and values
+          not defined in the JSON-LD @context with the understanding that any
+          such properties will likely be unsupported and ignored by consuming
+          implementations that use the standard JSON-LD algorithms. See the
+          <a href="#extensibility">Extensibility</a> section for more information
+          on handling extensions within Activity Streams 2.0 documents.
+        </p>
+
+        <p>
+          JSON-LD uses the special <code>@context</code> property to define the
+          <a href="http://www.w3.org/TR/json-ld/#the-context">processing
+          context</a>. The value of the <code>@context</code> property is defined
+          by the [[JSON-LD]] specification. Implementations producing Activity
+          Streams 2.0 documents SHOULD include a <code>@context</code> property
+          with a value that includes a reference to the normative
+          <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
+          @context definition</a> using the URL
+          "<code>http://www.w3.org/ns/activitystreams</code>".
+        </p>
+        
+        <p>
+          When a JSON-LD enabled Activity Streams 2.0 implementation encounters
+          a JSON document identified using the
+          "<code>application/activity+json</code>" MIME media type, and
+          that document does not contain a <code>@context</code> property
+          whose value includes a reference to the normative
+          <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
+          @context definition</a>, the implementation MUST assume that the
+          normative @context definition still applies.
+        </p>
+      </section>
+      
+      <section id="urls">
+        <h3>IRIs and URLs</h3>
+ 
+        <p>
+          This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is
+          also an IRI, so a URI may be used wherever an IRI is named.  There are
+          two special considerations: (1) when an IRI that is not also a URI is
+          given for dereferencing, it MUST be mapped to a URI using the steps in
+          Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
+          value, it MUST NOT be so mapped.
+        </p>
+
+        <p>
+          Relative IRI (and URL) references SHOULD NOT be used within an
+          Activity Streams 2.0 document due to the fact that many JSON
+          parser implementations are not capable of reliably preserving the base
+          context necessary to properly resolve relative references.
+        </p>
+      </section>
+
+      <section id="dates">
+        <h3>Date and Times</h3>
+        <p>
+          All properties with date and time values MUST conform to the
+          "date-time" production in [[!RFC3339]] with the one exception
+          that seconds MAY be omitted. An uppercase "T"
+          character MUST be used to separate date and time, and an
+          uppercase "Z" character MUST be used in the absence of a numeric time
+          zone offset.
+        </p>
+        <p>
+          This is specified using the following [[ABNF]] syntax description.
+          The "time-hour", "time-minute", "time-second", "time-secfrac",
+          "time-offset" and "full-date" constructs are as defined in
+          [[RFC3339]].
+        </p>
+<pre>
+as2-partial-time = time-hour ":" time-minute [":" time-second]
+                   [time-secfrac]
+as2-full-time    = as2-partial-time time-offset
+as2-date-time    = full-date "T" as2-full-time
+</pre>
+      </section>
 
     </section>
-
-  </section>
 
   <section id="examples" class="informative">
     <h2>Examples</h2>
@@ -825,6 +857,24 @@ _:b0 a as:Collection ;
         <li><a>OrderedCollectionPage</a>.</li>
       </ul>
     </p>
+    
+    <p>
+      Every JSON object in an Activity Streams 2.0 document is either an
+      <code><a>Object</a></code> or a <code><a>Link</a></code>. All other types
+      defined in the Activity Vocabulary, as well as all extension types, are
+      derived from these two base types.
+    </p>
+    
+    <p>
+      A JSON object in the Activity Streams 2.0 document is a
+      <code><a>Link</a></code> if either: (a) the object contains a
+      <code>type</code> property whose value includes "<code>Link</code>" or
+      (b) any of the types included in the value of the <code>type</code>
+      property are defined as extensions of <a>Link</a> (see
+      <a href="../activitystreams-vocabulary/#dfn-mention">Mention</a> for
+      instance); otherwise the JSON object is considered an instance
+      or extension of <code><a>Object</a></code>.
+    </p>
 
     <section id="object">
       <h2><dfn data-lt="Object" id="asobject">Object</dfn></h2>
@@ -870,7 +920,8 @@ _:b0 a as:Collection ;
           <code><a href="../activitystreams-vocabulary/#dfn-bto">bto</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-cc">cc</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-bcc">bcc</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code>
+          <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
+          <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
         </code>
       </p>
 
@@ -961,15 +1012,9 @@ _:b0 a as:Collection ;
 </div>
 </figure>
 
-      <p>
-        Implementations MUST treat all object types in an Activity Streams
-        document as subclasses of <a>Object</a> unless the object is a
-        <a>Link</a>.
-      </p>
-
      <p>
        The <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>
-       defines a broad range of <code>Object</code> types that are common to
+       defines a range of <code>Object</code> types that are common to
        many social Web applications. This specification stops short of
        defining semantically specific properties for most of these objects.
        External vocabularies can be used to express additional detail not
@@ -1098,8 +1143,7 @@ _:b0 a as:Place, gr:Location ;
           <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-rel">rel</a></code> |
           <code><a href="../activitystreams-vocabulary/#dfn-height">height</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code> |
-          <code><a href="../activitystreams-vocabulary/#dfn-duration">duration</a></code>
+          <code><a href="../activitystreams-vocabulary/#dfn-width">width</a></code>
       </p>
 
       <p>
@@ -1622,7 +1666,7 @@ _:c14n0 a as:Create ;
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Like",
-  "id": "http://www.test.example/activiy/1",
+  "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -1668,7 +1712,7 @@ _:c14n0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;http://www.test.example/activiy/1&gt; a as:Like ;
+&lt;http://www.test.example/activity/1&gt; a as:Like ;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -1714,7 +1758,7 @@ _:c14n0 a as:Create ;
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": ["Like", "http://schema.org/LikeAction"],
-  "id": "http://www.test.example/activiy/1",
+  "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",
   "object": "http://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
@@ -1760,7 +1804,7 @@ _:c14n0 a as:Create ;
 >@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-&lt;http://www.test.example/activiy/1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
+&lt;http://www.test.example/activity/1&gt; a as:Like, &lt;http://schema.org/LikeAction&gt;;
   as:published "2014-09-30T12:34:56Z"^^xsd:dateTime ;
   as:actor &lt;http://example.org/profiles/joe&gt; ;
   as:object &lt;http://example.com/notes/1&gt; .</pre></div>
@@ -2375,7 +2419,7 @@ _:b0 a as:Object ;
         "<code>name</code>", "<code>summary</code>", and "<code>content</code>"
         represent the JSON string forms; and the terms
         "<code>nameMap</code>", "<code>summaryMap</code>", and
-        "<code>contentMap</code>" for representing the object forms.
+        "<code>contentMap</code>" for represent the object forms.
       </p>
 
       <p>
@@ -2427,7 +2471,7 @@ _:b0 a as:Object ;
       </div>
     </figure>
 
-      <section id="defaultlangcontext">
+      <!-- <section id="defaultlangcontext">
         <h3>Default Language Context</h3>
 
       <p>
@@ -2487,7 +2531,7 @@ _:b0 a as:Object ;
 </div>
 </figure>
 
-    </section>
+    </section> -->
 
     </section>
 
@@ -2498,9 +2542,10 @@ _:b0 a as:Object ;
     <h2>Extensibility</h2>
 
       <p>
-        In Activity Streams 2.0, an "extension" is any property not defined
-        by the <a href="../activitystreams-vocabulary/">Activity
-        Vocabulary</a>. Consuming implementations that encounter unfamiliar
+        In Activity Streams 2.0, an "extension" is any property, activity,
+        actor or object type not defined by the
+        <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>.
+        Consuming implementations that encounter unfamiliar
         extensions MUST NOT stop processing or signal an error and MUST
         continue processing the items as if those properties were not
         present. Note that support for extensions can vary across
@@ -2666,9 +2711,9 @@ _:c14n0 a gsp:Geometry ;
     The JSON-LD syntax supports the use of "Compact URIs" (or CURIE's for
     short) [[!curie]]. A "Compact URI" is an alternative encoding of a URI that uses
     a defined prefix to simplify serialization. For instance, the URI
-    <code>http://www.w3.org/ns/activitystreams#Create</code> can be
-    represented as <code>as:Create</code> by assigning the <code>as:</code>
-    prefix the value of <code>http://www.w3.org/ns/activitystreams#</code>
+    <code>http://example.org/term</code> can be
+    represented as <code>ex:term</code> by assigning the <code>ex:</code>
+    prefix the value of <code>http://example.org/</code>
   </p>
 
   <p>
@@ -2706,22 +2751,14 @@ _:c14n0 a gsp:Geometry ;
     Activity Streams 2.0 implementations that wish to fully support extensions
     MUST support Compact URI expansion as defined by the JSON-LD specification.
     Such expansion applies to all property names as well as all property values
-    explicitly defined as type <code>id</code> in the normative
-    <a href="activitystreams2-context.jsonld">JSON-LD @context</a>.
+    explicitly defined as type <code>@id</code> in the JSON-LD @context.
   </p>
 
   <p>
-    For example, in the JSON-LD serialization, the property name
-    <code>name</code> expands, and is equivalent, to
-    <code>http://www.w3.org/ns/activitystreams#name</code>.
-  </p>
-
-  <p>
-    While support for Compact URI's is required, over reliance on the
-    compact form can lead to ambiguity and interoperability issues between
-    implementations. Therefore, Compact URI use SHOULD be avoided
-    in all cases other than property names and the value(s) of the
-    <code>type</code> property.
+    Over reliance on the Compact URI form can lead to ambiguity and
+    interoperability issues between implementations. Therefore, Compact URI use
+    SHOULD be avoided in all cases other than property names and the value(s)
+    of the <code>type</code> property.
   </p>
 
 </section>
@@ -2731,10 +2768,11 @@ _:c14n0 a gsp:Geometry ;
       <h2>Re-serialization of Extensions</h2>
 
       <p>
-        Implementations that parse and then reserialize Activity Streams
-        2.0 documents that contain extension properties SHOULD take
-        sufficient care to ensure that extension properties used within
-        the original document are preserved and serialized appropriately.
+        Implementations that use JSON-LD mechanisms to parse and then
+        reserialize Activity Streams 2.0 documents that contain extension
+        properties SHOULD take sufficient care to ensure that extension
+        properties used within the original document are preserved and
+        serialized appropriately.
       </p>
 
       <p>
@@ -2801,6 +2839,54 @@ _:c14n0 a gsp:Geometry ;
 
     </section>
 
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy Considerations</h2>
+    
+    <p>
+      Activity Streams 2.0 documents can (and likely will) contain potentially
+      sensitive personal information such as identity, contact information,
+      physical location, physical characteristics, and so forth. Furthermore,
+      Activity data, in general, can be analyzed to generate profiles of the
+      behavior of individual or groups of Actors.
+    </p>
+    
+    <p>
+      Implementations that produce or consume Activity Streams 2.0 documents
+      MUST take steps to openly and publicly document and communicate to all
+      potential users: (a) the kinds of potentially sensitive personal
+      information published, consumed or collected by the implementation, (b)
+      the reasons for publishing, consuming and collecting that information,
+      (c) the manner in which that information is being used, (d) the
+      identity of any other party with whom that information is being shared,
+      and (e) the reason the information is being shared with other parties.
+    </p>
+    
+    <p>
+      Implementations that publish Activity Streams 2.0 documents SHOULD
+      assume a default position of limiting both the kind and amount of
+      sensitive personal information included in the document unless users have
+      "opted in" to sharing additional detail.
+    </p>
+    
+    <p>
+      Implementations that consume Activity Streams 2.0 documents SHOULD NOT,
+      by default, store or share sensitive personal information included within
+      consumed documents unless users have "opted in" to allowing that
+      information to be stored or shared.
+    </p>
+    
+    <p>
+      In this context, "opting in" does not necessarily require explicit
+      action on the part of the user. If, for instance, the use of certain
+      sensitive personal information is clearly implicit in the use of an
+      implementation (a location tracking service, for example), then any
+      use of that implementation can be considered an implicit acknowledgement
+      that the sensitive personal information will be used and shared so long
+      as the documentation guidelines listed above are followed.
+    </p>
+    
   </section>
 
   <section id="security-considerations">

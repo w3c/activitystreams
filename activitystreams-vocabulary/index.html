@@ -165,23 +165,12 @@
     <section id="termconventions">
 
       <h2>Conventions</h2>
-
-      <p>
-        This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is
-        also an IRI, so a URI may be used wherever an IRI is named.  There are
-        two special considerations: (1) when an IRI that is not also a URI is
-        given for dereferencing, it MUST be mapped to a URI using the steps
-        in Section 3.1 of [[!RFC3987]] and (2) when an IRI is serving as an "id"
-        value, it MUST NOT be so mapped.
-      </p>
-
+      
       <p>
         Unless otherwise specified, all properties defined as
-        <code>xsd:dateTime</code> values MUST conform to the "date-time"
-        production in [[!RFC3339]], with an uppercase "T" character used to
-        separate date and time, and an uppercase "Z" character in the absence
-        of a numeric time zone offset. All such timestamps SHOULD be
-        represented relative to Coordinated Universal Time (UTC).
+        <code>xsd:dateTime</code> values MUST conform to the rules
+        defined in Activity Streams 2.0 Core,
+        <a href="../activitystreams-core/#dates">Section 2.3</a>.
       </p>
 
       <p>
@@ -306,7 +295,7 @@
           <td>
             Describes an object of any kind. The Object class serves as the
             base class for most of the other kinds of objects defined in the
-            Activity Vocabulary, include other Core classes such as
+            Activity Vocabulary, including other Core classes such as
             <code><a>Activity</a></code>,
             <code><a>IntransitiveActivity</a></code>,
             <code><a>Actor</a></code>,
@@ -346,7 +335,8 @@
               <code><a>bto</a></code> |
               <code><a>cc</a></code> |
               <code><a>bcc</a></code> |
-              <code><a>mediaType</a></code>
+              <code><a>mediaType</a></code> |
+              <code><a>duration</a></code>
             </p>
           </td>
         </tr>
@@ -448,8 +438,7 @@ _:b0 a as:Link ;
               <code><a>name</a></code> |
               <code><a>hreflang</a></code> |
               <code><a>height</a></code> |
-              <code><a>width</a></code> |
-              <code><a>duration</a></code>
+              <code><a>width</a></code>
             </p>
           </td>
         </tr>
@@ -4676,6 +4665,142 @@ _:b0 a as:Dislike ;
             <td>Inherits all properties from <code><a>Activity</a></code>.</td>
           </tr>
         </tbody>
+        <tbody>
+          <tr>
+            <td rowspan="4" ><dfn>Question</dfn></td>
+            <td  style="width: 10%">URI:</td>
+            <td><code>http://www.w3.org/ns/activitystreams#Question</code></td>
+            <td rowspan="4" >
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex55-jsonld" class="selected">JSON</a></li>
+    <li><a href="#ex55-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex55-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex55-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex55-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex55-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Question",
+  "name": "What is the answer?",
+  "oneOf": [
+    {
+      "type": "Note",
+      "name": "Option A"
+    },
+    {
+      "type": "Note",
+      "name": "Option B"
+    }
+  ]
+}</pre>
+</div>
+<div id="ex55-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Question">
+  &lt;h2 itemprop="name">
+    What is the answer?
+  &lt;/h2>
+  &lt;ul&gt;
+    &lt;li itemprop="oneOf" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
+      &lt;span itemprop="name">Option A&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li itemprop="oneOf" itemscope
+      itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
+      &lt;span itemprop="name">Option B&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;ul&gt;
+&lt;/div></pre>
+  </div>
+  <div id="ex55-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Question">
+  &lt;h2 property="name">What is the answer?&lt;/h2>
+  &lt;ol>
+    &lt;li property="oneOf" typeof="Note">
+      &lt;span property="name">
+        Option A
+      &lt;/span>
+    &lt;/li>
+    &lt;li property="oneOf" typeof="Note">
+      &lt;span property="name">
+        Option B
+      &lt;/span>
+    &lt;/li>
+  &lt;/ol>
+&lt;/div></pre>
+  </div>
+  <div id="ex55-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-as-question">
+  &lt;h2 class="p-name">
+    What is the answer?
+  &lt;/h2>
+  &lt;ul class="p-as-one-of"&gt;
+    &lt;li class="h-entry"&gt;
+      &lt;span class-"p-name">Option A&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="h-entry"&gt;
+      &lt;span class-"p-name">Option B&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;ul&gt;
+&lt;/div></pre>
+  </div>
+<div id="ex55-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+_:b0 a as:Question ;
+  as:name "What is the answer?" ;
+  as:oneOf
+    [
+      a as:Note ;
+        as:name "Option A"
+    ] ,
+    [
+      a as:Note ;
+        as:name "Option B"
+    ] .</pre>
+  </div>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Notes:</td>
+            <td>
+              <p>
+                Represents a question being asked. Question objects are an
+                extension of <code><a>IntransitiveActivity</a></code>. That is,
+                the Question object is an Activity, but the direct object is
+                the question itself and therefore it would not contain an
+                <code><a>object</a></code> property.
+              </p>
+              <p>
+                Either of the <code><a>anyOf</a></code> and
+                <code><a>oneOf</a></code> properties MAY be used to express
+                possible answers, but a Question object MUST NOT have
+                both properties.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>Extends:</td>
+            <td><code><a>IntransitiveActivity</a></code>.</td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>
+              <p><code><a>oneOf</a></code> | <code><a>anyOf</a></code></p>
+
+              Inherits all properties from
+              <code><a>IntransitiveActivity</a></code>.
+            </td>
+          </tr>
+        </tbody>
 
       </table>
 
@@ -5040,10 +5165,11 @@ _:b0 a as:Service ;
 
     <section id="object-types">
 
-      <h2>Object Types</h2>
+      <h2>Object and Link Types</h2>
 
       <p>
         All Object Types inherit the properties of the base <a>Object</a> class.
+        Link Types inherit the properties of the base <a>Link</a> class.
         Some specific Object Types are subclasses or specializations of more
         generalized Object Types (for instance, the <code><a>Person</a></code>
         Object Type is a more specific form of the <code><a>Actor</a></code> class).
@@ -5054,18 +5180,22 @@ _:b0 a as:Service ;
         <ul>
           <li><code><a>Article</a></code></li>
           <li><code><a>Audio</a></code></li>
-          <li><code><a>Content</a></code></li>
           <li><code><a>Document</a></code></li>
           <li><code><a>Event</a></code></li>
           <li><code><a>Image</a></code></li>
-          <li><code><a>Mention</a></code></li>
           <li><code><a>Note</a></code></li>
           <li><code><a>Page</a></code></li>
           <li><code><a>Place</a></code></li>
           <li><code><a>Profile</a></code></li>
-          <li><code><a>Question</a></code></li>
           <li><code><a>Relationship</a></code></li>
           <li><code><a>Video</a></code></li>
+        </ul>
+      </p>
+      
+      <p>
+        The Link Types include:
+        <ul>
+          <li><code><a>Mention</a></code></li>
         </ul>
       </p>
 
@@ -5196,106 +5326,6 @@ _:b0 a as:Relationship ;
           </tr>
         </tbody>
 
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>Content</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#Content</code></td>
-          <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex35-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex35-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex35-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex35-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex35-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex35-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Content",
-  "name": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
-  "height": 100,
-  "width": 100
-}</pre>
-</div>
-<div id="ex35-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="name">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
-  </div>
-  <div id="ex35-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content" style="width:100px; height:100px">
-  &lt;div property="name">Some generic content&lt;/div>
-  &lt;div property="content" datatype="rdf:HTML">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="width" content="100" datatype="xsd:nonNegativeInteger" />
-&lt;/div></pre>
-  </div>
-  <div id="ex35-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div property="p-name">Some generic content&lt;/div>
-  &lt;div property="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-<div id="ex35-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-_:b0 a as:Content ;
-  as:name "Some generic content" ;
-  as:content "&lt;p>This can be any kind of content&gt;/p>" ;
-  as:height "100"^^xsd:nonNegativeInteger ;
-  as:width "100"^^xsd:nonNegativeInteger .</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Describes an entity representing any form of content. Examples
-            include documents, images, etc. Content objects
-            typically are not able to perform activities on their own, yet
-            rather are usually the object or target of activities.
-          </td>
-        </tr>
-        <tr>
-          <td>Extends:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Properties:</td>
-          <td>
-            <p>
-              <code><a>duration</a></code> |
-              <code><a>height</a></code> |
-              <code><a>width</a></code>
-            </p>
-
-            <p>
-              Inherits all properties from <code><a>Object</a></code>.
-            </p>
-          </td>
-        </tr>
-</tbody>
         <tbody>
           <tr>
             <td rowspan="4" ><dfn>Article</dfn></td>
@@ -5376,11 +5406,11 @@ _:b0 a as:Article ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Content</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5451,11 +5481,11 @@ _:b0 a as:Document ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Content</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5811,11 +5841,11 @@ _:b0 a as:Note ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Content</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5889,143 +5919,6 @@ _:b0 a as:Page ;
           <tr>
             <td>Properties:</td>
             <td>Inherits all properties from <code><a>Document</a></code>.</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>Question</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Question</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex55-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex55-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex55-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex55-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex55-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex55-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Question",
-  "name": "What is the answer?",
-  "oneOf": [
-    {
-      "type": "Note",
-      "name": "Option A"
-    },
-    {
-      "type": "Note",
-      "name": "Option B"
-    }
-  ]
-}</pre>
-</div>
-<div id="ex55-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Question">
-  &lt;h2 itemprop="name">
-    What is the answer?
-  &lt;/h2>
-  &lt;ul&gt;
-    &lt;li itemprop="oneOf" itemscope
-      itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="name">Option A&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li itemprop="oneOf" itemscope
-      itemtype="http://www.w3.org/ns/activitystreams#Note"&gt;
-      &lt;span itemprop="name">Option B&lt;/span&gt;
-    &lt;/li&gt;
-  &lt;ul&gt;
-&lt;/div></pre>
-  </div>
-  <div id="ex55-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Question">
-  &lt;h2 property="name">What is the answer?&lt;/h2>
-  &lt;ol>
-    &lt;li property="oneOf" typeof="Note">
-      &lt;span property="name">
-        Option A
-      &lt;/span>
-    &lt;/li>
-    &lt;li property="oneOf" typeof="Note">
-      &lt;span property="name">
-        Option B
-      &lt;/span>
-    &lt;/li>
-  &lt;/ol>
-&lt;/div></pre>
-  </div>
-  <div id="ex55-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-as-question">
-  &lt;h2 class="p-name">
-    What is the answer?
-  &lt;/h2>
-  &lt;ul class="p-as-one-of"&gt;
-    &lt;li class="h-entry"&gt;
-      &lt;span class-"p-name">Option A&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li class="h-entry"&gt;
-      &lt;span class-"p-name">Option B&lt;/span&gt;
-    &lt;/li&gt;
-  &lt;ul&gt;
-&lt;/div></pre>
-  </div>
-<div id="ex55-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Question ;
-  as:name "What is the answer?" ;
-  as:oneOf
-    [
-      a as:Note ;
-        as:name "Option A"
-    ] ,
-    [
-      a as:Note ;
-        as:name "Option B"
-    ] .</pre>
-  </div>
-</div>
-            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              <p>
-                Represents a question being asked. Question objects are unique
-                in that they are an extension of both
-                <code><a>Content</a></code> and
-                <code><a>IntransitiveActivity</a></code>. That is, the
-                Question object is an Activity but the direct object is the
-                question itself.
-              </p>
-              <p>
-                Either of the <code><a>anyOf</a></code> and
-                <code><a>oneOf</a></code> properties MAY be used to express
-                possible answers, but a Question object MUST NOT have
-                both properties.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>Extends:</td>
-            <td><code><a>Content</a></code> AND <code><a>IntransitiveActivity</a></code>.</td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>
-              <p><code><a>oneOf</a></code> | <code><a>anyOf</a></code></p>
-
-              Inherits all properties from <code><a>Content</a></code> and
-              <code><a>IntransitiveActivity</a></code>.
-            </td>
           </tr>
         </tbody>
         <tbody>
@@ -6471,13 +6364,13 @@ _:b0 a as:Profile ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Content</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
             <td>
               <p><code><a>describes</a></code></p>
-              <p>Inherits all properties from <code><a>Content</a></code>.</p>
+              <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
         </tbody>
@@ -10660,11 +10553,13 @@ _:b0 a as:CollectionPage ;
   "name": "Cool New Movie",
   "duration": "PT2H30M",
   "preview": {
-    "type": "Link",
+    "type": "Video",
     "name": "Trailer",
-    "href": "http://example.org/trailer.mkv",
-    "mediaType": "video/mkv",
-    "duration": "PT1M"
+    "duration": "PT1M",
+    "url": {
+      "href": "http://example.org/trailer.mkv",
+      "mediaType": "video/mkv"
+    }
   }
 }</pre>
 </div>
@@ -10672,15 +10567,13 @@ _:b0 a as:CollectionPage ;
 <pre class="example highlight html"
 >&lt;div itemscope
   itemtype="http://www.w3.org/ns/activitystreams#Video">
-  &lt;span itemprop="name">
-    Cool New Movie
-  &lt;/span>
+  &lt;span itemprop="name">Cool New Movie&lt;/span>
   &lt;meta itemprop="duration" content="PT2H30M">(2H 30M)&lt;/meta>
   - &lt;span itemprop="preview" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Link">
+      itemtype="http://www.w3.org/ns/activitystreams#Video">
     &lt;span itemprop="name">Trailer&lt;span>
     &lt;meta itemprop="duration" content="PT1M">(1M)&lt;/meta>
-    &lt;a itemprop="href"
+    &lt;a itemprop="url"
       href="http://example.org/trailer.mkv"
       type="video/mkv">Watch&lt;/a>
   &lt;/span>
@@ -10688,17 +10581,16 @@ _:b0 a as:CollectionPage ;
   </div>
   <div id="ex106-rdfa" style="display:none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Video">
-  &lt;span property="name">
-    Cool New Movie
-  &lt;/span>
-  &lt;span property="duration" content="PT2H30M" datatype="xsd:duration">(2H 30M)&lt;/span> -
-  &lt;span property="preview" typeof="Link">
-    &lt;a property="name"
-      rel="href" href="http://example.org/trailer.mkv">Trailer&lt;/a>
-    &lt;span property="mediaType" lang="">video/mkv&lt;/span>
-    &lt;span property="duration" content="PT1M" datatype="xsd:duration">(1M)&lt;/span>
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Video">
+  &lt;span property="name">Cool New Movie&lt;/span>
+  &lt;span property="duration" content="PT2H30M"
+    datatype="xsd:duration">(2H 30M)&lt;/span>
+  - &lt;span property="preview" typeof="Video">
+    &lt;span property="name">Trailer&lt;span>
+    &lt;meta property="duration" content="PT1M">(1M)&lt;/meta>
+    &lt;a property="url"
+      href="http://example.org/trailer.mkv"
+      type="video/mkv">Watch&lt;/a>
   &lt;/span>
 &lt;/div></pre>
   </div>
@@ -10727,11 +10619,13 @@ _:b0 a as:Video ;
   as:name "Cool New Movie" ;
   as:duration "PT2H30M"^^xsd:duration ;
   as:preview [
-    a as:Link ;
+    a as:Video ;
     as:name "Trailer" ;
-    as:href &lt;http://example.org/trailer.mkv> ;
-    as:mediaType "video/mkv" ;
-    as:duration "PT1M"^^xsd:duration
+    as:duration "PT1M"^^xsd:duration ;
+    as:url [
+      as:href &lt;http://example.org/trailer.mkv> ;
+      as:mediaType "video/mkv"
+    ]
   ] .</pre>
   </div>
 </div>
@@ -12403,7 +12297,7 @@ _:b0 a as:Video ;
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Content</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Object</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -12432,55 +12326,37 @@ _:b0 a as:Video ;
   <div id="ex136-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Content",
-  "name": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
+  "type": "Link",
+  "href": "http://example.org/image.png",
   "height": 100,
   "width": 100
 }</pre>
 </div>
 <div id="ex136-microdata" style="display:none;">
 <pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="name">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
+>&lt;img itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Link"
+  src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex136-rdfa" style="display:none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content">
-  &lt;div property="name">Some generic content&lt;/div>
-  &lt;div property="content" datatype="rdf:HTML">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" />
-  &lt;meta property="width" content="100" />
-&lt;/div></pre>
+>&lt;img vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Link" src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex136-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div property="p-name">Some generic content&lt;/div>
-  &lt;div property="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
+>&lt;img src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
 <div id="ex136-turtle" style="display: none;">
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:b0 a as:Content ;
-  as:name "Some generic content" ;
-  as:content "&lt;p>This can be any kind of content&lt;/p>" ;
+_:b0 a as:Link ;
+  as:href "http://example.org/image.png" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
   </div>
@@ -12490,15 +12366,14 @@ _:b0 a as:Content ;
         <tr>
           <td>Notes:</td>
           <td>
-            When the object describes a visual resource, such as an image,
-            video or embeddable HTML, the <code><a>height</a></code> property
-            indicates the recommended display height in properties of
-            device-independent pixels.
+            On a <code><a>Link</a></code>, specifies a hint as to the
+            rendering height in device-independent pixels of the linked
+            resource.
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Content</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -14362,55 +14237,37 @@ _:b0 a as:Note ;
   <div id="ex159-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Content",
-  "name": "Some generic content",
-  "content": "&lt;p>This can be any kind of content&lt;/p>",
+  "type": "Link",
+  "href": "http://example.org/image.png",
   "height": 100,
   "width": 100
 }</pre>
 </div>
 <div id="ex159-microdata" style="display:none;">
 <pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Content"
-  style="width:100px; height:100px">
-  &lt;div itemprop="name">Some generic content&lt;/div>
-  &lt;div itemprop="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta itemprop="height" content="100" />
-  &lt;meta itemprop="width" content="100" />
-&lt;/div></pre>
+>&lt;img itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Link"
+  src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex159-rdfa" style="display:none;">
 <pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Content">
-  &lt;div property="name">Some generic content&lt;/div>
-  &lt;div property="content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-  &lt;meta property="height" content="100" datatype="xsd:nonNegativeInteger" />
-  &lt;meta property="width" content="100" datatype="xsd:nonNegativeInteger" />
-&lt;/div></pre>
+>&lt;img vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Link" src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
   <div id="ex159-microformats" style="display:none;">
 <pre class="example highlight html"
->&lt;div class="h-entry" style="width:100px; height:100px">
-  &lt;div class="p-name">Some generic content&lt;/div>
-  &lt;div class="e-content">
-    &lt;p>This can be any kind of content&lt;/p>
-  &lt;/div>
-&lt;/div></pre>
+>&lt;img src="http://example.org/image.png"
+  height="100" width="100" /></pre>
   </div>
 <div id="ex159-turtle" style="display: none;">
 <pre class="example highlight turtle">
 @prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-_:b0 a as:Content ;
-  as:name "Some generic content" ;
-  as:content "&lt;p>This can be any kind of content&lt;/p>" ;
+_:b0 a as:Link ;
+  as:href "http://example.org/image.png" ;
   as:height "100"^^xsd:nonNegativeInteger ;
   as:width "100"^^xsd:nonNegativeInteger .</pre>
   </div>
@@ -14420,15 +14277,14 @@ _:b0 a as:Content ;
         <tr>
           <td>Notes:</td>
           <td>
-            When the object describes a visual resource, such as an image,
-            video or embeddable HTML, the <code><a>width</a></code> property
-            indicates the recommended display width in properties of
-            device-independent pixels.
+            On a <code><a>Link</a></code>, specifies a hint as to the
+            rendering width in device-independent pixels of the linked
+            resource.
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
-          <td><code><a>Content</a> | <a>Link</a></code></td>
+          <td><code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Range:</td>
@@ -15588,6 +15444,232 @@ _:b0 a as:Profile ;
     activity's <code>object</code>.
   </p>
 
+</section>
+
+<section id="motivations" class="informative">
+  <h3>Activity Type Motivating Use Cases</h3>
+  
+  <p>
+    The <a href="#activity-types">Activity types</a> defined in this
+    vocabulary have been primarily selected to address the commonly implemented social use cases described below.
+  </p>
+  
+  <section id="motivations-crud">
+    <h4>Content Management</h4>
+    
+    <p>
+      The Content Management use case primarily deals with activities
+      that involve the creation, modification or deletion of content.
+      This includes, for instance, activities such as "John created a new
+      note", "Sally updated an article", and "Joe deleted the photo".
+    </p>
+    
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Create</a></code></li>
+        <li><code><a>Delete</a></code></li>
+        <li><code><a>Update</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-collections">
+    <h4>Collection Management</h4>
+    
+    <p>
+      The Collection Management use case primarily deals with activities
+      involving the management of content within collections. Examples of
+      collections include things like folders, albums, friend lists, etc.
+      This includes, for instance, activities such as "Sally added a file
+      to Folder A", "John moved the file from Folder A to Folder B", etc.
+    </p>
+    
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Add</a></code></li>
+        <li><code><a>Move</a></code></li>
+        <li><code><a>Remove</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-respond">
+    <h4>Reactions</h4>
+    
+    <p>
+      The Reactions use case primarily deals with reactions to content.
+      This can include activities such as liking or disliking content,
+      ignoring updates, flagging content as being inappropriate, accepting
+      or rejecting objects, etc.
+    </p>
+    
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Accept</a></code></li>
+        <li><code><a>Block</a></code></li>
+        <li><code><a>Dislike</a></code></li>
+        <li><code><a>Flag</a></code></li>
+        <li><code><a>Ignore</a></code></li>
+        <li><code><a>Like</a></code></li>
+        <li><code><a>Reject</a></code></li>
+        <li><code><a>TentativeAccept</a></code></li>
+        <li><code><a>TentativeReject</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-rsvp">
+    <h4>Event RSVP</h4>
+    
+    <p>
+      The Event RSVP use case primarily deals with invitations to events
+      and RSVP type responses.
+    </p>
+    
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Accept</a></code></li>
+        <li><code><a>Ignore</a></code></li>
+        <li><code><a>Invite</a></code></li>
+        <li><code><a>Reject</a></code></li>
+        <li><code><a>TentativeAccept</a></code></li>
+        <li><code><a>TentativeReject</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-group">
+    <h4>Group Management</h4>
+    
+    <p>
+      The Group Management use case primarily deals with management of
+      groups. It can include, for instance, activities such as "John added
+      Sally to Group A", "Sally joined Group A", "Joe left Group A", etc.
+    </p>
+    
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Add</a></code></li>
+        <li><code><a>Join</a></code></li>
+        <li><code><a>Leave</a></code></li>
+        <li><code><a>Remove</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-experience">
+    <h4>Content Experience</h4>
+    
+    <p>
+      The Content Experience use case primarily deals with describing
+      activities involving listening to, reading, or viewing content.
+      For instance, "Sally read the article", "Joe listened to the song".
+    </p>
+    
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Listen</a></code></li>
+        <li><code><a>Read</a></code></li>
+        <li><code><a>View</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-geo">
+    <h4>Geo-Social Events</h4>
+    <p>
+      The Geo-Social Events use case primarily deals with activities
+      involving geo-tagging type activities. For instance, it can include
+      activities such as "Joe arrived at work", "Sally left work", and
+      "John is travel from home to work".
+    </p>
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Arrive</a></code></li>
+        <li><code><a>Leave</a></code></li>
+        <li><code><a>Travel</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-notification">
+    <h4>Notification</h4>
+    <p>
+      The Notification use case primarily deals with calling attention to
+      particular objects or notifications.
+    </p>
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Announce</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-questions">
+    <h4>Questions</h4>
+    <p>
+      the Questions use case primarily deals with representing inquiries
+      of any type. See <a href="questions"></a> for more information.
+    </p>
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Question</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-relationships">
+    <h4>Relationship Management</h4>
+    <p>
+      The Relationship Management use case primarily deals with representing
+      activities involving the management of interpersonal and social
+      relationships (e.g. friend requests, management of social network, etc).
+      See <a href="#connections"></a> for more information.
+    </p>
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Accept</a></code></li>
+        <li><code><a>Add</a></code></li>
+        <li><code><a>Block</a></code></li>
+        <li><code><a>Create</a></code></li>
+        <li><code><a>Delete</a></code></li>
+        <li><code><a>Follow</a></code></li>
+        <li><code><a>Ignore</a></code></li>
+        <li><code><a>Invite</a></code></li>
+        <li><code><a>Reject</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-undo">
+    <h4>Negating Activity</h4>
+    <p>
+      The Negating Activity use case primarily deals with the ability to
+      redact previously completed activities. See <a href="#inverse"></a>
+      for more information.
+    </p>
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Undo</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
+  <section id="motivations-offer">
+    <h4>Offers</h4>
+    <p>
+      The Offers use case deals with activities involving offering one
+      object to another. It can include, for instance, activities such as
+      "Company A is offering a discount on purchase of Product Z to Sally",
+      "Sally is offering to add a File to Folder A", etc.
+    </p>
+    <p>Relevant Activities:
+      <ul>
+        <li><code><a>Offer</a></code></li>
+      </ul>
+    </p>
+  </section>
+  
 </section>
 
 </section>

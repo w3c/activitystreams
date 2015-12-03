@@ -19,7 +19,6 @@
     "Collection": "as:Collection",
     "CollectionPage": "as:CollectionPage",
     "Relationship": "as:Relationship",
-    "Content": "as:Content",
     "Create": "as:Create",
     "Delete": "as:Delete",
     "Dislike": "as:Dislike",
