@@ -8,7 +8,6 @@
     "Accept": "as:Accept",
     "Activity": "as:Activity",
     "IntransitiveActivity": "as:IntransitiveActivity",
-    "Actor": "as:Actor",
     "Add": "as:Add",
     "Announce": "as:Announce",
     "Application": "as:Application",

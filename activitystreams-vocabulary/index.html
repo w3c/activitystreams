@@ -211,7 +211,6 @@
         <li><code><a>Link</a></code></li>
         <li><code><a>Activity</a></code></li>
         <li><code><a>IntransitiveActivity</a></code></li>
-        <li><code><a>Actor</a></code></li>
         <li><code><a>Collection</a></code></li>
         <li><code><a>OrderedCollection</a></code></li>
         <li><code><a>CollectionPage</a></code></li>
@@ -298,7 +297,6 @@
             Activity Vocabulary, including other Core classes such as
             <code><a>Activity</a></code>,
             <code><a>IntransitiveActivity</a></code>,
-            <code><a>Actor</a></code>,
             <code><a>Collection</a></code> and
             <code><a>OrderedCollection</a></code>.
           </td>
@@ -670,76 +668,6 @@ _:b0 a as:Travel ;
             <p>
               Inherits all properties from <code><a>Activity</a></code> except
               <code>object</code>.
-            </p>
-          </td>
-        </tr>
-</tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn>Actor</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#Actor</code></td>
-          <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex4-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex4-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex4-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex4-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex4-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex4-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Actor",
-  "name": "Sally"
-}</pre>
-  </div>
-  <div id="ex4-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype=http://www.w3.org/ns/activitystreams#Actor"
-  itemprop="name">Sally&lt;/div></pre>
-  </div>
-  <div id="ex4-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Actor"
-  property="name">Sally&lt;/div></pre>
-  </div>
-  <div id="ex4-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-card">
-  Sally
-&lt;/div></pre>
-  </div>
-  <div id="ex4-turtle" style="display: none;">
-<pre class="example highlight turle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt;.
-
-_:b0 a as:Actor ;
-  as:name "Sally" .</pre>
-  </div>
-  </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            An Actor is any entity that is capable of being the primary
-            actor for an Activity.
-          </td>
-        </tr>
-        <tr>
-          <td>Extends:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Properties:</td>
-          <td>
-            <p>
-              Inherits all properties from <code><a>Object</a></code>.
             </p>
           </td>
         </tr>
@@ -4811,10 +4739,8 @@ _:b0 a as:Question ;
       <h2>Actor Types</h2>
 
       <p>
-        All Actor Types inherit the properties of the base <a>Actor</a> class.
-        Actors are objects that are capable of performing activities. The
-        value of the <a data-lt="actor-term">actor</a> property MUST be a type
-        of Actor.
+        Actor types are <a>Object</a> types that are capable of performing
+        activities.
       </p>
 
       <p>
@@ -4893,11 +4819,11 @@ _:b0 a as:Application ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Actor</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Actor</a></code>.
+            <td>Inherits all properties from <code><a>Object</a></code>.
           </tr>
         </tbody>
         <tbody>
@@ -4957,11 +4883,11 @@ _:b0 a as:Group ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Actor</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Actor</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
 
@@ -5022,11 +4948,11 @@ _:b0 a as:Organization ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Actor</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Actor</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
 
@@ -5087,11 +5013,11 @@ _:b0 a as:Person ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Actor</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Actor</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
         <tbody>
@@ -5151,11 +5077,11 @@ _:b0 a as:Service ;
           </tr>
           <tr>
             <td>Extends:</td>
-            <td><code><a>Actor</a></code></td>
+            <td><code><a>Object</a></code></td>
           </tr>
           <tr>
             <td>Properties:</td>
-            <td>Inherits all properties from <code><a>Actor</a></code>.</td>
+            <td>Inherits all properties from <code><a>Object</a></code>.</td>
           </tr>
         </tbody>
 
@@ -5171,8 +5097,8 @@ _:b0 a as:Service ;
         All Object Types inherit the properties of the base <a>Object</a> class.
         Link Types inherit the properties of the base <a>Link</a> class.
         Some specific Object Types are subclasses or specializations of more
-        generalized Object Types (for instance, the <code><a>Person</a></code>
-        Object Type is a more specific form of the <code><a>Actor</a></code> class).
+        generalized Object Types (for instance, the <code><a>Like</a></code>
+        Type is a more specific form of the <code><a>Activity</a></code> class).
       </p>
 
       <p>
@@ -6357,9 +6283,9 @@ _:b0 a as:Profile ;
             <td>Notes:</td>
             <td>
               A Profile is a content object that describes another Object,
-              typically used to describe <code><a>Actor</a></code>,
-              objects. The <code><a>describes</a></code> property is used to
-              reference the object being described by the profile.
+              typically used to describe <a href="#actor-types">Actor Type</a>
+              objects, objects. The <code><a>describes</a></code> property is
+              used to reference the object being described by the profile.
             </td>
           </tr>
           <tr>
@@ -6725,7 +6651,7 @@ _:b0 a as:Offer ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Actor</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
         <tr>
           <td>Subproperty Of:</td>
@@ -7139,7 +7065,7 @@ _:b0 a as:Offer ;
         <tr>
           <td>Notes:</td>
           <td>
-            Identifies one or more Actors that are part of the private
+            Identifies one or more Objects that are part of the private
             secondary audience of this Object.
           </td>
         </tr>
@@ -7149,7 +7075,7 @@ _:b0 a as:Offer ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Actor</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -7265,7 +7191,7 @@ _:b0 a as:Offer ;
         <tr>
           <td>Notes:</td>
           <td>
-            Identifies an Actor that is part of the private primary audience
+            Identifies an Object that is part of the private primary audience
             of this Object.
           </td>
         </tr>
@@ -7275,7 +7201,7 @@ _:b0 a as:Offer ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Actor</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -7391,7 +7317,7 @@ _:b0 a as:Offer ;
         <tr>
           <td>Notes:</td>
           <td>
-            Identifies an Actor that is part of the public secondary audience
+            Identifies an Object that is part of the public secondary audience
             of this Object.
           </td>
         </tr>
@@ -7401,7 +7327,7 @@ _:b0 a as:Offer ;
         </tr>
         <tr>
           <td>Range:</td>
-          <td><code><a>Actor</a></code> | <code><a>Link</a></code></td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
       </tbody>
 

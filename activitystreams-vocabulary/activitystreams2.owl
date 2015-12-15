@@ -34,7 +34,7 @@ as:actor a owl:ObjectProperty ;
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf (as:Actor as:Link)
+    owl:unionOf (as:Object as:Link)
   ] .
 
 as:attributedTo a owl:ObjectProperty ;
@@ -75,7 +75,7 @@ as:author a owl:ObjectProperty,
   rdfs:subPropertyOf as:attributedTo ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:bcc a owl:ObjectProperty ;
@@ -83,7 +83,7 @@ as:bcc a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:bto a owl:ObjectProperty ;
@@ -91,7 +91,7 @@ as:bto a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:cc a owl:ObjectProperty ;
@@ -99,7 +99,7 @@ as:cc a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:context a owl:ObjectProperty ;
@@ -108,7 +108,7 @@ as:context a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-      owl:unionOf ( as:Actor as:Link )
+      owl:unionOf ( as:Object as:Link )
   ] .
 
 as:current a owl:FunctionalProperty ,
@@ -338,7 +338,7 @@ as:to a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Actor as:Link )
+    owl:unionOf ( as:Object as:Link )
   ] .
 
 as:url a owl:ObjectProperty ;
@@ -652,11 +652,6 @@ as:IntransitiveActivity a owl:Class ;
   ] ;
   rdfs:comment "An Activity that has no direct object"@en .
 
-as:Actor a owl:Class ;
-  rdfs:label "Actor"@en ;
-  rdfs:subClassOf as:Object ;
-  rdfs:comment "Any entity that can do something"@en .
-
 as:Add a owl:Class ;
   rdfs:label "Add"@en ;
   rdfs:subClassOf as:Activity ;
@@ -669,7 +664,7 @@ as:Announce a owl:Class ;
 
 as:Application a owl:Class ;
   rdfs:label "Application"@en ;
-  rdfs:subClassOf as:Actor ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "Represents a software application of any sort"@en .
 
 as:Arrive a owl:Class ;
@@ -744,7 +739,7 @@ as:Follow a owl:Class ;
 
 as:Group a owl:Class ;
   rdfs:label "Group"@en ;
-  rdfs:subClassOf as:Actor ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A Group of any kind."@en .
 
 as:Ignore a owl:Class ;
@@ -882,12 +877,12 @@ as:Page a owl:Class ;
 
 as:Person a owl:Class ;
   rdfs:label "Person"@en ;
-  rdfs:subClassOf as:Actor ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A Person"@en .
 
 as:Organization a owl:Class ;
   rdfs:label "Organization"@en ;
-  rdfs:subClassOf as:Actor ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "An Organization"@en .
 
 as:Profile a owl:Class ;
@@ -917,7 +912,7 @@ as:Remove a owl:Class ;
 
 as:Service a owl:Class ;
   rdfs:label "Service"@en ;
-  rdfs:subClassOf as:Actor ;
+  rdfs:subClassOf as:Object ;
   rdfs:comment "A service provided by some entity"@en .
 
 as:TentativeAccept a owl:Class ;
