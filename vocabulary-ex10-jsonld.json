@@ -1,0 +1,19 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Add",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": {
+    "type": "Image",
+    "name": "A picture of my cat",
+    "url": "http://example.org/img/cat.png"
+  },
+  "target": {
+    "type": "Collection",
+    "name": "My Cat Pictures"
+  }
+}
+  

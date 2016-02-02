@@ -1,0 +1,11 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Offer",
+  "actor": {
+    "type": "Person",
+    "id": "http://sally.example.org",
+    "name": "Sally"
+  },
+  "object": "http://example.org/foo"
+}

@@ -1,0 +1,12 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "content": "A Simple note",
+  "image": {
+    "type": "Image",
+    "name": "A Cat",
+    "url": "http://example.org/cat.png"
+  }
+}
+  

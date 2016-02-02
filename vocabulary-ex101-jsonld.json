@@ -1,0 +1,15 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Listen",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": "http://example.org/foo.mp3",
+  "instrument": {
+    "type": "Service",
+    "name": "Acme Music Service"
+  }
+}
+  

@@ -1,0 +1,60 @@
+
+  {
+  "@context": [
+    "http://www.w3.org/ns/activitystreams#",
+    {
+      "oa": "http://www.w3.org/ns/oa#",
+      "prov": "http://www.w3.org/ns/prov#",
+      "oa:created": {
+        "@id": "oa:created",
+        "@type": "xsd:dateTime"
+      }
+    }
+  ],
+  "type": "Collection",
+  "items": [
+    {
+      "id": "http://example.org/activity/20150101000000",
+      "type": [ "Create", "prov:Activity" ],
+      "actor": {
+        "id": "http://example.org/#eric",
+        "name": "Eric"
+      },
+      "name": "Eric wrote a note.",
+      "object": {
+        "id": "http://example.org/entry/20150101000000",
+        "type": [ "Note", "prov:Entity" ],
+        "attributedTo": "http://example.org/#eric",
+        "content": "Remember... all I'm offering is the trooth. Nothing more."
+      },
+      "published": "2015-01-01T00:00:00Z"
+    },
+    {
+      "id": "http://example.org/activity/20150101000059",
+      "type": [ "Update", "prov:Activity", "oa:Annotate" ],
+      "name": "Eric edited a note.",
+      "oa:created": "2015-01-01T00:00:59Z",
+      "oa:creator": "http://example.org/#eric",
+      "oa:hasBody": {
+        "id": "http://example.org/entry/20150101000059",
+        "type": [ "Note", "prov:Entity" ],
+        "content": "Remember... all I'm offering is the truth. Nothing more.",
+        "prov:wasAttributedTo": "http://example.org/#eric",
+        "prov:wasRevisionOf": "http://example.org/entry/20150101000000"
+      },
+      "oa:hasTarget": "http://example.org/entry/20150101000000",
+      "oa:motivatedBy": "oa:editing",
+      "prov:generated": "http://example.org/entry/20150101000059",
+      "prov:wasInformedBy": "http://example.org/activity/20150101000000"
+    },
+    {
+      "id": "http://example.org/activity/20150101010101",
+      "type": [ "Delete", "prov:Activity" ],
+      "actor": "http://example.org/#eric",
+      "name": "Eric deleted a note.",
+      "object": "http://example.org/entry/20150101000059",
+      "published": "2015-01-01T01:01:01Z"
+    }
+  ]
+}
+  

@@ -1,0 +1,18 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Move",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": "http://example.org/posts/1",
+  "target": {
+    "type": "Collection",
+    "name": "List B"
+  },
+  "origin": {
+    "type": "Collection",
+    "name": "List A"
+  }
+}

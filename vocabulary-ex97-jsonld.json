@@ -1,0 +1,16 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "CollectionPage",
+  "next": {
+    "type": "Link",
+    "name": "Next Page",
+    "href": "http://example.org/collection?page=2"
+  },
+  "items": [
+    "http://example.org/posts/1",
+    "http://example.org/posts/2",
+    "http://example.org/posts/3"
+  ]
+}
+  

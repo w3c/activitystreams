@@ -1,0 +1,19 @@
+
+{
+"@context": [
+"http://www.w3.org/ns/activitystreams",
+{"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
+],
+"id": "http://example.org/connection-requests/123",
+"type": "Offer",
+"actor": "acct:sally@example.org",
+"object": {
+"id": "http://example.org/connections/123",
+"type": "Relationship",
+"subject": "acct:sally@example.org",
+"relationship": "colleagueOf",
+"object": "acct:john@example.org"
+},
+"target": "acct:john@example.org"
+}
+     

@@ -1,0 +1,14 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Create",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": {
+    "type": "Note",
+    "name": "A Simple Note",
+    "content": "This is a simple note"
+  }
+}

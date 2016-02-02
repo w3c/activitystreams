@@ -1,0 +1,12 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Collection",
+  "totalItems": 5,
+  "last": {
+    "type": "Link",
+    "name": "Last Page",
+    "href": "http://example.org/collection?page=1"
+  }
+}
+  

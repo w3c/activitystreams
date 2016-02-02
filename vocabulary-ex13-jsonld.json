@@ -1,0 +1,10 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Delete",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": "http://example.org/notes/1"
+}

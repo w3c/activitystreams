@@ -1,0 +1,12 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Application",
+  "id": "http://example.org/application/123",
+  "name": "My Application",
+  "image": {
+    "type": "Link",
+    "href": "http://example.org/application/123.png",
+    "mediaType": "image/png"
+  }
+}

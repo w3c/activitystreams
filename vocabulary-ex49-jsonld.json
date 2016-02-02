@@ -1,0 +1,11 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Audio",
+  "name": "A Simple Podcast",
+  "url": {
+    "type": "Link",
+    "href": "http://example.org/podcast.mp3",
+    "mediaType": "audio/mp3"
+  }
+}

@@ -1,0 +1,18 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "CollectionPage",
+  "id": "http://example.org/foo?page=1",
+  "partOf": "http://example.org/foo",
+  "items": [
+    {
+      "type": "Note",
+      "name": "A Simple Note"
+    },
+    {
+      "type": "Note",
+      "name": "Another Simple Note"
+    }
+  ]
+}
+  

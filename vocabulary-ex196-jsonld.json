@@ -1,0 +1,16 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "content": "Thank you &lt;a href=\"http://sally.example.org\">@sally&lt;/a>
+      for all your hard work!
+      &lt;a href=\"http://example.org/tags/givingthanks\">#givingthanks&lt;/a>",
+  "to": {
+    "type": "Person",
+    "id": "http://sally.example.org"
+  },
+  "tag": {
+    "id": "http://example.org/tags/givingthanks",
+    "name": "#givingthanks"
+  }
+}

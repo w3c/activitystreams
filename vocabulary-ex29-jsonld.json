@@ -1,0 +1,18 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Remove",
+  "actor": {
+    "type": "http://example.org/Role",
+    "name": "The Moderator"
+  },
+  "object": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "origin": {
+    "type": "Group",
+    "name": "A Simple Group"
+  }
+}
+  

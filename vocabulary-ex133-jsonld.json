@@ -1,0 +1,9 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "nameMap": {
+    "en": "A simple note",
+    "sp": "Una simple nota"
+  }
+}

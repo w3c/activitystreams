@@ -1,0 +1,13 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "name": "A Simple Note",
+  "attachment": [
+    {
+      "type": "Image",
+      "content": "A simple Image",
+      "url": "http://example.org/cat.jpeg"
+    }
+  ]
+}

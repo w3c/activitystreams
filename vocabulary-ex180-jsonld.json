@@ -1,0 +1,32 @@
+
+{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Collection",
+"items": [
+{
+ "type": "Relationship",
+ "subject": {
+   "type": "Person",
+   "name": "Sally"
+ },
+ "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+ "object": {
+   "type": "Person",
+   "name": "Joe"
+ }
+},
+{
+ "type": "Relationship",
+ "subject": {
+   "type": "Person",
+   "name": "Sally"
+ },
+ "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
+ "object": {
+   "type": "Person",
+   "name": "Jane"
+ }
+}
+]
+}
+   

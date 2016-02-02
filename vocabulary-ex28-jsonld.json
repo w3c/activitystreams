@@ -1,0 +1,15 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Remove",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": "http://example.org/notes/1",
+  "target": {
+    "type": "Collection",
+    "name": "Notes Folder"
+  }
+}
+  

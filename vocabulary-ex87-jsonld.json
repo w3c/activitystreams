@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Collection",
+  "totalItems": 3,
+  "last": "http://example.org/collection?page=1"
+}
+  

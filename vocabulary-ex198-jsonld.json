@@ -1,0 +1,18 @@
+
+  {
+    "@context": "http://www.w3.org/ns/activitystreams",
+    "type": "Move",
+    "actor": "http://sally.example.org",
+    "object": {
+      "type": "Document",
+      "name": "sales figures"
+    },
+    "origin": {
+      "type": "Collection",
+      "name": "Folder A"
+    },
+    "target": {
+      "type": "Collection",
+      "name": "Folder B"
+    }
+  }

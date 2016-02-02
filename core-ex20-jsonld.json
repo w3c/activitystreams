@@ -1,0 +1,9 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": ["Like", "http://schema.org/LikeAction"],
+  "id": "http://www.test.example/activity/1",
+  "actor": "http://example.org/profiles/joe",
+  "object": "http://example.com/notes/1",
+  "published": "2014-09-30T12:34:56Z"
+}

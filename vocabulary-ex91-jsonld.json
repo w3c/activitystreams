@@ -1,0 +1,17 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Collection",
+  "totalItems": 2,
+  "items": [
+    {
+      "type": "Note",
+      "name": "A Simple Note"
+    },
+    {
+      "type": "Note",
+      "name": "Another Simple Note"
+    }
+  ]
+}
+  

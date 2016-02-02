@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Create",
+  "actor": "http://www.test.example/martin",
+  "object": "http://example.org/foo.jpg"
+}
+  

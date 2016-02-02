@@ -1,0 +1,18 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "OrderedCollectionPage",
+  "id": "http://example.org/foo?page=1",
+  "partOf": "http://example.org/foo",
+  "orderedItems": [
+    {
+      "type": "Note",
+      "name": "A Simple Note"
+    },
+    {
+      "type": "Note",
+      "name": "Another Simple Note"
+    }
+  ]
+}
+  

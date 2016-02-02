@@ -1,0 +1,10 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Profile",
+  "name": "Sally's Profile",
+  "attributedTo": {
+    "type": "Person",
+    "name": "Sally Smith"
+  }
+}

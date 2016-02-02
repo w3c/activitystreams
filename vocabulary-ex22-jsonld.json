@@ -1,0 +1,14 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Relationship",
+  "subject": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+  "object": {
+    "type": "Person",
+    "name": "John"
+  }
+}

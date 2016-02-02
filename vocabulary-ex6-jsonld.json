@@ -1,0 +1,17 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "OrderedCollection",
+  "totalItems": 2,
+  "orderedItems": [
+    {
+      "type": "Note",
+      "name": "A Simple Note"
+    },
+    {
+      "type": "Note",
+      "name": "Another Simple Note"
+    }
+  ]
+}
+  

@@ -1,0 +1,15 @@
+
+{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {
+      "gr": "http://purl.org/goodrelations/v1#"
+    }
+  ],
+  "type": ["Place", "gr:Location"],
+  "name": "Sally's Restaurant",
+  "longitude": 12.34,
+  "latitude": 56.78,
+  "gr:category": "restaurants/french_restaurants"
+}
+  

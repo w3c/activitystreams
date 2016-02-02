@@ -1,0 +1,7 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Block",
+  "actor": "http://sally.example.org",
+  "object": "http://joe.example.org"
+}

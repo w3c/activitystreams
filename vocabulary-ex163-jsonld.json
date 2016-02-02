@@ -1,0 +1,10 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Listen",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": "http://example.org/music.mp3"
+}

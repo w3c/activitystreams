@@ -1,0 +1,17 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Collection",
+  "totalItems": 3,
+  "current": {
+    "type": "Link",
+    "name": "Most Recent Items",
+    "href": "http://example.org/collection"
+  },
+  "items": [
+    "http://example.org/posts/1",
+    "http://example.org/posts/2",
+    "http://example.org/posts/3"
+  ]
+}
+  

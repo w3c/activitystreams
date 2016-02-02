@@ -1,0 +1,17 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "content": "Thank you @sally for all your hard work! #givingthanks",
+  "tag": [
+    {
+      "type": "Mention",
+      "href": "http://example.org/people/sally",
+      "name": "@sally"
+    },
+    {
+      "id": "http://example.org/tags/givingthanks",
+      "name": "#givingthanks"
+    }
+  ]
+}

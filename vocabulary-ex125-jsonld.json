@@ -1,0 +1,10 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Document",
+  "name": "4Q Sales Forecast",
+  "url": {
+    "type": "Link",
+    "href": "http://example.org/4q-sales-forecast.pdf"
+  }
+}

@@ -1,0 +1,18 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Arrive",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "location": {
+    "type": "Place",
+    "name": "Work"
+  },
+  "origin": {
+    "type": "Place",
+    "name": "Home"
+  }
+}
+  

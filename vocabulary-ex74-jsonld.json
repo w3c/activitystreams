@@ -1,0 +1,12 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Collection",
+  "totalItems": 3,
+  "first": {
+    "type": "Link",
+    "name": "First Page",
+    "href": "http://example.org/collection?page=0"
+  }
+}
+  
