@@ -1,0 +1,29 @@
+{
+  "name": "activitystreams-test-documents",
+  "version": "0.0.0",
+  "description": "Collection of documents for testing activity streams parsers",
+  "main": "index.js",
+  "bin": {
+    "activitystreams-test-documents": "extract-as2-examples.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w3c-social/activitystreams-test-documents.git"
+  },
+  "keywords": [
+    "activitystreams",
+    "as2"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/w3c-social/activitystreams-test-documents/issues"
+  },
+  "homepage": "https://github.com/w3c-social/activitystreams-test-documents#readme",
+  "devDependencies": {
+    "htmlparser2": "^3.9.0"
+  }
+}
