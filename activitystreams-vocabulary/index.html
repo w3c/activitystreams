@@ -6326,6 +6326,7 @@ _:b0 a as:Profile ;
       <code><a>first</a></code> |
       <code><a>generator</a></code> |
       <code><a>icon</a></code> |
+      <code><a>id</a></code> |
       <code><a>image</a></code> |
       <code><a>inReplyTo</a></code> |
       <code><a>instrument</a></code> |
@@ -6345,6 +6346,7 @@ _:b0 a as:Profile ;
       <code><a data-lt="tag-term">tag</a></code> |
       <code><a>target</a></code> |
       <code><a>to</a></code> |
+      <code><a>type</a></code> |
       <code><a>url</a></code> |
       <code><a>accuracy</a></code> |
       <code><a>altitude</a></code> |
@@ -6394,6 +6396,139 @@ _:b0 a as:Profile ;
           <th>Example</th>
         </tr>
       </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn data-lt="id">id</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td><code>@id</code></td>
+          <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#exid-jsonld" class="selected">JSON</a></li>
+    <li><a href="#exid-microdata" class="selected">Microdata</a></li>
+    <li><a href="#exid-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#exid-microformats" class="selected">Microformats</a></li>
+    <li><a href="#exid-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="exid-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "id": "http://example.org/foo"
+}</pre>
+</div>
+<div id="exid-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope itemid="http://example.org/foo" />
+</pre>
+  </div>
+  <div id="exid-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  resource="http://example.org/foo" />
+</pre>
+  </div>
+  <div id="exid-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;a class="u-url"
+    href="http://example.org/foo">http://example.org/foo&lt;/a>
+&lt;/div></pre>
+  </div>
+<div id="exid-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;http://example.org/foo&gt; a as:Object.
+</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Provides the globally unique identifier for an <a>Object</a> or
+            <a>Link</a>.
+          </td>
+        </tr>
+        <tr>
+          <td>Domain:</td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Range:</td>
+          <td><code>anyURI</code></td>
+        </tr>
+        <tr>
+          <td>Functional:</td>
+          <td>True</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="5" ><dfn data-lt="type">type</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td><code>@type</code></td>
+          <td rowspan="5">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#extype-jsonld" class="selected">JSON</a></li>
+    <li><a href="#extype-microdata" class="selected">Microdata</a></li>
+    <li><a href="#extype-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#extype-microformats" class="selected">Microformats</a></li>
+    <li><a href="#extype-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="extype-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "http://example.org/Foo"
+}</pre>
+</div>
+<div id="extype-microdata" style="display:none;">
+<pre class="example highlight html"
+>&lt;div itemscope 
+  itemtype="http://example.org/Foo" />
+</pre>
+  </div>
+  <div id="extype-rdfa" style="display:none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="http://example.org/Foo" />
+</pre>
+  </div>
+  <div id="extype-microformats" style="display:none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry h-example-foo">
+&lt;/div></pre>
+  </div>
+<div id="extype-turtle" style="display: none;">
+<pre class="example highlight turtle">
+@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+
+&lt;_:b1&gt; a &lt;http://example.org/Foo&gt;.
+</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies the <a>Object</a> or <a>Link</a> type. Multiple values
+            may be specified.
+          </td>
+        </tr>
+        <tr>
+          <td>Domain:</td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+        <tr>
+          <td>Range:</td>
+          <td><code>anyURI</code></td>
+        </tr>
+      </tbody>
 
       <tbody>
         <tr>
@@ -14801,15 +14936,14 @@ _:b0 a as:Profile ;
    </p>
 
    <p>
-     The Activity Streams vocabulary does not define normative values
-     for use with the
-     <code><a data-lt="relationship-term">relationship</a></code> property.
-     It is expected that implementations will make use of several
-     existing vocabularies that have been developed for the purpose
-     of describing relationships. Examples of such vocabularies include
-     the "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>"
-     and "<a href="http://vocab.org/relationship/.html">Relationship</a>"
-     vocabularies.
+     The Activity Streams vocabulary does not define normative values for use 
+     with the relationship property. It is expected that implementations will 
+     reuse existing vocabularies that have been developed for the purpose of 
+     describing relationships, or create their own guided by requirements of 
+     their particular implementation. Existing vocabularies include the 
+     "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and 
+     "<a href="http://vocab.org/relationship/.html">Relationship</a>" [and 
+     ideally add more] vocabularies.
    </p>
 
    <section class="informative">
