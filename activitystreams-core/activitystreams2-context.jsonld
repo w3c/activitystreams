@@ -17,7 +17,6 @@
     "Block": "as:Block",
     "Collection": "as:Collection",
     "CollectionPage": "as:CollectionPage",
-    "Relationship": "as:Relationship",
     "Create": "as:Create",
     "Delete": "as:Delete",
     "Dislike": "as:Dislike",
@@ -58,14 +57,6 @@
     "Read": "as:Read",
     "Move": "as:Move",
     "Travel": "as:Travel",
-    "subject": {
-      "@id": "as:subject",
-      "@type": "@id"
-    },
-    "relationship": {
-      "@id": "as:relationship",
-      "@type": "@id"
-    },
     "actor": {
       "@id": "as:actor",
       "@type": "@id"
