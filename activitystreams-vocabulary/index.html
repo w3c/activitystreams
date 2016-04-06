@@ -165,7 +165,7 @@
     <section id="termconventions">
 
       <h2>Conventions</h2>
-      
+
       <p>
         Unless otherwise specified, all properties defined as
         <code>xsd:dateTime</code> values MUST conform to the rules
@@ -5113,11 +5113,10 @@ _:b0 a as:Service ;
           <li><code><a>Page</a></code></li>
           <li><code><a>Place</a></code></li>
           <li><code><a>Profile</a></code></li>
-          <li><code><a>Relationship</a></code></li>
           <li><code><a>Video</a></code></li>
         </ul>
       </p>
-      
+
       <p>
         The Link Types include:
         <ul>
@@ -5133,124 +5132,6 @@ _:b0 a as:Service ;
             <th style="width: 40%">Properties</th>
           </tr>
         </thead>
-
-        <tbody>
-          <tr>
-            <td rowspan="4" ><dfn>Relationship</dfn></td>
-            <td  style="width: 10%">URI:</td>
-            <td><code>http://www.w3.org/ns/activitystreams#Relationship</code></td>
-            <td rowspan="4" >
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex22-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex22-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex22-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex22-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex22-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex22-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Relationship",
-  "subject": {
-    "type": "Person",
-    "name": "Sally"
-  },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "object": {
-    "type": "Person",
-    "name": "John"
-  }
-}</pre>
-</div>
-<div id="ex22-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Relationship">
-  &lt;span itemprop="subject" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="name">Sally&lt;/span>
-  &lt;/span>
-  &lt;span itemprop="relationship"
-    itemid="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Relationship">
-  &lt;span property="subject" typeof="Person">
-    &lt;span property="name">Sally&lt;/span>
-  &lt;/span>
-  &lt;span property="relationship"
-    resource="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span property="object" typeof="Person">
-    &lt;span property="name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-as-relationship">
-  &lt;span class="h-card">Sally&lt;/span>
-  knows
-  &lt;span class="h-card">John&lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex22-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
-
-_:b0 a as:Relationship ;
-  as:relationship rel:closeFriendOf ;
-  as:subject [
-    a as:Person ;
-      as:name "Sally" .
-  ] ;
-  as:object [
-    a as:Person ;
-      as:name "John" .
-  ] .</pre>
-  </div>
-</div>            </td>
-          </tr>
-          <tr>
-            <td>Notes:</td>
-            <td>
-              <p>
-                Describes a relationship between two individuals.
-                The <code><a data-lt="subject">subject</a></code> and
-                <code><a data-lt="object-term">object</a></code> properties are
-                used to identify the connected individuals.
-              </p>
-              <p>
-                See <a href="#connections"></a> for additional information.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>Extends:</td>
-            <td><code><a>Object</a></code></td>
-          </tr>
-          <tr>
-            <td>Properties:</td>
-            <td>
-              <p><code><a data-lt="subject">subject</a></code> |
-              <code><a data-lt="object-term">object</a></code> |
-              <code><a data-lt="relationship-term">relationship</a></code></p>
-              <p>Inherits all properties from <code><a>Object</a></code>.</p>
-            </td>
-          </tr>
-        </tbody>
 
         <tbody>
           <tr>
@@ -6371,8 +6252,6 @@ _:b0 a as:Profile ;
       <code><a>units</a></code> |
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
-      <code><a>subject</a></code> |
-      <code><a data-lt="relationship-term">relationship</a></code> |
       <code><a>describes</a></code>
     </p>
 
@@ -6488,7 +6367,7 @@ _:b0 a as:Profile ;
 </div>
 <div id="extype-microdata" style="display:none;">
 <pre class="example highlight html"
->&lt;div itemscope 
+>&lt;div itemscope
   itemtype="http://example.org/Foo" />
 </pre>
   </div>
@@ -10292,17 +10171,12 @@ _:b0 a as:Like
               "John added a movie to his wishlist", the object of the activity
               is the movie added.
             </p>
-            <p>
-              When used within a <code><a>Relationship</a></code> describes
-              the entity to which the <code><a>subject</a></code> is
-              related.
-            </p>
           </td>
         </tr>
         <tr>
           <td>Domain:</td>
           <td>
-            <code><a>Activity</a></code> | <code><a>Relationship</a></code>
+            <code><a>Activity</a></code></code>
           </td>
         </tr>
         <tr>
@@ -14359,234 +14233,6 @@ _:b0 a as:Link ;
 
       <tbody>
         <tr>
-          <td rowspan="5" ><dfn>subject</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#subject</code></td>
-          <td rowspan="5">
-            <div class="nanotabs">
-              <ul>
-                <li><a href="#ex22a-jsonld" class="selected">JSON</a></li>
-                <li><a href="#ex22a-microdata" class="selected">Microdata</a></li>
-                <li><a href="#ex22a-rdfa" class="selected">RDFa</a></li>
-                <li><a href="#ex22a-microformats" class="selected">Microformats</a></li>
-                <li><a href="#ex22a-turtle" class="selected">Turtle</a></li>
-              </ul>
-              <div id="ex22a-jsonld" style="display: block;">
-            <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Relationship",
-  "subject": {
-    "type": "Person",
-    "name": "Sally"
-  },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "object": {
-    "type": "Person",
-    "name": "John"
-  }
-}</pre>
-</div>
-<div id="ex22a-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Relationship">
-  &lt;span itemprop="subject" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="name">Sally&lt;/span>
-  &lt;/span>
-  &lt;span itemprop="relationship"
-    itemid="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22a-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Relationship">
-  &lt;span property="subject" typeof="Person">
-    &lt;span property="name">Sally&lt;/span>
-  &lt;/span>
-  &lt;span property="relationship"
-    resource="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span property="object" typeof="Person">
-    &lt;span property="name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22a-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-author">Sally&lt;/span>
-  knows
-  &lt;span class="h-card">John&lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex22a-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
-
-_:b0 a as:Relationship ;
-  as:relationship rel:closeFriendOf ;
-  as:subject [
-    a as:Person ;
-    as:name "Sally"
-  ] ;
-  as:object [
-    a as:Person ;
-    as:name "John"
-  ] .</pre>
-  </div>
-</div>
-</td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            On a <code><a>Relationship</a></code> object, the <code>a</code>
-            property identifies one of the connected individuals. For
-            instance, for a Relationship object describing
-            "John is related to Sally", <code>subject</code> would refer to
-            John.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Relationship</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Link</a></code> | <code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Functional:</td>
-          <td>True</td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
-          <td rowspan="4" ><dfn data-lt="relationship-term">relationship</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td>
-            <code>http://www.w3.org/ns/activitystreams#relationship</code>
-          </td>
-          <td rowspan="4">
-            <div class="nanotabs">
-              <ul>
-                <li><a href="#ex22c-jsonld" class="selected">JSON</a></li>
-                <li><a href="#ex22c-microdata" class="selected">Microdata</a></li>
-                <li><a href="#ex22c-rdfa" class="selected">RDFa</a></li>
-                <li><a href="#ex22c-microformats" class="selected">Microformats</a></li>
-                <li><a href="#ex22c-turtle" class="selected">Turtle</a></li>
-              </ul>
-              <div id="ex22c-jsonld" style="display: block;">
-            <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Relationship",
-  "subject": {
-    "type": "Person",
-    "name": "Sally"
-  },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-  "object": {
-    "type": "Person",
-    "name": "John"
-  }
-}</pre>
-</div>
-<div id="ex22c-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Relationship">
-  &lt;span itemprop="subject" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="name">Sally&lt;/span>
-  &lt;/span>
-  &lt;span itemprop="relationship"
-    itemid="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span itemprop="object" itemscope
-    itemtype="http://www.w3.org/ns/activitystreams#Person">
-    &lt;span itemprop="name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22c-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Relationship">
-  &lt;span property="subject" typeof="Person">
-    &lt;span property="name">Sally&lt;/span>
-  &lt;/span>
-  &lt;span property="relationship"
-    resource="http://purl.org/vocab/relationship/closeFriendOf">
-    knows
-  &lt;/span>
-  &lt;span property="object" typeof="Person">
-    &lt;span property="name">John&lt;/span>
-  &lt;/span>
-&lt;/div></pre>
-  </div>
-  <div id="ex22c-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;span class="h-card p-author">Sally&lt;/span>
-  knows
-  &lt;span class="h-card">John&lt;/span>
-&lt;/div></pre>
-  </div>
-<div id="ex22c-turtle" style="display: none;">
-<pre class="example highlight turtle">
-@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix rel: &lt;http://purl.org/vocab/relationship/&gt; .
-
-_:b0 a as:Relationship ;
-  as:relationship rel:closeFriendOf ;
-  as:subject [
-    a as:Person ;
-      as:name "Sally" .
-  ] ;
-  as:object [
-    a as:Person ;
-      as:name "John" .
-  ] .</pre>
-  </div>
-</div>
-</td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            On a <code><a>Relationship</a></code> object, the
-            <code>relationship</code> property identifies the kind of
-            relationship that exists between
-            <code><a data-lt="subject">subject</a></code> and
-            <code><a data-lt="object-term">object</a></code>.
-
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Relationship</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-      </tbody>
-
-
-      <tbody>
-        <tr>
           <td rowspan="5" ><dfn data-lt="describes">describes</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td>
@@ -14828,158 +14474,38 @@ _:b0 a as:Profile ;
 
   </section>
 
-  <section id="connections">
-   <h3>Representing Relationships Between Entities</h3>
-
-   <p>
-     The <code><a>Relationship</a></code> object is used to represent
-     relationships between individuals. It can be used, for instance,
-     to describe that one person is a friend of another, or that one
-     person is a member of a particular organization. The intent of
-     modeling Relationship in this way is to allow descriptions of
-     activities that operate on the relationships in general, and
-     to allow representation of Collections of relationships.
-   </p>
-
-   <p>
-     For instance, many social systems have a notion of a "friends list".
-     These are the collection of individuals that are directly connected
-     within a person's social graph. Suppose we have a user, Sally,
-     with direct relationships to users Joe and Jane. Sally considers Joe
-     to be a close friend while Jane is just an acquaintance.
-   </p>
-
-   <p>
-     Using the <code><a>Relationship</a></code> object, we can model
-     these relationships as:
-   </p>
-
-   <div id="ex180-jsonld" style="display: block;">
-<pre class="example highlight json">{
-"@context": "http://www.w3.org/ns/activitystreams",
-"type": "Collection",
-"items": [
-{
- "type": "Relationship",
- "subject": {
-   "type": "Person",
-   "name": "Sally"
- },
- "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
- "object": {
-   "type": "Person",
-   "name": "Joe"
- }
-},
-{
- "type": "Relationship",
- "subject": {
-   "type": "Person",
-   "name": "Sally"
- },
- "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
- "object": {
-   "type": "Person",
-   "name": "Jane"
- }
-}
-]
-}</pre>
-   </div>
-
-   <p>
-     The <code><a data-lt="relationship-term">relationship</a></code>
-     property specifies the kind of relationship that exists between the
-     two individuals identified by the
-     <code><a data-lt="subject">subject</a></code> and
-     <code><a data-lt="object">object</a></code> properties. Used together,
-     these three properties form what is commonly known as a
-     "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
-     where <code><a data-lt="subject">subject</a></code> identifies the
-     subject, <code><a data-lt="relationship-term">relationship</a></code>
-     identifies the predicate, and
-     <code><a data-lt="object-term">object</a></code> identifies the
-     object.
-   </p>
-
-   <p>
-     While use of reified statements can be problematic and confusing
-     in certain situations, their use within the Activity Streams
-     vocabulary to describe relationships provides a straightforward
-     mechanism of describing changes to an individual's social graph.
-     For instance, to indicate that Sally has created a
-     new relationship to user Matt, an implementer can use the
-     <code><a>Relationship</a></code> object together with the
-     <code><a>Create</a></code> activity:
-   </p>
-
-   <div id="ex181-jsonldb" style="display: block;">
-<pre class="example highlight json">{
-"@context": "http://www.w3.org/ns/activitystreams",
-"type": "Create",
-"actor": "http://sally.example.org",
-"object": {
-"type": "Relationship",
-"subject": "http://sally.example.org",
-"relationship": "http://purl.org/vocab/relationship/closeFriendOf",
-"object": "http://matt.example.org",
-"startTime": "2015-04-21T12:34:56"
-}
-}</pre>
-   </div>
-
-   <p>
-     Additionally, modeling the relationship in this way allows
-     implementers to articulate additional properties of the relationship
-     itself. For instance, the date and time at which the relationship
-     began or ended.
-   </p>
-
-   <p>
-     The Activity Streams vocabulary does not define normative values for use 
-     with the relationship property. It is expected that implementations will 
-     reuse existing vocabularies that have been developed for the purpose of 
-     describing relationships, or create their own guided by requirements of 
-     their particular implementation. Existing vocabularies include the 
-     "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and 
-     "<a href="http://vocab.org/relationship/.html">Relationship</a>" [and 
-     ideally add more] vocabularies.
-   </p>
-
-   <section class="informative">
-
-     <h4>Modeling "friend requests"</h4>
+  <section id="friend-requests">
+   <h3>Modeling "friend requests"</h3>
 
      <p>
        One common use case for many social platforms is the establishment
-       of symmetrical "friend" relationships, in which one user initially
+       of symmetrical "friend" lists, in which one user initially
        extends a request to another user to establish a new connection.
        Once the connection is made, both users automatically begin
        receiving notifications about activities performed by the other,
-       and the established relationship becomes visible in either user's
+       and the users involved becomes visible in each other's
        "friends list".
      </p>
      <p>
        The initial "friend request" can be modeled by composing the
-       <code><a>Offer</a></code> and <code><a>Relationship</a></code>
-       object types as in the following example:
+       <code><a>Offer</a></code> and <code><a>Follow</a></code>
+       object types as in the following example, where Sallie sends a
+       request to John (as an offer to follow her):
      </p>
 
      <div id="ex187-jsonld" style="display: block;">
 <pre class="example highlight json">{
 "@context": [
-"http://www.w3.org/ns/activitystreams",
-{"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
+  "http://www.w3.org/ns/activitystreams"
 ],
 "id": "http://example.org/connection-requests/123",
 "type": "Offer",
 "actor": "acct:sally@example.org",
 "object": {
-"id": "http://example.org/connections/123",
-"type": "Relationship",
-"subject": "acct:sally@example.org",
-"relationship": "colleagueOf",
-"object": "acct:john@example.org"
+  "id": "http://example.org/connections/123",
+  "type": "Follow",
+  "actor": "acct:john@example.org",
+  "object": "acct:sally@example.org"
 },
 "target": "acct:john@example.org"
 }</pre>
@@ -15005,9 +14531,7 @@ _:b0 a as:Profile ;
  "context": "http://example.org/connections/123",
  "result": [
    "http://example.org/activities/123",
-   "http://example.org/activities/124",
-   "http://example.org/activities/125",
-   "http://example.org/activities/126"
+   "http://example.org/activities/124"
  ]
 },
 {
@@ -15023,28 +14547,6 @@ _:b0 a as:Profile ;
  "actor": "acct:sally@example.org",
  "object": "acct:john@example.org",
  "context": "http://example.org/connections/123"
-},
-{
- "id": "http://example.org/activities/125",
- "type": "Add",
- "actor": "acct:john@example.org",
- "object": "http://example.org/connections/123",
- "target": {
-   "type": "Collection",
-   "name": "John's Connections"
- },
- "context": "http://example.org/connections/123"
-},
-{
- "id": "http://example.org/activities/126",
- "type": "Add",
- "actor": "acct:sally@example.org",
- "object": "http://example.org/connections/123",
- "target": {
-   "type": "Collection",
-   "name": "Sally's Connections"
- },
- "context": "http://example.org/connections/123"
 }
 ]
 }</pre>
@@ -15052,10 +14554,8 @@ _:b0 a as:Profile ;
 
      <p>
        As illustrated in this example, accepting the "friend request"
-       results in four additional activities including: John following
-       Sally, Sally following John, John adding the relationship with
-       Sally to his collection of Connections, and Sally adding the
-       relationship with John to her collection of Connections.
+       results in two additional activities: John following
+       Sally, and Sally following John.
      </p>
 
      <p>
@@ -15070,8 +14570,7 @@ _:b0 a as:Profile ;
          <li>
            The optional <code><a>context</a></code> property is used
            to relate the various activities back to a common reference
-           point, which in this example is the relationship being
-           established. The <code>context</code> allows an implementation
+           point, which in this example is the friend request. The <code>context</code> allows an implementation
            to efficiently group related activities together for
            display or analytic purposes.
          </li>
@@ -15508,22 +15007,22 @@ _:b0 a as:Profile ;
 
 <section id="motivations" class="informative">
   <h3>Activity Type Motivating Use Cases</h3>
-  
+
   <p>
     The <a href="#activity-types">Activity types</a> defined in this
     vocabulary have been primarily selected to address the commonly implemented social use cases described below.
   </p>
-  
+
   <section id="motivations-crud">
     <h4>Content Management</h4>
-    
+
     <p>
       The Content Management use case primarily deals with activities
       that involve the creation, modification or deletion of content.
       This includes, for instance, activities such as "John created a new
       note", "Sally updated an article", and "Joe deleted the photo".
     </p>
-    
+
     <p>Relevant Activities:
       <ul>
         <li><code><a>Create</a></code></li>
@@ -15532,10 +15031,10 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-collections">
     <h4>Collection Management</h4>
-    
+
     <p>
       The Collection Management use case primarily deals with activities
       involving the management of content within collections. Examples of
@@ -15543,7 +15042,7 @@ _:b0 a as:Profile ;
       This includes, for instance, activities such as "Sally added a file
       to Folder A", "John moved the file from Folder A to Folder B", etc.
     </p>
-    
+
     <p>Relevant Activities:
       <ul>
         <li><code><a>Add</a></code></li>
@@ -15552,17 +15051,17 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-respond">
     <h4>Reactions</h4>
-    
+
     <p>
       The Reactions use case primarily deals with reactions to content.
       This can include activities such as liking or disliking content,
       ignoring updates, flagging content as being inappropriate, accepting
       or rejecting objects, etc.
     </p>
-    
+
     <p>Relevant Activities:
       <ul>
         <li><code><a>Accept</a></code></li>
@@ -15577,15 +15076,15 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-rsvp">
     <h4>Event RSVP</h4>
-    
+
     <p>
       The Event RSVP use case primarily deals with invitations to events
       and RSVP type responses.
     </p>
-    
+
     <p>Relevant Activities:
       <ul>
         <li><code><a>Accept</a></code></li>
@@ -15597,16 +15096,16 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-group">
     <h4>Group Management</h4>
-    
+
     <p>
       The Group Management use case primarily deals with management of
       groups. It can include, for instance, activities such as "John added
       Sally to Group A", "Sally joined Group A", "Joe left Group A", etc.
     </p>
-    
+
     <p>Relevant Activities:
       <ul>
         <li><code><a>Add</a></code></li>
@@ -15616,16 +15115,16 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-experience">
     <h4>Content Experience</h4>
-    
+
     <p>
       The Content Experience use case primarily deals with describing
       activities involving listening to, reading, or viewing content.
       For instance, "Sally read the article", "Joe listened to the song".
     </p>
-    
+
     <p>Relevant Activities:
       <ul>
         <li><code><a>Listen</a></code></li>
@@ -15634,7 +15133,7 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-geo">
     <h4>Geo-Social Events</h4>
     <p>
@@ -15651,7 +15150,7 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-notification">
     <h4>Notification</h4>
     <p>
@@ -15664,7 +15163,7 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-questions">
     <h4>Questions</h4>
     <p>
@@ -15677,14 +15176,14 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-relationships">
     <h4>Relationship Management</h4>
     <p>
       The Relationship Management use case primarily deals with representing
       activities involving the management of interpersonal and social
       relationships (e.g. friend requests, management of social network, etc).
-      See <a href="#connections"></a> for more information.
+      See <a href="#friend-requests"></a> for more information.
     </p>
     <p>Relevant Activities:
       <ul>
@@ -15700,7 +15199,7 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-undo">
     <h4>Negating Activity</h4>
     <p>
@@ -15714,7 +15213,7 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
   <section id="motivations-offer">
     <h4>Offers</h4>
     <p>
@@ -15729,7 +15228,7 @@ _:b0 a as:Profile ;
       </ul>
     </p>
   </section>
-  
+
 </section>
 
 </section>
