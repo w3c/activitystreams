@@ -233,7 +233,7 @@
           @context definition</a> using the URL
           "<code>http://www.w3.org/ns/activitystreams</code>".
         </p>
-        
+
         <p>
           When a JSON-LD enabled Activity Streams 2.0 implementation encounters
           a JSON document identified using the
@@ -245,10 +245,10 @@
           normative @context definition still applies.
         </p>
       </section>
-      
+
       <section id="urls">
         <h3>IRIs and URLs</h3>
- 
+
         <p>
           This specification uses IRIs [[!RFC3987]].  Every URI [[!RFC3986]] is
           also an IRI, so a URI may be used wherever an IRI is named.  There are
@@ -841,7 +841,7 @@ _:b0 a as:Collection ;
       normatively defines the core object types and properties for Activity
       Streams 2.0.
     </p>
-    
+
     <p>
       The object types defined by the vocabulary are segmented into a set of
       seven core types and an extended set of Activity and Object types common
@@ -856,14 +856,14 @@ _:b0 a as:Collection ;
         <li><a>OrderedCollectionPage</a>.</li>
       </ul>
     </p>
-    
+
     <p>
       Every JSON object in an Activity Streams 2.0 document is either an
       <code><a>Object</a></code> or a <code><a>Link</a></code>. All other types
       defined in the Activity Vocabulary, as well as all extension types, are
       derived from these two base types.
     </p>
-    
+
     <p>
       A JSON object in the Activity Streams 2.0 document is a
       <code><a>Link</a></code> if either: (a) the object contains a
@@ -2850,7 +2850,7 @@ _:c14n0 a gsp:Geometry ;
 
   <section id="privacy">
     <h2>Privacy Considerations</h2>
-    
+
     <p>
       Activity Streams 2.0 documents can (and likely will) contain potentially
       sensitive personal information such as identity, contact information,
@@ -2858,7 +2858,7 @@ _:c14n0 a gsp:Geometry ;
       Activity data, in general, can be analyzed to generate profiles of the
       behavior of individual or groups of Actors.
     </p>
-    
+
     <p>
       Implementations that produce or consume Activity Streams 2.0 documents
       MUST take steps to openly and publicly document and communicate to all
@@ -2869,21 +2869,21 @@ _:c14n0 a gsp:Geometry ;
       identity of any other party with whom that information is being shared,
       and (e) the reason the information is being shared with other parties.
     </p>
-    
+
     <p>
       Implementations that publish Activity Streams 2.0 documents SHOULD
       assume a default position of limiting both the kind and amount of
       sensitive personal information included in the document unless users have
       "opted in" to sharing additional detail.
     </p>
-    
+
     <p>
       Implementations that consume Activity Streams 2.0 documents SHOULD NOT,
       by default, store or share sensitive personal information included within
       consumed documents unless users have "opted in" to allowing that
       information to be stored or shared.
     </p>
-    
+
     <p>
       In this context, "opting in" does not necessarily require explicit
       action on the part of the user. If, for instance, the use of certain
@@ -2893,7 +2893,7 @@ _:c14n0 a gsp:Geometry ;
       that the sensitive personal information will be used and shared so long
       as the documentation guidelines listed above are followed.
     </p>
-    
+
   </section>
 
   <section id="security-considerations">
@@ -3042,7 +3042,7 @@ profile-URI   = URI</pre>
       Group members who contributed to the conversations, issues and
       testing that helped shape the current specification.
     </p>
-  
+
     <p>
      The editor's also wish to thank all of those who contributed to
      Activity Streams prior to the specification being picked up as a
