@@ -1383,6 +1383,11 @@ _:b0 a as:Place, gr:Location ;
         string. Multiple link relations are expressed as an array of JSON
         strings.
       </p>
+      
+      <p>
+        The scope of the link relation is the object in which the <a>Link</a>
+        is an immediate child.
+      </p>
 
       <p>
         In the following example, two separate references are provided.  The
@@ -3264,6 +3269,14 @@ profile-URI   = URI</pre>
     <h2>Deprecated Activity Streams 1.0 Syntax</h2>
 
     <p>
+      Note: While this appendix sections is non-normative, it uses normative 
+      terms such as MUST. Where used, the meaning is to indicate what would
+      be required to properly implement the Activity Streams 1.0 backwards
+      compatibility model described in this appendix if an implementer chose
+      to do so.
+    <p>
+
+    <p>
       While the syntax defined by this specification diverges from
       that defined by JSON Activity Streams 1.0, the fundamental model
       defined by that original specification remains intact. Specific
@@ -3410,7 +3423,7 @@ profile-URI   = URI</pre>
   <div id="ex27-jsonld" style="display: block;">
   <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams#",
+    "http://www.w3.org/ns/activitystreams",
     {
       "oa": "http://www.w3.org/ns/oa#",
       "prov": "http://www.w3.org/ns/prov#",
