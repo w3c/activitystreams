@@ -311,6 +311,7 @@
             <p>
               <code><a>attachment</a></code> |
               <code><a>attributedTo</a></code> |
+              <code><a>audience</a></code> |
               <code><a data-lt="content-term">content</a></code> |
               <code><a>context</a></code> |
               <code><a>name</a></code> |
@@ -323,7 +324,6 @@
               <code><a>preview</a></code> |
               <code><a>published</a></code> |
               <code><a>replies</a></code> |
-              <code><a>scope</a></code> |
               <code><a>startTime</a></code> |
               <code><a>summary</a></code> |
               <code><a data-lt="tag-term">tag</a></code> |
@@ -6318,6 +6318,7 @@ _:b0 a as:Profile ;
       <code><a>actor</a></code> |
       <code><a>attachment</a></code> |
       <code><a>attributedTo</a></code> |
+      <code><a>audience</a></code> |
       <code><a>bcc</a></code> |
       <code><a>bto</a></code> |
       <code><a>cc</a></code> |
@@ -6342,7 +6343,6 @@ _:b0 a as:Profile ;
       <code><a>preview</a></code> |
       <code><a>result</a></code> |
       <code><a>replies</a></code> |
-      <code><a>scope</a></code> |
       <code><a data-lt="tag-term">tag</a></code> |
       <code><a>target</a></code> |
       <code><a>to</a></code> |
@@ -6488,7 +6488,7 @@ _:b0 a as:Profile ;
 </div>
 <div id="extype-microdata" style="display:none;">
 <pre class="example highlight html"
->&lt;div itemscope 
+>&lt;div itemscope
   itemtype="http://example.org/Foo" />
 </pre>
   </div>
@@ -7087,6 +7087,104 @@ _:b0 a as:Image ;
         <tr>
           <td>Range:</td>
           <td><code><a>Link</a></code> | <code><a>Object</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4" ><dfn>audience</dfn></td>
+          <td  style="width: 10%">URI:</td>
+          <td><code>http://www.w3.org/ns/activitystreams#audience</code></td>
+          <td rowspan="4">
+<div class="nanotabs">
+  <ul>
+    <li><a href="#ex113-jsonld" class="selected">JSON</a></li>
+    <li><a href="#ex113-microdata" class="selected">Microdata</a></li>
+    <li><a href="#ex113-rdfa" class="selected">RDFa</a></li>
+    <li><a href="#ex113-microformats" class="selected">Microformats</a></li>
+    <li><a href="#ex113-turtle" class="selected">Turtle</a></li>
+  </ul>
+  <div id="ex113-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "content": "A simple note",
+  "audience": {
+    "type": "http://example.org/Organization",
+    "name": "My Organization"
+  }
+}</pre>
+  </div>
+  <div id="ex113-microdata" style="display: none;">
+<pre class="example highlight html"
+>&lt;div itemscope
+  itemtype="http://www.w3.org/ns/activitystreams#Note">
+  &lt;div itemprop="content">
+    A simple note
+  &lt;/div>
+  &lt;div itemprop="audience" itemscope
+    itemtype="http://example.org/Organization">
+    &lt;span itemprop="name">
+      My Organization
+    &lt;/span>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+  <div id="ex113-rdfa" style="display: none;">
+<pre class="example highlight html"
+>&lt;div vocab="http://www.w3.org/ns/activitystreams#"
+  typeof="Note">
+  &lt;div property="content">
+    A simple note
+  &lt;/div>
+  &lt;div property="audience" typeof="http://example.org/Organization">
+    &lt;span property="name">
+      My Organization
+    &lt;/span>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+  <div id="ex113-microformats" style="display: none;">
+<pre class="example highlight html"
+>&lt;div class="h-entry">
+  &lt;div class="e-content">A simple note&lt;/div>
+  &lt;div class="p-as-audience h-entru">
+    &lt;span class="p-name">
+      My Organization
+    &lt;/span>
+  &lt;/div>
+&lt;/div></pre>
+  </div>
+  <div id="ex113-turtle" style="display: none;">
+<pre class="example highlight turtle"
+>@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+@prefix ex: &lt;http://example.org/&gt; .
+
+_:b0 a as:Note ;
+  as:content "A simple note" ;
+  as:audience [
+    a ex:Organization ;
+    as:name "My Organization"
+  ] .
+</pre>
+  </div>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Identifies one or more entities that represent the total population
+            of entities for which the object can considered to be relevant.
+          </td>
+        </tr>
+        <tr>
+          <td>Domain:</td>
+          <td><code><a>Object</a></code></td>
+        </tr>
+        <tr>
+          <td>Range:</td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
         </tr>
       </tbody>
 
@@ -10958,104 +11056,6 @@ _:b0 a as:Activity, &lt;http://www.verbs.example/Check&gt; ;
 
       <tbody>
         <tr>
-          <td rowspan="4" ><dfn>scope</dfn></td>
-          <td  style="width: 10%">URI:</td>
-          <td><code>http://www.w3.org/ns/activitystreams#scope</code></td>
-          <td rowspan="4">
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex113-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex113-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex113-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex113-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex113-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex113-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Note",
-  "content": "A simple note",
-  "scope": {
-    "type": "http://example.org/Organization",
-    "name": "My Organization"
-  }
-}</pre>
-  </div>
-  <div id="ex113-microdata" style="display: none;">
-<pre class="example highlight html"
->&lt;div itemscope
-  itemtype="http://www.w3.org/ns/activitystreams#Note">
-  &lt;div itemprop="content">
-    A simple note
-  &lt;/div>
-  &lt;div itemprop="scope" itemscope
-    itemtype="http://example.org/Organization">
-    &lt;span itemprop="name">
-      My Organization
-    &lt;/span>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex113-rdfa" style="display: none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#"
-  typeof="Note">
-  &lt;div property="content">
-    A simple note
-  &lt;/div>
-  &lt;div property="scope" typeof="http://example.org/Organization">
-    &lt;span property="name">
-      My Organization
-    &lt;/span>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex113-microformats" style="display: none;">
-<pre class="example highlight html"
->&lt;div class="h-entry">
-  &lt;div class="e-content">A simple note&lt;/div>
-  &lt;div class="p-as-scope h-entru">
-    &lt;span class="p-name">
-      My Organization
-    &lt;/span>
-  &lt;/div>
-&lt;/div></pre>
-  </div>
-  <div id="ex113-turtle" style="display: none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-@prefix ex: &lt;http://example.org/&gt; .
-
-_:b0 a as:Note ;
-  as:content "A simple note" ;
-  as:scope [
-    a ex:Organization ;
-    as:name "My Organization"
-  ] .
-</pre>
-  </div>
-</div>
-          </td>
-        </tr>
-        <tr>
-          <td>Notes:</td>
-          <td>
-            Identifies one or more entities that represent the total population
-            of entities for which the object can considered to be relevant.
-          </td>
-        </tr>
-        <tr>
-          <td>Domain:</td>
-          <td><code><a>Object</a></code></td>
-        </tr>
-        <tr>
-          <td>Range:</td>
-          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
-        </tr>
-      </tbody>
-
-      <tbody>
-        <tr>
           <td rowspan="4" ><dfn data-lt="tag-term">tag</dfn></td>
           <td  style="width: 10%">URI:</td>
           <td><code>http://www.w3.org/ns/activitystreams#tag</code></td>
@@ -14764,21 +14764,21 @@ _:b0 a as:Profile ;
     </p>
 
     <section class="informative">
-      <h4>Scope and Context</h4>
+      <h4>Audience and Context</h4>
 
       <p>
         Activities are rarely isolated events. Often, multiple individual
-        activities will be performed around a similar context or scope.
+        activities will be performed around a similar context or audience.
         For instance, a collaborators working on a shared project might
         perform multiple related activities in the process of achieving
         some goal. Such activities can be logically grouped together
         using the <code><a>context</a></code> property, and scoped to a
-        particular audience using the <code><a>scope</a></code> property.
+        particular audience using the <code><a>audience</a></code> property.
       </p>
 
       <p>
         For instance, the following shows two related activities that share
-        a common <code>context</code> and <code>scope</code>:
+        a common <code>context</code> and <code>audience</code>:
       </p>
 
       <div id="ex194-jsonld" style="display:block;">
@@ -14799,7 +14799,7 @@ _:b0 a as:Profile ;
        "type": "http://example.org/Project",
        "name": "Project XYZ"
      },
-     "scope": {
+     "audience": {
        "type": "Group",
        "name": "Project XYZ Working Group"
      },
@@ -14814,7 +14814,7 @@ _:b0 a as:Profile ;
        "type": "http://example.org/Project",
        "name": "Project XYZ"
      },
-     "scope": {
+     "audience": {
        "type": "Group",
        "name": "Project XYZ Working Group"
      },
@@ -14936,13 +14936,13 @@ _:b0 a as:Profile ;
    </p>
 
    <p>
-     The Activity Streams vocabulary does not define normative values for use 
-     with the relationship property. It is expected that implementations will 
-     reuse existing vocabularies that have been developed for the purpose of 
-     describing relationships, or create their own guided by requirements of 
-     their particular implementation. Existing vocabularies include the 
-     "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and 
-     "<a href="http://vocab.org/relationship/.html">Relationship</a>" [and 
+     The Activity Streams vocabulary does not define normative values for use
+     with the relationship property. It is expected that implementations will
+     reuse existing vocabularies that have been developed for the purpose of
+     describing relationships, or create their own guided by requirements of
+     their particular implementation. Existing vocabularies include the
+     "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and
+     "<a href="http://vocab.org/relationship/.html">Relationship</a>" [and
      ideally add more] vocabularies.
    </p>
 

@@ -191,8 +191,8 @@
       "@id": "as:result",
       "@type": "@id"
     },
-    "scope": {
-      "@id": "as:scope",
+    "audience": {
+      "@id": "as:audience",
       "@type": "@id"
     },
     "partOf": {

@@ -272,8 +272,8 @@ as:result a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
-as:scope a owl:ObjectProperty ;
-  rdfs:label "scope"@en ;
+as:audience a owl:ObjectProperty ;
+  rdfs:label "audience"@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
