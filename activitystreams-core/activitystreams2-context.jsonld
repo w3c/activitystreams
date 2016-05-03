@@ -50,6 +50,7 @@
     "Service": "as:Service",
     "TentativeAccept": "as:TentativeAccept",
     "TentativeReject": "as:TentativeReject",
+    "Tombstone": "as:Tombstone",
     "Undo": "as:Undo",
     "Update": "as:Update",
     "Video": "as:Video",
@@ -304,6 +305,14 @@
     "describes": {
       "@id": "as:describes",
       "@type": "@id"
+    },
+    "formerType": {
+      "@id": "as:formerType",
+      "@type": "@id"
+    },
+    "deleted": {
+      "@id": "as:deleted",
+      "@type": "xsd:dateTime"
     }
   }
 }
