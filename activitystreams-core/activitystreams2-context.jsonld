@@ -59,6 +59,10 @@
     "Read": "as:Read",
     "Move": "as:Move",
     "Travel": "as:Travel",
+    "IsFollowing": "as:IsFollowing",
+    "IsFollowedBy": "as:IsFollowedBy",
+    "IsContact": "as:IsContact",
+    "IsMember": "as:IsMember",
     "subject": {
       "@id": "as:subject",
       "@type": "@id"
