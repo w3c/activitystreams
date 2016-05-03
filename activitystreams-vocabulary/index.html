@@ -2266,7 +2266,7 @@
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+  "relationship": "IsContact",
   "object": {
     "type": "Person",
     "name": "John"
@@ -5362,7 +5362,7 @@
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+  "relationship": "IsContact",
   "object": {
     "type": "Person",
     "name": "John"
@@ -5374,7 +5374,7 @@
         <tr>
           <td>Notes:</td>
           <td>
-            On a <code><a>Relationship</a></code> object, the <code>a</code>
+            On a <code><a>Relationship</a></code> object, the <code>subject</code>
             property identifies one of the connected individuals. For
             instance, for a Relationship object describing
             "John is related to Sally", <code>subject</code> would refer to
@@ -5411,7 +5411,7 @@
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+  "relationship": "IsContact",
   "object": {
     "type": "Person",
     "name": "John"
@@ -5653,8 +5653,8 @@
      For instance, many social systems have a notion of a "friends list".
      These are the collection of individuals that are directly connected
      within a person's social graph. Suppose we have a user, Sally,
-     with direct relationships to users Joe and Jane. Sally considers Joe
-     to be a close friend while Jane is just an acquaintance.
+     with direct relationships to users Joe and Jane. Sally follows Joe's
+     updates while Sally and Jane have a mutual relationship.
    </p>
 
    <p>
@@ -5673,7 +5673,7 @@
    "type": "Person",
    "name": "Sally"
  },
- "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+ "relationship": "IsFollowing",
  "object": {
    "type": "Person",
    "name": "Joe"
@@ -5685,7 +5685,7 @@
    "type": "Person",
    "name": "Sally"
  },
- "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
+ "relationship": "IsContact",
  "object": {
    "type": "Person",
    "name": "Jane"
@@ -5729,7 +5729,7 @@
 "object": {
 "type": "Relationship",
 "subject": "http://sally.example.org",
-"relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+"relationship": "IsContact",
 "object": "http://matt.example.org",
 "startTime": "2015-04-21T12:34:56"
 }
@@ -5744,14 +5744,27 @@
    </p>
 
    <p>
-     The Activity Streams vocabulary does not define normative values for use
-     with the relationship property. It is expected that implementations will
+     The Activity Streams vocabulary defines four normative values for use
+     with the relationship property.
+     <ul>
+       <li><code>IsFollowing</code> The subject is following the object. This is
+         a unidirectional relationship.</li>
+        <li><code>IsFollowedBy</code> The object is following the subject. This is
+         a unidirectional relationship.</li>
+       <li><code>IsContact</code> The subject and object have a mutual
+         relationship.</li>
+       <li><code>IsMember</code> The subject is a member of the object,
+         typically a Group or Organization.</li>
+     </ul>
+  </p>
+
+   <p>
+     Implementations may
      reuse existing vocabularies that have been developed for the purpose of
      describing relationships, or create their own guided by requirements of
      their particular implementation. Existing vocabularies include the
      "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and
-     "<a href="http://vocab.org/relationship/.html">Relationship</a>" [and
-     ideally add more] vocabularies.
+     "<a href="http://vocab.org/relationship/.html">Relationship</a>" vocabularies.
    </p>
 
    <section class="informative">
@@ -5775,10 +5788,7 @@
 
      <div id="ex187-jsonld" style="display: block;">
 <pre class="example highlight json">{
-"@context": [
-"http://www.w3.org/ns/activitystreams",
-{"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
-],
+"@context": "http://www.w3.org/ns/activitystreams",
 "id": "http://example.org/connection-requests/123",
 "type": "Offer",
 "actor": "acct:sally@example.org",
@@ -5786,7 +5796,7 @@
 "id": "http://example.org/connections/123",
 "type": "Relationship",
 "subject": "acct:sally@example.org",
-"relationship": "colleagueOf",
+"relationship": "IsContact",
 "object": "acct:john@example.org"
 },
 "target": "acct:john@example.org"
