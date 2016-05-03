@@ -763,7 +763,7 @@
             <td style="width: 10%">URI:</td>
             <td><code>http://www.w3.org/ns/activitystreams#Accept</code></td>
             <td rowspan="4">
-<div id="ex7-jsonld" style="display: block;">
+<div id="ex7a-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Accept",
@@ -781,25 +781,24 @@
   }
 }</pre>
   </div>
-  <div id="ex7-turtle" style="display: none;">
-<pre class="example highlight turtle">@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
-
-_:b0 a as:Accept ;
-  as:actor [
-    a as:Person ;
-      as:name "Sally" .
-  ] ;
-  as:object [
-    a as:Invite ;
-      as:actor &lt;http://john.example.org&gt; ;
-      as:object [
-        a as:Event ;
-        as:name "A Party!"
-      ]
-  ] .
-</pre>
-  </div>
-
+  <div id="ex7b-jsonld" style="display: block;">
+  <pre class="example highlight json">{
+    "@context": "http://www.w3.org/ns/activitystreams",
+    "type": "Accept",
+    "actor": {
+      "type": "Person",
+      "name": "Sally"
+    },
+    "object": {
+      "type": "Person",
+      "name": "Joe"
+    },
+    "target": {
+      "type": "Group",
+      "name": "The Club"
+    }
+  }</pre>
+    </div>
             </td>
           </tr>
           <tr>
@@ -808,9 +807,7 @@ _:b0 a as:Accept ;
               Indicates that the <code>actor</code> accepts the
               <code>object</code>. The <code>target</code> property can be used
               in certain circumstances to indicate the context into which the
-              <code>object</code> has been accepted. For instance, when
-              expressing the activity, "Sally accepted Joe into the Club", the
-              "target" would identify the "Club".
+              <code>object</code> has been accepted.
             </td>
           </tr>
           <tr>
