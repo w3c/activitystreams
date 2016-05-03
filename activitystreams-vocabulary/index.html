@@ -2232,6 +2232,7 @@
           <li><code><a>Place</a></code></li>
           <li><code><a>Profile</a></code></li>
           <li><code><a>Relationship</a></code></li>
+          <li><code><a>Tombstone</a></code></li>
           <li><code><a>Video</a></code></li>
         </ul>
       </p>
@@ -2700,6 +2701,60 @@
           </tr>
         </tbody>
 
+        <tbody>
+          <tr>
+            <td rowspan="4"><dfn>Tombstone</dfn></td>
+            <td style="width: 10%">URI:</td>
+            <td><code>http://www.w3.org/ns/activitystreams#Tombstone</code></td>
+            <td rowspan="4">
+<div id="ex184-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "type": "OrderedCollection",
+  "totalItems": 3,
+  "name": "Vacation photos 2016",
+  "orderedItems": [
+    {
+      "type": "Image",
+      "id": "http://image.example/1"
+    },
+    {
+      "type": "Tombstone",
+      "formerType": "Image",
+      "id": "http://image.example/2",
+      "deleted": "2016-03-17T00:00:00Z"
+    },
+    {
+      "type": "Image",
+      "id": "http://image.example/3"
+    }
+  ]
+}</pre>
+</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Notes:</td>
+            <td>
+              A Tombstone represents a content object that has been deleted. It
+              can be used in <a>Collection</a>s to signify that there used to be
+              an object at this position, but it has been deleted.
+            </td>
+          </tr>
+          <tr>
+            <td>Extends:</td>
+            <td><code><a>Object</a></code></td>
+          </tr>
+          <tr>
+            <td>Properties:</td>
+            <td>
+              <p>
+                <code><a>formerType</a></code> |
+                <code><a>deleted</a></code>
+              </p>
+              <p>Inherits all properties from <code><a>Object</a></code>.</p>
+            </td>
+          </tr>
+        </tbody>
 
       </table>
 
@@ -2773,6 +2828,8 @@
       <code><a>subject</a></code> |
       <code><a data-lt="relationship-term">relationship</a></code> |
       <code><a>describes</a></code>
+      <code><a>formerType</a></code>
+      <code><a>deleted</a></code>
     </p>
 
     <p>
@@ -5484,7 +5541,87 @@
           <td>True</td>
         </tr>
       </tbody>
-    </table>
+
+    <tbody>
+      <tr>
+        <td rowspan="5"><dfn data-lt="formerType">formerType</dfn></td>
+        <td style="width: 10%">URI:</td>
+        <td>
+          <code>http://www.w3.org/ns/activitystreams#formerType</code>
+        </td>
+        <td rowspan="5">
+          <div id="ex185-jsonld" style="display: block;">
+          <pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Tombstone",
+"formerType": "Image",
+"url": "http://example.org/image/2"
+}</pre>
+</div>
+</td>
+      </tr>
+      <tr>
+        <td>Notes:</td>
+        <td>
+          On a <code><a>Tombstone</a></code> object, the
+          <code>formerType</code> property identifies the type of the object
+          that was deleted.
+        </td>
+      </tr>
+      <tr>
+        <td>Domain:</td>
+        <td><code><a>Tombstone</a></code></td>
+      </tr>
+      <tr>
+        <td>Range:</td>
+        <td><code><a>Object</a></code></td>
+      </tr>
+      <tr>
+        <td>Functional:</td>
+        <td>True</td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td rowspan="5"><dfn data-lt="deleted">deleted</dfn></td>
+        <td style="width: 10%">URI:</td>
+        <td>
+          <code>http://www.w3.org/ns/activitystreams#deleted</code>
+        </td>
+        <td rowspan="5">
+          <div id="ex185-jsonld" style="display: block;">
+          <pre class="example highlight json">{
+"@context": "http://www.w3.org/ns/activitystreams",
+"type": "Tombstone",
+"deleted": "2016-05-03T00:00:00Z"
+}</pre>
+</div>
+</td>
+      </tr>
+      <tr>
+        <td>Notes:</td>
+        <td>
+          On a <code><a>Tombstone</a></code> object, the
+          <code>deleted</code> property is a timestamp for when the object was
+          deleted.
+        </td>
+      </tr>
+      <tr>
+        <td>Domain:</td>
+        <td><code><a>Tombstone</a></code></td>
+      </tr>
+      <tr>
+        <td>Range:</td>
+        <td><code><a>Object</a></code></td>
+      </tr>
+      <tr>
+        <td>Functional:</td>
+        <td>True</td>
+      </tr>
+    </tbody>
+
+  </table>
 
   </section>
 

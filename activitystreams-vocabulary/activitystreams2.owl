@@ -375,6 +375,13 @@ as:describes a owl:ObjectProperty,
   rdfs:domain as:Profile ;
   rdfs:range as:Object .
 
+as:formerType a owl:ObjectProperty,
+               owl:FunctionalProperty;
+  rdfs:label "formerType"@en;
+  rdfs:comment "On a Tombstone object, describes the former type of the deleted object"@en ;
+  rdfs:domain as:Tombstone ;
+  rdfs:range as:Object .
+
 #################################################################
 #
 #    Data properties
@@ -621,6 +628,13 @@ as:width a owl:DatatypeProperty ,
   rdfs:comment "Specifies the preferred display width of the content, expressed in terms of device independent pixels."@en ;
   rdfs:range xsd:nonNegativeInteger ;
   rdfs:domain as:Link .
+
+as:deleted a owl:DatatypeProperty ,
+      owl:FunctionalProperty ;
+  rdfs:label "deleted"@en ;
+  rdfs:comment "Specifies the date and time the object was deleted"@en ;
+  rdfs:range xsd:dateTime ;
+  rdfs:domain as:Tombstone .
 
 #################################################################
 #
@@ -924,6 +938,11 @@ as:TentativeReject a owl:Class ;
   rdfs:label "TentativeReject"@en ;
   rdfs:subClassOf as:Reject ;
   rdfs:comment "Actor tentatively rejects the object"@en .
+
+as:Tombstone a owl:Class ;
+  rdfs:label "Tombstone"@en;
+  rdfs:subClassOf as:Object ;
+  rdfs:comment "A placeholder for a deleted object"@en .
 
 as:Undo a owl:Class ;
   rdfs:label "Undo"@en ;
