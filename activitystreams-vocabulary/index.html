@@ -1990,7 +1990,7 @@
             <td style="width: 10%">URI:</td>
             <td><code>http://www.w3.org/ns/activitystreams#Question</code></td>
             <td rowspan="4">
-<div id="ex55-jsonld" style="display: block;">
+<div id="ex55a-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Question",
@@ -2005,6 +2005,14 @@
       "name": "Option B"
     }
   ]
+}</pre>
+</div>
+<div id="ex55b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Question",
+  "name": "What is the answer?",
+  "closed": "2016-05-10T00:00:00Z"
 }</pre>
 </div>
             </td>
@@ -2034,7 +2042,7 @@
           <tr>
             <td>Properties:</td>
             <td>
-              <p><code><a>oneOf</a></code> | <code><a>anyOf</a></code></p>
+              <p><code><a>oneOf</a></code> | <code><a>anyOf</a></code> | <code><a>closed</a></code></p>
 
               Inherits all properties from
               <code><a>IntransitiveActivity</a></code>.
@@ -2816,6 +2824,7 @@
       <code><a>items</a></code> |
       <code><a>oneOf</a></code> |
       <code><a>anyOf</a></code> |
+      <code><a>closed</a></code> |
       <code><a>origin</a></code> |
       <code><a>next</a></code> |
       <code><a data-lt="object-term">object</a></code> |
@@ -3920,6 +3929,39 @@
             <code>anyOf</code> implies that the Question can have multiple
             answers.  To indicate that a Question can have only one answer, use
             <code><a>oneOf</a></code>.
+          </td>
+        </tr>
+        <tr>
+          <td>Domain:</td>
+          <td><code><a>Question</a></code></td>
+        </tr>
+        <tr>
+          <td>Range:</td>
+          <td><code><a>Object</a></code> | <code><a>Link</a></code></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td rowspan="4"><dfn>closed</dfn></td>
+          <td style="width: 10%">URI:</td>
+          <td><code>http://www.w3.org/ns/activitystreams#closed</code></td>
+          <td rowspan="4">
+<div id="ex94b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Question",
+  "name": "What is the answer?",
+  "closed": "2016-05-10T00:00:00Z"
+}</pre>
+</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Notes:</td>
+          <td>
+            Indicates that a question has been closed, and answers are no longer
+            accepted.
           </td>
         </tr>
         <tr>

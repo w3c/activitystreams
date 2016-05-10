@@ -168,6 +168,10 @@
       "@id": "as:anyOf",
       "@type": "@id"
     },
+    "closed": {
+      "@id": "as:closed",
+      "@type": "xsd:dateTime"
+    },
     "origin": {
       "@id": "as:origin",
       "@type": "@id"
