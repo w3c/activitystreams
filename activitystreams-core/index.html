@@ -349,6 +349,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex1-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin created an image",
   "type": "Create",
   "actor": "http://www.test.example/martin",
   "object": "http://example.org/foo.jpg"
@@ -372,6 +373,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex2-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin added an article to his blog",
   "type": "Add",
   "published": "2015-02-10T15:04:55Z",
   "actor": {
@@ -414,6 +416,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex3-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin's recent activities",
   "type": "Collection",
   "totalItems": 1,
   "items" : [
@@ -439,6 +442,7 @@ as2-date-time    = full-date "T" as2-full-time
         }
       },
       "object" : {
+        "name": "My fluffy cat",
         "type": "Image",
         "id": "http://example.org/album/my_fluffy_cat",
         "preview": {
@@ -865,6 +869,7 @@ as2-date-time    = full-date "T" as2-full-time
     "http://www.w3.org/ns/activitystreams",
     {"vcard": "http://www.w3.org/2006/vcard/ns#"}
   ],
+  "name": "Sally created a note",
   "type": "Create",
   "actor": {
     "type": ["Person", "vcard:Individual"],
@@ -932,6 +937,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex19-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Joe liked a note",
   "type": "Like",
   "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",
@@ -975,6 +981,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex20-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Joe liked a note",
   "type": ["Like", "http://schema.org/LikeAction"],
   "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",
@@ -1047,6 +1054,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex21-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Object history",
   "type": "Collection",
   "totalItems": 2,
   "items": [
@@ -1073,6 +1081,7 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Object history",
   "type": "OrderedCollection",
   "totalItems": 2,
   "orderedItems": [
@@ -1198,6 +1207,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex21b-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally's recent activities",
   "type": "Collection",
   "id": "http://example.org/foo",
   "totalItems": 10,
@@ -1440,6 +1450,7 @@ _:b0 a as:Object ;
 <div id="ex23-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Fresno, California",
   "type": "Place",
   "latitude": 36.74,
   "longitude": -119.77
@@ -1468,6 +1479,7 @@ _:b0 a as:Object ;
     "http://www.w3.org/ns/activitystreams",
     {"gsp": "http://www.opengis.net/ont/geosparql"}
   ],
+  "name": "A polygon",
   "type": "gsp:Geometry",
   "gsp:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
 }</pre>
@@ -2185,6 +2197,7 @@ profile-URI   = URI</"></"></pre>
       }
     }
   ],
+  "name": "Editing history of a note",
   "type": "Collection",
   "items": [
     {
