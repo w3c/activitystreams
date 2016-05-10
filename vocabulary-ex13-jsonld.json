@@ -1,10 +1,15 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally deleted a note",
   "type": "Delete",
   "actor": {
     "type": "Person",
     "name": "Sally"
   },
-  "object": "http://example.org/notes/1"
+  "object": "http://example.org/notes/1",
+  "origin": {
+    "type": "Collection",
+    "name": "Sally's Notes"
+  }
 }

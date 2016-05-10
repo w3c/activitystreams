@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin's recent activities",
   "type": "Collection",
   "totalItems": 1,
   "items" : [
@@ -26,6 +27,7 @@
         }
       },
       "object" : {
+        "name": "My fluffy cat",
         "type": "Image",
         "id": "http://example.org/album/my_fluffy_cat",
         "preview": {

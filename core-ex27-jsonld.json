@@ -1,7 +1,7 @@
 
   {
   "@context": [
-    "http://www.w3.org/ns/activitystreams#",
+    "http://www.w3.org/ns/activitystreams",
     {
       "oa": "http://www.w3.org/ns/oa#",
       "prov": "http://www.w3.org/ns/prov#",
@@ -11,6 +11,7 @@
       }
     }
   ],
+  "name": "Editing history of a note",
   "type": "Collection",
   "items": [
     {

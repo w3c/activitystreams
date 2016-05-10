@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally left work",
   "type": "Leave",
   "actor": {
     "type": "Person",

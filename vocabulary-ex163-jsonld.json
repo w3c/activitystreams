@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally listened to a piece of music",
   "type": "Listen",
   "actor": {
     "type": "Person",

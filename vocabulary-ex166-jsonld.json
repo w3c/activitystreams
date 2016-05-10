@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally moved a post from List A to List B",
   "type": "Move",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",

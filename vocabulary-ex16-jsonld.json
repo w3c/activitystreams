@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally ignored a note",
   "type": "Ignore",
   "actor": {
     "type": "Person",

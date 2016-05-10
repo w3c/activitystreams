@@ -2,6 +2,7 @@
 {
   "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Travel",
+  "name": "Sally went to work",
   "actor": {
     "type": "Person",
     "name": "Sally"

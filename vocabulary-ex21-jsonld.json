@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally offered 50% off to Lewis",
   "type": "Offer",
   "actor": {
     "type": "Person",
@@ -9,5 +10,9 @@
   "object": {
     "type": "http://www.types.example/ProductOffer",
     "name": "50% Off!"
+  },
+  "target": {
+    "type": "Person",
+    "name": "Lewis"
   }
 }

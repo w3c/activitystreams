@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Object history",
   "type": "Collection",
   "totalItems": 2,
   "items": [

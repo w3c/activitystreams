@@ -2,6 +2,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Object history",
   "type": "OrderedCollection",
   "totalItems": 2,
   "orderedItems": [

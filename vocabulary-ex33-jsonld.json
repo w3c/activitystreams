@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally updated her note",
   "type": "Update",
   "actor": {
     "type": "Person",

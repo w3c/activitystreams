@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally went home from work",
   "type": "Travel",
   "actor": {
     "type": "Person",

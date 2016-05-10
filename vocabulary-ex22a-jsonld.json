@@ -1,12 +1,13 @@
 
             {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally is a contact of John's",
   "type": "Relationship",
   "subject": {
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "http://purl.org/vocab/relationship/closeFriendOf",
+  "relationship": "IsContact",
   "object": {
     "type": "Person",
     "name": "John"

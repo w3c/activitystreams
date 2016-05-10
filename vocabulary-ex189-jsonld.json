@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A question about robots",
   "id": "http://help.example.org/question/1",
   "type": "Question",
   "content": "I'd like to build a robot to feed my cat. Should I use Arduino or Raspberry Pi?"

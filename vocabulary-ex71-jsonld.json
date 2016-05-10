@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally's blog posts",
   "type": "Collection",
   "totalItems": 3,
   "current": "http://example.org/collection",

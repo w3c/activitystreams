@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally and Joe offered the Foo object",
   "type": "Offer",
   "actor": [
     "http://joe.example.org",

@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin added an article to his blog",
   "type": "Add",
   "published": "2015-02-10T15:04:55Z",
   "actor": {

@@ -1,8 +1,9 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A simple note",
   "type": "Note",
-  "content": "A Simple note",
+  "content": "A simple note",
   "icon": {
     "type": "Image",
     "name": "Note",

@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Page 2 of Sally's blog posts",
   "type": "CollectionPage",
   "next": "http://example.org/collection?page=2",
   "items": [

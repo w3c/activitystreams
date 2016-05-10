@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Joe liked a note",
   "type": ["Like", "http://schema.org/LikeAction"],
   "id": "http://www.test.example/activity/1",
   "actor": "http://example.org/profiles/joe",

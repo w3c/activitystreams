@@ -1,17 +1,16 @@
 
 {
-"@context": [
-"http://www.w3.org/ns/activitystreams",
-{"colleagueOf": "http://purl.org/vocab/relationship/colleagueOf"}
-],
+"@context": "http://www.w3.org/ns/activitystreams",
 "id": "http://example.org/connection-requests/123",
+"name": "Sally requested to be a friend of John",
 "type": "Offer",
 "actor": "acct:sally@example.org",
 "object": {
+"name": "Sally and John's friendship",
 "id": "http://example.org/connections/123",
 "type": "Relationship",
 "subject": "acct:sally@example.org",
-"relationship": "colleagueOf",
+"relationship": "IsContact",
 "object": "acct:john@example.org"
 },
 "target": "acct:john@example.org"

@@ -4,6 +4,7 @@
     "http://www.w3.org/ns/activitystreams",
     {"vcard": "http://www.w3.org/2006/vcard/ns#"}
   ],
+  "name": "Sally created a note",
   "type": "Create",
   "actor": {
     "type": ["Person", "vcard:Individual"],

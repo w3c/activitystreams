@@ -1,6 +1,7 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally arrived at work",
   "type": "Arrive",
   "actor": {
     "type": "Person",

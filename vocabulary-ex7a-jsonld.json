@@ -1,8 +1,8 @@
 
 {
   "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally tentatively accepted an invitation to a party",
-  "type": "TentativeAccept",
+  "name": "Sally accepted an invitation to a party",
+  "type": "Accept",
   "actor": {
     "type": "Person",
     "name": "Sally"
