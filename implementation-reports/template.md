@@ -10,15 +10,15 @@ request, or by email to public-socialweb-comments@w3.org.)%
 
 ## Implementation details
 
-Application name: %name%
-Version: %first version with Activity Streams 2.0 support%
-Platform name: %platform if this is a plugin or extension, otherwise "N/A"%
-License: %open source license or other%
-Public: %"public" or "private"%
-Main URL: %Main URL for the application%
-Activity Streams 2.0 URL: %url for features specific to AS2%
-Application role: %"publisher", "consumer", "both"%
-Interface to other applications: %"library", "network service", "other"%
+* Application name: %name%
+* Version: %first version with Activity Streams 2.0 support%
+* Platform name: %platform if this is a plugin or extension, otherwise "N/A"%
+* License: %open source license or other%
+* Main URL: %Main URL for the application%
+* Public: %"public" or "private"%
+* Activity Streams 2.0 URL: %url for features specific to AS2%
+* Application role: %"publisher", "consumer", "both"%
+* Interface to other applications: %"library", "network service", "other"%
 
 ## Core classes
 
