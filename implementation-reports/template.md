@@ -5,6 +5,9 @@ template, replace anything between percent boundaries with values for your
 own implementation. You can safely delete any text surrounded by
 percent-parenthesis pairs.)%
 
+%(The completed implementation report can be submitted with a Github pull
+request, or by email to public-socialweb-comments@w3.org.)%
+
 ## Implementation details
 
 Application name: %name%
