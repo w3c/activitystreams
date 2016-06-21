@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A simple note",
+  "type": "Note",
+  "content": "A simple note",
+  "published": "2014-12-12T12:12:12Z"
+}

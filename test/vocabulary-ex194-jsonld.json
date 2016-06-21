@@ -1,0 +1,46 @@
+
+{
+ "@context": "http://www.w3.org/ns/activitystreams",
+ "name": "Activities in Project XYZ",
+ "type": "Collection",
+ "items": [
+   {
+     "name": "Sally created a note",
+     "type": "Create",
+     "id": "http://activities.example.com/1",
+     "actor": "http://sally.example.org",
+     "object": {
+      "name": "A note",
+       "type": "Note",
+       "id": "http://notes.example.com/1",
+       "content": "A note"
+     },
+     "context": {
+       "type": "http://example.org/Project",
+       "name": "Project XYZ"
+     },
+     "audience": {
+       "type": "Group",
+       "name": "Project XYZ Working Group"
+     },
+     "to": "http://john.example.org"
+   },
+   {
+     "name": "John liked Sally's note",
+     "type": "Like",
+     "id": "http://activities.example.com/1",
+     "actor": "http://john.example.org",
+     "object": "http://notes.example.com/1",
+     "context": {
+       "type": "http://example.org/Project",
+       "name": "Project XYZ"
+     },
+     "audience": {
+       "type": "Group",
+       "name": "Project XYZ Working Group"
+     },
+     "to": "http://sally.example.org"
+   }
+ ]
+}
+    

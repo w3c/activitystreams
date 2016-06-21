@@ -1,0 +1,16 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Video",
+  "name": "Cool New Movie",
+  "duration": "PT2H30M",
+  "preview": {
+    "type": "Video",
+    "name": "Trailer",
+    "duration": "PT1M",
+    "url": {
+      "href": "http://example.org/trailer.mkv",
+      "mediaType": "video/mkv"
+    }
+  }
+}

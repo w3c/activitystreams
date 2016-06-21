@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Article",
+  "name": "A Blog Post",
+  "content": "&lt;div&gt;... a long blog post&lt;/div&gt;",
+  "attributedTo": "http://sally.example.org"
+}

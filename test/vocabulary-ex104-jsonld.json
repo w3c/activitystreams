@@ -1,0 +1,13 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Page 1 of Sally's blog posts",
+  "type": "CollectionPage",
+  "prev": "http://example.org/collection?page=1",
+  "items": [
+    "http://example.org/posts/1",
+    "http://example.org/posts/2",
+    "http://example.org/posts/3"
+  ]
+}
+  

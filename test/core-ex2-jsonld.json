@@ -1,0 +1,30 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin added an article to his blog",
+  "type": "Add",
+  "published": "2015-02-10T15:04:55Z",
+  "actor": {
+   "type": "Person",
+   "id": "http://www.test.example/martin",
+   "name": "Martin Smith",
+   "url": "http://example.org/martin",
+   "image": {
+     "type": "Link",
+     "href": "http://example.org/martin/image.jpg",
+     "mediaType": "image/jpeg"
+   }
+  },
+  "object" : {
+   "id": "http://www.test.example/blog/abc123/xyz",
+   "type": "Article",
+   "url": "http://example.org/blog/2011/02/entry",
+   "name": "Why I love Activity Streams"
+  },
+  "target" : {
+   "id": "http://example.org/blog/",
+   "type": "OrderedCollection",
+   "name": "Martin's Blog"
+  }
+}
+  

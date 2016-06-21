@@ -1,0 +1,20 @@
+
+{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {"vcard": "http://www.w3.org/2006/vcard/ns#"}
+  ],
+  "name": "Sally created a note",
+  "type": "Create",
+  "actor": {
+    "type": ["Person", "vcard:Individual"],
+    "id": "http://sally.example.org",
+    "name": "Sally Smith",
+    "vcard:given-name": "Sally",
+    "vcard:family-name": "Smith"
+  },
+  "object": {
+    "type": "Note",
+    "content": "This is a simple note"
+  }
+}

@@ -1,0 +1,22 @@
+
+{
+  "type": "OrderedCollection",
+  "totalItems": 3,
+  "name": "Vacation photos 2016",
+  "orderedItems": [
+    {
+      "type": "Image",
+      "id": "http://image.example/1"
+    },
+    {
+      "type": "Tombstone",
+      "formerType": "Image",
+      "id": "http://image.example/2",
+      "deleted": "2016-03-17T00:00:00Z"
+    },
+    {
+      "type": "Image",
+      "id": "http://image.example/3"
+    }
+  ]
+}

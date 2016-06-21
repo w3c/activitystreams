@@ -1,0 +1,11 @@
+
+            {
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally's profile",
+  "type": "Profile",
+  "describes": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "url": "http://sally.example.org"
+}

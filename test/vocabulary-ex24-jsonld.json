@@ -1,0 +1,24 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally invited John and Lisa to a party",
+  "type": "Invite",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": {
+    "type": "Event",
+    "name": "A Party"
+  },
+  "target": [
+    {
+      "type": "Person",
+      "name": "John"
+    },
+    {
+      "type": "Person",
+      "name": "Lisa"
+    }
+  ]
+}

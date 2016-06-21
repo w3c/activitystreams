@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Fresno, California",
+  "type": "Place",
+  "latitude": 36.74,
+  "longitude": -119.77
+}

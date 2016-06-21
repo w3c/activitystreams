@@ -1,0 +1,11 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally offered a post to John",
+  "type": "Offer",
+  "actor": "http://sally.example.org",
+  "object": "http://example.org/posts/1",
+  "target": "http://john.example.org",
+  "bcc": [ "http://joe.example.org" ]
+}
+  

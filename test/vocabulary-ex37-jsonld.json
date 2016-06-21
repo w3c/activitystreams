@@ -1,0 +1,6 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Group",
+  "name": "A Simple Group."
+}

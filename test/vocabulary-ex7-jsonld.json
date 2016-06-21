@@ -1,0 +1,18 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Accept",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": {
+    "type": "Invite",
+    "actor": "http://john.example.org",
+    "object": {
+      "type": "Event",
+      "name": "A Party!"
+    }
+  }
+}
+  

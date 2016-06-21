@@ -1,0 +1,67 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Martin's recent activities",
+  "type": "Collection",
+  "totalItems": 1,
+  "items" : [
+    {
+      "type": "Add",
+      "published": "2011-02-10T15:04:55Z",
+      "generator": "http://example.org/activities-app",
+      "nameMap": {
+        "en": "Martin added a new image to his album.",
+        "ga": "Martin phost le fisean nua a albam."
+      },
+      "actor": {
+        "type": "Person",
+        "id": "http://www.test.example/martin",
+        "name": "Martin Smith",
+        "url": "http://example.org/martin",
+        "image": {
+          "type": "Link",
+          "href": "http://example.org/martin/image",
+          "mediaType": "image/jpeg",
+          "width": 250,
+          "height": 250
+        }
+      },
+      "object" : {
+        "name": "My fluffy cat",
+        "type": "Image",
+        "id": "http://example.org/album/my_fluffy_cat",
+        "preview": {
+          "type": "Link",
+          "href": "http://example.org/album/my_fluffy_cat_thumb.jpg",
+          "mediaType": "image/jpeg"
+        },
+        "url": [
+          {
+            "type": "Link",
+            "href": "http://example.org/album/my_fluffy_cat.jpg",
+            "mediaType": "image/jpeg"
+          },
+          {
+            "type": "Link",
+            "href": "http://example.org/album/my_fluffy_cat.png",
+            "mediaType": "image/png"
+          }
+        ]
+      },
+      "target": {
+        "type": "Collection",
+        "id": "http://example.org/album/",
+        "nameMap": {
+          "en": "Martin's Photo Album",
+          "ga": "Grianghraif Mairtin"
+        },
+        "image": {
+          "type": "Link",
+          "href": "http://example.org/album/thumbnail.jpg",
+          "mediaType": "image/jpeg"
+        }
+      }
+    }
+  ]
+}
+  

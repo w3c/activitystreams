@@ -1,0 +1,14 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Image",
+  "name": "A Simple Image",
+  "url": "http://example.org/cat.jpeg",
+  "attributedTo": [
+    "http://joe.example.org",
+    {
+      "type": "Person",
+      "name": "Sally"
+    }
+  ]
+}

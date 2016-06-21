@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A simple note",
+  "type": "Note",
+  "mediaType": "text/markdown",
+  "content": "## A simple note\nA simple markdown `note`"
+}

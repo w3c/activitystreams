@@ -1,0 +1,6 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Application",
+  "name": "My Software Application."
+}

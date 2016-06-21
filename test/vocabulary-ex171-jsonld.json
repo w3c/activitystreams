@@ -1,0 +1,22 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Activities in context 1",
+  "type": "Collection",
+  "items": [
+    {
+      "type": "Offer",
+      "actor": "http://sally.example.org",
+      "object": "http://example.org/posts/1",
+      "target": "http://john.example.org",
+      "context": "http://example.org/contexts/1"
+    },
+    {
+      "type": "Like",
+      "actor": "http://joe.example.org",
+      "object": "http://example.org/posts/2",
+      "context": "http://example.org/contexts/1"
+    }
+  ]
+}
+  

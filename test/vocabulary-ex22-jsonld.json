@@ -1,0 +1,15 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally is a contact of John",
+  "type": "Relationship",
+  "subject": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "relationship": "IsContact",
+  "object": {
+    "type": "Person",
+    "name": "John"
+  }
+}

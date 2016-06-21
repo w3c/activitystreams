@@ -1,0 +1,12 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A simple note",
+  "type": "Note",
+  "content": "A simple note",
+  "audience": {
+    "type": "http://example.org/Organization",
+    "name": "My Organization"
+  }
+}
+  

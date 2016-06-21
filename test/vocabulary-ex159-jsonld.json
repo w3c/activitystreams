@@ -1,0 +1,8 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Link",
+  "href": "http://example.org/image.png",
+  "height": 100,
+  "width": 100
+}

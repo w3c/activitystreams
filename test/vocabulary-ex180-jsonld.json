@@ -1,0 +1,35 @@
+
+{
+"@context": "http://www.w3.org/ns/activitystreams",
+"name": "Sally's friends list",
+"type": "Collection",
+"items": [
+{
+ "name": "Sally is following Joe",
+ "type": "Relationship",
+ "subject": {
+   "type": "Person",
+   "name": "Sally"
+ },
+ "relationship": "IsFollowing",
+ "object": {
+   "type": "Person",
+   "name": "Joe"
+ }
+},
+{
+ "name": "Sally is a contact of Jane",
+ "type": "Relationship",
+ "subject": {
+   "type": "Person",
+   "name": "Sally"
+ },
+ "relationship": "IsContact",
+ "object": {
+   "type": "Person",
+   "name": "Jane"
+ }
+}
+]
+}
+   

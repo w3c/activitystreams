@@ -1,0 +1,14 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally left a group",
+  "type": "Leave",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": {
+    "type": "Group",
+    "name": "A Simple Group"
+  }
+}

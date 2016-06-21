@@ -1,0 +1,21 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A simple note",
+  "type": "Note",
+  "id": "http://www.test.example/notes/1",
+  "content": "A simple note",
+  "replies": {
+    "type": "Collection",
+    "totalItems": 1,
+    "items": [
+      {
+        "name": "A response to the note",
+        "type": "Note",
+        "content": "A response to the note",
+        "inReplyTo": "http://www.test.example/notes/1"
+      }
+    ]
+  }
+}
+  

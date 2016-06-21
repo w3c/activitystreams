@@ -1,0 +1,11 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally ignored a note",
+  "type": "Ignore",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": "http://example.org/notes/1"
+}

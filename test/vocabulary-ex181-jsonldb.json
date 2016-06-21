@@ -1,0 +1,15 @@
+
+{
+"@context": "http://www.w3.org/ns/activitystreams",
+"name": "Sally became a friend of Matt",
+"type": "Create",
+"actor": "http://sally.example.org",
+"object": {
+"type": "Relationship",
+"subject": "http://sally.example.org",
+"relationship": "IsContact",
+"object": "http://matt.example.org",
+"startTime": "2015-04-21T12:34:56"
+}
+}
+   

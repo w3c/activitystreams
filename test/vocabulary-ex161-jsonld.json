@@ -1,0 +1,14 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally read an article about Activity Streams",
+  "type": "View",
+  "actor": {
+    "type": "Person",
+    "name": "Sally"
+  },
+  "object": {
+    "type": "Article",
+    "name": "An article about Activity Streams"
+  }
+}

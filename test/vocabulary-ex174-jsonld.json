@@ -1,0 +1,11 @@
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally flagged an inappropriate note",
+  "type": "Flag",
+  "actor": "http://sally.example.org",
+  "object": {
+    "type": "Note",
+    "content": "An inappropriate note"
+  }
+}
