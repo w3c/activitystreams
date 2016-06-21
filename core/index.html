@@ -244,11 +244,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
     /* --- DL --- */
     
-    .section dd > p:first-child {
+    .section dd> p:first-child {
       margin-top: 0;
     }
     
-    .section dd > p:last-child {
+    .section dd> p:last-child {
       margin-bottom: 0;
     }
     
@@ -300,12 +300,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       padding: 5px;
     }
     
-    .nanotabs > ul li {
+    .nanotabs> ul li {
       float: left;
       list-style: none;
     }
     
-    .nanotabs > ul li a {
+    .nanotabs> ul li a {
       display: block;
       padding: 4px 6px;
       margin-right: 3px;
@@ -319,12 +319,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       text-decoration: none;
     }
     
-    .nanotabs > ul li a:hover {
+    .nanotabs> ul li a:hover {
       background: #FFFCE5;
       color: #550;
     }
     
-    .nanotabs > ul li a.selected {
+    .nanotabs> ul li a.selected {
       background: #555;
       color: #FFF;
     }
@@ -383,7 +383,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     {
       "specStatus": "WD",
       "license": "w3c-software-doc",
-      "edDraftURI": "http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams-core/",
+      "edDraftURI": "http://w3c.github.io/activitystreams/core/",
+      "testSuiteURI": "https://github.com/w3c/activitystreams/tree/master/test",
+      "implementationReportURI": "https://github.com/w3c/activitystreams/tree/master/implementation-reports",
       "shortName": "activitystreams-core",
       "editors": [
       {
@@ -395,9 +397,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       },
       {
         "name": "Evan Prodromou",
-        "url": "https://fuzzy.io/about#evan",
-        "company": "Fuzzy.io",
-        "companyUrl": "https://fuzzy.io",
+        "url": "https://fuzzy.ai/about#evan",
+        "company": "Fuzzy.ai",
+        "companyUrl": "https://fuzzy.ai",
         "w3cid": "43626"
       }],
       "maxTocLevel": 2,
@@ -431,15 +433,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         "data": [
         {
           "value": "Github",
-          "href": "https://github.com/jasnell/w3c-socialwg-activitystreams"
+          "href": "https://github.com/w3c/activitystreams"
         },
         {
           "value": "Issues",
-          "href": "https://github.com/jasnell/w3c-socialwg-activitystreams/issues"
+          "href": "https://github.com/w3c/activitystreams/issues"
         },
         {
           "value": "Commits",
-          "href": "https://github.com/jasnell/w3c-socialwg-activitystreams/commits/master"
+          "href": "https://github.com/w3c/activitystreams/commits/master"
+        }]
+      },
+      {
+        "key": "Test",
+        "data": [
+        {
+          "value": "Validator",
+          "href": "https://as2.rocks/"
         }]
       }]
     }
@@ -451,38 +461,48 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Activity Streams 2.0</h1>
-    <h2 id="w3c-working-draft-31-may-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-05-31">31 May 2016</time></h2>
+    <h2 id="w3c-working-draft-21-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-21">21 June 2016</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-activitystreams-core-20160531/">http://www.w3.org/TR/2016/WD-activitystreams-core-20160531/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-activitystreams-core-20160621/">http://www.w3.org/TR/2016/WD-activitystreams-core-20160621/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/activitystreams-core/">http://www.w3.org/TR/activitystreams-core/</a></dd>
       <dt>Latest editor's draft:</dt>
-      <dd><a href="http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams-core/">http://jasnell.github.io/w3c-socialwg-activitystreams/activitystreams-core/</a></dd>
+      <dd><a href="http://w3c.github.io/activitystreams/core/">http://w3c.github.io/activitystreams/core/</a></dd>
+      <dt>Test suite:</dt>
+      <dd><a href="https://github.com/w3c/activitystreams/tree/master/test">https://github.com/w3c/activitystreams/tree/master/test</a></dd>
+      <dt>Implementation report:</dt>
+      <dd><a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">https://github.com/w3c/activitystreams/tree/master/implementation-reports</a></dd>
       <dt>Previous version:</dt>
       <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2015/WD-activitystreams-core-20151215/">http://www.w3.org/TR/2015/WD-activitystreams-core-20151215/</a></dd>
       <dt>Editors:</dt>
       <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="26988"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="James M Snell"><a class="u-url url p-name fn" property="foaf:homepage" href="http://jasnell.me">James M Snell</a>, IBM</span>
         <span property="rdf:rest" resource="_:editor1"></span>
       </dd>
-      <dd class="p-author h-card vcard" resource="_:editor1" data-editor-id="43626"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Evan Prodromou"><a class="u-url url p-name fn" property="foaf:homepage" href="https://fuzzy.io/about#evan">Evan Prodromou</a>, Fuzzy.io</span>
+      <dd class="p-author h-card vcard" resource="_:editor1" data-editor-id="43626"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Evan Prodromou"><a class="u-url url p-name fn" property="foaf:homepage" href="https://fuzzy.ai/about#evan">Evan Prodromou</a>, Fuzzy.ai</span>
         <span property="rdf:rest" resource="rdf:nil"></span>
       </dd>
 
       <dt>Repository:</dt>
       <dd>
-        <a href="https://github.com/jasnell/w3c-socialwg-activitystreams">
+        <a href="https://github.com/w3c/activitystreams">
                       Github
                     </a>
       </dd>
       <dd>
-        <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/issues">
+        <a href="https://github.com/w3c/activitystreams/issues">
                       Issues
                     </a>
       </dd>
       <dd>
-        <a href="https://github.com/jasnell/w3c-socialwg-activitystreams/commits/master">
+        <a href="https://github.com/w3c/activitystreams/commits/master">
                       Commits
+                    </a>
+      </dd>
+      <dt>Test:</dt>
+      <dd>
+        <a href="https://as2.rocks/">
+                      Validator
                     </a>
       </dd>
     </dl>
@@ -525,6 +545,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
       <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
+    </p>
+    <p>
+      Please see the Working Group's <a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">implementation
+              report</a>.
     </p>
     <p>
       Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
@@ -582,7 +606,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </li>
       <li class="tocline"><a href="#extensibility" class="tocxref"><span class="secno">5. </span>Extensibility</a>
         <ul class="toc">
-          <li class="tocline"><a href="#curie" class="tocxref"><span class="secno">5.1 </span>Support for Compact URIs</a></li>
+          <li class="tocline"><a href="#compact-uris" class="tocxref"><span class="secno">5.1 </span>Support for Compact URIs</a></li>
           <li class="tocline"><a href="#extension-round-trip" class="tocxref"><span class="secno">5.2 </span>Re-serialization of Extensions</a></li>
         </ul>
       </li>
@@ -709,6 +733,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         For the purposes of evaluating exit criteria, software that ignores or passes through types or properties inapplicable to their domain have not implemented the type or property.
       </p>
 
+      <p>
+        Features that are not implemented will be removed from future versions of the specification.
+      </p>
+
+      <p>
+        Implementation reports can be found at
+        <a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">https://github.com/w3c/activitystreams/tree/master/implementation-reports</a>. New implementation reports should use the template file <code>template.md</code> which includes instructions on submissions.
+      </p>
 
     </section>
 
@@ -1794,11 +1826,11 @@ _:b0 a as:Object ;
       </div>
     </figure>
 
-    <section id="curie" typeof="bibo:Chapter" resource="#curie" property="bibo:hasPart">
-      <h3 id="h-curie" resource="#h-curie"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Support for Compact URIs</span></h3>
+    <section id="compact-uris" typeof="bibo:Chapter" resource="#compact-uris" property="bibo:hasPart">
+      <h3 id="h-compact-uris" resource="#h-compact-uris"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Support for Compact URIs</span></h3>
 
       <p>
-        The JSON-LD syntax supports the use of "Compact URIs" (or CURIE's for short) [<cite><a class="bibref" href="#bib-curie">curie</a></cite>]. A "Compact URI" is an alternative encoding of a URI that uses a defined prefix to simplify serialization. For instance, the URI
+        The JSON-LD syntax supports the use of "Compact URIs". A "Compact URI" is an alternative encoding of a URI that uses a defined prefix to simplify serialization. For instance, the URI
         <code>http://example.org/term</code> can be represented as <code>ex:term</code> by assigning the <code>ex:</code> prefix the value of <code>http://example.org/</code>
       </p>
 
@@ -2492,14 +2524,12 @@ _:b0 a as:Object ;
 
     <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
       <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.1 </span>Normative references</span></h3>
-      <dl class="bibliography" resource=""><dt id="bib-AS1">[AS1]</dt>
-        <dd>J. Snell; M. Atkins; W. Norris; C. Messina; M. Wilkinson; R. Dolin. http://activitystrea.ms. <a href="http://activitystrea.ms/specs/json/1.0/" property="dc:requires"><cite>JSON Activity Streams 1.0</cite></a>. unofficial. URL: <a href="http://activitystrea.ms/specs/json/1.0/" property="dc:requires">http://activitystrea.ms/specs/json/1.0/</a>
-        </dd><dt id="bib-HTML5">[HTML5]</dt>
-        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
+      <dl class="bibliography" resource=""><dt id="bib-HTML5">[HTML5]</dt>
+        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
         </dd><dt id="bib-JSON-LD">[JSON-LD]</dt>
-        <dd>Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. <a href="http://www.w3.org/TR/json-ld/" property="dc:requires"><cite>JSON-LD 1.0</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/json-ld/" property="dc:requires">http://www.w3.org/TR/json-ld/</a>
+        <dd>Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. <a href="https://www.w3.org/TR/json-ld/" property="dc:requires"><cite>JSON-LD 1.0</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/" property="dc:requires">https://www.w3.org/TR/json-ld/</a>
         </dd><dt id="bib-JSON-LD-API">[JSON-LD-API]</dt>
-        <dd>Markus Lanthaler; Gregg Kellogg; Manu Sporny. W3C. <a href="http://www.w3.org/TR/json-ld-api/" property="dc:requires"><cite>JSON-LD 1.0 Processing Algorithms and API</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/json-ld-api/" property="dc:requires">http://www.w3.org/TR/json-ld-api/</a>
+        <dd>Markus Lanthaler; Gregg Kellogg; Manu Sporny. W3C. <a href="https://www.w3.org/TR/json-ld-api/" property="dc:requires"><cite>JSON-LD 1.0 Processing Algorithms and API</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld-api/" property="dc:requires">https://www.w3.org/TR/json-ld-api/</a>
         </dd><dt id="bib-RFC2119">[RFC2119]</dt>
         <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
         </dd><dt id="bib-RFC3339">[RFC3339]</dt>
@@ -2514,8 +2544,6 @@ _:b0 a as:Object ;
         <dd>E. Wilde. IETF. <a href="https://tools.ietf.org/html/rfc6906" property="dc:requires"><cite>The 'profile' Link Relation Type</cite></a>. March 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc6906" property="dc:requires">https://tools.ietf.org/html/rfc6906</a>
         </dd><dt id="bib-RFC7159">[RFC7159]</dt>
         <dd>T. Bray, Ed.. IETF. <a href="https://tools.ietf.org/html/rfc7159" property="dc:requires"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. March 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7159" property="dc:requires">https://tools.ietf.org/html/rfc7159</a>
-        </dd><dt id="bib-curie">[curie]</dt>
-        <dd>Mark Birbeck; Shane McCarron. W3C. <a href="http://www.w3.org/TR/curie" property="dc:requires"><cite>CURIE Syntax 1.0</cite></a>. 16 December 2010. W3C Note. URL: <a href="http://www.w3.org/TR/curie" property="dc:requires">http://www.w3.org/TR/curie</a>
         </dd>
       </dl>
     </section>
@@ -2524,10 +2552,12 @@ _:b0 a as:Object ;
       <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.2 </span>Informative references</span></h3>
       <dl class="bibliography" resource=""><dt id="bib-ABNF">[ABNF]</dt>
         <dd>D. Crocker, Ed.; P. Overell. IETF. <a href="https://tools.ietf.org/html/rfc5234" property="dc:references"><cite>Augmented BNF for Syntax Specifications: ABNF</cite></a>. January 2008. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc5234" property="dc:references">https://tools.ietf.org/html/rfc5234</a>
+        </dd><dt id="bib-AS1">[AS1]</dt>
+        <dd>J. Snell; M. Atkins; W. Norris; C. Messina; M. Wilkinson; R. Dolin. http://activitystrea.ms. <a href="http://activitystrea.ms/specs/json/1.0/" property="dc:references"><cite>JSON Activity Streams 1.0</cite></a>. unofficial. URL: <a href="http://activitystrea.ms/specs/json/1.0/" property="dc:references">http://activitystrea.ms/specs/json/1.0/</a>
         </dd><dt id="bib-RFC5646">[RFC5646]</dt>
         <dd>A. Phillips, Ed.; M. Davis, Ed.. IETF. <a href="https://tools.ietf.org/html/rfc5646" property="dc:references"><cite>Tags for Identifying Languages</cite></a>. September 2009. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc5646" property="dc:references">https://tools.ietf.org/html/rfc5646</a>
         </dd><dt id="bib-vcard-rdf">[vcard-rdf]</dt>
-        <dd>Renato Iannella; James McKinney. W3C. <a href="http://www.w3.org/TR/vcard-rdf/" property="dc:references"><cite>vCard Ontology - for describing People and Organizations</cite></a>. 22 May 2014. W3C Note. URL: <a href="http://www.w3.org/TR/vcard-rdf/" property="dc:references">http://www.w3.org/TR/vcard-rdf/</a>
+        <dd>Renato Iannella; James McKinney. W3C. <a href="https://www.w3.org/TR/vcard-rdf/" property="dc:references"><cite>vCard Ontology - for describing People and Organizations</cite></a>. 22 May 2014. W3C Note. URL: <a href="https://www.w3.org/TR/vcard-rdf/" property="dc:references">https://www.w3.org/TR/vcard-rdf/</a>
         </dd>
       </dl>
     </section>
