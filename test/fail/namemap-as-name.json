@@ -1,0 +1,9 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Object",
+  "name": {
+    "en": "This is the title",
+    "fr": "C'est le titre",
+    "sp": "Este es el titulo"
+  }
+}

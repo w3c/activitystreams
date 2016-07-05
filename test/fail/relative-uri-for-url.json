@@ -1,0 +1,7 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally's avatar",
+  "type": "Image",
+  "id": "http://example.com/images/1",
+  "url": "images/sally.jpg"
+}

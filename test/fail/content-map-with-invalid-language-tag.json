@@ -1,0 +1,9 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "name": "The forbidden note",
+  "id": "http://example.com/note/1",
+  "contentMap": {
+    "de-419-DE": "This language tag is invalid per RFC 5646."
+  }
+}

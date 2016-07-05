@@ -1,0 +1,6 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "A simple note",
+  "type": "Note",
+  "id": 4
+}

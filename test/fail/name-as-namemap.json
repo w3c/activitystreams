@@ -1,0 +1,5 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Object",
+  "nameMap": "This is the title"
+}

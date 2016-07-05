@@ -1,0 +1,18 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Object history",
+  "type": "Collection",
+  "totalItems": 2,
+  "orderedItems": [
+    {
+      "type": "Create",
+      "actor": "http://www.test.example/sally",
+      "object": "http://example.org/foo"
+    },
+    {
+      "type": "Like",
+      "actor": "http://www.test.example/joe",
+      "object": "http://example.org/foo"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "name": "Sally's recent activities",
+  "type": "Collection",
+  "id": "http://example.org/foo",
+  "totalItems": 10,
+  "first": {
+    "type": "Create",
+    "actor": "http://www.test.example/sally",
+    "object": "http://example.org/foo"
+  }
+}

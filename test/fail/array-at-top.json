@@ -1,0 +1,16 @@
+[
+  {
+    "@context": "http://www.w3.org/ns/activitystreams",
+    "name": "A simple note",
+    "type": "Note",
+    "id": "http://www.test.example/notes/1",
+    "content": "Now is the time for all good people"
+  },
+  {
+    "@context": "http://www.w3.org/ns/activitystreams",
+    "name": "A simple note",
+    "type": "Note",
+    "id": "http://www.test.example/notes/2",
+    "content": "Lorem ipsum"
+  }
+]

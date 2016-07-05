@@ -1,0 +1,9 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "Fakename Q. Madeup",
+  "follows": {
+    "@type": "Person",
+    "name": "Ersatz W. Alias"
+  }
+}

@@ -22,6 +22,8 @@ The documents come from the following sources:
 * [Activity Streams 2.0 Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
 * [Activity Streams 2.0 Test Corpus](https://github.com/jasnell/as2corpus)
 
+The documents in `fail` are documents that are known bad.
+
 Validator
 ---------
 
