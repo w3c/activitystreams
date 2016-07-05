@@ -17,98 +17,74 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       padding: 0.5em;
       color: #333;
       background: #f8f8f8;
-      -webkit-text-size-adjust: none;
     }
     
     .hljs-comment,
-    .diff .hljs-header {
+    .hljs-quote {
       color: #998;
       font-style: italic;
     }
     
     .hljs-keyword,
-    .css .rule .hljs-keyword,
-    .hljs-winutils,
-    .nginx .hljs-title,
-    .hljs-subst,
-    .hljs-request,
-    .hljs-status {
+    .hljs-selector-tag,
+    .hljs-subst {
       color: #333;
       font-weight: bold;
     }
     
     .hljs-number,
-    .hljs-hexcolor,
-    .ruby .hljs-constant {
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
       color: #008080;
     }
     
     .hljs-string,
-    .hljs-tag .hljs-value,
-    .hljs-doctag,
-    .tex .hljs-formula {
+    .hljs-doctag {
       color: #d14;
     }
     
     .hljs-title,
-    .hljs-id,
-    .scss .hljs-preprocessor {
+    .hljs-section,
+    .hljs-selector-id {
       color: #900;
       font-weight: bold;
     }
     
-    .hljs-list .hljs-keyword,
     .hljs-subst {
       font-weight: normal;
     }
     
-    .hljs-class .hljs-title,
     .hljs-type,
-    .vhdl .hljs-literal,
-    .tex .hljs-command {
+    .hljs-class .hljs-title {
       color: #458;
       font-weight: bold;
     }
     
     .hljs-tag,
-    .hljs-tag .hljs-title,
-    .hljs-rule .hljs-property,
-    .django .hljs-tag .hljs-keyword {
+    .hljs-name,
+    .hljs-attribute {
       color: #000080;
       font-weight: normal;
     }
     
-    .hljs-attribute,
-    .hljs-variable,
-    .lisp .hljs-body,
-    .hljs-name {
-      color: #008080;
-    }
-    
-    .hljs-regexp {
+    .hljs-regexp,
+    .hljs-link {
       color: #009926;
     }
     
     .hljs-symbol,
-    .ruby .hljs-symbol .hljs-string,
-    .lisp .hljs-keyword,
-    .clojure .hljs-keyword,
-    .scheme .hljs-keyword,
-    .tex .hljs-special,
-    .hljs-prompt {
+    .hljs-bullet {
       color: #990073;
     }
     
-    .hljs-built_in {
+    .hljs-built_in,
+    .hljs-builtin-name {
       color: #0086b3;
     }
     
-    .hljs-preprocessor,
-    .hljs-pragma,
-    .hljs-pi,
-    .hljs-doctype,
-    .hljs-shebang,
-    .hljs-cdata {
+    .hljs-meta {
       color: #999;
       font-weight: bold;
     }
@@ -121,12 +97,60 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       background: #dfd;
     }
     
-    .diff .hljs-change {
-      background: #0086b3;
+    .hljs-emphasis {
+      font-style: italic;
     }
     
-    .hljs-chunk {
-      color: #aaa;
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+  <style>
+    /* --- EXAMPLES --- */
+    
+    div.example-title {
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+    
+    div.example-title span {
+      text-transform: uppercase;
+    }
+    
+    aside.example,
+    div.example,
+    div.illegal-example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+    
+    div.illegal-example {
+      color: red
+    }
+    
+    div.illegal-example p {
+      color: black
+    }
+    
+    aside.example,
+    div.example {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;
+    }
+    
+    aside.example div.example {
+      border-left-width: .1em;
+      border-color: #999;
+      background: #fff;
+    }
+    
+    aside.example div.example div.example-title {
+      color: #999;
     }
   </style>
   <style id="respec-mainstyle">
@@ -329,54 +353,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       color: #FFF;
     }
   </style>
-  <style>
-    /* --- EXAMPLES --- */
-    
-    div.example-title {
-      min-width: 7.5em;
-      color: #b9ab2d;
-    }
-    
-    div.example-title span {
-      text-transform: uppercase;
-    }
-    
-    aside.example,
-    div.example,
-    div.illegal-example {
-      padding: 0.5em;
-      margin: 1em 0;
-      position: relative;
-      clear: both;
-    }
-    
-    div.illegal-example {
-      color: red
-    }
-    
-    div.illegal-example p {
-      color: black
-    }
-    
-    aside.example,
-    div.example {
-      padding: .5em;
-      border-left-width: .5em;
-      border-left-style: solid;
-      border-color: #e0cb52;
-      background: #fcfaee;
-    }
-    
-    aside.example div.example {
-      border-left-width: .1em;
-      border-color: #999;
-      background: #fff;
-    }
-    
-    aside.example div.example div.example-title {
-      color: #999;
-    }
-  </style>
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <script id="initialUserConfig" type="application/json">
@@ -404,7 +380,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       }],
       "maxTocLevel": 2,
       "previousMaturity": "WD",
-      "previousPublishDate": "2015-12-15",
+      "previousPublishDate": "2016-05-31",
       "wg": "Social Web Working Group",
       "wgURI": "http://www.w3.org/Social/WG",
       "wgPublicList": "public-socialweb",
@@ -461,10 +437,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Activity Streams 2.0</h1>
-    <h2 id="w3c-working-draft-21-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-21">21 June 2016</time></h2>
+    <h2 id="w3c-working-draft-05-july-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-07-05">05 July 2016</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-activitystreams-core-20160621/">http://www.w3.org/TR/2016/WD-activitystreams-core-20160621/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-activitystreams-core-20160705/">http://www.w3.org/TR/2016/WD-activitystreams-core-20160705/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/activitystreams-core/">http://www.w3.org/TR/activitystreams-core/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -474,7 +450,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <dt>Implementation report:</dt>
       <dd><a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">https://github.com/w3c/activitystreams/tree/master/implementation-reports</a></dd>
       <dt>Previous version:</dt>
-      <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2015/WD-activitystreams-core-20151215/">http://www.w3.org/TR/2015/WD-activitystreams-core-20151215/</a></dd>
+      <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2016/WD-activitystreams-core-20160531/">http://www.w3.org/TR/2016/WD-activitystreams-core-20160531/</a></dd>
       <dt>Editors:</dt>
       <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="26988"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="James M Snell"><a class="u-url url p-name fn" property="foaf:homepage" href="http://jasnell.me">James M Snell</a>, IBM</span>
         <span property="rdf:rest" resource="_:editor1"></span>
@@ -762,7 +738,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
     <p>
       An <dfn data-dfn-type="dfn" id="dfn-activity-streams-document">Activity Streams
-        Document</dfn> is a JSON document whose root value is an Activity Streams <a href="#asobject" class="internalDFN" data-link-type="dfn">Object</a> of any type and whose MIME media type is "<code>application/activity+json</code>".
+        Document</dfn> is a JSON document whose root value is an Activity Streams <a href="#asobject" class="internalDFN" data-link-type="dfn">Object</a> of any type, including a
+      <a href="#collection" class="internalDFN" data-link-type="dfn">Collection</a>, and whose MIME media type is "
+      <code>application/activity+json</code>".
     </p>
 
     <p>
@@ -815,10 +793,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         This is specified using the following [<cite><a class="bibref" href="#bib-ABNF">ABNF</a></cite>] syntax description. The "time-hour", "time-minute", "time-second", "time-secfrac", "time-offset" and "full-date" constructs are as defined in [
         <cite><a class="bibref" href="#bib-RFC3339">RFC3339</a></cite>].
       </p>
-      <pre class="hljs vbscript">as2-partial-<span class="hljs-built_in">time</span> = <span class="hljs-built_in">time</span>-<span class="hljs-built_in">hour</span> <span class="hljs-string">":"</span> <span class="hljs-built_in">time</span>-<span class="hljs-built_in">minute</span> [<span class="hljs-string">":"</span> <span class="hljs-built_in">time</span>-<span class="hljs-built_in">second</span>]
-                   [<span class="hljs-built_in">time</span>-secfrac]
-as2-full-<span class="hljs-built_in">time</span>    = as2-partial-<span class="hljs-built_in">time</span> <span class="hljs-built_in">time</span>-offset
-as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</span>    = full-<span class="hljs-built_in">date</span> <span class="hljs-string">"T"</span> as2-full-<span class="hljs-built_in">time</span>
+      <pre class="hljs javascript">as2-partial-time = time-hour <span class="hljs-string">":"</span> time-minute [<span class="hljs-string">":"</span> time-second]
+                   [time-secfrac]
+as2-full-time    = as2-partial-time time-offset
+as2-date-time    = full-date <span class="hljs-string">"T"</span> as2-full-time
 </pre>
     </section>
 
@@ -847,13 +825,13 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
   </span></figcaption>
         <div id="ex1-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 1</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Martin created an image"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Create"</span></span>,
-  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/martin"</span></span>,
-  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo.jpg"</span>
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 1</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Martin created an image"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Create"</span>,
+  <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://www.test.example/martin"</span>,
+  <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/foo.jpg"</span>
+}</pre></div>
         </div>
       </figure>
     </section>
@@ -872,34 +850,34 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
       </span></figcaption>
         <div id="ex2-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 2</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Martin added an article to his blog"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Add"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-02-10T15:04:55Z"</span></span>,
-  "<span class="hljs-attribute">actor</span>": <span class="hljs-value">{
-   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Person"</span></span>,
-   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/martin"</span></span>,
-   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Martin Smith"</span></span>,
-   "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/martin"</span></span>,
-   "<span class="hljs-attribute">image</span>": <span class="hljs-value">{
-     "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-     "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/martin/image.jpg"</span></span>,
-     "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/jpeg"</span>
-   </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">object</span>" : <span class="hljs-value">{
-   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/blog/abc123/xyz"</span></span>,
-   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Article"</span></span>,
-   "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/blog/2011/02/entry"</span></span>,
-   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Why I love Activity Streams"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">target</span>" : <span class="hljs-value">{
-   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/blog/"</span></span>,
-   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"OrderedCollection"</span></span>,
-   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Martin's Blog"</span>
-  </span>}
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 2</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Martin added an article to his blog"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Add"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-02-10T15:04:55Z"</span>,
+  <span class="hljs-string">"actor"</span>: {
+   <span class="hljs-string">"type"</span>: <span class="hljs-string">"Person"</span>,
+   <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://www.test.example/martin"</span>,
+   <span class="hljs-string">"name"</span>: <span class="hljs-string">"Martin Smith"</span>,
+   <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.org/martin"</span>,
+   <span class="hljs-string">"image"</span>: {
+     <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+     <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/martin/image.jpg"</span>,
+     <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/jpeg"</span>
+   }
+  },
+  <span class="hljs-string">"object"</span> : {
+   <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://www.test.example/blog/abc123/xyz"</span>,
+   <span class="hljs-string">"type"</span>: <span class="hljs-string">"Article"</span>,
+   <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.org/blog/2011/02/entry"</span>,
+   <span class="hljs-string">"name"</span>: <span class="hljs-string">"Why I love Activity Streams"</span>
+  },
+  <span class="hljs-string">"target"</span> : {
+   <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/blog/"</span>,
+   <span class="hljs-string">"type"</span>: <span class="hljs-string">"OrderedCollection"</span>,
+   <span class="hljs-string">"name"</span>: <span class="hljs-string">"Martin's Blog"</span>
+  }
+}</pre></div>
         </div>
       </figure>
 
@@ -916,71 +894,71 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
 
         <div id="ex3-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 3</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Martin's recent activities"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Collection"</span></span>,
-  "<span class="hljs-attribute">totalItems</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-  "<span class="hljs-attribute">items</span>" : <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 3</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Martin's recent activities"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Collection"</span>,
+  <span class="hljs-string">"totalItems"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-string">"items"</span> : [
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Add"</span></span>,
-      "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2011-02-10T15:04:55Z"</span></span>,
-      "<span class="hljs-attribute">generator</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/activities-app"</span></span>,
-      "<span class="hljs-attribute">nameMap</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"Martin added a new image to his album."</span></span>,
-        "<span class="hljs-attribute">ga</span>": <span class="hljs-value"><span class="hljs-string">"Martin phost le fisean nua a albam."</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Person"</span></span>,
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/martin"</span></span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Martin Smith"</span></span>,
-        "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/martin"</span></span>,
-        "<span class="hljs-attribute">image</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-          "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/martin/image"</span></span>,
-          "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/jpeg"</span></span>,
-          "<span class="hljs-attribute">width</span>": <span class="hljs-value"><span class="hljs-number">250</span></span>,
-          "<span class="hljs-attribute">height</span>": <span class="hljs-value"><span class="hljs-number">250</span>
-        </span>}
-      </span>}</span>,
-      "<span class="hljs-attribute">object</span>" : <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"My fluffy cat"</span></span>,
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Image"</span></span>,
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/album/my_fluffy_cat"</span></span>,
-        "<span class="hljs-attribute">preview</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-          "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/album/my_fluffy_cat_thumb.jpg"</span></span>,
-          "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/jpeg"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">url</span>": <span class="hljs-value">[
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Add"</span>,
+      <span class="hljs-string">"published"</span>: <span class="hljs-string">"2011-02-10T15:04:55Z"</span>,
+      <span class="hljs-string">"generator"</span>: <span class="hljs-string">"http://example.org/activities-app"</span>,
+      <span class="hljs-string">"nameMap"</span>: {
+        <span class="hljs-string">"en"</span>: <span class="hljs-string">"Martin added a new image to his album."</span>,
+        <span class="hljs-string">"ga"</span>: <span class="hljs-string">"Martin phost le fisean nua a albam."</span>
+      },
+      <span class="hljs-string">"actor"</span>: {
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"Person"</span>,
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://www.test.example/martin"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Martin Smith"</span>,
+        <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.org/martin"</span>,
+        <span class="hljs-string">"image"</span>: {
+          <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+          <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/martin/image"</span>,
+          <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/jpeg"</span>,
+          <span class="hljs-string">"width"</span>: <span class="hljs-number">250</span>,
+          <span class="hljs-string">"height"</span>: <span class="hljs-number">250</span>
+        }
+      },
+      <span class="hljs-string">"object"</span> : {
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"My fluffy cat"</span>,
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"Image"</span>,
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/album/my_fluffy_cat"</span>,
+        <span class="hljs-string">"preview"</span>: {
+          <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+          <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/album/my_fluffy_cat_thumb.jpg"</span>,
+          <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/jpeg"</span>
+        },
+        <span class="hljs-string">"url"</span>: [
           {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/album/my_fluffy_cat.jpg"</span></span>,
-            "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/jpeg"</span>
-          </span>},
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/album/my_fluffy_cat.jpg"</span>,
+            <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/jpeg"</span>
+          },
           {
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/album/my_fluffy_cat.png"</span></span>,
-            "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/png"</span>
-          </span>}
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/album/my_fluffy_cat.png"</span>,
+            <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/png"</span>
+          }
         ]
-      </span>}</span>,
-      "<span class="hljs-attribute">target</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Collection"</span></span>,
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/album/"</span></span>,
-        "<span class="hljs-attribute">nameMap</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"Martin's Photo Album"</span></span>,
-          "<span class="hljs-attribute">ga</span>": <span class="hljs-value"><span class="hljs-string">"Grianghraif Mairtin"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">image</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-          "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/album/thumbnail.jpg"</span></span>,
-          "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/jpeg"</span>
-        </span>}
-      </span>}
-    </span>}
+      },
+      <span class="hljs-string">"target"</span>: {
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"Collection"</span>,
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/album/"</span>,
+        <span class="hljs-string">"nameMap"</span>: {
+          <span class="hljs-string">"en"</span>: <span class="hljs-string">"Martin's Photo Album"</span>,
+          <span class="hljs-string">"ga"</span>: <span class="hljs-string">"Grianghraif Mairtin"</span>
+        },
+        <span class="hljs-string">"image"</span>: {
+          <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+          <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/album/thumbnail.jpg"</span>,
+          <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/jpeg"</span>
+        }
+      }
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
         </div>
       </figure>
     </section>
@@ -1079,18 +1057,18 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
 
         <div id="ex4-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 4</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Note"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"This is a note"</span></span>,
-  "<span class="hljs-attribute">attributedTo</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://joe.website.example/"</span></span>,
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Person"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Joe Smith"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2014-08-21T12:34:56Z"</span>
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 4</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/foo"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Note"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"This is a note"</span>,
+  <span class="hljs-string">"attributedTo"</span>: {
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://joe.website.example/"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Person"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Joe Smith"</span>
+  },
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2014-08-21T12:34:56Z"</span>
+}</pre></div>
         </div>
       </figure>
 
@@ -1111,19 +1089,19 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">5</span> <span class="fig-title">An Object that is both a <code>Place</code> and a <code>gr:Location</code>:</span></figcaption>
         <div id="ex6-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 5</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 5</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: [
     <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
     {
-      "<span class="hljs-attribute">gr</span>": <span class="hljs-value"><span class="hljs-string">"http://purl.org/goodrelations/v1#"</span>
-    </span>}
-  ]</span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"Place"</span>, <span class="hljs-string">"gr:Location"</span>]</span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sally's Restaurant"</span></span>,
-  "<span class="hljs-attribute">longitude</span>": <span class="hljs-value"><span class="hljs-number">12.34</span></span>,
-  "<span class="hljs-attribute">latitude</span>": <span class="hljs-value"><span class="hljs-number">56.78</span></span>,
-  "<span class="hljs-attribute">gr:category</span>": <span class="hljs-value"><span class="hljs-string">"restaurants/french_restaurants"</span>
-</span>}</pre></div>
+      <span class="hljs-string">"gr"</span>: <span class="hljs-string">"http://purl.org/goodrelations/v1#"</span>
+    }
+  ],
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"Place"</span>, <span class="hljs-string">"gr:Location"</span>],
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Sally's Restaurant"</span>,
+  <span class="hljs-string">"longitude"</span>: <span class="hljs-number">12.34</span>,
+  <span class="hljs-string">"latitude"</span>: <span class="hljs-number">56.78</span>,
+  <span class="hljs-string">"gr:category"</span>: <span class="hljs-string">"restaurants/french_restaurants"</span>
+}</pre></div>
         </div>
       </figure>
 
@@ -1144,6 +1122,7 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
       <p>
         The target URI of the Link is expressed using the required
         <code><a href="../activitystreams-vocabulary/#dfn-href">href</a></code> property. In addition, all <code>Link</code> instances share the following common set of optional properties as normatively defined by the <a href="../activitystreams-vocabulary/">Activity Vocabulary</a>:
+        <code><a href="../activitystreams-vocabulary/#dfn-id">id</a></code> |
         <code><a href="../activitystreams-vocabulary/#dfn-name">name</a></code> |
         <code><a href="../activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
         <code><a href="../activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
@@ -1163,13 +1142,13 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
       containing an absolute IRI.</span></figcaption>
         <div id="ex12-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 6</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Application"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"My Application"</span></span>,
-  <b>"<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123.png"</span></span></b><span class="hljs-value">
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 6</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Application"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/application/123"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"My Application"</span>,
+  <b><span class="hljs-string">"image"</span>: <span class="hljs-string">"http://example.org/application/123.png"</span></b>
+}</pre></div>
         </div>
       </figure>
 
@@ -1180,17 +1159,17 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
       </span></figcaption>
         <div id="ex13-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 7</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Application"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"My Application"</span></span>,
-  <b>"<span class="hljs-attribute">image</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123.png"</span></span>,
-    "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/png"</span>
-  </span>}</span></b><span class="hljs-value">
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 7</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Application"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/application/123"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"My Application"</span>,
+  <b><span class="hljs-string">"image"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+    <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/application/123.png"</span>,
+    <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/png"</span>
+  }</b>
+}</pre></div>
         </div>
       </figure>
 
@@ -1206,20 +1185,20 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
       </span></figcaption>
         <div id="ex14-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 8</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Application"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"My Application"</span></span>,
-  <b>"<span class="hljs-attribute">image</span>": <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 8</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Application"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/application/123"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"My Application"</span>,
+  <b><span class="hljs-string">"image"</span>: [
     <span class="hljs-string">"http://example.org/application/abc.gif"</span>,
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123.png"</span></span>,
-      "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/png"</span>
-    </span>}
-  ]</span></b><span class="hljs-value">
-</span>}</pre></div>
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+      <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/application/123.png"</span>,
+      <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/png"</span>
+    }
+  ]</b>
+}</pre></div>
         </div>
       </figure>
 
@@ -1243,21 +1222,21 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">9</span> <span class="fig-title"></span></figcaption>
         <div id="ex15-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 9</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Application"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"My Application"</span></span>,
-  "<span class="hljs-attribute">image</span>": <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 9</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Application"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/application/123"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"My Application"</span>,
+  <span class="hljs-string">"image"</span>: [
     <span class="hljs-string">"http://example.org/application/abc.gif"</span>,
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Link"</span></span>,
-      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/application/123.png"</span></span>,
-      "<span class="hljs-attribute">mediaType</span>": <span class="hljs-value"><span class="hljs-string">"image/png"</span></span>,
-      "<span class="hljs-attribute">rel</span>": <span class="hljs-value"><span class="hljs-string">"thumbnail"</span>
-    </span>}
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Link"</span>,
+      <span class="hljs-string">"href"</span>: <span class="hljs-string">"http://example.org/application/123.png"</span>,
+      <span class="hljs-string">"mediaType"</span>: <span class="hljs-string">"image/png"</span>,
+      <span class="hljs-string">"rel"</span>: <span class="hljs-string">"thumbnail"</span>
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
         </div>
       </figure>
 
@@ -1298,25 +1277,25 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">10</span> <span class="fig-title">An Activity with a Person actor extended with VCard properties:</span></figcaption>
         <div id="ex17-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 10</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 10</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: [
     <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
-    {"<span class="hljs-attribute">vcard</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/2006/vcard/ns#"</span></span>}
-  ]</span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sally created a note"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Create"</span></span>,
-  "<span class="hljs-attribute">actor</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"Person"</span>, <span class="hljs-string">"vcard:Individual"</span>]</span>,
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://sally.example.org"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sally Smith"</span></span>,
-    "<span class="hljs-attribute">vcard:given-name</span>": <span class="hljs-value"><span class="hljs-string">"Sally"</span></span>,
-    "<span class="hljs-attribute">vcard:family-name</span>": <span class="hljs-value"><span class="hljs-string">"Smith"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Note"</span></span>,
-    "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"This is a simple note"</span>
-  </span>}
-</span>}</pre></div>
+    {<span class="hljs-string">"vcard"</span>: <span class="hljs-string">"http://www.w3.org/2006/vcard/ns#"</span>}
+  ],
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Sally created a note"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Create"</span>,
+  <span class="hljs-string">"actor"</span>: {
+    <span class="hljs-string">"type"</span>: [<span class="hljs-string">"Person"</span>, <span class="hljs-string">"vcard:Individual"</span>],
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://sally.example.org"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Sally Smith"</span>,
+    <span class="hljs-string">"vcard:given-name"</span>: <span class="hljs-string">"Sally"</span>,
+    <span class="hljs-string">"vcard:family-name"</span>: <span class="hljs-string">"Smith"</span>
+  },
+  <span class="hljs-string">"object"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Note"</span>,
+    <span class="hljs-string">"content"</span>: <span class="hljs-string">"This is a simple note"</span>
+  }
+}</pre></div>
         </div>
       </figure>
 
@@ -1355,15 +1334,15 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">11</span> <span class="fig-title">The following example illustrates a simple Activity:</span></figcaption>
         <div id="ex19-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 11</span></div><pre class="highlight json hljs"><code>{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Joe liked a note"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Like"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/activity/1"</span></span>,
-  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/profiles/joe"</span></span>,
-  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/notes/1"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2014-09-30T12:34:56Z"</span>
-</span>}
+            <div class="example-title marker"><span>Example 11</span></div><pre class="highlight json hljs xquery"><code>{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Joe liked a note"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Like"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://www.test.example/activity/1"</span>,
+  <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://example.org/profiles/joe"</span>,
+  <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.com/notes/1"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2014-09-30T12:34:56Z"</span>
+}
 </code></pre></div>
         </div>
       </figure>
@@ -1386,15 +1365,15 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
        and a <code>http://schema.org/LikeAction</code>:</span></figcaption>
         <div id="ex20-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 12</span></div><pre class="highlight json hljs"><code>{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Joe liked a note"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"Like"</span>, <span class="hljs-string">"http://schema.org/LikeAction"</span>]</span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/activity/1"</span></span>,
-  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/profiles/joe"</span></span>,
-  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/notes/1"</span></span>,
-  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2014-09-30T12:34:56Z"</span>
-</span>}</code></pre></div>
+            <div class="example-title marker"><span>Example 12</span></div><pre class="highlight json hljs xquery"><code>{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Joe liked a note"</span>,
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"Like"</span>, <span class="hljs-string">"http://schema.org/LikeAction"</span>],
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://www.test.example/activity/1"</span>,
+  <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://example.org/profiles/joe"</span>,
+  <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.com/notes/1"</span>,
+  <span class="hljs-string">"published"</span>: <span class="hljs-string">"2014-09-30T12:34:56Z"</span>
+}</code></pre></div>
         </div>
       </figure>
 
@@ -1443,24 +1422,24 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         </span></figcaption>
         <div id="ex21-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 13</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Object history"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Collection"</span></span>,
-  "<span class="hljs-attribute">totalItems</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-  "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 13</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Object history"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Collection"</span>,
+  <span class="hljs-string">"totalItems"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">"items"</span>: [
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Create"</span></span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/sally"</span></span>,
-      "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span>
-    </span>},
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Create"</span>,
+      <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://www.test.example/sally"</span>,
+      <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/foo"</span>
+    },
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Like"</span></span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/joe"</span></span>,
-      "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span>
-    </span>}
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Like"</span>,
+      <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://www.test.example/joe"</span>,
+      <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/foo"</span>
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
         </div>
       </figure>
 
@@ -1470,24 +1449,24 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         </span></figcaption>
         <div id="ex22-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 14</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Object history"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"OrderedCollection"</span></span>,
-  "<span class="hljs-attribute">totalItems</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-  "<span class="hljs-attribute">orderedItems</span>": <span class="hljs-value">[
+            <div class="example-title marker"><span>Example 14</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Object history"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"OrderedCollection"</span>,
+  <span class="hljs-string">"totalItems"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">"orderedItems"</span>: [
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Create"</span></span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/sally"</span></span>,
-      "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span>
-    </span>},
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Create"</span>,
+      <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://www.test.example/sally"</span>,
+      <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/foo"</span>
+    },
     {
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Like"</span></span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/joe"</span></span>,
-      "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span>
-    </span>}
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Like"</span>,
+      <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://www.test.example/joe"</span>,
+      <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/foo"</span>
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
         </div>
       </figure>
 
@@ -1579,26 +1558,26 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         </span></figcaption>
           <div id="ex21b-jsonld" style="display: block;">
             <div class="example">
-              <div class="example-title marker"><span>Example 15</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sally's recent activities"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Collection"</span></span>,
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span></span>,
-  "<span class="hljs-attribute">totalItems</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
-  "<span class="hljs-attribute">first</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CollectionPage"</span></span>,
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo?page=1"</span></span>,
-    "<span class="hljs-attribute">partOf</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span></span>,
-    "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo?page=2"</span></span>,
-    "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+              <div class="example-title marker"><span>Example 15</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Sally's recent activities"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Collection"</span>,
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/foo"</span>,
+  <span class="hljs-string">"totalItems"</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-string">"first"</span>: {
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"CollectionPage"</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/foo?page=1"</span>,
+    <span class="hljs-string">"partOf"</span>: <span class="hljs-string">"http://example.org/foo"</span>,
+    <span class="hljs-string">"next"</span>: <span class="hljs-string">"http://example.org/foo?page=2"</span>,
+    <span class="hljs-string">"items"</span>: [
       {
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Create"</span></span>,
-        "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.example/sally"</span></span>,
-        "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span>
-      </span>}
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"Create"</span>,
+        <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://www.test.example/sally"</span>,
+        <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/foo"</span>
+      }
     ]
-  </span>}
-</span>}</pre></div>
+  }
+}</pre></div>
           </div>
         </figure>
 
@@ -1623,11 +1602,11 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">18</span> <span class="fig-title">A single name String value without language information:</span></figcaption>
         <div id="ex7-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 16</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Object"</span></span>,
-  <b>"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"This is the title"</span></span></b><span class="hljs-value">
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 16</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Object"</span>,
+  <b><span class="hljs-string">"name"</span>: <span class="hljs-string">"This is the title"</span></b>
+}</pre></div>
         </div>
       </figure>
 
@@ -1635,15 +1614,15 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">19</span> <span class="fig-title">Multiple, language-specific values:</span></figcaption>
         <div id="ex8-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 17</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Object"</span></span>,
-  <b>"<span class="hljs-attribute">nameMap</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"This is the title"</span></span>,
-    "<span class="hljs-attribute">fr</span>": <span class="hljs-value"><span class="hljs-string">"C'est le titre"</span></span>,
-    "<span class="hljs-attribute">sp</span>": <span class="hljs-value"><span class="hljs-string">"Este es el titulo"</span>
-  </span>}</span></b><span class="hljs-value">
-</span>}</pre></div>
+            <div class="example-title marker"><span>Example 17</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Object"</span>,
+  <b><span class="hljs-string">"nameMap"</span>: {
+    <span class="hljs-string">"en"</span>: <span class="hljs-string">"This is the title"</span>,
+    <span class="hljs-string">"fr"</span>: <span class="hljs-string">"C'est le titre"</span>,
+    <span class="hljs-string">"sp"</span>: <span class="hljs-string">"Este es el titulo"</span>
+  }</b>
+}</pre></div>
         </div>
       </figure>
 
@@ -1669,13 +1648,13 @@ as2-<span class="hljs-built_in">date</span>-<span class="hljs-built_in">time</sp
         <figcaption>Fig. <span class="figno">20</span> <span class="fig-title">Using the <code>"und"</code> language tag:</span></figcaption>
         <div id="ex11b-jsonld" style="display: block;">
           <div class="example">
-            <div class="example-title marker"><span>Example 18</span></div><pre class="highlight json hljs">{
-        "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Object"</span></span>,
-        "<span class="hljs-attribute">nameMap</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">und</span>": <span class="hljs-value"><span class="hljs-string">"This is the title"</span>
-        </span>}
-      </span>}</pre></div>
+            <div class="example-title marker"><span>Example 18</span></div><pre class="highlight json hljs xquery">{
+        <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"Object"</span>,
+        <span class="hljs-string">"nameMap"</span>: {
+          <span class="hljs-string">"und"</span>: <span class="hljs-string">"This is the title"</span>
+        }
+      }</pre></div>
         </div>
       </figure>
 
@@ -1773,56 +1752,56 @@ _:b0 a as:Object ;
     <figure id="fig-geojson-point-coordinates">
       <figcaption>Fig. <span class="figno">21</span> <span class="fig-title">GeoJSON Point Coordinates:</span></figcaption>
       <div class="example">
-        <div class="example-title marker"><span>Example 19</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Point"</span></span>,
-  "<span class="hljs-attribute">coordinates</span>": <span class="hljs-value">[<span class="hljs-number">36.74</span>, -<span class="hljs-number">119.77</span>]
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 19</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Point"</span>,
+  <span class="hljs-string">"coordinates"</span>: [<span class="hljs-number">36.74</span>, -<span class="hljs-number">119.77</span>]
+}</pre></div>
     </figure>
 
     <figure id="fig-the-equivalent-place-alternative">
       <figcaption>Fig. <span class="figno">22</span> <span class="fig-title">The Equivalent <code>Place</code> alternative:</span></figcaption>
       <div id="ex23-jsonld" style="display: block;">
         <div class="example">
-          <div class="example-title marker"><span>Example 20</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fresno, California"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Place"</span></span>,
-  "<span class="hljs-attribute">latitude</span>": <span class="hljs-value"><span class="hljs-number">36.74</span></span>,
-  "<span class="hljs-attribute">longitude</span>": <span class="hljs-value">-<span class="hljs-number">119.77</span>
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 20</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Fresno, California"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Place"</span>,
+  <span class="hljs-string">"latitude"</span>: <span class="hljs-number">36.74</span>,
+  <span class="hljs-string">"longitude"</span>: -<span class="hljs-number">119.77</span>
+}</pre></div>
       </div>
     </figure>
 
     <figure id="fig-geojson-polygon-coordinates">
       <figcaption>Fig. <span class="figno">23</span> <span class="fig-title">GeoJSON Polygon Coordinates:</span></figcaption>
       <div class="example">
-        <div class="example-title marker"><span>Example 21</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Polygon"</span></span>,
-  "<span class="hljs-attribute">coordinates</span>": <span class="hljs-value">[
+        <div class="example-title marker"><span>Example 21</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Polygon"</span>,
+  <span class="hljs-string">"coordinates"</span>: [
     [
-      [<span class="hljs-number">100.0</span>, <span class="hljs-number">0.0</span>],
-      [<span class="hljs-number">101.0</span>, <span class="hljs-number">0.0</span>],
+      [<span class="hljs-number">100.0</span>, <span class="hljs-number">0</span>.<span class="hljs-number">0</span>],
+      [<span class="hljs-number">101.0</span>, <span class="hljs-number">0</span>.<span class="hljs-number">0</span>],
       [<span class="hljs-number">101.0</span>, <span class="hljs-number">1.0</span>],
       [<span class="hljs-number">100.0</span>, <span class="hljs-number">1.0</span>],
-      [<span class="hljs-number">100.0</span>, <span class="hljs-number">0.0</span>]
+      [<span class="hljs-number">100.0</span>, <span class="hljs-number">0</span>.<span class="hljs-number">0</span>]
     ]
   ]
-</span>}</pre></div>
+}</pre></div>
     </figure>
 
     <figure id="fig-the-equivalent-geosparql-well-known-text-alternative">
       <figcaption>Fig. <span class="figno">24</span> <span class="fig-title">The Equivalent GeoSparql Well-Known-Text alternative:</span></figcaption>
       <div id="ex24-jsonld" style="display: block;">
         <div class="example">
-          <div class="example-title marker"><span>Example 22</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[
+          <div class="example-title marker"><span>Example 22</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: [
     <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
-    {"<span class="hljs-attribute">gsp</span>": <span class="hljs-value"><span class="hljs-string">"http://www.opengis.net/ont/geosparql"</span></span>}
-  ]</span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"A polygon"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"gsp:Geometry"</span></span>,
-  "<span class="hljs-attribute">gsp:asWKT</span>": <span class="hljs-value"><span class="hljs-string">"Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"</span>
-</span>}</pre></div>
+    {<span class="hljs-string">"gsp"</span>: <span class="hljs-string">"http://www.opengis.net/ont/geosparql"</span>}
+  ],
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"A polygon"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"gsp:Geometry"</span>,
+  <span class="hljs-string">"gsp:asWKT"</span>: <span class="hljs-string">"Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"</span>
+}</pre></div>
       </div>
     </figure>
 
@@ -1842,16 +1821,16 @@ _:b0 a as:Object ;
       <figure id="fig-a-json-ld-compact-uri-definition">
         <figcaption>Fig. <span class="figno">25</span> <span class="fig-title">A JSON-LD Compact URI definition</span></figcaption>
         <div class="example">
-          <div class="example-title marker"><span>Example 23</span></div><pre class="highlight json hljs">{
-"<span class="hljs-attribute">@context</span>": <span class="hljs-value">{
-"<span class="hljs-attribute">ex</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/"</span></span>,
-"<span class="hljs-attribute">term</span>": <span class="hljs-value">{
-  "<span class="hljs-attribute">@type</span>": <span class="hljs-value"><span class="hljs-string">"id"</span></span>,
-  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"ex:term"</span>
-</span>}
-</span>}</span>,
-"<span class="hljs-attribute">term</span>": <span class="hljs-value"><span class="hljs-string">"ex:Foo"</span>
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 23</span></div><pre class="highlight json hljs xquery">{
+<span class="hljs-string">"@context"</span>: {
+<span class="hljs-string">"ex"</span>: <span class="hljs-string">"http://example.org/"</span>,
+<span class="hljs-string">"term"</span>: {
+  <span class="hljs-string">"@type"</span>: <span class="hljs-string">"id"</span>,
+  <span class="hljs-string">"@id"</span>: <span class="hljs-string">"ex:term"</span>
+}
+},
+<span class="hljs-string">"term"</span>: <span class="hljs-string">"ex:Foo"</span>
+}</pre></div>
       </figure>
 
       <p>
@@ -1892,16 +1871,16 @@ _:b0 a as:Object ;
       <figure id="fig-a-simple-extended-object">
         <figcaption>Fig. <span class="figno">26</span> <span class="fig-title">A simple extended Object</span></figcaption>
         <div class="example">
-          <div class="example-title marker"><span>Example 24</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[
+          <div class="example-title marker"><span>Example 24</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: [
     <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
-    {"<span class="hljs-attribute">foo</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/foo"</span></span>}
-  ]</span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Note"</span></span>,
-  "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"This is a simple note"</span></span>,
-  "<span class="hljs-attribute">foo</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
-  "<span class="hljs-attribute">bar</span>": <span class="hljs-value"><span class="hljs-number">321</span>
-</span>}</pre></div>
+    {<span class="hljs-string">"foo"</span>: <span class="hljs-string">"http://example.org/foo"</span>}
+  ],
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Note"</span>,
+  <span class="hljs-string">"content"</span>: <span class="hljs-string">"This is a simple note"</span>,
+  <span class="hljs-string">"foo"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-string">"bar"</span>: <span class="hljs-number">321</span>
+}</pre></div>
       </figure>
 
       <p>
@@ -1920,13 +1899,13 @@ _:b0 a as:Object ;
       <figure id="fig-the-reserialized-compacted-form">
         <figcaption>Fig. <span class="figno">27</span> <span class="fig-title">The reserialized compacted form:</span></figcaption>
         <div class="example">
-          <div class="example-title marker"><span>Example 25</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Note"</span></span>,
-  "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"This is a simple note"</span></span>,
-  "<span class="hljs-attribute">http://example.org/foo</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
-  "<span class="hljs-attribute">bar</span>": <span class="hljs-value"><span class="hljs-number">321</span>
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 25</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Note"</span>,
+  <span class="hljs-string">"content"</span>: <span class="hljs-string">"This is a simple note"</span>,
+  <span class="hljs-string">"http://example.org/foo"</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-string">"bar"</span>: <span class="hljs-number">321</span>
+}</pre></div>
       </figure>
 
       <p>
@@ -2035,9 +2014,9 @@ _:b0 a as:Object ;
             <td>Optional parameters: </td>
             <td>
               profile: The profile parameter for the application/activity+json media type allows one or more profile URIs to be specified. These profile URIs have the identifier semantics defined in [<cite><a class="bibref" href="#bib-RFC6906">RFC6906</a></cite>]. The "profile" media type parameter <em class="rfc2119" title="MUST">MUST</em> be quoted. It contains a non-empty list of space-separated URIs (the profile URIs).
-              <pre class="hljs vim"><span class="hljs-keyword">profile</span>-param = <span class="hljs-string">"profile="</span> <span class="hljs-keyword">profile</span>-value
-<span class="hljs-keyword">profile</span>-value = &lt;<span class="hljs-string">"&gt; profile-URI 0*( 1*SP profile-URI ) &lt;"</span>&gt;
-<span class="hljs-keyword">profile</span>-URI   = URI</pre> The "URI" in the above grammar refers to the "URI" as defined in Section 3 of [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>].
+              <pre class="hljs javascript">profile-param = <span class="hljs-string">"profile="</span> profile-value
+profile-value = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">"</span>&gt;</span> profile-URI 0*( 1*SP profile-URI ) <span class="hljs-tag">&lt;<span class="hljs-name">"</span>&gt;</span>
+profile-URI   = URI</span></pre> The "URI" in the above grammar refers to the "URI" as defined in Section 3 of [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>].
             </td>
           </tr>
           <tr>
@@ -2317,65 +2296,65 @@ _:b0 a as:Object ;
       <figcaption>Fig. <span class="figno">28</span> <span class="fig-title">A series of activities; creating, editing, and deleting a note.</span></figcaption>
       <div id="ex27-jsonld" style="display: block;">
         <div class="example">
-          <div class="example-title marker"><span>Example 26</span></div><pre class="highlight json hljs">{
-  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[
+          <div class="example-title marker"><span>Example 26</span></div><pre class="highlight json hljs xquery">{
+  <span class="hljs-string">"@context"</span>: [
     <span class="hljs-string">"http://www.w3.org/ns/activitystreams"</span>,
     {
-      "<span class="hljs-attribute">oa</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/oa#"</span></span>,
-      "<span class="hljs-attribute">prov</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/prov#"</span></span>,
-      "<span class="hljs-attribute">oa:created</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"oa:created"</span></span>,
-        "<span class="hljs-attribute">@type</span>": <span class="hljs-value"><span class="hljs-string">"xsd:dateTime"</span>
-      </span>}
-    </span>}
-  ]</span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Editing history of a note"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Collection"</span></span>,
-  "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+      <span class="hljs-string">"oa"</span>: <span class="hljs-string">"http://www.w3.org/ns/oa#"</span>,
+      <span class="hljs-string">"prov"</span>: <span class="hljs-string">"http://www.w3.org/ns/prov#"</span>,
+      <span class="hljs-string">"oa:created"</span>: {
+        <span class="hljs-string">"@id"</span>: <span class="hljs-string">"oa:created"</span>,
+        <span class="hljs-string">"@type"</span>: <span class="hljs-string">"xsd:dateTime"</span>
+      }
+    }
+  ],
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Editing history of a note"</span>,
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"Collection"</span>,
+  <span class="hljs-string">"items"</span>: [
     {
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/activity/20150101000000"</span></span>,
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value">[ <span class="hljs-string">"Create"</span>, <span class="hljs-string">"prov:Activity"</span> ]</span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/#eric"</span></span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Eric"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Eric wrote a note."</span></span>,
-      "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/entry/20150101000000"</span></span>,
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[ <span class="hljs-string">"Note"</span>, <span class="hljs-string">"prov:Entity"</span> ]</span>,
-        "<span class="hljs-attribute">attributedTo</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/#eric"</span></span>,
-        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"Remember... all I'm offering is the trooth. Nothing more."</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T00:00:00Z"</span>
-    </span>},
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/activity/20150101000000"</span>,
+      <span class="hljs-string">"type"</span>: [ <span class="hljs-string">"Create"</span>, <span class="hljs-string">"prov:Activity"</span> ],
+      <span class="hljs-string">"actor"</span>: {
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/#eric"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Eric"</span>
+      },
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"Eric wrote a note."</span>,
+      <span class="hljs-string">"object"</span>: {
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/entry/20150101000000"</span>,
+        <span class="hljs-string">"type"</span>: [ <span class="hljs-string">"Note"</span>, <span class="hljs-string">"prov:Entity"</span> ],
+        <span class="hljs-string">"attributedTo"</span>: <span class="hljs-string">"http://example.org/#eric"</span>,
+        <span class="hljs-string">"content"</span>: <span class="hljs-string">"Remember... all I'm offering is the trooth. Nothing more."</span>
+      },
+      <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-01-01T00:00:00Z"</span>
+    },
     {
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/activity/20150101000059"</span></span>,
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value">[ <span class="hljs-string">"Update"</span>, <span class="hljs-string">"prov:Activity"</span>, <span class="hljs-string">"oa:Annotate"</span> ]</span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Eric edited a note."</span></span>,
-      "<span class="hljs-attribute">oa:created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T00:00:59Z"</span></span>,
-      "<span class="hljs-attribute">oa:creator</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/#eric"</span></span>,
-      "<span class="hljs-attribute">oa:hasBody</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/entry/20150101000059"</span></span>,
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[ <span class="hljs-string">"Note"</span>, <span class="hljs-string">"prov:Entity"</span> ]</span>,
-        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"Remember... all I'm offering is the truth. Nothing more."</span></span>,
-        "<span class="hljs-attribute">prov:wasAttributedTo</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/#eric"</span></span>,
-        "<span class="hljs-attribute">prov:wasRevisionOf</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/entry/20150101000000"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">oa:hasTarget</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/entry/20150101000000"</span></span>,
-      "<span class="hljs-attribute">oa:motivatedBy</span>": <span class="hljs-value"><span class="hljs-string">"oa:editing"</span></span>,
-      "<span class="hljs-attribute">prov:generated</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/entry/20150101000059"</span></span>,
-      "<span class="hljs-attribute">prov:wasInformedBy</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/activity/20150101000000"</span>
-    </span>},
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/activity/20150101000059"</span>,
+      <span class="hljs-string">"type"</span>: [ <span class="hljs-string">"Update"</span>, <span class="hljs-string">"prov:Activity"</span>, <span class="hljs-string">"oa:Annotate"</span> ],
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"Eric edited a note."</span>,
+      <span class="hljs-string">"oa:created"</span>: <span class="hljs-string">"2015-01-01T00:00:59Z"</span>,
+      <span class="hljs-string">"oa:creator"</span>: <span class="hljs-string">"http://example.org/#eric"</span>,
+      <span class="hljs-string">"oa:hasBody"</span>: {
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/entry/20150101000059"</span>,
+        <span class="hljs-string">"type"</span>: [ <span class="hljs-string">"Note"</span>, <span class="hljs-string">"prov:Entity"</span> ],
+        <span class="hljs-string">"content"</span>: <span class="hljs-string">"Remember... all I'm offering is the truth. Nothing more."</span>,
+        <span class="hljs-string">"prov:wasAttributedTo"</span>: <span class="hljs-string">"http://example.org/#eric"</span>,
+        <span class="hljs-string">"prov:wasRevisionOf"</span>: <span class="hljs-string">"http://example.org/entry/20150101000000"</span>
+      },
+      <span class="hljs-string">"oa:hasTarget"</span>: <span class="hljs-string">"http://example.org/entry/20150101000000"</span>,
+      <span class="hljs-string">"oa:motivatedBy"</span>: <span class="hljs-string">"oa:editing"</span>,
+      <span class="hljs-string">"prov:generated"</span>: <span class="hljs-string">"http://example.org/entry/20150101000059"</span>,
+      <span class="hljs-string">"prov:wasInformedBy"</span>: <span class="hljs-string">"http://example.org/activity/20150101000000"</span>
+    },
     {
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/activity/20150101010101"</span></span>,
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value">[ <span class="hljs-string">"Delete"</span>, <span class="hljs-string">"prov:Activity"</span> ]</span>,
-      "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/#eric"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Eric deleted a note."</span></span>,
-      "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/entry/20150101000059"</span></span>,
-      "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01Z"</span>
-    </span>}
+      <span class="hljs-string">"id"</span>: <span class="hljs-string">"http://example.org/activity/20150101010101"</span>,
+      <span class="hljs-string">"type"</span>: [ <span class="hljs-string">"Delete"</span>, <span class="hljs-string">"prov:Activity"</span> ],
+      <span class="hljs-string">"actor"</span>: <span class="hljs-string">"http://example.org/#eric"</span>,
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"Eric deleted a note."</span>,
+      <span class="hljs-string">"object"</span>: <span class="hljs-string">"http://example.org/entry/20150101000059"</span>,
+      <span class="hljs-string">"published"</span>: <span class="hljs-string">"2015-01-01T01:01:01Z"</span>
+    }
   ]
-</span>}</pre></div>
+}</pre></div>
       </div>
     </figure>
   </section>
@@ -2387,36 +2366,24 @@ _:b0 a as:Object ;
     <p><em>This section is non-normative.</em></p>
 
     <p>
-      The following notable changes have been made to this document since the previous working draft of 2015-12-15.
+      The following notable changes have been made to this document since the previous working draft of 2016-05-31.
     </p>
 
     <ul>
       <li>
-        Using Activity Streams Vocabulary terms when applicable is now a <em class="rfc2119" title="MUST">MUST</em> requirement.
+        Updated repository links to new locations within the <abbr title="World Wide Web Consortium">W3C</abbr> namespace.
       </li>
       <li>
-        The Conformance section was added.
+        Made normative reference to Activity Streams 1.0 an informative reference.
       </li>
       <li>
-        The IntransitiveActivity type, already mentioned in the Vocabulary document, was added to the Model section.
+        Removed tangential but normative reference to CURIEs.
       </li>
       <li>
-        The "scope" property was renamed "audience".
+        Added link to implementation reports and template.
       </li>
       <li>
-        The Exit Criteria section was added.
-      </li>
-      <li>
-        Illustrative examples in other formats were removed, to be published in another document.
-      </li>
-      <li>
-        All Object instances in examples now have the required "name" property.
-      </li>
-      <li>
-        A paragraph on motivations for developing Activity Streams 2.0 was added.
-      </li>
-      <li>
-        This changelog was added.
+        Added link to test document suite and validator.
       </li>
     </ul>
 
@@ -2563,6 +2530,6 @@ _:b0 a as:Object ;
     </section>
   </section>
   <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
-  <script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+  <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
 </body>
 </html>
