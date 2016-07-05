@@ -21,3 +21,9 @@ The documents come from the following sources:
 * [Activity Streams 2.0 Core](https://www.w3.org/TR/activitystreams-core/)
 * [Activity Streams 2.0 Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
 * [Activity Streams 2.0 Test Corpus](https://github.com/jasnell/as2corpus)
+
+Validator
+---------
+
+A validator for Activity Streams data is available online at [as2.rocks](https://as2.rocks/). Source code for the validator
+is at https://github.com/w3c-social/activitystreams-validator .
