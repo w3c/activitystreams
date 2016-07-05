@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" typeof="bibo:Document w3p:WD" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<html lang="en" dir="ltr" typeof="bibo:Document w3p:CR" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -353,11 +353,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       color: #FFF;
     }
   </style>
-  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD">
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-CR">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <script id="initialUserConfig" type="application/json">
     {
-      "specStatus": "WD",
+      "specStatus": "CR",
+      "crEnd": "2016-10-06",
       "license": "w3c-software-doc",
       "edDraftURI": "http://w3c.github.io/activitystreams/vocabulary/",
       "testSuiteURI": "https://github.com/w3c/activitystreams/tree/master/test",
@@ -384,7 +385,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       ],
       "maxTocLevel": 2,
       "previousMaturity": "WD",
-      "previousPublishDate": "2016-05-31",
+      "previousPublishDate": "2016-07-05",
       "wg": "Social Web Working Group",
       "wgURI": "http://www.w3.org/Social/WG",
       "wgPublicList": "public-socialweb",
@@ -441,10 +442,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Activity Vocabulary</h1>
-    <h2 id="w3c-working-draft-05-july-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-07-05">05 July 2016</time></h2>
+    <h2 id="w3c-candidate-recommendation-05-july-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Candidate Recommendation <time property="dcterms:issued" class="dt-published" datetime="2016-07-05">05 July 2016</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-activitystreams-vocabulary-20160705/">http://www.w3.org/TR/2016/WD-activitystreams-vocabulary-20160705/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2016/CR-activitystreams-vocabulary-20160705/">http://www.w3.org/TR/2016/CR-activitystreams-vocabulary-20160705/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/activitystreams-vocabulary/">http://www.w3.org/TR/activitystreams-vocabulary/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -454,7 +455,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <dt>Implementation report:</dt>
       <dd><a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">https://github.com/w3c/activitystreams/tree/master/implementation-reports</a></dd>
       <dt>Previous version:</dt>
-      <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2016/WD-activitystreams-vocabulary-20160531/">http://www.w3.org/TR/2016/WD-activitystreams-vocabulary-20160531/</a></dd>
+      <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2016/WD-activitystreams-vocabulary-20160705/">http://www.w3.org/TR/2016/WD-activitystreams-vocabulary-20160705/</a></dd>
       <dt>Editors:</dt>
       <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="26988"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="James M Snell"><a class="u-url url p-name fn" property="foaf:homepage" href="http://jasnell.me">James M Snell</a>, IBM</span>
         <span property="rdf:rest" resource="_:editor1"></span>
@@ -521,16 +522,18 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
     <p>
-      This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to
+      This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Candidate Recommendation. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
-      <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
+      <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
+
+      <abbr title="World Wide Web Consortium">W3C</abbr> publishes a Candidate Recommendation to indicate that the document is believed to be stable and to encourage implementation by the developer community. This Candidate Recommendation is expected to advance to Proposed Recommendation no earlier than 06 October 2016. All comments are welcome.
     </p>
     <p>
       Please see the Working Group's <a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">implementation
               report</a>.
     </p>
     <p>
-      Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
+      Publication as a Candidate Recommendation does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
     </p>
     <p>
       This document was produced by a group operating under the
