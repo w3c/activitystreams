@@ -1389,67 +1389,98 @@ as2-date-time    = full-date "T" as2-full-time
       </div>
     </figure>
 
-      <!-- <section id="defaultlangcontext">
+      <section id="defaultlangcontext">
         <h3>Default Language Context</h3>
 
+        <p>
+          The JSON format does not provide a clear mechanism for identifying the
+          default language for natural-language properties such as
+          <code>name</code>, <code>content</code>, and <code>summary</code>.
+        </p>
+
+        <p>
+          When using [[JSON-LD]] mechanisms to produce or consume Activity
+          Streams 2.0 documents, the <code>@language</code> property MAY be used
+          within a <code>@context</code> to identify the default language. This
+          mechanism may not be understood by implementations that do not choose
+          to process Activity Streams 2.0 documents using JSON-LD.
+        </p>
+
+        <p>
+          Because of the importance of identifying the language of natural
+          language properties, it is RECOMMENDED that implementations use the
+          "map" forms of the <code>name</code>, <code>content</code>, and
+          <code>summary</code> properties even if no additional translations are
+          provided.
+        </p>
+
+        <figure>
+          <figcaption>
+            Using `nameMap` to identify the default language:
+          </figcaption>
+<div id="ex11b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Object",
+  "nameMap": {
+    "en": "This is the title"
+  }
+}</pre>
+</div>
+      </figure>
+    </section>
+
+    <section id="biditext">
+      <h3>Bidirectional Text</h3>
+
       <p>
-        The default language for document or an individual object can be
-        established using the [[JSON-LD]] <code>@language</code> property
-        within a <code>@context</code> definition. For instance:
+        Neither the JSON format nor JSON-LD provide a mechanism for identifying
+        the default direction of natural language text within a document.
       </p>
 
       <p>
-        Because using this mechanism to establish the default language context
-        requires the use of [[JSON-LD]] mechanisms, support is optional for
-        implementations. However, no other mechanism for establishing the
-        default language context for the document is defined.
+        When using either the <code>content</code> or <code>summary</code>
+        properties, standard HTML markup may be used to identify the text
+        direction:
       </p>
 
       <figure>
-        <figcaption>Establishing a default language context:</figcaption>
-<div class="nanotabs">
-  <ul>
-    <li><a href="#ex9-jsonld" class="selected">JSON</a></li>
-    <li><a href="#ex9-microdata" class="selected">Microdata</a></li>
-    <li><a href="#ex9-rdfa" class="selected">RDFa</a></li>
-    <li><a href="#ex9-microformats" class="selected">Microformats</a></li>
-    <li><a href="#ex9-turtle" class="selected">Turtle</a></li>
-  </ul>
-  <div id="ex9-jsonld" style="display: block;">
+        <figcaption>
+          Using markup to identify the text direction:
+        </figcaption>
+<div id="ex11b-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": [
-    "http://www.w3.org/ns/activitystreams",
-    <b>{"@language": "en"}</b>
-  ],
+  "@context": "http://www.w3.org/ns/activitystreams",
   "type": "Object",
-  <b>"name": "This is the title"</b>
+  "summaryMap": {
+    "en": "&lt;p dir=\"rtl\"&gt;פעילות הבינאום, W3C&lt;/p&gt;"
+  }
 }</pre>
 </div>
-  <div id="ex9-microdata" style="display:none;">
-<pre class="example highlight html"
->&lt;div itemscope itemtype="http://www.w3.org/ns/activitystreams#Object" lang="en">
-  &lt;div itemprop="name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-rdfa" style="display:none;">
-<pre class="example highlight html"
->&lt;div vocab="http://www.w3.org/ns/activitystreams#" typeof="Object" lang="en">
-  &lt;div property="name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-microformats" style="display:none;">
-<pre class="example highlight html"
->&lt;div class="h-entry" lang="en">
-  &lt;div class="p-name">This is the title&lt;/div>
-&lt;/div></pre></div>
-  <div id="ex9-turtle" style="display:none;">
-<pre class="example highlight turtle"
->@prefix as: &lt;http://www.w3.org/ns/activitystreams#&gt; .
+      </figure>
 
-_:b0 a as:Object ;
-  as:name "This is the title"@en .</pre></div>
+      <p>
+        Because the <code>name</code> (and corresponding `nameMap`) property does not
+        permit HTML markup, the Unicode Bidirectional Control characters
+        [[BIDI]] may be used to identify text direction:
+      </p>
+
+      <figure>
+        <figcaption>
+          Using bidi control characters to identify the text direction:
+        </figcaption>
+<div id="ex11b-jsonld" style="display: block;">
+<pre class="example highlight json">{
+  "@context": "http://www.w3.org/ns/activitystreams",
+  "type": "Object",
+  "nameMap": {
+    "en": "\u202Bפעילות הבינאום, W3C\u202C"
+  }
+}</pre>
 </div>
-</figure>
+      </figure>
 
-    </section> -->
+    </section>
 
     </section>
 
