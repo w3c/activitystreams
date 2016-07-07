@@ -1309,7 +1309,7 @@ as2-date-time    = full-date "T" as2-full-time
         <a href="../activitystreams-vocabulary/">Vocabulary</a> are defined
         as having natural language values. These are human-readable strings using one or more languages. Within the JSON serialization, they are
         expressed as either (1) a single JSON string or (2) a JSON object
-        mapping well-formed [[RFC5646]] Language-Tags to localized, equivalent
+        mapping well-formed [[!BCP47]] Language-Tags to localized, equivalent
         translations of the same string value. In the serialized JSON, these
         two forms are differentiated using a simple property naming convention,
         for instance: "<code>name</code>" identifies the JSON string
@@ -1344,7 +1344,7 @@ as2-date-time    = full-date "T" as2-full-time
 </figure>
 
       <p>
-        Every key in the object form MUST be a well-formed [[RFC5646]]
+        Every key in the object form MUST be a well-formed [[!BCP47]]
         Language-Tag. The associated values MUST be strings.
       </p>
 
