@@ -376,6 +376,15 @@ as2-partial-time = time-hour ":" time-minute [":" time-second]
 as2-full-time    = as2-partial-time time-offset
 as2-date-time    = full-date "T" as2-full-time
 </pre>
+
+        <p>
+          It is important to note that the `time-offset` component does not
+          correlate to time-zones, and while times that include the
+          `time-offset` component work well for timestamps, they cannot be
+          reliably converted to and from local "wall times" without additional
+          information and processing.
+        </p>
+
       </section>
 
     </section>
