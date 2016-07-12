@@ -239,17 +239,46 @@
       </p>
 
       <p>
-        Features that are not implemented will be removed from future versions
-        of the specification.
-      </p>
-
-      <p>
         Implementation reports can be found at
         <a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">https://github.com/w3c/activitystreams/tree/master/implementation-reports</a>.
         New implementation reports should use the template file <code>template.md</code>
         which includes instructions on submissions.
       </p>
 
+    </section>
+
+    <section id="atrisk">
+      <h3>At Risk features</h3>
+      <p>The Working Group has marked the following terms as At Risk and may seek
+        to advance the specification with the removal of these terms if
+        insufficient implementation experience can be gathered.</p>
+      <ul>
+        <li>All properties of the <a>Object</a> type, except the following:
+          <ul>
+            <li><code>id</code></li>
+            <li><code>name</code></li>
+            <li><code>type</code></li>
+          </ul>
+        </li>
+        <li>All properties of the <a>Link</a> type, except the following:
+          <ul>
+            <li><code>id</code></li>
+            <li><code>mediaType</code></li>
+            <li><code>name</code></li>
+          </ul>
+        </li>
+        <li>All properties of the <a>Activity</a> type, except the following:
+          <ul>
+            <li><code>actor</code></li>
+            <li><code>object</code></li>
+          </ul>
+        </li>
+        <li>The <a>Actor</a> type</li>
+        <li>The <a>IntransitiveActivity</a> type</li>
+        <li>The <a>OrderedCollection</a> and <a>OrderedCollectionPage</a> types</li>
+        <li>All extended types</li>
+        <li>All properties of the extended types</li>
+      </ul>
     </section>
 
   </section>
