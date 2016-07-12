@@ -1442,6 +1442,15 @@ as2-date-time    = full-date "T" as2-full-time
           to process Activity Streams 2.0 documents using JSON-LD.
         </p>
 
+        <p class="note" title="Recommending Map properties">
+          In order to support implementations that do not recognize the
+          <code>@language</code> property, the Social Working Group may recommend
+          in a future version of this document that publishers use the "Map" versions of all
+          natural-language values, even if only a single value is provided.
+          See <a href="https://github.com/w3c/activitystreams/issues/341">issue #341</a>
+          for background and discussion.
+        </p>
+
     <section id="biditext">
       <h3>Bidirectional Text</h3>
 
@@ -2391,6 +2400,10 @@ profile-URI   = URI</"></"></pre>
       <li>
         Updated some examples to make particular note of internationalization
         issues.
+      </li>
+      <li>
+        Add note about possibly recommending the Map version of natural-language
+        values.
       </li>
     </ul>
 
