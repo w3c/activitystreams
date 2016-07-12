@@ -4663,7 +4663,8 @@
   "type": "Note",
   "contentMap": {
     "en": "A &lt;i&gt;simple&lt;/i&gt; note",
-    "sp": "Una &lt;i&gt;simple&lt;/i&gt; nota"
+    "es": "Una nota &lt;i&gt;sencilla&lt;/i&gt;",
+    "zh-Hans": "一&lt;i&gt;个简单的&lt;/i&gt;音符"
   }
 }</pre>
 </div>
@@ -4724,7 +4725,8 @@
   "type": "Note",
   "nameMap": {
     "en": "A simple note",
-    "sp": "Una simple nota"
+    "es": "Una nota sencilla",
+    "zh-Hans": "一个简单的音符"
   }
 }</pre>
 </div>
@@ -4771,8 +4773,9 @@
             When the object describes a time-bound resource, such as an audio or
             video, a meeting, etc, the <code><a>duration</a></code> property
             indicates the object's approximate duration. The value MUST
-            be expressed as an [[!RFC3339]] (ISO 8601) <code>duration</code>
-            (e.g. a period of 5 seconds is represented as "<code>PT5S</code>").
+            be expressed as an <code>xsd:duration</code> as defined by
+            [[!xmlschema11-2]], section 3.3.6 (e.g. a period of 5 seconds is
+            represented as "<code>PT5S</code>").
           </td>
         </tr>
         <tr>
@@ -4887,7 +4890,7 @@
           <td>Notes:</td>
           <td>
             Hints as to the language used by the target resource. Value MUST be
-            a [[!RFC5646]] Language-Tag.
+            a [[!BCP47]] Language-Tag.
           </td>
         </tr>
         <tr>
@@ -4896,7 +4899,7 @@
         </tr>
         <tr>
           <td>Range:</td>
-          <td>[[!RFC5646]] Language Tag</td>
+          <td>[[!BCP47]] Language Tag</td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -5346,7 +5349,8 @@
   "type": "Note",
   "summaryMap": {
     "en": "A simple &lt;i&gt;note&lt;/i&gt;",
-    "sp": "Una simple &lt;i&gt;nota&lt;/i&gt;"
+    "es": "Una &lt;i&gt;nota&lt;/i&gt; sencilla",
+    "zh-Hans": "一个简单的&lt;i&gt;音符&lt;/i&gt;"
   }
 }</pre>
 </div>
