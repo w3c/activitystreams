@@ -1406,30 +1406,6 @@ as2-date-time    = full-date "T" as2-full-time
           to process Activity Streams 2.0 documents using JSON-LD.
         </p>
 
-        <p>
-          Because of the importance of identifying the language of natural
-          language properties, it is RECOMMENDED that implementations use the
-          "map" forms of the <code>name</code>, <code>content</code>, and
-          <code>summary</code> properties even if no additional translations are
-          provided.
-        </p>
-
-        <figure>
-          <figcaption>
-            Using `nameMap` to identify the default language:
-          </figcaption>
-<div id="ex11b-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Object",
-  "nameMap": {
-    "en": "This is the title"
-  }
-}</pre>
-</div>
-      </figure>
-    </section>
-
     <section id="biditext">
       <h3>Bidirectional Text</h3>
 
