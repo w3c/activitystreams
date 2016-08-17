@@ -1472,27 +1472,29 @@ as2-date-time    = full-date "T" as2-full-time
         Natural language values within an Activity Streams 2.0 document MAY
         contain bidirectional text. The default base direction of an Activity
         Streams 2.0 document is Left-to-Right. The base direction of individual
-        fields MAY be modified as described below.
+        natural language values MAY be modified as described below.
       </p>
 
       <p>
-        When specifying bidirectional text for a Natural Language Value,
+        When specifying bidirectional text for a natural language value,
         and the base direction of the text cannot be correctly identified by
-        the first strongly directed character of that text, publishers SHOULD
+        the first strong directional character of that text, publishers SHOULD
         explicitly identify the default direction either by prefixing the value
         with an apropriate Unicode bidirectional control character, or by using
-        appropriate HTML markup where permitted.
+        HTML directional markup where permitted.
       </p>
 
       <p>
         Consumers of Activity Streams 2.0 documents that contain bidirectional
-        text SHOULD identify the base direction of any given Natural Language
-        Value by either scanning the text for the first strongly directed
+        text SHOULD identify the base direction of any given natural language
+        value by either scanning the text for the first strong directional
         character not contained within a markup element; or by utilizing
-        directional markup or Unicode control characters where provided. Once
-        the base direction has been identified, consumers MUST use the Unicode
-        Bidirectional Algorithm [[!BIDI]] to determine the appropriate
-        rendering and display of natural language values.
+        directional markup where provided. Once the base direction has been
+        identified, consumers MUST determine the appropriate rendering and
+        display of natural language values, according to the Unicode
+        Bidirectional Algorithm [[!BIDI]]. This may necessitate wrapping
+        additional control characters or markup around the string prior to
+        display, in order to apply the base direction.
       </p>
 
       <table>
@@ -1542,6 +1544,14 @@ as2-date-time    = full-date "T" as2-full-time
           <td><code>summary</code></td>
           <td><code>&lt;p&gt;פעילות הבינאום, W3C&lt;/p&gt;</code></td>
           <td>Right-to-Left</td>
+          <td>First strong directional character (ignoring markup)</td>
+        </tr>
+        <tr>
+          <td><code>summary</code></td>
+          <td>
+            <code>&lt;p title="سلام"&gt;Hello&lt;/p&gt;</code>
+          </td>
+          <td>Left-to-Right</td>
           <td>First strong directional character (ignoring markup)</td>
         </tr>
       </table>
