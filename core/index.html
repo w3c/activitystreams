@@ -1382,7 +1382,7 @@ as2-date-time    = full-date "T" as2-full-time
   <b>"nameMap": {
     "en": "This is the title",
     "fr": "C'est le titre",
-    "sp": "Este es el titulo"
+    "es": "Este es el título"
   }</b>
 }</pre>
 </div>
@@ -1425,14 +1425,17 @@ as2-date-time    = full-date "T" as2-full-time
       </div>
     </figure>
 
+    <p class="note" title="Recommending Map properties">
+      In order to support implementations that do not recognize the
+      <code>@language</code> property, the Social Working Group may recommend
+      in a future version of this document that publishers use the "Map" versions of all
+      natural-language values, even if only a single value is provided.
+      See <a href="https://github.com/w3c/activitystreams/issues/341">issue #341</a>
+      for background and discussion.
+    </p>
+
       <section id="defaultlangcontext">
         <h3>Default Language Context</h3>
-
-        <p>
-          The JSON format does not provide a clear mechanism for identifying the
-          default language for natural-language properties such as
-          <code>name</code>, <code>content</code>, and <code>summary</code>.
-        </p>
 
         <p>
           When using [[JSON-LD]] mechanisms to produce or consume Activity
@@ -1442,64 +1445,116 @@ as2-date-time    = full-date "T" as2-full-time
           to process Activity Streams 2.0 documents using JSON-LD.
         </p>
 
-        <p class="note" title="Recommending Map properties">
-          In order to support implementations that do not recognize the
-          <code>@language</code> property, the Social Working Group may recommend
-          in a future version of this document that publishers use the "Map" versions of all
-          natural-language values, even if only a single value is provided.
-          See <a href="https://github.com/w3c/activitystreams/issues/341">issue #341</a>
-          for background and discussion.
-        </p>
+        <figure>
+          <figcaption>
+            Specifying the default <code>"@language"</code> within the JSON-LD
+            <code>@context</code>:
+          </figcaption>
+        <div id="ex11b-jsonld" style="display: block;">
+        <pre class="example highlight json">{
+  "@context": [
+    "http://www.w3.org/ns/activitystreams",
+    {
+      "@language": "en"
+    }],
+  "type": "Object",
+  "name": "This is the title"
+}</pre>
+        </div>
+      </figure>
+
+    </section>
 
     <section id="biditext">
       <h3>Bidirectional Text</h3>
 
       <p>
-        Neither the JSON format nor JSON-LD provide a mechanism for identifying
-        the default direction of natural language text within a document.
+        Natural language values within an Activity Streams 2.0 document MAY
+        contain bidirectional text. The default base direction of an Activity
+        Streams 2.0 document is Left-to-Right. The base direction of individual
+        natural language values MAY be modified as described below.
       </p>
 
       <p>
-        When using either the <code>content</code> or <code>summary</code>
-        properties, standard HTML markup may be used to identify the text
-        direction:
+        When specifying bidirectional text for a natural language value,
+        and the base direction of the text cannot be correctly identified by
+        the first strong directional character of that text, publishers SHOULD
+        explicitly identify the default direction either by prefixing the value
+        with an apropriate Unicode bidirectional control character, or by using
+        HTML directional markup where permitted.
       </p>
-
-      <figure>
-        <figcaption>
-          Using markup to identify the text direction:
-        </figcaption>
-<div id="ex11c-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Object",
-  "summaryMap": {
-    "en": "&lt;p dir=\"rtl\"&gt;פעילות הבינאום, W3C&lt;/p&gt;"
-  }
-}</pre>
-</div>
-      </figure>
 
       <p>
-        Because the <code>name</code> (and corresponding `nameMap`) property does not
-        permit HTML markup, the Unicode Bidirectional Control characters
-        [[BIDI]] may be used to identify text direction:
+        Consumers of Activity Streams 2.0 documents that contain bidirectional
+        text SHOULD identify the base direction of any given natural language
+        value by either scanning the text for the first strong directional
+        character not contained within a markup element; or by utilizing
+        directional markup where provided. Once the base direction has been
+        identified, consumers MUST determine the appropriate rendering and
+        display of natural language values, according to the Unicode
+        Bidirectional Algorithm [[!BIDI]]. This may necessitate wrapping
+        additional control characters or markup around the string prior to
+        display, in order to apply the base direction.
       </p>
 
-      <figure>
-        <figcaption>
-          Using bidi control characters to identify the text direction:
-        </figcaption>
-<div id="ex11d-jsonld" style="display: block;">
-<pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "type": "Object",
-  "nameMap": {
-    "en": "\u202Bפעילות הבינאום, W3C\u202C"
-  }
-}</pre>
-</div>
-      </figure>
+      <table>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+          <th>Direction</th>
+          <th>Method</th>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td><code>"פעילות הבינאום, W3C"</code></td>
+          <td>Right-to-Left</td>
+          <td>First strong directional character</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td>
+            <code>
+              "The document was titled, '\u2067פעילות הבינאום, W3C\u2069'"
+            </code>
+          </td>
+          <td>Left-to-Right</td>
+          <td>First strong directional character</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td><code>"\u200FHTML היא שפת סימון"</code></td>
+          <td>Right-to-Left</td>
+          <td>Bidi Control Character</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td><code>"\u200E'سلام' is hello in Persian."</code></td>
+          <td>Left-to-Right</td>
+          <td>Bidi Control Character</td>
+        </tr>
+        <tr>
+          <td><code>summary</code></td>
+          <td>
+            <code>&lt;p dir=\"rtl\"&gt;HTML היא שפת סימון&gt;/p&gt;</code>
+          </td>
+          <td>Right-to-Left</td>
+          <td>HTML Markup</td>
+        </tr>
+        <tr>
+          <td><code>summary</code></td>
+          <td><code>&lt;p&gt;פעילות הבינאום, W3C&lt;/p&gt;</code></td>
+          <td>Right-to-Left</td>
+          <td>First strong directional character (ignoring markup)</td>
+        </tr>
+        <tr>
+          <td><code>summary</code></td>
+          <td>
+            <code>&lt;p title="سلام"&gt;Hello&lt;/p&gt;</code>
+          </td>
+          <td>Left-to-Right</td>
+          <td>First strong directional character (ignoring markup)</td>
+        </tr>
+      </table>
 
     </section>
 
