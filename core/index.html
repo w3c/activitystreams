@@ -355,7 +355,7 @@
           with a value that includes a reference to the normative
           <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
           @context definition</a> using the URL
-          "<code>http://www.w3.org/ns/activitystreams</code>".
+          "<code>https://www.w3.org/ns/activitystreams</code>".
         </p>
 
         <p>
@@ -447,7 +447,7 @@ as2-date-time    = full-date "T" as2-full-time
   </figcaption>
 <div id="ex1-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Martin created an image",
   "type": "Create",
   "actor": "http://www.test.example/martin",
@@ -471,7 +471,7 @@ as2-date-time    = full-date "T" as2-full-time
       </figcaption>
 <div id="ex2-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Martin added an article to his blog",
   "type": "Add",
   "published": "2015-02-10T15:04:55Z",
@@ -514,7 +514,7 @@ as2-date-time    = full-date "T" as2-full-time
 
 <div id="ex3-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Martin's recent activities",
   "type": "Collection",
   "totalItems": 1,
@@ -691,7 +691,7 @@ as2-date-time    = full-date "T" as2-full-time
 
 <div id="ex4-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "id": "http://example.org/foo",
   "type": "Note",
   "name": "This is a note",
@@ -737,7 +737,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex6-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {
       "gr": "http://purl.org/goodrelations/v1#"
     }
@@ -806,7 +806,7 @@ as2-date-time    = full-date "T" as2-full-time
       containing an absolute IRI.</figcaption>
 <div id="ex12-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
   "id": "http://example.org/application/123",
   "name": "My Application",
@@ -821,7 +821,7 @@ as2-date-time    = full-date "T" as2-full-time
       </figcaption>
 <div id="ex13-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
   "id": "http://example.org/application/123",
   "name": "My Application",
@@ -848,7 +848,7 @@ as2-date-time    = full-date "T" as2-full-time
       </figcaption>
 <div id="ex14-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
   "id": "http://example.org/application/123",
   "name": "My Application",
@@ -895,7 +895,7 @@ as2-date-time    = full-date "T" as2-full-time
       <figure><figcaption></figcaption>
 <div id="ex15-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
   "id": "http://example.org/application/123",
   "name": "My Application",
@@ -966,7 +966,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex17-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {"vcard": "http://www.w3.org/2006/vcard/ns#"}
   ],
   "name": "Sally created a note",
@@ -1036,7 +1036,7 @@ as2-date-time    = full-date "T" as2-full-time
       <figure><figcaption>The following example illustrates a simple Activity:</figcaption>
 <div id="ex19-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Joe liked a note",
   "type": "Like",
   "id": "http://www.test.example/activity/1",
@@ -1080,7 +1080,7 @@ as2-date-time    = full-date "T" as2-full-time
        and a <code>http://schema.org/LikeAction</code>:</figcaption>
 <div id="ex20-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Joe liked a note",
   "type": ["Like", "http://schema.org/LikeAction"],
   "id": "http://www.test.example/activity/1",
@@ -1153,7 +1153,7 @@ as2-date-time    = full-date "T" as2-full-time
         </figcaption>
 <div id="ex21-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Object history",
   "type": "Collection",
   "totalItems": 2,
@@ -1180,7 +1180,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex22-jsonld" style="display: block;">
 <pre class="example highlight json">
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Object history",
   "type": "OrderedCollection",
   "totalItems": 2,
@@ -1306,7 +1306,7 @@ as2-date-time    = full-date "T" as2-full-time
         </figcaption>
 <div id="ex21b-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Sally's recent activities",
   "type": "Collection",
   "id": "http://example.org/foo",
@@ -1366,7 +1366,7 @@ as2-date-time    = full-date "T" as2-full-time
         <figcaption>A single name String value without language information:</figcaption>
 <div id="ex7-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Object",
   <b>"name": "This is the title"</b>
 }</pre>
@@ -1377,7 +1377,7 @@ as2-date-time    = full-date "T" as2-full-time
         <figcaption>Multiple, language-specific values:</figcaption>
 <div id="ex8-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Object",
   <b>"nameMap": {
     "en": "This is the title",
@@ -1416,7 +1416,7 @@ as2-date-time    = full-date "T" as2-full-time
         <figcaption>Using the <code>"und"</code> language tag:</figcaption>
       <div id="ex11b-jsonld" style="display: block;">
       <pre class="example highlight json">{
-        "@context": "http://www.w3.org/ns/activitystreams",
+        "@context": "https://www.w3.org/ns/activitystreams",
         "type": "Object",
         "nameMap": {
           "und": "This is the title"
@@ -1453,7 +1453,7 @@ as2-date-time    = full-date "T" as2-full-time
         <div id="ex11b-jsonld" style="display: block;">
         <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {
       "@language": "en"
     }],
@@ -1620,7 +1620,7 @@ as2-date-time    = full-date "T" as2-full-time
         <figure><figcaption>The Equivalent <code>Place</code> alternative:</figcaption>
 <div id="ex23-jsonld" style="display: block;">
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "Fresno, California",
   "type": "Place",
   "latitude": 36.74,
@@ -1647,7 +1647,7 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex24-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {"gsp": "http://www.opengis.net/ont/geosparql"}
   ],
   "name": "A polygon",
@@ -1739,7 +1739,7 @@ as2-date-time    = full-date "T" as2-full-time
       <figure><figcaption>A simple extended Object</figcaption>
 <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {"foo": "http://example.org/foo"}
   ],
   "type": "Note",
@@ -1773,7 +1773,7 @@ as2-date-time    = full-date "T" as2-full-time
 
       <figure><figcaption>The reserialized compacted form:</figcaption>
 <pre class="example highlight json">{
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
   "content": "This is a simple note",
   "http://example.org/foo": 123,
@@ -1970,7 +1970,7 @@ profile-URI   = URI</"></"></pre>
         <p>
           Because Activity Streams 2.0 can be considered a restricted profile
           of JSON-LD, Implementations SHOULD consider the
-          `application/ld+json; profile="http://www.w3.org/ns/activitystreams"`
+          `application/ld+json; profile="https://www.w3.org/ns/activitystreams"`
           media type as being equivalent to `application/activity+json`.
         </p>
 
@@ -2358,7 +2358,7 @@ profile-URI   = URI</"></"></pre>
 <div id="ex27-jsonld" style="display: block;">
   <pre class="example highlight json">{
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {
       "oa": "http://www.w3.org/ns/oa#",
       "prov": "http://www.w3.org/ns/prov#",
