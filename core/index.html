@@ -285,6 +285,7 @@
           </ul>
         </li>
         <li>All properties of the extended types</li>
+        <li>The alternative HTTP-only context URL</li>
       </ul>
     </section>
 
@@ -355,7 +356,18 @@
           with a value that includes a reference to the normative
           <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
           @context definition</a> using the URL
-          "<code>https://www.w3.org/ns/activitystreams</code>".
+          "<code>https://www.w3.org/ns/activitystreams</code>". Implementations
+          MAY use the alternative URL
+          "<code>http://www.w3.org/ns/activitystreams</code>"
+          instead.
+        </p>
+
+        <p class="note" title="At Risk">
+          The alternative HTTP-only URL is At Risk. The Working Group believes
+          some implementations may benefit from the HTTP-only URL. However, if
+          insufficient evidence of implementation can be obtained during
+          the Candidate Recommendation period then the Working Group may
+          seek to advance the specification with this alternative omitted.
         </p>
 
         <p>
