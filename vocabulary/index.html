@@ -135,7 +135,7 @@
     </p>
 
     <p>
-      The Activity Streams 2.0 Vocabulary defines a set of abstract classes
+      The Activity Streams 2.0 Vocabulary defines a set of abstract types
       and properties that describe past, present and future Activities.
       The vocabulary is defined in two parts:
       <ol>
@@ -193,16 +193,16 @@
   </section>
 
   <section id="types">
-    <h2>Core Classes</h2>
+    <h2>Core Types</h2>
 
     <p>
-      The Activity Vocabulary Core Classes provide the basis for the rest of
+      The Activity Vocabulary Core Types provide the basis for the rest of
       the vocabulary.
     </p>
 
     <p>Base URI: <code>https://www.w3.org/ns/activitystreams#</code>.</p>
 
-    <p>The Activity Streams 2.0 Core Classes include:
+    <p>The Activity Streams 2.0 Core Types include:
       <ul>
         <li><code><a>Object</a></code></li>
         <li><code><a>Link</a></code></li>
@@ -244,9 +244,9 @@
         <tr>
           <td>Notes:</td>
           <td>
-            Describes an object of any kind. The Object class serves as the
-            base class for most of the other kinds of objects defined in the
-            Activity Vocabulary, including other Core classes such as
+            Describes an object of any kind. The Object type serves as the
+            base type for most of the other kinds of objects defined in the
+            Activity Vocabulary, including other Core types such as
             <code><a>Activity</a></code>,
             <code><a>IntransitiveActivity</a></code>,
             <code><a>Collection</a></code> and
@@ -371,12 +371,12 @@
         <tr>
           <td>Notes:</td>
           <td>
-            An Activity is a subclass of <code><a>Object</a></code> that
+            An Activity is a subtype of <code><a>Object</a></code> that
             describes some form of action that may happen, is currently
             happening, or has already happened. The <code>Activity</code>
-            class itself serves as an abstract base class for all types of
+            type itself serves as an abstract base type for all types of
             activities. It is important to note that the <code>Activity</code>
-            class itself does not carry any specific semantics about the kind
+            type itself does not carry any specific semantics about the kind
             of action being taken.
           </td>
         </tr>
@@ -431,7 +431,7 @@
         <tr>
           <td>Notes:</td>
           <td>
-            Instances of <code>IntransitiveActivity</code> are a subclass of
+            Instances of <code>IntransitiveActivity</code> are a subtype of
             <code>Activity</code> representing intransitive actions. The
             <code><a data-lt="object-term">object</a></code> property is
             therefore inappropriate for these activities.
@@ -482,7 +482,7 @@
           <td>Notes:</td>
           <td>
             <p>
-              A <code>Collection</code> is a subclass of
+              A <code>Collection</code> is a subtype of
               <code><a>Object</a></code> that represents ordered or unordered
               sets of <code><a>Object</a> or <a>Link</a></code> instances.
             </p>
@@ -544,7 +544,7 @@
             <td>Notes:</td>
             <td>
               <p>
-                A subclass of <code><a>Collection</a></code> in which members
+                A subtype of <code><a>Collection</a></code> in which members
                 of the logical collection are assumed to always be strictly
                 ordered.
               </p>
@@ -683,13 +683,13 @@
   </section>
 
   <section id="extendedtypes">
-    <h2>Extended Classes</h2>
+    <h2>Extended Types</h2>
 
     <p>Base URI: <code>https://www.w3.org/ns/activitystreams#</code>.</p>
 
     <p>
-      The Activity Streams 2.0 Extended Classes include Activity and Object
-      subclasses that are common to many social Web applications. They are
+      The Activity Streams 2.0 Extended Types include Activity and Object
+      subtypes that are common to many social Web applications. They are
       divided into three sets:
       <ul>
         <li><a href="#activity-types">Activity Types</a></li>
@@ -699,11 +699,11 @@
     </p>
 
     <p>
-      Support for specific extended vocabulary classes is expected to vary,
-      with implementations only selecting the extended classes and properties
+      Support for specific extended vocabulary types is expected to vary,
+      with implementations only selecting the extended types and properties
       that make sense within the specific context and requirements of those
       applications. However, to avoid possible interoperability issues,
-      implementations MUST avoid using extension classes or properties that
+      implementations MUST avoid using extension types or properties that
       unduly overlap with or duplicate the extended vocabulary defined here.
     </p>
 
@@ -713,7 +713,7 @@
 
       <p>
         All Activity Types inherit the properties of the base <a>Activity</a>
-        class. Some specific Activity Types are subclasses or specializations
+        type. Some specific Activity Types are subtypes or specializations
         of more generalized Activity Types (for instance, the
         <code><a>Invite</a></code> Activity Type is a more specific form of the
         <code><a>Offer</a></code> Activity Type).
@@ -2255,11 +2255,11 @@
       <h2>Object and Link Types</h2>
 
       <p>
-        All Object Types inherit the properties of the base <a>Object</a> class.
-        Link Types inherit the properties of the base <a>Link</a> class.
-        Some specific Object Types are subclasses or specializations of more
+        All Object Types inherit the properties of the base <a>Object</a> type.
+        Link Types inherit the properties of the base <a>Link</a> type.
+        Some specific Object Types are subtypes or specializations of more
         generalized Object Types (for instance, the <code><a>Like</a></code>
-        Type is a more specific form of the <code><a>Activity</a></code> class).
+        Type is a more specific form of the <code><a>Activity</a></code> type).
       </p>
 
       <p>

@@ -610,7 +610,7 @@ as2-date-time    = full-date "T" as2-full-time
     <p>
       The object types defined by the vocabulary are segmented into a set of
       seven core types and an extended set of Activity and Object types common
-      to many social Web applications. The core classes include:
+      to many social Web applications. The core types include:
       <ul>
         <li><a>Object</a>,</li>
         <li><a>Link</a>,</li>
@@ -653,7 +653,7 @@ as2-date-time    = full-date "T" as2-full-time
         In addition to having a global identifier (expressed as an
         absolute IRI using the <code>id</code> property) and an
         "object type" (expressed using the <code>type</code>
-        property), all instances of the <code>Object</code> class share a
+        property), all instances of the <code>Object</code> type share a
         common set of properties normatively defined by the
         <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>.
         These include:
@@ -740,7 +740,7 @@ as2-date-time    = full-date "T" as2-full-time
       When an implementation uses an extension type that overlaps with a core
       vocabulary type, the implementation MUST also specify the core vocabulary
       type. For instance, some vocabularies (e.g. The Good Relations
-      Vocabulary) define their own classes for describing locations. An
+      Vocabulary) define their own types for describing locations. An
       implementation that wishes, for example, to use a
       <code><a href="http://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
       as an object type MUST also identify the object as being a
@@ -940,7 +940,7 @@ as2-date-time    = full-date "T" as2-full-time
       </p>
 
       <p>
-        Note that the <a>Link</a> and <a>Object</a> classes are disjoint from
+        Note that the <a>Link</a> and <a>Object</a> types are disjoint from
         one another. That is, any given <a>Object</a> cannot also be a
         <a>Link</a>.
       </p>
@@ -1012,7 +1012,7 @@ as2-date-time    = full-date "T" as2-full-time
         When an implementation uses an extension type that overlaps with a core
         vocabulary type, the implementation MUST also specify the core
         vocabulary type. For instance, some vocabularies (e.g. VCard) define
-        their own classes for describing people. An implementation that wishes,
+        their own types for describing people. An implementation that wishes,
         for example, to use a <code>vcard:Individual</code> as an Actor MUST
         also identify that Actor as a <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-person">Person</a></code>
         as illustrated in the previous example.
@@ -1083,7 +1083,7 @@ as2-date-time    = full-date "T" as2-full-time
         When an implementation uses an extension type that overlaps with a core
         vocabulary type, the implementation MUST also specify the core
         vocabulary type. For instance, some vocabularies (e.g. Schema.org)
-        define their own classes for describing actions. An implementation that
+        define their own types for describing actions. An implementation that
         wishes, for example, to use <code><a href="http://schema.org/LikeAction">http://schema.org/LikeAction</a></code>
         as an Activity MUST also identify that Object as being a
         <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-like">Like</a></code>
@@ -1281,7 +1281,7 @@ as2-date-time    = full-date "T" as2-full-time
             <code>OrderedCollection</code>, <code>CollectionPage</code>, and
             <code>OrderedCollectionPage</code>:
           </figcaption>
-          <img src="paging2.png" alt="Collection Class Model">
+          <img src="paging2.png" alt="Collection type Model">
         </figure>
 
         <p>
