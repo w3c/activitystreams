@@ -1351,8 +1351,10 @@ as2-date-time    = full-date "T" as2-full-time
         the logical collection should navigate to the first (or last)
         page in the sequence then recursively follow the <code>next</code>
         (or <code>prev</code>) link until all pages have been processed.
-        If the pages of an <code>OrderedCollection</code> are not instances
-        of <code>OrderedCollectionPage</code>, an implementation will have
+        The pages of an <code>OrderedCollection</code> SHOULD be instances
+        of <code>OrderedCollectionPage</code>. If the pages of an
+        <code>OrderedCollection</code> are not instances
+        of <code>OrderedCollectionPage</code>, a consumer will have
         no reliable means of reconstructing the appropriate ordering of items.
       </p>
 
