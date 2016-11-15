@@ -4,7 +4,7 @@
 
 * Application name: ActiviPy
 * Version: 0.2
-* Platform name: N/A
+* Platform name: Python library
 * License: Apache 2.0
 * Main URL: http://activipy.readthedocs.io/en/latest/
 * Public: public
@@ -70,7 +70,7 @@ Implemented? : y
 
 ### Actor
 
-Implemented? : y
+Implemented? : y (note that we implement this, despite it being dropped from the AS2 standard, because it helps with method resolution on the type heirarchy)
 
 ### Activity
 
