@@ -1,6 +1,6 @@
 
 {
- "@context": "http://www.w3.org/ns/activitystreams",
+ "@context": "https://www.w3.org/ns/activitystreams",
  "attributedTo": "http://sally.example.org",
  "inReplyTo": "http://polls.example.org/question/1",
  "name": "arduino"

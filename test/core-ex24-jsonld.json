@@ -1,10 +1,10 @@
 
 {
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {"gsp": "http://www.opengis.net/ont/geosparql"}
   ],
-  "name": "A polygon",
+  "summary": "A polygon",
   "type": "gsp:Geometry",
   "gsp:asWKT": "Polygon((100.0, 0.0, 101.0, 0.0, 101.0, 1.0, 100.0, 1.0, 100.0, 0.0))"
 }

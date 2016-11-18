@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Object history",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Object history",
   "type": "Collection",
   "totalItems": 2,
   "items": [

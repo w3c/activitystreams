@@ -1,0 +1,9 @@
+
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "id": "http://example.org/note/124",
+  "summary": "A note by Sally",
+  "content": "Everything is OK here."
+}
+           

@@ -1,20 +1,20 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "A simple note",
   "type": "Note",
   "content": "A simple note",
   "icon": [
     {
       "type": "Image",
-      "name": "Note (16x16)",
+      "summary": "Note (16x16)",
       "url": "http://example.org/note1.png",
       "width": 16,
       "height": 16
     },
     {
       "type": "Image",
-      "name": "Note (32x32)",
+      "summary": "Note (32x32)",
       "url": "http://example.org/note2.png",
       "width": 32,
       "height": 32

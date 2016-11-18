@@ -1,6 +1,6 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "A foo",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "A foo",
   "type": "http://example.org/Foo"
 }

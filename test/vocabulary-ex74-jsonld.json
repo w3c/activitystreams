@@ -1,12 +1,12 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally's blog posts",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally's blog posts",
   "type": "Collection",
   "totalItems": 3,
   "first": {
     "type": "Link",
-    "name": "First Page",
+    "summary": "First Page",
     "href": "http://example.org/collection?page=0"
   }
 }

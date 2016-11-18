@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally added a picture of her cat to her cat picture collection",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally added a picture of her cat to her cat picture collection",
   "type": "Add",
   "actor": {
     "type": "Person",

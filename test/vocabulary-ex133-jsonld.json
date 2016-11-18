@@ -1,9 +1,10 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
   "nameMap": {
     "en": "A simple note",
-    "sp": "Una simple nota"
+    "es": "Una nota sencilla",
+    "zh-Hans": "一段简单的笔记"
   }
 }

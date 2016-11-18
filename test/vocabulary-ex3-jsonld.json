@@ -1,8 +1,8 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Activity",
-  "name": "Sally did something to a note",
+  "summary": "Sally did something to a note",
   "actor": {
     "type": "Person",
     "name": "Sally"

@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally checked that her flight was on time",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally checked that her flight was on time",
   "type": ["Activity", "http://www.verbs.example/Check"],
   "actor": "http://sally.example.org",
   "object": "http://example.org/flights/1",

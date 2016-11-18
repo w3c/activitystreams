@@ -1,6 +1,6 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A thank-you note",
   "type": "Note",
   "content": "Thank you &lt;a href='http://sally.example.org'&gt;@sally&lt;/a&gt;

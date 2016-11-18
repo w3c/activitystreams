@@ -1,0 +1,9 @@
+
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "type": "Note",
+  "id": "http://example.org/note/123",
+  "name": "Our Weather Is Fine",
+  "content": "I feel that the weather is appropriate to our season and location."
+}
+         

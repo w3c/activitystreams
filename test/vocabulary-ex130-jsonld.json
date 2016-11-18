@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A simple note",
   "type": "Note",
-  "content": "A &lt;i&gt;simple&lt;/i&gt; note"
+  "content": "A &lt;em&gt;simple&lt;/em&gt; note"
 }

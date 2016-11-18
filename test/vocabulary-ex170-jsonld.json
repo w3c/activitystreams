@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally announced that she had arrived at work",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally announced that she had arrived at work",
   "type": "Announce",
   "actor": {
     "type": "Person",

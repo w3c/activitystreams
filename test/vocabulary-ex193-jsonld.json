@@ -1,17 +1,17 @@
 
  {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "History of John's note",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "History of John's note",
   "type": "Collection",
   "items": [
     {
-      "name": "Sally liked John's note",
+      "summary": "Sally liked John's note",
       "type": "Like",
       "actor": "http://sally.example.org",
       "id": "http://activities.example.com/1",
       "published": "2015-11-12T12:34:56Z",
       "object": {
-        "name": "John's note",
+        "summary": "John's note",
         "type": "Note",
         "id": "http://notes.example.com/1",
         "attributedTo": "http://john.example.org",
@@ -19,13 +19,13 @@
       }
     },
     {
-      "name": "Sally disliked John's note",
+      "summary": "Sally disliked John's note",
       "type": "Dislike",
       "actor": "http://sally.example.org",
       "id": "http://activities.example.com/2",
       "published": "2015-12-11T21:43:56Z",
       "object": {
-        "name": "John's note",
+        "summary": "John's note",
         "type": "Note",
         "id": "http://notes.example.com/1",
         "attributedTo": "http://john.example.org",

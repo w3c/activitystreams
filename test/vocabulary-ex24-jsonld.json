@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally invited John and Lisa to a party",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally invited John and Lisa to a party",
   "type": "Invite",
   "actor": {
     "type": "Person",

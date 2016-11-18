@@ -1,7 +1,7 @@
 
 {
-"@context": "http://www.w3.org/ns/activitystreams",
-"name": "Sally became a friend of Matt",
+"@context": "https://www.w3.org/ns/activitystreams",
+"summary": "Sally became a friend of Matt",
 "type": "Create",
 "actor": "http://sally.example.org",
 "object": {

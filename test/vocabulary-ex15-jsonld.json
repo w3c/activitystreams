@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally followed John",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally followed John",
   "type": "Follow",
   "actor": {
     "type": "Person",

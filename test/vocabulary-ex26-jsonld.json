@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally rejected an invitation to a party",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally rejected an invitation to a party",
   "type": "Reject",
   "actor": {
     "type": "Person",

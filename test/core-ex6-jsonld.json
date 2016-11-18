@@ -1,7 +1,7 @@
 
 {
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {
       "gr": "http://purl.org/goodrelations/v1#"
     }

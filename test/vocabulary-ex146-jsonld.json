@@ -1,6 +1,6 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Event",
   "name": "A Party!",
   "startTime": "2014-12-31T23:00:00-08:00",

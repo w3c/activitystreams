@@ -1,16 +1,16 @@
 
 {
- "@context": "http://www.w3.org/ns/activitystreams",
- "name": "Activities in Project XYZ",
+ "@context": "https://www.w3.org/ns/activitystreams",
+ "summary": "Activities in Project XYZ",
  "type": "Collection",
  "items": [
    {
-     "name": "Sally created a note",
+     "summary": "Sally created a note",
      "type": "Create",
      "id": "http://activities.example.com/1",
      "actor": "http://sally.example.org",
      "object": {
-      "name": "A note",
+      "summary": "A note",
        "type": "Note",
        "id": "http://notes.example.com/1",
        "content": "A note"
@@ -26,7 +26,7 @@
      "to": "http://john.example.org"
    },
    {
-     "name": "John liked Sally's note",
+     "summary": "John liked Sally's note",
      "type": "Like",
      "id": "http://activities.example.com/1",
      "actor": "http://john.example.org",

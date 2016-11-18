@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally retracted her offer to John",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally retracted her offer to John",
   "type": "Undo",
   "actor": "http://sally.example.org",
   "object": {

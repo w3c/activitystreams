@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally added an object",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally added an object",
   "type": "Add",
   "actor": {
     "type": "Person",

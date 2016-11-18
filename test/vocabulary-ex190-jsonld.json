@@ -1,6 +1,6 @@
 
  {
-  "@context": "http://www.w3.org/ns/activitystreams",
+  "@context": "https://www.w3.org/ns/activitystreams",
   "id": "http://polls.example.org/question/1",
   "name": "A question about robots",
   "type": "Question",

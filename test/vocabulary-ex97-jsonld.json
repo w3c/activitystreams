@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Page 2 of Sally's blog posts",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Page 2 of Sally's blog posts",
   "type": "CollectionPage",
   "next": {
     "type": "Link",

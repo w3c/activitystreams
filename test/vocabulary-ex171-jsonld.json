@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Activities in context 1",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Activities in context 1",
   "type": "Collection",
   "items": [
     {

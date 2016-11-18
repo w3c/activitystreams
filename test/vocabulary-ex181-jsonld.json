@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Mention of Joe by Carrie in her note",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Mention of Joe by Carrie in her note",
   "type": "Mention",
   "href": "http://example.org/joe",
   "name": "Joe"

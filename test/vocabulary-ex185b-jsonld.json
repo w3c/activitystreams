@@ -1,7 +1,7 @@
 
           {
-"@context": "http://www.w3.org/ns/activitystreams",
-"name": "This image has been deleted",
+"@context": "https://www.w3.org/ns/activitystreams",
+"summary": "This image has been deleted",
 "type": "Tombstone",
 "formerType": "Image",
 "url": "http://example.org/image/2"

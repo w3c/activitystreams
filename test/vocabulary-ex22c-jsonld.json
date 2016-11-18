@@ -1,7 +1,7 @@
 
             {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally is a contact of John's",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally is a contact of John's",
   "type": "Relationship",
   "subject": {
     "type": "Person",

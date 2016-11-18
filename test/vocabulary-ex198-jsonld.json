@@ -1,7 +1,7 @@
 
   {
-    "@context": "http://www.w3.org/ns/activitystreams",
-    "name": "Sally moved the sales figures from Folder A to Folder B",
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "Sally moved the sales figures from Folder A to Folder B",
     "type": "Move",
     "actor": "http://sally.example.org",
     "object": {

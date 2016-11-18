@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "The moderator removed Sally from a group",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "The moderator removed Sally from a group",
   "type": "Remove",
   "actor": {
     "type": "http://example.org/Role",

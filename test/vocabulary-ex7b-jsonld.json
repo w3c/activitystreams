@@ -1,7 +1,7 @@
 
   {
-    "@context": "http://www.w3.org/ns/activitystreams",
-    "name": "Sally accepted Joe into the club",
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "Sally accepted Joe into the club",
     "type": "Accept",
     "actor": {
       "type": "Person",

@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally removed a note from her notes folder",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally removed a note from her notes folder",
   "type": "Remove",
   "actor": {
     "type": "Person",

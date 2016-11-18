@@ -1,0 +1,7 @@
+
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "type": "Question",
+  "name": "What is the answer?",
+  "closed": "2016-05-10T00:00:00Z"
+}

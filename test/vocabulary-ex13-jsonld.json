@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally deleted a note",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally deleted a note",
   "type": "Delete",
   "actor": {
     "type": "Person",

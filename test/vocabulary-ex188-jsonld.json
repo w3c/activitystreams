@@ -1,11 +1,11 @@
 
 {
-"@context": "http://www.w3.org/ns/activitystreams",
-"name": "Sally and John's relationship history",
+"@context": "https://www.w3.org/ns/activitystreams",
+"summary": "Sally and John's relationship history",
 "type": "Collection",
 "items": [
 {
- "name": "John accepted Sally's friend request",
+ "summary": "John accepted Sally's friend request",
  "id": "http://example.org/activities/122",
  "type": "Accept",
  "actor": "acct:john@example.org",
@@ -20,7 +20,7 @@
  ]
 },
 {
- "name": "John followed Sally",
+ "summary": "John followed Sally",
  "id": "http://example.org/activities/123",
  "type": "Follow",
  "actor": "acct:john@example.org",
@@ -28,7 +28,7 @@
  "context": "http://example.org/connections/123"
 },
 {
- "name": "Sally followed John",
+ "summary": "Sally followed John",
  "id": "http://example.org/activities/124",
  "type": "Follow",
  "actor": "acct:sally@example.org",
@@ -36,26 +36,26 @@
  "context": "http://example.org/connections/123"
 },
 {
- "name": "John added Sally to his friends list",
+ "summary": "John added Sally to his friends list",
  "id": "http://example.org/activities/125",
  "type": "Add",
  "actor": "acct:john@example.org",
  "object": "http://example.org/connections/123",
  "target": {
    "type": "Collection",
-   "name": "John's Connections"
+   "summary": "John's Connections"
  },
  "context": "http://example.org/connections/123"
 },
 {
- "name": "Sally added John to her friends list",
+ "summary": "Sally added John to her friends list",
  "id": "http://example.org/activities/126",
  "type": "Add",
  "actor": "acct:sally@example.org",
  "object": "http://example.org/connections/123",
  "target": {
    "type": "Collection",
-   "name": "Sally's Connections"
+   "summary": "Sally's Connections"
  },
  "context": "http://example.org/connections/123"
 }

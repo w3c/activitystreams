@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally offered a post to John",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally offered a post to John",
   "type": "Offer",
   "actor": "http://sally.example.org",
   "object": "http://example.org/posts/1",

@@ -1,7 +1,7 @@
 
   {
   "@context": [
-    "http://www.w3.org/ns/activitystreams",
+    "https://www.w3.org/ns/activitystreams",
     {
       "oa": "http://www.w3.org/ns/oa#",
       "prov": "http://www.w3.org/ns/prov#",
@@ -11,7 +11,7 @@
       }
     }
   ],
-  "name": "Editing history of a note",
+  "summary": "Editing history of a note",
   "type": "Collection",
   "items": [
     {
@@ -21,7 +21,7 @@
         "id": "http://example.org/#eric",
         "name": "Eric"
       },
-      "name": "Eric wrote a note.",
+      "summary": "Eric wrote a note.",
       "object": {
         "id": "http://example.org/entry/20150101000000",
         "type": [ "Note", "prov:Entity" ],
@@ -33,7 +33,7 @@
     {
       "id": "http://example.org/activity/20150101000059",
       "type": [ "Update", "prov:Activity", "oa:Annotate" ],
-      "name": "Eric edited a note.",
+      "summary": "Eric edited a note.",
       "oa:created": "2015-01-01T00:00:59Z",
       "oa:creator": "http://example.org/#eric",
       "oa:hasBody": {
@@ -52,7 +52,7 @@
       "id": "http://example.org/activity/20150101010101",
       "type": [ "Delete", "prov:Activity" ],
       "actor": "http://example.org/#eric",
-      "name": "Eric deleted a note.",
+      "summary": "Eric deleted a note.",
       "object": "http://example.org/entry/20150101000059",
       "published": "2015-01-01T01:01:01Z"
     }

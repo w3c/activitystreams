@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally's recent activities",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally's recent activities",
   "type": "Collection",
   "id": "http://example.org/foo",
   "totalItems": 10,

@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally's notes",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally's notes",
   "type": "Collection",
   "totalItems": 2,
   "items": [

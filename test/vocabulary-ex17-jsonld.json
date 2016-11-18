@@ -1,7 +1,7 @@
 
 {
-  "@context": "http://www.w3.org/ns/activitystreams",
-  "name": "Sally joined a group",
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally joined a group",
   "type": "Join",
   "actor": {
     "type": "Person",
