@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54# as: http://www.w3.org/ns/activitystreams#">
+<head><meta lang="" property="dc:language" content="en">
+    <title>ActivityStreams 2.0 Terms</title>
+    <meta charset="utf-8">
+    
+    
+  <style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 {
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-FPWD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
+<script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+<script class='remove'>
+      var respecConfig =     {
+      "specStatus": "base",
+      "shortName": "ActivityStreams 2.0",
+      "editors": [
+      {
+        "name": "Amy Guy",
+        "url": "https://rhiaro.co.uk/",
+        "company": "W3C",
+        "companyURL": "https://w3.org/"
+      }],
+      "previousMaturity": "ED",
+      "previousPublishDate": "n/a",
+      "edDraftURI": "https://rhiaro.github.io/as-ns",
+      "wg": "Social Web Working Group",
+      "wgURI": "https://www.w3.org/Social/WG",
+      "wgPublicList": "public-socialweb",
+      "wgPatentURI": "http://www.w3.org/2004/01/pp-impl/424242/status",
+      "otherLinks": [
+      {
+        "key": "Source",
+        "data": [
+        {
+          "value": "Repository on Github.",
+          "href": "https://github.com/rhiaro/as-ns"
+        },
+        {
+          "value": "Issues",
+          "href": "https://github.com/rhiaro/as-ns/issues"
+        }]
+      }],
+      "localBiblio":
+      {
+        "ActivityStreams":
+        {
+          "title": "ActivityStreams 2.0",
+          "href": "http://w3.org/TR/activitystreams-core",
+          "authors": [
+            "James Snell", "Evan Prodromou"
+          ],
+          "status": "CR",
+          "publisher": "W3C"
+        },
+        "ActivityStreamsVocab":
+        {
+          "title": "ActivityStreams 2.0 Vocabulary",
+          "href": "http://w3.org/TR/activitystreams-vocabulary",
+          "authors": [
+            "James Snell", "Evan Prodromou"
+          ],
+          "status": "CR",
+          "publisher": "W3C"
+        }
+      }
+    };
+    </script>
+</head>
+<body prefix="as: http://www.w3.org/ns/activitystreams#" about="" typeof="as:Article" property="as:content" datatype="rdf:HTML">
+  <section id="abstract">
+    <p property="as:summary">This document lists the terms used for the ActivityStreams 2.0 protocol and its stable extensions, and provides a namespace so each term has an HTTP IRI.</p>
+  </section>
+  <section id="sotd"></section>
+
+  <section property="bibo:hasPart" resource="#introduction" typeof="bibo:Chapter" id="introduction">
+    <!--OddPage-->
+    <h2 resource="#h-introduction" id="h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></h2>
+    <p>This document describes the vocabulary terms used in the [[!ActivityStreams]] protocol along with the default JSON-LD Context.</p>
+    <p>This document makes use of the following namespaces:</p>
+    <dl>
+      <dt><code>as</code>:</dt>
+      <dd><code>http://www.w3.org/ns/activitystreams#</code></dd>
+      <dt><code>xsd</code>:</dt>
+      <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+      <dt><code>ldp</code>:</dt>
+      <dd><code>http://www.w3.org/ns/ldp#</code></dd>
+    </dl>
+  </section>
+
+  <section property="bibo:hasPart" resource="#class-definitions" typeof="bibo:Chapter" id="class-definitions">
+    <!--OddPage-->
+    <h2>Class definitions</h2>
+    <p>The following are class definitions in the <code>as</code> namespace. They link to their descriptions in the [[!ActivityStreamsVocab]] spec.</p>
+
+    <h3>Objects</h3>
+    <ul>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-activity" id="Activity">Activity</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-application" id="Application">Application</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-article" id="Article">Article</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-audio" id="Audio">Audio</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-collection" id="Collection">Collection</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-collectionpage" id="CollectionPage">CollectionPage</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-relationship" id="Relationship">Relationship</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-document" id="Document">Document</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-event" id="Event">Event</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-group" id="Group">Group</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-image" id="Image">Image</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-intransitiveactivity" id="IntransitiveActivity">IntransitiveActivity</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-note" id="Note">Note</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-object" id="Object">Object</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-orderedcollection" id="OrderedCollection">OrderedCollection</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-orderedcollectionpage" id="OrderedCollectionPage">OrderedCollectionPage</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-organization" id="Organisations">Organization</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-page" id="Page">Page</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-person" id="Person">Person</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-place" id="Place">Place</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-profile" id="Profile">Profile</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-question" id="Question">Question</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-service" id="Service">Service</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-tombstone" id="Tombstone">Tombstone</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-video" id="Video">Video</a> </li>
+      
+    </ul>
+    <h3>Activities</h3>
+    <ul>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-accept" id="Accept">Accept</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-add" id="Add">Add</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-announce" id="Announce">Announce</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-arrive" id="Arrive">Arrive</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-block" id="Block">Block</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-create" id="Create">Create</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-delete" id="Delete">Delete</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-dislike" id="Dislike">Dislike</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-follow" id="Follow">Follow</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-flag" id="Flag">Flag</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-ignore" id="Ignore">Ignore</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-invite" id="Invite">Invite</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-join" id="Join">Join</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-leave" id="Leave">Leave</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-like" id="Like">Like</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-listen" id="Listen">Listen</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-move" id="Move">Move</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-offer" id="Offer">Offer</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-read" id="Read">Read</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-reject" id="Reject">Reject</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-remove" id="Remove">Remove</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-tentativeaccept" id="TentativeAccept">TentativeAccept</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-tentativereject" id="TentativeReject">TentativeReject</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-travel" id="Travel">Travel</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-undo" id="Undo">Undo</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-update" id="Update">Update</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-view" id="View">View</a> </li>
+      
+    </ul>
+    <h3>Links and Relationships</h3>
+    <ul>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-link" id="Link">Link</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-mention" id="Mention">Mention</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#connections" id="IsFollowing">IsFollowing</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#connections" id="IsFollowedBy">IsFollowedBy</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#connections" id="IsContact">IsContact</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#connections" id="IsMember">IsMember</a> </li>
+    </ul>
+  </section>
+
+  <section property="bibo:hasPart" resource="#property-definitions" typeof="bibo:Chapter" id="property-definitions">
+    <!--OddPage-->
+    <h2>Property definitions</h2>
+    <p>The following are property definitions in the <code>as</code> namespace. They are listed with their datatype in brackets if applicable, and link to their descriptions in the AS2 Vocabulary spec.</p>
+    <ul>
+
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-subject" id="subject">subject</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-relationship" id="relationship">relationship</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-actor" id="actor">actor</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-attributedto" id="attributedTo">attributedTo</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-attachment" id="attachment">attachment</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-attachments" id="attachments">attachments</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-author" id="author">author</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-bcc" id="bcc">bcc</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-bto" id="bto">bto</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-cc" id="cc">cc</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-context" id="context">context</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-current" id="current">current</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-first" id="first">first</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-generator" id="generator">generator</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-icon" id="icon">icon</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-image" id="image">image</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-inreplyto" id="inReplyTo">inReplyTo</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-items" id="items">items</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-instrument" id="instrument">instrument</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-ordereditems" id="orderedItems">orderedItems</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-last" id="last">last</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-location" id="location">location</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-next" id="next">next</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-object" id="object">object</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-oneof" id="oneOf">oneOf</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-anyof" id="anyOf">anyOf</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-closed" id="closed">closed</a> (<code>xsd:dateTime</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-origin" id="origin">origin</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-accuracy" id="accuracy">accuracy</a> (<code>xsd:float</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-prev" id="prev">prev</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-preview" id="preview">preview</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-provider" id="provider">provider</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-replies" id="replies">replies</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-result" id="result">result</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-audience" id="audience">audience</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-partof" id="partOf">partOf</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-tag" id="tag">tag</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-tags" id="tags">tags</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-target" id="target">target</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-to" id="to">to</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-url" id="url">url</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-altitude" id="altitude">altitude</a> (<code>xsd:float</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-content" id="content">content</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-contentmap" id="contentMap">contentMap</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-name" id="name">name</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-namemap" id="nameMap">nameMap</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-downstreamduplicates" id="downstreamDuplicates">downstreamDuplicates</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-duration" id="duration">duration</a> (<code>xsd:duration</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-endtime" id="endTime">endTime</a> (<code>xsd:dateTime</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-height" id="height">height</a> (<code>xsd:nonNegativeInteger</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-href" id="href">href</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-hreflang" id="hreflang">hreflang</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-latitude" id="latitude">latitude</a> (<code>xsd:float</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-longitude" id="longitude">longitude</a> (<code>xsd:float</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-mediatype" id="mediaType">mediaType</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-published" id="published">published</a> (<code>xsd:dateTime</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-radius" id="radius">radius</a> (<code>xsd:float</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-rating" id="rating">rating</a> (<code>xsd:float</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-rel" id="rel">rel</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-startindex" id="startIndex">startIndex</a> (<code>xsd:nonNegativeInteger</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-starttime" id="startTime">startTime</a> (<code>xsd:dateTime</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-summary" id="summary">summary</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-summarymap" id="summaryMap">summaryMap</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-totalitems" id="totalItems">totalItems</a> (<code>xsd:nonNegativeInteger</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-units" id="units">units</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-updated" id="updated">updated</a> (<code>xsd:dateTime</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-upstreamduplicates" id="upstreamDuplicates">upstreamDuplicates</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-verb" id="verb">verb</a> </li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-width" id="width">width</a> (<code>xsd:nonNegativeInteger</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-describes" id="describes">describes</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-formertype" id="formerType">formerType</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitystreams-vocabulary#dfn-deleted" id="deleted">deleted</a> (<code>xsd:dateTime</code>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Extensions</h2>
+    <p>This namespaced may be used by extensions to AS2 which are considered stable. The extensions must document their terms in a spec-like way at a persistant URL. Approval of extensions will be by the Social Web WG until it closes, and after that by the followup Community Group. Process and criteria for extensions approval is being finalised and will be described or linked to here in due course.</p>
+
+    <section>
+      <h3>ActivityPub</h3>
+      <p>All terms in this section are described in the [[!ActivityPub]] specification.</p>
+      <ul>
+        <li><a href="https://www.w3.org/TR/activitypub#inbox" id="inbox">inbox</a> (<code>@id</code>) - This is an alias of <code><a href="https://www.w3.org/ns/ldp#inbox">ldp:inbox</a></code>.</li>
+        <li><a href="https://www.w3.org/TR/activitypub#outbox" id="outbox">outbox</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#following" id="following">following</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#followers" id="followers">followers</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#streams-property" id="streams">streams</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#preferredUsername" id="preferredUsername">preferredUsername</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#endpoints" id="endpoints">endpoints</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#uploadMedia" id="uploadMedia">uploadMedia</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#proxyUrl" id="proxyUrl">proxyUrl</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#oauthClientAuthorize" id="oauthClientAuthorize">oauthClientAuthorize</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#provideClientKey" id="provideClientKey">provideClientKey</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#authorizeClientKey" id="authorizeClientKey">authorizeClientKey</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#source" id="source">source</a> </li>
+      </ul>
+    </section>
+
+  </section>
+
+  </body>
+</html>
