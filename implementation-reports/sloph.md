@@ -312,6 +312,23 @@ Implemented? : n
 
 Extensions as I add them documented at https://rhiaro.co.uk/terms/as/
 
-* Consume (for when I ate or drank something)
-* Acquire (for when I bought or was given something)
-* Sleep (for when I slept)
+### Consume 
+
+Implemented? : y
+
+(for when I ate or drank something)
+
+### Acquire 
+
+Implemented? : y
+
+(for when I bought or was given something)
+
+### Sleep
+
+Implemented? : y
+
+(for when I slept)
+
+* inbox: y
+* outbox: y
