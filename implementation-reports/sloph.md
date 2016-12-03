@@ -20,31 +20,31 @@ This is the codebase for my personal site, which serves as an AS2 publisher. All
 
 Implemented? : y
 
-* ~~attachment~~: n
+* attachment: n
 * attributedTo: y
-* ~~audience~~: n
-* ~~bcc~~: n
-* ~~bto~~: n
+* audience: n
+* bcc: n
+* bto: n
 * cc: y
 * content: y
-* ~~contentMap~~: n
-* ~~context~~: n
+* contentMap: n
+* context: n
 * duration: y
 * endTime: y
-* ~~generator~~: n
-* ~~icon~~: n
+* generator: n
+* icon: n
 * image: y
 * inReplyTo: y
 * location: y
-* ~~mediaType~~: n
+* mediaType: n
 * name: y
-* ~~nameMap~~: n
-* ~~preview~~: n
+* nameMap: n
+* preview: n
 * published: y
-* ~~replies~~: n (planned)
+* replies: n (planned)
 * startTime: y
 * summary: y
-* ~~summaryMap~~: n
+* summaryMap: n
 * tag: y
 * to: y
 * updated: y
@@ -52,12 +52,12 @@ Implemented? : y
 
 ### Link
 
-* ~~height~~: n
-* ~~hreflang~~: n
-* ~~mediaType~~: n
-* ~~name~~: n
-* ~~rel~~: n
-* ~~width~~: n
+* height: n
+* hreflang: n
+* mediaType: n
+* name: n
+* rel: n
+* width: n
 
 ### Actor
 
@@ -71,8 +71,8 @@ Implemented? : y
 * object: y
 * target: y
 * origin: y
-* ~~result~~: n 
-* ~~instrument~~: n
+* result: n 
+* instrument: n
 
 ### IntransitiveActivity
 
@@ -84,9 +84,9 @@ Implemented? : y
 
 * items: y
 * totalItems: y
-* ~~first~~: n
-* ~~last~~: n
-* ~~current~~: n
+* first: n
+* last: n
+* current: n
 
 ### OrderedCollection
 
@@ -96,9 +96,9 @@ Implemented? : n (planned)
 
 Implemented? : n (planned)
 
-* ~~partOf~~: n
-* ~~next~~: n
-* ~~prev~~: n
+* partOf: n
+* next: n
+* prev: n
 
 ### OrderedCollectionPage
 
@@ -182,9 +182,9 @@ Implemented? : n (planned)
 
 Implemented? : n
 
-* ~~oneOf~~: n
-* ~~anyOf~~: n
-* ~~closed~~: n
+* oneOf: n
+* anyOf: n
+* closed: n
 
 ### Read
 
@@ -299,8 +299,8 @@ Implemented? : y
 
 Implemented? : n (probably planned)
 
-* ~~formerType~~: n
-* ~~deleted~~: n
+* formerType: n
+* deleted: n
 
 ### Video
 
