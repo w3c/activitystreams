@@ -102,7 +102,7 @@ Implemented? : n
 
 ### OrderedCollectionPage
 
-Implemented? :n
+Implemented? : n
 
 ## Extended classes
 
