@@ -2593,21 +2593,38 @@ profile-URI   = URI</"></"></pre>
 
     <p>
       The following notable changes have been made to this document since the
-      previous working draft of 2016-07-12.
+      previous candidate recommendation of <a href="https://www.w3.org/TR/2016/CR-activitystreams-core-20160906/#changelog">2016-09-06</a>.
     </p>
 
     <ul>
       <li>
-        Updated recommendations for bi-directional text.
+        Removed a reference to outdated requirements for serialization.
       </li>
       <li>
-        Updated context URL to https: with http: as a fallback.
+        Used &apos;type&apos; consistently in document.
       </li>
       <li>
-        Corrected examples in Chinese and Spanish.
+        Noted that <code>OrderedCollectionPages</code> SHOULD be used with
+        an <code>OrderedCollection</code>.
       </li>
       <li>
-        Marked option to leave out <code>@language</code> as at risk.
+        Changed vague language for usage of <code>OrderedCollection</code> to
+        MAY.
+      </li>
+      <li>
+        Relax requirements for <code>name</code> property from SHOULD to MAY,
+        and recommend using <code>summary</code> as a fallback when a name
+        has not been provided by a user.
+      </li>
+      <li>
+        Link to errata document.
+      </li>
+      <li>
+        Reference and link to Social Web Protocols document.
+      </li>
+      <li>
+        Provide examples of using <code>@context</code> property as a string,
+        object or array.
       </li>
     </ul>
 
