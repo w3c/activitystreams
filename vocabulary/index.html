@@ -782,7 +782,7 @@
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "name": "A Party!"
+      "name": "Going-Away Party for Jim"
     }
   }
 }</pre>
@@ -846,7 +846,7 @@
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "name": "A Party!"
+      "name": "Going-Away Party for Jim"
     }
   }
 }</pre>
@@ -1396,7 +1396,7 @@
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "name": "A Party!"
+      "name": "Going-Away Party for Jim"
     }
   }
 }</pre>
@@ -1440,7 +1440,7 @@
     "actor": "http://john.example.org",
     "object": {
       "type": "Event",
-      "name": "A Party!"
+      "name": "Going-Away Party for Jim"
     }
   }
 }</pre>
@@ -2104,7 +2104,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
-  "name": "My Software Application."
+  "name": "Exampletron 3000"
 }</pre>
 </div>
             </td>
@@ -2134,7 +2134,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Group",
-  "name": "A Simple Group."
+  "name": "Big Beards of Austin"
 }</pre>
 </div>
             </td>
@@ -2196,7 +2196,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Person",
-  "name": "Sally Smith."
+  "name": "Sally Smith"
 }</pre>
 </div>
             </td>
@@ -2366,8 +2366,8 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Article",
-  "name": "A Blog Post",
-  "content": "&lt;div&gt;... a long blog post&lt;/div&gt;",
+  "name": "What a Crazy Day I Had",
+  "content": "&lt;div&gt;... you will never believe ...&lt;/div&gt;",
   "attributedTo": "http://sally.example.org"
 }</pre>
 </div>            </td>
@@ -2428,7 +2428,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Audio",
-  "name": "A Simple Podcast",
+  "name": "Interview With A Famous Technologist",
   "url": {
     "type": "Link",
     "href": "http://example.org/podcast.mp3",
@@ -2463,7 +2463,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "name": "A Simple Image",
+  "name": "Cat Jumping on Wagon",
   "url": [
     {
       "type": "Link",
@@ -2505,7 +2505,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Video",
-  "name": "A Simple Video",
+  "name": "Puppy Plays With Ball",
   "url": "http://example.org/video.mkv",
   "duration": "PT2H"
 }</pre>
@@ -2537,8 +2537,8 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "name": "A Short Note",
-  "content": "This is a short note"
+  "name": "A Word of Warning",
+  "content": "Looks like it is going to rain today. Bring an umbrella!"
 }</pre>
 </div>
             </td>
@@ -2568,8 +2568,8 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Page",
-  "name": "A Webpage",
-  "url": "http://example.org/page.html"
+  "name": "Omaha Weather Report",
+  "url": "http://example.org/weather-in-omaha.html"
 }</pre>
 </div>
             </td>
@@ -2599,7 +2599,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Event",
-  "name": "A Party!",
+  "name": "Going-Away Party for Jim",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
 }</pre>
@@ -3058,11 +3058,11 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "name": "A Simple Note",
+  "name": "Have you seen my cat?",
   "attachment": [
     {
       "type": "Image",
-      "content": "A simple Image",
+      "content": "This is what he looks like.",
       "url": "http://example.org/cat.jpeg"
     }
   ]
@@ -3101,7 +3101,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "name": "A Simple Image",
+  "name": "My cat taking a nap",
   "url": "http://example.org/cat.jpeg",
   "attributedTo": [
     {
@@ -3116,7 +3116,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "name": "A Simple Image",
+  "name": "My cat taking a nap",
   "url": "http://example.org/cat.jpeg",
   "attributedTo": [
     "http://joe.example.org",
@@ -3156,12 +3156,12 @@
 <div id="ex113-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "name": "Holiday announcement",
   "type": "Note",
-  "content": "A simple note",
+  "content": "Thursday will be a company-wide holiday. Enjoy your day off!",
   "audience": {
     "type": "http://example.org/Organization",
-    "name": "My Organization"
+    "name": "ExampleCo LLC"
   }
 }</pre>
   </div>
@@ -3472,10 +3472,10 @@
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "A simple note",
   "type": "Note",
-  "content": "A simple note",
+  "content": "This is all there is.",
   "generator": {
     "type": "Application",
-    "name": "My Note Application"
+    "name": "Exampletron 3000"
   }
 }</pre>
   </div>
@@ -3509,7 +3509,7 @@
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "A simple note",
   "type": "Note",
-  "content": "A simple note",
+  "content": "This is all there is.",
   "icon": {
     "type": "Image",
     "name": "Note icon",
@@ -3576,7 +3576,7 @@
   "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A simple note",
   "type": "Note",
-  "content": "A simple note",
+  "content": "This is all there is.",
   "image": {
     "type": "Image",
     "name": "A Cat",
@@ -3590,7 +3590,7 @@
   "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A simple note",
   "type": "Note",
-  "content": "A Simple note",
+  "content": "This is all there is.",
   "image": [
     {
       "type": "Image",
@@ -3634,13 +3634,13 @@
 <div id="ex83-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
-  "content": "A simple note",
+  "content": "This is all there is.",
   "inReplyTo": {
-    "name": "Another note",
+    "summary": "Previous note",
     "type": "Note",
-    "content": "Another note"
+    "content": "What else is there?"
   }
 }</pre>
   </div>
@@ -3648,9 +3648,9 @@
 <div id="ex84-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
-  "content": "A simple note",
+  "content": "This is all there is.",
   "inReplyTo": "http://example.org/posts/1"
 }</pre>
   </div>
@@ -3822,11 +3822,11 @@
   "items": [
     {
       "type": "Note",
-      "name": "A Simple Note"
+      "name": "Reminder for Going-Away Party"
     },
     {
       "type": "Note",
-      "name": "Another Simple Note"
+      "name": "Meeting 2016-11-17"
     }
   ]
 }</pre>
@@ -3841,11 +3841,11 @@
   "orderedItems": [
     {
       "type": "Note",
-      "name": "A Simple Note"
+      "name": "Meeting 2016-11-17"
     },
     {
       "type": "Note",
-      "name": "Another Simple Note"
+      "name": "Reminder for Going-Away Party"
     }
   ]
 }</pre>
@@ -4136,8 +4136,8 @@
     "http://example.org/posts/1",
     {
       "type": "Note",
-      "name": "A simple note",
-      "content": "A simple note"
+      "summary": "A simple note",
+      "content": "That is a tree."
     }
   ]
 }</pre>
@@ -4321,18 +4321,18 @@
 <div id="ex112-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
   "id": "http://www.test.example/notes/1",
-  "content": "A simple note",
+  "content": "I am fine.",
   "replies": {
     "type": "Collection",
     "totalItems": 1,
     "items": [
       {
-        "name": "A response to the note",
+        "summary": "A response to the note",
         "type": "Note",
-        "content": "A response to the note",
+        "content": "I am glad to hear it.",
         "inReplyTo": "http://www.test.example/notes/1"
       }
     ]
@@ -4372,7 +4372,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Image",
-  "name": "Picture of Sally",
+  "summary": "Picture of Sally",
   "url": "http://example.org/sally.jpg",
   "tag": [
     {
@@ -4650,7 +4650,7 @@
 <div id="ex130-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
   "content": "A &lt;em&gt;simple&lt;/em&gt; note"
 }</pre>
@@ -4659,7 +4659,7 @@
 <div id="ex131-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
   "contentMap": {
     "en": "A &lt;em&gt;simple&lt;/em&gt; note",
@@ -4672,7 +4672,7 @@
 <div id="ex130b-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
   "mediaType": "text/markdown",
   "content": "## A simple note\nA simple markdown `note`"
@@ -4760,7 +4760,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Video",
-  "name": "A Simple Video",
+  "name": "Birds Flying",
   "url": "http://example.org/video.mkv",
   "duration": "PT2H"
 }</pre>
@@ -4843,7 +4843,7 @@
   "type": "Link",
   "href": "http://example.org/abc",
   "mediaType": "text/html",
-  "name": "An example link"
+  "name": "Previous"
 }</pre>
   </div>
           </td>
@@ -4881,7 +4881,7 @@
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "name": "An example link"
+  "name": "Previous"
 }</pre>
   </div>
           </td>
@@ -4925,11 +4925,11 @@
   "items": [
     {
       "type": "Note",
-      "name": "A Simple Note"
+      "name": "Pizza Toppings to Try"
     },
     {
       "type": "Note",
-      "name": "Another Simple Note"
+      "name": "Thought about California"
     }
   ]
 }</pre>
@@ -5048,7 +5048,7 @@
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "name": "An example link"
+  "name": "Next"
 }</pre>
   </div>
           </td>
@@ -5091,7 +5091,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Event",
-  "name": "A Party!",
+  "name": "Going-Away Party for Jim",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
 }</pre>
@@ -5130,9 +5130,9 @@
 <div id="ex145-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "summary": "A simple note",
   "type": "Note",
-  "content": "A simple note",
+  "content": "Fish swim.",
   "published": "2014-12-12T12:12:12Z"
 }</pre>
 </div>
@@ -5168,7 +5168,7 @@
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Event",
-  "name": "A Party!",
+  "name": "Going-Away Party for Jim",
   "startTime": "2014-12-31T23:00:00-08:00",
   "endTime": "2015-01-01T06:00:00-08:00"
 }</pre>
@@ -5253,7 +5253,7 @@
   "href": "http://example.org/abc",
   "hreflang": "en",
   "mediaType": "text/html",
-  "name": "An example link",
+  "name": "Preview",
   "rel": ["canonical", "preview"]
 }</pre>
   </div>
@@ -5295,11 +5295,11 @@
   "orderedItems": [
     {
       "type": "Note",
-      "name": "A Simple Note"
+      "name": "Density of Water"
     },
     {
       "type": "Note",
-      "name": "Another Simple Note"
+      "name": "Air Mattress Idea"
     }
   ]
 }</pre>
@@ -5336,7 +5336,7 @@
 <div id="ex152-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "name": "Cane Sugar Processing",
   "type": "Note",
   "summary": "A simple &lt;em&gt;note&lt;/em&gt;"
 }</pre>
@@ -5345,7 +5345,7 @@
 <div id="ex153-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "name": "Cane Sugar Processing",
   "type": "Note",
   "summaryMap": {
     "en": "A simple &lt;em&gt;note&lt;/em&gt;",
@@ -5388,11 +5388,11 @@
   "items": [
     {
       "type": "Note",
-      "name": "A Simple Note"
+      "name": "Which Staircase Should I Use"
     },
     {
       "type": "Note",
-      "name": "Another Simple Note"
+      "name": "Something to Remember"
     }
   ]
 }</pre>
@@ -5482,9 +5482,9 @@
 <div id="ex158-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "name": "A simple note",
+  "name": "Cranberry Sauce Idea",
   "type": "Note",
-  "content": "A simple note",
+  "content": "Mush it up so it does not have the same shape as the can.",
   "updated": "2014-12-12T12:12:12Z"
 }</pre>
 </div>
