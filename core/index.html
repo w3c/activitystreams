@@ -2545,8 +2545,9 @@ profile-URI   = URI</"></"></pre>
     {
       "oa": "http://www.w3.org/ns/oa#",
       "prov": "http://www.w3.org/ns/prov#",
-      "oa:created": {
-        "@id": "oa:created",
+      "dcterms": "http://purl.org/dc/terms/",
+      "dcterms:created": {
+        "@id": "dcterms:created",
         "@type": "xsd:dateTime"
       }
     }
@@ -2572,21 +2573,21 @@ profile-URI   = URI</"></"></pre>
     },
     {
       "id": "http://example.org/activity/20150101000059",
-      "type": [ "Update", "prov:Activity", "oa:Annotate" ],
+      "type": [ "Update", "prov:Activity", "oa:Annotation" ],
       "summary": "Eric edited a note.",
-      "oa:created": "2015-01-01T00:00:59Z",
-      "oa:creator": "http://example.org/#eric",
+      "dcterms:created": "2015-01-01T00:00:59Z",
+      "dcterms:creator": { "@id": "http://example.org/#eric" },
       "oa:hasBody": {
         "id": "http://example.org/entry/20150101000059",
         "type": [ "Note", "prov:Entity" ],
         "content": "Remember... all I'm offering is the truth. Nothing more.",
-        "prov:wasAttributedTo": "http://example.org/#eric",
-        "prov:wasRevisionOf": "http://example.org/entry/20150101000000"
+        "prov:wasAttributedTo": { "@id": "http://example.org/#eric" },
+        "prov:wasRevisionOf": { "@id": "http://example.org/entry/20150101000000" }
       },
-      "oa:hasTarget": "http://example.org/entry/20150101000000",
-      "oa:motivatedBy": "oa:editing",
-      "prov:generated": "http://example.org/entry/20150101000059",
-      "prov:wasInformedBy": "http://example.org/activity/20150101000000"
+      "oa:hasTarget": { "@id": "http://example.org/entry/20150101000000" },
+      "oa:motivatedBy": { "@id": "oa:editing" },
+      "prov:generated": { "@id": "http://example.org/entry/20150101000059" },
+      "prov:wasInformedBy": { "@id": "http://example.org/activity/20150101000000" }
     },
     {
       "id": "http://example.org/activity/20150101010101",
