@@ -379,8 +379,66 @@
           "<code>https://www.w3.org/ns/activitystreams</code>". Implementations
           MAY use the alternative URL
           "<code>http://www.w3.org/ns/activitystreams</code>"
-          instead.
+          instead. This can be done using a string, object, or array.
         </p>
+
+        <section id="example-1context">
+          <h2>Context with a string</h2>
+
+          <figure>
+            <figcaption>
+              Document providing a context as a string.
+            </figcaption>
+            <div id="ex1-jsonld" style="display: block;">
+            <pre class="example highlight json">{
+              "@context": "https://www.w3.org/ns/activitystreams",
+              "summary": "A note",
+              "type": "Note",
+              "content": "My dog has fleas."
+            }</pre>
+            </div>
+          </figure>
+        </section>
+
+        <section id="example-2context">
+          <h2>Context with an object</h2>
+
+          <figure>
+            <figcaption>
+              Document providing context as an object.
+            </figcaption>
+            <div id="ex1-jsonld" style="display: block;">
+            <pre class="example highlight json">{
+              "@context": {
+                 "@vocab": "https://www.w3.org/ns/activitystreams"
+              },
+              "summary": "A note",
+              "type": "Note",
+              "content": "My dog has fleas.",
+            }</pre>
+            </div>
+          </figure>
+        </section>
+
+        <section id="example-3context">
+          <h2>Context with an array</h2>
+
+          <figure>
+            <figcaption>
+              Document providing context as an array.
+            </figcaption>
+            <div id="ex1-jsonld" style="display: block;">
+            <pre class="example highlight json">{
+              "@context": [
+                 "https://www.w3.org/ns/activitystreams"
+              ],
+              "summary": "A note",
+              "type": "Note",
+              "content": "My dog has fleas.",
+            }</pre>
+            </div>
+          </figure>
+        </section>
 
         <p class="note" title="At Risk">
           The alternative HTTP-only URL is At Risk. The Working Group believes
