@@ -9,4 +9,4 @@ issues can be opened by anyone.
 
 Recent implementation summary: http://as2.amy.gy/reports.html
 
-Please report your implementations and test results as a pull request on a new file in [implementation-reports](https://github.com/w3c/activitystreams/tree/master/implementation-reports), folling the format of [template.md](https://github.com/w3c/activitystreams/blob/master/implementation-reports/template.md).
+Please report your implementations and test results as a pull request on a new file in [implementation-reports](https://github.com/w3c/activitystreams/tree/master/implementation-reports), using the format of [template.md](https://github.com/w3c/activitystreams/blob/master/implementation-reports/template.md).
