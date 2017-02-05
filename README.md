@@ -5,6 +5,7 @@ IPR Policy. Pull requests will be accepted only if the
 submitter is a current member of the W3C Social WG but 
 issues can be opened by anyone.
 
+## Implementations
 
 Recent implementation summary: http://as2.amy.gy/reports.html
 
