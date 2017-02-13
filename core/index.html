@@ -390,12 +390,14 @@
               Document providing a context as a string.
             </figcaption>
             <div id="ex1-jsonld" style="display: block;">
-            <pre class="example highlight json">{
-              "@context": "https://www.w3.org/ns/activitystreams",
-              "summary": "A note",
-              "type": "Note",
-              "content": "My dog has fleas."
-            }</pre>
+              <pre class="example highlight json">
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "A note",
+  "type": "Note",
+  "content": "My dog has fleas."
+}
+              </pre>
             </div>
           </figure>
         </section>
@@ -405,17 +407,23 @@
 
           <figure>
             <figcaption>
-              Document providing context as an object.
+              Document providing context as an object using the <code>@vocab</code> keyword and a prefix for extension terms.
             </figcaption>
-            <div id="ex1-jsonld" style="display: block;">
-            <pre class="example highlight json">{
-              "@context": {
-                 "@vocab": "https://www.w3.org/ns/activitystreams"
-              },
-              "summary": "A note",
-              "type": "Note",
-              "content": "My dog has fleas.",
-            }</pre>
+            <div id="ex2-jsonld" style="display: block;">
+              <pre class="example highlight json">
+{
+  "@context": {
+     "@vocab": "https://www.w3.org/ns/activitystreams",
+     "ext": "https://canine-extension.example/terms/",
+     "@language": "en"
+  },
+  "summary": "A note",
+  "type": "Note",
+  "content": "My dog has fleas.",
+  "ext:nose": 0,
+  "ext:smell": "terrible"
+}
+              </pre>
             </div>
           </figure>
         </section>
@@ -425,17 +433,23 @@
 
           <figure>
             <figcaption>
-              Document providing context as an array.
+              Document providing context as an array, and including an alias for an additional term.
             </figcaption>
-            <div id="ex1-jsonld" style="display: block;">
-            <pre class="example highlight json">{
-              "@context": [
-                 "https://www.w3.org/ns/activitystreams"
-              ],
-              "summary": "A note",
-              "type": "Note",
-              "content": "My dog has fleas.",
-            }</pre>
+            <div id="ex3-jsonld" style="display: block;">
+            <pre class="example highlight json">
+{
+  "@context": [
+     "https://www.w3.org/ns/activitystreams",
+     {
+      "css": "http://www.w3.org/ns/oa#styledBy"
+     }
+  ],
+  "summary": "A note",
+  "type": "Note",
+  "content": "My dog has fleas.",
+  "css": "http://www.csszengarden.com/217/217.css?v=8may2013"
+}
+              </pre>
             </div>
           </figure>
         </section>
