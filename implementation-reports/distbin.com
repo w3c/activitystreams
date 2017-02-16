@@ -16,8 +16,7 @@ distbin.com is not very strict about documents it allows end-users to publish, a
 * License: closed source
 * Main URL: http://distbin.com
 * Public: public
-* Activity Streams 2.0 URL (request with Accept: application/activity+json):
-  * http://distbin.com/public
+* Activity Streams 2.0 URL (request with Accept: application/activity+json): http://distbin.com/public
 * Application role: both
 * Interface to other applications: network service
 
