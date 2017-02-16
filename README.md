@@ -3,4 +3,10 @@
 Contributions to this specification are governed by the W3C 
 IPR Policy. Pull requests will be accepted only if the 
 submitter is a current member of the W3C Social WG but 
-issues can be opened by anyone. 
+issues can be opened by anyone.
+
+## Implementations
+
+Recent implementation summary: http://as2.amy.gy/reports.html
+
+Please report your implementations and test results as a pull request on a new file in [implementation-reports](https://github.com/w3c/activitystreams/tree/master/implementation-reports), using the format of [template.md](https://github.com/w3c/activitystreams/blob/master/implementation-reports/template.md).
