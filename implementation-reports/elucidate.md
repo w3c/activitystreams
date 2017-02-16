@@ -105,6 +105,8 @@ Implemented? : y
 
 Implemented? : y 
 
+* startIndex: y
+
 ## Extended classes
 
 ### Accept
