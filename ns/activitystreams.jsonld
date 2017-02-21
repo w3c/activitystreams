@@ -84,14 +84,6 @@
       "@id": "as:attachment",
       "@type": "@id"
     },
-    "attachments": {
-      "@id": "as:attachments",
-      "@type": "@id"
-    },
-    "author": {
-      "@id": "as:author",
-      "@type": "@id"
-    },
     "bcc": {
       "@id": "as:bcc",
       "@type": "@id"
@@ -189,10 +181,6 @@
       "@id": "as:preview",
       "@type": "@id"
     },
-    "provider": {
-      "@id": "as:provider",
-      "@type": "@id"
-    },
     "replies": {
       "@id": "as:replies",
       "@type": "@id"
@@ -210,10 +198,6 @@
       "@type": "@id"
     },
     "tag": {
-      "@id": "as:tag",
-      "@type": "@id"
-    },
-    "tags": {
       "@id": "as:tag",
       "@type": "@id"
     },
@@ -243,7 +227,6 @@
       "@id": "as:name",
       "@container": "@language"
     },
-    "downstreamDuplicates": "as:downStreamDuplicates",
     "duration": {
       "@id": "as:duration",
       "@type": "xsd:duration"
@@ -278,10 +261,6 @@
       "@id": "as:radius",
       "@type": "xsd:float"
     },
-    "rating": {
-      "@id": "as:rating",
-      "@type": "xsd:float"
-    },
     "rel": "as:rel",
     "startIndex": {
       "@id": "as:startIndex",
@@ -305,8 +284,6 @@
       "@id": "as:updated",
       "@type": "xsd:dateTime"
     },
-    "upstreamDuplicates": "as:upstreamDuplicates",
-    "verb": "as:verb",
     "width": {
       "@id": "as:width",
       "@type": "xsd:nonNegativeInteger"
