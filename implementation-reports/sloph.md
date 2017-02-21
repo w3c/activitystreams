@@ -31,7 +31,7 @@ Implemented? : y
 * context: n
 * duration: y
 * endTime: y
-* generator: n
+* generator: y
 * icon: n
 * image: y
 * inReplyTo: y
