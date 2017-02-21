@@ -37,7 +37,7 @@ Implemented? : n
 * context: n
 * duration: n
 * endTime: n
-* generator: n
+* generator: y (Publishes .generator on posted items. Renders consumed .generator on any items)
 * icon: n
 * image: n
 * inReplyTo: y (notifies LDN inbox of inReplyTo URL, renders threaded replies in HTML representation)
