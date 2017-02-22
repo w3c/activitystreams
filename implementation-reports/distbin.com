@@ -58,13 +58,13 @@ Implemented? : n
 
 ### Link
 
-Implemented? : n
+Implemented? : y
 
 * height: n
 * hreflang: n
-* mediaType: n
-* name: n
-* rel: n
+* mediaType: y
+* name: y
+* rel: y
 * width: n
 
 ### Actor
