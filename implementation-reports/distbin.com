@@ -26,7 +26,7 @@ distbin.com is not very strict about documents it allows end-users to publish, a
 
 Implemented? : n
 
-* attachment: n
+* attachment: y
 * attributedTo: n
 * audience: n
 * bcc: y (notifies LDN inbox of any bcc'd URL)
@@ -42,7 +42,7 @@ Implemented? : n
 * image: n
 * inReplyTo: y (notifies LDN inbox of inReplyTo URL, renders threaded replies in HTML representation)
 * location: n
-* mediaType: n
+* mediaType: y
 * name: y (rendered as header in HTML representation)
 * nameMap: n
 * preview: n
