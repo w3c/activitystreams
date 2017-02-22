@@ -319,10 +319,6 @@ Implemented? : %"y", "n"% (%comments%)
 
 Implemented? : %"y", "n"% (%comments%)
 
-### Tombstone
-
-Implemented? : %"y", "n"% (%comments%)
-
 ## Extensions
 
 %(If you've used any extensions for your Activity Streams 2.0 implementation,
