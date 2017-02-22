@@ -58,13 +58,13 @@ Implemented? : n
 
 ### Link
 
-Implemented? : n
+Implemented? : y
 
 * height: n
 * hreflang: n
-* mediaType: n
-* name: n
-* rel: n
+* mediaType: y
+* name: y
+* rel: y
 * width: n
 
 ### Actor
@@ -92,7 +92,7 @@ Implemented? : y (/public and /:activity/replies are represented as Collections 
 
 * items: y
 * totalItems: y
-* first: n
+* first: y
 * last: n
 * current: y
 
@@ -104,13 +104,15 @@ Implemented? : n
 
 Implemented? : n
 
-* partOf: n
-* next: n
+* partOf: y
+* next: y
 * prev: n
 
 ### OrderedCollectionPage
 
-Implemented? : n
+Implemented? : y
+
+* startIndex: y
 
 ## Extended classes
 

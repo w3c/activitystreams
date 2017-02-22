@@ -117,6 +117,8 @@ Implemented? : %"y", "n"% (%comments%)
 
 Implemented? : %"y", "n"% (%comments%)
 
+* startIndex: %"y", "n"% (%comments%)
+
 ## Extended classes
 
 ### Accept
