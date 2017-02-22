@@ -41,7 +41,7 @@ Implemented? : n
 * icon: n
 * image: n
 * inReplyTo: y (notifies LDN inbox of inReplyTo URL, renders threaded replies in HTML representation)
-* location: n
+* location: y (User can provide geolocation when posting. Renders map in HTML)
 * mediaType: y
 * name: y (rendered as header in HTML representation)
 * nameMap: n
@@ -284,14 +284,14 @@ Implemented? : n
 
 ### Place
 
-Implemented? : n
+Implemented? : y
 
 * accuracy: n
-* altitude: n
-* latitude: n
-* longitude: n
-* radius: n
-* units: n
+* altitude: y
+* latitude: y
+* longitude: y
+* radius: y
+* units: y
 
 ### Profile
 
