@@ -27,7 +27,7 @@ distbin.com is not very strict about documents it allows end-users to publish, a
 Implemented? : n
 
 * attachment: y
-* attributedTo: n
+* attributedTo: y
 * audience: n
 * bcc: y (notifies LDN inbox of any bcc'd URL)
 * bto: y (notifies LDN inbox of any bto'd URL)
