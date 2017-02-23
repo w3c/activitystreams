@@ -286,7 +286,7 @@ Implemented? : n
 
 Implemented? : y
 
-* accuracy: n
+* accuracy: y
 * altitude: y
 * latitude: y
 * longitude: y
