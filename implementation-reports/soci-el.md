@@ -54,8 +54,9 @@ Implemented? : y
 
 * height: n
 * hreflang: n
+* href: y
 * mediaType: n
-* name: n
+* name: y
 * rel: n
 * width: n
 
@@ -84,13 +85,15 @@ Implemented? : y
 
 * items: y
 * totalItems: n
-* first: n
-* last: n
+* first: y
+* last: y
 * current: n
 
 ### OrderedCollection
 
 Implemented? : y
+
+* orderedItems: y
 
 ### CollectionPage
 
@@ -300,7 +303,7 @@ Implemented? : y
 Implemented? : y
 
 * formerType: n
-* deleted: n
+* deleted: y
 
 ### Video
 

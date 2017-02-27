@@ -23,31 +23,31 @@ ActivityPub implementation.
 Implemented? : y
 
 * attachment: n
-* attributedTo: n
+* attributedTo: y
 * audience: n
 * bcc: y
-* bto: n
+* bto: y
 * cc: y
 * content: y
 * contentMap: n
 * context: y
 * duration: n
-* endTime: n
+* endTime: y
 * generator: n
-* icon: n
-* image: n
+* icon: y
+* image: y
 * inReplyTo: y
 * location: n
-* mediaType: n
+* mediaType: y
 * name: y
 * nameMap: n
 * preview: n
 * published: y
 * replies: n
-* startTime: n
+* startTime: y
 * summary: n
 * summaryMap: n
-* tag: n
+* tag: y
 * to: y
 * updated: y
 * url: y
@@ -56,12 +56,13 @@ Implemented? : y
 
 Implemented? : y
 
-* height: n
+* height: y
 * hreflang: n
-* mediaType: n
-* name: n
+* href: y
+* mediaType: y
+* name: y
 * rel: n
-* width: n
+* width: y
 
 ### Actor
 
@@ -75,8 +76,8 @@ Implemented? : y
 * object: y
 * target: n
 * origin: n
-* result: n
-* instrument: n
+* result: y
+* instrument: y
 
 ### IntransitiveActivity
 
@@ -87,7 +88,7 @@ Implemented? : y
 Implemented? : y
 
 * items: y
-* totalItems: n
+* totalItems: y
 * first: y
 * last: y
 * current: y
@@ -95,6 +96,8 @@ Implemented? : y
 ### OrderedCollection
 
 Implemented? : y
+
+* orderedItems: y
 
 ### CollectionPage
 
@@ -186,9 +189,9 @@ Implemented? : y
 
 Implemented? : y
 
-* oneOf: n
-* anyOf: n
-* closed: n
+* oneOf: y
+* anyOf: y
+* closed: y
 
 ### Read
 
@@ -303,8 +306,8 @@ Implemented? : y
 
 Implemented? : y
 
-* formerType: n
-* deleted: n
+* formerType: y
+* deleted: y
 
 ### Video
 
