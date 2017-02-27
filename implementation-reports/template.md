@@ -100,6 +100,7 @@ Implemented? : %"y", "n"% (%comments%)
 * first: %"y", "n"% (%comments%)
 * last: %"y", "n"% (%comments%)
 * current: %"y", "n"% (%comments%)
+* startIndex: %"y", "n"% (%comments%)
 
 ### OrderedCollection
 
