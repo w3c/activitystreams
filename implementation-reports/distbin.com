@@ -51,7 +51,7 @@ Implemented? : n
 * startTime: n
 * summary: n
 * summaryMap: n
-* tag: n
+* tag: y (can add tags to posts. Renders tags to HTML)
 * to: y (notifies LDN inbox of any to'd URL)
 * updated: n
 * url: y (points back to permalink on distbin.com, or canonical URL of foreign activities delivered to distbin.com inbox)
