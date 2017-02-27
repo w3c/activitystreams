@@ -5,7 +5,10 @@
        "id": "@id",
        "objectType": "@type",
        "verb": "@type",
-       "displayName": "as:name"
+       "displayName": "as:name",
+       "attachments": "as:attachment",
+       "tags": "as:tag",
+       "author": "as:attributedTo"
     }
   ]
 }
