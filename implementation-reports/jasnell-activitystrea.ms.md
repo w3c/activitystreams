@@ -4,316 +4,316 @@
 
 * Application name: Activity Streams 2.0 for NodeJS
 * Version: 1.0.0
-* Platform name: "N/A"
+* Platform name: N/A
 * License: Apache-2.0
 * Main URL: https://github.com/jasnell/activitystrea.ms
 * Public: "public"
 * Activity Streams 2.0 URL: https://github.com/jasnell/activitystrea.ms
-* Application role: "both"
-* Interface to other applications: "library"
+* Application role: both
+* Interface to other applications: library
 
 ## Core classes
 
 ### Object
 
-Implemented? : "y"
+Implemented? : y
 
-* attachment: "y"
-* attributedTo: "y"
-* audience: "y"
-* bcc: "y"
-* bto: "y"
-* cc: "y"
-* content: "y"
-* contentMap: "y"
-* context: "y"
-* duration: "y"
-* endTime: "y"
-* generator: "y"
-* icon: "y"
-* image: "y"
-* inReplyTo: "y"
-* location: "y"
-* mediaType: "y"
-* name: "y"
-* nameMap: "y"
-* preview: "y"
-* published: "y"
-* replies: "y"
-* startTime: "y"
-* summary: "y"
-* summaryMap: "y"
-* tag: "y"
-* to: "y"
-* updated: "y"
-* url: "n"
+* attachment: y
+* attributedTo: y
+* audience: y
+* bcc: y
+* bto: y
+* cc: y
+* content: y
+* contentMap: y
+* context: y
+* duration: y
+* endTime: y
+* generator: y
+* icon: y
+* image: y
+* inReplyTo: y
+* location: y
+* mediaType: y
+* name: y
+* nameMap: y
+* preview: y
+* published: y
+* replies: y
+* startTime: y
+* summary: y
+* summaryMap: y
+* tag: y
+* to: y
+* updated: y
+* url: n
 
 ### Link
 
-Implemented? : "y"
+Implemented? : y
 
-* height: "y"
-* href: "y"
-* hreflang: "y"
-* mediaType: "y"
-* name: "y"
-* rel: "n"
-* width: "y"
-* duration: "y"
+* height: y
+* href: y
+* hreflang: y
+* mediaType: y
+* name: y
+* rel: n
+* width: y
+* duration: y
 
 ### Actor
 
-Implemented? : "n"
+Implemented? : n
 
 ### Activity
 
-Implemented? : "y"
+Implemented? : y
 
-* actor: "y"
-* object: "y"
-* target: "y"
-* origin: "y"
-* result: "y"
-* instrument: "y"
+* actor: y
+* object: y
+* target: y
+* origin: y
+* result: y
+* instrument: y
 
 ### IntransitiveActivity
 
-Implemented? : "n"
+Implemented? : n
 
 ### Collection
 
-Implemented? : "y"
+Implemented? : y
 
-* items: "y"
-* totalItems: "y"
-* first: "y"
-* last: "y"
-* current: "y"
-* startIndex: "n"
+* items: y
+* totalItems: y
+* first: y
+* last: y
+* current: y
+* startIndex: n
 
 ### OrderedCollection
 
-Implemented? : "y"
+Implemented? : y
 
 ### CollectionPage
 
-Implemented? : "y"
+Implemented? : y
 
-* partOf: "n"
-* next: "y"
-* prev: "y"
+* partOf: n
+* next: y
+* prev: y
 
 ### OrderedCollectionPage
 
-Implemented? : "y"
+Implemented? : y
 
-* startIndex: "y"
+* startIndex: y
 
 ## Extended classes
 
 ### Accept
 
-Implemented? : "y"
+Implemented? : y
 
 ### Add
 
-Implemented? : "y"
+Implemented? : y
 
 ### Announce
 
-Implemented? : "y"
+Implemented? : y
 
 ### Arrive
 
-Implemented? : "y"
+Implemented? : y
 
 ### Block
 
-Implemented? : "y"
+Implemented? : y
 
 ### Create
 
-Implemented? : "y"
+Implemented? : y
 
 ### Delete
 
-Implemented? : "y"
+Implemented? : y
 
 ### Dislike
 
-Implemented? : "y"
+Implemented? : y
 
 ### Flag
 
-Implemented? : "y"
+Implemented? : y
 
 ### Follow
 
-Implemented? : "y"
+Implemented? : y
 
 ### Ignore
 
-Implemented? : "y"
+Implemented? : y
 
 ### Invite
 
-Implemented? : "y"
+Implemented? : y
 
 ### Join
 
-Implemented? : "y"
+Implemented? : y
 
 ### Leave
 
-Implemented? : "y"
+Implemented? : y
 
 ### Like
 
-Implemented? : "y"
+Implemented? : y
 
 ### Listen
 
-Implemented? : "y"
+Implemented? : y
 
 ### Move
 
-Implemented? : "y"
+Implemented? : y
 
 ### Offer
 
-Implemented? : "y"
+Implemented? : y
 
 ### Question
 
-Implemented? : "y"
+Implemented? : y
 
-* oneOf: "y"
-* anyOf: "y"
-* closed: "n"
+* oneOf: y
+* anyOf: y
+* closed: n
 
 ### Read
 
-Implemented? : "y"
+Implemented? : y
 
 ### Reject
 
-Implemented? : "y"
+Implemented? : y
 
 ### Remove
 
-Implemented? : "y"
+Implemented? : y
 
 ### TentativeAccept
 
-Implemented? : "y"
+Implemented? : y
 
 ### TentativeReject
 
-Implemented? : "y"
+Implemented? : y
 
 ### Travel
 
-Implemented? : "y"
+Implemented? : y
 
 ### Undo
 
-Implemented? : "y"
+Implemented? : y
 
 ### Update
 
-Implemented? : "y"
+Implemented? : y
 
 ### View
 
-Implemented? : "y"
+Implemented? : y
 
 ### Application
 
-Implemented? : "y"
+Implemented? : y
 
 ### Group
 
-Implemented? : "y"
+Implemented? : y
 
 ### Organization
 
-Implemented? : "y"
+Implemented? : y
 
 ### Person
 
-Implemented? : "y"
+Implemented? : y
 
 ### Service
 
-Implemented? : "y"
+Implemented? : y
 
 ### Article
 
-Implemented? : "y"
+Implemented? : y
 
 ### Audio
 
-Implemented? : "y"
+Implemented? : y
 
 ### Document
 
-Implemented? : "y"
+Implemented? : y
 
 ### Event
 
-Implemented? : "y"
+Implemented? : y
 
 ### Image
 
-Implemented? : "y"
+Implemented? : y
 
 ### Note
 
-Implemented? : "y"
+Implemented? : y
 
 ### Page
 
-Implemented? : "y"
+Implemented? : y
 
 ### Place
 
-Implemented? : "y"
+Implemented? : y
 
-* accuracy: "y"
-* altitude: "y"
-* latitude: "y"
-* longitude: "y"
-* radius: "y"
-* units: "y"
+* accuracy: y
+* altitude: y
+* latitude: y
+* longitude: y
+* radius: y
+* units: y
 
 ### Profile
 
-Implemented? : "y"
+Implemented? : y
 
-* describes: "y"
+* describes: y
 
 ### Relationship
 
-Implemented? : "y"
+Implemented? : y
 
-* subject: "y"
-* object: "y"
-* relationship: "y"
+* subject: y
+* object: y
+* relationship: y
 
 ### Tombstone
 
-Implemented? : "y"
+Implemented? : y
 
-* formerType: "y"
-* deleted: "y"
+* formerType: y
+* deleted: y
 
 ### Video
 
-Implemented? : "y"
+Implemented? : y
 
 ### Mention
 
-Implemented? : "y"
+Implemented? : y
 
 ## Extensions
 
