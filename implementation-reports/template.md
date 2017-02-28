@@ -66,6 +66,7 @@ Implemented? : %"y", "n"% (%comments%)
 Implemented? : %"y", "n"% (%comments%)
 
 * height: %"y", "n"% (%comments%)
+* href: %"y", "n"% (%comments%)
 * hreflang: %"y", "n"% (%comments%)
 * mediaType: %"y", "n"% (%comments%)
 * name: %"y", "n"% (%comments%)
