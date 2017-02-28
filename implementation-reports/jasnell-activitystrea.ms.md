@@ -53,6 +53,7 @@ Implemented? : "y"
 Implemented? : "y"
 
 * height: "y"
+* href: "y"
 * hreflang: "y"
 * mediaType: "y"
 * name: "y"
@@ -307,6 +308,10 @@ Implemented? : "y"
 * deleted: "y"
 
 ### Video
+
+Implemented? : "y"
+
+### Mention
 
 Implemented? : "y"
 
