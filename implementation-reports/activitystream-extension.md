@@ -16,6 +16,8 @@
 
 ### Object
 
+Implemented? : y
+
 * attachment: n
 * attributedTo: n
 * audience: n
