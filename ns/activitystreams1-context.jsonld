@@ -1,5 +1,5 @@
 { "@context": [
-    "activitystreams2-context.jsonld",
+    "https://www.w3.org/ns/activitystreams.jsonld",
     {
        "@vocab": "_:",
        "id": "@id",
