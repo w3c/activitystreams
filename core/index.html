@@ -228,88 +228,6 @@
 
     </section>
 
-    <section id="exit-criteria" class="informative">
-
-      <h2>Exit Criteria</h2>
-
-      <p>
-        For this specification to be advanced to Proposed Recommendation, there
-        must be at least two independent implementations of each feature.
-        Each of these features may be implemented by a different set of products
-        and there is no requirement that all features be implemented by a single
-        product.
-      </p>
-
-      <p>
-        For the purposes of evaluating exit criteria, each of the following is
-        a feature.
-
-        <ul>
-          <li>Each core type</li>
-          <li>Each property of the core types</li>
-          <li>Each extended type</li>
-          <li>Each property of the extended types</li>
-        </ul>
-      </p>
-
-      <p>
-        For the purposes of evaluating exit criteria, software that ignores or
-        passes through types or properties inapplicable to their domain have not
-        implemented the type or property.
-      </p>
-
-      <p>
-        Implementation reports can be found at
-        <a href="https://github.com/w3c/activitystreams/tree/master/implementation-reports">https://github.com/w3c/activitystreams/tree/master/implementation-reports</a>.
-        New implementation reports should use the template file <code>template.md</code>
-        which includes instructions on submissions.
-      </p>
-
-    </section>
-
-    <section id="atrisk">
-      <h3>At Risk features</h3>
-      <p>The Working Group has marked the following features as At Risk and may seek
-        to advance the specification with the removal of these features if
-        insufficient implementation experience can be gathered.</p>
-      <ul>
-        <li>All properties of the <a>Object</a> type, except the following:
-          <ul>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-id">id</a></code></li>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code></li>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-type">type</a></code></li>
-          </ul>
-        </li>
-        <li>All properties of the <a>Link</a> type, except the following:
-          <ul>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-id">id</a></code></li>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code></li>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code></li>
-          </ul>
-        </li>
-        <li>All properties of the <a>Activity</a> type, except the following:
-          <ul>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-actor">actor</a></code></li>
-            <li><code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object">object</a></code></li>
-          </ul>
-        </li>
-        <li>The <a>Actor</a> type</li>
-        <li>The <a>IntransitiveActivity</a> type</li>
-        <li>The <a>OrderedCollection</a> and <a>OrderedCollectionPage</a> types</li>
-        <li>All extended types
-          <ul>
-            <li>
-              In particular, the <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-relationship">Relationship</a></code> type and <code>relationship</code>
-              property, as well as the normative vocabulary for relationship terms.
-            </li>
-          </ul>
-        </li>
-        <li>All properties of the extended types</li>
-        <li>The alternative HTTP-only context URL</li>
-        <li>The option to leave out the <code>@language</code> property</li>
-      </ul>
-    </section>
-
   </section>
     <section id="syntaxconventions">
 
@@ -454,16 +372,6 @@
             </div>
           </figure>
         </section>
-
-        <p class="note" title="At Risk">
-          The alternative HTTP-only URL is At Risk. The Working Group believes
-          some implementations may benefit from the HTTP-only URL. However, if
-          insufficient evidence of implementation can be obtained during
-          the Candidate Recommendation period then the Working Group may
-          seek to advance the specification with this alternative omitted.
-          See <a href="https://github.com/w3c/activitystreams/issues/351">issue #351</a>
-          for history and discussion.
-        </p>
 
         <p>
           When a JSON-LD enabled Activity Streams 2.0 implementation encounters
@@ -1594,15 +1502,6 @@ as2-date-time    = full-date "T" as2-full-time
 </div>
     </figure>
 
-    <p class="note" title="Recommending Map properties">
-      In order to support implementations that do not recognize the
-      <code>@language</code> property, the Social Working Group may recommend
-      in a future version of this document that publishers use the "Map" versions of all
-      natural-language values, even if only a single value is provided.
-      See <a href="https://github.com/w3c/activitystreams/issues/341">issue #341</a>
-      for background and discussion.
-    </p>
-
       <section id="defaultlangcontext">
         <h3>Default Language Context</h3>
 
@@ -1631,16 +1530,6 @@ as2-date-time    = full-date "T" as2-full-time
 }</pre>
         </div>
       </figure>
-
-      <p class="note" title="At Risk">
-        The option to leave out the <code>@language</code> property is At Risk.
-        The Working Group believes that providing a default language environment
-        is important for proper internationalization. the Social Working Group
-        may recommend in a future version of this document that publishers
-        SHOULD use the <code>@language</code> property for all documents.
-        See <a href="https://github.com/w3c/activitystreams/issues/354">issue #354</a>
-        for background and discussion.
-      </p>
 
     </section>
 
@@ -2625,45 +2514,27 @@ profile-URI   = URI</"></"></pre>
 
     <p>
       The following notable changes have been made to this document since the
-      previous candidate recommendation of <a href="https://www.w3.org/TR/2016/CR-activitystreams-core-20160906/#changelog">2016-09-06</a>.
+      previous candidate recommendation of <a href="https://www.w3.org/TR/2016/CR-activitystreams-core-20161215/#changelog">2016-12-15</a>.
     </p>
 
     <ul>
       <li>
-        Removed a reference to outdated requirements for serialization.
+        Fix typo in deleted range
       </li>
       <li>
-        Used &apos;type&apos; consistently in document.
+        Add datetime and boolean to range of "closed" property
       </li>
       <li>
-        Noted that <code>OrderedCollectionPages</code> SHOULD be used with
-        an <code>OrderedCollection</code>.
+        Update Collection Paging to clarify additional CollectionPage properties
       </li>
       <li>
-        Changed vague language for usage of <code>OrderedCollection</code> to
-        MAY.
+        first, last, current: set Domain to Collection
       </li>
       <li>
-        Relax requirements for <code>name</code> property from SHOULD to MAY,
-        and recommend using <code>summary</code> as a fallback when a name
-        has not been provided by a user.
+        Better wording for summary as text representation
       </li>
       <li>
-        Link to errata document.
-      </li>
-      <li>
-        Reference and link to Social Web Protocols document.
-      </li>
-      <li>
-        Provide examples of using <code>@context</code> property as a string,
-        object or array.
-      </li>
-      <li>
-        Added recommendation that the language of natural language properties
-        SHOULD be specified when it is known.
-      </li>
-      <li>
-        Link to extensions section of namespace document.
+        Update context examples
       </li>
     </ul>
 
