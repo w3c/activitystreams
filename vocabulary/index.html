@@ -2300,13 +2300,13 @@
 <div id="ex22-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "summary": "Sally is a contact of John",
+  "summary": "Sally is an acquaintance of John",
   "type": "Relationship",
   "subject": {
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "IsContact",
+  "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
   "object": {
     "type": "Person",
     "name": "John"
@@ -5548,13 +5548,13 @@
             <div id="ex22a-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "summary": "Sally is a contact of John's",
+  "summary": "Sally is an acquaintance of John's",
   "type": "Relationship",
   "subject": {
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "IsContact",
+  "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
   "object": {
     "type": "Person",
     "name": "John"
@@ -5598,13 +5598,13 @@
             <div id="ex22c-jsonld" style="display: block;">
             <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "summary": "Sally is a contact of John's",
+  "summary": "Sally is an acquaintance of John's",
   "type": "Relationship",
   "subject": {
     "type": "Person",
     "name": "Sally"
   },
-  "relationship": "IsContact",
+  "relationship": "http://purl.org/vocab/relationship/acquaintanceOf",
   "object": {
     "type": "Person",
     "name": "John"
@@ -5949,26 +5949,26 @@
 "type": "Collection",
 "items": [
 {
- "summary": "Sally is following Joe",
+ "summary": "Sally is influenced by Joe",
  "type": "Relationship",
  "subject": {
    "type": "Person",
    "name": "Sally"
  },
- "relationship": "IsFollowing",
+ "relationship": "http://purl.org/vocab/relationship/influencedBy",
  "object": {
    "type": "Person",
    "name": "Joe"
  }
 },
 {
- "summary": "Sally is a contact of Jane",
+ "summary": "Sally is a friend of Jane",
  "type": "Relationship",
  "subject": {
    "type": "Person",
    "name": "Sally"
  },
- "relationship": "IsContact",
+ "relationship": "http://purl.org/vocab/relationship/friendOf",
  "object": {
    "type": "Person",
    "name": "Jane"
@@ -6013,7 +6013,7 @@
 "object": {
 "type": "Relationship",
 "subject": "http://sally.example.org",
-"relationship": "IsContact",
+"relationship": "http://purl.org/vocab/relationship/friendOf",
 "object": "http://matt.example.org",
 "startTime": "2015-04-21T12:34:56"
 }
@@ -6028,27 +6028,12 @@
    </p>
 
    <p>
-     The Activity Streams vocabulary defines four normative values for use
-     with the relationship property.
-     <ul>
-       <li><code>IsFollowing</code> The subject is following the object. This is
-         a unidirectional relationship.</li>
-        <li><code>IsFollowedBy</code> The object is following the subject. This is
-         a unidirectional relationship.</li>
-       <li><code>IsContact</code> The subject and object have a mutual
-         relationship.</li>
-       <li><code>IsMember</code> The subject is a member of the object,
-         typically a Group or Organization.</li>
-     </ul>
-  </p>
-
-   <p>
      Implementations may
      reuse existing vocabularies that have been developed for the purpose of
      describing relationships, or create their own guided by requirements of
      their particular implementation. Existing vocabularies include the
      "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and
-     "<a href="http://vocab.org/relationship/.html">Relationship</a>" vocabularies.
+     "<a href="http://vocab.org/relationship/">Relationship</a>" vocabularies.
    </p>
 
    <section class="informative">
@@ -6082,7 +6067,7 @@
 "id": "http://example.org/connections/123",
 "type": "Relationship",
 "subject": "acct:sally@example.org",
-"relationship": "IsContact",
+"relationship": "http://purl.org/vocab/relationship/friendOf",
 "object": "acct:john@example.org"
 },
 "target": "acct:john@example.org"
@@ -6876,30 +6861,10 @@
 
     <p>
       The following notable changes have been made to this document since the
-      previous candidate recommendation of <a href="https://www.w3.org/TR/2016/CR-activitystreams-vocabulary-20160906/#changelog">2016-09-06</a>.
+      previous candidate recommendation of <a href="https://www.w3.org/TR/2016/CR-activitystreams-vocabulary-20161215/#changelog">2016-12-15</a>.
     </p>
 
     <ul>
-      <li>
-        The term "type" is used uniformly instead of the term "class". The two
-        terms had been used interchangeably in earlier versions.
-      </li>
-      <li>
-        Examples were changed to reflect the changed requirement for the
-        <a>name</a> property and the use of the <a>summary</a> property as a
-        fallback.
-      </li>
-      <li>
-        Linked to the errata list for this document.
-      </li>
-      <li>
-        Changed some example <a>name</a> properties to sound more like they had
-        been added by people intentionally, to distinguish them from
-        automatically-generated <a>summary</a> properties.
-      </li>
-      <li>
-        Added a clarifying note about the properties of a <a>Link</a> object.
-      </li>
     </ul>
 
   </section>
