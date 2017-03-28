@@ -2868,8 +2868,8 @@
       <code><a>width</a></code> |
       <code><a>subject</a></code> |
       <code><a data-lt="relationship-term">relationship</a></code> |
-      <code><a>describes</a></code>
-      <code><a>formerType</a></code>
+      <code><a>describes</a></code> |
+      <code><a>formerType</a></code> |
       <code><a>deleted</a></code>
     </p>
 
@@ -5944,37 +5944,37 @@
 
    <div id="ex180-jsonld" style="display: block;">
 <pre class="example highlight json">{
-"@context": "https://www.w3.org/ns/activitystreams",
-"summary": "Sally's friends list",
-"type": "Collection",
-"items": [
-{
- "summary": "Sally is influenced by Joe",
- "type": "Relationship",
- "subject": {
-   "type": "Person",
-   "name": "Sally"
- },
- "relationship": "http://purl.org/vocab/relationship/influencedBy",
- "object": {
-   "type": "Person",
-   "name": "Joe"
- }
-},
-{
- "summary": "Sally is a friend of Jane",
- "type": "Relationship",
- "subject": {
-   "type": "Person",
-   "name": "Sally"
- },
- "relationship": "http://purl.org/vocab/relationship/friendOf",
- "object": {
-   "type": "Person",
-   "name": "Jane"
- }
-}
-]
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally's friends list",
+  "type": "Collection",
+  "items": [
+    {
+      "summary": "Sally is influenced by Joe",
+      "type": "Relationship",
+      "subject": {
+        "type": "Person",
+        "name": "Sally"
+      },
+      "relationship": "http://purl.org/vocab/relationship/influencedBy",
+      "object": {
+        "type": "Person",
+        "name": "Joe"
+      }
+    },
+    {
+      "summary": "Sally is a friend of Jane",
+      "type": "Relationship",
+      "subject": {
+        "type": "Person",
+        "name": "Sally"
+      },
+      "relationship": "http://purl.org/vocab/relationship/friendOf",
+      "object": {
+        "type": "Person",
+        "name": "Jane"
+      }
+    }
+  ]
 }</pre>
    </div>
 
@@ -6006,17 +6006,17 @@
 
    <div id="ex181-jsonldb" style="display: block;">
 <pre class="example highlight json">{
-"@context": "https://www.w3.org/ns/activitystreams",
-"summary": "Sally became a friend of Matt",
-"type": "Create",
-"actor": "http://sally.example.org",
-"object": {
-"type": "Relationship",
-"subject": "http://sally.example.org",
-"relationship": "http://purl.org/vocab/relationship/friendOf",
-"object": "http://matt.example.org",
-"startTime": "2015-04-21T12:34:56"
-}
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally became a friend of Matt",
+  "type": "Create",
+  "actor": "http://sally.example.org",
+  "object": {
+    "type": "Relationship",
+    "subject": "http://sally.example.org",
+    "relationship": "http://purl.org/vocab/relationship/friendOf",
+    "object": "http://matt.example.org",
+    "startTime": "2015-04-21T12:34:56"
+  }
 }</pre>
    </div>
 
@@ -6057,20 +6057,20 @@
 
      <div id="ex187-jsonld" style="display: block;">
 <pre class="example highlight json">{
-"@context": "https://www.w3.org/ns/activitystreams",
-"id": "http://example.org/connection-requests/123",
-"summary": "Sally requested to be a friend of John",
-"type": "Offer",
-"actor": "acct:sally@example.org",
-"object": {
-"summary": "Sally and John's friendship",
-"id": "http://example.org/connections/123",
-"type": "Relationship",
-"subject": "acct:sally@example.org",
-"relationship": "http://purl.org/vocab/relationship/friendOf",
-"object": "acct:john@example.org"
-},
-"target": "acct:john@example.org"
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "id": "http://example.org/connection-requests/123",
+  "summary": "Sally requested to be a friend of John",
+  "type": "Offer",
+  "actor": "acct:sally@example.org",
+  "object": {
+    "summary": "Sally and John's friendship",
+    "id": "http://example.org/connections/123",
+    "type": "Relationship",
+    "subject": "acct:sally@example.org",
+    "relationship": "http://purl.org/vocab/relationship/friendOf",
+    "object": "acct:john@example.org"
+  },
+  "target": "acct:john@example.org"
 }</pre>
      </div>
 
@@ -6082,66 +6082,66 @@
 
      <div id="ex188-jsonld" style="display: block;">
 <pre class="example highlight json">{
-"@context": "https://www.w3.org/ns/activitystreams",
-"summary": "Sally and John's relationship history",
-"type": "Collection",
-"items": [
-{
- "summary": "John accepted Sally's friend request",
- "id": "http://example.org/activities/122",
- "type": "Accept",
- "actor": "acct:john@example.org",
- "object": "http://example.org/connection-requests/123",
- "inReplyTo": "http://example.org/connection-requests/123",
- "context": "http://example.org/connections/123",
- "result": [
-   "http://example.org/activities/123",
-   "http://example.org/activities/124",
-   "http://example.org/activities/125",
-   "http://example.org/activities/126"
- ]
-},
-{
- "summary": "John followed Sally",
- "id": "http://example.org/activities/123",
- "type": "Follow",
- "actor": "acct:john@example.org",
- "object": "acct:sally@example.org",
- "context": "http://example.org/connections/123"
-},
-{
- "summary": "Sally followed John",
- "id": "http://example.org/activities/124",
- "type": "Follow",
- "actor": "acct:sally@example.org",
- "object": "acct:john@example.org",
- "context": "http://example.org/connections/123"
-},
-{
- "summary": "John added Sally to his friends list",
- "id": "http://example.org/activities/125",
- "type": "Add",
- "actor": "acct:john@example.org",
- "object": "http://example.org/connections/123",
- "target": {
-   "type": "Collection",
-   "summary": "John's Connections"
- },
- "context": "http://example.org/connections/123"
-},
-{
- "summary": "Sally added John to her friends list",
- "id": "http://example.org/activities/126",
- "type": "Add",
- "actor": "acct:sally@example.org",
- "object": "http://example.org/connections/123",
- "target": {
-   "type": "Collection",
-   "summary": "Sally's Connections"
- },
- "context": "http://example.org/connections/123"
-}
-]
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "summary": "Sally and John's relationship history",
+  "type": "Collection",
+  "items": [
+    {
+      "summary": "John accepted Sally's friend request",
+      "id": "http://example.org/activities/122",
+      "type": "Accept",
+      "actor": "acct:john@example.org",
+      "object": "http://example.org/connection-requests/123",
+      "inReplyTo": "http://example.org/connection-requests/123",
+      "context": "http://example.org/connections/123",
+      "result": [
+        "http://example.org/activities/123",
+        "http://example.org/activities/124",
+        "http://example.org/activities/125",
+        "http://example.org/activities/126"
+      ]
+    },
+    {
+      "summary": "John followed Sally",
+      "id": "http://example.org/activities/123",
+      "type": "Follow",
+      "actor": "acct:john@example.org",
+      "object": "acct:sally@example.org",
+      "context": "http://example.org/connections/123"
+    },
+    {
+      "summary": "Sally followed John",
+      "id": "http://example.org/activities/124",
+      "type": "Follow",
+      "actor": "acct:sally@example.org",
+      "object": "acct:john@example.org",
+      "context": "http://example.org/connections/123"
+    },
+    {
+      "summary": "John added Sally to his friends list",
+      "id": "http://example.org/activities/125",
+      "type": "Add",
+      "actor": "acct:john@example.org",
+      "object": "http://example.org/connections/123",
+      "target": {
+        "type": "Collection",
+        "summary": "John's Connections"
+      },
+      "context": "http://example.org/connections/123"
+    },
+    {
+      "summary": "Sally added John to her friends list",
+      "id": "http://example.org/activities/126",
+      "type": "Add",
+      "actor": "acct:sally@example.org",
+      "object": "http://example.org/connections/123",
+      "target": {
+        "type": "Collection",
+        "summary": "Sally's Connections"
+      },
+      "context": "http://example.org/connections/123"
+    }
+  ]
 }</pre>
      </div>
 
@@ -6199,9 +6199,9 @@
 
    <div id="ex182-jsonldb" style="display: block;">
 <pre class="example highlight json">{
-"@context": "https://www.w3.org/ns/activitystreams",
-"type": "Place",
-"name": "San Francisco, CA"
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "type": "Place",
+  "name": "San Francisco, CA"
 }</pre>
    </div>
 
@@ -6211,11 +6211,11 @@
 
    <div id="ex183-jsonld" style="display: block;">
 <pre class="example highlight json">{
-"@context": "https://www.w3.org/ns/activitystreams",
-"type": "Place",
-"name": "San Francisco, CA",
-"longitude": "122.4167",
-"latitude": "37.7833"
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "type": "Place",
+  "name": "San Francisco, CA",
+  "longitude": "122.4167",
+  "latitude": "37.7833"
 }</pre>
    </div>
 
