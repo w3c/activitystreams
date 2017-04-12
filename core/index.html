@@ -6,7 +6,8 @@
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
-    specStatus: "CR",
+    specStatus: "ED",
+    prEnd: "2017-05-11",
     crEnd: "2017-01-12",
     license: "w3c-software-doc",
     edDraftURI: "http://w3c.github.io/activitystreams/core/",
@@ -24,19 +25,20 @@
       },
       {
         name: "Evan Prodromou",
-        url: "https://fuzzy.ai/about#evan",
+        url: "https://fuzzy.ai/about",
         company: "Fuzzy.ai",
         companyUrl: "https://fuzzy.ai",
         w3cid: "43626"
       }
-    ],
+      ],
+      
     maxTocLevel: 2,
-    previousMaturity: "WD",
-    previousPublishDate:  "2016-07-12",
+    previousMaturity: "CR",
+    previousPublishDate:  "2016-12-15",
     wg: "Social Web Working Group",
-    wgURI: "http://www.w3.org/Social/WG",
+    wgURI: "https://www.w3.org/Social/WG",
     wgPublicList: "public-socialweb",
-    wgPatentURI: "http://www.w3.org/2004/01/pp-impl/72531/status",
+    wgPatentURI: "https://www.w3.org/2004/01/pp-impl/72531/status",
     localBiblio:  {
       "AS1": {
         title: "JSON Activity Streams 1.0",
@@ -275,7 +277,7 @@
           be consistent with what would be produced by the standard
           JSON-LD 1.0 Processing Algorithms and API [[!JSON-LD-API]] Compaction
           Algorithm using, at least, the normative JSON-LD @context definition
-          provided <a href="activitystreams2-context.jsonld">here</a>.
+          provided <a href="https://www.w3.org/ns/activitystreams">here</a>.
           Implementations MAY augment the provided @context with additional
           @context definitions but MUST NOT override or change the normative
           context. Implementations MAY also use additional properties and values
@@ -293,7 +295,7 @@
           by the [[JSON-LD]] specification. Implementations producing Activity
           Streams 2.0 documents SHOULD include a <code>@context</code> property
           with a value that includes a reference to the normative
-          <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
+          <a href="https://www.w3.org/ns/activitystreams">Activity Streams 2.0 JSON-LD
           @context definition</a> using the URL
           "<code>https://www.w3.org/ns/activitystreams</code>". Implementations
           MAY use the alternative URL
@@ -379,7 +381,7 @@
           "<code>application/activity+json</code>" MIME media type, and
           that document does not contain a <code>@context</code> property
           whose value includes a reference to the normative
-          <a href="activitystreams2-context.jsonld">Activity Streams 2.0 JSON-LD
+          <a href="https://www.w3.org/ns/activitystreams">Activity Streams 2.0 JSON-LD
           @context definition</a>, the implementation MUST assume that the
           normative @context definition still applies.
         </p>
@@ -661,7 +663,7 @@ as2-date-time    = full-date "T" as2-full-time
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attachment">attachment</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attributedto">attributedTo</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-audience">audience</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content-term">content</a></code> |
+          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">content</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-context">context</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">contentMap</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code> |
@@ -2311,7 +2313,7 @@ profile-URI   = URI</"></"></pre>
       While the syntax defined by this specification diverges from
       that defined by JSON Activity Streams 1.0, the fundamental model
       defined by that original specification remains intact. Specific
-      <a href="#deprecated-syntax">processing rules</a> are defined by
+      processing rules are defined by
       this specification that allow existing Activity Streams 1.0
       documents to be mapped to and processed as an Activity Streams 2.0
       document.
@@ -2353,7 +2355,7 @@ profile-URI   = URI</"></"></pre>
       When processing Activity Streams 1.0 documents using a JSON-LD
       processing model, implementations can use the special AS 1.0 to AS 2.0
       expansion @context definition provided
-      <a href="activitystreams1-context.jsonld">here</a> to produce
+      <a href="https://www.w3.org/ns/activitystreams1-context.jsonld">here</a> to produce
       the JSON-LD expanded representation. Refer to the
       <a href="http://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD
       Processing Algorithms and API</a> for details.

@@ -6,7 +6,8 @@
   <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
-    specStatus: "CR",
+    specStatus: "ED",
+    prEnd: "2017-05-11",
     crEnd: "2017-01-12",
     license: "w3c-software-doc",
     edDraftURI: "http://w3c.github.io/activitystreams/vocabulary/",
@@ -24,7 +25,7 @@
       },
       {
         name: "Evan Prodromou",
-        url: "https://fuzzy.ai/about#evan",
+        url: "https://fuzzy.ai/about",
         company: "Fuzzy.ai",
         companyUrl: "https://fuzzy.ai",
         w3cid: "43626"
@@ -32,12 +33,12 @@
     ],
     additionalCopyrightHolders: ["Activity Streams Working Group", "IBM"],
     maxTocLevel: 2,
-    previousMaturity: "WD",
-    previousPublishDate:  "2016-07-12",
+    previousMaturity: "CR",
+    previousPublishDate:  "2016-12-15",
     wg: "Social Web Working Group",
-    wgURI: "http://www.w3.org/Social/WG",
+    wgURI: "https://www.w3.org/Social/WG",
     wgPublicList: "public-socialweb",
-    wgPatentURI: "http://www.w3.org/2004/01/pp-impl/72531/status",
+    wgPatentURI: "https://www.w3.org/2004/01/pp-impl/72531/status",
     localBiblio:  {
       "AS1": {
         title: "JSON Activity Streams 1.0",
@@ -131,7 +132,7 @@
   <section id="introduction">
     <h2>Introduction</h2>
     <p>
-      <a href="activitystreams2.html">The Activity Streams 2.0 Core Syntax</a>
+      <a href="https://www.w3.org/TR/activitystreams-core/">The Activity Streams 2.0 Core Syntax</a>
       defines the JSON syntax for Activity Streams. This document defines the
       vocabulary properties.
     </p>
@@ -157,7 +158,7 @@
       implement support for the Extended properties, all implementations MUST
       at least be capable of serializing and deserializing the Extended
       properties in accordance with the
-      <a href="activitystreams2.html">Activity Streams 2.0 Core Syntax</a>.
+      <a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams 2.0 Core Syntax</a>.
     </p>
 
     <p>
@@ -484,7 +485,7 @@
             </p>
             <p>
               Refer to the
-              <a href="https://www.w3.org/TR/activitystreams-core/#def-collection">Activity Streams 2.0 Core</a> specification for a complete description of the
+              <a href="https://www.w3.org/TR/activitystreams-core/#collection">Activity Streams 2.0 Core</a> specification for a complete description of the
               <code>Collection</code> type.
             </p>
           </td>
@@ -6778,7 +6779,7 @@
     <h4>Questions</h4>
     <p>
       the Questions use case primarily deals with representing inquiries
-      of any type. See <a href="questions"></a> for more information.
+      of any type. See <a href="#questions"></a> for more information.
     </p>
     <p>Relevant Activities:
       <ul>
@@ -6847,11 +6848,14 @@
     <h2>Non-normative Ontology Definition</h2>
 
     <p>
-      A <i>non-normative</i> turtle definition of the Activity Streams 2.0
-      vocabulary is provided <a href="activitystreams2.owl">here</a> as a
-      convenience for implementers wishing to use RDF mechanisms for processing
-      Activity Streams 2.0. Note, however, that this document provides the
-      normative definition of the Activity Streams 2.0 vocabulary.
+      A <i>non-normative</i> turtle definition of the Activity Streams
+      2.0 vocabulary is provided <a
+      href="/ns/activitystreams-owl">here</a> and/or
+      at <a href="/ns/activitystreams">the namespace</a> as
+      a convenience for implementers wishing to use RDF mechanisms for
+      processing Activity Streams 2.0. Note, however, that this
+      document provides the normative definition of the Activity
+      Streams 2.0 vocabulary.
     </p>
 
   </section>
