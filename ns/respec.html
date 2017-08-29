@@ -153,7 +153,6 @@ aside.example div.example div.example-title {
     color: #999;
 }
 </style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-FPWD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
-<script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
 <script class='remove'>
       var respecConfig =     {
       "specStatus": "base",
@@ -166,7 +165,6 @@ aside.example div.example div.example-title {
         "companyURL": "https://w3.org/"
       }],
       "previousMaturity": "ED",
-      "previousPublishDate": "n/a",
       "edDraftURI": "https://rhiaro.github.io/as-ns",
       "wg": "Social Web Working Group",
       "wgURI": "https://www.w3.org/Social/WG",
@@ -182,7 +180,7 @@ aside.example div.example div.example-title {
         },
         {
           "value": "Issues",
-          "href": "https://github.com/rhiaro/as-ns/issues"
+          "href": "https://github.com/w3c/activitystreams/issues"
         }]
       }],
       "localBiblio":
@@ -210,6 +208,7 @@ aside.example div.example div.example-title {
       }
     };
     </script>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
 </head>
 <body prefix="as: http://www.w3.org/ns/activitystreams#" about="" typeof="as:Article" property="as:content" datatype="rdf:HTML">
   <section id="abstract">
@@ -397,19 +396,22 @@ aside.example div.example div.example-title {
       <h3>ActivityPub</h3>
       <p>All terms in this section are described in the [[!ActivityPub]] specification.</p>
       <ul>
-        <li><a href="https://www.w3.org/TR/activitypub#inbox" id="inbox">inbox</a> (<code>@id</code>) - This is an alias of <code><a href="https://www.w3.org/ns/ldp#inbox">ldp:inbox</a></code>.</li>
-        <li><a href="https://www.w3.org/TR/activitypub#outbox" id="outbox">outbox</a> (<code>@id</code>)</li>
-        <li><a href="https://www.w3.org/TR/activitypub#following" id="following">following</a> (<code>@id</code>)</li>
-        <li><a href="https://www.w3.org/TR/activitypub#followers" id="followers">followers</a> (<code>@id</code>)</li>
-        <li><a href="https://www.w3.org/TR/activitypub#streams-property" id="streams">streams</a> (<code>@id</code>)</li>
-        <li><a href="https://www.w3.org/TR/activitypub#preferredUsername" id="preferredUsername">preferredUsername</a> </li>
         <li><a href="https://www.w3.org/TR/activitypub#endpoints" id="endpoints">endpoints</a> (<code>@id</code>)</li>
-        <li><a href="https://www.w3.org/TR/activitypub#uploadMedia" id="uploadMedia">uploadMedia</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#following-property" id="following">following</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#followers-property" id="followers">followers</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#inbox-property" id="inbox">inbox</a> (<code>@id</code>) - This is an alias of <code><a href="https://www.w3.org/ns/ldp#inbox">ldp:inbox</a></code>.</li>
+        <li><a href="https://www.w3.org/TR/activitypub#liked-property" id="liked">liked</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#oauthAuthorizationEndpoint" id="oauthAuthorizationEndpoint">oauthAuthorizationEndpoint</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#oauthTokenEndpoint" id="oauthTokenEndpoint">oauthTokenEndpoint</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#outbox-property" id="outbox">outbox</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#preferredUsername" id="preferredUsername">preferredUsername</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#provideClientKey" id="provideClientKey">provideClientKey</a> (<code>@id</code>)</li>
         <li><a href="https://www.w3.org/TR/activitypub#proxyUrl" id="proxyUrl">proxyUrl</a> (<code>@id</code>)</li>
-        <li><a href="https://www.w3.org/TR/activitypub#oauthClientAuthorize" id="oauthClientAuthorize">oauthClientAuthorize</a> </li>
-        <li><a href="https://www.w3.org/TR/activitypub#provideClientKey" id="provideClientKey">provideClientKey</a> </li>
-        <li><a href="https://www.w3.org/TR/activitypub#authorizeClientKey" id="authorizeClientKey">authorizeClientKey</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#sharedInbox" id="sharedInbox">sharedInbox</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#signClientKey" id="signClientKey">signClientKey</a> (<code>@id</code>)</li>
         <li><a href="https://www.w3.org/TR/activitypub#source" id="source">source</a> </li>
+        <li><a href="https://www.w3.org/TR/activitypub#streams-property" id="streams">streams</a> (<code>@id</code>)</li>
+        <li><a href="https://www.w3.org/TR/activitypub#uploadMedia" id="uploadMedia">uploadMedia</a> (<code>@id</code>)</li>
       </ul>
     </section>
 
