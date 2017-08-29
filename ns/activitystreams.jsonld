@@ -333,9 +333,30 @@
       "@id": "as:proxyUrl",
       "@type": "@id"
     },
-    "oauthClientAuthorize": "as:oauthClientAuthorize",
-    "provideClientKey": "as:provideClientKey",
-    "authorizeClientKey": "as:authorizeClientKey",
+    "liked": {
+      "@id": "as:liked",
+      "@type": "@id"
+    },
+    "oauthAuthorizationEndpoint": {
+      "@id": "as:oauthAuthorizationEndpoint",
+      "@type": "@id"
+    },
+    "oauthTokenEndpoint": {
+      "@id": "as:oauthTokenEndpoint",
+      "@type": "@id"
+    },
+    "provideClientKey": {
+      "@id": "as:provideClientKey",
+      "@type": "@id"
+    },
+    "signClientKey": {
+      "@id": "as:signClientKey",
+      "@type": "@id"
+    },
+    "sharedInbox": {
+      "@id": "as:sharedInbox",
+      "@type": "@id"
+    },
     "source": "as:source"
   }
 }
