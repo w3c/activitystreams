@@ -96,11 +96,11 @@ Implemented? : n (planned)
 
 ### CollectionPage
 
-Implemented? : n (planned)
+Implemented? : y
 
-* partOf: n
-* next: n
-* prev: n
+* partOf: y
+* next: y
+* prev: y
 
 ### OrderedCollectionPage
 
