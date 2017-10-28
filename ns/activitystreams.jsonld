@@ -357,6 +357,10 @@
       "@id": "as:sharedInbox",
       "@type": "@id"
     },
+    "Public": {
+      "@id": "as:Public",
+      "@type": "@id"
+    },
     "source": "as:source"
   }
 }
