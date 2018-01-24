@@ -2675,10 +2675,10 @@
 <div id="ex181-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "summary": "Mention of Joe by Carrie in her note",
   "type": "Mention",
+  "name": "Mention of Joe by Carrie in her note",
   "href": "http://example.org/joe",
-  "name": "Joe"
+  "content": "Joe"
 }</pre>
 </div>
             </td>
@@ -3502,9 +3502,7 @@
   "icon": {
     "type": "Image",
     "name": "Note icon",
-    "url": "http://example.org/note.png",
-    "width": 16,
-    "height": 16
+    "url": "http://example.org/note.png"
   }
 }</pre>
   </div>
@@ -3517,18 +3515,22 @@
   "content": "A simple note",
   "icon": [
     {
-      "type": "Image",
-      "summary": "Note (16x16)",
-      "url": "http://example.org/note1.png",
+      "type": "Link",
+      "name": "Note (16x16)",
+      "href": "http://example.org/note1.png",
       "width": 16,
       "height": 16
     },
     {
       "type": "Image",
-      "summary": "Note (32x32)",
-      "url": "http://example.org/note2.png",
-      "width": 32,
-      "height": 32
+      "name": "Note (32x32)",
+      "url": {
+        "type": "Link",
+        "name": "Note (32x32)",
+        "href": "http://example.org/note2.png",
+        "width": 32,
+        "height": 32
+      }
     }
   ]
 }</pre>
