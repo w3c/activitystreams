@@ -1,0 +1,56 @@
+Name: Benjamin Goering
+Email: ben@bengo.co
+
+Media type name: application
+Media subtype name: activity+json
+
+Required parameters: None
+
+Optional parameters:
+None
+
+Encoding considerations: 8bit
+whatever JSON/utf-8 is.
+
+Security considerations:
+https://www.w3.org/TR/activitystreams-core/#security-considerations
+
+Interoperability considerations:
+https://www.w3.org/TR/activitystreams-core/#implementations
+
+Published specification:
+https://www.w3.org/TR/activitystreams-core
+
+Applications which use this media:
+https://www.w3.org/TR/activitystreams-core/#implementations
+
+Fragment identifier considerations:
+None? Same as JSON?
+
+Restrictions on usage:
+See W3C License and Patent Policy and such
+
+Provisional registration? (standards tree only):
+None. This spec just became w3c rec, so doesn't need to be provisional. The corresponding Social Web Working Group is now complete.
+
+Additional information:
+
+1. Deprecated alias names for this type: none
+2. Magic number(s): none
+3. File extension(s): none
+4. Macintosh file type code: none
+5. Object Identifiers: none
+
+General Comments:
+ActivityStreams is now a W3C Technical Recommendation.
+https://github.com/w3c/activitystreams/issues/424
+
+Person to contact for further information:
+
+1. Name: Benjamin Goering
+2. Email: ben@bengo.co
+
+Intended usage: Common
+This specification details a model for representing potential and completed activities using the JSON format. It is intended to be used with vocabularies that detail the structure of activities, and define specific types of activities.
+
+Author/Change controller: W3C
