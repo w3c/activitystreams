@@ -361,6 +361,14 @@
       "@id": "as:Public",
       "@type": "@id"
     },
-    "source": "as:source"
+    "source": "as:source",
+    "likes": {
+      "@id": "as:likes",
+      "@type": "@id"
+    },
+    "shares": {
+      "@id": "as:shares",
+      "@type": "@id"
+    }
   }
 }
