@@ -1,0 +1,62 @@
+Name: Benjamin Goering
+Email: ben@bengo.co
+
+Media type name: application
+Media subtype name: activity+json
+
+Required parameters: None
+
+Optional parameters:
+None
+
+Encoding considerations:
+This JSON-based media is always represented in the
+utf-8 charset. See [RFC 8259 section 8.1](https://tools.ietf.org/html/rfc8259#section-8.1).
+
+Security considerations:
+* https://www.w3.org/TR/activitystreams-core/#security-considerations
+* Executable Content - Most content with this media type is not executable. However, some values support any valid text/html value, and care should be taken when including these HTML values in other web documents. In particular, some consuming applications may sanitize this HTML to only include markup (e.g. dropping `<script />` tags).
+* Privacy and Integrity - Information with this media type is not considered private. Instead privacy and integrity is usually provided by exchanging application/activity+json messages over a secure transport layer, e.g. [Transport Layer Security (TLS)](https://tools.ietf.org/html/rfc5246).
+* This media type inherits security considerations from
+  * The JavaScript Object Notation (JSON) Data Interchange Format - https://tools.ietf.org/html/rfc8259#section-12
+  * Uniform Resource Identifier (URI): Generic Syntax - https://tools.ietf.org/html/rfc3986#section-7
+  * Internationalized Resource Identifiers (IRIs) - https://www.ietf.org/rfc/rfc3987.txt
+
+Interoperability considerations:
+https://www.w3.org/TR/activitystreams-core/#implementations
+
+Published specification:
+https://www.w3.org/TR/activitystreams-core
+
+Applications which use this media:
+https://www.w3.org/TR/activitystreams-core/#implementations
+
+Fragment identifier considerations:
+None.
+
+Restrictions on usage:
+See W3C License and Patent Policy and such
+
+Provisional registration? (standards tree only):
+None. This spec just became w3c rec, so doesn't need to be provisional. The corresponding Social Web Working Group is now complete.
+
+Additional information:
+
+1. Deprecated alias names for this type: none
+2. Magic number(s): none
+3. File extension(s): none
+4. Macintosh file type code: none
+5. Object Identifiers: none
+
+General Comments:
+ActivityStreams is now a W3C Technical Recommendation.
+
+Person to contact for further information:
+
+1. Name: Benjamin Goering
+2. Email: ben@bengo.co
+
+Intended usage: Common
+This specification details a model for representing potential and completed activities using the JSON format. It is intended to be used with vocabularies that detail the structure of activities, and define specific types of activities.
+
+Author/Change controller: W3C
