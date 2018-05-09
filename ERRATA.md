@@ -14,4 +14,15 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
     
     ```text
     "cm" | "feet" | "inches" | "km" | "m" | "miles" | xsd:anyURI
+    
+  - Example 58 includes a `summary` property on a `Mention` object, which is
+    not allowed. A corrected example:
+    
+    ```json
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "type": "Mention",
+      "href": "http://example.org/joe",
+      "name": "Joe"
+    }
     ```
