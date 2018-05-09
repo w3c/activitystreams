@@ -8,6 +8,19 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Vocabulary
 
+  - Example 150 has `latitude` and `longitude` properties with string values.
+    The range of these properties is `xsd:float`. A correct example would be:
+
+   ```json
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "type": "Place",
+      "name": "San Francisco, CA",
+      "longitude": 122.4167,
+      "latitude": 37.7833
+    }
+    ```
+
   - Example 80 has `Image` objects with `width` and `height` properties, which
     are only allowed on `Link` objects. One alternative is to use `Link` objects
     with the correct `height` and `width` as the `url` property for each `Image`
