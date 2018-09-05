@@ -4,6 +4,7 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "as": "https://www.w3.org/ns/activitystreams#",
     "ldp": "http://www.w3.org/ns/ldp#",
+    "sec": "https://w3id.org/security#",
     "id": "@id",
     "type": "@type",
     "Accept": "as:Accept",
