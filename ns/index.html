@@ -436,7 +436,7 @@ details.respec-tests-details > li {
         This document is merely a <abbr title="World Wide Web Consortium">W3C</abbr>-internal  document. It
         has no official standing of any kind and does not represent consensus of the <abbr title="World Wide Web Consortium">W3C</abbr>
         Membership.
-      </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#h-introduction" class="tocxref"><span class="secno">1. </span><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></a></li><li class="tocline"><a href="#class-definitions" class="tocxref"><span class="secno">2. </span>Class definitions</a></li><li class="tocline"><a href="#property-definitions" class="tocxref"><span class="secno">3. </span>Property definitions</a></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">4. </span>Extensions</a><ol class="toc"><li class="tocline"><a href="#activitypub" class="tocxref"><span class="secno">4.1 </span>ActivityPub</a></li><li class="tocline"><a href="#additional-terms" class="tocxref"><span class="secno">4.2 </span>Additional terms</a></li></ol></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li></ol></li></ol></nav>
+      </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#h-introduction" class="tocxref"><span class="secno">1. </span><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></a></li><li class="tocline"><a href="#class-definitions" class="tocxref"><span class="secno">2. </span>Class definitions</a></li><li class="tocline"><a href="#property-definitions" class="tocxref"><span class="secno">3. </span>Property definitions</a></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">4. </span>Extensions</a><ol class="toc"><li class="tocline"><a href="#activitypub" class="tocxref"><span class="secno">4.1 </span>ActivityPub</a></li><li class="tocline"><a href="#did-core" class="tocxref"><span class="secno">4.2 </span>DID Core</a></li></ol></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li></ol></li></ol></nav>
 
   <section property="bibo:hasPart" resource="#introduction" typeof="bibo:Chapter" id="introduction">
     <!--OddPage-->
@@ -617,7 +617,7 @@ details.respec-tests-details > li {
 
   <section id="extensions">
     <!--OddPage--><h2 id="x4-extensions"><span class="secno">4. </span>Extensions</h2>
-    <p>This namespaced may be used by extensions to AS2 which are considered stable. The extensions must document their terms in a spec-like way at a persistant URL. Approval of extensions will be by the Social Web WG until it closes, and after that by the followup Community Group. Process and criteria for extensions approval is being finalised and will be described or linked to here in due course.</p>
+    <p>This namespace may be used by extensions to AS2 which are considered stable. The extensions must document their terms in a spec-like way at a persistant URL. Approval of extensions will be by the Social Web WG until it closes, and after that by the followup Community Group. Process and criteria for extensions approval is being finalised and will be described or linked to here in due course.</p>
 
     <section id="activitypub">
       <h3 id="x4-1-activitypub"><span class="secno">4.1 </span>ActivityPub</h3>
@@ -644,11 +644,16 @@ details.respec-tests-details > li {
       </ul>
     </section>
 
-    <section id="additional-terms">
-      <h3 id="x4-2-additional-terms"><span class="secno">4.2 </span>Additional terms</h3>
-      <p>The terms in this section are linked to their normative definitions in external specifications.</p>
+    <section id="did-core">
+      <h3 id="x4-2-did-core"><span class="secno">4.2 </span>DID Core</h3>
+      <p>The terms in this section are described in the [<cite><a class="bibref" href="#bib-did-core">DID-CORE</a></cite>] specification.</p>
       <ul>
-        <li><a href="https://www.w3.org/TR/did-core/#dfn-alsoknownas" id="alsoKnownAs">alsoKnownAs</a> [<cite><a class="bibref" href="#bib-did-core">DID-CORE</a></cite>]</li>
+        <li>
+          <a href="https://www.w3.org/TR/did-core/#dfn-alsoknownas" id="alsoKnownAs">alsoKnownAs</a> (<code>@id</code>)
+          <ul>
+            <li>Social Web Incubator CG Resolution: <a href="https://www.w3.org/2020/11/07-social-minutes.html#ResolutionSummary">2020-11-07</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
 
