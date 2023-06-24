@@ -25,7 +25,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
     are only allowed on `Link` objects. One alternative is to use `Link` objects
     with the correct `height` and `width` as the `url` property for each `Image`
     object.
-    
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
@@ -60,14 +60,14 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - The range of the `units` property is given as an enumerated set of values.
     Due to a formatting error, some of these values are shown with an incorrect
     leading space character. The correct range is:
-    
+
     ```text
     "cm" | "feet" | "inches" | "km" | "m" | "miles" | xsd:anyURI
     ```
 
   - Example 58 includes a `summary` property on a `Mention` object, which is
     not allowed. A corrected example:
-    
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
@@ -80,3 +80,6 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - Unlike `latitude` and `longitude`, the domain of the `altitude` term is the `Object` type. The `altitude` term should be included in the list of properties of an `Object`. Because `altitude` is primarily documented as a property of a `Place`, publishers should not include `altitude` on objects that are not of type `Place`, and consumers should accept objects with this property that aren't of type `Place`.
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
+
+  - The `name`, `nameMap`, `content`, `contentMap`, `summary` and `summaryMap` properties
+    are Functional.
