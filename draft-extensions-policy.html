@@ -36,198 +36,216 @@
         recommendation.
       </p>
     </section>
-    <section data-dfn-for="SocialCG-Extensions">
-      <h2>Including Extensions in the Activity Streams 2.0 context document</h2>
-      <section>
-        <h2>Motivation</h2>
-        <p>Activity Streams 2.0 is a vocabulary for representing social data.
-            It is designed to be extensible, so that new terms can be used by
-            publishers and consumers.
-        </p>
-        <p>
-            Extensions provide at least the following benefits:
-        </p>
-        <ul>
-            <li>Support specialist vocabularies for specific fields of interest</li>
-            <li>Model social software patterns that were not common when
-                Activity Streams 2.0 was originally published</li>
-            <li>Provide alternate terms or structures for patterns already
-                represented in Activity Streams 2.0 that improve the vocabulary's clarity
-                or ease of use</li>
-        </ul>
-        <p>
-            Any publisher can define an extension to Activity Streams 2.0, and use it in
-            published documents. For example, a publisher could define an extension
-            that provides a term for the favorite ice cream flavor of a person.
-        </p>
-        <figure>
-            <figcaption>
-              Context document for the example favorite ice cream flavor context.
-            </figcaption>
-            <div id="ex1-context" style="display: block;">
-              <pre class="example highlight json">
-                {
-                    "@context": {
-                        "ic": "https://flavors.example/ns/icecream#",
-                        "favoriteIceCreamFlavor": {
-                            "@id": "pdg:favoriteIceCreamFlavor",
-                            "@type": "@id"
-                        },
-                        "Chocolate": "ic:Chocolate",
-                        "Vanilla": "ic:Vanilla",
-                        "Strawberry": "ic:Strawberry",
-                        "Pistachio": "ic:Pistachio"
-                    }
-                }
-              </pre>
-            </div>
-        </figure>
-        <p>
-            This publisher, or any other publisher, can create Activity Streams 2.0
-            documents that use this extension.
-        </p>
-        <figure>
-            <figcaption>
-              Example of a person with a favorite flavor of ice cream term.
-            </figcaption>
-            <div id="ex1-context" style="display: block;">
-              <pre class="example highlight json">
-                {
-                    "@context": [
-                        "https://www.w3.org/ns/activitystreams",
-                        "https://favorites.example/ns/icecream"
-                    ],
-                    "id": "https://example.com/people/evan",
-                    "type": "Person",
-                    "name": "Evan Prodromou",
-                    "favoriteIceCreamFlavor": "Pistachio"
-                }
-              </pre>
-            </div>
-        </figure>
-        <p>
-            If the publisher uses different extensions in the same
-            document with different terms, they will need to resolve
-            those naming conflicts by hand.
-        </p>
-        <figure>
-            <figcaption>
-                Example of using two extensions with conflicting terms for "Chocolate"
-                as an ice cream flavor and as a color of a horse's coat.
-            </figcaption>
-            <div id="ex1-context" style="display: block;">
-              <pre class="example highlight json">
-                {
-                    "@context": [
-                        "https://www.w3.org/ns/activitystreams",
-                        "https://favorites.example/ns/icecream",
-                        "https://horse.example/ns/colors"
-                    ],
-                    "id": "https://example.com/people/evan",
-                    "type": "Person",
-                    "name": "Evan Prodromou",
-                    "favoriteIceCreamFlavor": "ic:Chocolate",
-                    "horseCoatColor": "horse:Chocolate"
-                }
-              </pre>
-            </div>
-        </figure>
-        <p>
-            Any publisher or consumer can implement this extension, subject to
-            the terms of the creator's license(s), if any.
-        </p>
-        <p>
-            Referencing many extensions can be a burden for publishers and consumers.
-            Although one or two lines in the @context property of the Activity Streams 2.0
-            document may not be a problem, ten or twenty could be. In addition,
-            the more extensions that are used, the more likely it is that there will
-            be conflicts between terms.
-        </p>
-        <p>
-            If an extension becomes very popular, it may be useful to include its terms
-            and namespace in the main Activity Streams 2.0 context document.
-            This will let publishers use the extension without having to include
-            an additional line of context. It also provides an opportunity to resolve
-            conflicts between terms in different extensions in one place.
-        </p>
-        <p>
-            This inclusion does not come without a price. First, the Activity Streams 2.0
-            context document is that much larger, which has a cost in terms of readability,
-            maintainability, and bandwidth used. In addition, there is work for the
-            SocialCG in updating, documenting, harmonizing, and maintaining the context
-            document.
-        </p>
-        <p>
-            This Note describes the criteria that the SocialCG will use to decide
-            whether the benefits of simplicity and clarity by including extension
-            terms in the main context document outweigh the costs of doing so.
-        </p>
-        <p>
-            Properly implemented, this process provides a way to make Activity Streams 2.0
-            a continuously evolving vocabulary, serving new needs for developers and
-            users, while maintaining the stability of the core terms.
-        </p>
-      </section>
-      <section>
-        <h2>Process</h2>
-        <p>These are the steps to including an extension in
-            the Activity Streams 2.0 context document.</p>
-        <ol>
-          <li>Publish the extension for review. Extensions can be published
-            through the Federation Enhancement Proposal (FEP) process, as Notes of
-            the SocialCG, through another standardisation process, or by any other
-            organisations or individuals.
+    <section>
+      <h2>Motivation</h2>
+      <p>
+        Activity Streams 2.0, as described in [[[[activitystreams-core]]
+        and [[activitystreams-vocabulary]] is a vocabulary for representing
+        social data. It is used by, among others, the [[activitypub]] API and protocol.
+        It is designed to be extensible, so that new terms can
+        be used by publishers and consumers.
+      </p>
+      <p>
+          Extensions provide at least the following benefits:
+      </p>
+      <ul>
+          <li>Support specialist vocabularies for specific fields of interest</li>
+          <li>Model social software patterns that were not common when
+              Activity Streams 2.0 was originally published</li>
+          <li>Provide alternate terms or structures for patterns already
+              represented in Activity Streams 2.0 that improve the vocabulary's clarity
+              or ease of use</li>
+      </ul>
+      <p>
+          Any publisher can define an extension to Activity Streams 2.0, and use it in
+          published documents. For example, a publisher could define an extension
+          that provides a term for the favorite ice cream flavor of a person.
+      </p>
+      <figure>
+          <figcaption>
+            Context document for the example favorite ice cream flavor context.
+          </figcaption>
+          <div id="ex1-context" style="display: block;">
+            <pre class="example highlight json">
+              {
+                  "@context": {
+                      "ic": "https://flavors.example/ns/icecream#",
+                      "favoriteIceCreamFlavor": {
+                          "@id": "pdg:favoriteIceCreamFlavor",
+                          "@type": "@id"
+                      },
+                      "Chocolate": "ic:Chocolate",
+                      "Vanilla": "ic:Vanilla",
+                      "Strawberry": "ic:Strawberry",
+                      "Pistachio": "ic:Pistachio"
+                  }
+              }
+            </pre>
+          </div>
+      </figure>
+      <p>
+          This publisher, or any other publisher, can create Activity Streams 2.0
+          documents that use this extension.
+      </p>
+      <figure>
+          <figcaption>
+            Example of a person with a favorite flavor of ice cream term.
+          </figcaption>
+          <div id="ex1-context" style="display: block;">
+            <pre class="example highlight json">
+              {
+                  "@context": [
+                      "https://www.w3.org/ns/activitystreams",
+                      "https://favorites.example/ns/icecream"
+                  ],
+                  "id": "https://example.com/people/evan",
+                  "type": "Person",
+                  "name": "Evan Prodromou",
+                  "favoriteIceCreamFlavor": "Pistachio"
+              }
+            </pre>
+          </div>
+      </figure>
+      <p>
+          If the publisher uses different extensions in the same
+          document with different terms, they will need to resolve
+          those naming conflicts by hand.
+      </p>
+      <figure>
+          <figcaption>
+              Example of using two extensions with conflicting terms for "Chocolate"
+              as an ice cream flavor and as a color of a horse's coat.
+          </figcaption>
+          <div id="ex1-context" style="display: block;">
+            <pre class="example highlight json">
+              {
+                  "@context": [
+                      "https://www.w3.org/ns/activitystreams",
+                      "https://favorites.example/ns/icecream",
+                      "https://horse.example/ns/colors"
+                  ],
+                  "id": "https://example.com/people/evan",
+                  "type": "Person",
+                  "name": "Evan Prodromou",
+                  "favoriteIceCreamFlavor": "ic:Chocolate",
+                  "horseCoatColor": "horse:Chocolate"
+              }
+            </pre>
+          </div>
+      </figure>
+      <p>
+          Any publisher or consumer can implement this extension, subject to
+          the terms of the creator's license(s), if any.
+      </p>
+      <p>
+          Referencing many extensions can be a burden for publishers and consumers.
+          Although one or two lines in the @context property of the Activity Streams 2.0
+          document may not be a problem, ten or twenty could be. In addition,
+          the more extensions that are used, the more likely it is that there will
+          be conflicts between terms.
+      </p>
+      <p>
+          If an extension becomes very popular, it may be useful to include its terms
+          and namespace in the main Activity Streams 2.0 context document.
+          This will let publishers use the extension without having to include
+          an additional line of context. It also provides an opportunity to resolve
+          conflicts between terms in different extensions in the SocialCG.
+      </p>
+      <p>
+          This inclusion does not come without a price. First, the Activity Streams 2.0
+          context document is that much larger, which has a cost in terms of readability,
+          maintainability, and bandwidth used. In addition, there is work for the
+          SocialCG in updating, documenting, harmonizing, and maintaining the context
+          document.
+      </p>
+      <p>
+          This Note describes the criteria that the SocialCG will use to decide
+          whether the benefits of simplicity and clarity by including extension
+          terms in the main context document outweigh the costs of doing so.
+      </p>
+      <p>
+          Properly implemented, this process provides a way to make Activity Streams 2.0
+          a continuously evolving vocabulary, serving new needs for developers and
+          users, while maintaining the stability of the core terms.
+      </p>
+    </section>
+    <section>
+      <h2>Process</h2>
+      <p>These are the steps to including an extension in
+          the Activity Streams 2.0 context document.</p>
+      <ol>
+        <li><b>Publish the extension for review.</b> Extensions can be published
+          through the Federation Enhancement Proposal (FEP) process, as Notes of
+          the SocialCG, through another standardisation process, or by any other
+          organisations or individuals.
+        </li>
+        <li>
+          <b>Implement the extension.</b> See "Criteria" below for implementation requirements.
+        </li>
+        <li>
+          <b>List the extension in the <a href="https://www.w3.org/wiki/Activity_Streams_extensions">Activity Streams 2.0 extensions registry</a>.</b>
+        </li>
+        <li>
+          <b>Propose the extension for inclusion.</b> The proposal should include a justification
+          for inclusion of the extension.
+        </li>
+        <li>
+          <b></b>Vote on the extension. The SocialCG will vote on whether to include the
+          extension in the Activity Streams 2.0 context document.
+        </li>
+        <li>
+          <b>Create a draft version of the Activity Streams 2.0 context document including
+          the extension terms and namespace. This is the time to resolve any conflicts
+          with existing names in the context document.</b>
+        </li>
+        <li>
+          <b>Test the draft version of the Activity Streams 2.0 context document.</b>
+        </li>
+        <li>
+          <b>Publish the new version of the Activity Streams 2.0 context document.</b>
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2>Criteria</h2>
+      <p>To be included in the Activity Streams 2.0, extensions should meet these requirements.</p>
+      <ul>
+          <li>
+              A unique namespace, distinct from the Activity Streams 2.0 namespace.
           </li>
           <li>
-            Implement the extension; see criteria below for implementation requirements.
+              A JSON-LD context document at a permanent URL.
+          </li>
+          <li>A document that describes the terms and usage of the extension.</li>
+          <li>
+              An intellectual property rights policy that is compatible with
+              inclusion in a W3C specification.
           </li>
           <li>
-            List the extension in the Activity Streams 2.0 extensions registry.
+              Demonstrated implementation by at least two (2) independent publishers.
           </li>
           <li>
-            Propose the extension for inclusion. The proposal should include a justification
-            for inclusion of the extension.
+              Demonstrated implementation by at least two (2) independent consumers.
           </li>
-          <li>
-            Vote on the extension. The SocialCG will vote on whether to include the
-            extension in the Activity Streams 2.0 context document.
-          </li>
-          <li>
-            Create a draft version of the Activity Streams 2.0 context document including
-            the extension terms and namespace. This is the time to resolve any conflicts
-            with existing names in the context document.
-          </li>
-          <li>
-            Test the draft version of the Activity Streams 2.0 context document.
-          </li>
-          <li>
-            Publish the new version of the Activity Streams 2.0 context document.
-          </li>
-        </ol>
-      </section>
-      <section>
-        <h2>Criteria</h2>
-        <p>To be included in the Activity Streams 2.0, extensions should meet these requirements.</p>
-        <ul>
-            <li>
-                A unique namespace, distinct from the Activity Streams 2.0 namespace.
-            </li>
-            <li>
-                A JSON-LD context document at a permanent URL.
-            </li>
-            <li>A document that describes the terms and usage of the extension.</li>
-            <li>
-                An intellectual property rights policy that is compatible with
-                inclusion in a W3C specification.
-            </li>
-            <li>
-                Demonstrated implementation by at least two (2) independent publishers.
-            </li>
-            <li>
-                Demonstrated implementation by at least two (2) independent consumers.
-            </li>
-        </ul>
-      </section>
+      </ul>
+    </section>
+    <section id='history'>
+      <h2>Previous Work</h2>
+      <p>
+        The section on Extensibility in [[activitystreams-core]] says, in part,
+        "Some popular extensions are included in the Activity Streams 2.0 namespace
+        document [...]". It does not define how extensions are added and which
+        criteria are used to decide whether an extension is popular enough to be
+        included.
+      </p>
+      <p>
+        <a href="https://www.w3.org/ns/activitystreams#extensions">The section on Extensions in the Activity Streams 2.0 namespace document</a>
+        says, in part, "The extensions must document their terms in a spec-like way
+        at a persistant [sic] URL. Approval of extensions will be by the Social Web WG
+        until it closes, and after that by the followup Community Group. Process and criteria
+        for extensions approval is being finalised and will be described or linked
+        to here in due course."
+      </p>
     </section>
     <section id='conformance'>
       <!-- This section is filled automatically by ReSpec. -->
