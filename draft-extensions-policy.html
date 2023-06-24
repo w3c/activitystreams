@@ -39,7 +39,7 @@
     <section>
       <h2>Motivation</h2>
       <p>
-        Activity Streams 2.0, as described in [[[[activitystreams-core]]
+        Activity Streams 2.0, as described in [[activitystreams-core]]
         and [[activitystreams-vocabulary]] is a vocabulary for representing
         social data. It is used by, among others, the [[activitypub]] API and protocol.
         It is designed to be extensible, so that new terms can
@@ -152,6 +152,30 @@
           conflicts between terms in different extensions in the SocialCG.
       </p>
       <p>
+          Thereafter, publishers will not need to include the extension's context URL
+          in their documents. The extension's terms will be available for all documents
+          that use the Activity Streams 2.0 context, without requiring a namespace
+          prefix.
+      </p>
+      <figure>
+          <figcaption>
+              Theoretical example of using the favorite ice cream flavor term
+              after it has been included in the main Activity Streams 2.0 context
+              document.
+          </figcaption>
+          <div id="ex1-context" style="display: block;">
+            <pre class="example highlight json">
+              {
+                  "@context": "https://www.w3.org/ns/activitystreams",
+                  "id": "https://example.com/people/evan",
+                  "type": "Person",
+                  "name": "Evan Prodromou",
+                  "favoriteIceCreamFlavor": "Chocolate"
+              }
+            </pre>
+          </div>
+      </figure>
+      <p>
           This inclusion does not come without a price. First, the Activity Streams 2.0
           context document is that much larger, which has a cost in terms of readability,
           maintainability, and bandwidth used. In addition, there is work for the
@@ -177,7 +201,7 @@
         <li><b>Publish the extension for review.</b> Extensions can be published
           through the Federation Enhancement Proposal (FEP) process, as Notes of
           the SocialCG, through another standardisation process, or by any other
-          organisations or individuals.
+          organisations or individuals. See "Criteria" below for required content.
         </li>
         <li>
           <b>Implement the extension.</b> See "Criteria" below for implementation requirements.
@@ -190,13 +214,13 @@
           for inclusion of the extension.
         </li>
         <li>
-          <b></b>Vote on the extension. The SocialCG will vote on whether to include the
+          <b>Vote on the extension.</b> The SocialCG will vote on whether to include the
           extension in the Activity Streams 2.0 context document.
         </li>
         <li>
           <b>Create a draft version of the Activity Streams 2.0 context document including
-          the extension terms and namespace. This is the time to resolve any conflicts
-          with existing names in the context document.</b>
+          the extension terms and namespace.</b> This is the time to resolve any conflicts
+          with existing names in the context document.
         </li>
         <li>
           <b>Test the draft version of the Activity Streams 2.0 context document.</b>
