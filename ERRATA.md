@@ -4,7 +4,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Streams
 
-  - None yet reported.
+  - Example 2.1.2 should have the `@vocab` value equal to `https://www.w3.org/ns/activitystreams#`.
 
 ## Activity Vocabulary
 
