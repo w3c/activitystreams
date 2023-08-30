@@ -4,7 +4,22 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Streams
 
-  - None yet reported.
+  - Example 2 has an incorrect value for the `@vocab` property. The correct example should be:
+
+    ```json
+    {
+       "@context": {
+       "@vocab": "https://www.w3.org/ns/activitystreams#",
+       "ext": "https://canine-extension.example/terms/",
+       "@language": "en"
+     },
+     "summary": "A note",
+     "type": "Note",
+     "content": "My dog has fleas.",
+     "ext:nose": 0,
+     "ext:smell": "terrible"
+    }
+    ```
 
 ## Activity Vocabulary
 
