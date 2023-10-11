@@ -265,7 +265,7 @@
               <code><a>endTime</a></code> |
               <code><a>generator</a></code> |
               <code><a>icon</a></code> |
-              <code><a data-lt="image-term">image</a></code> |
+              <code><a href="#image-prop">image</a></code> |
               <code><a>inReplyTo</a></code> |
               <code><a>location</a></code> |
               <code><a>preview</a></code> |
@@ -386,7 +386,7 @@
           <td>
             <p>
               <code><a data-lt="actor-term">actor</a></code> |
-              <code><a data-lt="object-term">object</a></code> |
+              <code><a href="#object-prop">object</a></code> |
               <code><a>target</a></code> |
               <code><a>result</a></code> |
               <code><a>origin</a></code> |
@@ -430,7 +430,7 @@
           <td>
             Instances of <code>IntransitiveActivity</code> are a subtype of
             <code>Activity</code> representing intransitive actions. The
-            <code><a data-lt="object-term">object</a></code> property is
+            <code><a href="#object-prop">object</a></code> property is
             therefore inappropriate for these activities.
           </td>
         </tr>
@@ -2322,7 +2322,7 @@
               <p>
                 Describes a relationship between two individuals.
                 The <code><a>subject</a></code> and
-                <code><a data-lt="object-term">object</a></code> properties are
+                <code><a href="#object-prop">object</a></code> properties are
                 used to identify the connected individuals.
               </p>
               <p>
@@ -2338,8 +2338,8 @@
             <td>Properties:</td>
             <td>
               <p><code><a>subject</a></code> |
-              <code><a data-lt="object-term">object</a></code> |
-              <code><a data-lt="relationship-term">relationship</a></code></p>
+              <code><a href="#object-prop">object</a></code> |
+              <code><a href="#relationship-prop">relationship</a></code></p>
               <p>Inherits all properties from <code><a>Object</a></code>.</p>
             </td>
           </tr>
@@ -2836,7 +2836,7 @@
       <code><a>closed</a></code> |
       <code><a>origin</a></code> |
       <code><a>next</a></code> |
-      <code><a data-lt="object-term">object</a></code> |
+      <code><a href="#object-prop">object</a></code> |
       <code><a>prev</a></code> |
       <code><a>preview</a></code> |
       <code><a>result</a></code> |
@@ -2870,7 +2870,7 @@
       <code><a>updated</a></code> |
       <code><a>width</a></code> |
       <code><a>subject</a></code> |
-      <code><a data-lt="relationship-term">relationship</a></code> |
+      <code><a href="#relationship-prop">relationship</a></code> |
       <code><a>describes</a></code> |
       <code><a>formerType</a></code> |
       <code><a>deleted</a></code>
@@ -3559,7 +3559,7 @@ public secondary audience of this Object.
 
       <tbody>
         <tr>
-          <td rowspan="4"><dfn data-lt="image-term">image</dfn></td>
+          <td rowspan="4"><dfn id="image-prop">image</dfn></td>
           <td style="width: 10%">URI:</td>
           <td><code>https://www.w3.org/ns/activitystreams#image</code></td>
           <td rowspan="4">
@@ -4095,7 +4095,7 @@ public secondary audience of this Object.
 
       <tbody>
         <tr>
-          <td rowspan="4"><dfn data-lt="object-term">object</dfn></td>
+          <td rowspan="4"><dfn id="object-prop">object</dfn></td>
           <td style="width: 10%">URI:</td>
           <td><code>https://www.w3.org/ns/activitystreams#object</code></td>
           <td rowspan="4">
@@ -5593,7 +5593,7 @@ public secondary audience of this Object.
 
       <tbody>
         <tr>
-          <td rowspan="4"><dfn data-lt="relationship-term">relationship</dfn></td>
+          <td rowspan="4"><dfn id="relationship-prop">relationship</dfn></td>
           <td style="width: 10%">URI:</td>
           <td>
             <code>https://www.w3.org/ns/activitystreams#relationship</code>
@@ -5624,7 +5624,7 @@ public secondary audience of this Object.
             <code>relationship</code> property identifies the kind of
             relationship that exists between
             <code><a>subject</a></code> and
-            <code><a data-lt="object-term">object</a></code>.
+            <code><a href="#object-prop">object</a></code>.
 
           </td>
         </tr>
@@ -5983,17 +5983,17 @@ public secondary audience of this Object.
    </div>
 
    <p>
-     The <code><a data-lt="relationship-term">relationship</a></code>
+     The <code><a href="#relationship-prop">relationship</a></code>
      property specifies the kind of relationship that exists between the
      two individuals identified by the
      <code><a>subject</a></code> and
-     <code><a data-lt="object-term">object</a></code> properties. Used together,
+     <code><a href="#object-prop">object</a></code> properties. Used together,
      these three properties form what is commonly known as a
      "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
      where <code><a data-lt="subject">subject</a></code> identifies the
-     subject, <code><a data-lt="relationship-term">relationship</a></code>
+     subject, <code><a href="#relationship-prop">relationship</a></code>
      identifies the predicate, and
-     <code><a data-lt="object-term">object</a></code> identifies the
+     <code><a href="#object-prop">object</a></code> identifies the
      object.
    </p>
 
@@ -6871,7 +6871,7 @@ public secondary audience of this Object.
 
     <ul>
       <li>
-        Removed the four normative <code><a>relationship</a></code> values for
+        Removed the four normative <code><a href="#relationship-prop">relationship</a></code> values for
         lack of implementation. Changed examples to use terms from the
         <a href="http://vocab.org/relationship/">Relationship</a> vocabulary.
       </li>
