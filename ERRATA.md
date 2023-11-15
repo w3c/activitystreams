@@ -80,3 +80,12 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - Unlike `latitude` and `longitude`, the domain of the `altitude` term is the `Object` type. The `altitude` term should be included in the list of properties of an `Object`. Because `altitude` is primarily documented as a property of a `Place`, publishers should not include `altitude` on objects that are not of type `Place`, and consumers should accept objects with this property that aren't of type `Place`.
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
+
+  - The Notes for the `to` property should read: "Identifies one or more entities that are part of the public primary audience of this Object."
+
+  - The Notes for the `bto` property should read: "Identifies one or more entities that are part of the private primary audience of this Object."
+
+  - The Notes for the `cc` property should read: "Identifies one or more entities that are part of the public secondary audience of this Object."
+
+  - The Notes for the `bcc` property should read: "Identifies one or more entities that are part of the private secondary audience of this Object."
+
