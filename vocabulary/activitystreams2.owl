@@ -222,7 +222,7 @@ as:oneOf a owl:ObjectProperty ;
   rdfs:domain as:Question .
 
 as:anyOf a owl:ObjectProperty ;
-  rdfs:label "oneOf"@en ;
+  rdfs:label "anyOf"@en ;
   rdfs:comment "Describes a possible inclusive answer or option for a question."@en ;
   rdfs:range [
     a owl:Class ;
@@ -644,7 +644,15 @@ as:deleted a owl:DatatypeProperty ,
 
 as:Accept a owl:Class ;
   rdfs:label "Accept"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "Actor accepts the Object"@en .
 
 as:Activity a owl:Class ;
@@ -668,12 +676,36 @@ as:IntransitiveActivity a owl:Class ;
 
 as:Add a owl:Class ;
   rdfs:label "Add"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:target ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Add an Object or Link to Something"@en .
 
 as:Announce a owl:Class ;
   rdfs:label "Announce"@en;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:target ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "Actor announces the object to the target"@en .
 
 as:Application a owl:Class ;
@@ -683,7 +715,15 @@ as:Application a owl:Class ;
 
 as:Arrive a owl:Class ;
   rdfs:label "Arrive"@en ;
-  rdfs:subClassOf as:IntransitiveActivity ;
+  rdfs:subClassOf as:IntransitiveActivity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:location ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a \"check-in\")"@en .
 
 as:Article a owl:Class ;
@@ -718,17 +758,41 @@ as:Relationship a owl:Class, rdf:Statement ;
 
 as:Create a owl:Class ;
   rdfs:label "Create"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                   
   rdfs:comment "To Create Something"@en .
 
 as:Delete a owl:Class ;
   rdfs:label "Delete"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Delete Something"@en .
 
 as:Dislike a owl:Class ;
   rdfs:label "Dislike"@en;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "The actor dislikes the object"@en .
 
 as:Document a owl:Class ;
@@ -743,12 +807,28 @@ as:Event a owl:Class ;
 
 as:Flag a owl:Class ;
   rdfs:label "Flag"@en;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "To flag something (e.g. flag as inappropriate, flag as spam, etc)"@en .
 
 as:Follow a owl:Class ;
   rdfs:label "Follow"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;  
   rdfs:comment "To Express Interest in Something"@en .
 
 as:Group a owl:Class ;
@@ -758,7 +838,15 @@ as:Group a owl:Class ;
 
 as:Ignore a owl:Class ;
   rdfs:label "Ignore"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "Actor is ignoring the Object"@en .
 
 as:Image a owl:Class ;
@@ -768,47 +856,127 @@ as:Image a owl:Class ;
 
 as:Invite a owl:Class ;
   rdfs:label "Invite"@en ;
-  rdfs:subClassOf as:Offer ;
+  rdfs:subClassOf as:Offer ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:target ;
+                            owl:someValuesFrom owl:Thing
+                 ];
   rdfs:comment "To invite someone or something to something"@en .
 
 as:Join a owl:Class ;
   rdfs:label "Join"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Join Something"@en .
 
 as:Leave a owl:Class ;
   rdfs:label "Leave"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Leave Something"@en .
 
 as:Like a owl:Class ;
   rdfs:label "Like"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Like Something"@en .
 
 as:View a owl:Class ;
   rdfs:label "View"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "The actor viewed the object"@en .
 
 as:Listen a owl:Class ;
   rdfs:label "Listen"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "The actor listened to the object"@en .
 
 as:Read a owl:Class ;
   rdfs:label "Read"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "The actor read the object"@en .
 
 as:Move a owl:Class ;
   rdfs:label "Move"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:origin ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:target ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from." .
 
 as:Travel a owl:Class ;
   rdfs:label "Travel"@en ;
-  rdfs:subClassOf as:IntransitiveActivity ;
+  rdfs:subClassOf as:IntransitiveActivity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:origin ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:target ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "The actor is traveling to the target. The origin specifies where the actor is traveling from." .
 
 as:Link a owl:Class ;
@@ -831,7 +999,15 @@ as:Object a owl:Class ;
 
 as:Offer a owl:Class ;
   rdfs:label "Offer"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;                 
   rdfs:comment "To Offer something to someone or something"@en .
 
 as:OrderedCollection a owl:Class ;
@@ -911,17 +1087,44 @@ as:Place a owl:Class ;
 
 as:Question a owl:Class ;
   rdfs:label "Question"@en;
-  rdfs:subClassOf as:IntransitiveActivity ;
+  rdfs:subClassOf as:IntransitiveActivity ,
+                 [ rdf:type owl:Class ;
+                   owl:complementOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty as:anyOf ;
+                                                             owl:someValuesFrom owl:Thing
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty as:oneOf ;
+                                                             owl:someValuesFrom owl:Thing
+                                                           ] ) ;
+                                    ]
+                 ] ;
   rdfs:comment "A question of any sort."@en .
 
 as:Reject a owl:Class ;
   rdfs:label "Reject"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "Actor rejects the Object"@en .
 
 as:Remove a owl:Class ;
   rdfs:label "Remove"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "To Remove Something"@en .
 
 as:Service a owl:Class ;
@@ -946,13 +1149,29 @@ as:Tombstone a owl:Class ;
 
 as:Undo a owl:Class ;
   rdfs:label "Undo"@en ;
-  rdfs:subClassOf as:Activity ;
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] ;
   rdfs:comment "To Undo Something. This would typically be used to indicate that a previous Activity has been undone."@en .
 
 as:Update a owl:Class ;
   rdfs:label "Update"@en ;
   rdfs:comment "To Update/Modify Something"@en ;
-  rdfs:subClassOf as:Activity .
+  rdfs:subClassOf as:Activity ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:actor ;
+                            owl:someValuesFrom owl:Thing
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                            owl:onProperty as:object ;
+                            owl:someValuesFrom owl:Thing
+                 ] .
 
 as:Video a owl:Class ;
   rdfs:label "Video"@en ;
