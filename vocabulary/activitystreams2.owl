@@ -51,6 +51,7 @@ as:attributedTo a owl:ObjectProperty ;
 
 as:attachment a owl:ObjectProperty ;
   rdfs:label "attachment"@en ;
+  rdfs:comment "Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email."@en ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Link as:Object )
@@ -80,6 +81,7 @@ as:author a owl:ObjectProperty,
 
 as:bcc a owl:ObjectProperty ;
   rdfs:label "bcc"@en ;
+  rdfs:comment "Identifies one or more Objects that are part of the private secondary audience of this Object."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -88,6 +90,7 @@ as:bcc a owl:ObjectProperty ;
 
 as:bto a owl:ObjectProperty ;
   rdfs:label "bto"@en ;
+  rdfs:comment "Identifies an Object that is part of the private primary audience of this Object."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -96,6 +99,7 @@ as:bto a owl:ObjectProperty ;
 
 as:cc a owl:ObjectProperty ;
   rdfs:label "cc"@en ;
+  rdfs:comment "Identifies an Object that is part of the public secondary audience of this Object."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -114,6 +118,7 @@ as:context a owl:ObjectProperty ;
 as:current a owl:FunctionalProperty ,
              owl:ObjectProperty ;
   rdfs:label "current"@en ;
+  rdfs:comment "In a paged Collection, indicates the page that contains the most recently updated member items."@en ;
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
@@ -131,6 +136,7 @@ as:first a owl:FunctionalProperty ,
 
 as:generator a owl:ObjectProperty ;
   rdfs:label "generator"@en ;
+  rdfs:comment "Identifies the entity (e.g. an application) that generated the object."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -139,6 +145,7 @@ as:generator a owl:ObjectProperty ;
 
 as:icon a owl:ObjectProperty ;
   rdfs:label "icon"@en ;
+  rdfs:comment "Indicates an entity that describes an icon for this object. The image should have an aspect ratio of one (horizontal) to one (vertical) and should be suitable for presentation at a small size."@en ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Image as:Link )
@@ -147,6 +154,7 @@ as:icon a owl:ObjectProperty ;
 
 as:image a owl:ObjectProperty ;
   rdfs:label "image"@en ;
+  rdfs:comment "Indicates an entity that describes an image for this object. Unlike the icon property, there are no aspect ratio or display size limitations assumed."@en ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:Image as:Link )
@@ -155,6 +163,7 @@ as:image a owl:ObjectProperty ;
 
 as:inReplyTo a owl:ObjectProperty ;
   rdfs:label "inReplyTo"@en ;
+  rdfs:comment "Indicates one or more entities for which this object is considered a response."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -163,6 +172,7 @@ as:inReplyTo a owl:ObjectProperty ;
 
 as:items a owl:ObjectProperty ;
   rdfs:label "items"@en ;
+  rdfs:comment "Identifies the items contained in a collection. The items might be ordered or unordered."@en ;
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
@@ -178,6 +188,7 @@ as:items a owl:ObjectProperty ;
 as:last a owl:FunctionalProperty ,
           owl:ObjectProperty ;
   rdfs:label "last"@en ;
+  rdfs:comment "In a paged Collection, indicates the furthest proceeding page of the collection."@en ;
   rdfs:domain as:Collection ;
   rdfs:range [
     a owl:Class ;
@@ -186,6 +197,7 @@ as:last a owl:FunctionalProperty ,
 
 as:location a owl:ObjectProperty ;
   rdfs:label "location"@en ;
+  rdfs:comment "Indicates one or more physical or logical locations associated with the object."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -195,6 +207,7 @@ as:location a owl:ObjectProperty ;
 as:next a owl:FunctionalProperty ,
           owl:ObjectProperty ;
   rdfs:label "next"@en ;
+  rdfs:comment "In a paged Collection, indicates the next page of items."@en ;
   rdfs:domain as:CollectionPage ;
   rdfs:range [
     a owl:Class ;
@@ -203,6 +216,9 @@ as:next a owl:FunctionalProperty ,
 
 as:object a owl:ObjectProperty ;
   rdfs:label "object"@en ;
+  rdfs:comment """When used within an Activity, describes the direct object of the activity. For instance, in the activity "John added a movie to his wishlist", the object of the activity is the movie added.
+
+When used within a Relationship describes the entity to which the subject is related."""@en ;
   rdfs:domain [
     a owl:Class ;
       owl:unionOf ( as:Activity as:Relationship )
@@ -233,6 +249,7 @@ as:anyOf a owl:ObjectProperty ;
 as:prev a owl:FunctionalProperty ,
           owl:ObjectProperty ;
   rdfs:label "prev"@en ;
+  rdfs:comment "In a paged Collection, identifies the previous page of items."@en ;
   rdfs:domain as:CollectionPage ;
   rdfs:range [
     a owl:Class ;
@@ -241,6 +258,7 @@ as:prev a owl:FunctionalProperty ,
 
 as:preview a owl:ObjectProperty ;
   rdfs:label "preview"@en ;
+  rdfs:comment "Identifies an entity that provides a preview of this object."@en ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )
@@ -261,11 +279,13 @@ as:provider a owl:ObjectProperty,
 
 as:replies a owl:ObjectProperty ;
   rdfs:label "replies"@en ;
+  rdfs:comment "Identifies a Collection containing objects considered to be responses to this object."@en ;
   rdfs:range as:Collection ;
   rdfs:domain as:Object .
 
 as:result a owl:ObjectProperty ;
   rdfs:label "result"@en ;
+  rdfs:comment "Describes the result of the activity. For instance, if a particular action results in the creation of a new resource, the result property can be used to describe that new resource."@en ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
@@ -274,6 +294,7 @@ as:result a owl:ObjectProperty ;
 
 as:audience a owl:ObjectProperty ;
   rdfs:label "audience"@en ;
+  rdfs:comment "Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -283,6 +304,7 @@ as:audience a owl:ObjectProperty ;
 as:partOf a owl:FunctionalProperty ,
             owl:ObjectProperty ;
   rdfs:label "partOf"@en ;
+  rdfs:comment "Identifies the Collection to which a CollectionPage objects items belong."@en ;
   rdfs:domain as:CollectionPage ;
   rdfs:range [
     a owl:Class ;
@@ -291,6 +313,7 @@ as:partOf a owl:FunctionalProperty ,
 
 as:tag a owl:ObjectProperty ;
   rdfs:label "tag"@en ;
+  rdfs:comment "One or more \"tags\" that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference."@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -309,6 +332,7 @@ as:tags a owl:ObjectProperty,
 
 as:target a owl:ObjectProperty ;
   rdfs:label "target"@en ;
+  rdfs:comment "Describes the indirect object, or target, of the activity. The precise meaning of the target is largely dependent on the type of action being described but will often be the object of the English preposition \"to\". For instance, in the activity \"John added a movie to his wishlist\", the target of the activity is John's wishlist. An activity can have more than one target."@en ;
   rdfs:domain as:Activity ;
   rdfs:range [
     a owl:Class ;
@@ -335,6 +359,7 @@ as:instrument a owl:ObjectProperty ;
 
 as:to a owl:ObjectProperty ;
   rdfs:label "to"@en ;
+  rdfs:comment "Identifies an entity considered to be part of the public primary audience of an Object"@en ;
   rdfs:domain as:Object ;
   rdfs:range [
     a owl:Class ;
@@ -346,14 +371,14 @@ as:url a owl:ObjectProperty ;
   rdfs:comment "Specifies a link to a specific representation of the Object"@en ;
   rdfs:range [
     a owl:Class ;
-    owl:unionOf ( as:Link owl:Thing )
+    owl:unionOf ( as:Link owl:Thing )  # TODO It's clear how to represent xsd:anyURI as specified.
   ] ;
   rdfs:domain as:Object .
 
 as:subject a owl:FunctionalProperty,
        owl:ObjectProperty;
   rdfs:label "a"@en;
-  rdfs:comment "On a Relationship object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'subject' refers to 'John'"@en ;
+  rdfs:comment "On a Relationship object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'subject' refers to \'John\'"@en ;
   rdfs:domain as:Relationship ;
   rdfs:subPropertyOf rdf:subject ;
   rdfs:range [
@@ -573,6 +598,12 @@ as:summary a owl:DatatypeProperty ;
     owl:unionOf ( rdf:langString xsd:string )
   ] ;
   rdfs:domain as:Object .
+
+as:summaryMap
+  a owl:DatatypeProperty ;
+  rdfs:subPropertyOf as:summary ;
+  rdfs:label "summaryMap"@en ;
+.
 
 as:totalItems a owl:DatatypeProperty ,
         owl:FunctionalProperty ;
@@ -804,12 +835,12 @@ as:Read a owl:Class ;
 as:Move a owl:Class ;
   rdfs:label "Move"@en ;
   rdfs:subClassOf as:Activity ;
-  rdfs:comment "The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from." .
+  rdfs:comment "The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from."@en .
 
 as:Travel a owl:Class ;
   rdfs:label "Travel"@en ;
   rdfs:subClassOf as:IntransitiveActivity ;
-  rdfs:comment "The actor is traveling to the target. The origin specifies where the actor is traveling from." .
+  rdfs:comment "The actor is traveling to the target. The origin specifies where the actor is traveling from."@en .
 
 as:Link a owl:Class ;
   rdfs:label "Link"@en ;
@@ -824,9 +855,10 @@ as:Mention a owl:Class ;
 as:Note a owl:Class ;
   rdfs:label "Note"@en ;
   rdfs:subClassOf as:Object ;
-  rdfs:comment "A Short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""@en .
+  rdfs:comment "A short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""@en .
 
 as:Object a owl:Class ;
+  rdfs:comment "Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary"@en ;
   rdfs:label "Object"@en .
 
 as:Offer a owl:Class ;
