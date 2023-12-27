@@ -58,26 +58,6 @@ as:attachment a owl:ObjectProperty ;
   rdfs:domain as:Object ;
   owl:equivalentProperty as:attachments .
 
-as:attachments a owl:ObjectProperty,
-         owl:DeprecatedProperty ;
-  rdfs:label "attachments"@en ;
-  rdfs:domain as:Object ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:Link )
-  ] .
-
-as:author a owl:ObjectProperty,
-            owl:DeprecatedProperty ;
-  rdfs:label "author"@en ;
-  rdfs:comment "Identifies the author of an object. Deprecated. Use as:attributedTo instead"@en;
-  rdfs:domain as:Object ;
-  rdfs:subPropertyOf as:attributedTo ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:Link )
-  ] .
-
 as:bcc a owl:ObjectProperty ;
   rdfs:label "bcc"@en ;
   rdfs:domain as:Object ;
@@ -250,15 +230,6 @@ as:preview a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
-as:provider a owl:ObjectProperty,
-              owl:DeprecatedProperty ;
-  rdfs:label "provider"@en ;
-  rdfs:domain as:Object ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:Link )
-  ] .
-
 as:replies a owl:ObjectProperty ;
   rdfs:label "replies"@en ;
   rdfs:range as:Collection ;
@@ -296,16 +267,6 @@ as:tag a owl:ObjectProperty ;
     a owl:Class ;
     owl:unionOf ( as:Object as:Link )
   ] .
-
-as:tags a owl:ObjectProperty,
-        owl:DeprecatedProperty ;
-  rdfs:label "tags"@en ;
-  rdfs:domain as:Object ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf ( as:Object as:Link )
-  ] ;
-  owl:equivalentProperty as:tag ;.
 
 as:target a owl:ObjectProperty ;
   rdfs:label "target"@en ;
@@ -429,11 +390,6 @@ as:name a owl:DatatypeProperty ;
     owl:unionOf ( as:Object as:Link)
   ].
 
-as:downstreamDuplicates a owl:DatatypeProperty,
-          owl:DeprecatedProperty ;
-  rdfs:label "downstreamDuplicates"@en ;
-  rdfs:range xsd:anyURI ;
-  rdfs:domain as:Object .
 
 as:duration a owl:DatatypeProperty ,
   owl:FunctionalProperty ;
@@ -470,16 +426,6 @@ as:hreflang a owl:DatatypeProperty ,
   rdfs:range xsd:language ;
   rdfs:domain as:Link .
 
-as:id a owl:DatatypeProperty ,
-        owl:FunctionalProperty,
-        owl:DeprecatedProperty ;
-  rdfs:label "id"@en ;
-  rdfs:range xsd:anyURI ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (as:Link as:Object)
-  ] .
-
 as:latitude a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
   rdfs:label "latitude"@en ;
@@ -504,13 +450,6 @@ as:mediaType a owl:DatatypeProperty ,
     owl:unionOf (as:Link as:Object)
   ] .
 
-as:objectType a owl:DatatypeProperty ,
-        owl:FunctionalProperty,
-        owl:DeprecatedProperty ;
-  rdfs:label "objectType"@en ;
-  rdfs:range xsd:anyURI ;
-  rdfs:domain as:Object .
-
 as:published a owl:DatatypeProperty ,
       owl:FunctionalProperty ;
   rdfs:label "published"@en ;
@@ -530,20 +469,6 @@ as:radius a owl:DatatypeProperty ,
       [ xsd:minInclusive "0.0"^^xsd:float ]
     )
   ] .
-
-as:rating a owl:DatatypeProperty ,
-    owl:FunctionalProperty,
-    owl:DeprecatedProperty ;
-  rdfs:label "rating"@en ;
-  rdfs:comment "A numeric rating (>= 0.0, <= 5.0) for the object"@en ;
-  rdfs:domain as:Object ;
-  rdfs:range [
-    a rdfs:Datatype ;
-    owl:onDatatype xsd:float ;
-    owl:withRestrictions (
-      [ xsd:minInclusive "0.0"^^xsd:float ]
-      [ xsd:maxInclusive "5.0"^^xsd:float ]
-    )] .
 
 as:rel a owl:DatatypeProperty ;
   rdfs:label "rel"@en ;
@@ -608,19 +533,6 @@ as:updated a owl:DatatypeProperty ,
   rdfs:comment "Specifies when the object was last updated"@en ;
   rdfs:range xsd:dateTime ;
   rdfs:domain as:Object .
-
-as:upstreamDuplicates a owl:DatatypeProperty,
-        owl:DeprecatedProperty ;
-  rdfs:label "upstreamDuplicates"@en ;
-  rdfs:range xsd:anyURI ;
-  rdfs:domain as:Object .
-
-as:verb a owl:DatatypeProperty ,
-  owl:FunctionalProperty,
-  owl:DeprecatedProperty ;
-  rdfs:label "verb"@en ;
-  rdfs:range xsd:anyURI ;
-  rdfs:domain as:Activity .
 
 as:width a owl:DatatypeProperty ,
    owl:FunctionalProperty ;
