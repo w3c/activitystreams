@@ -341,6 +341,9 @@ as:to a owl:ObjectProperty ;
     owl:unionOf ( as:Object as:Link )
   ] .
 
+# TODO BUG It's not clear how to represent xsd:anyURI as specified.
+# An xsd:anyURI is a literal and as:Object is a class/Object.
+# Only the as:Object range is valid for an owl:ObjectProperty.
 as:url a owl:ObjectProperty ;
   rdfs:label "url"@en ;
   rdfs:comment "Specifies a link to a specific representation of the Object"@en ;
