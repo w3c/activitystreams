@@ -959,4 +959,28 @@ as:Video a owl:Class ;
   rdfs:comment "A Video document of any kind."@en ;
   rdfs:subClassOf as:Document .
 
+as:IsFollowing a owl:Class ;
+  rdfs:label "IsFollowing"@en ;
+  rdfs:subClassOf as:Relationship ;
+  rdfs:comment "(Not documented). Apparently a type of Relationship." ;
+.
+
+as:IsFollowedBy a owl:Class ;
+  rdfs:label "IsFollowedBy"@en ;
+  rdfs:subClassOf as:Relationship ;
+  rdfs:comment "(Not documented). Apparently a type of Relationship." ;
+.
+
+as:IsContact a owl:Class ;
+  rdfs:label "IsContact"@en ;
+  rdfs:subClassOf as:Relationship ;
+  rdfs:comment "(Not documented). Apparently a type of Relationship." ;
+.
+
+as:IsMember a owl:Class ;
+  rdfs:label "IsMember"@en ;
+  rdfs:subClassOf as:Relationship ;
+  rdfs:comment "(Not documented). Apparently a type of Relationship." ;
+.
+
 rdf:nil a as:OrderedItems .
