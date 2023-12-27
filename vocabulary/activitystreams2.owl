@@ -518,6 +518,16 @@ as:published a owl:DatatypeProperty ,
   rdfs:range xsd:dateTime ;
   rdfs:domain as:Object .
 
+# TODO BUG The spec defines this as 'Object | Link | xsd:dateTime | xsd:boolean' 
+# which is not OWL-compatible (both ObjectProperty and DatatypeProperty).
+as:closed a owl:DatatypeProperty ,
+      owl:FunctionalProperty ;
+  rdfs:label "closed"@en ;
+  rdfs:comment "Indicates that a question has been closed, and answers are no longer accepted."@en ;
+  rdfs:range xsd:dateTime ;
+  rdfs:range xsd:boolean ;
+  rdfs:domain as:Object .
+
 as:radius a owl:DatatypeProperty ,
             owl:FunctionalProperty ;
   rdfs:label "radius"@en ;
