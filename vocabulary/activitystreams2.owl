@@ -9,7 +9,7 @@
 
 <http://www.w3.org/ns/activitystreams#> a owl:Ontology ;
   rdfs:comment "Extended Activity Streams 2.0 Vocabulary"@en ;
-  rdfs:label "Activity Streams 2.0"@en ;
+  rdfs:label "ActivityStreams 2.0 Terms"@en ;
   owl:imports <http://www.w3.org/ns/prov#> .
 
 #################################################################
