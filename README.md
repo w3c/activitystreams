@@ -14,6 +14,12 @@ It is an extensible format; the Activity Vocabulary provides a structure for soc
 * The [Extensions registry](https://www.w3.org/wiki/Activity_Streams/Extensions) lists known extensions to AS2.
 * Popular extensions can be integrated into the AS2 vocabulary document, making them practically part of the spec. The [Extensions Policy](https://swicg.github.io/extensions-policy/) describes how to propose extensions for inclusion in AS2.
 
+## Editors
+
+The currently active editors of the AS2 specification(s) are:
+
+- [Evan Prodromou](https://github.com/evanp)
+
 ## Supported deliverables
 
 These files are maintained by the editor(s) under the supervision of the SocialCG:
