@@ -419,7 +419,7 @@ as:content a owl:DatatypeProperty ;
 
 as:name a owl:DatatypeProperty ;
   rdfs:label "name"@en ;
-  rdfs:name "The default, plain-text display name of the object or link."@en ;
+  rdfs:comment "The default, plain-text display name of the object or link."@en ;
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( rdf:langString xsd:string )
