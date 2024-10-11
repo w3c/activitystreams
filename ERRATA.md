@@ -80,3 +80,5 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - Unlike `latitude` and `longitude`, the domain of the `altitude` term is the `Object` type. The `altitude` term should be included in the list of properties of an `Object`. Because `altitude` is primarily documented as a property of a `Place`, publishers should not include `altitude` on objects that are not of type `Place`, and consumers should accept objects with this property that aren't of type `Place`.
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
+
+  - The description of the `audience` property should read "Identifies one or more entities that represent the total population of entities for which the object can be considered to be relevant."
