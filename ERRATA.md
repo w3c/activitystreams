@@ -108,6 +108,30 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
 
+  - Example 79 has  an `Image` object with `width` and `height` properties, which
+    are only allowed on `Link` objects. One alternative is to use a `Link` object
+    with the correct `height` and `width` as the `url` property for each `Image`
+    object.
+
+    ```json
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "summary": "A simple note",
+      "type": "Note",
+      "content": "This is all there is.",
+      "icon": {
+        "type": "Image",
+        "name": "Note icon",
+        "url": {
+           "href": "http://example.org/note.png",
+           "type": "Link",
+           "width": 16,
+           "height": 16
+        }
+      }
+    }
+    ```
+
 - The Notes for the `to` property do not correctly identify the functionality (one or more) of the values of the property. The notes should read: "Identifies one or more entities that are part of the public primary audience of this Object."
 
 - The Notes for the `bto` property do not correctly identify the functionality (one or more) of the values of the property. The notes should read: "Identifies one or more entities that are part of the private primary audience of this Object."
