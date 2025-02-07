@@ -4,7 +4,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Streams
 
-  - None yet reported.
+  - The first sentence in section 4 "Model" should read "The Activity Vocabulary normatively defines the object types and properties for Activity Streams 2.0."
 
 ## Activity Vocabulary
 
