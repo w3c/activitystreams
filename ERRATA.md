@@ -80,3 +80,23 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - Unlike `latitude` and `longitude`, the domain of the `altitude` term is the `Object` type. The `altitude` term should be included in the list of properties of an `Object`. Because `altitude` is primarily documented as a property of a `Place`, publishers should not include `altitude` on objects that are not of type `Place`, and consumers should accept objects with this property that aren't of type `Place`.
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
+
+  - Example 157 is not valid JSON because the `content` property extends over multiple lines. The correct example is:
+
+    ```json
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "name": "A thank-you note",
+      "type": "Note",
+      "content": "Thank you <a href='http://sally.example.org'>@sally</a> for all your hard work! <a href='http://example.org/tags/givingthanks'>#givingthanks</a>",
+      "to": {
+        "name": "Sally",
+        "type": "Person",
+        "id": "http://sally.example.org"
+      },
+      "tag": {
+        "id": "http://example.org/tags/givingthanks",
+        "name": "#givingthanks"
+      }
+    }
+    ```
