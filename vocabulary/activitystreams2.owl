@@ -497,12 +497,13 @@ as:longitude a owl:DatatypeProperty ,
 as:mediaType a owl:DatatypeProperty ,
        owl:FunctionalProperty ;
   rdfs:label "mediaType"@en ;
-  rdfs:comment "The MIME Media Type"@en ;
+  rdfs:comment "The media type specified by the IANA."@en ;
   rdfs:range xsd:string ;
   rdfs:domain [
     a owl:Class ;
     owl:unionOf (as:Link as:Object)
-  ] .
+  ] ;
+  rdfs:seeAlso <http://www.iana.org/assignments/media-types/> .
 
 as:objectType a owl:DatatypeProperty ,
         owl:FunctionalProperty,
