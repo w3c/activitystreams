@@ -4,7 +4,8 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Streams
 
-  - None yet reported.
+  - Section 4.2 lists the possible properties of a `Link` object. This list omits `nameMap`, `preview`, `attributedTo`
+    The full list should be: id | name | nameMap | hreflang | mediaType | rel | height | width | preview | attributedTo.
 
 ## Activity Vocabulary
 
