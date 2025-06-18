@@ -4,7 +4,27 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Streams
 
-  - None yet reported.
+  - Section 4.2 "Link" should read, in part, "The link relation of the first is unspecified,
+    while the link relation of the second is 'preview'." The following example, Example 14,
+    should be:
+
+    ```json
+    {
+       "@context": "https://www.w3.org/ns/activitystreams",
+       "type": "Application",
+       "id": "http://example.org/application/123",
+       "name": "Exampletron 3000",
+       "image": [
+          "http://example.org/application/abc.gif",
+          {
+            "type": "Link",
+            "href": "http://example.org/application/123.png",
+            "mediaType": "image/png",
+            "rel": "thumbnail"
+          }
+      ]
+    }
+    ``` 
 
 ## Activity Vocabulary
 
