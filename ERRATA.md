@@ -81,11 +81,11 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
 
-  - The Notes for the `to` property should read: "Identifies one or more entities that are part of the public primary audience of this Object."
+  - The Notes for the `to` property do not correctly identify the functionality (one or more) of the values of the property. The notes should read: "Identifies one or more entities that are part of the public primary audience of this Object."
 
-  - The Notes for the `bto` property should read: "Identifies one or more entities that are part of the private primary audience of this Object."
+  - The Notes for the `bto` property do not correctly identify the functionality (one or more) of the values of the property. The notes should read: "Identifies one or more entities that are part of the private primary audience of this Object."
 
-  - The Notes for the `cc` property should read: "Identifies one or more entities that are part of the public secondary audience of this Object."
+  - The Notes for the `cc` property do not correctly identify the functionality (one or more) of the values of the property. The notes should read: "Identifies one or more entities that are part of the public secondary audience of this Object."
 
-  - The Notes for the `bcc` property should read: "Identifies one or more entities that are part of the private secondary audience of this Object."
+  - The Notes for the `bcc` property do not correctly define the range of the property, limiting it to only the `Object` type. The notes should read: "Identifies one or more entities that are part of the private secondary audience of this Object."
 
