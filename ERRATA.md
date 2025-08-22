@@ -101,3 +101,5 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   }
 }
 ```
+
+  - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects. One possible correction is to replace the range of the `formerType` property with `anyURI`, to match `type`.
