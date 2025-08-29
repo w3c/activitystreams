@@ -108,6 +108,23 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
 
+  - Example 146 in Activity Vocabulary has an error in the format of the `startTime` property. The full example should be:
+  ```
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "Sally became a friend of Matt",
+    "type": "Create",
+    "actor": "http://sally.example.org",
+    "object": {
+      "type": "Relationship",
+      "subject": "http://sally.example.org",
+      "relationship": "http://purl.org/vocab/relationship/friendOf",
+      "object": "http://matt.example.org",
+      "startTime": "2015-04-21T12:34:56Z"
+    }
+  }
+  ```
+  
   - Example 102 is missing a `type` property on the `Link` value of the `url` property. For clarity, the example should read:
 
   ```json
