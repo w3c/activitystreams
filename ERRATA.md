@@ -4,7 +4,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 ## Activity Streams
 
-  - None yet reported.
+  - Section 2.2 "IRIs and URLs" says that publishers SHOULD NOT generate AS2 documents with relative IRI and URL references because JSON parser implementations may not conserve the base context to resolve relative references. This is overly specific; there are other types of implementations that may also fail to conserve the base context. One correction is to simply remove the reference to JSON parsers and replace it with "consumers": "Relative IRI (and URL) references SHOULD NOT be used within an Activity Streams 2.0 document due to the fact that many consumers are not capable of reliably preserving the base context necessary to properly resolve relative references."
 
 ## Activity Vocabulary
 
