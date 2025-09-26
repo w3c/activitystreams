@@ -5,7 +5,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 ## Activity Streams
 
   - Section 4.2 lists the possible properties of a `Link` object. This list omits `nameMap`, `preview`, and `attributedTo`.
-    The full list should be: `id | name | nameMap | hreflang | mediaType | rel | height | width | preview | attributedTo`.
+    The full list should be: `id` | `name` | `nameMap` | `hreflang` | `mediaType` | `rel` | `height` | `width` | `preview` | `attributedTo`.
 
 ## Activity Vocabulary
 
@@ -26,7 +26,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
     are only allowed on `Link` objects. One alternative is to use `Link` objects
     with the correct `height` and `width` as the `url` property for each `Image`
     object.
-    
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
@@ -61,14 +61,14 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - The range of the `units` property is given as an enumerated set of values.
     Due to a formatting error, some of these values are shown with an incorrect
     leading space character. The correct range is:
-    
+
     ```text
     "cm" | "feet" | "inches" | "km" | "m" | "miles" | xsd:anyURI
     ```
 
   - Example 58 includes a `summary` property on a `Mention` object, which is
     not allowed. A corrected example:
-    
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
