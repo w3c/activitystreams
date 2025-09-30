@@ -242,7 +242,7 @@
     },
     "href": {
       "@id": "as:href",
-      "@type": "@id"
+      "@type": "xsd:anyURI"
     },
     "hreflang": "as:hreflang",
     "latitude": {
