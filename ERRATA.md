@@ -25,7 +25,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
     are only allowed on `Link` objects. One alternative is to use `Link` objects
     with the correct `height` and `width` as the `url` property for each `Image`
     object.
-    
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
@@ -60,14 +60,14 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   - The range of the `units` property is given as an enumerated set of values.
     Due to a formatting error, some of these values are shown with an incorrect
     leading space character. The correct range is:
-    
+
     ```text
     "cm" | "feet" | "inches" | "km" | "m" | "miles" | xsd:anyURI
     ```
 
   - Example 58 includes a `summary` property on a `Mention` object, which is
     not allowed. A corrected example:
-    
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
@@ -102,4 +102,4 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 }
 ```
 
-  - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects. One possible correction is to replace the range of the `formerType` property with `anyURI`, to match `type`.
+  - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects.
