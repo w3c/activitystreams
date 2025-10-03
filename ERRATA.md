@@ -116,7 +116,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
 
   - Example 79 has  an `Image` object with `width` and `height` properties, which
-    are only allowed on `Link` objects. One alternative is to use a `Link` object
+    only indicate `Link` in their Domain. One alternative is to use a `Link` object
     with the correct `height` and `width` as the `url` property for each `Image`
     object.
 
