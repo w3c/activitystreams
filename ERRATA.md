@@ -167,3 +167,56 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   ```
 
 - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects.
+
+  - Example 75 erroneously includes a `summary` property on a `Link` object. The corrected example:
+  
+    ```json
+    {
+      "@context": "https://www.w3.org/ns/activitystreams",
+      "summary": "Sally's blog posts",
+      "type": "Collection",
+      "totalItems": 3,
+      "current": {
+        "type": "Link",
+        "name": "Most Recent Items",
+        "href": "http://example.org/collection"
+      },
+      "items": [
+        "http://example.org/posts/1",
+        "http://example.org/posts/2",
+        "http://example.org/posts/3"
+      ]
+    }
+    ```
+
+  - Example 77 erroneously includes a `summary` property on a `Link` object. The corrected example:
+
+  ```json
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "Sally's blog posts",
+    "type": "Collection",
+    "totalItems": 3,
+    "first": {
+      "type": "Link",
+      "name": "First Page",
+      "href": "http://example.org/collection?page=0"
+    }
+  }
+  ```
+
+  - Example 87 erroneously includes a `summary` property on a `Link` object. The corrected example:
+
+  ```json
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "A collection",
+    "type": "Collection",
+    "totalItems": 5,
+    "last": {
+      "type": "Link",
+      "name": "Last Page",
+      "href": "http://example.org/collection?page=1"
+    }
+  }
+  ```
