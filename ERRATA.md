@@ -161,3 +161,9 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   ```
 
 - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects.
+
+- In Section 2.3 "Dates and Times", the definition of `as2-partial-time` allows specifying a `time-secfrac` portion even if `time-second` is not defined. One candidate correction for this error is to replace the ABNF definition of `as2-partial-time` with a structure that requires `time-second` for `time-secfrac` to be used:
+
+  ```json
+  as2-partial-time = time-hour ":" time-minute [":" time-second  [time-secfrac]]
+  ```
