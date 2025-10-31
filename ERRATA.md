@@ -13,6 +13,23 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   as2-partial-time = time-hour ":" time-minute [":" time-second [time-secfrac]]
   ```
 
+- Example 29 uses `id` as an alias for the `@id` property even though the Activity Streams 2.0 context has not been used, so that alias is not set up. The correct code would be:
+
+  ```json
+  {
+      "@context": {
+          "ex": "http://example.org/",
+          "term": {
+              "@type": "@id",
+              "@id": "ex:term"
+          }
+      },
+      "term": "ex:Foo"
+  }
+  ```
+
+- Section 5.1 incorrectly refers to the `id` alias for the `@id` property, and the `type` alias of the `@type` property. Paragraph 4 should read, in part, ''In JSON-LD, Compact URI expansion of values applies to properties explicitly defined as "@type": "@id" in the @context definition.''
+
 ## Activity Vocabulary
 
 - Example 150 has `latitude` and `longitude` properties with string values.
@@ -193,7 +210,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects.
 
   - Example 75 erroneously includes a `summary` property on a `Link` object. The corrected example:
-  
+
     ```json
     {
       "@context": "https://www.w3.org/ns/activitystreams",
