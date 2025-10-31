@@ -426,8 +426,7 @@
           [[RFC3339]].
         </p>
 <pre>
-as2-partial-time = time-hour ":" time-minute [":" time-second]
-                   [time-secfrac]
+as2-partial-time = time-hour ":" time-minute [":" time-second [time-secfrac]]
 as2-full-time    = as2-partial-time time-offset
 as2-date-time    = full-date "T" as2-full-time
 </pre>
