@@ -1773,11 +1773,11 @@ as2-date-time    = full-date "T" as2-full-time
   <figure><figcaption>A JSON-LD Compact URI definition</figcaption>
 <pre class="example highlight json">{
   "@context": {
-    "ex": "http://example.org/",
-    "term": {
-      "@type": "id",
-      "@id": "ex:term"
-    }
+      "ex": "http://example.org/",
+      "term": {
+          "@type": "@id",
+          "@id": "ex:term"
+      }
   },
   "term": "ex:Foo"
 }</pre></figure>
@@ -1791,7 +1791,7 @@ as2-date-time    = full-date "T" as2-full-time
 
   <p>
     In JSON-LD, Compact URI expansion of <em>values</em> applies to
-    properties explicitly defined as <code>"type": "id"</code> in the
+    properties explicitly defined as <code>"@type": "@id"</code> in the
     <code>@context</code> definition. Specifically, Compact URIs can be used
     anywhere an IRI (or URI) value is expected.
   </p>
