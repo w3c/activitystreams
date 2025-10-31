@@ -30,6 +30,23 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 - Section 5.1 incorrectly refers to the `id` alias for the `@id` property, and the `type` alias of the `@type` property. Paragraph 4 should read, in part, ''In JSON-LD, Compact URI expansion of values applies to properties explicitly defined as "@type": "@id" in the @context definition.''
 
+- Example 2 has an incorrect value for the `@vocab` property. The correct example should be:
+
+  ```json
+  {
+      "@context": {
+      "@vocab": "https://www.w3.org/ns/activitystreams#",
+      "ext": "https://canine-extension.example/terms/",
+      "@language": "en"
+    },
+    "summary": "A note",
+    "type": "Note",
+    "content": "My dog has fleas.",
+    "ext:nose": 0,
+    "ext:smell": "terrible"
+  }
+  ```
+
 ## Activity Vocabulary
 
 - Example 150 has `latitude` and `longitude` properties with string values.
