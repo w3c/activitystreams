@@ -262,7 +262,7 @@
         An <dfn>Activity Streams
         Document</dfn> is a JSON document whose root value is an
         Activity Streams <a>Object</a> of any type, including a
-        <a>Collection</a>, and whose MIME media type is
+        <a>Collection</a>, and whose media type ([[!IANA-MEDIA-TYPES]]) is
         "<code>application/activity+json</code>".
       </p>
 
@@ -380,7 +380,7 @@
         <p>
           When a JSON-LD enabled Activity Streams 2.0 implementation encounters
           a JSON document identified using the
-          "<code>application/activity+json</code>" MIME media type, and
+          "<code>application/activity+json</code>" media type, and
           that document does not contain a <code>@context</code> property
           whose value includes a reference to the normative
           <a href="https://www.w3.org/ns/activitystreams">Activity Streams 2.0 JSON-LD
@@ -898,8 +898,8 @@ as2-date-time    = full-date "T" as2-full-time
 </figure>
 
       <figure><figcaption>
-        Alternatively, if additional metadata is required (such as the MIME
-        content type of the referenced resource) a <a>Link</a> can be used:
+        Alternatively, if additional metadata is required (such as the
+        media type of the referenced resource) a <a>Link</a> can be used:
       </figcaption>
 <div id="ex13-jsonld" style="display: block;">
 <pre class="example highlight json">{
@@ -2002,7 +2002,7 @@ as2-date-time    = full-date "T" as2-full-time
       <h2>The <code>application/activity+json</code> Media Type</h2>
 
       <p>
-        This specification registers the <code><dfn>application/activity+json</dfn></code> MIME Media Type specifically for identifying documents
+        This specification registers the <code><dfn>application/activity+json</dfn></code> media type specifically for identifying documents
         conforming to the Activity Streams 2.0 format.
       </p>
 
@@ -2341,7 +2341,7 @@ profile-URI   = URI</"></"></pre>
 
     <ol>
     <li>
-      Implementations can use the "<code>application/stream+json</code>" MIME
+      Implementations can use the "<code>application/stream+json</code>"
       media type when producing a JSON serialization using the Activity
       Streams 1.0 syntax, and "<code>application/activity+json</code>"
       when producing a serialization conforming to the 2.0 syntax.
@@ -2349,7 +2349,7 @@ profile-URI   = URI</"></"></pre>
     <li>
       Implementations that process serializations identified using either
       the "<code>application/stream+json</code>" or the more
-      generic "<code>application/json</code>" MIME media type MUST follow
+      generic "<code>application/json</code>" media type MUST follow
       the syntax and processing rules set by [[AS1]].  The 2.0
       syntax and processing rules apply only when handling
       serializations using the "<code>application/activity+json</code>" media
@@ -2539,6 +2539,9 @@ profile-URI   = URI</"></"></pre>
       </li>
       <li>
         Updated context examples to include more realistic complex contexts.
+      </li>
+      <li>
+        Replaced "MIME media type" with the recommended terminology: "media type".
       </li>
     </ul>
 
