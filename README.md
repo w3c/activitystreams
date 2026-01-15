@@ -8,7 +8,7 @@ It is an extensible format; the Activity Vocabulary provides a structure for soc
 
 * The [Core specification](https://www.w3.org/TR/activitystreams-core/) describes the basic structure of AS2 and the core classes like `Object` and `Link`.
 * The [Vocabulary specification](https://www.w3.org/TR/activitystreams-vocabulary/) expands on the core specification with definitions of several dozen activity and object types, as well as many properties of those types.
-* The [SocialCG](https://www.w3.org/Social/WG) is the W3C Social Web Working Group, which is the home of AS2.
+* The [Social Web WG](https://www.w3.org/groups/wg/social/) is the W3C Social Web Working Group, which maintains AS2.
 * [ActivityPub](https://www.w3.org/TR/activitypub/) is a protocol that uses AS2 for communication between social systems.
 * The [Activity Streams Primer](https://www.w3.org/wiki/Activity_Streams/Primer) includes some expanded examples and explanations of AS2. If it's unclear how to use a type or property, the primer is a good place to start.
 * The [Extensions registry](https://www.w3.org/wiki/Activity_Streams/Extensions) lists known extensions to AS2.
@@ -22,7 +22,7 @@ The currently active editors of the AS2 specification(s) are:
 
 ## Supported deliverables
 
-These files are maintained by the editor(s) under the supervision of the SocialCG:
+These files are maintained by the editor(s) under the supervision of the Social Working Group:
 
 * The Core specification.
 * The Vocabulary specification.
@@ -35,7 +35,7 @@ Other documents included here are informational and provided on a best-effort ba
 
 ## Contributions
 
-Because AS2 is a W3C Recommendation, its published documents are stable and changes are highly controlled. If you'd like to contribute, the best way is to open a [GitHub issue](https://github.com/w3c/activitystreams/issues) or join the [SocialCG](https://www.w3.org/Social/WG) and participate in discussions there.
+Because AS2 is a W3C Recommendation, its published documents are stable and changes are highly controlled. If you'd like to contribute, the best way is to open a [GitHub issue](https://github.com/w3c/activitystreams/issues) or join the [SocialCG](https://www.w3.org/groups/wg/social/) and participate in discussions there.
 
 Pull requests are generally *not* helpful, unless you're an editor or have been asked to submit a pull request by an editor. The editors are responsible for the content of the documents, and they will make changes based on the issues and discussions.
 
