@@ -47,6 +47,8 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   }
   ```
 
+- Section 8.1, "The application/activity+json Media Type", does not mention considerations for fragment identifiers. In the absence of any defined considerations, one default is to fall back on the same treatment as with JSON-LD. One way to make this explicit is to add this sentence to the end of section 8.1: "Fragment identifiers used with application/activity+json are treated as in RDF syntaxes, as per RDF 1.1 Concepts and Abstract Syntax [RDF11-CONCEPTS]."
+
 ## Activity Vocabulary
 
 - Example 150 has `latitude` and `longitude` properties with string values.
