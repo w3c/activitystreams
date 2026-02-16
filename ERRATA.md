@@ -81,4 +81,4 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
   - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
 
-  - The definition of `tag` should read 'One or more "tags" that have been associated with an object. A tag can be any kind of Object. The key difference between `attachment` and `tag` is that the former implies association by inclusion, while the latter implies association by reference.'
+  - The definition of the `tag` property has two grammatical errors: it refers to "an objects" instead of "an object" and says that `tag` "implies associated by" instead of "implies association by". One possible correction is to change the definition to the following: 'One or more "tags" that have been associated with an object. A tag can be any kind of Object. The key difference between `attachment` and `tag` is that the former implies association by inclusion, while the latter implies association by reference.'
