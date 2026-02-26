@@ -222,7 +222,7 @@ as:oneOf a owl:ObjectProperty ;
   rdfs:domain as:Question .
 
 as:anyOf a owl:ObjectProperty ;
-  rdfs:label "oneOf"@en ;
+  rdfs:label "anyOf"@en ;
   rdfs:comment "Describes a possible inclusive answer or option for a question."@en ;
   rdfs:range [
     a owl:Class ;
