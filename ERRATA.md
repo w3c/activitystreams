@@ -64,61 +64,61 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   }
   ```
 
-  - Example 80 has `Image` objects with `width` and `height` properties, which
-    are only allowed on `Link` objects. One alternative is to use `Link` objects
-    with the correct `height` and `width` as the `url` property for each `Image`
-    object.
+- Example 80 has `Image` objects with `width` and `height` properties, which
+  are only allowed on `Link` objects. One alternative is to use `Link` objects
+  with the correct `height` and `width` as the `url` property for each `Image`
+  object.
 
-    ```json
-    {
-      "@context": "https://www.w3.org/ns/activitystreams",
-      "summary": "A simple note",
-      "type": "Note",
-      "content": "A simple note",
-      "icon": [
-        {
-          "type": "Image",
-          "summary": "Note (16x16)",
-          "url": {
-            "type": "Link",
-            "href": "http://example.org/note1.png",
-            "width": 16,
-            "height": 16
-          }
-        },
-        {
-          "type": "Image",
-          "summary": "Note (32x32)",
-          "url": {
-            "type": "Link",
-            "href": "http://example.org/note2.png",
-            "width": 32,
-            "height": 32
-          }
+  ```json
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "A simple note",
+    "type": "Note",
+    "content": "A simple note",
+    "icon": [
+      {
+        "type": "Image",
+        "summary": "Note (16x16)",
+        "url": {
+          "type": "Link",
+          "href": "http://example.org/note1.png",
+          "width": 16,
+          "height": 16
         }
-      ]
-    }
-    ```
+      },
+      {
+        "type": "Image",
+        "summary": "Note (32x32)",
+        "url": {
+          "type": "Link",
+          "href": "http://example.org/note2.png",
+          "width": 32,
+          "height": 32
+        }
+      }
+    ]
+  }
+  ```
 
-  - The range of the `units` property is given as an enumerated set of values.
-    Due to a formatting error, some of these values are shown with an incorrect
-    leading space character. The correct range is:
+- The range of the `units` property is given as an enumerated set of values.
+  Due to a formatting error, some of these values are shown with an incorrect
+  leading space character. The correct range is:
 
-    ```text
-    "cm" | "feet" | "inches" | "km" | "m" | "miles" | xsd:anyURI
-    ```
+  ```text
+  "cm" | "feet" | "inches" | "km" | "m" | "miles" | xsd:anyURI
+  ```
 
-  - Example 58 includes a `summary` property on a `Mention` object, which is
-    not allowed. A corrected example:
+- Example 58 includes a `summary` property on a `Mention` object, which is
+  not allowed. A corrected example:
 
-    ```json
-    {
-      "@context": "https://www.w3.org/ns/activitystreams",
-      "type": "Mention",
-      "href": "http://example.org/joe",
-      "name": "Joe"
-    }
-    ```
+  ```json
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "type": "Mention",
+    "href": "http://example.org/joe",
+    "name": "Joe"
+  }
+  ```
 
 - Unlike `latitude` and `longitude`, the domain of the `altitude` term is the `Object` type. The `altitude` term should be included in the list of properties of an `Object`. Because `altitude` is primarily documented as a property of a `Place`, publishers should not include `altitude` on objects that are not of type `Place`, and consumers should accept objects with this property that aren't of type `Place`.
 
@@ -151,29 +151,29 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 - The domain of the `attributedTo` property is both `Link` and `Object`. `attributedTo` should be included in the list of properties of a `Link`.
 
-  - Example 79 has  an `Image` object with `width` and `height` properties, which
-    only indicate `Link` in their Domain. One alternative is to use a `Link` object
-    with the correct `height` and `width` as the `url` property for each `Image`
-    object.
+- Example 79 has  an `Image` object with `width` and `height` properties, which
+  only indicate `Link` in their Domain. One alternative is to use a `Link` object
+  with the correct `height` and `width` as the `url` property for each `Image`
+  object.
 
-    ```json
-    {
-      "@context": "https://www.w3.org/ns/activitystreams",
-      "summary": "A simple note",
-      "type": "Note",
-      "content": "This is all there is.",
-      "icon": {
-        "type": "Image",
-        "name": "Note icon",
-        "url": {
-           "href": "http://example.org/note.png",
-           "type": "Link",
-           "width": 16,
-           "height": 16
-        }
+  ```json
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "A simple note",
+    "type": "Note",
+    "content": "This is all there is.",
+    "icon": {
+      "type": "Image",
+      "name": "Note icon",
+      "url": {
+         "href": "http://example.org/note.png",
+         "type": "Link",
+         "width": 16,
+         "height": 16
       }
     }
-    ```
+  }
+  ```
 
 - The Notes for the `to` property do not correctly identify the functionality (one or more) of the values of the property. The notes should read: "Identifies one or more entities that are part of the public primary audience of this Object."
 
@@ -228,29 +228,29 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
 
 - In Section 4, the range of the `formerType` property is given as `Object`. The property should have the same range as the `type` property for which it forms a replacement for deleted `Tombstone` objects.
 
-  - Example 75 erroneously includes a `summary` property on a `Link` object. The corrected example:
+- Example 75 erroneously includes a `summary` property on a `Link` object. The corrected example:
 
-    ```json
-    {
-      "@context": "https://www.w3.org/ns/activitystreams",
-      "summary": "Sally's blog posts",
-      "type": "Collection",
-      "totalItems": 3,
-      "current": {
-        "type": "Link",
-        "name": "Most Recent Items",
-        "href": "http://example.org/collection"
-      },
-      "items": [
-        "http://example.org/posts/1",
-        "http://example.org/posts/2",
-        "http://example.org/posts/3"
-      ]
-    }
-    ```
+  ```json
+  {
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "summary": "Sally's blog posts",
+    "type": "Collection",
+    "totalItems": 3,
+    "current": {
+      "type": "Link",
+      "name": "Most Recent Items",
+      "href": "http://example.org/collection"
+    },
+    "items": [
+      "http://example.org/posts/1",
+      "http://example.org/posts/2",
+      "http://example.org/posts/3"
+    ]
+  }
+  ```
 
-  - Example 77 erroneously includes a `summary` property on a `Link` object. The corrected example:
-
+- Example 77 erroneously includes a `summary` property on a `Link` object. The corrected example:
+  
   ```json
   {
     "@context": "https://www.w3.org/ns/activitystreams",
@@ -265,8 +265,8 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   }
   ```
 
-  - Example 87 erroneously includes a `summary` property on a `Link` object. The corrected example:
-
+- Example 87 erroneously includes a `summary` property on a `Link` object. The corrected example:
+  
   ```json
   {
     "@context": "https://www.w3.org/ns/activitystreams",
