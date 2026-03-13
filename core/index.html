@@ -31,7 +31,7 @@
         w3cid: "43626"
       }
       ],
-      
+
     maxTocLevel: 2,
     previousMaturity: "CR",
     previousPublishDate:  "2016-12-15",
@@ -336,7 +336,7 @@
               <pre class="example highlight json">
 {
   "@context": {
-     "@vocab": "https://www.w3.org/ns/activitystreams",
+     "@vocab": "https://www.w3.org/ns/activitystreams#",
      "ext": "https://canine-extension.example/terms/",
      "@language": "en"
   },
@@ -426,8 +426,7 @@
           [[RFC3339]].
         </p>
 <pre>
-as2-partial-time = time-hour ":" time-minute [":" time-second]
-                   [time-secfrac]
+as2-partial-time = time-hour ":" time-minute [":" time-second [time-secfrac]]
 as2-full-time    = as2-partial-time time-offset
 as2-date-time    = full-date "T" as2-full-time
 </pre>
@@ -862,11 +861,14 @@ as2-date-time    = full-date "T" as2-full-time
         the <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>:
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-id">id</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code> |
+          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">nameMap</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-rel">rel</a></code> |
           <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-height">height</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-width">width</a></code>
+          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-width">width</a></code> |
+          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-preview">preview</a></code> |
+          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attributedTo">attributedTo</a></code>
       </p>
 
       <p>
@@ -1771,11 +1773,11 @@ as2-date-time    = full-date "T" as2-full-time
   <figure><figcaption>A JSON-LD Compact URI definition</figcaption>
 <pre class="example highlight json">{
   "@context": {
-    "ex": "http://example.org/",
-    "term": {
-      "@type": "id",
-      "@id": "ex:term"
-    }
+      "ex": "http://example.org/",
+      "term": {
+          "@type": "@id",
+          "@id": "ex:term"
+      }
   },
   "term": "ex:Foo"
 }</pre></figure>
@@ -1789,7 +1791,7 @@ as2-date-time    = full-date "T" as2-full-time
 
   <p>
     In JSON-LD, Compact URI expansion of <em>values</em> applies to
-    properties explicitly defined as <code>"type": "id"</code> in the
+    properties explicitly defined as <code>"@type": "@id"</code> in the
     <code>@context</code> definition. Specifically, Compact URIs can be used
     anywhere an IRI (or URI) value is expected.
   </p>
@@ -2068,6 +2070,9 @@ profile-URI   = URI</"></"></pre>
           media type as being equivalent to `application/activity+json`.
         </p>
 
+        <p>
+          Fragment identifiers used with application/activity+json are treated as in RDF syntaxes, as per [[[RDF11-CONCEPTS]]].
+        </p>
     </section>
 
   </section>
