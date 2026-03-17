@@ -173,7 +173,13 @@ as:items a owl:ObjectProperty ;
       ]
       as:OrderedItems
     )
-  ] .
+  ] ;
+# page members are members of the parent collection as well
+  owl:propertyChainAxiom ( [ owl:inverseOf :partOf
+                                ]
+                                :items
+                              ) .
+
 
 as:last a owl:FunctionalProperty ,
           owl:ObjectProperty ;
