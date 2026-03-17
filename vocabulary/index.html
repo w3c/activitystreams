@@ -4681,7 +4681,8 @@ public secondary audience of this Object.
               The content or textual representation of the Object encoded as a
               JSON string. By default, the value of <code>content</code> is
               HTML. The <code><a>mediaType</a></code> property can be used in
-              the object to indicate a different content type.
+              the object to indicate a different media type for the
+              <code>content</code> property.
             </p>
             <p>
               The content MAY be expressed using multiple language-tagged
@@ -5051,11 +5052,11 @@ public secondary audience of this Object.
           <td>Notes:</td>
           <td>
             <p>
-              When used on a <a>Link</a>, identifies the MIME media type of the
+              When used on a <a>Link</a>, identifies the media type of the
               referenced resource.
             </p>
             <p>
-              When used on an <a>Object</a>, identifies the MIME media
+              When used on an <a>Object</a>, identifies the media
               type of the value of the <code><a>content</a></code> property.
               If not specified, the <code><a>content</a></code> property is
               assumed to contain <code>text/html</code> content.
@@ -5068,7 +5069,7 @@ public secondary audience of this Object.
         </tr>
         <tr>
           <td>Range:</td>
-          <td>MIME Media Type</td>
+          <td><code>xsd:string</code> ([[!IANA-MEDIA-TYPES]])</td>
         </tr>
         <tr>
           <td>Functional:</td>
@@ -6890,6 +6891,9 @@ public secondary audience of this Object.
         Set the domain of the <code><a>first</a></code>,
         <code><a>last</a></code>, and <code><a>current</a></code> properties to
         <code><a>Collection</a></code>.
+      </li>
+      <li>
+        Replaced "MIME media type" with the recommended terminology: "media type".
       </li>
     </ul>
 
