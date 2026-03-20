@@ -250,7 +250,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   ```
 
 - Example 77 erroneously includes a `summary` property on a `Link` object. The corrected example:
-  
+
   ```json
   {
     "@context": "https://www.w3.org/ns/activitystreams",
@@ -266,7 +266,7 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   ```
 
 - Example 87 erroneously includes a `summary` property on a `Link` object. The corrected example:
-  
+
   ```json
   {
     "@context": "https://www.w3.org/ns/activitystreams",
@@ -282,3 +282,5 @@ This document includes errata for the [Activity Streams](https://www.w3.org/TR/a
   ```
 
 - The definition of the `tag` property has two grammatical errors: it refers to "an objects" instead of "an object" and says that `tag` "implies associated by" instead of "implies association by". One possible correction is to change the definition to the following: 'One or more "tags" that have been associated with an object. A tag can be any kind of Object. The key difference between `attachment` and `tag` is that the former implies association by inclusion, while the latter implies association by reference.'
+
+- The second paragraph in the non-normative section "Mentions, Tags and Other Common Social Microsyntaxes" should read, 'While such microsyntaxes can be used within the values of the `content`, `name`, and `summary` properties on an Activity Streams Object, implementations are not expected to parse the values of those properties in order to determine the appropriate routing of notifications, categorization, or linking between objects. Instead, publishers are expected to make appropriate use of the vocabulary terms provided specifically for these purposes to communicate information to consumers.'
