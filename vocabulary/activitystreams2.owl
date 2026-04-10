@@ -127,7 +127,12 @@ as:first a owl:FunctionalProperty ,
   rdfs:range [
     a owl:Class ;
     owl:unionOf ( as:CollectionPage as:Link )
-  ] .
+  ] ;
+  # the first page of a collection is part of the collection itself (see https://github.com/w3c/activitystreams/issues/686)
+  rdfs:subPropertyOf [ owl:inverseOf :partOf
+                            ] .
+
+
 
 as:generator a owl:ObjectProperty ;
   rdfs:label "generator"@en ;
