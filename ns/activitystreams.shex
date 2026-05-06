@@ -1,0 +1,795 @@
+# ----------------------------------------------------
+# Shex (https://shex.io) shapes based on the activity
+# streams spec (https://www.w3.org/TR/activitystreams-vocabulary)
+# ----------------------------------------------------
+
+PREFIX sra: <https://w3id.org/activity-streams/schemas#>
+PREFIX as: <https://www.w3.org/ns/activitystreams#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# ----------------------------------------------------
+# Object
+# ----------------------------------------------------
+sra:Object EXTRA a {
+  $sra:ObjectShape (
+    a [ as:Object ]
+      // rdfs:comment  "Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection." ;
+
+    (as:attachment @sra:Object * ; as:attachment @sra:Link *)
+      // rdfs:comment "Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email." ;
+
+    (as:attributedTo @sra:Object ; as:attributedTo @sra:Link *)
+      // rdfs:comment "Identifies one or more entities to which this object is attributed. The attributed entities might not be Actors. For instance, an object might be attributed to the completion of another activity." ;
+
+    (as:audience @sra:Object * ; as:audience @sra:Link *)
+      // rdfs:comment "Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant." ;
+
+    (as:content xsd:string * ; as:content rdf:langString *)
+      // rdfs:comment "The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type. The content MAY be expressed using multiple language-tagged values. " ;
+    
+    (as:context @sra:Object * ; as:context @sra:Link *)
+      // rdfs:comment "Identifies the context within which the object exists or an activity was performed. The notion of \"context\" used is intentionally vague. The intended function is to serve as a means of grouping objects and activities that share a common originating context or purpose. An example could be all activities relating to a common project or event." ;
+
+    (as:name xsd:string * ; as:name rdf:langString *)
+      // rdfs:comment "A simple, human-readable, plain-text name for the object. HTML markup MUST NOT be included. The name MAY be expressed using multiple language-tagged values." ;
+    
+    as:endTime xsd:dateTime ?
+      // rdfs:comment "The date and time describing the actual or expected ending time of the object. When used with an Activity object, for instance, the endTime property specifies the moment the activity concluded or is expected to conclude." ;
+    
+    (as:generator @sra:Object * ; as:generator @sra:Link *)
+      // rdfs:comment "Identifies the entity (e.g. an application) that generated the object. " ;
+    
+    (as:icon @sra:Image * ; as:icon @sra:Link *)
+      // rdfs:comment "Indicates an entity that describes an icon for this object. The image should have an aspect ratio of one (horizontal) to one (vertical) and should be suitable for presentation at a small size." ;
+    
+    (as:image @sra:Image * ; as:image @sra:Link *)
+      // rdfs:comment "Indicates an entity that describes an image for this object. Unlike the icon property, there are no aspect ratio or display size limitations assumed." ;
+    
+    (as:inReplyTo @sra:Object * ; as:inReplyTo @sra:Link *)
+      // rdfs:comment "Indicates one or more entities for which this object is considered a response." ;
+    
+    (as:location @sra:Object * ; as:location @sra:Link *)
+      // rdfs:comment "Indicates one or more physical or logical locations associated with the object." ;
+    
+    (as:preview @sra:Object * ; as:preview @sra:Link *)
+      // rdfs:comment "Identifies an entity that provides a preview of this object." ;
+    
+    as:published xsd:dateTime ?
+      // rdfs:comment "The date and time at which the object was published" ;
+    
+    as:replies @sra:Collection ?
+      // rdfs:comment "Identifies a Collection containing objects considered to be responses to this object." ;
+    
+    as:startTime xsd:dateTime ?
+      // rdfs:comment "The date and time describing the actual or expected starting time of the object. When used with an Activity object, for instance, the startTime property specifies the moment the activity began or is scheduled to begin." ;
+    
+    (as:summary xsd:string * ; as:summary rdf:langString *)
+      // rdfs:comment "A natural language summarization of the object encoded as HTML. Multiple language tagged summaries MAY be provided." ;
+    
+    (as:tag @sra:Object * ; as:tag @sra:Link *)
+      // rdfs:comment "One or more \"tags\" that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference." ;
+    
+    as:updated xsd:dateTime ?
+      // rdfs:comment "The date and time at which the object was updated" ;
+    
+    (as:url xsd:anyURI * ; as:url @sra:Link *)
+      // rdfs:comment "Identifies one or more links to representations of the object" ;
+    
+    (as:to @sra:Object * ; as:to @sra:Link *)
+      // rdfs:comment "Identifies an entity considered to be part of the public primary audience of an Object" ;
+    
+    (as:bto @sra:Object * ; as:bto @sra:Link *)
+      // rdfs:comment "Identifies an Object that is part of the private primary audience of this Object." ;
+    
+    (as:cc @sra:Object * ; as:cc @sra:Link *)
+      // rdfs:comment "Identifies an Object that is part of the public secondary audience of this Object." ;
+    
+    (as:bcc @sra:Object * ; as:bcc @sra:Link *)
+      // rdfs:comment "Identifies one or more Objects that are part of the private secondary audience of this Object." ;
+    
+    as:mediaType xsd:string ?
+      // rdfs:comment "When used on a Link, identifies the MIME media type of the referenced resource. When used on an Object, identifies the MIME media type of the value of the content property. If not specified, the content property is assumed to contain text/html content." ;
+    
+    as:duration xsd:duration ?
+      // rdfs:comment "When the object describes a time-bound resource, such as an audio or video, a meeting, etc, the duration property indicates the object's approximate duration. The value MUST be expressed as an xsd:duration as defined by [ xmlschema11-2], section 3.3.6 (e.g. a period of 5 seconds is represented as \"PT5S\")." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Link
+# ----------------------------------------------------
+sra:Link EXTRA a {
+  $sra:LinkShape (
+    a [ as:Link ]
+      // rdfs:comment "A Link is an indirect, qualified reference to a resource identified by a URL. The fundamental model for links is established by [ RFC5988]. Many of the properties defined by the Activity Vocabulary allow values that are either instances of Object or Link. When a Link is used, it establishes a qualified relation connecting the subject (the containing object) to the resource identified by the href. Properties of the Link are properties of the reference as opposed to properties of the resource." ;
+
+    as:href xsd:anyURI ?
+      // rdfs:comment "The target resource pointed to by a Link." ;
+
+    as:rel xsd:string *
+      // rdfs:comment "A link relation associated with a Link. The value MUST conform to both the [HTML5] and [RFC5988] \"link relation\" definitions. In the [HTML5], any string not containing the \"space\" U+0020, \"tab\" (U+0009), \"LF\" (U+000A), \"FF\" (U+000C), \"CR\" (U+000D) or \",\" (U+002C) characters can be used as a valid link relation." ;
+
+    as:mediaType xsd:string ?
+      // rdfs:comment "When used on a Link, identifies the MIME media type of the referenced resource. When used on an Object, identifies the MIME media type of the value of the content property. If not specified, the content property is assumed to contain text/html content." ;
+
+    (as:name xsd:string * ; as:name rdf:langString *)
+      // rdfs:comment "A simple, human-readable, plain-text name for the object. HTML markup MUST NOT be included. The name MAY be expressed using multiple language-tagged values." ;
+    
+    as:hreflang xsd:string ?
+      // rdfs:comment "Hints as to the language used by the target resource. Value MUST be a [BCP47] Language-Tag." ;
+
+    as:height xsd:nonNegativeInteger ?
+      // rdfs:comment "On a Link, specifies a hint as to the rendering height in device-independent pixels of the linked resource." ;
+
+    as:width xsd:nonNegativeInteger ?
+      // rdfs:comment "On a Link, specifies a hint as to the rendering width in device-independent pixels of the linked resource." ;
+
+    (as:preview @sra:Object * ; as:preview @sra:Link *)
+      // rdfs:comment "Identifies an entity that provides a preview of this object." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Activity
+# ----------------------------------------------------
+sra:Activity EXTRA a {
+  $sra:ActivityShape (
+    &sra:ObjectShape ;
+    a [ as:Activity ]
+      // rdfs:comment "An Activity is a subtype of Object that describes some form of action that may happen, is currently happening, or has already happened. The Activity type itself serves as an abstract base type for all types of activities. It is important to note that the Activity type itself does not carry any specific semantics about the kind of action being taken." ;
+    
+    (as:actor @sra:Object * ; as:actor @sra:Link *)
+      // rdfs:comment "Describes one or more entities that either performed or are expected to perform the activity. Any single activity can have multiple actors. The actor MAY be specified using an indirect Link." ;
+
+    (as:object @sra:Object * ; as:object @sra:Link *)
+      // rdfs:comment "When used within an Activity, describes the direct object of the activity. For instance, in the activity \"John added a movie to his wishlist\", the object of the activity is the movie added. When used within a Relationship describes the entity to which the subject is related." ;
+
+    (as:target @sra:Object * ; as:target @sra:Link *)
+      // rdfs:comment "Describes the indirect object, or target, of the activity. The precise meaning of the target is largely dependent on the type of action being described but will often be the object of the English preposition \"to\". For instance, in the activity \"John added a movie to his wishlist\", the target of the activity is John's wishlist. An activity can have more than one target." ;
+
+    (as:result @sra:Object * ; as:result @sra:Link *)
+      // rdfs:comment "Describes the result of the activity. For instance, if a particular action results in the creation of a new resource, the result property can be used to describe that new resource." ;
+
+    (as:origin @sra:Object * ; as:origin @sra:Link *)
+      // rdfs:comment "Describes an indirect object of the activity from which the activity is directed. The precise meaning of the origin is the object of the English preposition \"from\". For instance, in the activity \"John moved an item to List B from List A\", the origin of the activity is \"List A\". " ;
+
+    (as:instrument @sra:Object * ; as:instrument @sra:Link *)
+      // rdfs:comment "Identifies one or more objects used (or to be used) in the completion of an Activity." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Intransitive Activity
+# ----------------------------------------------------
+sra:InstransitiveActivity EXTRA a {
+  $sra:InstransitiveActivityShape (
+    &sra:ActivityShape ;
+    a [ as:IntransitiveActivity ]
+      // rdfs:comment "Instances of IntransitiveActivity are a subtype of Activity representing intransitive actions. The object property is therefore inappropriate for these activities." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Collection
+# ----------------------------------------------------
+sra:Collection EXTRA a {
+  $sra:CollectionShape (
+    &sra:ObjectShape ;
+    a [ as:Collection ]
+      // rdfs:comment "A Collection is a subtype of Object that represents ordered or unordered sets of Object or Link instances. Refer to the Activity Streams 2.0 Core specification for a complete description of the Collection type. " ;
+    
+    as:totalItems xsd:nonNegativeInteger ?
+      // rdfs:comment "A non-negative integer specifying the total number of objects contained by the logical view of the collection. This number might not reflect the actual number of items serialized within the Collection object instance." ;
+
+    (as:current @sra:CollectionPage ? | as:current @sra:Link ?)
+      // rdfs:comment "In a paged Collection, indicates the page that contains the most recently updated member items." ;
+
+    (as:first @sra:CollectionPage ? | as:first @sra:Link ?)
+      // rdfs:comment "In a paged Collection, indicates the furthest preceeding page of items in the collection." ;
+
+    (as:last @sra:CollectionPage ? | as:last @sra:Link ?)
+      // rdfs:comment "In a paged Collection, indicates the furthest proceeding page of the collection." ;
+
+    (as:items @sra:Object * ; as:items @sra:Link *)
+      // rdfs:comment "Identifies the items contained in a collection. The items might be ordered or unordered. " ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Ordered Collection
+# ----------------------------------------------------
+sra:OrderedCollection EXTRA a {
+  $sra:OrderedCollectionShape (
+    &sra:Collection ;
+    a [ as:OrderedCollection ]
+      // rdfs:comment "A subtype of Collection in which members of the logical collection are assumed to always be strictly ordered." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Collection Page
+# ----------------------------------------------------
+sra:CollectionPage EXTRA a {
+  $sra:CollectionPageShape (
+    &sra:CollectionShape ;
+    a [ as:CollectionPage ]
+      // rdfs:comment "Used to represent distinct subsets of items from a Collection. Refer to the Activity Streams 2.0 Core for a complete description of the CollectionPage object." ;
+    
+    (as:partOf @sra:Link ? | as:partOf @sra:Collection ?)
+      // rdfs:comment "Identifies the Collection to which a CollectionPage objects items belong." ;
+
+    (as:next @sra:CollectionPage ? | as:next @sra:Link ?)
+      // rdfs:comment "In a paged Collection, indicates the next page of items." ;
+
+    (as:prev @sra:CollectionPage ? | as:next @sra:Link ?)
+      // rdfs:comment "In a paged Collection, identifies the previous page of items." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Ordered Collection Page
+# ----------------------------------------------------
+sra:OrderedCollectionPage EXTRA a {
+  $sra:OrderedCollectionPageShape (
+    &sra:OrderedCollectionShape ;
+    a [ as:OrderedCollectionPage ]
+      // rdfs:comment "Used to represent ordered subsets of items from an OrderedCollection. Refer to the Activity Streams 2.0 Core for a complete description of the OrderedCollectionPage object." ;
+    
+    as:startIndex xsd:nonNegativeInteger ?
+      // rdfs:comment "A non-negative integer value identifying the relative position within the logical view of a strictly ordered collection."
+  ) ;
+}
+
+# ----------------------------------------------------
+# Accept
+# ----------------------------------------------------
+sra:Accept EXTRA a {
+  $sra:AcceptShape (
+    &sra:ActivityShape ;
+    a [ as:Accept ]
+      // rdfs:comment "Indicates that the actor accepts the object. The target property can be used in certain circumstances to indicate the context into which the object has been accepted." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# TentativeAccept
+# ----------------------------------------------------
+sra:TentativeAccept EXTRA a {
+  $sra:TentativeAcceptShape (
+    &sra:AcceptShape ;
+    a [ as:TentativeAccept ]
+      // rdfs:comment "A specialization of Accept indicating that the acceptance is tentative." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Add
+# ----------------------------------------------------
+sra:Add EXTRA a {
+  $sra:AddShape (
+    &sra:ActivityShape ;
+    a [ as:Add ]
+      // rdfs:comment "Indicates that the actor has added the object to the target. If the target property is not explicitly specified, the target would need to be determined implicitly by context. The origin can be used to identify the context from which the object originated. " ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Arrive
+# ----------------------------------------------------
+sra:Arrive EXTRA a {
+  $sra:ArriveShape (
+    &sra:IntransitiveActivityShape ;
+    a [ as:Arrive ]
+      // rdfs:comment "An IntransitiveActivity that indicates that the actor has arrived at the location. The origin can be used to identify the context from which the actor originated. The target typically has no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Create
+# ----------------------------------------------------
+sra:Create EXTRA a {
+  $sra:CreateShape (
+    &sra:ActivityShape ;
+    a [ as:Create ]
+      // rdfs:comment "Indicates that the actor has created the object." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Delete
+# ----------------------------------------------------
+sra:Delete EXTRA a {
+  $sra:DeleteShape (
+    &sra:ActivityShape ;
+    a [ as:Delete ]
+      // rdfs:comment "Indicates that the actor has deleted the object. If specified, the origin indicates the context from which the object was deleted." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Follow
+# ----------------------------------------------------
+sra:Follow EXTRA a {
+  $sra:FollowShape (
+    &sra:ActivityShape ;
+    a [ as:Follow ]
+      // rdfs:comment "Indicates that the actor is \"following\" the object. Following is defined in the sense typically used within Social systems in which the actor is interested in any activity performed by or on the object. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Ignore
+# ----------------------------------------------------
+sra:Ignore EXTRA a {
+  $sra:IgnoreShape (
+    &sra:ActivityShape ;
+    a [ as:Ignore ]
+      // rdfs:comment "Indicates that the actor is ignoring the object. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Join
+# ----------------------------------------------------
+sra:Join EXTRA a {
+  $sra:JoinShape (
+    &sra:ActivityShape ;
+    a [ as:Join ]
+      // rdfs:comment "Indicates that the actor has joined the object. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Leave
+# ----------------------------------------------------
+sra:Leave EXTRA a {
+  $sra:LeaveShape (
+    &sra:ActivityShape ;
+    a [ as:Leave ]
+      // rdfs:comment "Indicates that the actor has left the object. The target and origin typically have no meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Like
+# ----------------------------------------------------
+sra:Like EXTRA a {
+  $sra:LikeShape (
+    &sra:ActivityShape ;
+    a [ as:Like ]
+      // rdfs:comment "Indicates that the actor likes, recommends or endorses the object. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Offer
+# ----------------------------------------------------
+sra:Offer EXTRA a {
+  $sra:OfferShape (
+    &sra:ActivityShape ;
+    a [ as:Offer ]
+      // rdfs:comment "Indicates that the actor is offering the object. If specified, the target indicates the entity to which the object is being offered." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Invite
+# ----------------------------------------------------
+sra:Invite EXTRA a {
+  $sra:InviteShape (
+    &sra:OfferShape ;
+    a [ as:Invite ]
+      // rdfs:comment "A specialization of Offer in which the actor is extending an invitation for the object to the target." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Reject
+# ----------------------------------------------------
+sra:Reject EXTRA a {
+  $sra:RejectShape (
+    &sra:ActivityShape ;
+    a [ as:Reject ]
+      // rdfs:comment "Indicates that the actor is rejecting the object. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# TentativeReject
+# ----------------------------------------------------
+sra:TentativeReject EXTRA a {
+  $sra:TentativeRejectShape (
+    &sra:RejectShape ;
+    a [ as:TentativeReject ]
+      // rdfs:comment "A specialization of Reject in which the rejection is considered tentative." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Remove
+# ----------------------------------------------------
+sra:Remove EXTRA a {
+  $sra:RemoveShape (
+    &sra:ActivityShape ;
+    a [ as:Remove ]
+      // rdfs:comment "Indicates that the actor is removing the object. If specified, the origin indicates the context from which the object is being removed." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Undo
+# ----------------------------------------------------
+sra:Undo EXTRA a {
+  $sra:UndoShape (
+    &sra:ActivityShape ;
+    a [ as:Undo ]
+      // rdfs:comment " Indicates that the actor is undoing the object. In most cases, the object will be an Activity describing some previously performed action (for instance, a person may have previously \"liked\" an article but, for whatever reason, might choose to undo that like at some later point in time). The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Update
+# ----------------------------------------------------
+sra:Update EXTRA a {
+  $sra:UpdateShape (
+    &sra:ActivityShape ;
+    a [ as:Update ]
+      // rdfs:comment "Indicates that the actor has updated the object. Note, however, that this vocabulary does not define a mechanism for describing the actual set of modifications made to object. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# View
+# ----------------------------------------------------
+sra:View EXTRA a {
+  $sra:ViewShape (
+    &sra:ActivityShape ;
+    a [ as:View ]
+      // rdfs:comment "Indicates that the actor has viewed the object." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Listen
+# ----------------------------------------------------
+sra:Listen EXTRA a {
+  $sra:ListenShape (
+    &sra:ActivityShape ;
+    a [ as:Listen ]
+      // rdfs:comment "Indicates that the actor has listened to the object." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Read
+# ----------------------------------------------------
+sra:Read EXTRA a {
+  $sra:ReadShape (
+    &sra:ActivityShape ;
+    a [ as:Read ]
+      // rdfs:comment "Indicates that the actor has read the object." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Move
+# ----------------------------------------------------
+sra:Move EXTRA a {
+  $sra:MoveShape (
+    &sra:ActivityShape ;
+    a [ as:Move ]
+      // rdfs:comment "Indicates that the actor has moved object from origin to target. If the origin or target are not specified, either can be determined by context." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Travel
+# ----------------------------------------------------
+sra:Travel EXTRA a {
+  $sra:TravelShape (
+    &sra:IntransitiveActivityShape ;
+    a [ as:Travel ]
+      // rdfs:comment "Indicates that the actor is traveling to target from origin. Travel is an IntransitiveObject whose actor specifies the direct object. If the target or origin are not specified, either can be determined by context." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Announce
+# ----------------------------------------------------
+sra:Announce EXTRA a {
+  $sra:AnnounceShape (
+    &sra:ActivityShape ;
+    a [ as:Announce ]
+      // rdfs:comment "Indicates that the actor is calling the target's attention the object. The origin typically has no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Block
+# ----------------------------------------------------
+sra:Block EXTRA a {
+  $sra:BlockShape (
+    &sra:IgnoreShape ;
+    a [ as:Block ]
+      // rdfs:comment "Indicates that the actor is blocking the object. Blocking is a stronger form of Ignore. The typical use is to support social systems that allow one user to block activities or content of other users. The target and origin typically have no defined meaning." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Flag
+# ----------------------------------------------------
+sra:Flag EXTRA a {
+  $sra:FlagShape (
+    &sra:ActivityShape ;
+    a [ as:Flag ]
+      // rdfs:comment "Indicates that the actor is \"flagging\" the object. Flagging is defined in the sense common to many social platforms as reporting content as being inappropriate for any number of reasons." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Dislike
+# ----------------------------------------------------
+sra:Dislike EXTRA a {
+  $sra:DislikeShape (
+    &sra:ActivityShape ;
+    a [ as:Dislike ]
+      // rdfs:comment "Indicates that the actor dislikes the object." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Question
+# ----------------------------------------------------
+sra:Question EXTRA a {
+  $sra:QuestionShape (
+    &sra:IntransitiveActivityShape ;
+    a [ as:Question ]
+      // rdfs:comment " Represents a question being asked. Question objects are an extension of IntransitiveActivity. That is, the Question object is an Activity, but the direct object is the question itself and therefore it would not contain an object property. Either of the anyOf and oneOf properties MAY be used to express possible answers, but a Question object MUST NOT have both properties. " ;
+
+    (
+      (as:oneOf @sra:Object * ; as:oneOf @sra:Link *)
+        // rdfs:comment " Identifies an exclusive option for a Question. Use of oneOf implies that the Question can have only a single answer. To indicate that a Question can have multiple answers, use anyOf." |
+      (as:anyOf @sra:Object * ; as:anyOf @sra:Link *)
+        // rdfs:comment " Identifies an inclusive option for a Question. Use of anyOf implies that the Question can have multiple answers. To indicate that a Question can have only one answer, use oneOf."
+    ) ;
+
+    (as:closed @sra:Object * ; as:closed @sra:Link * ; as:closed xsd:dateTime ? ; as:closed xsd:boolean)
+      // rdfs:comment "Indicates that a question has been closed, and answers are no longer accepted." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Application
+# ----------------------------------------------------
+sra:Application EXTRA a {
+  $sra:ApplicationShape (
+    &sra:ObjectShape ;
+    a [ as:Application ]
+      // rdfs:comment "Describes a software application." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Group
+# ----------------------------------------------------
+sra:Group EXTRA a {
+  $sra:GroupShape (
+    &sra:ObjectShape ;
+    a [ as:Group ]
+      // rdfs:comment "Represents a formal or informal collective of Actors." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Organization
+# ----------------------------------------------------
+sra:Organization EXTRA a {
+  $sra:OrganizationShape (
+    &sra:ObjectShape ;
+    a [ as:Organization ]
+      // rdfs:comment "Represents an organization." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Person
+# ----------------------------------------------------
+sra:Person EXTRA a {
+  $sra:PersonShape (
+    &sra:ObjectShape ;
+    a [ as:Person ]
+      // rdfs:comment "Represents an individual person." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Service
+# ----------------------------------------------------
+sra:Service EXTRA a {
+  $sra:ServiceShape (
+    &sra:ObjectShape ;
+    a [ as:Service ]
+      // rdfs:comment "Represents a service of any kind." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Relationship
+# ----------------------------------------------------
+sra:Relationship EXTRA a {
+  $sra:RelationshipShape (
+    &sra:ObjectShape ;
+    a [ as:Relationship ]
+      // rdfs:comment " Describes a relationship between two individuals. The subject and object properties are used to identify the connected individuals. See 5.2 Representing Relationships Between Entities for additional information. " ;
+    
+    (as:subject @sra:Object ? | as:subject @sra:Link ?)
+      // rdfs:comment "On a Relationship object, the subject property identifies one of the connected individuals. For instance, for a Relationship object describing \"John is related to Sally\", subject would refer to John." ;
+    
+    (as:object @sra:Object ? | as:object @sra:Link ?)
+      // rdfs:comment "When used within an Activity, describes the direct object of the activity. For instance, in the activity \"John added a movie to his wishlist\", the object of the activity is the movie added. When used within a Relationship describes the entity to which the subject is related." ;
+
+    as:relationship @sra:Object *
+      // rdfs:comment "On a Relationship object, the relationship property identifies the kind of relationship that exists between subject and object."
+  ) ;
+}
+
+# ----------------------------------------------------
+# Article
+# ----------------------------------------------------
+sra:Article EXTRA a {
+  $sra:ArticleShape (
+    &sra:ObjectShape ;
+    a [ as:Article ]
+      // rdfs:comment "Represents any kind of multi-paragraph written work." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Document
+# ----------------------------------------------------
+sra:Document EXTRA a {
+  $sra:DocumentShape (
+    &sra:ObjectShape ;
+    a [ as:Document ]
+      // rdfs:comment "Represents a document of any kind." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Audio
+# ----------------------------------------------------
+sra:Audio EXTRA a {
+  $sra:AudioShape (
+    &sra:DocumentShape ;
+    a [ as:Audio ]
+      // rdfs:comment "Represents an audio document of any kind." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Image
+# ----------------------------------------------------
+sra:Image EXTRA a {
+  $sra:ImageShape (
+    &sra:DocumentShape ;
+    a [ as:Image ]
+      // rdfs:comment "An image document of any kind" ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Video
+# ----------------------------------------------------
+sra:Video EXTRA a {
+  $sra:VideoShape (
+    &sra:DocumentShape ;
+    a [ as:Video ]
+      // rdfs:comment "Represents a video document of any kind. " ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Note
+# ----------------------------------------------------
+sra:Note EXTRA a {
+  $sra:NoteShape (
+    &sra:ObjectShape ;
+    a [ as:Note ]
+      // rdfs:comment "Represents a short written work typically less than a single paragraph in length." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Page
+# ----------------------------------------------------
+sra:Page EXTRA a {
+  $sra:PageShape (
+    &sra:DocumentShape ;
+    a [ as:Page ]
+      // rdfs:comment "Represents a Web Page." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Event
+# ----------------------------------------------------
+sra:Event EXTRA a {
+  $sra:EventShape (
+    &sra:ObjectShape ;
+    a [ as:Event ]
+      // rdfs:comment "Represents any kind of event." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Place
+# ----------------------------------------------------
+sra:Place EXTRA a {
+  $sra:PlaceShape (
+    &sra:ObjectShape ;
+    a [ as:Place ]
+      // rdfs:comment "Represents a logical or physical location. See 5.3 Representing Places for additional information." ;
+
+    as:accuracy xsd:float ?
+      // rdfs:comment "Indicates the accuracy of position coordinates on a Place objects. Expressed in properties of percentage. e.g. \"94.0\" means \"94.0% accurate\"." ;
+
+    as:altitude xsd:float ?
+      // rdfs:comment "Indicates the altitude of a place. The measurement units is indicated using the units property. If units is not specified, the default is assumed to be \"m\" indicating meters. " ;
+    
+    as:latitude xsd:float ?
+      // rdfs:comment "The latitude of a place" ;
+
+    as:latitude xsd:float ?
+      // rdfs:comment "The longitude of a place" ;
+
+    as:radius xsd:float ?
+      // rdfs:comment "The radius from the given latitude and longitude for a Place. The units is expressed by the units property. If units is not specified, the default is assumed to be \"m\" indicating \"meters\"." ;
+    
+    (as:unit ["cm"^^xsd:string "feet"^^xsd:string "inches"^^xsd:string "km"^^xsd:string "m"^^xsd:string "miles"^^xsd:string ] ? | as:unit xsd:anyURI)
+      // rdfs:comment "Specifies the measurement units for the radius and altitude properties on a Place object. If not specified, the default is assumed to be \"m\" for \"meters\"." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Mention
+# ----------------------------------------------------
+sra:Mention EXTRA a {
+  $sra:MentionShape (
+    &sra:LinkShape ;
+    a [ as:Mention ]
+      // rdfs:comment "A specialized Link that represents an @mention." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Profile
+# ----------------------------------------------------
+sra:Profile EXTRA a {
+  $sra:ProfileShape (
+    &sra:ObjectShape ;
+    a [ as:Profile ]
+      // rdfs:comment "A Profile is a content object that describes another Object, typically used to describe Actor Type objects. The describes property is used to reference the object being described by the profile." ;
+    
+    as:describes @sra:Object ?
+      // rdfs:comment "On a Profile object, the describes property identifies the object described by the Profile." ;
+  ) ;
+}
+
+# ----------------------------------------------------
+# Tombstone
+# ----------------------------------------------------
+sra:Tombstone EXTRA a {
+  $sra:TombstoneShape (
+    &sra:ObjectShape ;
+    a [ as:Tombstone ]
+      // rdfs:comment "A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted." ;
+    
+    as:formerType @sra:Object *
+      // rdfs:comment "On a Tombstone object, the formerType property identifies the type of the object that was deleted." ;
+
+    as:deleted xsd:dateTime ?
+      // rdfs:comment "On a Tombstone object, the deleted property is a timestamp for when the object was deleted." ;
+  ) ;
+}
