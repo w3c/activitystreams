@@ -11,7 +11,7 @@ It is an extensible format; the Activity Vocabulary provides a structure for soc
 * The [Social Web WG](https://www.w3.org/groups/wg/social/) is the W3C Social Web Working Group, which maintains AS2.
 * [ActivityPub](https://www.w3.org/TR/activitypub/) is a protocol that uses AS2 for communication between social systems.
 * The [Activity Streams Primer](https://www.w3.org/wiki/Activity_Streams/Primer) includes some expanded examples and explanations of AS2. If it's unclear how to use a type or property, the primer is a good place to start.
-* The [Extensions registry](https://www.w3.org/wiki/Activity_Streams/Extensions) lists known extensions to AS2.
+* The [Extensions registry](https://www.w3.org/wiki/Activity_Streams_extensions) lists known extensions to AS2.
 * Popular extensions can be integrated into the AS2 vocabulary document, making them practically part of the spec. The [Extensions Policy](https://swicg.github.io/extensions-policy/) describes how to propose extensions for inclusion in AS2.
 
 ## Editors
@@ -79,7 +79,7 @@ The most important type of backwards-compatible normative change is adding types
 
 The primary way to create a backwards-compatible change is to create a new extension to Activity Streams 2.0. You can create a GitHub issue to discuss the extension idea, which can help with building consensus around the change.
 
-Extensions are documented on the [Extensions registry](https://www.w3.org/wiki/Activity_Streams/Extensions). Before starting a new extension, it's a good idea to check the registry to see if someone else has already created a similar extension.
+Extensions are documented on the [Extensions registry](https://www.w3.org/wiki/Activity_Streams_extensions). Before starting a new extension, it's a good idea to check the registry to see if someone else has already created a similar extension.
 
 The [Fediverse Enhancement Proposals](https://codeberg.org/fediverse/fep) process is a lightweight collaboration process for creating and documenting Activity Streams 2.0 extensions (and other changes to the Fediverse). It's a good place to start if you're considering a backwards-compatible change.
 
