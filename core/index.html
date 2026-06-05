@@ -425,18 +425,19 @@
           "time-offset" and "full-date" constructs are as defined in
           [[RFC3339]].
         </p>
-<pre>
+<pre class="abnf">
 as2-partial-time = time-hour ":" time-minute [":" time-second [time-secfrac]]
 as2-full-time    = as2-partial-time time-offset
 as2-date-time    = full-date "T" as2-full-time
 </pre>
 
-        <p>
-          It is important to note that the `time-offset` component does not
-          correlate to time-zones, and while times that include the
-          `time-offset` component work well for timestamps, they cannot be
-          reliably converted to and from local "wall times" without additional
-          information and processing.
+        <p class="note" title="Avoiding common confusion between time offsets and time zones">
+          The `time-offset` component correlates to a time offset from UTC, which is
+          not the same as a "time zone". Applications cannot reliably convert
+          time offsets to time zones without additional information and processing,
+          such as knowing when daylight saving rules are in effect for certain localities,
+          as well as the history of legislation which affects historical start and end times
+          for daylight saving rules.
         </p>
 
       </section>
@@ -2523,6 +2524,18 @@ profile-URI   = URI</"></"></pre>
 
     <h2>Changelog</h2>
 
+    <section>
+      <h3>Changes since 2017-05-23 Recommendation</h3>
+      <p>The following changes have been made to this document since the
+      previous recommendation of <a href="https://www.w3.org/TR/2017/REC-activitystreams-core-20170523/">2017-05-23</a>:</p>
+      <ul>
+        <li>Cleaned up language around datetime serialization.</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h3>Changes since 2016-12-15 Candidate Recommendation</h3>
+    </section>
     <p>
       The following notable changes have been made to this document since the
       previous candidate recommendation of <a href="https://www.w3.org/TR/2016/CR-activitystreams-core-20161215/#changelog">2016-12-15</a>.
