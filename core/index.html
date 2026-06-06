@@ -627,13 +627,14 @@ as2-date-time    = full-date "T" as2-full-time
     </p>
 
     <p>
-      Every JSON object in an Activity Streams 2.0 document is either an
-      <code><a>Object</a></code> or a <code><a>Link</a></code>. All other types
-      defined in the Activity Vocabulary, as well as all extension types, are
-      derived from these two base types.
+      All other types
+      defined in the Activity Vocabulary are
+      derived from these base types.
     </p>
 
     <p>
+      One exception is the <code>Link</code> type, which is
+      disjoint with the <code>Object</code> base type.
       A JSON object in the Activity Streams 2.0 document is a
       <code><a>Link</a></code> if either: (a) the object contains a
       <code>type</code> property whose value includes "<code>Link</code>" or
