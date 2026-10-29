@@ -239,7 +239,7 @@
 
       <p>
         This specification describes a JSON-based [[!RFC7159]] serialization
-        syntax for the <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity
+        syntax for the <a href="#vocabulary">Activity
         Vocabulary</a> that conforms to a subset of [[!JSON-LD]] syntax
         constraints but does not require JSON-LD processing. While other
         serialization forms are possible, such alternatives are not discussed
@@ -484,7 +484,7 @@ as2-date-time    = full-date "T" as2-full-time
         'Martin's Blog' at 3:04 PM UTC on February 10, 2015."  Some additional
         details about the article, actor and target blog are given using
         properties defined by the
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Streams 2.0
+        <a href="#vocabulary">Activity Streams 2.0
         Vocabulary</a>.
       </figcaption>
 <div id="ex2-jsonld" style="display: block;">
@@ -605,7 +605,7 @@ as2-date-time    = full-date "T" as2-full-time
     <h2>Model</h2>
 
     <p>
-      The <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>
+      The <a href="#vocabulary">Activity Vocabulary</a>
       normatively defines the core object types and properties for Activity
       Streams 2.0.
     </p>
@@ -639,7 +639,7 @@ as2-date-time    = full-date "T" as2-full-time
       <code>type</code> property whose value includes "<code>Link</code>" or
       (b) any of the types included in the value of the <code>type</code>
       property are defined as extensions of <a>Link</a> (see
-      <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mention">Mention</a> for
+      <a href="#dfn-mention">Mention</a> for
       instance); otherwise the JSON object is considered an instance
       or extension of <code><a>Object</a></code>.
     </p>
@@ -648,7 +648,7 @@ as2-date-time    = full-date "T" as2-full-time
       <h2><dfn id="asobject">Object</dfn></h2>
 
       <p>
-        The <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object">Object</a></code>
+        The <code><a href="#dfn-object">Object</a></code>
         is the primary base type for the Activity Streams vocabulary.
       </p>
 
@@ -658,38 +658,38 @@ as2-date-time    = full-date "T" as2-full-time
         "object type" (expressed using the <code>type</code>
         property), all instances of the <code>Object</code> type share a
         common set of properties normatively defined by the
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>.
+        <a href="#vocabulary">Activity Vocabulary</a>.
         These include:
         <code>
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attachment">attachment</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attributedto">attributedTo</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-audience">audience</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">content</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-context">context</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">contentMap</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">nameMap</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-endtime">endTime</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-generator">generator</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-icon">icon</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-image-term">image</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-inreplyto">inReplyTo</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-location">location</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-preview">preview</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-published">published</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-replies">replies</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-starttime">startTime</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-summary">summary</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-summary">summaryMap</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-tag">tag</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-updated">updated</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-url">url</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-to">to</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-bto">bto</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-cc">cc</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-bcc">bcc</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-duration">duration</a></code>
+          <code><a href="#dfn-attachment">attachment</a></code> |
+          <code><a href="#dfn-attributedto">attributedTo</a></code> |
+          <code><a href="#dfn-audience">audience</a></code> |
+          <code><a href="#dfn-content">content</a></code> |
+          <code><a href="#dfn-context">context</a></code> |
+          <code><a href="#dfn-content">contentMap</a></code> |
+          <code><a href="#dfn-name">name</a></code> |
+          <code><a href="#dfn-name">nameMap</a></code> |
+          <code><a href="#dfn-endtime">endTime</a></code> |
+          <code><a href="#dfn-generator">generator</a></code> |
+          <code><a href="#dfn-icon">icon</a></code> |
+          <code><a href="#image-prop">image</a></code> |
+          <code><a href="#dfn-inreplyto">inReplyTo</a></code> |
+          <code><a href="#dfn-location">location</a></code> |
+          <code><a href="#dfn-preview">preview</a></code> |
+          <code><a href="#dfn-published">published</a></code> |
+          <code><a href="#dfn-replies">replies</a></code> |
+          <code><a href="#dfn-starttime">startTime</a></code> |
+          <code><a href="#dfn-summary">summary</a></code> |
+          <code><a href="#dfn-summary">summaryMap</a></code> |
+          <code><a href="#dfn-tag">tag</a></code> |
+          <code><a href="#dfn-updated">updated</a></code> |
+          <code><a href="#dfn-url">url</a></code> |
+          <code><a href="#dfn-to">to</a></code> |
+          <code><a href="#dfn-bto">bto</a></code> |
+          <code><a href="#dfn-cc">cc</a></code> |
+          <code><a href="#dfn-bcc">bcc</a></code> |
+          <code><a href="#dfn-mediatype">mediaType</a></code> |
+          <code><a href="#dfn-duration">duration</a></code>
         </code>
       </p>
 
@@ -722,7 +722,7 @@ as2-date-time    = full-date "T" as2-full-time
 </figure>
 
      <p>
-       The <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>
+       The <a href="#vocabulary">Activity Vocabulary</a>
        defines a range of <code>Object</code> types that are common to
        many social Web applications. This specification stops short of
        defining semantically specific properties for most of these objects.
@@ -745,7 +745,7 @@ as2-date-time    = full-date "T" as2-full-time
       implementation that wishes, for example, to use a
       <code><a href="https://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
       as an object type MUST also identify the object as being a
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-place">Place</a></code>
+      <code><a href="#dfn-place">Place</a></code>
       as illustrated in the following:
      </p>
 
@@ -784,12 +784,12 @@ as2-date-time    = full-date "T" as2-full-time
        </p>
 
        <p>
-         The <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code>
+         The <code><a href="#dfn-name">name</a></code>
          property SHOULD be derived from input by the creator or another user.
        </p>
 
        <p>
-         The <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-summary">summary</a></code>
+         The <code><a href="#dfn-summary">summary</a></code>
          property SHOULD be used as a fallback text representation, possibly
          automatically generated by the publisher. If there is no <code>name</code> property,
          the <code>summary</code> property SHOULD NOT include markup, and SHOULD be short
@@ -855,25 +855,25 @@ as2-date-time    = full-date "T" as2-full-time
 
       <p>
         The target URI of the Link is expressed using the required
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-href">href</a></code>
+        <code><a href="#dfn-href">href</a></code>
         property. In addition, all <code>Link</code> instances share the
         following common set of optional properties as normatively defined by
-        the <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>:
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-id">id</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">nameMap</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-hreflang">hreflang</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mediatype">mediaType</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-rel">rel</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-height">height</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-width">width</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-preview">preview</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attributedTo">attributedTo</a></code>
+        the <a href="#vocabulary">Activity Vocabulary</a>:
+          <code><a href="#dfn-id">id</a></code> |
+          <code><a href="#dfn-name">name</a></code> |
+          <code><a href="#dfn-name">nameMap</a></code> |
+          <code><a href="#dfn-hreflang">hreflang</a></code> |
+          <code><a href="#dfn-mediatype">mediaType</a></code> |
+          <code><a href="#dfn-rel">rel</a></code> |
+          <code><a href="#dfn-height">height</a></code> |
+          <code><a href="#dfn-width">width</a></code> |
+          <code><a href="#dfn-preview">preview</a></code> |
+          <code><a href="#dfn-attributedto">attributedTo</a></code>
       </p>
 
       <p>
         For example, all <a data-lt="Object">Objects</a> can contain an
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-image-term">image</a></code>
+        <code><a href="#image-prop">image</a></code>
         property whose value describes a graphical representation of the
         containing object.  This property will typically be used to provide the
         URL to an image (e.g. JPEG, GIF or PNG) resource that can be displayed
@@ -954,7 +954,7 @@ as2-date-time    = full-date "T" as2-full-time
       <p>
         RFC 5988 defines that all Links have a "link relation" that describes
         the contextual purpose of the link.  Within a <a>Link</a>,
-        the <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-rel">rel</a></code> property
+        the <code><a href="#dfn-rel">rel</a></code> property
         provides the link relation value. If no <code>rel</code> property is
         specified, the link relation is considered to be unspecified. Any given
         Link can have multiple link relation values. In the JSON
@@ -1020,15 +1020,15 @@ as2-date-time    = full-date "T" as2-full-time
       <p>
         Actor objects are specializations of the base <a>Object</a>
         type that represent entities capable of carrying out an
-        Activity. The <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity
+        Activity. The <a href="#vocabulary">Activity
         Vocabulary</a> provides the normative definition of five specific
         types of Actors:
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-application">Application</a>
+        <code><a href="#dfn-application">Application</a>
         </code> |
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-group">Group</a></code> |
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-organization">Organization</a></code> |
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-person">Person</a></code> |
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-service">Service</a></code>.
+        <code><a href="#dfn-group">Group</a></code> |
+        <code><a href="#dfn-organization">Organization</a></code> |
+        <code><a href="#dfn-person">Person</a></code> |
+        <code><a href="#dfn-service">Service</a></code>.
       </p>
 
       <p>
@@ -1039,9 +1039,9 @@ as2-date-time    = full-date "T" as2-full-time
         common to all Objects. External vocabularies can be used to express
         additional detail not covered by the Activity Vocabulary. VCard
         [[vcard-rdf]] SHOULD be used to provide additional metadata for
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-person">Person</a>,
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-group">Group</a>,
-        and <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-organization">Organization</a> instances.
+        <a href="#dfn-person">Person</a>,
+        <a href="#dfn-group">Group</a>,
+        and <a href="#dfn-organization">Organization</a> instances.
       </p>
 
       <figure><figcaption>An Activity with a Person actor extended with VCard properties:</figcaption>
@@ -1081,7 +1081,7 @@ as2-date-time    = full-date "T" as2-full-time
         vocabulary type. For instance, some vocabularies (e.g. VCard) define
         their own types for describing people. An implementation that wishes,
         for example, to use a <code>vcard:Individual</code> as an Actor MUST
-        also identify that Actor as a <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-person">Person</a></code>
+        also identify that Actor as a <code><a href="#dfn-person">Person</a></code>
         as illustrated in the previous example.
       </p>
 
@@ -1101,13 +1101,13 @@ as2-date-time    = full-date "T" as2-full-time
         In addition to common properties supported by all <a>Object</a>
         instances, <code>Activity</code> objects support the following
         additional properties defined by the
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Vocabulary</a>:
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-actor">actor</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object-term">object</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-target">target</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-origin">origin</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-result">result</a></code> |
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-instrument">instrument</a></code>
+        <a href="#vocabulary">Vocabulary</a>:
+          <code><a href="#dfn-actor">actor</a></code> |
+          <code><a href="#object-prop">object</a></code> |
+          <code><a href="#dfn-target">target</a></code> |
+          <code><a href="#dfn-origin">origin</a></code> |
+          <code><a href="#dfn-result">result</a></code> |
+          <code><a href="#dfn-instrument">instrument</a></code>
       </p>
 
       <p>
@@ -1131,7 +1131,7 @@ as2-date-time    = full-date "T" as2-full-time
 </figure>
 
       <p>
-        The <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>
+        The <a href="#vocabulary">Activity Vocabulary</a>
         defines a small number of <code>Activity</code> types that are common
         to many social Web applications. This specification stops short of
         defining semantically specific properties for most of these activities.
@@ -1153,12 +1153,12 @@ as2-date-time    = full-date "T" as2-full-time
         define their own types for describing actions. An implementation that
         wishes, for example, to use <code><a href="http://schema.org/LikeAction">http://schema.org/LikeAction</a></code>
         as an Activity MUST also identify that Object as being a
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-like">Like</a></code>
+        <code><a href="#dfn-like">Like</a></code>
         as illustrated in the following:
       </p>
 
        <figure><figcaption>An Activity that is both a
-       <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-like">Like</a></code>
+       <code><a href="#dfn-like">Like</a></code>
        and a <code>http://schema.org/LikeAction</code>:</figcaption>
 <div id="ex20-jsonld" style="display: block;">
 <pre class="example highlight json"><code>{
@@ -1194,7 +1194,7 @@ as2-date-time    = full-date "T" as2-full-time
       <p>
         IntransitiveActivity objects are specializations of the <a>Activity</a>
         type that represent intransitive actions. IntransitiveActivity objects
-        do not have an <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object-term">object</a></code> property.
+        do not have an <code><a href="#object-prop">object</a></code> property.
       </p>
     </section>
 
@@ -1212,11 +1212,11 @@ as2-date-time    = full-date "T" as2-full-time
         <code><a data-lt="Object">Objects</a></code>, all
         <code><a>Collection</a></code> types contain the additional properties:
         <code>
-          <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-items">items</a> |
-          <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-totalitems">totalItems</a> |
-          <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-first">first</a> |
-          <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-last">last</a> |
-          <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-current">current</a>
+          <a href="#dfn-items">items</a> |
+          <a href="#dfn-totalitems">totalItems</a> |
+          <a href="#dfn-first">first</a> |
+          <a href="#dfn-last">last</a> |
+          <a href="#dfn-current">current</a>
         </code>
       </p>
 
@@ -1302,9 +1302,9 @@ as2-date-time    = full-date "T" as2-full-time
           properties. The following additional properties can also be
           specified:
           <code>
-            <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-partof">partOf</a> |
-            <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-next">next</a> |
-            <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-prev">prev</a> |
+            <a href="#dfn-partof">partOf</a> |
+            <a href="#dfn-next">next</a> |
+            <a href="#dfn-prev">prev</a> |
           </code>
         </p>
 
@@ -1334,7 +1334,7 @@ as2-date-time    = full-date "T" as2-full-time
           <code><a>OrderedCollection</a></code>. In addition to the properties
           inherited from each of those, the <code>OrderedCollectionPage</code>
           may contain an additional
-          <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-startindex">startIndex</a></code> property whose value indicates the relative index position
+          <code><a href="#dfn-startindex">startIndex</a></code> property whose value indicates the relative index position
           of the first item contained by the page within the
           <code>OrderedCollection</code> to which the page belongs.
         </p>
@@ -1432,14 +1432,14 @@ as2-date-time    = full-date "T" as2-full-time
 
       <p>
         Several properties defined by the
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Vocabulary</a> are defined
+        <a href="#vocabulary">Vocabulary</a> are defined
         as having natural language values. These are human-readable strings using one or more languages. Within the JSON serialization, they are
         expressed as either (1) a single JSON string or (2) a JSON object
         mapping well-formed [[!BCP47]] Language-Tags to localized, equivalent
         translations of the same string value. In the serialized JSON, these
         two forms are differentiated using a simple property naming convention,
         for instance: "<code>name</code>" identifies the JSON string
-        form for the <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code>
+        form for the <code><a href="#dfn-name">name</a></code>
         property while "<code>nameMap</code>" represents the object form.
       </p>
 
@@ -1475,11 +1475,11 @@ as2-date-time    = full-date "T" as2-full-time
       </p>
 
       <p>
-        The <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>
+        The <a href="#vocabulary">Activity Vocabulary</a>
         defines three properties that use natural language values:
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">name</a></code>,
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-summary">summary</a></code>, and
-        <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">content</a></code>.
+        <code><a href="#dfn-name">name</a></code>,
+        <code><a href="#dfn-summary">summary</a></code>, and
+        <code><a href="#dfn-content">content</a></code>.
         Accordingly, in the JSON serialization, the terms
         "<code>name</code>", "<code>summary</code>", and "<code>content</code>"
         represent the JSON string forms; and the terms
@@ -1658,7 +1658,7 @@ as2-date-time    = full-date "T" as2-full-time
       <p>
         In Activity Streams 2.0, an "extension" is any property, activity,
         actor or object type not defined by the
-        <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>.
+        <a href="#vocabulary">Activity Vocabulary</a>.
         Consuming implementations that encounter unfamiliar
         extensions MUST NOT stop processing or signal an error and MUST
         continue processing the items as if those properties were not
@@ -1700,7 +1700,7 @@ as2-date-time    = full-date "T" as2-full-time
         Processing Algorithms will be required to either ignore such extensions
         or map those to alternative compatible constructs prior to applying the
         JSON-LD algorithms. Simple GeoJSON Points, for instance, can be mapped
-        to <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-place">Place</a></code>
+        to <code><a href="#dfn-place">Place</a></code>
         objects, while more complex geometries can be converted to
         <a href="https://www.opengeospatial.org/standards/geosparql">GeoSparql</a>
         "Well-Known Text" representations as illustrated in the non-normative
@@ -1915,7 +1915,7 @@ as2-date-time    = full-date "T" as2-full-time
         implement support for the Extended properties, all implementations MUST
         at least be capable of serializing and deserializing the Extended
         properties in accordance with the
-        <a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams 2.0 Core Syntax</a>.
+        <a href="#syntaxconventions">Activity Streams 2.0 Core Syntax</a>.
       </p>
 
       <p>
@@ -1932,7 +1932,7 @@ as2-date-time    = full-date "T" as2-full-time
           Unless otherwise specified, all properties defined as
           <code>xsd:dateTime</code> values MUST conform to the rules
           defined in Activity Streams 2.0 Core,
-          <a href="https://www.w3.org/TR/activitystreams-core/#dates">Section 2.3</a>.
+          <a href="#dates">Section 2.3</a>.
         </p>
 
         <p>
@@ -1976,7 +1976,7 @@ as2-date-time    = full-date "T" as2-full-time
         </thead>
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>Object</dfn></td>
+            <td rowspan="4"><dfn id="dfn-object">Object</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#Object</code></td>
             <td rowspan="4">
@@ -2243,7 +2243,7 @@ as2-date-time    = full-date "T" as2-full-time
               </p>
               <p>
                 Refer to the
-                <a href="https://www.w3.org/TR/activitystreams-core/#collection">Activity Streams 2.0 Core</a> specification for a complete description of the
+                <a href="#collection">Activity Streams 2.0 Core</a> specification for a complete description of the
                 <code>Collection</code> type.
               </p>
             </td>
@@ -2319,7 +2319,7 @@ as2-date-time    = full-date "T" as2-full-time
 
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>CollectionPage</dfn></td>
+              <td rowspan="4"><dfn id="dfn-collectionpage">CollectionPage</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#CollectionPage</code></td>
               <td rowspan="4">
@@ -2350,7 +2350,7 @@ as2-date-time    = full-date "T" as2-full-time
                 <p>
                   Used to represent distinct subsets of items from a
                   <code>Collection</code>. Refer to the
-                  <a href="https://www.w3.org/TR/activitystreams-core/#dfn-collectionpage">Activity Streams 2.0 Core</a> for a complete description of the
+                  <a href="#dfn-collectionpage">Activity Streams 2.0 Core</a> for a complete description of the
                   <code>CollectionPage</code> object.
                 </p>
               </td>
@@ -2375,7 +2375,7 @@ as2-date-time    = full-date "T" as2-full-time
 
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>OrderedCollectionPage</dfn></td>
+              <td rowspan="4"><dfn id="dfn-orderedcollectionpage">OrderedCollectionPage</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#OrderedCollectionPage</code></td>
               <td rowspan="4">
@@ -2406,7 +2406,7 @@ as2-date-time    = full-date "T" as2-full-time
                 <p>
                   Used to represent ordered subsets of items from an
                   <code>OrderedCollection</code>. Refer to the
-                  <a href="https://www.w3.org/TR/activitystreams-core/#dfn-orderedcollectionpage">Activity Streams 2.0 Core</a> for a complete description of the
+                  <a href="#dfn-orderedcollectionpage">Activity Streams 2.0 Core</a> for a complete description of the
                   <code>OrderedCollectionPage</code> object.
                 </p>
               </td>
@@ -2625,7 +2625,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tbody>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Add</dfn></td>
+              <td rowspan="4"><dfn id="dfn-add">Add</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Add</code></td>
               <td rowspan="4">
@@ -2739,7 +2739,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tbody>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Create</dfn></td>
+              <td rowspan="4"><dfn id="dfn-create">Create</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Create</code></td>
               <td rowspan="4">
@@ -2997,7 +2997,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tbody>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Like</dfn></td>
+              <td rowspan="4"><dfn id="dfn-like">Like</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Like</code></td>
               <td rowspan="4">
@@ -3850,7 +3850,7 @@ as2-date-time    = full-date "T" as2-full-time
           </thead>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Application</dfn></td>
+              <td rowspan="4"><dfn id="dfn-application">Application</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Application</code></td>
               <td rowspan="4">
@@ -3880,7 +3880,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tbody>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Group</dfn></td>
+              <td rowspan="4"><dfn id="dfn-group">Group</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Group</code></td>
               <td rowspan="4">
@@ -3911,7 +3911,7 @@ as2-date-time    = full-date "T" as2-full-time
 
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Organization</dfn></td>
+              <td rowspan="4"><dfn id="dfn-organization">Organization</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Organization</code></td>
               <td rowspan="4">
@@ -3942,7 +3942,7 @@ as2-date-time    = full-date "T" as2-full-time
 
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Person</dfn></td>
+              <td rowspan="4"><dfn id="dfn-person">Person</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Person</code></td>
               <td rowspan="4">
@@ -3972,7 +3972,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tbody>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Service</dfn></td>
+              <td rowspan="4"><dfn id="dfn-service">Service</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Service</code></td>
               <td rowspan="4">
@@ -4370,7 +4370,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tbody>
           <tbody>
             <tr>
-              <td rowspan="4"><dfn>Place</dfn></td>
+              <td rowspan="4"><dfn id="dfn-place">Place</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Place</code></td>
               <td rowspan="4">
@@ -4426,7 +4426,7 @@ as2-date-time    = full-date "T" as2-full-time
 
   <tbody>
             <tr>
-              <td rowspan="4"><dfn>Mention</dfn></td>
+              <td rowspan="4"><dfn id="dfn-mention">Mention</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#Mention</code></td>
               <td rowspan="4">
@@ -4656,7 +4656,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>id</dfn></td>
+            <td rowspan="5"><dfn id="dfn-id">id</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>@id</code></td>
             <td rowspan="5">
@@ -4724,7 +4724,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn data-lt="actor-term">actor</dfn></td>
+            <td rowspan="5"><dfn id="dfn-actor" data-lt="actor-term">actor</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#actor</code></td>
             <td rowspan="5">
@@ -4797,7 +4797,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>attachment</dfn></td>
+            <td rowspan="4"><dfn id="dfn-attachment">attachment</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#attachment</code></td>
             <td rowspan="4">
@@ -4838,7 +4838,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>attributedTo</dfn></td>
+            <td rowspan="4"><dfn id="dfn-attributedto">attributedTo</dfn></td>
             <td style="width: 10%">URI:</td>
             <td>
               <code>https://www.w3.org/ns/activitystreams#attributedTo</code>
@@ -4896,7 +4896,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>audience</dfn></td>
+            <td rowspan="4"><dfn id="dfn-audience">audience</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#audience</code></td>
             <td rowspan="4">
@@ -4933,7 +4933,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>bcc</dfn></td>
+            <td rowspan="4"><dfn id="dfn-bcc">bcc</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#bcc</code></td>
             <td rowspan="4">
@@ -4969,7 +4969,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>bto</dfn></td>
+            <td rowspan="4"><dfn id="dfn-bto">bto</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#bto</code></td>
             <td rowspan="4">
@@ -5004,7 +5004,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>cc</dfn></td>
+            <td rowspan="4"><dfn id="dfn-cc">cc</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#cc</code></td>
             <td rowspan="4">
@@ -5040,7 +5040,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>context</dfn></td>
+            <td rowspan="4"><dfn id="dfn-context">context</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#context</code></td>
             <td rowspan="4">
@@ -5095,7 +5095,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>current</dfn></td>
+            <td rowspan="5"><dfn id="dfn-current">current</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#current</code></td>
             <td rowspan="5">
@@ -5157,7 +5157,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>first</dfn></td>
+            <td rowspan="5"><dfn id="dfn-first">first</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#first</code></td>
             <td rowspan="5">
@@ -5209,7 +5209,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>generator</dfn></td>
+            <td rowspan="4"><dfn id="dfn-generator">generator</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#generator</code></td>
             <td rowspan="4">
@@ -5246,7 +5246,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>icon</dfn></td>
+            <td rowspan="4"><dfn id="dfn-icon">icon</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#icon</code></td>
             <td rowspan="4">
@@ -5382,7 +5382,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>inReplyTo</dfn></td>
+            <td rowspan="4"><dfn id="dfn-inreplyto">inReplyTo</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#inReplyTo</code></td>
             <td rowspan="4">
@@ -5431,7 +5431,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>instrument</dfn></td>
+            <td rowspan="4"><dfn id="dfn-instrument">instrument</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#instrument</code></td>
             <td rowspan="4">
@@ -5472,7 +5472,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>last</dfn></td>
+            <td rowspan="5"><dfn id="dfn-last">last</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#last</code></td>
             <td rowspan="5">
@@ -5524,7 +5524,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>location</dfn></td>
+            <td rowspan="4"><dfn id="dfn-location">location</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#location</code></td>
             <td rowspan="4">
@@ -5564,7 +5564,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>items</dfn></td>
+            <td rowspan="4"><dfn id="dfn-items">items</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#items</code></td>
             <td rowspan="4">
@@ -5753,7 +5753,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>origin</dfn></td>
+            <td rowspan="4"><dfn id="dfn-origin">origin</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#origin</code></td>
             <td rowspan="4">
@@ -5798,7 +5798,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>next</dfn></td>
+            <td rowspan="5"><dfn id="dfn-next">next</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#next</code></td>
             <td rowspan="5">
@@ -5932,7 +5932,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>prev</dfn></td>
+            <td rowspan="5"><dfn id="dfn-prev">prev</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#prev</code></td>
             <td rowspan="5">
@@ -5992,7 +5992,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>preview</dfn></td>
+            <td rowspan="4"><dfn id="dfn-preview">preview</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#preview</code></td>
             <td rowspan="4">
@@ -6034,7 +6034,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>result</dfn></td>
+            <td rowspan="4"><dfn id="dfn-result">result</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#result</code></td>
             <td rowspan="4">
@@ -6073,7 +6073,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>replies</dfn></td>
+            <td rowspan="5"><dfn id="dfn-replies">replies</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#replies</code></td>
             <td rowspan="5">
@@ -6123,7 +6123,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn data-lt="tag-term">tag</dfn></td>
+            <td rowspan="4"><dfn id="dfn-tag" data-lt="tag-term">tag</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#tag</code></td>
             <td rowspan="4">
@@ -6166,7 +6166,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>target</dfn></td>
+            <td rowspan="4"><dfn id="dfn-target">target</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#target</code></td>
             <td rowspan="4">
@@ -6219,7 +6219,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>to</dfn></td>
+            <td rowspan="4"><dfn id="dfn-to">to</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#to</code></td>
             <td rowspan="4">
@@ -6254,7 +6254,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>url</dfn></td>
+            <td rowspan="4"><dfn id="dfn-url">url</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#url</code></td>
             <td rowspan="4">
@@ -6401,7 +6401,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn data-lt="content-term">content</dfn></td>
+            <td rowspan="4"><dfn id="dfn-content" data-lt="content-term">content</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#content</code></td>
             <td rowspan="4">
@@ -6465,7 +6465,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>name</dfn></td>
+            <td rowspan="4"><dfn id="dfn-name">name</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#name</code></td>
             <td rowspan="4">
@@ -6510,7 +6510,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>duration</dfn></td>
+            <td rowspan="5"><dfn id="dfn-duration">duration</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#duration</code></td>
             <td rowspan="5">
@@ -6552,7 +6552,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>height</dfn></td>
+            <td rowspan="5"><dfn id="dfn-height">height</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#height</code></td>
             <td rowspan="5">
@@ -6591,7 +6591,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>href</dfn></td>
+            <td rowspan="5"><dfn id="dfn-href">href</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#href</code></td>
             <td rowspan="5">
@@ -6628,7 +6628,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>hreflang</dfn></td>
+            <td rowspan="5"><dfn id="dfn-hreflang">hreflang</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#hreflang</code></td>
             <td rowspan="5">
@@ -6667,7 +6667,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
         <tr>
-            <td rowspan="5"><dfn>partOf</dfn></td>
+            <td rowspan="5"><dfn id="dfn-partof">partOf</dfn></td>
             <td style="width: 10%">URI:</td>
             <td>
               <code>https://www.w3.org/ns/activitystreams#partOf</code>
@@ -6795,7 +6795,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>mediaType</dfn></td>
+            <td rowspan="5"><dfn id="dfn-mediatype">mediaType</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#mediaType</code></td>
             <td rowspan="5">
@@ -6841,7 +6841,7 @@ as2-date-time    = full-date "T" as2-full-time
         </tbody>
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>endTime</dfn></td>
+            <td rowspan="5"><dfn id="dfn-endtime">endTime</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#endTime</code></td>
             <td rowspan="5">
@@ -6881,7 +6881,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>published</dfn></td>
+            <td rowspan="5"><dfn id="dfn-published">published</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#published</code></td>
             <td rowspan="5">
@@ -6918,7 +6918,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>startTime</dfn></td>
+            <td rowspan="5"><dfn id="dfn-starttime">startTime</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#startTime</code></td>
             <td rowspan="5">
@@ -7000,7 +7000,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>rel</dfn></td>
+            <td rowspan="4"><dfn id="dfn-rel">rel</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#rel</code></td>
             <td rowspan="4">
@@ -7040,7 +7040,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-              <td rowspan="5"><dfn>startIndex</dfn></td>
+              <td rowspan="5"><dfn id="dfn-startindex">startIndex</dfn></td>
               <td style="width: 10%">URI:</td>
               <td><code>https://www.w3.org/ns/activitystreams#startIndex</code></td>
               <td rowspan="5">
@@ -7087,7 +7087,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="4"><dfn>summary</dfn></td>
+            <td rowspan="4"><dfn id="dfn-summary">summary</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#summary</code></td>
             <td rowspan="4">
@@ -7133,7 +7133,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
         <tr>
-            <td rowspan="5"><dfn>totalItems</dfn></td>
+            <td rowspan="5"><dfn id="dfn-totalitems">totalItems</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#totalItems</code></td>
             <td rowspan="5">
@@ -7233,7 +7233,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>updated</dfn></td>
+            <td rowspan="5"><dfn id="dfn-updated">updated</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#updated</code></td>
             <td rowspan="5">
@@ -7270,7 +7270,7 @@ as2-date-time    = full-date "T" as2-full-time
 
         <tbody>
           <tr>
-            <td rowspan="5"><dfn>width</dfn></td>
+            <td rowspan="5"><dfn id="dfn-width">width</dfn></td>
             <td style="width: 10%">URI:</td>
             <td><code>https://www.w3.org/ns/activitystreams#width</code></td>
             <td rowspan="5">
@@ -8031,8 +8031,8 @@ profile-URI   = URI</"></"></pre>
     </li>
     <li>
       This document redefines the
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">content</a></code> and
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-summary">summary</a></code>
+      <code><a href="#dfn-content">content</a></code> and
+      <code><a href="#dfn-summary">summary</a></code>
       properties as natural language values which means their values can be expressed
       as either a string or an object mapping language tags to string values.
       In the 1.0 syntax, these are expressed solely as String values.  Because
@@ -8063,15 +8063,15 @@ profile-URI   = URI</"></"></pre>
       describe the action of both creating an object and "posting" or uploading
       it to a service. This specification replaces the "<code>post</code>" verb
       with separate
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-create">Create</a></code> and
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-add">Add</a></code>
+      <code><a href="#dfn-create">Create</a></code> and
+      <code><a href="#dfn-add">Add</a></code>
       Activity types. When processing Activity Streams 1.0 documents and
       converting those into 2.0, implementations SHOULD treat instances of the
       "<code>post</code>" verb as equivalent to
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-create">Create</a></code>
+      <code><a href="#dfn-create">Create</a></code>
       <i>if there is no <code>target</code> property specified</i>; and
       equivalent to
-      <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-add">Add</a></code>
+      <code><a href="#dfn-add">Add</a></code>
       <i>if there is a <code>target</code> property specified</i>.
     </li>
     </ol>
