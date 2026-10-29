@@ -3,14 +3,14 @@
 <head>
   <title>Activity Streams 2.0</title>
   <meta charset="UTF-8">
-  <script src="http://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
+  <script src="https://www.w3.org/Tools/respec/respec-w3c-common" async class="remove"></script>
   <script class="remove">
   var respecConfig = {
     specStatus: "ED",
     prEnd: "2017-05-11",
     crEnd: "2017-01-12",
     license: "w3c-software-doc",
-    edDraftURI: "http://w3c.github.io/activitystreams/core/",
+    edDraftURI: "https://w3c.github.io/activitystreams/core/",
     testSuiteURI: "https://github.com/w3c/activitystreams/tree/master/test",
     implementationReportURI: "https://github.com/w3c/activitystreams/tree/master/implementation-reports",
     errata: "https://github.com/w3c/activitystreams/blob/master/ERRATA.md",
@@ -18,9 +18,9 @@
     editors: [
       {
         name: "James M Snell",
-        url: "http://jasnell.me",
+        url: "https://jasnell.me",
         company: "IBM",
-        companyUrl: "http://ibm.com",
+        companyUrl: "https://ibm.com",
         w3cid:"26988"
       },
       {
@@ -42,7 +42,7 @@
     localBiblio:  {
       "AS1": {
         title: "JSON Activity Streams 1.0",
-        href: "http://activitystrea.ms/specs/json/1.0/",
+        href: "https://activitystrea.ms/specs/json/1.0/",
         authors:  [
           "J. Snell",
           "M. Atkins",
@@ -52,7 +52,7 @@
           "R. Dolin"
         ],
         status:   "unofficial",
-        publisher:  "http://activitystrea.ms"
+        publisher:  "https://activitystrea.ms"
       },
       "SWP": {
         title: "Social Web Protocols",
@@ -292,7 +292,7 @@
 
         <p>
           JSON-LD uses the special <code>@context</code> property to define the
-          <a href="http://www.w3.org/TR/json-ld/#the-context">processing
+          <a href="https://www.w3.org/TR/json-ld/#the-context">processing
           context</a>. The value of the <code>@context</code> property is defined
           by the [[JSON-LD]] specification. Implementations producing Activity
           Streams 2.0 documents SHOULD include a <code>@context</code> property
@@ -370,7 +370,7 @@
   "summary": "A note",
   "type": "Note",
   "content": "My dog has fleas.",
-  "css": "http://www.csszengarden.com/217/217.css?v=8may2013"
+  "css": "https://www.csszengarden.com/217/217.css?v=8may2013"
 }
               </pre>
             </div>
@@ -460,16 +460,16 @@ as2-date-time    = full-date "T" as2-full-time
 
   <figure>
   <figcaption>
-    Expresses the statement <code>'http://www.test.example/martin' created
-    'http://example.org/foo.jpg'</code>.  No additional detail is given.
+    Expresses the statement <code>'https://www.test.example/martin' created
+    'https://example.org/foo.jpg'</code>.  No additional detail is given.
   </figcaption>
 <div id="ex1-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "Martin created an image",
   "type": "Create",
-  "actor": "http://www.test.example/martin",
-  "object": "http://example.org/foo.jpg"
+  "actor": "https://www.test.example/martin",
+  "object": "https://example.org/foo.jpg"
 }</pre>
   </div>
 </figure>
@@ -495,23 +495,23 @@ as2-date-time    = full-date "T" as2-full-time
   "published": "2015-02-10T15:04:55Z",
   "actor": {
    "type": "Person",
-   "id": "http://www.test.example/martin",
+   "id": "https://www.test.example/martin",
    "name": "Martin Smith",
-   "url": "http://example.org/martin",
+   "url": "https://example.org/martin",
    "image": {
      "type": "Link",
-     "href": "http://example.org/martin/image.jpg",
+     "href": "https://example.org/martin/image.jpg",
      "mediaType": "image/jpeg"
    }
   },
   "object" : {
-   "id": "http://www.test.example/blog/abc123/xyz",
+   "id": "https://www.test.example/blog/abc123/xyz",
    "type": "Article",
-   "url": "http://example.org/blog/2011/02/entry",
+   "url": "https://example.org/blog/2011/02/entry",
    "name": "Why I love Activity Streams"
   },
   "target" : {
-   "id": "http://example.org/blog/",
+   "id": "https://example.org/blog/",
    "type": "OrderedCollection",
    "name": "Martin's Blog"
   }
@@ -540,19 +540,19 @@ as2-date-time    = full-date "T" as2-full-time
     {
       "type": "Add",
       "published": "2011-02-10T15:04:55Z",
-      "generator": "http://example.org/activities-app",
+      "generator": "https://example.org/activities-app",
       "nameMap": {
         "en": "Martin added a new image to his album.",
         "ga": "Martin phost le fisean nua a albam."
       },
       "actor": {
         "type": "Person",
-        "id": "http://www.test.example/martin",
+        "id": "https://www.test.example/martin",
         "name": "Martin Smith",
-        "url": "http://example.org/martin",
+        "url": "https://example.org/martin",
         "image": {
           "type": "Link",
-          "href": "http://example.org/martin/image",
+          "href": "https://example.org/martin/image",
           "mediaType": "image/jpeg",
           "width": 250,
           "height": 250
@@ -561,35 +561,35 @@ as2-date-time    = full-date "T" as2-full-time
       "object" : {
         "name": "My fluffy cat",
         "type": "Image",
-        "id": "http://example.org/album/máiréad.jpg",
+        "id": "https://example.org/album/máiréad.jpg",
         "preview": {
           "type": "Link",
-          "href": "http://example.org/album/máiréad.jpg",
+          "href": "https://example.org/album/máiréad.jpg",
           "mediaType": "image/jpeg"
         },
         "url": [
           {
             "type": "Link",
-            "href": "http://example.org/album/máiréad.jpg",
+            "href": "https://example.org/album/máiréad.jpg",
             "mediaType": "image/jpeg"
           },
           {
             "type": "Link",
-            "href": "http://example.org/album/máiréad.png",
+            "href": "https://example.org/album/máiréad.png",
             "mediaType": "image/png"
           }
         ]
       },
       "target": {
         "type": "Collection",
-        "id": "http://example.org/album/",
+        "id": "https://example.org/album/",
         "nameMap": {
           "en": "Martin's Photo Album",
           "ga": "Grianghraif Mairtin"
         },
         "image": {
           "type": "Link",
-          "href": "http://example.org/album/thumbnail.jpg",
+          "href": "https://example.org/album/thumbnail.jpg",
           "mediaType": "image/jpeg"
         }
       }
@@ -708,11 +708,11 @@ as2-date-time    = full-date "T" as2-full-time
 <div id="ex4-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "id": "http://example.org/foo",
+  "id": "https://example.org/foo",
   "type": "Note",
   "name": "My favourite stew recipe",
   "attributedTo": {
-    "id": "http://joe.website.example/",
+    "id": "https://joe.website.example/",
     "type": "Person",
     "name": "Joe Smith"
   },
@@ -743,7 +743,7 @@ as2-date-time    = full-date "T" as2-full-time
       type. For instance, some vocabularies (e.g. The Good Relations
       Vocabulary) define their own types for describing locations. An
       implementation that wishes, for example, to use a
-      <code><a href="http://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
+      <code><a href="https://www.heppnetz.de/ontologies/goodrelations/v1.html#Location">http://purl.org/goodrelations/v1#Location</a></code>
       as an object type MUST also identify the object as being a
       <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-place">Place</a></code>
       as illustrated in the following:
@@ -804,7 +804,7 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "id": "http://example.org/note/123",
+  "id": "https://example.org/note/123",
   "name": "Our Weather Is Fine",
   "content": "I feel that the weather is appropriate to our season and location."
 }</pre>
@@ -819,7 +819,7 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
-  "id": "http://example.org/note/124",
+  "id": "https://example.org/note/124",
   "summary": "A note by Sally",
   "content": "Everything is OK here."
 }</pre>
@@ -890,9 +890,9 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
-  "id": "http://example.org/application/123",
+  "id": "https://example.org/application/123",
   "name": "Exampletron 3000",
-  <b>"image": "http://example.org/application/123.png"</b>
+  <b>"image": "https://example.org/application/123.png"</b>
 }</pre>
 </div>
 </figure>
@@ -905,11 +905,11 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
-  "id": "http://example.org/application/123",
+  "id": "https://example.org/application/123",
   "name": "Exampletron 3000",
   <b>"image": {
     "type": "Link",
-    "href": "http://example.org/application/123.png",
+    "href": "https://example.org/application/123.png",
     "mediaType": "image/png"
   }</b>
 }</pre>
@@ -919,7 +919,7 @@ as2-date-time    = full-date "T" as2-full-time
       <p>
         Formally, the former example establishes an unqualified
         direct relationship with the image resource while the
-        latter creates a <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified,
+        latter creates a <a href="https://patterns.dataincubator.org/book/qualified-relation.html">qualified,
         indirect relationship</a> that allows additional properties about the
         relationship to be specified.
       </p>
@@ -932,13 +932,13 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
-  "id": "http://example.org/application/123",
+  "id": "https://example.org/application/123",
   "name": "Exampletron 3000",
   <b>"image": [
-    "http://example.org/application/abc.gif",
+    "https://example.org/application/abc.gif",
     {
       "type": "Link",
-      "href": "http://example.org/application/123.png",
+      "href": "https://example.org/application/123.png",
       "mediaType": "image/png"
     }
   ]</b>
@@ -979,13 +979,13 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Application",
-  "id": "http://example.org/application/123",
+  "id": "https://example.org/application/123",
   "name": "Exampletron 3000",
   "image": [
-    "http://example.org/application/abc.gif",
+    "https://example.org/application/abc.gif",
     {
       "type": "Link",
-      "href": "http://example.org/application/123.png",
+      "href": "https://example.org/application/123.png",
       "mediaType": "image/png",
       "rel": "thumbnail"
     }
@@ -1055,7 +1055,7 @@ as2-date-time    = full-date "T" as2-full-time
   "type": "Create",
   "actor": {
     "type": ["Person", "vcard:Individual"],
-    "id": "http://sally.example.org",
+    "id": "https://sally.example.org",
     "name": "Sally Smith",
     "vcard:given-name": "Sally",
     "vcard:family-name": "Smith"
@@ -1121,9 +1121,9 @@ as2-date-time    = full-date "T" as2-full-time
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "Joe liked a note",
   "type": "Like",
-  "id": "http://www.test.example/activity/1",
-  "actor": "http://example.org/profiles/joe",
-  "object": "http://example.com/notes/1",
+  "id": "https://www.test.example/activity/1",
+  "actor": "https://example.org/profiles/joe",
+  "object": "https://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
 }
 </code></pre>
@@ -1165,9 +1165,9 @@ as2-date-time    = full-date "T" as2-full-time
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "Joe liked a note",
   "type": ["Like", "http://schema.org/LikeAction"],
-  "id": "http://www.test.example/activity/1",
-  "actor": "http://example.org/profiles/joe",
-  "object": "http://example.com/notes/1",
+  "id": "https://www.test.example/activity/1",
+  "actor": "https://example.org/profiles/joe",
+  "object": "https://example.com/notes/1",
   "published": "2014-09-30T12:34:56Z"
 }</code></pre>
 </div>
@@ -1242,13 +1242,13 @@ as2-date-time    = full-date "T" as2-full-time
   "items": [
     {
       "type": "Create",
-      "actor": "http://www.test.example/sally",
-      "object": "http://example.org/foo"
+      "actor": "https://www.test.example/sally",
+      "object": "https://example.org/foo"
     },
     {
       "type": "Like",
-      "actor": "http://www.test.example/joe",
-      "object": "http://example.org/foo"
+      "actor": "https://www.test.example/joe",
+      "object": "https://example.org/foo"
     }
   ]
 }</pre>
@@ -1269,13 +1269,13 @@ as2-date-time    = full-date "T" as2-full-time
   "orderedItems": [
     {
       "type": "Create",
-      "actor": "http://www.test.example/sally",
-      "object": "http://example.org/foo"
+      "actor": "https://www.test.example/sally",
+      "object": "https://example.org/foo"
     },
     {
       "type": "Like",
-      "actor": "http://www.test.example/joe",
-      "object": "http://example.org/foo"
+      "actor": "https://www.test.example/joe",
+      "object": "https://example.org/foo"
     }
   ]
 }
@@ -1388,18 +1388,18 @@ as2-date-time    = full-date "T" as2-full-time
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "Sally's recent activities",
   "type": "Collection",
-  "id": "http://example.org/foo",
+  "id": "https://example.org/foo",
   "totalItems": 10,
   "first": {
     "type": "CollectionPage",
-    "id": "http://example.org/foo?page=1",
-    "partOf": "http://example.org/foo",
-    "next": "http://example.org/foo?page=2",
+    "id": "https://example.org/foo?page=1",
+    "partOf": "https://example.org/foo",
+    "next": "https://example.org/foo?page=2",
     "items": [
       {
         "type": "Create",
-        "actor": "http://www.test.example/sally",
-        "object": "http://example.org/foo"
+        "actor": "https://www.test.example/sally",
+        "object": "https://example.org/foo"
       }
     ]
   }
@@ -1694,7 +1694,7 @@ as2-date-time    = full-date "T" as2-full-time
         It is also important to note that there are valid JSON constructs which
         cannot be used within a JSON-LD document. For instance, JSON-LD forbids
         "arrays of arrays" as used, for example, by the popular
-        <a href="http://geojson.org/">GeoJSON</a> specification. While
+        <a href="https://geojson.org/">GeoJSON</a> specification. While
         implementations are free to use such constructs as extensions within an
         Activity Streams 2.0 document, consumers that use the standard JSON-LD
         Processing Algorithms will be required to either ignore such extensions
@@ -1702,7 +1702,7 @@ as2-date-time    = full-date "T" as2-full-time
         JSON-LD algorithms. Simple GeoJSON Points, for instance, can be mapped
         to <code><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-place">Place</a></code>
         objects, while more complex geometries can be converted to
-        <a href="http://www.opengeospatial.org/standards/geosparql">GeoSparql</a>
+        <a href="https://www.opengeospatial.org/standards/geosparql">GeoSparql</a>
         "Well-Known Text" representations as illustrated in the non-normative
         examples below:
       </p>
@@ -1760,9 +1760,9 @@ as2-date-time    = full-date "T" as2-full-time
     The JSON-LD syntax supports the use of "Compact URIs". A "Compact URI" is an
     alternative encoding of a URI that uses
     a defined prefix to simplify serialization. For instance, the URI
-    <code>http://example.org/term</code> can be
+    <code>https://example.org/term</code> can be
     represented as <code>ex:term</code> by assigning the <code>ex:</code>
-    prefix the value of <code>http://example.org/</code>
+    prefix the value of <code>https://example.org/</code>
   </p>
 
   <p>
@@ -1773,7 +1773,7 @@ as2-date-time    = full-date "T" as2-full-time
   <figure><figcaption>A JSON-LD Compact URI definition</figcaption>
 <pre class="example highlight json">{
   "@context": {
-      "ex": "http://example.org/",
+      "ex": "https://example.org/",
       "term": {
           "@type": "@id",
           "@id": "ex:term"
@@ -1785,8 +1785,8 @@ as2-date-time    = full-date "T" as2-full-time
   <p>
     In this example, both the property name <code>term</code> and the value
     <code>ex:Foo</code> are Compact URIs. The property name <code>term</code>
-    expands to <code>http://example.org/term</code> and the value
-    <code>ex:Foo</code> expands to <code>http://example.org/Foo</code>
+    expands to <code>https://example.org/term</code> and the value
+    <code>ex:Foo</code> expands to <code>https://example.org/Foo</code>
   </p>
 
   <p>
@@ -1836,7 +1836,7 @@ as2-date-time    = full-date "T" as2-full-time
 <pre class="example highlight json">{
   "@context": [
     "https://www.w3.org/ns/activitystreams",
-    {"foo": "http://example.org/foo"}
+    {"foo": "https://example.org/foo"}
   ],
   "type": "Note",
   "content": "This is a simple note",
@@ -1872,7 +1872,7 @@ as2-date-time    = full-date "T" as2-full-time
   "@context": "https://www.w3.org/ns/activitystreams",
   "type": "Note",
   "content": "This is a simple note",
-  "http://example.org/foo": 123,
+  "https://example.org/foo": 123,
   "bar": 321
 }</pre></figure>
 
@@ -1985,7 +1985,7 @@ as2-date-time    = full-date "T" as2-full-time
       <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Object",
-    "id": "http://www.test.example/object/1",
+    "id": "https://www.test.example/object/1",
     "name": "A Simple, non-specific object"
   }</pre>
     </div>
@@ -2054,7 +2054,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/abc",
+    "href": "https://example.org/abc",
     "hreflang": "en",
     "mediaType": "text/html",
     "name": "An example link"
@@ -2071,7 +2071,7 @@ as2-date-time    = full-date "T" as2-full-time
               Vocabulary allow values that are either instances of
               <code><a>Object</a></code> or <code><a>Link</a></code>. When
               a <code><a>Link</a></code> is used, it establishes a
-              <a href="http://patterns.dataincubator.org/book/qualified-relation.html">qualified relation</a>
+              <a href="https://patterns.dataincubator.org/book/qualified-relation.html">qualified relation</a>
               connecting the subject (the containing object) to the resource
               identified by the <code><a>href</a></code>.
               Properties of the <code><a>Link</a></code> are properties of the
@@ -2328,8 +2328,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Page 1 of Sally's notes",
     "type": "CollectionPage",
-    "id": "http://example.org/foo?page=1",
-    "partOf": "http://example.org/foo",
+    "id": "https://example.org/foo?page=1",
+    "partOf": "https://example.org/foo",
     "items": [
       {
         "type": "Note",
@@ -2384,8 +2384,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Page 1 of Sally's notes",
     "type": "OrderedCollectionPage",
-    "id": "http://example.org/foo?page=1",
-    "partOf": "http://example.org/foo",
+    "id": "https://example.org/foo?page=1",
+    "partOf": "https://example.org/foo",
     "orderedItems": [
       {
         "type": "Note",
@@ -2533,7 +2533,7 @@ as2-date-time    = full-date "T" as2-full-time
     },
     "object": {
       "type": "Invite",
-      "actor": "http://john.example.org",
+      "actor": "https://john.example.org",
       "object": {
         "type": "Event",
         "name": "Going-Away Party for Jim"
@@ -2597,7 +2597,7 @@ as2-date-time    = full-date "T" as2-full-time
     },
     "object": {
       "type": "Invite",
-      "actor": "http://john.example.org",
+      "actor": "https://john.example.org",
       "object": {
         "type": "Event",
         "name": "Going-Away Party for Jim"
@@ -2638,7 +2638,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/abc"
+    "object": "https://example.org/abc"
   }</pre>
     </div>
 
@@ -2654,7 +2654,7 @@ as2-date-time    = full-date "T" as2-full-time
     "object": {
       "type": "Image",
       "name": "A picture of my cat",
-      "url": "http://example.org/img/cat.png"
+      "url": "https://example.org/img/cat.png"
     },
     "origin": {
       "type": "Collection",
@@ -2792,7 +2792,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/notes/1",
+    "object": "https://example.org/notes/1",
     "origin": {
       "type": "Collection",
       "name": "Sally's Notes"
@@ -2877,7 +2877,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/notes/1"
+    "object": "https://example.org/notes/1"
   }</pre>
   </div>
               </td>
@@ -3010,7 +3010,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/notes/1"
+    "object": "https://example.org/notes/1"
   }</pre>
   </div>
               </td>
@@ -3049,7 +3049,7 @@ as2-date-time    = full-date "T" as2-full-time
       "name": "Sally"
     },
     "object": {
-      "type": "http://www.types.example/ProductOffer",
+      "type": "https://www.types.example/ProductOffer",
       "name": "50% Off!"
     },
     "target": {
@@ -3147,7 +3147,7 @@ as2-date-time    = full-date "T" as2-full-time
     },
     "object": {
       "type": "Invite",
-      "actor": "http://john.example.org",
+      "actor": "https://john.example.org",
       "object": {
         "type": "Event",
         "name": "Going-Away Party for Jim"
@@ -3191,7 +3191,7 @@ as2-date-time    = full-date "T" as2-full-time
     },
     "object": {
       "type": "Invite",
-      "actor": "http://john.example.org",
+      "actor": "https://john.example.org",
       "object": {
         "type": "Event",
         "name": "Going-Away Party for Jim"
@@ -3232,7 +3232,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/notes/1",
+    "object": "https://example.org/notes/1",
     "target": {
       "type": "Collection",
       "name": "Notes Folder"
@@ -3246,7 +3246,7 @@ as2-date-time    = full-date "T" as2-full-time
     "summary": "The moderator removed Sally from a group",
     "type": "Remove",
     "actor": {
-      "type": "http://example.org/Role",
+      "type": "https://example.org/Role",
       "name": "The Moderator"
     },
     "object": {
@@ -3291,12 +3291,12 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally retracted her offer to John",
     "type": "Undo",
-    "actor": "http://sally.example.org",
+    "actor": "https://sally.example.org",
     "object": {
       "type": "Offer",
-      "actor": "http://sally.example.org",
-      "object": "http://example.org/posts/1",
-      "target": "http://john.example.org"
+      "actor": "https://sally.example.org",
+      "object": "https://example.org/posts/1",
+      "target": "https://john.example.org"
     }
   }</pre>
     </div>
@@ -3343,7 +3343,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/notes/1"
+    "object": "https://example.org/notes/1"
   }</pre>
   </div>
               </td>
@@ -3429,7 +3429,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/music.mp3"
+    "object": "https://example.org/music.mp3"
   }</pre>
   </div>
               </td>
@@ -3468,7 +3468,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/posts/1"
+    "object": "https://example.org/posts/1"
   }</pre>
   </div>
               </td>
@@ -3506,7 +3506,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/posts/1",
+    "object": "https://example.org/posts/1",
     "target": {
       "type": "Collection",
       "name": "List B"
@@ -3603,12 +3603,12 @@ as2-date-time    = full-date "T" as2-full-time
     "type": "Announce",
     "actor": {
       "type": "Person",
-      "id": "http://sally.example.org",
+      "id": "https://sally.example.org",
       "name": "Sally"
     },
     "object": {
       "type": "Arrive",
-      "actor": "http://sally.example.org",
+      "actor": "https://sally.example.org",
       "location": {
         "type": "Place",
         "name": "Work"
@@ -3651,8 +3651,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally blocked Joe",
     "type": "Block",
-    "actor": "http://sally.example.org",
-    "object": "http://joe.example.org"
+    "actor": "https://sally.example.org",
+    "object": "https://joe.example.org"
   }</pre>
   </div>
               </td>
@@ -3689,7 +3689,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally flagged an inappropriate note",
     "type": "Flag",
-    "actor": "http://sally.example.org",
+    "actor": "https://sally.example.org",
     "object": {
       "type": "Note",
       "content": "An inappropriate note"
@@ -3728,8 +3728,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally disliked a post",
     "type": "Dislike",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1"
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1"
   }</pre>
   </div>
               </td>
@@ -4115,7 +4115,7 @@ as2-date-time    = full-date "T" as2-full-time
     "type": "Article",
     "name": "What a Crazy Day I Had",
     "content": "&lt;div&gt;... you will never believe ...&lt;/div&gt;",
-    "attributedTo": "http://sally.example.org"
+    "attributedTo": "https://sally.example.org"
   }</pre>
   </div>            </td>
             </tr>
@@ -4145,7 +4145,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Document",
     "name": "4Q Sales Forecast",
-    "url": "http://example.org/4q-sales-forecast.pdf"
+    "url": "https://example.org/4q-sales-forecast.pdf"
   }</pre>
   </div>
               </td>
@@ -4178,7 +4178,7 @@ as2-date-time    = full-date "T" as2-full-time
     "name": "Interview With A Famous Technologist",
     "url": {
       "type": "Link",
-      "href": "http://example.org/podcast.mp3",
+      "href": "https://example.org/podcast.mp3",
       "mediaType": "audio/mp3"
     }
   }</pre>
@@ -4214,12 +4214,12 @@ as2-date-time    = full-date "T" as2-full-time
     "url": [
       {
         "type": "Link",
-        "href": "http://example.org/image.jpeg",
+        "href": "https://example.org/image.jpeg",
         "mediaType": "image/jpeg"
       },
       {
         "type": "Link",
-        "href": "http://example.org/image.png",
+        "href": "https://example.org/image.png",
         "mediaType": "image/png"
       }
     ]
@@ -4253,7 +4253,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Video",
     "name": "Puppy Plays With Ball",
-    "url": "http://example.org/video.mkv",
+    "url": "https://example.org/video.mkv",
     "duration": "PT2H"
   }</pre>
   </div>
@@ -4316,7 +4316,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Page",
     "name": "Omaha Weather Report",
-    "url": "http://example.org/weather-in-omaha.html"
+    "url": "https://example.org/weather-in-omaha.html"
   }</pre>
   </div>
               </td>
@@ -4434,7 +4434,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Mention",
-    "href": "http://example.org/joe",
+    "href": "https://example.org/joe",
     "name": "Joe"
   }</pre>
   </div>
@@ -4515,17 +4515,17 @@ as2-date-time    = full-date "T" as2-full-time
     "orderedItems": [
       {
         "type": "Image",
-        "id": "http://image.example/1"
+        "id": "https://image.example/1"
       },
       {
         "type": "Tombstone",
         "formerType": "Image",
-        "id": "http://image.example/2",
+        "id": "https://image.example/2",
         "deleted": "2016-03-17T00:00:00Z"
       },
       {
         "type": "Image",
-        "id": "http://image.example/3"
+        "id": "https://image.example/3"
       }
     ]
   }</pre>
@@ -4664,7 +4664,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "name": "Foo",
-    "id": "http://example.org/foo"
+    "id": "https://example.org/foo"
   }</pre>
   </div>
             </td>
@@ -4700,7 +4700,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "A foo",
-    "type": "http://example.org/Foo"
+    "type": "https://example.org/Foo"
   }</pre>
   </div>
             </td>
@@ -4733,8 +4733,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered the Foo object",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/foo"
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/foo"
   }</pre>
   </div>
 
@@ -4746,10 +4746,10 @@ as2-date-time    = full-date "T" as2-full-time
     "type": "Offer",
     "actor": {
       "type": "Person",
-      "id": "http://sally.example.org",
+      "id": "https://sally.example.org",
       "summary": "Sally"
     },
-    "object": "http://example.org/foo"
+    "object": "https://example.org/foo"
   }</pre>
   </div>
 
@@ -4759,14 +4759,14 @@ as2-date-time    = full-date "T" as2-full-time
     "summary": "Sally and Joe offered the Foo object",
     "type": "Offer",
     "actor": [
-      "http://joe.example.org",
+      "https://joe.example.org",
       {
         "type": "Person",
-        "id": "http://sally.example.org",
+        "id": "https://sally.example.org",
         "name": "Sally"
       }
     ],
-    "object": "http://example.org/foo"
+    "object": "https://example.org/foo"
   }</pre>
   </div>
 
@@ -4810,7 +4810,7 @@ as2-date-time    = full-date "T" as2-full-time
       {
         "type": "Image",
         "content": "This is what he looks like.",
-        "url": "http://example.org/cat.jpeg"
+        "url": "https://example.org/cat.jpeg"
       }
     ]
   }</pre>
@@ -4849,7 +4849,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Image",
     "name": "My cat taking a nap",
-    "url": "http://example.org/cat.jpeg",
+    "url": "https://example.org/cat.jpeg",
     "attributedTo": [
       {
         "type": "Person",
@@ -4864,9 +4864,9 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Image",
     "name": "My cat taking a nap",
-    "url": "http://example.org/cat.jpeg",
+    "url": "https://example.org/cat.jpeg",
     "attributedTo": [
-      "http://joe.example.org",
+      "https://joe.example.org",
       {
         "type": "Person",
         "name": "Sally"
@@ -4907,7 +4907,7 @@ as2-date-time    = full-date "T" as2-full-time
     "type": "Note",
     "content": "Thursday will be a company-wide holiday. Enjoy your day off!",
     "audience": {
-      "type": "http://example.org/Organization",
+      "type": "https://example.org/Organization",
       "name": "ExampleCo LLC"
     }
   }</pre>
@@ -4942,10 +4942,10 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered a post to John",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
-    "target": "http://john.example.org",
-    "bcc": [ "http://joe.example.org" ]
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
+    "target": "https://john.example.org",
+    "bcc": [ "https://joe.example.org" ]
   }</pre>
     </div>
             </td>
@@ -4978,10 +4978,10 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered a post to John",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
-    "target": "http://john.example.org",
-    "bto": [ "http://joe.example.org" ]
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
+    "target": "https://john.example.org",
+    "bto": [ "https://joe.example.org" ]
   }</pre>
     </div>
           </td>
@@ -5013,10 +5013,10 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered a post to John",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
-    "target": "http://john.example.org",
-    "cc": [ "http://joe.example.org" ]
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
+    "target": "https://john.example.org",
+    "cc": [ "https://joe.example.org" ]
   }</pre>
     </div>
             </td>
@@ -5052,16 +5052,16 @@ as2-date-time    = full-date "T" as2-full-time
     "items": [
       {
         "type": "Offer",
-        "actor": "http://sally.example.org",
-        "object": "http://example.org/posts/1",
-        "target": "http://john.example.org",
-        "context": "http://example.org/contexts/1"
+        "actor": "https://sally.example.org",
+        "object": "https://example.org/posts/1",
+        "target": "https://john.example.org",
+        "context": "https://example.org/contexts/1"
       },
       {
         "type": "Like",
-        "actor": "http://joe.example.org",
-        "object": "http://example.org/posts/2",
-        "context": "http://example.org/contexts/1"
+        "actor": "https://joe.example.org",
+        "object": "https://example.org/posts/2",
+        "context": "https://example.org/contexts/1"
       }
     ]
   }</pre>
@@ -5105,11 +5105,11 @@ as2-date-time    = full-date "T" as2-full-time
     "summary": "Sally's blog posts",
     "type": "Collection",
     "totalItems": 3,
-    "current": "http://example.org/collection",
+    "current": "https://example.org/collection",
     "items": [
-      "http://example.org/posts/1",
-      "http://example.org/posts/2",
-      "http://example.org/posts/3"
+      "https://example.org/posts/1",
+      "https://example.org/posts/2",
+      "https://example.org/posts/3"
     ]
   }</pre>
     </div>
@@ -5123,12 +5123,12 @@ as2-date-time    = full-date "T" as2-full-time
     "current": {
       "type": "Link",
       "name": "Most Recent Items",
-      "href": "http://example.org/collection"
+      "href": "https://example.org/collection"
     },
     "items": [
-      "http://example.org/posts/1",
-      "http://example.org/posts/2",
-      "http://example.org/posts/3"
+      "https://example.org/posts/1",
+      "https://example.org/posts/2",
+      "https://example.org/posts/3"
     ]
   }</pre>
     </div>
@@ -5167,7 +5167,7 @@ as2-date-time    = full-date "T" as2-full-time
     "summary": "Sally's blog posts",
     "type": "Collection",
     "totalItems": 3,
-    "first": "http://example.org/collection?page=0"
+    "first": "https://example.org/collection?page=0"
   }</pre>
     </div>
 
@@ -5180,7 +5180,7 @@ as2-date-time    = full-date "T" as2-full-time
     "first": {
       "type": "Link",
       "name": "First Page",
-      "href": "http://example.org/collection?page=0"
+      "href": "https://example.org/collection?page=0"
     }
   }</pre>
     </div>
@@ -5260,7 +5260,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Image",
       "name": "Note icon",
       "url": {
-          "href": "http://example.org/note.png",
+          "href": "https://example.org/note.png",
           "type": "Link",
           "width": 16,
           "height": 16
@@ -5281,7 +5281,7 @@ as2-date-time    = full-date "T" as2-full-time
         "summary": "Note (16x16)",
         "url": {
           "type": "Link",
-          "href": "http://example.org/note1.png",
+          "href": "https://example.org/note1.png",
           "width": 16,
           "height": 16
         }
@@ -5291,7 +5291,7 @@ as2-date-time    = full-date "T" as2-full-time
         "summary": "Note (32x32)",
         "url": {
           "type": "Link",
-          "href": "http://example.org/note2.png",
+          "href": "https://example.org/note2.png",
           "width": 32,
           "height": 32
         }
@@ -5335,7 +5335,7 @@ as2-date-time    = full-date "T" as2-full-time
     "image": {
       "type": "Image",
       "name": "A Cat",
-      "url": "http://example.org/cat.png"
+      "url": "https://example.org/cat.png"
     }
   }</pre>
     </div>
@@ -5350,12 +5350,12 @@ as2-date-time    = full-date "T" as2-full-time
       {
         "type": "Image",
         "name": "Cat 1",
-        "url": "http://example.org/cat1.png"
+        "url": "https://example.org/cat1.png"
       },
       {
         "type": "Image",
         "name": "Cat 2",
-        "url": "http://example.org/cat2.png"
+        "url": "https://example.org/cat2.png"
       }
     ]
   }</pre>
@@ -5406,7 +5406,7 @@ as2-date-time    = full-date "T" as2-full-time
     "summary": "A simple note",
     "type": "Note",
     "content": "This is all there is.",
-    "inReplyTo": "http://example.org/posts/1"
+    "inReplyTo": "https://example.org/posts/1"
   }</pre>
     </div>
             </td>
@@ -5444,7 +5444,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "object": "http://example.org/foo.mp3",
+    "object": "https://example.org/foo.mp3",
     "instrument": {
       "type": "Service",
       "name": "Acme Music Service"
@@ -5482,7 +5482,7 @@ as2-date-time    = full-date "T" as2-full-time
     "summary": "A collection",
     "type": "Collection",
     "totalItems": 3,
-    "last": "http://example.org/collection?page=1"
+    "last": "https://example.org/collection?page=1"
   }</pre>
     </div>
 
@@ -5495,7 +5495,7 @@ as2-date-time    = full-date "T" as2-full-time
     "last": {
       "type": "Link",
       "name": "Last Page",
-      "href": "http://example.org/collection?page=1"
+      "href": "https://example.org/collection?page=1"
     }
   }</pre>
     </div>
@@ -5762,8 +5762,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally moved a post from List A to List B",
     "type": "Move",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
     "target": {
       "type": "Collection",
       "name": "List B"
@@ -5807,11 +5807,11 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Page 2 of Sally's blog posts",
     "type": "CollectionPage",
-    "next": "http://example.org/collection?page=2",
+    "next": "https://example.org/collection?page=2",
     "items": [
-      "http://example.org/posts/1",
-      "http://example.org/posts/2",
-      "http://example.org/posts/3"
+      "https://example.org/posts/1",
+      "https://example.org/posts/2",
+      "https://example.org/posts/3"
     ]
   }</pre>
     </div>
@@ -5824,12 +5824,12 @@ as2-date-time    = full-date "T" as2-full-time
     "next": {
       "type": "Link",
       "name": "Next Page",
-      "href": "http://example.org/collection?page=2"
+      "href": "https://example.org/collection?page=2"
     },
     "items": [
-      "http://example.org/posts/1",
-      "http://example.org/posts/2",
-      "http://example.org/posts/3"
+      "https://example.org/posts/1",
+      "https://example.org/posts/2",
+      "https://example.org/posts/3"
     ]
   }</pre>
     </div>
@@ -5867,8 +5867,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally liked a post",
     "type": "Like",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1"
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1"
   }</pre>
   </div>
 
@@ -5876,7 +5876,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Like",
-    "actor": "http://sally.example.org",
+    "actor": "https://sally.example.org",
     "object": {
       "type": "Note",
       "content": "A simple note"
@@ -5889,9 +5889,9 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally liked a note",
     "type": "Like",
-    "actor": "http://sally.example.org",
+    "actor": "https://sally.example.org",
     "object": [
-      "http://example.org/posts/1",
+      "https://example.org/posts/1",
       {
         "type": "Note",
         "summary": "A simple note",
@@ -5941,11 +5941,11 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Page 1 of Sally's blog posts",
     "type": "CollectionPage",
-    "prev": "http://example.org/collection?page=1",
+    "prev": "https://example.org/collection?page=1",
     "items": [
-      "http://example.org/posts/1",
-      "http://example.org/posts/2",
-      "http://example.org/posts/3"
+      "https://example.org/posts/1",
+      "https://example.org/posts/2",
+      "https://example.org/posts/3"
     ]
   }</pre>
     </div>
@@ -5958,12 +5958,12 @@ as2-date-time    = full-date "T" as2-full-time
     "prev": {
       "type": "Link",
       "name": "Previous Page",
-      "href": "http://example.org/collection?page=1"
+      "href": "https://example.org/collection?page=1"
     },
     "items": [
-      "http://example.org/posts/1",
-      "http://example.org/posts/2",
-      "http://example.org/posts/3"
+      "https://example.org/posts/1",
+      "https://example.org/posts/2",
+      "https://example.org/posts/3"
     ]
   }</pre>
     </div>
@@ -6008,7 +6008,7 @@ as2-date-time    = full-date "T" as2-full-time
       "duration": "PT1M",
       "url": {
         "type": "Link",
-        "href": "http://example.org/trailer.mkv",
+        "href": "https://example.org/trailer.mkv",
         "mediaType": "video/mkv"
       }
     }
@@ -6042,11 +6042,11 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally checked that her flight was on time",
-    "type": ["Activity", "http://www.verbs.example/Check"],
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/flights/1",
+    "type": ["Activity", "https://www.verbs.example/Check"],
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/flights/1",
     "result": {
-      "type": "http://www.types.example/flightstatus",
+      "type": "https://www.types.example/flightstatus",
       "name": "On Time"
     }
   }</pre>
@@ -6082,7 +6082,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "A simple note",
     "type": "Note",
-    "id": "http://www.test.example/notes/1",
+    "id": "https://www.test.example/notes/1",
     "content": "I am fine.",
     "replies": {
       "type": "Collection",
@@ -6092,7 +6092,7 @@ as2-date-time    = full-date "T" as2-full-time
           "summary": "A response to the note",
           "type": "Note",
           "content": "I am glad to hear it.",
-          "inReplyTo": "http://www.test.example/notes/1"
+          "inReplyTo": "https://www.test.example/notes/1"
         }
       ]
     }
@@ -6132,11 +6132,11 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Image",
     "summary": "Picture of Sally",
-    "url": "http://example.org/sally.jpg",
+    "url": "https://example.org/sally.jpg",
     "tag": [
       {
         "type": "Person",
-        "id": "http://sally.example.org",
+        "id": "https://sally.example.org",
         "name": "Sally"
       }
     ]
@@ -6175,9 +6175,9 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered the post to John",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
-    "target": "http://john.example.org"
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
+    "target": "https://john.example.org"
   }</pre>
     </div>
 
@@ -6186,8 +6186,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered the post to John",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
     "target": {
       "type": "Person",
       "name": "John"
@@ -6228,10 +6228,10 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally offered the post to John",
     "type": "Offer",
-    "actor": "http://sally.example.org",
-    "object": "http://example.org/posts/1",
-    "target": "http://john.example.org",
-    "to": [ "http://joe.example.org" ]
+    "actor": "https://sally.example.org",
+    "object": "https://example.org/posts/1",
+    "target": "https://john.example.org",
+    "to": [ "https://joe.example.org" ]
   }</pre>
     </div>
             </td>
@@ -6263,7 +6263,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Document",
     "name": "4Q Sales Forecast",
-    "url": "http://example.org/4q-sales-forecast.pdf"
+    "url": "https://example.org/4q-sales-forecast.pdf"
   }</pre>
   </div>
 
@@ -6274,7 +6274,7 @@ as2-date-time    = full-date "T" as2-full-time
     "name": "4Q Sales Forecast",
     "url": {
       "type": "Link",
-      "href": "http://example.org/4q-sales-forecast.pdf"
+      "href": "https://example.org/4q-sales-forecast.pdf"
     }
   }</pre>
   </div>
@@ -6287,12 +6287,12 @@ as2-date-time    = full-date "T" as2-full-time
     "url": [
       {
         "type": "Link",
-        "href": "http://example.org/4q-sales-forecast.pdf",
+        "href": "https://example.org/4q-sales-forecast.pdf",
         "mediaType": "application/pdf"
       },
       {
         "type": "Link",
-        "href": "http://example.org/4q-sales-forecast.html",
+        "href": "https://example.org/4q-sales-forecast.html",
         "mediaType": "text/html"
       }
     ]
@@ -6519,7 +6519,7 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Video",
     "name": "Birds Flying",
-    "url": "http://example.org/video.mkv",
+    "url": "https://example.org/video.mkv",
     "duration": "PT2H"
   }</pre>
   </div>
@@ -6560,7 +6560,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/image.png",
+    "href": "https://example.org/image.png",
     "height": 100,
     "width": 100
   }</pre>
@@ -6599,7 +6599,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/abc",
+    "href": "https://example.org/abc",
     "mediaType": "text/html",
     "name": "Previous"
   }</pre>
@@ -6636,7 +6636,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/abc",
+    "href": "https://example.org/abc",
     "hreflang": "en",
     "mediaType": "text/html",
     "name": "Previous"
@@ -6678,8 +6678,8 @@ as2-date-time    = full-date "T" as2-full-time
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Page 1 of Sally's notes",
     "type": "CollectionPage",
-    "id": "http://example.org/collection?page=1",
-    "partOf": "http://example.org/collection",
+    "id": "https://example.org/collection?page=1",
+    "partOf": "https://example.org/collection",
     "items": [
       {
         "type": "Note",
@@ -6803,7 +6803,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/abc",
+    "href": "https://example.org/abc",
     "hreflang": "en",
     "mediaType": "text/html",
     "name": "Next"
@@ -7008,7 +7008,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/abc",
+    "href": "https://example.org/abc",
     "hreflang": "en",
     "mediaType": "text/html",
     "name": "Preview",
@@ -7034,7 +7034,7 @@ as2-date-time    = full-date "T" as2-full-time
           </tr>
           <tr>
             <td>Range:</td>
-            <td>[[!RFC5988]] or <a class="bibref" href="http://www.w3.org/TR/html5/document-metadata.html#attr-link-rel">[HTML5]</a> Link Relation</td>
+            <td>[[!RFC5988]] or <a class="bibref" href="https://www.w3.org/TR/html5/document-metadata.html#attr-link-rel">[HTML5]</a> Link Relation</td>
           </tr>
         </tbody>
 
@@ -7278,7 +7278,7 @@ as2-date-time    = full-date "T" as2-full-time
   <pre class="example highlight json">{
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Link",
-    "href": "http://example.org/image.png",
+    "href": "https://example.org/image.png",
     "height": 100,
     "width": 100
   }</pre>
@@ -7420,7 +7420,7 @@ as2-date-time    = full-date "T" as2-full-time
       "type": "Person",
       "name": "Sally"
     },
-    "url": "http://sally.example.org"
+    "url": "https://sally.example.org"
   }</pre>
   </div>
   </td>
@@ -7461,7 +7461,7 @@ as2-date-time    = full-date "T" as2-full-time
   "summary": "This image has been deleted",
   "type": "Tombstone",
   "formerType": "Image",
-  "url": "http://example.org/image/2"
+  "url": "https://example.org/image/2"
   }</pre>
   </div>
   </td>
@@ -8007,7 +8007,7 @@ profile-URI   = URI</"></"></pre>
       expansion @context definition provided
       <a href="https://www.w3.org/ns/activitystreams1-context.jsonld">here</a> to produce
       the JSON-LD expanded representation. Refer to the
-      <a href="http://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD
+      <a href="https://www.w3.org/TR/json-ld-api/#expansion-algorithms">JSON-LD
       Processing Algorithms and API</a> for details.
     </li>
     <li>
@@ -8115,45 +8115,45 @@ profile-URI   = URI</"></"></pre>
   "type": "Collection",
   "items": [
     {
-      "id": "http://example.org/activity/20150101000000",
+      "id": "https://example.org/activity/20150101000000",
       "type": [ "Create", "prov:Activity" ],
       "actor": {
-        "id": "http://example.org/#eric",
+        "id": "https://example.org/#eric",
         "name": "Eric"
       },
       "summary": "Eric wrote a note.",
       "object": {
-        "id": "http://example.org/entry/20150101000000",
+        "id": "https://example.org/entry/20150101000000",
         "type": [ "Note", "prov:Entity" ],
-        "attributedTo": "http://example.org/#eric",
+        "attributedTo": "https://example.org/#eric",
         "content": "Remember... all I'm offering is the trooth. Nothing more."
       },
       "published": "2015-01-01T00:00:00Z"
     },
     {
-      "id": "http://example.org/activity/20150101000059",
+      "id": "https://example.org/activity/20150101000059",
       "type": [ "Update", "prov:Activity", "oa:Annotation" ],
       "summary": "Eric edited a note.",
       "dcterms:created": "2015-01-01T00:00:59Z",
-      "dcterms:creator": { "@id": "http://example.org/#eric" },
+      "dcterms:creator": { "@id": "https://example.org/#eric" },
       "oa:hasBody": {
-        "id": "http://example.org/entry/20150101000059",
+        "id": "https://example.org/entry/20150101000059",
         "type": [ "Note", "prov:Entity" ],
         "content": "Remember... all I'm offering is the truth. Nothing more.",
-        "prov:wasAttributedTo": { "@id": "http://example.org/#eric" },
-        "prov:wasRevisionOf": { "@id": "http://example.org/entry/20150101000000" }
+        "prov:wasAttributedTo": { "@id": "https://example.org/#eric" },
+        "prov:wasRevisionOf": { "@id": "https://example.org/entry/20150101000000" }
       },
-      "oa:hasTarget": { "@id": "http://example.org/entry/20150101000000" },
+      "oa:hasTarget": { "@id": "https://example.org/entry/20150101000000" },
       "oa:motivatedBy": { "@id": "oa:editing" },
-      "prov:generated": { "@id": "http://example.org/entry/20150101000059" },
-      "prov:wasInformedBy": { "@id": "http://example.org/activity/20150101000000" }
+      "prov:generated": { "@id": "https://example.org/entry/20150101000059" },
+      "prov:wasInformedBy": { "@id": "https://example.org/activity/20150101000000" }
     },
     {
-      "id": "http://example.org/activity/20150101010101",
+      "id": "https://example.org/activity/20150101010101",
       "type": [ "Delete", "prov:Activity" ],
-      "actor": "http://example.org/#eric",
+      "actor": "https://example.org/#eric",
       "summary": "Eric deleted a note.",
-      "object": "http://example.org/entry/20150101000059",
+      "object": "https://example.org/entry/20150101000059",
       "published": "2015-01-01T01:01:01Z"
     }
   ]
@@ -8301,39 +8301,39 @@ profile-URI   = URI</"></"></pre>
    {
      "summary": "Sally created a note",
      "type": "Create",
-     "id": "http://activities.example.com/1",
-     "actor": "http://sally.example.org",
+     "id": "https://activities.example.com/1",
+     "actor": "https://sally.example.org",
      "object": {
       "summary": "A note",
        "type": "Note",
-       "id": "http://notes.example.com/1",
+       "id": "https://notes.example.com/1",
        "content": "A note"
      },
      "context": {
-       "type": "http://example.org/Project",
+       "type": "https://example.org/Project",
        "name": "Project XYZ"
      },
      "audience": {
        "type": "Group",
        "name": "Project XYZ Working Group"
      },
-     "to": "http://john.example.org"
+     "to": "https://john.example.org"
    },
    {
      "summary": "John liked Sally's note",
      "type": "Like",
-     "id": "http://activities.example.com/1",
-     "actor": "http://john.example.org",
-     "object": "http://notes.example.com/1",
+     "id": "https://activities.example.com/1",
+     "actor": "https://john.example.org",
+     "object": "https://notes.example.com/1",
      "context": {
-       "type": "http://example.org/Project",
+       "type": "https://example.org/Project",
        "name": "Project XYZ"
      },
      "audience": {
        "type": "Group",
        "name": "Project XYZ Working Group"
      },
-     "to": "http://sally.example.org"
+     "to": "https://sally.example.org"
    }
  ]
 }</pre>
@@ -8412,7 +8412,7 @@ profile-URI   = URI</"></"></pre>
      <code><a>subject</a></code> and
      <code><a href="#object-prop">object</a></code> properties. Used together,
      these three properties form what is commonly known as a
-     "<a href="http://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
+     "<a href="https://patterns.dataincubator.org/book/reified-statement.html">reified statement</a>"
      where <code><a data-lt="subject">subject</a></code> identifies the
      subject, <code><a href="#relationship-prop">relationship</a></code>
      identifies the predicate, and
@@ -8436,12 +8436,12 @@ profile-URI   = URI</"></"></pre>
   "@context": "https://www.w3.org/ns/activitystreams",
   "summary": "Sally became a friend of Matt",
   "type": "Create",
-  "actor": "http://sally.example.org",
+  "actor": "https://sally.example.org",
   "object": {
     "type": "Relationship",
-    "subject": "http://sally.example.org",
+    "subject": "https://sally.example.org",
     "relationship": "http://purl.org/vocab/relationship/friendOf",
-    "object": "http://matt.example.org",
+    "object": "https://matt.example.org",
     "startTime": "2015-04-21T12:34:56Z"
   }
 }</pre>
@@ -8459,8 +8459,8 @@ profile-URI   = URI</"></"></pre>
      reuse existing vocabularies that have been developed for the purpose of
      describing relationships, or create their own guided by requirements of
      their particular implementation. Existing vocabularies include the
-     "<a href="http://xmlns.com/foaf/spec/">Friend of a Friend</a>" and
-     "<a href="http://vocab.org/relationship/">Relationship</a>" vocabularies.
+     "<a href="https://xmlns.com/foaf/spec/">Friend of a Friend</a>" and
+     "<a href="https://vocab.org/relationship/">Relationship</a>" vocabularies.
    </p>
 
    <section class="informative">
@@ -8485,13 +8485,13 @@ profile-URI   = URI</"></"></pre>
      <div id="ex187-jsonld" style="display: block;">
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "id": "http://example.org/connection-requests/123",
+  "id": "https://example.org/connection-requests/123",
   "summary": "Sally requested to be a friend of John",
   "type": "Offer",
   "actor": "acct:sally@example.org",
   "object": {
     "summary": "Sally and John's friendship",
-    "id": "http://example.org/connections/123",
+    "id": "https://example.org/connections/123",
     "type": "Relationship",
     "subject": "acct:sally@example.org",
     "relationship": "http://purl.org/vocab/relationship/friendOf",
@@ -8515,58 +8515,58 @@ profile-URI   = URI</"></"></pre>
   "items": [
     {
       "summary": "John accepted Sally's friend request",
-      "id": "http://example.org/activities/122",
+      "id": "https://example.org/activities/122",
       "type": "Accept",
       "actor": "acct:john@example.org",
-      "object": "http://example.org/connection-requests/123",
-      "inReplyTo": "http://example.org/connection-requests/123",
-      "context": "http://example.org/connections/123",
+      "object": "https://example.org/connection-requests/123",
+      "inReplyTo": "https://example.org/connection-requests/123",
+      "context": "https://example.org/connections/123",
       "result": [
-        "http://example.org/activities/123",
-        "http://example.org/activities/124",
-        "http://example.org/activities/125",
-        "http://example.org/activities/126"
+        "https://example.org/activities/123",
+        "https://example.org/activities/124",
+        "https://example.org/activities/125",
+        "https://example.org/activities/126"
       ]
     },
     {
       "summary": "John followed Sally",
-      "id": "http://example.org/activities/123",
+      "id": "https://example.org/activities/123",
       "type": "Follow",
       "actor": "acct:john@example.org",
       "object": "acct:sally@example.org",
-      "context": "http://example.org/connections/123"
+      "context": "https://example.org/connections/123"
     },
     {
       "summary": "Sally followed John",
-      "id": "http://example.org/activities/124",
+      "id": "https://example.org/activities/124",
       "type": "Follow",
       "actor": "acct:sally@example.org",
       "object": "acct:john@example.org",
-      "context": "http://example.org/connections/123"
+      "context": "https://example.org/connections/123"
     },
     {
       "summary": "John added Sally to his friends list",
-      "id": "http://example.org/activities/125",
+      "id": "https://example.org/activities/125",
       "type": "Add",
       "actor": "acct:john@example.org",
-      "object": "http://example.org/connections/123",
+      "object": "https://example.org/connections/123",
       "target": {
         "type": "Collection",
         "summary": "John's Connections"
       },
-      "context": "http://example.org/connections/123"
+      "context": "https://example.org/connections/123"
     },
     {
       "summary": "Sally added John to her friends list",
-      "id": "http://example.org/activities/126",
+      "id": "https://example.org/activities/126",
       "type": "Add",
       "actor": "acct:sally@example.org",
-      "object": "http://example.org/connections/123",
+      "object": "https://example.org/connections/123",
       "target": {
         "type": "Collection",
         "summary": "Sally's Connections"
       },
-      "context": "http://example.org/connections/123"
+      "context": "https://example.org/connections/123"
     }
   ]
 }</pre>
@@ -8680,7 +8680,7 @@ profile-URI   = URI</"></"></pre>
 <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A question about robots",
-  "id": "http://help.example.org/question/1",
+  "id": "https://help.example.org/question/1",
   "type": "Question",
   "content": "I'd like to build a robot to feed my cat. Should I use Arduino or Raspberry Pi?"
 }</pre>
@@ -8694,7 +8694,7 @@ profile-URI   = URI</"></"></pre>
    <div id="ex190-jsonld" style="display:block;">
  <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
-  "id": "http://polls.example.org/question/1",
+  "id": "https://polls.example.org/question/1",
   "name": "A question about robots",
   "type": "Question",
    "content": "I'd like to build a robot to feed my cat. Which platform is best?",
@@ -8714,8 +8714,8 @@ profile-URI   = URI</"></"></pre>
   <div id="ex191-jsonld" style="display:block;">
 <pre class="example highlight json">{
  "@context": "https://www.w3.org/ns/activitystreams",
- "attributedTo": "http://sally.example.org",
- "inReplyTo": "http://polls.example.org/question/1",
+ "attributedTo": "https://sally.example.org",
+ "inReplyTo": "https://polls.example.org/question/1",
  "name": "arduino"
 }</pre>
 </div>
@@ -8731,7 +8731,7 @@ profile-URI   = URI</"></"></pre>
  <pre class="example highlight json">{
   "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A question about robots",
-  "id": "http://polls.example.org/question/1",
+  "id": "https://polls.example.org/question/1",
   "type": "Question",
    "content": "I'd like to build a robot to feed my cat. Which platform is best?",
    "oneOf": [
@@ -8743,18 +8743,18 @@ profile-URI   = URI</"></"></pre>
      "totalItems": 3,
      "items": [
        {
-         "attributedTo": "http://sally.example.org",
-         "inReplyTo": "http://polls.example.org/question/1",
+         "attributedTo": "https://sally.example.org",
+         "inReplyTo": "https://polls.example.org/question/1",
          "name": "arduino"
        },
        {
-         "attributedTo": "http://joe.example.org",
-         "inReplyTo": "http://polls.example.org/question/1",
+         "attributedTo": "https://joe.example.org",
+         "inReplyTo": "https://polls.example.org/question/1",
          "name": "arduino"
        },
        {
-         "attributedTo": "http://john.example.org",
-         "inReplyTo": "http://polls.example.org/question/1",
+         "attributedTo": "https://john.example.org",
+         "inReplyTo": "https://polls.example.org/question/1",
          "name": "raspberry pi"
        }
      ]
@@ -8806,28 +8806,28 @@ profile-URI   = URI</"></"></pre>
     {
       "summary": "Sally liked John's note",
       "type": "Like",
-      "actor": "http://sally.example.org",
-      "id": "http://activities.example.com/1",
+      "actor": "https://sally.example.org",
+      "id": "https://activities.example.com/1",
       "published": "2015-11-12T12:34:56Z",
       "object": {
         "summary": "John's note",
         "type": "Note",
-        "id": "http://notes.example.com/1",
-        "attributedTo": "http://john.example.org",
+        "id": "https://notes.example.com/1",
+        "attributedTo": "https://john.example.org",
         "content": "My note"
       }
     },
     {
       "summary": "Sally disliked John's note",
       "type": "Dislike",
-      "actor": "http://sally.example.org",
-      "id": "http://activities.example.com/2",
+      "actor": "https://sally.example.org",
+      "id": "https://activities.example.com/2",
       "published": "2015-12-11T21:43:56Z",
       "object": {
         "summary": "John's note",
         "type": "Note",
-        "id": "http://notes.example.com/1",
-        "attributedTo": "http://john.example.org",
+        "id": "https://notes.example.com/1",
+        "attributedTo": "https://john.example.org",
         "content": "My note"
       }
     }
@@ -8851,24 +8851,24 @@ profile-URI   = URI</"></"></pre>
    {
      "summary": "Sally liked John's note",
      "type": "Like",
-     "id": "http://activities.example.com/1",
-     "actor": "http://sally.example.org",
+     "id": "https://activities.example.com/1",
+     "actor": "https://sally.example.org",
      "published": "2015-11-12T12:34:56Z",
      "object": {
        "summary": "John's note",
        "type": "Note",
-       "id": "http://notes.example.com/1",
-       "attributedTo": "http://john.example.org",
+       "id": "https://notes.example.com/1",
+       "attributedTo": "https://john.example.org",
        "content": "My note"
      }
    },
    {
      "summary": "Sally no longer likes John's note",
      "type": "Undo",
-     "id": "http://activities.example.com/2",
-     "actor": "http://sally.example.org",
+     "id": "https://activities.example.com/2",
+     "actor": "https://sally.example.org",
      "published": "2015-12-11T21:43:56Z",
-     "object": "http://activities.example.com/1"
+     "object": "https://activities.example.com/1"
    }
  ]
 }</pre>
@@ -8934,14 +8934,14 @@ profile-URI   = URI</"></"></pre>
   "@context": "https://www.w3.org/ns/activitystreams",
   "name": "A thank-you note",
   "type": "Note",
-  "content": "Thank you &lt;a href='http://sally.example.org'&gt;@sally&lt;/agt for all your hard work! &lt;a href='http://example.org/tags/givingthanks'&gt;#givingthanks&lt;/a&gt;",
+  "content": "Thank you &lt;a href='https://sally.example.org'&gt;@sally&lt;/agt for all your hard work! &lt;a href='https://example.org/tags/givingthanks'&gt;#givingthanks&lt;/a&gt;",
   "to": {
     "name": "Sally",
     "type": "Person",
-    "id": "http://sally.example.org"
+    "id": "https://sally.example.org"
   },
   "tag": {
-    "id": "http://example.org/tags/givingthanks",
+    "id": "https://example.org/tags/givingthanks",
     "name": "#givingthanks"
   }
 }</pre></div>
@@ -8951,7 +8951,7 @@ profile-URI   = URI</"></"></pre>
     to be considered part of the <a href="#audienceTargeting">primary
     audience</a> of the note and should therefore receive notification. The
     <code>tag</code> property associates the Note with a reference to
-    "<code>http://example.org/tags/givingthanks</code>". Note that the
+    "<code>https://example.org/tags/givingthanks</code>". Note that the
     <code>content</code> still includes the "<code>@sally</code>" and
     "<code>#givingthanks</code>" microsyntaxes but that consuming
     implementations are not required to parse those in order to make the
@@ -8973,11 +8973,11 @@ profile-URI   = URI</"></"></pre>
   "tag": [
     {
       "type": "Mention",
-      "href": "http://example.org/people/sally",
+      "href": "https://example.org/people/sally",
       "name": "@sally"
     },
     {
-      "id": "http://example.org/tags/givingthanks",
+      "id": "https://example.org/tags/givingthanks",
       "name": "#givingthanks"
     }
   ]
@@ -9002,7 +9002,7 @@ profile-URI   = URI</"></"></pre>
     "@context": "https://www.w3.org/ns/activitystreams",
     "summary": "Sally moved the sales figures from Folder A to Folder B",
     "type": "Move",
-    "actor": "http://sally.example.org",
+    "actor": "https://sally.example.org",
     "object": {
       "type": "Document",
       "name": "sales figures"
@@ -9290,7 +9290,7 @@ profile-URI   = URI</"></"></pre>
       <li>
         Removed the four normative <code><a href="#relationship-prop">relationship</a></code> values for
         lack of implementation. Changed examples to use terms from the
-        <a href="http://vocab.org/relationship/">Relationship</a> vocabulary.
+        <a href="https://vocab.org/relationship/">Relationship</a> vocabulary.
       </li>
       <li>
         Removed process sections, especially those noting exit criteria and
@@ -9315,7 +9315,7 @@ profile-URI   = URI</"></"></pre>
 
   <section id="tof"></section>
 
-<script type="text/javascript" src="http://www.w3.org/scripts/nanotabs/0.9/nanotabs.js">
+<script type="text/javascript" src="https://www.w3.org/scripts/nanotabs/0.9/nanotabs.js">
 </script>
 <script type="text/javascript">
   nanotabs({c:"cell",e:"click",d:-1,f:function(){ return false; }});
